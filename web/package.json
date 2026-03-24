@@ -1,8 +1,18 @@
 {
-  "name": "web",
+  "name": "azure-cert-flashcards-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Browser-based practice app for Azure and GitHub certification flashcards",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR-USERNAME/azure-cert-flashcards.git",
+    "directory": "web"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR-USERNAME/azure-cert-flashcards/issues"
+  },
+  "homepage": "https://YOUR-USERNAME.github.io/azure-cert-flashcards/",
   "scripts": {
     "build:data": "node scripts/buildFlashcardData.mjs",
     "dev": "npm run build:data && vite",

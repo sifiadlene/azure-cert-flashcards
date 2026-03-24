@@ -2,6 +2,8 @@
 
 High-quality, exam-realistic flashcards for Azure and GitHub certifications, designed for both Anki import and browser-based practice.
 
+**🌐 [Try the live practice app](https://YOUR-USERNAME.github.io/azure-cert-flashcards/)**
+
 ## Available Flashcard Decks
 
 All source decks live in [flashcards](flashcards):
