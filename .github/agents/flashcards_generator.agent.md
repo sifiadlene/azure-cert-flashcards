@@ -114,6 +114,87 @@ After generating flashcards, review each against:
 
 **Action**: Flag any flashcard that doesn't meet all standards and regenerate it before finalizing the output.
 
+## CSV Format Validation
+
+**CRITICAL**: After generating the CSV file, perform automated format validation to prevent parsing errors:
+
+### Required Checks
+
+1. **Column Count Verification**:
+   - Read the generated CSV file using a CSV parser (Python's `csv.DictReader`)
+   - Verify each row has exactly 4 columns: Front, Back, Extra, Tags
+   - **Common Error**: Extra newlines within quoted fields break row parsing
+   - Count actual parsed records vs. file line count to detect hidden issues
+
+2. **Newline Detection in Extra Field**:
+   - Check for unescaped blank lines within the Extra field
+   - Look for pattern: `\n\n<br><br>` (double newline before HTML)
+   - **Fix**: Replace `\n\n<br><br>` with `<br><br>` (remove extra newline)
+   - All `<br>` tags should be inline with surrounding text, no blank lines before them
+
+3. **Quote Escaping**:
+   - Verify all double quotes inside fields are properly escaped as `""`
+   - Check that fields containing commas, quotes, or line breaks are wrapped in quotes
+   - Ensure no unmatched quotes that could break CSV parsing
+
+4. **Field Completeness**:
+   - Ensure no fields are empty (all 4 columns must have content)
+   - Extra field must contain substantive content (not just whitespace)
+   - Tags should follow format: `ExamCode Domain Topic`
+
+### Validation Implementation
+
+After generating the CSV, run this validation check:
+
+```python
+import csv
+
+def validate_flashcard_csv(filepath):
+    errors = []
+    with open(filepath, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        expected_fields = ['Front', 'Back', 'Extra', 'Tags']
+        
+        for i, row in enumerate(reader, start=2):  # start=2 accounts for header
+            # Check column count
+            if len(row) != 4:
+                errors.append(f"Row {i}: Expected 4 columns, found {len(row)}")
+            
+            # Check for empty fields
+            for field in expected_fields:
+                value = row.get(field, '')
+                if not value or not value.strip():
+                    errors.append(f"Row {i}: Empty {field} field")
+            
+            # Check for problematic newlines in Extra field
+            extra = row.get('Extra', '')
+            if '\n\n<br><br>' in extra or '\n\n<br>' in extra:
+                errors.append(f"Row {i}: Extra field contains blank line before <br> tag")
+            
+            # Check for unescaped newlines (if Extra has \n not as part of proper escaping)
+            if '\n' in extra and '<br>' not in extra:
+                errors.append(f"Row {i}: Extra field has raw newline without <br> tag")
+    
+    return errors
+```
+
+### Post-Generation Workflow
+
+1. **Generate CSV file** with all flashcards
+2. **Run validation** using the validation function above
+3. **If errors found**:
+   - Read the CSV file
+   - Apply fixes (remove blank lines, escape quotes, etc.)
+   - Re-save the file
+   - Re-run validation to confirm fixes
+4. **Only deliver to user** after validation passes with zero errors
+
+**Success Criteria**: 
+- CSV parser reports exactly N+1 rows (N flashcards + 1 header) with no parsing errors
+- All rows have 4 columns
+- No blank lines within quoted fields
+- All required fields have content
+
 ## Coverage Validation Checklist (Pre-Delivery)
 
 ✓ Extracted topic map includes all domains from the official Microsoft exam guide
