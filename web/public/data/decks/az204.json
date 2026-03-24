@@ -5,7 +5,7 @@
     "title": "Developing Solutions for Microsoft Azure",
     "sourceFile": "az204_flashcards_2026-03-23.csv",
     "updatedOn": "2026-03-23",
-    "questionCount": 79,
+    "questionCount": 101,
     "domains": [
       "Compute",
       "Cosmos",
@@ -16,12 +16,16 @@
     ],
     "topics": [
       "APIM",
+      "APIManagement",
       "Alerting",
       "AppConfiguration",
       "AppService",
       "Authentication",
       "AvailabilityTesting",
+      "AzureFiles",
+      "AzureSQL",
       "BlobStorage",
+      "CORS",
       "Containers",
       "CosmosDB",
       "CustomTelemetry",
@@ -30,11 +34,15 @@
       "EventHubs",
       "Functions",
       "KeyVault",
+      "LogicApps",
       "ManagedIdentity",
+      "Networking",
       "Profiling",
+      "Redis",
       "Sampling",
       "ServiceBus",
       "StorageQueue",
+      "TableStorage",
       "Troubleshooting"
     ]
   },
@@ -2409,6 +2417,666 @@
       "correctLabel": "Configure subscription filters with SQL-like expressions on message properties",
       "rationaleHtml": "",
       "extraHtml": "Service Bus subscription filters evaluate message properties server-side, delivering only matching messages. Consumer filtering wastes bandwidth. Multiple topics add management overhead. Subscription filters provide declarative server-side message routing without consumer logic."
+    },
+    {
+      "id": "az204-a315665d7ad8",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "Your application must cache frequently accessed data with sub-millisecond latency. Cache entries must expire after 10 minutes and support automatic failover across regions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Cache for Redis Premium tier with geo-replication and TTL settings"
+        },
+        {
+          "key": "B",
+          "label": "Azure Table Storage with cached queries"
+        },
+        {
+          "key": "C",
+          "label": "In-memory caching in App Service instances"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Cache for Redis Premium tier with geo-replication and TTL settings",
+      "rationaleHtml": "",
+      "extraHtml": "Redis Premium provides sub-millisecond latency, geo-replication for failover, and per-key TTL settings. Table Storage has higher latency. In-memory caching in App Service doesn't provide cross-instance consistency or failover. Redis Premium delivers enterprise-grade caching with high availability and flexible expiration policies."
+    },
+    {
+      "id": "az204-5b25b8a7ce07",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "An application uses Azure Cache for Redis to store session state for a web farm. Sessions must survive cache node failures without data loss.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure Redis data persistence with AOF (Append Only File) or RDB snapshots"
+        },
+        {
+          "key": "B",
+          "label": "Use Standard tier without persistence"
+        },
+        {
+          "key": "C",
+          "label": "Store sessions in Blob Storage instead of Redis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure Redis data persistence with AOF (Append Only File) or RDB snapshots",
+      "rationaleHtml": "",
+      "extraHtml": "Redis persistence (AOF for durability, RDB for backups) writes data to disk, enabling recovery after failures. Standard tier doesn't prevent data loss from failures. Moving to Blob Storage loses sub-millisecond performance. Persistence ensures cache durability for critical data like sessions."
+    },
+    {
+      "id": "az204-50783a45944c",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "CORS",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "CORS"
+      ],
+      "promptHtml": "Your web API must respond to CORS preflight requests from https://app.contoso.com allowing POST requests with custom headers.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure CORS policy in App Service or API Management with allowed origins, methods, and headers"
+        },
+        {
+          "key": "B",
+          "label": "Add Access-Control-Allow-Origin header manually in application code for all responses"
+        },
+        {
+          "key": "C",
+          "label": "Disable CORS validation in browser"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure CORS policy in App Service or API Management with allowed origins, methods, and headers",
+      "rationaleHtml": "",
+      "extraHtml": "Platform-level CORS configuration handles preflight OPTIONS requests automatically with proper headers. Manual header setting in code doesn't handle preflight correctly. Disabling browser validation isn't possible. Declarative CORS configuration ensures proper preflight handling and security."
+    },
+    {
+      "id": "az204-df2da4b985fa",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "An App Service application must authenticate users via Azure AD and also accept requests with API keys for legacy clients.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Enable App Service Authentication with Azure AD provider and implement custom API key middleware"
+        },
+        {
+          "key": "B",
+          "label": "Use Azure AD authentication only with guest accounts for legacy clients"
+        },
+        {
+          "key": "C",
+          "label": "Disable built-in authentication and implement custom solution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Enable App Service Authentication with Azure AD provider and implement custom API key middleware",
+      "rationaleHtml": "",
+      "extraHtml": "App Service Authentication handles Azure AD flows; custom middleware can validate API keys for requests bypassing Easy Auth. Guest accounts don't solve API key requirement. Custom-only solution duplicates platform features. Hybrid approach combines platform authentication with custom logic for legacy support."
+    },
+    {
+      "id": "az204-4017ccc258f5",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "Your Azure SQL Database must scale to handle unpredictable workloads with automatic performance adjustment without manual intervention.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure serverless compute tier with auto-pause and auto-scale"
+        },
+        {
+          "key": "B",
+          "label": "Use vCore provisioned tier with manual scaling"
+        },
+        {
+          "key": "C",
+          "label": "Implement DTU-based tier with fixed resources"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure serverless compute tier with auto-pause and auto-scale",
+      "rationaleHtml": "",
+      "extraHtml": "Serverless tier automatically scales compute based on workload and pauses during inactivity for cost savings. vCore/DTU require manual scaling. Serverless is ideal for unpredictable workloads with intermittent usage patterns requiring automatic scale and cost optimization."
+    },
+    {
+      "id": "az204-fc21faaac4c2",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "An application queries Azure SQL Database across multiple tables with complex joins. Query performance degrades with data growth. You must optimize read performance without changing code.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Create non-clustered indexes on foreign key and WHERE clause columns"
+        },
+        {
+          "key": "B",
+          "label": "Scale up database tier permanently"
+        },
+        {
+          "key": "C",
+          "label": "Add read replicas for all queries"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Create non-clustered indexes on foreign key and WHERE clause columns",
+      "rationaleHtml": "",
+      "extraHtml": "Indexes dramatically improve query performance by reducing scans. Scaling up increases cost without addressing query efficiency. Read replicas help scale out but indexes are primary optimization. Strategic indexing on join and filter columns optimizes query execution plans without code changes."
+    },
+    {
+      "id": "az204-2eab070c7bda",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "Your application must execute long-running data import jobs (30+ minutes) against Azure SQL Database without blocking other transactions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use Azure SQL Database elastic jobs or Azure Data Factory with batch processing"
+        },
+        {
+          "key": "B",
+          "label": "Execute import in application code with synchronous calls"
+        },
+        {
+          "key": "C",
+          "label": "Use stored procedure with transaction isolation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use Azure SQL Database elastic jobs or Azure Data Factory with batch processing",
+      "rationaleHtml": "",
+      "extraHtml": "Elastic jobs and Data Factory provide orchestrated, resilient batch processing separate from application. Synchronous code blocks application. Stored procedures run in database engine (still block). Elastic jobs/Data Factory enable long-running operations with retry, scheduling, and monitoring."
+    },
+    {
+      "id": "az204-516f7662e4bc",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "TableStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "TableStorage"
+      ],
+      "promptHtml": "An application must store structured configuration data with fast point-reads by composite key (partitionKey + rowKey). Data access is infrequent but must be very low cost.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Table Storage with partition key design"
+        },
+        {
+          "key": "B",
+          "label": "Azure SQL Database with clustered index"
+        },
+        {
+          "key": "C",
+          "label": "Cosmos DB with composite partition key"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Table Storage with partition key design",
+      "rationaleHtml": "",
+      "extraHtml": "Table Storage provides extremely low-cost NoSQL storage with fast point-reads via partition/row keys. SQL Database has higher cost for infrequent access. Cosmos DB is more expensive than Table Storage for simple key/value scenarios. Table Storage optimizes cost for infrequent structured data access."
+    },
+    {
+      "id": "az204-9ad756cb4c26",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureFiles",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureFiles"
+      ],
+      "promptHtml": "Your application must share files across multiple Azure VMs and App Service instances with SMB protocol support and AD authentication.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Files with SMB shares and Azure AD Domain Services integration"
+        },
+        {
+          "key": "B",
+          "label": "Blob Storage with NFS protocol"
+        },
+        {
+          "key": "C",
+          "label": "Shared disk attached to VMs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Files with SMB shares and Azure AD Domain Services integration",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Files provides fully managed SMB shares with Azure AD DS authentication mountable by Windows/Linux VMs and App Service. Blob NFS is for Linux-specific scenarios without SMB. Shared disks have attachment limits. Azure Files delivers cloud-native SMB file sharing with identity integration."
+    },
+    {
+      "id": "az204-45fc935f09ef",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "An API Management instance must expose version 1 and version 2 of an API simultaneously, routing based on URL path (/v1/ vs /v2/).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure API versioning with path-based versioning scheme in API Management"
+        },
+        {
+          "key": "B",
+          "label": "Deploy separate API Management instances for each version"
+        },
+        {
+          "key": "C",
+          "label": "Use query string parameter for version selection"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure API versioning with path-based versioning scheme in API Management",
+      "rationaleHtml": "",
+      "extraHtml": "API Management versioning supports path-based schemes (e.g., /api/v1/, /api/v2/) with single API definition. Multiple instances increase cost and complexity. Query strings are less RESTful than path-based. Built-in versioning enables side-by-side version deployment with flexible routing."
+    },
+    {
+      "id": "az204-540ac1a3203e",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "Your API in API Management must test breaking changes safely before promoting to production while maintaining the same version number.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Create API revision in API Management and test before making it current"
+        },
+        {
+          "key": "B",
+          "label": "Create new API version for testing"
+        },
+        {
+          "key": "C",
+          "label": "Deploy changes directly to production API"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Create API revision in API Management and test before making it current",
+      "rationaleHtml": "",
+      "extraHtml": "API revisions enable safe changes within same version without affecting consumers (accessed via revision identifier). Versions are for breaking changes with different version numbers. Direct production deployment is risky. Revisions provide safe iteration with promotion workflow for non-breaking changes."
+    },
+    {
+      "id": "az204-f50a9528049a",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "An API Management solution must group related APIs with access control and subscription keys specific to different customer tiers (free, premium).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure API Management products with API associations and subscription requirements"
+        },
+        {
+          "key": "B",
+          "label": "Use separate API Management instances per tier"
+        },
+        {
+          "key": "C",
+          "label": "Implement access control in backend APIs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure API Management products with API associations and subscription requirements",
+      "rationaleHtml": "",
+      "extraHtml": "Products group APIs with unified access policies, subscriptions, and rate limits for different customer tiers. Multiple instances increase overhead. Backend access control bypasses API gateway capabilities. Products provide business-oriented API grouping with tier-based access and billing."
+    },
+    {
+      "id": "az204-804658a3ce4e",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "LogicApps",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "LogicApps"
+      ],
+      "promptHtml": "Your application must implement a stateful workflow coordinating multiple services with checkpointing and automatic retries over several hours.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use Logic Apps with built-in connectors and retry policies"
+        },
+        {
+          "key": "B",
+          "label": "Use Azure Functions with manual state management in storage"
+        },
+        {
+          "key": "C",
+          "label": "Use Service Bus with message deferral"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use Logic Apps with built-in connectors and retry policies",
+      "rationaleHtml": "",
+      "extraHtml": "Logic Apps provides visual workflow orchestration with 400+ connectors, built-in retry policies, and automatic state management. Functions require custom orchestration code (Durable Functions is better but not listed). Service Bus handles messaging not orchestration. Logic Apps simplifies complex workflow automation."
+    },
+    {
+      "id": "az204-3cf58d0e7413",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "An Azure Container Registry must prevent anonymous image pulls and enforce authentication for all image operations.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Disable public network access and use private endpoint or configure Azure AD authentication"
+        },
+        {
+          "key": "B",
+          "label": "Use public access with IP filtering only"
+        },
+        {
+          "key": "C",
+          "label": "Share registry admin credentials with teams"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Disable public network access and use private endpoint or configure Azure AD authentication",
+      "rationaleHtml": "",
+      "extraHtml": "Private endpoints eliminate public access; Azure AD authentication provides identity-based access control. IP filtering alone doesn't enforce authentication. Admin credentials should not be shared (security risk). Private networking + Azure AD delivers secure, identity-based registry access."
+    },
+    {
+      "id": "az204-240f7550a229",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Your container registry must replicate images across multiple regions for low-latency pulls and disaster recovery.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure ACR geo-replication in Premium tier"
+        },
+        {
+          "key": "B",
+          "label": "Manually copy images to registries in each region"
+        },
+        {
+          "key": "C",
+          "label": "Use Azure Traffic Manager with single registry"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure ACR geo-replication in Premium tier",
+      "rationaleHtml": "",
+      "extraHtml": "ACR geo-replication (Premium tier) automatically syncs images across regions with regional endpoints for fast pulls. Manual copying is complex and error-prone. Traffic Manager doesn't replicate data. Geo-replication provides managed multi-region image distribution with regional access."
+    },
+    {
+      "id": "az204-a780f39cb6d5",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "An application must implement Redis cache-aside pattern with fallback to database for cache misses and populate cache with 5-minute expiration.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Check cache for data; if miss, query database, populate cache with TTL, return data"
+        },
+        {
+          "key": "B",
+          "label": "Query database always and update cache asynchronously"
+        },
+        {
+          "key": "C",
+          "label": "Use cache only without database fallback"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Check cache for data; if miss, query database, populate cache with TTL, return data",
+      "rationaleHtml": "",
+      "extraHtml": "Cache-aside pattern: application checks cache first, loads from database on miss, populates cache with TTL. Always querying database negates cache benefits. Cache-only fails when data missing. Cache-aside balances performance (cache hits) and data availability (database fallback) with freshness (TTL)."
+    },
+    {
+      "id": "az204-b059f8f9bfc0",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Your Function App must implement fan-out/fan-in pattern to process 100 parallel tasks and aggregate results.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use Durable Functions with orchestrator calling activity functions in parallel and gathering results"
+        },
+        {
+          "key": "B",
+          "label": "Use queue-triggered functions with manual coordination"
+        },
+        {
+          "key": "C",
+          "label": "Use timer trigger with batching logic"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use Durable Functions with orchestrator calling activity functions in parallel and gathering results",
+      "rationaleHtml": "",
+      "extraHtml": "Durable Functions orchestrator can call multiple activity functions in parallel (WhenAll) and aggregate results with built-in state management. Queue-based coordination is complex. Timer batching doesn't provide orchestration. Durable Functions provides declarative fan-out/fan-in with automatic state persistence."
+    },
+    {
+      "id": "az204-5491c8d85ed1",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "KeyVault",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "KeyVault"
+      ],
+      "promptHtml": "An application must store and retrieve secrets, keys, and certificates with versioning and access audit logs for compliance.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use Azure Key Vault with version management and diagnostic logging to Log Analytics"
+        },
+        {
+          "key": "B",
+          "label": "Store secrets in environment variables"
+        },
+        {
+          "key": "C",
+          "label": "Use Azure App Configuration for all secret types"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use Azure Key Vault with version management and diagnostic logging to Log Analytics",
+      "rationaleHtml": "",
+      "extraHtml": "Key Vault provides versioned secret/key/certificate storage with full access logging and built-in audit capabilities. Environment variables lack versioning and auditing. App Configuration isn't designed for secrets (use Key Vault reference). Key Vault is purpose-built for secret lifecycle management with compliance features."
+    },
+    {
+      "id": "az204-08925ff03bac",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Your API must validate OAuth 2.0 access tokens issued by Azure AD B2C with custom claims for role-based authorization.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure JWT Bearer authentication with Azure AD B2C issuer and validate custom claims in authorization policies"
+        },
+        {
+          "key": "B",
+          "label": "Accept tokens without validation"
+        },
+        {
+          "key": "C",
+          "label": "Use API keys instead of OAuth tokens"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure JWT Bearer authentication with Azure AD B2C issuer and validate custom claims in authorization policies",
+      "rationaleHtml": "",
+      "extraHtml": "JWT middleware validates B2C tokens (signature, issuer, expiration); authorization policies evaluate custom claims for role decisions. No validation is insecure. API keys lack B2C integration. Token validation + custom claims provide secure identity-based authorization with Azure AD B2C."
+    },
+    {
+      "id": "az204-b2f345e084b7",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "StorageQueue",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "StorageQueue"
+      ],
+      "promptHtml": "An application must query Azure Storage Queue messages without removing them to inspect and conditionally process later.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use PeekMessages operation to view messages without dequeue"
+        },
+        {
+          "key": "B",
+          "label": "Use GetMessages with zero visibility timeout"
+        },
+        {
+          "key": "C",
+          "label": "Dequeue and re-queue messages manually"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use PeekMessages operation to view messages without dequeue",
+      "rationaleHtml": "",
+      "extraHtml": "PeekMessages retrieves messages for inspection without affecting queue state or visibility. GetMessages dequeues (even with zero timeout). Manual dequeue/re-queue changes message state. Peek provides non-destructive queue inspection for conditional processing scenarios."
+    },
+    {
+      "id": "az204-026e97545b9b",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Networking",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Networking"
+      ],
+      "promptHtml": "Your App Service must connect to Azure SQL Database using private IP without traversing the internet, even within Azure.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure VNet integration for App Service and Private Link/Private Endpoint for SQL Database"
+        },
+        {
+          "key": "B",
+          "label": "Use firewall rules allowing Azure services"
+        },
+        {
+          "key": "C",
+          "label": "Use public endpoint with TLS encryption"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure VNet integration for App Service and Private Link/Private Endpoint for SQL Database",
+      "rationaleHtml": "",
+      "extraHtml": "VNet integration connects App Service to VNet; Private Link exposes SQL Database on private IP in VNet (no internet). Firewall rules still use public endpoints. TLS encrypts but uses public routing. Private Link + VNet integration provides fully private connectivity over Microsoft backbone."
+    },
+    {
+      "id": "az204-1b10b63735f8",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "An application experiences intermittent timeouts connecting to Azure Storage. You need to implement retry logic with exponential backoff.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configure Azure Storage SDK retry policy with exponential backoff strategy"
+        },
+        {
+          "key": "B",
+          "label": "Implement custom retry loop with Thread.Sleep"
+        },
+        {
+          "key": "C",
+          "label": "Increase operation timeout without retry logic"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configure Azure Storage SDK retry policy with exponential backoff strategy",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Storage SDK includes built-in retry policies with exponential backoff, jitter, and circuit breaker patterns. Custom retry loops are error-prone. Timeout increase doesn't address transient failures. SDK retry policies provide production-grade transient fault handling with configurable strategies."
     }
   ]
 }

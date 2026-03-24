@@ -147,6 +147,28 @@ function filterQuestions(
   })
 }
 
+// Theme Toggle Component
+function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark', onToggle: () => void }) {
+  return (
+    <button 
+      className="theme-toggle" 
+      onClick={onToggle}
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+    >
+      {theme === 'light' ? (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )}
+    </button>
+  )
+}
+
 function App() {
   const [manifest, setManifest] = useState<DeckManifest | null>(null)
   const [manifestError, setManifestError] = useState('')
@@ -159,6 +181,29 @@ function App() {
   const [result, setResult] = useState<SessionResult | null>(null)
   const [progress, setProgress] = useState<ProgressMap>({})
   const [elapsedSeconds, setElapsedSeconds] = useState(0)
+
+  // Theme management
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const savedTheme = window.localStorage.getItem('theme')
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme
+    }
+    // Check system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    }
+    return 'light'
+  })
+
+  // Apply theme to document
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
 
   useEffect(() => {
     setProgress(readProgress())
@@ -429,11 +474,13 @@ function App() {
   /* ─── Setup view ─── */
   if (!session && !result) {
     return (
-      <div className="app-shell">
-        <header className="site-header">
-          <h1>Microsoft Certification Practice</h1>
-          <p>Select an exam, choose your mode, and start practicing.</p>
-        </header>
+      <>
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="app-shell">
+          <header className="site-header">
+            <h1>Microsoft Certification Practice</h1>
+            <p>Select an exam, choose your mode, and start practicing.</p>
+          </header>
 
         {manifestError && <div className="alert error">{manifestError}</div>}
 
@@ -559,16 +606,19 @@ function App() {
           )}
         </div>
       </div>
+      </>
     )
   }
 
   /* ─── Session view ─── */
   if (session && currentQuestion) {
     return (
-      <div className="app-shell">
-        <button type="button" className="back-link" onClick={handleBackToSetup}>
-          &larr; Back to setup
-        </button>
+      <>
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="app-shell">
+          <button type="button" className="back-link" onClick={handleBackToSetup}>
+            &larr; Back to setup
+          </button>
 
         <div className="card">
           <div className="session-header">
@@ -678,16 +728,19 @@ function App() {
           )}
         </div>
       </div>
+      </>
     )
   }
 
   /* ─── Results view ─── */
   if (result) {
     return (
-      <div className="app-shell">
-        <button type="button" className="back-link" onClick={handleBackToSetup}>
-          &larr; Back to setup
-        </button>
+      <>
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="app-shell">
+          <button type="button" className="back-link" onClick={handleBackToSetup}>
+            &larr; Back to setup
+          </button>
 
         <div className="card">
           <h2 className="card-title">
@@ -749,6 +802,7 @@ function App() {
           )}
         </div>
       </div>
+      </>
     )
   }
 
