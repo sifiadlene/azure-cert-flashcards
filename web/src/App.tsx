@@ -126,16 +126,25 @@ function getProgressScore(progress?: ExamProgress) {
   return `${progress.lastScore}/${progress.lastTotal} (${score}%)`
 }
 
-async function fetchDeckFile(examSlug: string, lang: 'en' | 'fr'): Promise<ExamDeck> {
+async function fetchDeckFile(
+  examSlug: string,
+  lang: 'en' | 'fr',
+): Promise<{ deck: ExamDeck; resolvedLang: 'en' | 'fr' }> {
   const urlsToTry =
     lang === 'en'
-      ? [getDataUrl(`decks/${examSlug}.json`)]
-      : [getDataUrl(`decks/${examSlug}-${lang}.json`), getDataUrl(`decks/${examSlug}.json`)]
+      ? [{ url: getDataUrl(`decks/${examSlug}.json`), resolvedLang: 'en' as const }]
+      : [
+          { url: getDataUrl(`decks/${examSlug}-${lang}.json`), resolvedLang: lang },
+          { url: getDataUrl(`decks/${examSlug}.json`), resolvedLang: 'en' as const },
+        ]
 
-  for (const url of urlsToTry) {
+  for (const { url, resolvedLang } of urlsToTry) {
     const response = await fetch(url)
     if (response.ok) {
-      return (await response.json()) as ExamDeck
+      return {
+        deck: (await response.json()) as ExamDeck,
+        resolvedLang,
+      }
     }
   }
 
@@ -248,7 +257,12 @@ function App() {
       if (!deckCache[key]) {
         setLoadingDeckSlug(selectedExamSlug)
         fetchDeckFile(selectedExamSlug, nextLang)
-          .then((deck) => { setDeckCache((prev) => ({ ...prev, [key]: deck })) })
+          .then(({ deck, resolvedLang }) => {
+            setDeckCache((prev) => ({
+              ...prev,
+              [`${selectedExamSlug}-${resolvedLang}`]: deck,
+            }))
+          })
           .catch((error) => {
             const message = error instanceof Error ? error.message : 'Unknown error'
             setManifestError(message)
@@ -334,10 +348,10 @@ function App() {
     setLoadingDeckSlug(examSlug)
 
     try {
-      const deck = await fetchDeckFile(examSlug, currentLang)
+      const { deck, resolvedLang } = await fetchDeckFile(examSlug, currentLang)
       setDeckCache((currentCache) => ({
         ...currentCache,
-        [key]: deck,
+        [`${examSlug}-${resolvedLang}`]: deck,
       }))
 
       return deck

@@ -211,8 +211,15 @@ async function buildFlashcardData() {
     latestDecks.set(candidate.slug, pickPreferredFile(latestDecks.get(candidate.slug), candidate))
   }
 
-  await rm(outputDirectory, { recursive: true, force: true })
   await mkdir(deckOutputDirectory, { recursive: true })
+
+  // Keep translated decks (e.g. *-fr.json) intact; only clear generated EN decks.
+  const existingDeckFiles = await readdir(deckOutputDirectory)
+  await Promise.all(
+    existingDeckFiles
+      .filter((name) => /^[a-z0-9]+\.json$/i.test(name) && !/-[a-z]{2}\.json$/i.test(name))
+      .map((name) => rm(path.join(deckOutputDirectory, name), { force: true })),
+  )
 
   const manifest = {
     generatedAt: new Date().toISOString(),
