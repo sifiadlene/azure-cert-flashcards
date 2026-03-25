@@ -30,6 +30,7 @@ All source decks live in [flashcards](flashcards):
 - [flashcards](flashcards): source CSV decks
 - [web](web): static React application for online practice
 - [web/scripts/buildFlashcardData.mjs](web/scripts/buildFlashcardData.mjs): CSV-to-JSON build pipeline
+- [tools/translate-decks.mjs](tools/translate-decks.mjs): Azure AI Translator script for French deck generation
 - [.github/agents/flashcards_generator.agent.md](.github/agents/flashcards_generator.agent.md): Copilot flashcard generation agent
 
 ## Running the Website Locally
@@ -72,8 +73,22 @@ The current website supports:
 - domain and topic filters
 - review of missed questions
 - local browser progress persistence with `localStorage`
+- bilingual interface (English / French) with a manual language toggle
 
 Saved progress is device-local and does not sync across browsers or machines.
+
+## Translating Flashcards to French
+
+The website ships with an EN/FR language toggle. To generate French card content:
+
+1. Create an [Azure AI Translator](https://portal.azure.com) resource (free tier covers all 7 decks)
+2. Run the translation script from the repository root:
+
+```bash
+AZURE_TRANSLATOR_KEY=<key> AZURE_TRANSLATOR_REGION=<region> node tools/translate-decks.mjs
+```
+
+This generates `{slug}-fr.json` files in [web/public/data/decks/](web/public/data/decks/). See [tools/README.md](tools/README.md) for full instructions and cost estimates (~$6-7 one-time for S1 pricing, free on F0 tier).
 
 ## Importing Flashcards into Anki
 

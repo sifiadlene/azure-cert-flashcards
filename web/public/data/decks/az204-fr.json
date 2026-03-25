@@ -1,0 +1,3082 @@
+{
+  "exam": {
+    "slug": "az204",
+    "code": "AZ-204",
+    "title": "Développer des solutions pour Microsoft Azure",
+    "sourceFile": "az204_flashcards_2026-03-23.csv",
+    "updatedOn": "2026-03-23",
+    "questionCount": 101,
+    "domains": [
+      "Compute",
+      "Cosmos",
+      "Integration",
+      "Monitoring",
+      "Security",
+      "Storage"
+    ],
+    "topics": [
+      "APIM",
+      "APIManagement",
+      "Alerting",
+      "AppConfiguration",
+      "AppService",
+      "Authentication",
+      "AvailabilityTesting",
+      "AzureFiles",
+      "AzureSQL",
+      "BlobStorage",
+      "CORS",
+      "Containers",
+      "CosmosDB",
+      "CustomTelemetry",
+      "DB Functions",
+      "EventGrid",
+      "EventHubs",
+      "Functions",
+      "KeyVault",
+      "LogicApps",
+      "ManagedIdentity",
+      "Networking",
+      "Profiling",
+      "Redis",
+      "Sampling",
+      "ServiceBus",
+      "StorageQueue",
+      "TableStorage",
+      "Troubleshooting"
+    ]
+  },
+  "questions": [
+    {
+      "id": "az204-bf2323ad5f07",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre entreprise doit déployer une application Python conteneurisée qui évolue en fonction du trafic HTTP de 0 à 50 instances. La solution doit prendre en charge les déploiements bleu-vert et minimiser les charges opérationnelles.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Kubernetes Service with KEDA autoscaler"
+        },
+        {
+          "key": "B",
+          "label": "Azure Container Apps avec gestion HTTP des règles d’échelle et des versions"
+        },
+        {
+          "key": "C",
+          "label": "Azure Container Instances with Azure Front Door"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Azure Container Apps avec gestion HTTP des règles d’échelle et des versions",
+      "rationaleHtml": "",
+      "extraHtml": "Container Apps propose une mise à l’échelle automatique intégrée basée sur HTTP (y compris le scaling à zéro), une gestion native des versions pour les déploiements bleu-vert, et est entièrement géré. AKS nécessite une surcharge de gestion de cluster. ACI ne fait pas d’autoscale nativement en fonction du trafic HTTP. Container Apps est conçu spécialement pour les microservices avec une complexité opérationnelle minimale."
+    },
+    {
+      "id": "az204-1f7a9b0a24b1",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Une application doit exécuter des tâches de traitement des données planifiées toutes les 6 heures. Chaque tâche traite 50 Go de données et prend 3 heures à réaliser. La solution doit minimiser les coûts lorsqu’elle est inactive.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Functions avec déclencheur de minuterie sur le plan Consommation"
+        },
+        {
+          "key": "B",
+          "label": "Azure Container Apps avec règle cron scale"
+        },
+        {
+          "key": "C",
+          "label": "Azure Batch avec les tâches planifiées"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Azure Container Apps avec règle cron scale",
+      "rationaleHtml": "",
+      "extraHtml": "Container Apps prend en charge la planification basée sur des crons avec une mise à l’échelle à zéro entre les exécutions et sans limite de temps d’exécution. La consommation de fonctions nécessite un délai d’attente de 5 minutes (maximum 10 minutes). Le Batch est idéal pour les charges HPC mais plus complexe. Container Apps offre des conteneurs serverless avec une planification flexible et un support de tâches durable."
+    },
+    {
+      "id": "az204-e1915840942e",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre organisation doit construire des images conteneurs à partir de Dockerfile dans un pipeline CI/CD sans gérer les hôtes Docker. Les images doivent être analysées automatiquement pour détecter les vulnérabilités.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Container Registry avec ACR Tasks et intégration Microsoft Defender"
+        },
+        {
+          "key": "B",
+          "label": "Docker Hub avec analyse manuelle des vulnérabilités"
+        },
+        {
+          "key": "C",
+          "label": "Azure DevOps avec des agents auto-hébergés exécutant Docker"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Container Registry avec ACR Tasks et intégration Microsoft Defender",
+      "rationaleHtml": "",
+      "extraHtml": "ACR Tasks construit les images directement dans Azure sans hôtes Docker (builds cloud-natives), s’intègre avec Microsoft Defender pour l’analyse des vulnérabilités. Docker Hub nécessite un service externe. Les agents auto-hébergés ont besoin d’une gestion d’infrastructure. ACR propose un balayage intégré de compilation + de sécurité dans le flux de travail natif Azure."
+    },
+    {
+      "id": "az204-f00b059b0207",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Une application publiée sur Azure Container Registry nécessite que les images soient automatiquement reconstruites lorsque les images de base sont mises à jour pour les correctifs de sécurité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les tâches ACR avec les déclencheurs de mise à jour de l’image de base"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les actions GitHub avec les compilations planifiées"
+        },
+        {
+          "key": "C",
+          "label": "Activer les recommandations Azure Security Center"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les tâches ACR avec les déclencheurs de mise à jour de l’image de base",
+      "rationaleHtml": "",
+      "extraHtml": "ACR Tasks surveille les mises à jour des images de base et déclenche automatiquement les reconstructions lorsque les dépendances changent, garantissant que les conteneurs restent corrects. GitHub Actions nécessite une planification manuelle (peut manquer des correctifs critiques). Le Centre de sécurité fournit des recommandations mais ne reconstruit pas. ACR Tasks automatise le suivi des dépendances d’images de base et les reconstructions."
+    },
+    {
+      "id": "az204-9470bfb2fba1",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre API conteneurisée doit exposer une configuration spécifique à l’environnement et se connecter à Azure SQL Database en utilisant une identité managée. Le conteneur s’exécute dans Azure Container Instances.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Passer la configuration via les variables d’environnement et utiliser DefaultAzureCredential dans le SDK"
+        },
+        {
+          "key": "B",
+          "label": "Partager les fichiers Azure avec les fichiers de configuration"
+        },
+        {
+          "key": "C",
+          "label": "Stocker la configuration dans les calques d’image Docker"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Passer la configuration via les variables d’environnement et utiliser DefaultAzureCredential dans le SDK",
+      "rationaleHtml": "",
+      "extraHtml": "Les variables d’environnement sont standard pour la configuration des conteneurs ; DefaultAzureCredential utilise automatiquement l’identité gérée par ACI. Le montage de fichiers ajoute de la complexité. Intégrer la configuration dans des images viole les principes de l’application à 12 facteurs et nécessite des reconstructions pour les modifications. Les variables d’environnement + l’identité gérée sont le modèle natif cloud."
+    },
+    {
+      "id": "az204-fcd43787bbb2",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Un microservice conteneurisé doit être déployé avec des conteneurs sidecar pour la journalisation et les capacités de maillage de service. La solution doit prendre en charge les API Kubernetes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Kubernetes Service with sidecar pattern"
+        },
+        {
+          "key": "B",
+          "label": "Azure Container Apps with Dapr sidecars"
+        },
+        {
+          "key": "C",
+          "label": "Azure Container Instances with container groups"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Azure Container Apps with Dapr sidecars",
+      "rationaleHtml": "",
+      "extraHtml": "Container Apps prend en charge les API compatibles Kubernetes avec un support intégré du sidecar Dapr pour les motifs de microservices. Alors qu’AKS prend entièrement en charge les sidecars, Container Apps offre cela avec moins de complexité opérationnelle. Les groupes de conteneurs ACI supportent les déploiements multi-conteneurs mais manquent de fonctionnalités avancées de microservices. Container Apps équilibre compatibilité Kubernetes avec simplicité gérée."
+    },
+    {
+      "id": "az204-913ab6b3b59c",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre organisation doit extraire des images conteneurs depuis des registres privés lors des déploiements Azure Container Instances. Les images contiennent du code propriétaire.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez ACI avec les identifiants du registre en utilisant la référence Azure Key Vault"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez un registre public avec des jetons d’authentification"
+        },
+        {
+          "key": "C",
+          "label": "Activez l’accès anonyme via le registre"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez ACI avec les identifiants du registre en utilisant la référence Azure Key Vault",
+      "rationaleHtml": "",
+      "extraHtml": "ACI prend en charge l’authentification des registres privés à l’aide de identifiants stockés de manière sécurisée dans Key Vault. Les registres publics exposent des images propriétaires. L’accès anonyme enlève la sécurité. Le motif de référence Key Vault sécurise les identifiants du registre tout en permettant à l’ACI de s’authentifier auprès des registres privés."
+    },
+    {
+      "id": "az204-bcf4a78a695d",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Une application multi-conteneurs avec interface web et backend API doit partager un stockage persistant pour les fichiers téléversés. Les deux conteneurs nécessitent un accès lecture-écriture.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Container Instances with Azure Files volume mount in container group"
+        },
+        {
+          "key": "B",
+          "label": "Azure Container Apps avec plusieurs répliques partageant le stockage Blob"
+        },
+        {
+          "key": "C",
+          "label": "Azure Kubernetes Service avec affirmations de volume persistantes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Container Instances with Azure Files volume mount in container group",
+      "rationaleHtml": "",
+      "extraHtml": "Les groupes de conteneurs ACI permettent à plusieurs conteneurs de partager des volumes (Azure Files prend en charge la lecture-écriture). Les répliques des applications conteneurs ne partagent pas de stockage local. Alors qu’AKS prend en charge les PVC, les groupes de conteneurs ACI offrent un stockage partagé multi-conteneurs plus simple pour ce scénario. Les groupes de conteneurs permettent des motifs sidecar avec des volumes éphémères ou persistants partagés."
+    },
+    {
+      "id": "az204-639fdd9f2939",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre entreprise déploie des images conteneurs balisées avec des SHA de commit Git. Les développeurs doivent facilement identifier la dernière image de production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des balises de dépôt ACR avec des balises SHA de commit « plus récentes » et immutables"
+        },
+        {
+          "key": "B",
+          "label": "Stockez les informations d’image dans Azure Table Storage"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez uniquement le tag « plus récent » pour tous les déploiements"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des balises de dépôt ACR avec des balises SHA de commit « plus récentes » et immutables",
+      "rationaleHtml": "",
+      "extraHtml": "ACR prend en charge plusieurs balises par image ; Utilisez des balises SHA immuables pour la traçabilité et des balises mutables comme « latest » pour la commodité. Le stockage de table est une surcharge externe. Utiliser uniquement la version « la dernière » perd l’historique des versions. La stratégie de multi-étiquetage combine traçabilité (SHA) et commodité (la dernière version) tout en maintenant une trace d’audit immuable."
+    },
+    {
+      "id": "az204-e4de2c816d37",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Une application Azure App Service doit implémenter automatiquement des vérifications de santé pour supprimer automatiquement les instances malsaines de la rotation du load balancer.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez le chemin de la vérification de santé dans les paramètres du service App avec l’équilibrage de charge activé"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les tests de disponibilité Application Insights"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter une journalisation personnalisée avec des alertes Azure Monitor"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez le chemin de la vérification de santé dans les paramètres du service App avec l’équilibrage de charge activé",
+      "rationaleHtml": "",
+      "extraHtml": "App Service Health Check surveille le point de terminaison et supprime automatiquement les instances malsaines de l’équilibreur de charge. Les tests de disponibilité surveillent en externe mais ne déclenchent pas la suppression d’instance. La journalisation personnalisée nécessite une intervention manuelle. Health Check fournit une surveillance automatique de la santé des instances et une intégration de l’équilibreur de charge."
+    },
+    {
+      "id": "az204-2f71817f7d8b",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Les journaux de vos applications de service d’application doivent être conservés pendant 90 jours pour l’audit de conformité. Les journaux incluent des traces d’applications, des journaux du serveur web et des messages d’erreur détaillés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez les journaux de diagnostic des services applicatifs avec l’archive Azure Storage et la politique de rétention de 90 jours"
+        },
+        {
+          "key": "B",
+          "label": "Configurez l’espace de travail Log Analytics avec une rétention de 90 jours"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Application Insights avec une exportation continue"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez les journaux de diagnostic des services applicatifs avec l’archive Azure Storage et la politique de rétention de 90 jours",
+      "rationaleHtml": "",
+      "extraHtml": "Les diagnostics des services d’applications peuvent envoyer des journaux au stockage avec des politiques de gestion du cycle de vie pour une conservation à long terme rentable. Log Analytics comporte des coûts de rétention. App Insights est destiné à la télémétrie, pas à la journalisation complète. L’archivage basé sur le stockage avec des politiques de cycle de vie optimise les coûts pour les exigences de conservation de conformité."
+    },
+    {
+      "id": "az204-c6f86d27d571",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Une application web sur App Service doit gérer les pics de trafic pendant les ventes flash en passant à 20 instances, mais fonctionne généralement 2 instances. La mise à l’échelle doit être basée sur la longueur du processeur et de la file d’attente HTTP.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les règles d’autoscale avec les métriques de pourcentage CPU et de file d’attente HTTP, minimum 2 max 20 instances"
+        },
+        {
+          "key": "B",
+          "label": "Ajustez manuellement avant les ventes flash"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Load Balancer avec un nombre d’instances statique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les règles d’autoscale avec les métriques de pourcentage CPU et de file d’attente HTTP, minimum 2 max 20 instances",
+      "rationaleHtml": "",
+      "extraHtml": "L’autoscale App Service prend en charge plusieurs règles basées sur des métriques (CPU, file d’attente HTTP) avec des instances min/max configurables pour une mise à l’échelle automatique. L’échelle manuelle nécessite prédiction et intervention. Les instances statiques gaspillent des ressources ou sous-performent. L’autoscaling multimétrique offre une mise à l’échelle réactive et rentable pour des charges de travail variables."
+    },
+    {
+      "id": "az204-2bfd68398a0d",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Votre service d’application de production doit être mis à jour sans interruption. Les déploiements doivent être validés en environnement de production avant de recevoir le trafic.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Déploie dans le slot de staging, teste, puis échange avec le slot de production"
+        },
+        {
+          "key": "B",
+          "label": "Déploiement direct en production avec des mises à jour continues"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Traffic Manager pour acheminer entre les anciens et les nouveaux déploiements"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Déploie dans le slot de staging, teste, puis échange avec le slot de production",
+      "rationaleHtml": "",
+      "extraHtml": "Les emplacements de déploiement permettent des déploiements sans interruption grâce à un échange de slot (commutateur de routage instantané). Le slot de staging exécute du code de production avant le swap. Les mises à jour progressives peuvent contenir des échecs partiels. Le Traffic Manager ajoute de la complexité. Le swap de slot offre une capacité instantanée de retour en arrière et une validation de production avant le transfert de trafic."
+    },
+    {
+      "id": "az204-007b51f25294",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Une application App Service envoie des données sensibles vers des API externes via HTTPS. La communication doit utiliser TLS 1.3 et rejeter les protocoles plus anciens pour des raisons de conformité en matière de sécurité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les paramètres TLS/SSL au minimum la version TLS 1.3 dans la configuration des services d’application"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter la validation TLS dans le code applicatif"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Application Gateway avec terminaison TLS"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les paramètres TLS/SSL au minimum la version TLS 1.3 dans la configuration des services d’application",
+      "rationaleHtml": "",
+      "extraHtml": "App Service permet de configurer la version minimale de TLS au niveau de la plateforme, en la faisant respecter pour toutes les connexions entrantes. La validation basée sur le code est incomplète (elle ne couvre pas tous les points de terminaison). Application Gateway est destiné au trafic entrant. L’application TLS au niveau de la plateforme garantit une politique de sécurité cohérente à travers l’application."
+    },
+    {
+      "id": "az204-12d2ceef22f4",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Votre application App Service nécessite 8 vCPU et 32 Go de RAM pour exécuter des analyses en mémoire. La solution doit supporter l’intégration VNet pour la connectivité à la base de données.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Plan App Service Premium P3V3 avec intégration VNet"
+        },
+        {
+          "key": "B",
+          "label": "App Service Standard S3 avec intégration VNet"
+        },
+        {
+          "key": "C",
+          "label": "Azure Container Instances with VNet injection"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Plan App Service Premium P3V3 avec intégration VNet",
+      "rationaleHtml": "",
+      "extraHtml": "Premium P3V3 offre 8 vCPU / 32 Go de RAM avec support de l’intégration VNet. Les plans standards manquent de ressources suffisantes et d’intégration VNet. ACI ne fournit pas les fonctionnalités d’hébergement d’applications d’App Service. Les forfaits premium offrent la capacité de calcul requise avec une isolation réseau via l’intégration VNet."
+    },
+    {
+      "id": "az204-0ff39112e99e",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Une application de service d’applications doit se connecter à une base de données SQL Server sur site via Azure VNet en utilisant uniquement des adresses IP privées.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez l’intégration VNet pour App Service et VPN Gateway vers le réseau local"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez un point de terminaison public avec des règles de pare-feu"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter Express Route sans intégration VNet"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez l’intégration VNet pour App Service et VPN Gateway vers le réseau local",
+      "rationaleHtml": "",
+      "extraHtml": "L’intégration VNet connecte App Service à VNet, puis VPN Gateway étend la connectivité aux locaux via des IP privées. Les points publics utilisent le routage internet. ExpressRoute sans intégration VNet n’active pas la connectivité des services d’applications. Intégration VNet + VPN Gateway offre une connectivité privée sécurisée aux ressources sur site."
+    },
+    {
+      "id": "az204-13a89b7b1e3c",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Le déploiement de votre App Service doit configurer automatiquement les paramètres de l’application, les chaînes de connexion et les liaisons TLS lors du provisionnement dans différents environnements.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des modèles ARM ou Bicep avec des définitions paramétrées des ressources de service d’applications"
+        },
+        {
+          "key": "B",
+          "label": "Configurez manuellement chaque environnement après le déploiement"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Portal avec les paramètres d’exportation/importation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des modèles ARM ou Bicep avec des définitions paramétrées des ressources de service d’applications",
+      "rationaleHtml": "",
+      "extraHtml": "Les modèles ARM/Bicep permettent l’infrastructure en tant que code avec paramétration selon les valeurs spécifiques à l’environnement, garantissant des déploiements cohérents. La configuration manuelle est sujette aux erreurs. L’exportation/importation du portail n’est pas automatisée. Les modèles IaC offrent un provisionnement automatisé et contrôlé par version, reproductible, avec des overrides spécifiques à l’environnement."
+    },
+    {
+      "id": "az204-d824e9dc2425",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Une application App Service connaît des performances lentes lors des requêtes dans la base de données. Vous devez identifier automatiquement les opérations les plus lentes et leurs dépendances.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez Application Insights avec l’instrumentation et utilisez Application Map"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter une journalisation personnalisée pour chaque requête dans la base de données"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser les journaux de diagnostic des services d’applications"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez Application Insights avec l’instrumentation et utilisez Application Map",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights suit automatiquement les dépendances (y compris les appels de base de données), fournit la visualisation des cartes d’application et identifie les opérations lentes. La journalisation personnalisée nécessite des modifications de code et une analyse manuelle. Les journaux de diagnostic ne fournissent pas de cartographie des dépendances. Application Insights propose un APM automatique avec un minimum de modifications de code."
+    },
+    {
+      "id": "az204-a199d5eb38e5",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "AppService",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "AppService"
+      ],
+      "promptHtml": "Votre service d’applications doit acheminer 10 % du trafic vers une nouvelle version déployée dans un emplacement pour les tests A/B avant le déploiement complet.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurer le routage en pourcentage du Gestionnaire de trafic"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez la fonction de pourcentage de trafic en slot de déploiement"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter une logique de routage personnalisée dans le code applicatif"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Utilisez la fonction de pourcentage de trafic en slot de déploiement",
+      "rationaleHtml": "",
+      "extraHtml": "Les emplacements App Service supportent le routage en pourcentage de trafic (par exemple, 90 % de production, 10 % de staging) pour un déploiement progressif et des tests A/B. Le gestionnaire de trafic fonctionne au niveau DNS (plus lentement). Le routage basé sur le code associe la logique métier au routage. Le routage du trafic de slot permet une répartition du trafic au niveau de la plateforme pour les stratégies de déploiement."
+    },
+    {
+      "id": "az204-bea01824219f",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Une application de fonctions doit traiter les messages d’une file d’attente de stockage Azure avec une sémantique de traitement exacte une fois. Les messages échoués doivent être réessayés avec un retour exponentiel.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez la liaison des déclencheurs de file d’attente avec une expiration de visibilité et des politiques de réessayage intégrées"
+        },
+        {
+          "key": "B",
+          "label": "Implémentez un polling manuel avec une logique de réessayage personnalisée"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser la grille d’événements avec le transfert de messages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez la liaison des déclencheurs de file d’attente avec une expiration de visibilité et des politiques de réessayage intégrées",
+      "rationaleHtml": "",
+      "extraHtml": "Le déclencheur de file gère automatiquement la visibilité des messages, la suppression après traitement réussi et les politiques de réessayage configurables. Le sondage manuel ajoute de la complexité. La grille d’événements est destinée aux événements, pas aux messages en file d’attente. La liaison par déclenchement de file d’attente offre un traitement intégré à une seule fois avec une réévaluation automatique et une gestion des messages poison."
+    },
+    {
+      "id": "az204-a1c98e034607",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Votre application de fonctions doit exécuter des flux de travail de longue durée avec des étapes d’approbation humaine et des réessais automatiques en cas de défaillance transitoire, pouvant fonctionner pendant plusieurs heures.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fonctions durables avec le motif orchestrateur et le modèle d’interaction humaine"
+        },
+        {
+          "key": "B",
+          "label": "Fonctions déclenchées par timer avec état dans Azure Table Storage"
+        },
+        {
+          "key": "C",
+          "label": "Fonctions déclenchées HTTP avec Azure Logic Apps"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fonctions durables avec le motif orchestrateur et le modèle d’interaction humaine",
+      "rationaleHtml": "",
+      "extraHtml": "Durable Functions propose des orchestrations avec état, des points de contrôle intégrés, des essais automatiques et un schéma d’interaction humaine pour les scénarios d’approbation. Le sondage basé sur le minuteur est inefficace. Logic Apps ajoute une dépendance externe. Durable Functions est conçu spécialement pour des flux de travail à état de longue durée et résilients."
+    },
+    {
+      "id": "az204-aae6cad669e7",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Une fonction déclenchée HTTP doit immédiatement renvoyer 202 Accepté et fournir des points de terminaison de sondage d’état pour que les clients puissent vérifier l’achèvement d’une tâche de traitement de 30 minutes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fonctions durables avec un motif HTTP asynchrone retournant les URL de requête de statut"
+        },
+        {
+          "key": "B",
+          "label": "Fonction synchrone avec Task.Run pour le traitement en arrière-plan"
+        },
+        {
+          "key": "C",
+          "label": "Fonction déclenchée par la file d’attente avec un point de terminaison HTTP séparé pour le statut"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fonctions durables avec un motif HTTP asynchrone retournant les URL de requête de statut",
+      "rationaleHtml": "",
+      "extraHtml": "Le motif HTTP asynchrone des Fonctions durables retourne automatiquement 202 avec statusQueryGetUri, sendEventPostUri et terminatePostUri. Task.Run bloque les pools de threads. File d’attente + point de terminaison d’état nécessite une gestion d’état personnalisée. Durable Functions implémente un patron API HTTP asynchrone avec des terminaux d’état intégrés et une persistance d’état."
+    },
+    {
+      "id": "az204-8c8a88a8663d",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Votre application de fonctions traite les téléchargements de blobs en générant des vignettes. Les fonctions ne doivent se déclencher que lorsque des blobs sont créés dans le conteneur « uploads », et non lors des mises à jour.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Liaison de déclencheurs blobés avec filtre sur path pattern et intégration à Event Grid"
+        },
+        {
+          "key": "B",
+          "label": "Conteneur de blob de sondage à déclencheur de minuterie"
+        },
+        {
+          "key": "C",
+          "label": "Déclencheur HTTP appelé par Logic App"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Liaison de déclencheurs blobés avec filtre sur path pattern et intégration à Event Grid",
+      "rationaleHtml": "",
+      "extraHtml": "Le déclencheur blob avec grille d’événements offre un déclenchement à faible latence avec des filtres de chemin (motifs conteneur/dossier). Le sondage ajoute de la latence et des coûts. HTTP trigger nécessite une orchestration externe. Blob trigger + Event Grid offre un traitement blob piloté par événements avec une latence de moins de seconde et un filtrage basé sur les chemins."
+    },
+    {
+      "id": "az204-1c53247af839",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Une application de fonctions doit s’authentifier à Azure SQL Database sans stocker d’identifiants et supporter le développement local avec différentes méthodes d’authentification.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilise DefaultAzureCredential avec identité gérée dans Azure et les identifiants de développeur localement"
+        },
+        {
+          "key": "B",
+          "label": "Stockez les chaînes de connexion avec les mots de passe dans local.settings.json et dans les paramètres de l’application"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Key Vault SDK pour récupérer les mots de passe"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilise DefaultAzureCredential avec identité gérée dans Azure et les identifiants de développeur localement",
+      "rationaleHtml": "",
+      "extraHtml": "DefaultAzureCredential utilise automatiquement l’identité gérée dans Azure et les identifiants développeur (Azure CLI, Visual Studio) localement sans modification de code. Stocker les mots de passe viole les meilleures pratiques de sécurité. Key Vault nécessite toujours une accréditation pour y accéder. DefaultAzureCredential fournit une authentification adaptative à l’environnement pour le développement et la production."
+    },
+    {
+      "id": "az204-7332fcab7596",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Votre application de fonctions doit évoluer pour gérer 1000 requêtes simultanées avec des performances constantes. La solution doit éviter les démarrages à froid lors des pics de trafic.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Forfait Premium avec des instances préchauffées et des instances Always Ready"
+        },
+        {
+          "key": "B",
+          "label": "Plan de consommation avec réglages par défaut"
+        },
+        {
+          "key": "C",
+          "label": "Plan dédié de service d’application avec mise à l’échelle manuelle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Forfait Premium avec des instances préchauffées et des instances Always Ready",
+      "rationaleHtml": "",
+      "extraHtml": "Le forfait Premium élimine les démarrages à froid avec les instances Always Ready, prend en charge l’intégration VNet et offre des performances prévisibles. La consommation a des démarrages à froid. Le dédié nécessite une mise à l’échelle manuelle et gaspille des ressources à faible charge. Premium équilibre l’échelle élastique avec des garanties de performance via des ouvriers préchauffés."
+    },
+    {
+      "id": "az204-c4085d6c9a65",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Une application de fonctions doit implémenter des liaisons de sortie pour écrire les résultats à la fois sur Cosmos DB et Service Bus après traitement. Plusieurs sorties doivent être atomiques.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez plusieurs liaisons de sortie dans function.json et utilisez IAsyncCollector ou retournez un POCO multi-sortie"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les clients SDK pour écrire manuellement sur chaque service"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez le schéma d’activité Fonctions durables"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez plusieurs liaisons de sortie dans function.json et utilisez IAsyncCollector ou retournez un POCO multi-sortie",
+      "rationaleHtml": "",
+      "extraHtml": "Les liaisons de sortie de fonction définissent déclarativement les sorties ; utiliser POCO multi-sortie ou IAsyncCollector pour plusieurs cibles. Les clients SDK perdent des avantages liés (réessayage, gestion de connexion). Durable Functions ajoute de la complexité pour des scénarios simples à sorties multiples. Les liaisons de sortie simplifient les écritures multi-cibles avec une configuration déclarative."
+    },
+    {
+      "id": "az204-329a0d169d7a",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Le suivi de votre application de fonctions doit suivre des indicateurs métier personnalisés (commandes traitées, chiffre d’affaires) ainsi que les indicateurs techniques (temps d’exécution, défaillances).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Application Insights avec l’API TrackMetric pour des métriques personnalisées et une télémétrie intégrée"
+        },
+        {
+          "key": "B",
+          "label": "Écrire des métriques personnalisées sur Azure Table Storage"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser uniquement la sortie de journalisation des fonctions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Application Insights avec l’API TrackMetric pour des métriques personnalisées et une télémétrie intégrée",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights propose une télémétrie fonctionnelle intégrée ainsi que TrackMetric/TrackEvent pour des métriques métier personnalisées dans un tableau de bord unifié. Le stockage de table nécessite des requêtes personnalisées. Les journaux manquent d’agrégation et d’alertes. Application Insights unifie les indicateurs techniques et métier avec des analyses puissantes et des alertes."
+    },
+    {
+      "id": "az204-ae8ada7c6bef",
+      "examSlug": "az204",
+      "domain": "Cosmos",
+      "topic": "DB Functions",
+      "tags": [
+        "AZ-204",
+        "Cosmos",
+        "DB",
+        "Functions"
+      ],
+      "promptHtml": "Une application de fonctions doit répondre aux modifications dans un conteneur Cosmos DB et traiter les documents par lots pour plus d’efficacité, gérant jusqu’à 10 000 modifications par seconde.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Déclencheur de base de données Cosmos avec modification de la configuration de l’alimentation et de la taille du lot"
+        },
+        {
+          "key": "B",
+          "label": "Polling de déclenchement du minuteur Cosmos DB"
+        },
+        {
+          "key": "C",
+          "label": "Grille d’événements avec la source Cosmos DB"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Déclencheur de base de données Cosmos avec modification de la configuration de l’alimentation et de la taille du lot",
+      "rationaleHtml": "",
+      "extraHtml": "Le déclencheur de la base de données Cosmos utilise le flux de changements avec un traitement par lots configurable et un checkpoint automatique. Les sondages sont inefficaces et manquent les changements. Event Grid a des limites de débit. Cosmos DB Trigger offre une intégration native des flux de changements avec un traitement batch évolutif pour des scénarios à haut débit."
+    },
+    {
+      "id": "az204-10d4dafc4fa9",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Votre conteneur Cosmos DB stocke la télémétrie IoT avec la clé de partition '/deviceId'. Les requêtes filtrent fréquemment par DeviceId et par plage d’horodatage. Vous devez minimiser la consommation d’USU.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Créez un index composite sur deviceId et un horodatage avec un ordre approprié"
+        },
+        {
+          "key": "B",
+          "label": "Utiliser la politique d’indexation par défaut"
+        },
+        {
+          "key": "C",
+          "label": "Créez des index séparés sur l’identifiant du dispositif et l’horodatage individuellement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Créez un index composite sur deviceId et un horodatage avec un ordre approprié",
+      "rationaleHtml": "",
+      "extraHtml": "Les index composites optimisent les requêtes multi-propriétés (en particulier les requêtes par plage) en indexant les combinaisons, réduisant ainsi les coûts d’U par rapport à plusieurs indices à propriété unique. La politique par défaut indexe tout (ce qui peut être inefficace). Les index séparés n’optimisent pas les requêtes combinées. Les indices composites offrent une optimisation spécifique à la requête pour la plus faible consommation d’UR."
+    },
+    {
+      "id": "az204-0ddc078fbe62",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Une application interroge Cosmos DB pour obtenir des données de catalogue produit lues par plusieurs régions. Les données sont mises à jour quotidiennement dans la région principale. La solution doit minimiser la latence de lecture globalement et les coûts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Écriture multi-région avec une cohérence éventuelle"
+        },
+        {
+          "key": "B",
+          "label": "Lectures multi-régions avec cohérence de session et écritures en région primaire"
+        },
+        {
+          "key": "C",
+          "label": "Région unique avec mise en cache agressive des requêtes"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Lectures multi-régions avec cohérence de session et écritures en région primaire",
+      "rationaleHtml": "",
+      "extraHtml": "Les lectures multi-régions répliquent les données vers les régions proches des utilisateurs (faible latence de lecture) ; L’écriture en une seule région réduit les coûts (aucun conflit d’écriture). La régularité des séances équilibre performance et fraîcheur. Les écritures multi-régions augmentent les coûts sans bénéficier pour des charges de travail très lourdes en lecture. Les répliques de lecture régionales optimisent la performance globale de lecture tout en contrôlant les coûts d’écriture."
+    },
+    {
+      "id": "az204-6ce8dc40df9c",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Votre conteneur Cosmos DB doit garantir que les opérations lisent les données les plus récentes dans la région primaire, même lors du délai de réplication vers les régions secondaires.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un fort niveau de régularité"
+        },
+        {
+          "key": "B",
+          "label": "Constance bornée de la stagnation"
+        },
+        {
+          "key": "C",
+          "label": "Régularité des sessions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un fort niveau de régularité",
+      "rationaleHtml": "",
+      "extraHtml": "Une forte cohérence garantit que les lectures retournent la dernière écriture engagée dans toutes les régions, au prix d’une latence plus élevée. L’impasse limitée permet un délai configurable. La cohérence des sessions ne garantit qu’au sein de la session. Une forte cohérence garantit une fraîcheur absolue des données lorsque la logique métier (transactions financières, stock) est requise."
+    },
+    {
+      "id": "az204-b74ffea318e4",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Une application stocke les profils utilisateurs dans Cosmos DB avec la clé de partition '/userId'. Les opérations doivent mettre à jour atomiquement le document de l’utilisateur avec des garanties ACID sans affecter les autres utilisateurs.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez TransactionalBatch pour les opérations au sein d’une même partition logique"
+        },
+        {
+          "key": "B",
+          "label": "Utiliser la procédure stockée pour les transactions croisées"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter la concurrence optimiste avec les ETags"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez TransactionalBatch pour les opérations au sein d’une même partition logique",
+      "rationaleHtml": "",
+      "extraHtml": "TransactionalBatch fournit des garanties ACID pour les opérations au sein de la même partition logique (userId). Les procédures stockées ne peuvent pas couvrir les partitions. Les ETags préviennent les conflits mais ne fournissent pas d’atomicité multi-opérations. TransactionalBatch fournit de véritables transactions ACID pour des opérations multi-documents à l’intérieur des limites de partition."
+    },
+    {
+      "id": "az204-ef77606358f2",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Votre charge de travail Cosmos DB traite des flux de données en temps réel et doit réagir aux modifications des documents, les transmettant vers Azure Event Hubs pour un traitement en aval.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez le processeur de flux de changements pour surveiller les changements et les envoyer aux Event Hubs"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez le déclencheur de la base de données Cosmos dans Azure Function"
+        },
+        {
+          "key": "C",
+          "label": "Interrogez périodiquement la base de données Cosmos avec des requêtes horodatages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez le processeur de flux de changements pour surveiller les changements et les envoyer aux Event Hubs",
+      "rationaleHtml": "",
+      "extraHtml": "Change Feed Processor offre une capture de modifications fiable et évolutive avec gestion de bail et points de contrôle, idéale pour les scénarios de streaming à haut débit. Fonctions : Cosmos déclenche un système plus simple mais ajoute une surcharge de fonction. Les sondages sont inefficaces et peuvent manquer des changements. Change Feed Processor est conçu spécialement pour la capture continue de données de changement à grande échelle."
+    },
+    {
+      "id": "az204-37fedafe06e6",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Une application doit charger un document de profil utilisateur de 5 Mo et filtrer les propriétés côté client. Les requêtes Cosmos DB devraient minimiser la consommation d’UR.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez SQL query avec SELECT pour projeter uniquement les propriétés requises"
+        },
+        {
+          "key": "B",
+          "label": "Interrogez le document complet et filtrez dans le code de l’application"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez ReadItem avec la récupération complète des documents"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez SQL query avec SELECT pour projeter uniquement les propriétés requises",
+      "rationaleHtml": "",
+      "extraHtml": "Projeter des propriétés spécifiques avec SELECT réduit le transfert de données et la consommation d’Us (charges basées sur la taille de la réponse). La récupération complète des documents gaspille les RUs et la bande passante. ReadItem est destiné aux lectures ponctuelles (document unique par ID/clé de partition). La projection de requête optimise les coûts de l’UR en ne retournant que les données nécessaires."
+    },
+    {
+      "id": "az204-78e5813dda25",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Votre conteneur Cosmos DB doit implémenter un temps de vie (TTL) pour supprimer automatiquement les données de session expirées après 24 heures tout en conservant indéfiniment les documents de profil utilisateur.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez TTL au niveau conteneur avec DefaultTimeToLive et supplantez par document avec la propriété ttl"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez le déclencheur du minuteur Azure Function pour supprimer des documents expirés"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter la logique d’application pour supprimer les anciens documents"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez TTL au niveau conteneur avec DefaultTimeToLive et supplantez par document avec la propriété ttl",
+      "rationaleHtml": "",
+      "extraHtml": "Cosmos DB TTL expire automatiquement les documents sans coût de RU. Définissez DefaultTimeToLive au niveau conteneur, suppliez avec la propriété ttl par document (réglée à -1 pour absence d’expiration). La suppression basée sur le minuteur consomme les RUs et ajoute de la complexité. TTL est déclaratif, automatique et sans RU pour la gestion du cycle de vie des documents."
+    },
+    {
+      "id": "az204-eb8fdecc3709",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Une application nécessite une garantie cohérente de lecture de ses écritures au sein des sessions utilisateur, mais peut tolérer une cohérence éventuelle pour les lectures d’autres utilisateurs.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Niveau de cohérence des sessions"
+        },
+        {
+          "key": "B",
+          "label": "Un fort niveau de régularité"
+        },
+        {
+          "key": "C",
+          "label": "Cohérence éventuelle avec la logique personnalisée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Niveau de cohérence des sessions",
+      "rationaleHtml": "",
+      "extraHtml": "La cohérence de la session garantit la lecture de ses écritures au sein de la session (l’utilisateur voit immédiatement ses mises à jour) avec une latence inférieure à une forte cohérence. Strong ajoute une latence inutile pour les lectures inter-utilisateurs. À terme, il manque de garanties en session à terme. La cohérence des sessions équilibre expérience utilisateur (cohérence au sein de la session) et performance."
+    },
+    {
+      "id": "az204-87acd933a7f4",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "CosmosDB",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "CosmosDB"
+      ],
+      "promptHtml": "Votre solution Cosmos DB doit répartir le trafic d’écriture sur plusieurs clés de partition pour éviter les partitions chaudes. Les documents sont des ordres avec des identifiants de commande croissants.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utiliser la clé de partition composite ou le hachage de l’ID d’ordre pour répartir la charge"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez l’ID d’ordre directement comme clé de partition"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez l’identifiant client comme clé de partition"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utiliser la clé de partition composite ou le hachage de l’ID d’ordre pour répartir la charge",
+      "rationaleHtml": "",
+      "extraHtml": "Les identifiants d’ordre séquentiel créent une partition chaude (toutes les écritures sur une seule partition). Le hachage répartit les écritures entre les partitions. L’ID client peut également créer des partitions chaudes (clients à forte valeur). Les clés composites ou les clés de partition basées sur hachage répartissent les écritures de manière uniforme, évitant les goulots d’étranglement de débit provenant des partitions chaudes."
+    },
+    {
+      "id": "az204-28df4b63faa8",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application télécharge des images de profil utilisateur (200 Ko chacune) avec des métadonnées. Les images doivent être accessibles via des URL HTTPS et les métadonnées consultables séparément.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Stockez les images dans le stockage de blob avec les métadonnées, référence à l’URL du blob dans la base de données"
+        },
+        {
+          "key": "B",
+          "label": "Stockez les images sous forme base64 dans la base de données SQL avec les métadonnées"
+        },
+        {
+          "key": "C",
+          "label": "Stockez les images et métadonnées dans les documents Cosmos DB"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Stockez les images dans le stockage de blob avec les métadonnées, référence à l’URL du blob dans la base de données",
+      "rationaleHtml": "",
+      "extraHtml": "Blob Storage est optimisé pour les fichiers binaires avec accès HTTP et prise en charge des métadonnées personnalisées. Le stockage de données binaires dans des bases de données augmente les coûts et réduit la performance des requêtes. Stockez les blobs dans le stockage de blobs, les métadonnées dans la base de données avec référence à l’URL. Ce schéma sépare le stockage des fichiers des métadonnées pour des performances et des coûts optimaux."
+    },
+    {
+      "id": "az204-5e82d9b54512",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Votre application doit télécharger des fichiers vidéo de 2 Go vers Blob Storage avec des téléchargements reprenables pour gérer les interruptions réseau sans redémarrer.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez BlockBlob avec des blocs en étapes et la liste de blocs de validation"
+        },
+        {
+          "key": "B",
+          "label": "Utiliser l’opération PutBlob pour l’ensemble du fichier"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez PageBlob avec les mises à jour des pages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez BlockBlob avec des blocs en étapes et la liste de blocs de validation",
+      "rationaleHtml": "",
+      "extraHtml": "Les blobs de blocs supportent le téléchargement de fichiers en blocs (jusqu’à 50 000 blocs de 4000 Mo chacun), permettant des téléchargements parallèles et reprenables. PutBlob a des limites de taille et aucune capacité de reprise. Les taches de page sont destinées à la lecture/écriture aléatoire (VHD). Le staging en bloc par blocs offre un envoi résilient pour les gros fichiers avec une fiabilité réseau."
+    },
+    {
+      "id": "az204-1a9fbe143251",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application web sert les images stockées dans Blob Storage. Les utilisateurs rapportent des temps de chargement lents depuis des régions géographiques éloignées.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez Azure CDN avec un point de terminaison de stockage blob comme origine"
+        },
+        {
+          "key": "B",
+          "label": "Répliquer manuellement des blobs vers plusieurs comptes de stockage"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser le stockage géo-redondant en accès en lecture (RA-GRS)"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez Azure CDN avec un point de terminaison de stockage blob comme origine",
+      "rationaleHtml": "",
+      "extraHtml": "Azure CDN met en cache le contenu blob aux emplacements en périphérie à l’échelle mondiale, réduisant la latence pour les utilisateurs éloignés. La réplication manuelle ajoute une surcharge de gestion. RA-GRS fournit la reprise après sinistre et non la performance. CDN offre une distribution de contenu à faible latence via un cache en bordure pour les utilisateurs distribués globalement."
+    },
+    {
+      "id": "az204-f5fbb657d43f",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Votre application doit automatiquement supprimer les versions de blob plus âgées de 90 jours et déplacer les blobs actuels au niveau Cool après 30 jours sans accès afin de réduire les coûts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la politique de gestion du cycle de vie avec des règles de suppression de version et de transition par paliers"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Function avec un déclencheur de minuterie pour gérer les blobs"
+        },
+        {
+          "key": "C",
+          "label": "Archiver manuellement les blobs périodiquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la politique de gestion du cycle de vie avec des règles de suppression de version et de transition par paliers",
+      "rationaleHtml": "",
+      "extraHtml": "Les politiques de gestion du cycle de vie automatisent le tiering et la suppression des blobs en fonction de l’âge ou des schémas d’accès sans code. La gestion basée sur les fonctions consomme du calcul et nécessite de la maintenance. Les processus manuels sont sujets aux erreurs. Les politiques du cycle de vie fournissent une automatisation déclarative et rentable du cycle de vie des blocs."
+    },
+    {
+      "id": "az204-b692938daeb6",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application doit s’assurer que les téléchargements de blob réussissent uniquement si le blob n’a pas été modifié par un autre client depuis la dernière lecture (concurrence optimiste).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez ETag avec l’en-tête If-Match dans la requête de téléversement"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les baux blob pour un accès exclusif"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter la base de données verrouillée personnalisée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez ETag avec l’en-tête If-Match dans la requête de téléversement",
+      "rationaleHtml": "",
+      "extraHtml": "Les ETags fournissent des jetons de version ; L’en-tête If-Match garantit que les opérations ne réussissent que si ETag correspond (sans modification concurrente). Les baux offrent un verrouillage pessimiste (pas optimiste). Le verrouillage de la base de données ajoute une dépendance externe. Les requêtes conditionnelles basées sur ETag implémentent nativement la concurrence optimiste dans le stockage en blob."
+    },
+    {
+      "id": "az204-9c301c121bf4",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Votre application doit générer des URL limitées dans le temps permettant un accès temporaire en lecture aux blobs privés sans exposer les clés de compte de stockage.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Générer un jeton de signature d’accès partagé (SAS) avec permission de lecture et expiration"
+        },
+        {
+          "key": "B",
+          "label": "Modifier temporairement le niveau d’accès des blobs au public"
+        },
+        {
+          "key": "C",
+          "label": "Fournir la clé de compte de stockage aux clients"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Générer un jeton de signature d’accès partagé (SAS) avec permission de lecture et expiration",
+      "rationaleHtml": "",
+      "extraHtml": "Les jetons SAS accordent un accès granulaire et limité dans le temps à des blobs spécifiques sans exposer les clés de compte. L’accès public supprime la sécurité. Partager les clés de compte est dangereux. SAS fournit un accès délégué détaillé, à durée limitée, avec révocabilité via des politiques d’accès stockées."
+    },
+    {
+      "id": "az204-de5bc1ec0ed4",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application doit lire les blobs même en cas de panne dans la région principale. Les données peuvent finalement être cohérentes entre les régions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez RA-GRS (stockage géo-redondant en lecture) avec un point d’extrémité secondaire"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez LRS (stockage localement redundant) avec réplication au niveau applicatif"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser ZRS (stockage redondant de zone)"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez RA-GRS (stockage géo-redondant en lecture) avec un point d’extrémité secondaire",
+      "rationaleHtml": "",
+      "extraHtml": "RA-GRS réplique les données vers une région appariée avec accès en lecture au point de terminaison secondaire lors de la coupure primaire. LRS est uniquement à une seule région. ZRS se trouve dans une seule région. RA-GRS offre une redondance géographique avec accès en lecture à la réplique secondaire pour les scénarios de reprise après sinistre."
+    },
+    {
+      "id": "az204-bf47aba383e7",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Votre application traite les téléchargements en blob avec des balises de métadonnées pour la classification. Les requêtes doivent récupérer efficacement les blobs par valeurs de tag sans lister tous les blobs.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des balises d’index blob avec la requête FindBlobsByTags"
+        },
+        {
+          "key": "B",
+          "label": "Stockez les métadonnées dans les propriétés des blobs et énumérez les blobs"
+        },
+        {
+          "key": "C",
+          "label": "Maintenir un index de base de données séparé des blobs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des balises d’index blob avec la requête FindBlobsByTags",
+      "rationaleHtml": "",
+      "extraHtml": "Les balises d’index blob permettent des requêtes efficaces basées sur des tags à travers les comptes de stockage sans énumération. Les métadonnées de blob nécessitent de lister tous les blobs. La base de données externe ajoute une surcharge de cohérence. Les balises d’index blob fournissent des métadonnées interrogables directement dans Blob Storage pour un filtrage et une recherche efficaces."
+    },
+    {
+      "id": "az204-aea9feef23df",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application télécharge des documents financiers critiques dans le stockage en blob. Les modifications et suppressions doivent être empêchées pendant 7 ans pour assurer la conformité réglementaire.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la politique de rétention basée sur le temps avec le conteneur de maintien légal"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez la suppression par bloc avec une rétention de 7 ans"
+        },
+        {
+          "key": "C",
+          "label": "Supprimer les permissions d’écriture dans les rôles IAM"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la politique de rétention basée sur le temps avec le conteneur de maintien légal",
+      "rationaleHtml": "",
+      "extraHtml": "Les politiques de rétention basée sur le temps appliquent la sémantique WORM (écrire une fois, lire plusieurs), empêchant la modification ou la suppression pendant une période spécifiée. La suppression progressive permet la suppression éventuelle. L’IAM n’impose pas l’immuabilité. Le stockage immuable avec des politiques de conservation offre une protection des données conforme à la réglementation contre toute modification, y compris les actions des administrateurs."
+    },
+    {
+      "id": "az204-b09eb842a9a9",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Votre application web doit permettre aux utilisateurs de s’authentifier en utilisant leurs comptes Google et Facebook existants sans gérer leurs identifiants.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez Azure AD B2C avec la fédération des fournisseurs d’identité sociale"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter manuellement le flux OAuth dans le code de l’application"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure AD avec des comptes invités"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez Azure AD B2C avec la fédération des fournisseurs d’identité sociale",
+      "rationaleHtml": "",
+      "extraHtml": "Azure AD B2C offre une intégration intégrée aux fournisseurs d’identité sociale (Google, Facebook, etc.) avec la gestion et les flux utilisateurs. L’OAuth manuel ajoute de la complexité et des risques de sécurité. Les comptes invités Azure AD sont destinés aux scénarios B2B, pas à la connexion sociale des consommateurs. Le B2C est conçu spécialement pour l’identité du consommateur avec une fédération sociale."
+    },
+    {
+      "id": "az204-bbcff9e122c0",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "ManagedIdentity",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "ManagedIdentity"
+      ],
+      "promptHtml": "Une fonction Azure doit s’authentifier à un compte Azure Storage sans identifiants dans le code. La solution doit supporter la rotation automatique des clés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez l’identité gérée pour Function App et accordez un rôle RBAC sur le compte de stockage"
+        },
+        {
+          "key": "B",
+          "label": "Stockez la chaîne de connexion dans Key Vault et récupérez à l’exécution"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser la clé de compte de stockage dans les paramètres de l’application"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez l’identité gérée pour Function App et accordez un rôle RBAC sur le compte de stockage",
+      "rationaleHtml": "",
+      "extraHtml": "L’identité gérée élimine complètement les identifiants ; Azure AD fournit automatiquement des jetons. Key Vault contient toujours des secrets. Les clés de compte nécessitent une rotation manuelle. Identité gérée + RBAC offre une authentification sans identifiants avec rotation automatique des jetons et gestion du cycle de vie."
+    },
+    {
+      "id": "az204-c90a3839aec6",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Votre API doit valider les tokens JWT d’Azure AD, exiger une revendication de portée « api://myapi/read » et rejeter les tokens expirés ou altérés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez le middleware d’authentification JWT Bearer validant l’émetteur, l’audience et les revendications"
+        },
+        {
+          "key": "B",
+          "label": "Analysez manuellement JWT et vérifiez la signature"
+        },
+        {
+          "key": "C",
+          "label": "Accepter les jetons sans validation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez le middleware d’authentification JWT Bearer validant l’émetteur, l’audience et les revendications",
+      "rationaleHtml": "",
+      "extraHtml": "Le middleware JWT Bearer valide de manière déclarative la signature, l’expiration, l’émetteur, l’audience et les revendications. La validation manuelle est sujette aux erreurs (complexité cryptographique). Aucune validation n’est sûre de l’insécurité. La validation JWT basée sur middleware offre une vérification robuste et standardisée des jetons avec une autorisation basée sur les revendications."
+    },
+    {
+      "id": "az204-5dc725e597da",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "ManagedIdentity",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "ManagedIdentity"
+      ],
+      "promptHtml": "Une application nécessite l’accès aux secrets Azure Key Vault. L’authentification doit fonctionner sans interruption dans les environnements Azure et le développement local sans modifications de code.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez DefaultAzureCredential qui enchaîne l’identité gérée, la CLI Azure et les identifiants Visual Studio"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des types d’identifiants séparés avec un code spécifique à l’environnement"
+        },
+        {
+          "key": "C",
+          "label": "Stockez les identifiants dans les variables d’environnement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez DefaultAzureCredential qui enchaîne l’identité gérée, la CLI Azure et les identifiants Visual Studio",
+      "rationaleHtml": "",
+      "extraHtml": "DefaultAzureCredential essaie plusieurs sources d’identifiants dans l’ordre (identité gérée dans Azure, identifiants développeur localement) sans modifications de code. Le code spécifique à l’environnement augmente la complexité. Les variables d’environnement exposent les références. DefaultAzureCredential fournit une authentification adaptative à l’environnement avec une API unifiée."
+    },
+    {
+      "id": "az204-e515842863a4",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Votre application SaaS multi-locataire doit isoler les données clients dans des bases de données distinctes. L’authentification doit utiliser des locataires Azure AD spécifiques au client.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Implémentez l’enregistrement multi-locataire Azure AD avec routage de revendication d’ID locataire"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure AD monolocataire avec des utilisateurs invités"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter une authentification personnalisée par client"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Implémentez l’enregistrement multi-locataire Azure AD avec routage de revendication d’ID locataire",
+      "rationaleHtml": "",
+      "extraHtml": "L’enregistrement multi-locataire de l’application Azure AD permet aux utilisateurs de n’importe quel locataire Azure AD de se connecter ; utiliser la revendication d’identifiant locataire pour acheminer vers des ressources spécifiques au client. Les utilisateurs invités ne sont pas adaptés pour le SaaS. L’authentification personnalisée manque d’avantages d’intégration Azure AD. L’enregistrement multi-locataire permet l’authentification SaaS avec isolation des locataires."
+    },
+    {
+      "id": "az204-47232676c159",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "KeyVault",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "KeyVault"
+      ],
+      "promptHtml": "Une application doit récupérer le mot de passe de la base de données depuis Key Vault, le mettant en cache pendant 1 heure afin de réduire les appels et coûts de Key Vault.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez le SDK Key Vault avec cache en mémoire et TTL d’une heure"
+        },
+        {
+          "key": "B",
+          "label": "Stockage secret dans la variable lors de la première extraction sans expiration"
+        },
+        {
+          "key": "C",
+          "label": "Requête du Key Vault sur chaque connexion de base de données"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez le SDK Key Vault avec cache en mémoire et TTL d’une heure",
+      "rationaleHtml": "",
+      "extraHtml": "La mise en cache des secrets équilibre sécurité et performance ; TTL garantit une rotation éventuelle des mots de passe. La mise en cache permanente ignore la rotation. Les requêtes par connexion augmentent les coûts et la latence. La mise en cache à limitation temporelle optimise les coûts du Key Vault tout en supportant les opérations de rotation secrète."
+    },
+    {
+      "id": "az204-e8a7fc494884",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "KeyVault",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "KeyVault"
+      ],
+      "promptHtml": "Votre application utilise des certificats pour l’authentification TLS mutuelle. Les certificats doivent être stockés de manière sécurisée et tournés automatiquement tous les 90 jours.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Stockez les certificats dans Key Vault avec une politique de rotation automatique configurée avec l’émetteur de certificats"
+        },
+        {
+          "key": "B",
+          "label": "Stockez les fichiers de certificat dans le stockage Blob avec rotation manuelle"
+        },
+        {
+          "key": "C",
+          "label": "Intégrer les certificats dans le code applicatif"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Stockez les certificats dans Key Vault avec une politique de rotation automatique configurée avec l’émetteur de certificats",
+      "rationaleHtml": "",
+      "extraHtml": "Key Vault stocke les certificats sous forme de secrets gérés avec renouvellement automatique via des émetteurs intégrés (par exemple, DigiCert, Let’s Encrypt). Le stockage en blob manque de fonctionnalités de rotation. Les certificats embarqués nécessitent un redéploiement. Key Vault offre une gestion centralisée du cycle de vie des certificats avec renouvellement automatique."
+    },
+    {
+      "id": "az204-e91b98436146",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "KeyVault",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "KeyVault"
+      ],
+      "promptHtml": "Un principal de service Azure doit accéder aux secrets de Key Vault. L’accès doit respecter le principe du moindre privilège lors de l’audit.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Accorder le rôle d’utilisateur secret RBAC à Key Vault et activer les journaux de diagnostic à Log Analytics"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les politiques d’accès avec les permissions Obtenir/Lister"
+        },
+        {
+          "key": "C",
+          "label": "Rôle de contributeur dans le coffre-fort de clés à partager"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Accorder le rôle d’utilisateur secret RBAC à Key Vault et activer les journaux de diagnostic à Log Analytics",
+      "rationaleHtml": "",
+      "extraHtml": "RBAC fournit des permissions granulaires (Secret User accorde un accès secret en lecture seule). Les journaux de diagnostic auditent toutes les opérations. Les politiques d’accès sont héritées (le RBAC est recommandé). Le contributeur accorde des autorisations excessives. RBAC + journalisation d’audit met en place le moindre privilège avec surveillance de la sécurité."
+    },
+    {
+      "id": "az204-57b432aca505",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "AppConfiguration",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "AppConfiguration"
+      ],
+      "promptHtml": "Votre application doit implémenter des chaînes de connexion de base de données avec des valeurs différentes pour les environnements de développement, de staging et de production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure App Configuration avec des étiquettes pour les valeurs spécifiques à l’environnement"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des coffres de clés séparés par environnement"
+        },
+        {
+          "key": "C",
+          "label": "Chaînes de connexion en code dur par environnement dans l’application"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure App Configuration avec des étiquettes pour les valeurs spécifiques à l’environnement",
+      "rationaleHtml": "",
+      "extraHtml": "Les labels de configuration d’application permettent des valeurs spécifiques à l’environnement pour la même clé (par exemple, étiquettes « Production », « Développement »). Les coffres à clés multiples ajoutent une surcharge de gestion. Le codage en dur viole les meilleures pratiques de gestion de configuration. La configuration d’applications avec étiquettes offre une gestion centralisée et spécifique à l’environnement."
+    },
+    {
+      "id": "az204-f9962d3b9ab3",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Troubleshooting",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Troubleshooting"
+      ],
+      "promptHtml": "Une application surveille les métriques de performance et on observe que la latence des requêtes au 95e percentile est passée de 100 ms à 500 ms. La plupart des demandes restent rapides. Il faut identifier les opérations lentes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Application Insights avec Performance Blade et le filtrage de recherche transactionnelle par durée"
+        },
+        {
+          "key": "B",
+          "label": "Vérifiez le temps de réponse moyen dans les métriques Azure Monitor"
+        },
+        {
+          "key": "C",
+          "label": "Vérifier les journaux d’application pour détecter des erreurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Application Insights avec Performance Blade et le filtrage de recherche transactionnelle par durée",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights suit chaque télémétrie de requête ; La palette performance affiche les distributions en pourcentage et la recherche de transactions permet de filtrer les valeurs aberrantes. Les métriques moyennes masquent les valeurs aberrantes. Les journaux ne fournissent pas d’analyse de la répartition des performances. Application Insights fournit des diagnostics détaillés de performance avec identification des valeurs aberrantes."
+    },
+    {
+      "id": "az204-29a59052b25a",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Troubleshooting",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Troubleshooting"
+      ],
+      "promptHtml": "Votre application de production subit des erreurs intermittentes. Il faut corréler les échecs entre plusieurs composants (API web, base de données, services externes) pour identifier la cause profonde.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Application Insights distributed tracing et application map"
+        },
+        {
+          "key": "B",
+          "label": "Corrélation manuelle des horodatages entre des journaux séparés"
+        },
+        {
+          "key": "C",
+          "label": "Augmentation de la verbosité de la journalisation dans l’application"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Application Insights distributed tracing et application map",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights suit automatiquement les opérations entre composants avec des identifiants de corrélation, visualisant les dépendances dans Application Map. La corrélation manuelle prend du temps. La journalisation verbale ajoute du bruit. Le traçage distribué fournit un suivi automatique des requêtes de bout en bout entre les composants du système distribué."
+    },
+    {
+      "id": "az204-baf398bbf44e",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Alerting",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Alerting"
+      ],
+      "promptHtml": "Votre API doit alerter l’équipe des opérations lorsque le taux d’erreur dépasse 5 % sur une fenêtre de 5 minutes ou que le temps moyen de réponse dépasse 2 secondes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Alerte métrique Create Application Insights avec seuil dynamique et groupe d’action"
+        },
+        {
+          "key": "B",
+          "label": "Écrire du code personnalisé pour vérifier les métriques et envoyer des e-mails"
+        },
+        {
+          "key": "C",
+          "label": "Surveiller manuellement le tableau de bord pendant les heures d’ouverture"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Alerte métrique Create Application Insights avec seuil dynamique et groupe d’action",
+      "rationaleHtml": "",
+      "extraHtml": "Les alertes métriques Application Insights évaluent automatiquement les conditions et déclenchent les groupes d’actions (email, SMS, webhook). Le code personnalisé ajoute des problèmes de surcharge et de fiabilité. La surveillance manuelle ne fonctionne pas. Les alertes métriques offrent une détection automatisée et configurable des anomalies avec des notifications multicanaux."
+    },
+    {
+      "id": "az204-aee45ab8de31",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Troubleshooting",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Troubleshooting"
+      ],
+      "promptHtml": "Une fonction Azure traite les messages d’attente. Certains messages causent des exceptions non traitées. Vous devez automatiquement capturer les détails des exceptions pour le débogage.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Application Insights capture automatiquement les exceptions non traitées avec des traces de pile"
+        },
+        {
+          "key": "B",
+          "label": "Emballez tout le code de fonction dans try-catch et enregistrez manuellement"
+        },
+        {
+          "key": "C",
+          "label": "Activer les journaux de diagnostic des applications de fonction"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Application Insights capture automatiquement les exceptions non traitées avec des traces de pile",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights s’intègre à Azure Functions pour capturer automatiquement les exceptions, y compris les traces de pile, les propriétés personnalisées et les dépendances. Try-catch ajoute le code standard. Les journaux de diagnostic manquent de suivi structuré des exceptions. Application Insights fournit un suivi automatique des exceptions avec un contexte riche."
+    },
+    {
+      "id": "az204-693abdd027cd",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "CustomTelemetry",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "CustomTelemetry"
+      ],
+      "promptHtml": "Votre application web doit suivre des événements métier personnalisés comme « OrderCompleted » avec les propriétés (orderValue, customerId) pour les analyses.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez l’API TrackEvent dans Application Insights avec un dictionnaire de propriétés personnalisé"
+        },
+        {
+          "key": "B",
+          "label": "Écrire des événements sur Azure Table Storage"
+        },
+        {
+          "key": "C",
+          "label": "Ajouter des dimensions personnalisées uniquement à la télémétrie existante"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez l’API TrackEvent dans Application Insights avec un dictionnaire de propriétés personnalisé",
+      "rationaleHtml": "",
+      "extraHtml": "TrackEvent envoie des événements personnalisés avec des propriétés à Application Insights pour l’analyse, les requêtes et la visualisation. Le stockage de tables nécessite un pipeline d’analyse personnalisé. L’attachement à une télémétrie existante perd la sémantique des événements. TrackEvent propose une télémétrie personnalisée structurée avec une intégration à l’analyse d’applications Insights."
+    },
+    {
+      "id": "az204-597c0349c007",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Profiling",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Profiling"
+      ],
+      "promptHtml": "Une application subit une dégradation des performances en production. Il faut comprendre quels chemins de code prennent le plus de temps.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez le profileur Application Insights pour l’analyse de la performance en production"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter un code de synchronisation manuel tout au long de l’application"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser le débogueur Visual Studio en production"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez le profileur Application Insights pour l’analyse de la performance en production",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights Profiler capture des traces de performance en production montrant le timing au niveau de la méthode sans modification de code. Le timing manuel ajoute des surcharges et du désordre. Le débogage en production est dangereux et pas évolutif. Profiler propose un profilage de production à faible coût avec une analyse détaillée de la pile d’appels."
+    },
+    {
+      "id": "az204-7e0387f978c2",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "Sampling",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "Sampling"
+      ],
+      "promptHtml": "Votre API doit implémenter l’échantillonnage pour réduire le volume et les coûts de télémétrie Application Insights tout en préservant la précision statistique.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez l’échantillonnage adaptatif dans les paramètres du SDK Application Insights"
+        },
+        {
+          "key": "B",
+          "label": "Ne suivez manuellement que 10 % des requêtes dans le code"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez la télémétrie pour les requêtes GET"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez l’échantillonnage adaptatif dans les paramètres du SDK Application Insights",
+      "rationaleHtml": "",
+      "extraHtml": "L’échantillonnage adaptatif ajuste automatiquement la fréquence d’échantillonnage pour maintenir le volume cible tout en préservant les propriétés statistiques et la télémétrie corrélée. L’échantillonnage manuel perd la corrélation. Désactiver la télémétrie crée des angles morts. L’échantillonnage adaptatif réduit intelligemment le volume tout en maintenant la capacité de diagnostic."
+    },
+    {
+      "id": "az204-d82cc7083fa3",
+      "examSlug": "az204",
+      "domain": "Monitoring",
+      "topic": "AvailabilityTesting",
+      "tags": [
+        "AZ-204",
+        "Monitoring",
+        "AvailabilityTesting"
+      ],
+      "promptHtml": "Votre application doit surveiller la disponibilité des API en amont de plusieurs régions globales et alerter en cas de défaillance.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les tests de disponibilité Application Insights depuis plusieurs emplacements"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter un endpoint de vérification de santé sondé par Azure Function"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Service Health notifications"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les tests de disponibilité Application Insights depuis plusieurs emplacements",
+      "rationaleHtml": "",
+      "extraHtml": "Les tests de disponibilité Application Insights (ping URL, multi-étapes) s’exécutent depuis des emplacements Azure distribués avec alertes automatiques. Le sondage basé sur des fonctions est à une seule région et nécessite une logique personnalisée. Service Health surveille la plateforme Azure, pas les applications personnalisées. Les tests de disponibilité fournissent une surveillance synthétique mondiale avec alertes."
+    },
+    {
+      "id": "az204-58f1c2daefe7",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIM",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIM"
+      ],
+      "promptHtml": "Votre application web doit implémenter une authentification et une limitation de débit pour la consommation externe d’API tout en assurant la gestion des clés API pour les clients.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure API Management avec authentification par clé d’abonnement et politique de limitation de débit"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter la limitation de taux dans le code applicatif"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Front Door avec les règles WAF"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure API Management avec authentification par clé d’abonnement et politique de limitation de débit",
+      "rationaleHtml": "",
+      "extraHtml": "API Management fournit des clés d’abonnement, des politiques de limitation de débit, des quotas et un portail client pour la gestion des clés. La limitation de débit basée sur le code manque de gestion centralisée. Front Door WAF manque de fonctionnalités spécifiques à l’API. La gestion des API offre des fonctionnalités complètes de passerelle API avec des politiques déclaratives."
+    },
+    {
+      "id": "az204-b62ef1c75c47",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIM",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIM"
+      ],
+      "promptHtml": "Une passerelle API doit valider la structure des charges utiles de requêtes JSON entrantes avant de les transférer aux services backend afin d’éviter les requêtes invalides.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez la politique de validation du contenu de gestion API avec un schéma JSON"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter la logique de validation dans chaque service backend"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez le proxy Azure Function avec validation personnalisée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez la politique de validation du contenu de gestion API avec un schéma JSON",
+      "rationaleHtml": "",
+      "extraHtml": "La politique de validation du contenu de gestion API applique la validation du schéma JSON à la passerelle, rejetant les requêtes invalides avant le backend. La validation backend n’empêche pas les appels inutiles. Les proxies de fonction ajoutent de la latence et de la complexité. La validation au niveau de la passerelle protège les backends et applique les contrats API de manière centralisée."
+    },
+    {
+      "id": "az204-55fee0128568",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIM",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIM"
+      ],
+      "promptHtml": "Votre API doit transformer les réponses XML des services backend hérités en JSON pour les applications clients modernes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez la gestion API avec la politique xml-à-json dans la section sortante"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter la transformation dans les applications clients"
+        },
+        {
+          "key": "C",
+          "label": "Créer un middleware de service de transformation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez la gestion API avec la politique xml-à-json dans la section sortante",
+      "rationaleHtml": "",
+      "extraHtml": "Les politiques de transformation de gestion API (xml-vers-json, json-vers-xml) permettent la transformation déclarative des formats au gateway. La transformation côté client augmente la complexité client. Le service middleware ajoute de la latence. La transformation de passerelle permet la médiation de protocole sans modifications de backend ou de clients."
+    },
+    {
+      "id": "az204-31b6eb7156d2",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIM",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIM"
+      ],
+      "promptHtml": "Une API doit restreindre certaines opérations uniquement aux clients réseau internes tout en permettant un accès public à d’autres opérations.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez la gestion d’API avec une politique de filtre IP sur des opérations ou API spécifiques"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter le filtrage IP dans le service backend"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez les groupes de sécurité réseau sur le sous-réseau de gestion d’API"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez la gestion d’API avec une politique de filtre IP sur des opérations ou API spécifiques",
+      "rationaleHtml": "",
+      "extraHtml": "La politique de filtrage IP de gestion d’API limite l’accès au niveau opérationnel en fonction de l’IP client. Le filtrage backend perd un contrôle centralisé. Les NSG s’appliquent à l’ensemble de l’instance APIM, pas à des opérations spécifiques. Le filtrage IP au niveau opérationnel permet un contrôle d’accès granulaire par terminaison API."
+    },
+    {
+      "id": "az204-217e95ca6a69",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIM",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIM"
+      ],
+      "promptHtml": "Votre instance de gestion d’API doit acheminer les requêtes vers différents services backend en fonction des segments de chemin d’URL.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les opérations de gestion d’API avec différentes politiques de service backend"
+        },
+        {
+          "key": "B",
+          "label": "Utiliser le code de l’application pour acheminer les requêtes"
+        },
+        {
+          "key": "C",
+          "label": "Déploie plusieurs instances de gestion d’API"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les opérations de gestion d’API avec différentes politiques de service backend",
+      "rationaleHtml": "",
+      "extraHtml": "Les opérations de gestion d’API peuvent avoir des politiques backend uniques, permettant un routage basé sur des chemins (par exemple, /api/v1/* → backend1, /api/v2/* → backend2). Le code applicatif associe le routage à la logique métier. Plusieurs instances APIM augmentent les coûts. La configuration backend au niveau opérationnel offre un routage flexible des requêtes."
+    },
+    {
+      "id": "az204-4b8426988e72",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "EventGrid",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "EventGrid"
+      ],
+      "promptHtml": "Une application doit recevoir des notifications en quelques secondes lorsque de nouveaux blobs sont téléchargés sur Azure Storage sur plusieurs comptes de stockage.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Event Grid avec abonnement à l’événement de stockage blob et gestionnaire de fonction webhook/Azure Function"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des comptes de stockage par polling blob"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter la liste des blobs basée sur un minuteur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Event Grid avec abonnement à l’événement de stockage blob et gestionnaire de fonction webhook/Azure Function",
+      "rationaleHtml": "",
+      "extraHtml": "Event Grid diffuse des événements blob (création, suppression) en quelques secondes via une notification push. Le déclencheur de blob a un délai de sondage. La liste basée sur minuterie est inefficace et manque des changements rapides. Event Grid offre une architecture réactive pilotée par événements avec une latence inférieure à la seconde pour les événements de stockage."
+    },
+    {
+      "id": "az204-6103fe5f3d7d",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "EventHubs",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "EventHubs"
+      ],
+      "promptHtml": "Votre solution IoT doit ingérer 100 000+ événements par seconde des appareils, les traiter dans l’ordre par appareil, et stocker pour les analyses.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Event Hubs avec clé de partition sur l’ID de l’appareil et Stream Analytics ou Fonctions"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez les files d’attente Azure Service Bus"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Event Grid avec plusieurs abonnements"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Event Hubs avec clé de partition sur l’ID de l’appareil et Stream Analytics ou Fonctions",
+      "rationaleHtml": "",
+      "extraHtml": "Event Hubs est conçu spécialement pour l’ingestion d’événements à haut débit avec partitionnement pour l’ordre par clé (appareil). Service Bus est destiné à la messagerie, pas à la télémétrie à grande échelle. Event Grid manque de capacité de débit pour 100K+ événements par seconde. Event Hubs offre une ingestion massive d’événements avec commande et rétention."
+    },
+    {
+      "id": "az204-4cdc6ea66743",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "EventHubs",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "EventHubs"
+      ],
+      "promptHtml": "Une application doit capturer les événements du flux Event Hub, les regrouper par fenêtre temporelle (5 minutes), puis stocker automatiquement dans le stockage en blob.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez la fonction de capture des hubs d’événements avec une fenêtrage basée sur le temps vers le stockage de blobs"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Function avec déclencheur Event Hub et batching manuel"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez l’application Logic avec des sondages programmés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez la fonction de capture des hubs d’événements avec une fenêtrage basée sur le temps vers le stockage de blobs",
+      "rationaleHtml": "",
+      "extraHtml": "La capture des hubs d’événements regroupe automatiquement et stocke les événements sur Blob Storage ou Data Lake en fonction des fenêtres temporelles/taille sans code. La capture basée sur les fonctions nécessite une logique de batching manuelle. Logic Apps sondent (pas en temps réel). Capture fournit l’archivage d’événements zéro code avec une configuration de fenêtrement."
+    },
+    {
+      "id": "az204-f236ea8b3ae8",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "ServiceBus",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "ServiceBus"
+      ],
+      "promptHtml": "Votre architecture pilotée par événements doit garantir la livraison des messages avec une logique de retentative et une file d’attente de lettres mortes pour les échecs de traitement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez les files d’attente Azure Service Bus avec MaxDeliveryCount et la file d’attente à lettres mortes"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Event Grid avec la politique de réessayage"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez les files d’attente Azure Storage avec un code de réessai manuel"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez les files d’attente Azure Service Bus avec MaxDeliveryCount et la file d’attente à lettres mortes",
+      "rationaleHtml": "",
+      "extraHtml": "Service Bus fournit la messagerie d’entreprise avec des politiques de réessayage intégrées, MaxDeliveryCount et une file d’attente automatique pour les messages poison. Event Grid a une durée limitée de réessayage (24 heures). Les files de stockage manquent de fonctionnalités de lettre morte. Service Bus fournit des messages fiables avec une gestion complète des pannes."
+    },
+    {
+      "id": "az204-1cccab134f98",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "ServiceBus",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "ServiceBus"
+      ],
+      "promptHtml": "Une application publie des événements d’ordre que plusieurs services en aval doivent traiter indépendamment. Chaque service doit recevoir tous les événements.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez le sujet Azure Service Bus avec plusieurs abonnements (un par service)"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez la file d’attente Azure Service Bus avec des consommateurs concurrents"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Event Hubs avec plusieurs groupes de consommateurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez le sujet Azure Service Bus avec plusieurs abonnements (un par service)",
+      "rationaleHtml": "",
+      "extraHtml": "Les sujets du Service Bus avec abonnements permettent un patron pub/sub où chaque abonnement reçoit une copie de message. Les files d’attente distribuent les messages (les consommateurs concurrents ne sont pas diffusés). Event Hubs est dédié à la télémétrie, pas à la messagerie d’entreprise. Les sujets offrent un répandissement des messages pour un traitement simultané indépendant."
+    },
+    {
+      "id": "az204-014cbb8fa73e",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "ServiceBus",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "ServiceBus"
+      ],
+      "promptHtml": "Votre solution de messagerie doit implémenter un traitement différé des messages où les messages sont reçus mais retardés jusqu’à ce qu’une condition spécifique soit remplie.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Service Bus avec report de message et récupération basée sur les numéros de séquence"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Storage Queue avec délai de visibilité"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Event Grid avec livraison programmée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Service Bus avec report de message et récupération basée sur les numéros de séquence",
+      "rationaleHtml": "",
+      "extraHtml": "Service Bus prend en charge le report de message (stationnement du message avec numéro de séquence, récupération ultérieure) pour des flux de travail sophistiqués. Le délai d’expiration de la visibilité de la file d’attente de stockage est un délai fixe, pas conditionnel. Event Grid manque de report. Le report des messages par bus de service permet des schémas complexes de traitement des messages grâce à la gestion de l’état."
+    },
+    {
+      "id": "az204-6ffef1fbd888",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "ServiceBus",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "ServiceBus"
+      ],
+      "promptHtml": "Une application envoie des messages à la file d’attente du Service Bus. Le traitement nécessite une sémantique de livraison à une seule fois même lors de pannes transitoires.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sessions de bus de service avec mode de réception PeekLock et fonctionnement complet"
+        },
+        {
+          "key": "B",
+          "label": "Mode ReceiveAndDelete pour la complétion automatique"
+        },
+        {
+          "key": "C",
+          "label": "Suppression manuelle des messages après traitement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sessions de bus de service avec mode de réception PeekLock et fonctionnement complet",
+      "rationaleHtml": "",
+      "extraHtml": "Le mode PeekLock verrouille le message pendant le traitement ; L’opération complète confirme le succès (message supprimé), réessai automatique en cas d’échec. ReceiveAndDelete ne permet pas de récupérer les défaillances. La suppression manuelle ajoute de la complexité. PeekLock + Complete implémente un traitement exactement une fois avec une tentative automatique et une idempotence."
+    },
+    {
+      "id": "az204-efa9e9012518",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "EventGrid",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "EventGrid"
+      ],
+      "promptHtml": "Votre architecture de microservices nécessite une communication asynchrone avec des messages légers contenant uniquement des notifications de changement (transfert d’état d’événement transporté).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Event Grid pour des notifications d’événements légères avec un schéma d’événements personnalisé"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Service Bus avec de grandes charges utiles de messages"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Event Hubs pour le streaming d’événements"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Event Grid pour des notifications d’événements légères avec un schéma d’événements personnalisé",
+      "rationaleHtml": "",
+      "extraHtml": "Event Grid est optimisé pour des événements discrets légers (notifications) avec routage pub/sub. Service Bus est destiné aux flux de travail de messagerie complexes. Event Hubs est destiné aux flux à haut débit. Event Grid fournit une distribution réactive d’événements pour une communication microservices faiblement couplée."
+    },
+    {
+      "id": "az204-ea6fe625d94f",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "StorageQueue",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "StorageQueue"
+      ],
+      "promptHtml": "Une application doit traiter les messages de la file d’attente de stockage avec une réévaluation automatique sur les erreurs transitoires et les adapter en fonction de la profondeur de la file d’attente.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Function avec déclencheur de file d’attente, politique de réessayage intégrée et échelle KEDA"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter le rôle de l’ouvrier avec un polling manuel et un threading"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez l’application Logic avec déclencheur de récurrence"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Function avec déclencheur de file d’attente, politique de réessayage intégrée et échelle KEDA",
+      "rationaleHtml": "",
+      "extraHtml": "Le déclencheur de file d’attente interroge, traite et évolue automatiquement en fonction de la profondeur de la file avec une réévaluation intégrée. Les postes de travailleurs nécessitent une gestion des infrastructures. Le sondage programmé par Logic Apps ajoute de la latence. Queue trigger offre un traitement de file d’attente sans serveur avec mise à l’échelle et réessaisis automatiques."
+    },
+    {
+      "id": "az204-23f7eca4d038",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "EventGrid",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "EventGrid"
+      ],
+      "promptHtml": "Votre gestionnaire d’événements doit traiter les événements de la grille d’événements avec une validation de domaine personnalisée lors de la création de l’abonnement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Implémentez un point de terminaison webhook qui répond à l’événement SubscriptionValidation avec un code de validation"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez la validation manuelle dans Azure Portal"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez la validation pour une configuration plus rapide"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Implémentez un point de terminaison webhook qui répond à l’événement SubscriptionValidation avec un code de validation",
+      "rationaleHtml": "",
+      "extraHtml": "Event Grid nécessite une validation par webhook (répondre par un code de validation) pour prouver la propriété du point de terminaison. La validation manuelle n’est pas automatisée. Désactiver la validation n’est pas possible. La validation Webhook garantit que les abonnements aux événements ne sont créés que par les propriétaires autorisés des points de terminaison."
+    },
+    {
+      "id": "az204-f9543290dcba",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "ServiceBus",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "ServiceBus"
+      ],
+      "promptHtml": "Une application doit filtrer les messages de sujet du Service Bus avant leur livraison aux abonnements en fonction des propriétés du message.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez des filtres d’abonnement avec des expressions de type SQL sur les propriétés des messages"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter la logique de filtrage dans les consommateurs de messages"
+        },
+        {
+          "key": "C",
+          "label": "Créez des sujets séparés par type de message"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez des filtres d’abonnement avec des expressions de type SQL sur les propriétés des messages",
+      "rationaleHtml": "",
+      "extraHtml": "Les filtres d’abonnement Service Bus évaluent les propriétés des messages côté serveur, ne livrant que les messages correspondants. Le filtrage par le consommateur gaspille de la bande passante. Plusieurs sujets engendrent des surcharges de gestion. Les filtres d’abonnement fournissent un routage déclaratif des messages côté serveur sans logique consommateur."
+    },
+    {
+      "id": "az204-a315665d7ad8",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "Votre application doit mettre en cache les données fréquemment consultées avec une latence inférieure à la milliseconde. Les entrées de cache doivent expirer après 10 minutes et prendre en charge le basculement automatique entre les régions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Cache for Redis niveau Premium avec géo-réplication et paramètres TTL"
+        },
+        {
+          "key": "B",
+          "label": "Azure Table Storage avec requêtes en cache"
+        },
+        {
+          "key": "C",
+          "label": "Mise en cache en mémoire dans les instances de services d’applications"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Cache for Redis niveau Premium avec géo-réplication et paramètres TTL",
+      "rationaleHtml": "",
+      "extraHtml": "Redis Premium offre une latence inférieure à la milliseconde, une géoréplication pour le basculement et des réglages TTL par clé. Le stockage de table a une latence plus élevée. La mise en cache en mémoire dans App Service ne garantit pas de cohérence inter-instances ni de basculement. Redis Premium propose une mise en cache de qualité entreprise avec une grande disponibilité et des politiques d’expiration flexibles."
+    },
+    {
+      "id": "az204-5b25b8a7ce07",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "Une application utilise Azure Cache pour Redis afin de stocker l’état de la session pour une ferme web. Les sessions doivent survivre aux défaillances des nœuds de cache sans perte de données.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la persistance des données Redis avec des instantanés AOF (Append Only File) ou RDB"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez le niveau Standard sans persistance"
+        },
+        {
+          "key": "C",
+          "label": "Stockez les sessions dans Blob Storage au lieu de Redis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la persistance des données Redis avec des instantanés AOF (Append Only File) ou RDB",
+      "rationaleHtml": "",
+      "extraHtml": "La persistance Redis (AOF pour la durabilité, RDB pour les sauvegardes) écrit les données sur le disque, permettant la récupération après les défaillances. Le niveau standard ne prévient pas la perte de données due aux défaillances. Passer au stockage en blob perd des performances en moins de la milliseconde. La persistance garantit la durabilité du cache pour les données critiques comme les sessions."
+    },
+    {
+      "id": "az204-50783a45944c",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "CORS",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "CORS"
+      ],
+      "promptHtml": "Votre API web doit répondre aux requêtes CORS de prévol de https://app.contoso.com autorisant les requêtes POST avec des en-têtes personnalisés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la politique CORS dans la gestion des services d’applications ou d’API avec les origines, méthodes et en-têtes autorisés"
+        },
+        {
+          "key": "B",
+          "label": "Ajoutez manuellement l’en-tête Access-Control-Allow-Origin dans le code de l’application pour toutes les réponses"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver la validation CORS dans le navigateur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la politique CORS dans la gestion des services d’applications ou d’API avec les origines, méthodes et en-têtes autorisés",
+      "rationaleHtml": "",
+      "extraHtml": "La configuration CORS au niveau de la plateforme gère automatiquement les requêtes OPTIONS de prévol avec les en-têtes appropriés. Le réglage manuel de l’en-tête dans le code ne gère pas correctement le prévol. Désactiver la validation du navigateur n’est pas possible. La configuration CORS déclarative garantit une gestion et une sécurité adéquates avant le vol."
+    },
+    {
+      "id": "az204-df2da4b985fa",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Une application App Service doit authentifier les utilisateurs via Azure AD et également accepter les requêtes avec des clés API pour les clients hérités.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez l’authentification des services d’application avec le fournisseur Azure AD et implémentez un middleware personnalisé à clé API"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez l’authentification Azure AD uniquement avec les comptes invités pour les clients hérités"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez l’authentification intégrée et implémentez une solution personnalisée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez l’authentification des services d’application avec le fournisseur Azure AD et implémentez un middleware personnalisé à clé API",
+      "rationaleHtml": "",
+      "extraHtml": "App Service Authentication gère les flux Azure AD ; un middleware personnalisé peut valider les clés API pour les requêtes en contournant l’Auth facile. Les comptes invités ne résolvent pas les exigences de clé API. La solution uniquement personnalisée duplique les fonctionnalités de la plateforme. L’approche hybride combine l’authentification de plateforme avec une logique personnalisée pour le support hérité."
+    },
+    {
+      "id": "az204-4017ccc258f5",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "Votre base de données Azure SQL doit évoluer pour gérer des charges de travail imprévisibles avec un ajustement automatique des performances sans intervention manuelle.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez le niveau de calcul serverless avec pause automatique et auto-échelle"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez le niveau provisionné vCore avec une mise à l’échelle manuelle"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter un niveau basé sur DTU avec des ressources fixes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez le niveau de calcul serverless avec pause automatique et auto-échelle",
+      "rationaleHtml": "",
+      "extraHtml": "Le niveau serverless scale automatiquement le calcul en fonction de la charge de travail et fait une pause pendant l’inactivité pour économiser des coûts. vCore/DTU nécessitent une mise à l’échelle manuelle. Le serverless est idéal pour des charges de travail imprévisibles avec des usages intermittents nécessitant une mise à l’échelle automatique et une optimisation des coûts."
+    },
+    {
+      "id": "az204-fc21faaac4c2",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "Une application interroge Azure SQL Database sur plusieurs tables avec des jointures complexes. La performance des requêtes se dégrade avec la croissance des données. Vous devez optimiser la performance de lecture sans changer de code.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Créer des index non regroupés sur les colonnes de clauses étrangères et WHERE"
+        },
+        {
+          "key": "B",
+          "label": "Élargir définitivement la base de données"
+        },
+        {
+          "key": "C",
+          "label": "Ajouter des répliques de lecture pour toutes les requêtes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Créer des index non regroupés sur les colonnes de clauses étrangères et WHERE",
+      "rationaleHtml": "",
+      "extraHtml": "Les index améliorent considérablement les performances des requêtes en réduisant les scans. Augmenter la taille augmente les coûts sans traiter l’efficacité des requêtes. Les répliques lues aident à évoluer mais les indices sont l’optimisation principale. L’indexation stratégique sur les colonnes de jointure et de filtre optimise les plans d’exécution des requêtes sans modification de code."
+    },
+    {
+      "id": "az204-2eab070c7bda",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureSQL",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureSQL"
+      ],
+      "promptHtml": "Votre application doit exécuter des tâches d’importation de données de longue durée (30+ minutes) sur Azure SQL Database sans bloquer d’autres transactions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure SQL Database Elastic Jobs ou Azure Data Factory avec traitement batch"
+        },
+        {
+          "key": "B",
+          "label": "Exécuter l’importation dans le code applicatif avec des appels synchrones"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez la procédure stockée avec isolation des transactions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure SQL Database Elastic Jobs ou Azure Data Factory avec traitement batch",
+      "rationaleHtml": "",
+      "extraHtml": "Elastic Jobs et Data Factory offrent un traitement par lots orchestré et résilient, distinct de l’application. Le code synchrone bloque l’application. Les procédures stockées s’exécutent dans un moteur de base de données (bloc de conservation). Les emplois élastiques/Data Factory permettent des opérations de longue durée avec des réessayages, une planification et une surveillance."
+    },
+    {
+      "id": "az204-516f7662e4bc",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "TableStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "TableStorage"
+      ],
+      "promptHtml": "Une application doit stocker des données de configuration structurées avec des lectures rapides par clé composite (partitionKey + rowKey). L’accès aux données est peu fréquent mais doit être très peu coûteux.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Table Storage avec conception de clés de partition"
+        },
+        {
+          "key": "B",
+          "label": "Azure SQL Database avec index en cluster"
+        },
+        {
+          "key": "C",
+          "label": "Cosmos DB avec clé de partition composite"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Table Storage avec conception de clés de partition",
+      "rationaleHtml": "",
+      "extraHtml": "Le stockage de table offre un stockage NoSQL extrêmement peu coûteux avec des lectures rapides via des touches de partition/ligne. SQL Database a un coût plus élevé pour un accès peu fréquent. Cosmos DB est plus cher que le stockage de tables pour des scénarios clé/valeur simples. Le stockage de tables optimise le coût pour un accès peu fréquent aux données structurées."
+    },
+    {
+      "id": "az204-9ad756cb4c26",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "AzureFiles",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "AzureFiles"
+      ],
+      "promptHtml": "Votre application doit partager des fichiers entre plusieurs VM Azure et instances de services d’applications avec le support des protocoles SMB et l’authentification AD.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fichiers Azure avec partages SMB et intégration Azure AD Domain Services"
+        },
+        {
+          "key": "B",
+          "label": "Stockage de blobs avec protocole NFS"
+        },
+        {
+          "key": "C",
+          "label": "Disque partagé attaché aux machines virtuelles"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fichiers Azure avec partages SMB et intégration Azure AD Domain Services",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Files fournit des partages SMB entièrement gérés avec une authentification Azure AD DS, montable par les machines virtuelles Windows/Linux et les services d’applications. Blob NFS est destiné aux scénarios spécifiques à Linux sans SMB. Les disques partagés ont des limites d’attachement. Azure Files propose le partage de fichiers SMB natif cloud avec intégration d’identité."
+    },
+    {
+      "id": "az204-45fc935f09ef",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "Une instance de gestion d’API doit exposer simultanément la version 1 et la version 2 d’une API, en se basant sur le chemin de l’URL (/v1/ vs /v2/).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez le versionnement API avec un schéma de versionnement basé sur les chemins dans API Management"
+        },
+        {
+          "key": "B",
+          "label": "Déploie des instances de gestion d’API séparées pour chaque version"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez le paramètre de chaîne de requête pour la sélection des versions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez le versionnement API avec un schéma de versionnement basé sur les chemins dans API Management",
+      "rationaleHtml": "",
+      "extraHtml": "Le système de gestion des versions API prend en charge les schémas basés sur les chemins (par exemple, /api/v1/, /api/v2/) avec une seule définition d’API. Plusieurs instances augmentent le coût et la complexité. Les chaînes de requêtes sont moins RESTful que les chaînes de chemin. Le versionnement intégré permet un déploiement de versions côte à côte avec un routage flexible."
+    },
+    {
+      "id": "az204-540ac1a3203e",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "Votre API dans la gestion des API doit tester en toute sécurité les changements cassants avant de passer en production, tout en conservant le même numéro de version.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Créez une version API dans API Management et testez avant de la rendre à jour"
+        },
+        {
+          "key": "B",
+          "label": "Créer une nouvelle version d’API pour les tests"
+        },
+        {
+          "key": "C",
+          "label": "Déploie les modifications directement sur l’API de production"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Créez une version API dans API Management et testez avant de la rendre à jour",
+      "rationaleHtml": "",
+      "extraHtml": "Les révisions API permettent des modifications sûres dans la même version sans affecter les consommateurs (accessible via l’identifiant de version). Les versions servent à casser les changements avec des numéros de version différents. Le déploiement direct en production est risqué. Les révisions offrent une itération sécurisée avec un flux de travail promotionnel pour les changements non interrompus."
+    },
+    {
+      "id": "az204-f50a9528049a",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "APIManagement",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "APIManagement"
+      ],
+      "promptHtml": "Une solution de gestion d’API doit regrouper les API associées avec des clés de contrôle d’accès et d’abonnement spécifiques à différents niveaux clients (gratuit, premium).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les produits de gestion d’API avec des associations API et des exigences d’abonnement"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des instances de gestion d’API séparées par niveau"
+        },
+        {
+          "key": "C",
+          "label": "Implémenter le contrôle d’accès dans les API backend"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les produits de gestion d’API avec des associations API et des exigences d’abonnement",
+      "rationaleHtml": "",
+      "extraHtml": "Les API de produits regroupent avec des politiques d’accès unifiées, des abonnements et des limites de débit pour différents niveaux clients. Plusieurs cas augmentent la surcharge. Le contrôle d’accès backend contourne les capacités de passerelle API. Les produits offrent un regroupement d’API orienté business avec un accès et une facturation par niveaux."
+    },
+    {
+      "id": "az204-804658a3ce4e",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "LogicApps",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "LogicApps"
+      ],
+      "promptHtml": "Votre application doit mettre en œuvre un flux de travail avec état, coordonnant plusieurs services avec des points de contrôle et des essais automatiques sur plusieurs heures.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des applications logiques avec des connecteurs intégrés et des politiques de réessayage"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez Azure Functions avec une gestion manuelle de l’état en stockage"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser Service Bus avec report de message"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des applications logiques avec des connecteurs intégrés et des politiques de réessayage",
+      "rationaleHtml": "",
+      "extraHtml": "Logic Apps propose une orchestration visuelle du flux de travail avec 400+ connecteurs, des politiques de réessayage intégrées et une gestion automatique de l’état. Les fonctions nécessitent un code d’orchestration personnalisé (Durable Functions est meilleure mais non listée). Service Bus gère la messagerie, pas l’orchestration. Logic Apps simplifie l’automatisation complexe des flux de travail."
+    },
+    {
+      "id": "az204-3cf58d0e7413",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Un registre Azure Container doit empêcher les tirages anonymes d’images et imposer l’authentification pour toutes les opérations d’image.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Désactivez l’accès au réseau public et utilisez un point de terminaison privé ou configurez l’authentification Azure AD"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez l’accès public uniquement avec filtrage IP"
+        },
+        {
+          "key": "C",
+          "label": "Partagez les identifiants d’administrateur du registre avec Teams"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Désactivez l’accès au réseau public et utilisez un point de terminaison privé ou configurez l’authentification Azure AD",
+      "rationaleHtml": "",
+      "extraHtml": "Les terminaux privés éliminent l’accès public ; L’authentification Azure AD fournit un contrôle d’accès basé sur l’identité. Le filtrage IP seul ne garantit pas l’authentification. Les identifiants administrateur ne doivent pas être partagés (c’est un risque de sécurité). Le réseau privé + Azure AD offre un accès sécurisé au registre basé sur l’identité."
+    },
+    {
+      "id": "az204-240f7550a229",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Containers",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Containers"
+      ],
+      "promptHtml": "Votre registre de conteneurs doit répliquer les images dans plusieurs régions pour des pulls à faible latence et la reprise après sinistre.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la géo-réplication ACR dans le niveau Premium"
+        },
+        {
+          "key": "B",
+          "label": "Copiez manuellement les images vers les registres de chaque région"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure Traffic Manager avec un seul registre"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la géo-réplication ACR dans le niveau Premium",
+      "rationaleHtml": "",
+      "extraHtml": "La géo-réplication ACR (niveau Premium) synchronise automatiquement les images entre les régions avec les points d’extrémité régionaux pour des tirages rapides. La copie manuelle est complexe et sujette aux erreurs. Traffic Manager ne réplique pas les données. La géo-réplication offre une distribution d’images multi-régions gérée avec un accès régional."
+    },
+    {
+      "id": "az204-a780f39cb6d5",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "Redis",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "Redis"
+      ],
+      "promptHtml": "Une application doit implémenter le motif Redis cache-side, avec un retour à la base de données pour les manques de cache, et remplir le cache avec une expiration de 5 minutes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Vérifiez le cache pour les données ; si vous manquez, interrogez la base de données, remplissez le cache avec TTL, retournez les données"
+        },
+        {
+          "key": "B",
+          "label": "Interrogez toujours la base de données et mettez à jour le cache de manière asynchrone"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser uniquement le cache sans recours à la base de données"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Vérifiez le cache pour les données ; si vous manquez, interrogez la base de données, remplissez le cache avec TTL, retournez les données",
+      "rationaleHtml": "",
+      "extraHtml": "Motif cache-side-side : l’application vérifie d’abord le cache, charge depuis la base de données en cas de ratage, et remplit le cache avec TTL. Interroger toujours la base de données annule les avantages du cache. Le cache seul échoue en cas de données manquantes. Le cache à part équilibre performance (impacts de cache) et disponibilité des données (repli de base de données) avec la fraîcheur (TTL)."
+    },
+    {
+      "id": "az204-b059f8f9bfc0",
+      "examSlug": "az204",
+      "domain": "Compute",
+      "topic": "Functions",
+      "tags": [
+        "AZ-204",
+        "Compute",
+        "Functions"
+      ],
+      "promptHtml": "Votre application Function doit implémenter le schéma fan-out/fan-in pour traiter 100 tâches parallèles et agréger les résultats.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des fonctions durables avec l’orchestrateur appelant des fonctions d’activité en parallèle et recueillant des résultats"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des fonctions déclenchées par la file d’attente avec une coordination manuelle"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez le déclencheur minuteur avec une logique de batching"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des fonctions durables avec l’orchestrateur appelant des fonctions d’activité en parallèle et recueillant des résultats",
+      "rationaleHtml": "",
+      "extraHtml": "Durable Functions Orchestrator peut appeler plusieurs fonctions d’activité en parallèle (WhenAll) et agréger les résultats grâce à une gestion d’état intégrée. La coordination basée sur la file d’attente est complexe. Le regroupement de minuterie ne fournit pas d’orchestration. Durable Functions offre un dégagement déclaratif de la sortie/fan-in avec persistance automatique de l’état."
+    },
+    {
+      "id": "az204-5491c8d85ed1",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "KeyVault",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "KeyVault"
+      ],
+      "promptHtml": "Une application doit stocker et récupérer des secrets, clés et certificats avec des journaux de versionnement et d’audit d’accès pour assurer la conformité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez Azure Key Vault avec gestion de versions et journalisation de diagnostic pour Log Analytics"
+        },
+        {
+          "key": "B",
+          "label": "Stocker les secrets dans les variables d’environnement"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez Azure App Configuration pour tous les types de secrets"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez Azure Key Vault avec gestion de versions et journalisation de diagnostic pour Log Analytics",
+      "rationaleHtml": "",
+      "extraHtml": "Key Vault offre un stockage versionné de secrets/clés/certificats avec une journalisation d’accès complète et des capacités d’audit intégrées. Les variables d’environnement manquent de versionnement et d’audit. App Configuration n’est pas conçue pour les secrets (utilisez la référence Key Vault). Key Vault est conçu spécialement pour la gestion du cycle de vie secret avec des fonctionnalités de conformité."
+    },
+    {
+      "id": "az204-08925ff03bac",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "Votre API doit valider les jetons d’accès OAuth 2.0 émis par Azure AD B2C avec des revendications personnalisées pour une autorisation basée sur le rôle.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez l’authentification JWT Bearer avec l’émetteur Azure AD B2C et validez les revendications personnalisées dans les politiques d’autorisation"
+        },
+        {
+          "key": "B",
+          "label": "Accepter les jetons sans validation"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez des clés API au lieu des jetons OAuth"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez l’authentification JWT Bearer avec l’émetteur Azure AD B2C et validez les revendications personnalisées dans les politiques d’autorisation",
+      "rationaleHtml": "",
+      "extraHtml": "Le middleware JWT valide les jetons B2C (signature, émetteur, expiration) ; Les politiques d’autorisation évaluent les demandes personnalisées pour les décisions de rôle. Aucune validation n’est sûre de l’insécurité. Les clés API manquent d’intégration B2C. La validation du token + les revendications personnalisées fournissent une autorisation sécurisée basée sur l’identité avec Azure AD B2C."
+    },
+    {
+      "id": "az204-b2f345e084b7",
+      "examSlug": "az204",
+      "domain": "Integration",
+      "topic": "StorageQueue",
+      "tags": [
+        "AZ-204",
+        "Integration",
+        "StorageQueue"
+      ],
+      "promptHtml": "Une application doit interroger les messages de la file d’attente de stockage Azure sans les supprimer pour les inspecter et les traiter conditionnellement ultérieurement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez l’opération PeekMessages pour visualiser les messages sans mettre en file d’attente"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez GetMessages sans aucun délai d’attente de visibilité"
+        },
+        {
+          "key": "C",
+          "label": "Mettre les messages en file d’attente et remettre les messages en file manuelle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez l’opération PeekMessages pour visualiser les messages sans mettre en file d’attente",
+      "rationaleHtml": "",
+      "extraHtml": "PeekMessages récupère les messages pour inspection sans affecter l’état de la file d’attente ni la visibilité. GetMessages se défile (même sans aucun timeout). La déqueue/re-file manuelle modifie l’état du message. Peek fournit une inspection non destructive des files d’attente pour les scénarios de traitement conditionnel."
+    },
+    {
+      "id": "az204-026e97545b9b",
+      "examSlug": "az204",
+      "domain": "Security",
+      "topic": "Networking",
+      "tags": [
+        "AZ-204",
+        "Security",
+        "Networking"
+      ],
+      "promptHtml": "Votre service d’applications doit se connecter à Azure SQL Database en utilisant une IP privée sans avoir à naviguer sur Internet, même au sein d’Azure.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez l’intégration VNet pour App Service et Private Link/Private Endpoint pour la base de données SQL"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des règles de pare-feu permettant les services Azure"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez un point de terminaison public avec le chiffrement TLS"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez l’intégration VNet pour App Service et Private Link/Private Endpoint pour la base de données SQL",
+      "rationaleHtml": "",
+      "extraHtml": "L’intégration VNet connecte App Service à VNet ; Private Link expose la base de données SQL sur une IP privée dans VNet (sans internet). Les règles de pare-feu utilisent toujours les points publics. TLS chiffre mais utilise un routage public. L’intégration Private Link + VNet offre une connectivité entièrement privée via la dorsale Microsoft."
+    },
+    {
+      "id": "az204-1b10b63735f8",
+      "examSlug": "az204",
+      "domain": "Storage",
+      "topic": "BlobStorage",
+      "tags": [
+        "AZ-204",
+        "Storage",
+        "BlobStorage"
+      ],
+      "promptHtml": "Une application subit des délais d’attente intermittents en se connectant à Azure Storage. Il faut implémenter une logique de réessayage avec un recul exponentiel.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez la politique de réessayage du SDK de stockage Azure avec une stratégie de backoff exponentiel"
+        },
+        {
+          "key": "B",
+          "label": "Implémenter une boucle de tentative personnalisée avec Thread.Sleep"
+        },
+        {
+          "key": "C",
+          "label": "Augmenter le délai d’attente d’opération sans logique de réessai"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez la politique de réessayage du SDK de stockage Azure avec une stratégie de backoff exponentiel",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Storage SDK inclut des politiques de réessayage intégrées avec des motifs de backoff exponentiel, de gigue et de disjoncteurs. Les boucles de tentative personnalisées sont sujettes aux erreurs. L’augmentation du délai d’attente ne règle pas les pannes transitoires. Les politiques de tentative SDK fournissent une gestion des défauts transitoires de qualité production avec des stratégies configurables."
+    }
+  ]
+}

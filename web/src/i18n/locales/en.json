@@ -1,0 +1,70 @@
+{
+  "app": {
+    "title": "Microsoft Certification Practice",
+    "tagline": "Select an exam, choose your mode, and start practicing."
+  },
+  "theme": {
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  },
+  "language": {
+    "switchToFrench": "Switch to French",
+    "switchToEnglish": "Switch to English"
+  },
+  "setup": {
+    "cardTitle": "Exam Setup",
+    "examLabel": "Exam",
+    "examPlaceholder": "Choose an exam...",
+    "questions": "questions",
+    "progress": {
+      "lastAttempt": "Last attempt",
+      "lastScore": "Last score",
+      "missed": "Missed",
+      "noAttempts": "No attempts yet",
+      "missedCount_one": "{{count}} question",
+      "missedCount_other": "{{count}} questions"
+    },
+    "modeLabel": "Mode",
+    "modePractice": "Practice",
+    "modeTimed": "Timed Quiz",
+    "modeHintPractice": "You will see the correct answer and explanation after each question.",
+    "modeHintTimed": "Questions are scored at the end. No answers are revealed during the quiz.",
+    "domainLabel": "Domain",
+    "domainAll": "All domains",
+    "topicLabel": "Topic",
+    "topicAll": "All topics",
+    "reviewMissedLabel": "Only review previously missed questions",
+    "matchCount_one": "{{count}} question match",
+    "matchCount_other": "{{count}} questions match",
+    "startSession": "Start Session",
+    "loading": "Loading..."
+  },
+  "session": {
+    "backToSetup": "Back to setup",
+    "questionOf": "Question {{current}} of {{total}}",
+    "modePractice": "Practice",
+    "modeTimed": "Timed Quiz",
+    "checkAnswer": "Check Answer",
+    "next": "Next",
+    "finishQuiz": "Finish Quiz",
+    "correct": "Correct: {{option}}) {{label}}",
+    "explanation": "Explanation",
+    "additionalContext": "Additional context",
+    "nextQuestion": "Next Question",
+    "finishSession": "Finish Session"
+  },
+  "results": {
+    "backToSetup": "Back to setup",
+    "titlePractice": "{{code}} Practice Complete",
+    "titleTimed": "{{code}} Timed Quiz Complete",
+    "score": "Score",
+    "percentage": "Percentage",
+    "missed": "Missed",
+    "time": "Time",
+    "tryAgain": "Try Again",
+    "reviewMissed": "Review Missed Questions",
+    "questionsToRevisit": "Questions to revisit",
+    "correct": "Correct: {{option}}) {{label}}",
+    "perfectScore": "Perfect score — no missed questions!"
+  }
+}

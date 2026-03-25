@@ -1,0 +1,3126 @@
+{
+  "exam": {
+    "slug": "gh300",
+    "code": "GH-300",
+    "title": "Fondations GitHub",
+    "sourceFile": "gh300_flashcards_2026-03-23.csv",
+    "updatedOn": "2026-03-23",
+    "questionCount": 100,
+    "domains": [
+      "AITools",
+      "Administration",
+      "Analytics",
+      "Authentication",
+      "Automation",
+      "CICD",
+      "Compliance",
+      "Governance",
+      "Integration",
+      "ProjectManagement",
+      "RepositoryManagement",
+      "Security"
+    ],
+    "topics": [
+      "AccessAuditing",
+      "AccessControl",
+      "ActionGovernance",
+      "AdoptionMetrics",
+      "AirGapped",
+      "AppManagement",
+      "ApprovalGates",
+      "ArtifactManagement",
+      "Automation",
+      "AzureDeployment",
+      "AzureIntegration",
+      "BranchManagement",
+      "BranchStrategy",
+      "Branding",
+      "CICDStandardization",
+      "CLAManagement",
+      "CLIAuthentication",
+      "CacheManagement",
+      "CodeOwnership",
+      "CodeQuality",
+      "CodeReview",
+      "CommitIntegrity",
+      "CommitStandards",
+      "Compliance",
+      "ContainerOptimization",
+      "CrossTeamOwnership",
+      "CustomFields",
+      "DataLossPrevention",
+      "DatabaseMigrations",
+      "DependencyAutomation",
+      "DeploymentApprovals",
+      "DeploymentControl",
+      "DeploymentStrategy",
+      "Development",
+      "DisasterRecovery",
+      "Documentation",
+      "EnterpriseSSO",
+      "EnvironmentManagement",
+      "ExternalAccess",
+      "ForkManagement",
+      "GitHooks",
+      "GlobalTeams",
+      "InfrastructureAsCode",
+      "InfrastructurePreview",
+      "Integration",
+      "IntegrationTesting",
+      "IssueManagement",
+      "KeyManagement",
+      "KnowledgeManagement",
+      "KubernetesAuthentication",
+      "LDAPIntegration",
+      "LogManagement",
+      "LongTermRetention",
+      "MergeStrategy",
+      "MultiArchitecture",
+      "NetworkSecurity",
+      "OSSSecurity",
+      "Observability",
+      "Optimization",
+      "PRLabeling",
+      "PRStandards",
+      "PackageManagement",
+      "PackageSecurity",
+      "PolicyEnforcement",
+      "PreviewEnvironments",
+      "ProjectManagement",
+      "ProvenanceAttestations",
+      "QualityMetrics",
+      "ReleaseAutomation",
+      "ReleaseManagement",
+      "RepositoryStandards",
+      "ReviewManagement",
+      "RiskManagement",
+      "SBOM",
+      "SIEMIntegration",
+      "SLSA",
+      "SecretRotation",
+      "ServerlessDeployment",
+      "SmokeTesting",
+      "StorageManagement",
+      "Submodules",
+      "TeamHierarchy",
+      "TeamPolicies",
+      "TechnicalDebt",
+      "TestOptimization",
+      "TestParallelization",
+      "TokenManagement",
+      "Traceability",
+      "Triage",
+      "UpgradeStrategy",
+      "UsageAnalytics",
+      "VaultIntegration",
+      "VersionManagement",
+      "VisibilityControl",
+      "VulnerabilityReporting",
+      "WorkflowEnforcement",
+      "WorkflowReview",
+      "WorkflowSecurity"
+    ]
+  },
+  "questions": [
+    {
+      "id": "gh300-98636503944d",
+      "examSlug": "gh300",
+      "domain": "ProjectManagement",
+      "topic": "CustomFields",
+      "tags": [
+        "GH-300",
+        "ProjectManagement",
+        "CustomFields"
+      ],
+      "promptHtml": "Une équipe de développement logiciel doit suivre les tâches avec des champs personnalisés pour la planification des sprints, les niveaux de priorité et les dépendances entre les tâches. La solution doit s’intégrer aux commits de code et aux pull requests.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Problèmes avec les étiquettes et les jalons"
+        },
+        {
+          "key": "B",
+          "label": "Projets GitHub avec champs personnalisés et liens entre problèmes"
+        },
+        {
+          "key": "C",
+          "label": "Outil de gestion de projet tiers"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Projets GitHub avec champs personnalisés et liens entre problèmes",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Projects (Projects v2) prend en charge des champs personnalisés pour toutes les métadonnées, renvoie automatiquement aux issues/PR, et fournit des vues (tableau, tableau, feuille de route). Les problèmes liés aux étiquettes manquent de flexibilité dans les champs personnalisés. Les outils tiers perdent leur intégration native sur GitHub. Projects v2 est la gestion native de projet de GitHub avec une personnalisation complète."
+    },
+    {
+      "id": "gh300-8fa2f7cdadef",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "CommitStandards",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "CommitStandards"
+      ],
+      "promptHtml": "Votre entreprise exige que tous les messages de commit suivent le format Commits Conventionnels (type : description) avec une application automatique bloquant les commits non conformes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec validation de commitlint sur les pull requests"
+        },
+        {
+          "key": "B",
+          "label": "Git hooks sur les stations de travail développeur"
+        },
+        {
+          "key": "C",
+          "label": "Révision manuelle du code des messages de validation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec validation de commitlint sur les pull requests",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Actions avec commitlint s’exécute sur des événements PR, valide le format du message de commit et fusionne les blocs via des vérifications de statut. Les hooks git sont uniquement côté client (contournables). La relecture manuelle ne s’adapte pas et est sujette aux erreurs. La validation côté serveur fournit des standards de messages de commit applicables."
+    },
+    {
+      "id": "gh300-70afeed3d3b8",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "CodeOwnership",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "CodeOwnership"
+      ],
+      "promptHtml": "Un dépôt GitHub contient un monodépôt avec 20 services. Les pull requests devraient être automatiquement attribuées aux propriétaires du code en fonction des fichiers modifiés, empêchant ainsi la fusion sans l’approbation du propriétaire.",
+      "options": [
+        {
+          "key": "A",
+          "label": "CODEOWNERS avec des motifs de chemin et une protection de branchement nécessitant une revue par le propriétaire"
+        },
+        {
+          "key": "B",
+          "label": "Attribution manuelle de la république."
+        },
+        {
+          "key": "C",
+          "label": "Flux de travail GitHub Actions pour l’attribution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "CODEOWNERS avec des motifs de chemin et une protection de branchement nécessitant une revue par le propriétaire",
+      "rationaleHtml": "",
+      "extraHtml": "CODEOWNERS mappe les chemins vers les équipes/utilisateurs, demande automatiquement des revues lorsque les fichiers changent, la protection des branches impose l’approbation du propriétaire. L’attribution manuelle ne s’adapte pas. Les actions peuvent assigner mais ne s’intègrent pas nativement avec la protection des branchements. CODEOWNERS est le mécanisme de propriété native et de routage de révision."
+    },
+    {
+      "id": "gh300-643f638e1745",
+      "examSlug": "gh300",
+      "domain": "RepositoryManagement",
+      "topic": "BranchManagement",
+      "tags": [
+        "GH-300",
+        "RepositoryManagement",
+        "BranchManagement"
+      ],
+      "promptHtml": "Un flux de développement exige que les branches de fonctionnalités soient automatiquement supprimées après la fusion des pull requests afin d’éviter l’encombrement des dépôts, mais les branches de release doivent être préservées.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Paramètres du dépôt pour la suppression automatique des branches avec exclusions protégées"
+        },
+        {
+          "key": "B",
+          "label": "Nettoyage manuel des branches"
+        },
+        {
+          "key": "C",
+          "label": "Flux de travail GitHub Actions supprimant toutes les branches"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Paramètres du dépôt pour la suppression automatique des branches avec exclusions protégées",
+      "rationaleHtml": "",
+      "extraHtml": "Le paramètre de suppression automatique des branches fusionnées par dépôt préserve automatiquement les branches protégées. Le nettoyage manuel ne s’élastique pas et est oublié. La suppression basée sur les workflows manque de conscience protégée intégrée des branchements. La suppression automatique native respecte les règles de protection et réduit l’encombrement."
+    },
+    {
+      "id": "gh300-3fbfb2665688",
+      "examSlug": "gh300",
+      "domain": "Analytics",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-300",
+        "Analytics",
+        "CodeReview"
+      ],
+      "promptHtml": "Votre organisation doit mesurer l’efficacité des revues de code : le temps jusqu’à la première révision, le nombre de tours d’évaluation et la participation des évaluateurs sur 200 dépôts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "API GitHub GraphQL interrogeant la chronologie d’examen des pull requests et agrégeant les métriques"
+        },
+        {
+          "key": "B",
+          "label": "Suivi manuel dans les tableurs"
+        },
+        {
+          "key": "C",
+          "label": "Uniquement sur le tableau de bord GitHub Insights"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "API GitHub GraphQL interrogeant la chronologie d’examen des pull requests et agrégeant les métriques",
+      "rationaleHtml": "",
+      "extraHtml": "L’API GraphQL fournit des données détaillées sur les délais de relations publiques (reviewRequestedAt, reviewedAt, comptes d’avis) pour des analyses personnalisées. Le suivi manuel ne s’adapte pas. Insights fournit certaines métriques mais GraphQL permet des KPI personnalisés. L’accès à l’API permet de créer des tableaux de bord analytiques de revue de code sur mesure."
+    },
+    {
+      "id": "gh300-8315641b7f80",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "Optimization",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "Optimization"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit construire et tester du code déclenché par des événements pull_request, mais certains chemins (/docs, README.md) ne devraient pas déclencher des compilations coûteuses de CI.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions Paths - filtre d’ignorer sur pull_request déclencheur"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez toutes les constructions et gaspillez des ressources"
+        },
+        {
+          "key": "C",
+          "label": "Nécessite une répartition manuelle des flux de travail"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions Paths - filtre d’ignorer sur pull_request déclencheur",
+      "rationaleHtml": "",
+      "extraHtml": "paths-ignore empêche l’exécution du flux de travail lorsque seuls les chemins spécifiés changent, optimisant ainsi les coûts d’IC. Faire jouer tous les builds gaspille des ressources. Le dispatch manuel enlève les avantages de l’automatisation. Le filtrage de chemin est l’optimisation intégrée de l’IC pour les monodépôts et les modifications de documentation."
+    },
+    {
+      "id": "gh300-af734046a99c",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "TokenManagement",
+      "tags": [
+        "GH-300",
+        "Security",
+        "TokenManagement"
+      ],
+      "promptHtml": "Votre politique de sécurité exige que les jetons d’accès personnels GitHub expirent après 90 jours maximum, l’application automatique empêchant la création de jetons à durée de vie plus longue.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Définition de la politique de sécurité de l’organisation : durée de vie maximale des jetons"
+        },
+        {
+          "key": "B",
+          "label": "Rappels par email aux utilisateurs"
+        },
+        {
+          "key": "C",
+          "label": "Audits manuels de jetons"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Définition de la politique de sécurité de l’organisation : durée de vie maximale des jetons",
+      "rationaleHtml": "",
+      "extraHtml": "Les politiques de l’organisation imposent une expiration maximale des jetons, empêchant les utilisateurs de créer des jetons à plus longue durée de vie. Les rappels par email reposent sur la conformité des utilisateurs. Les audits manuels sont à un moment donné. L’application des politiques limite de manière proactive le risque à vie de l’accréditation au niveau du fournisseur d’identité."
+    },
+    {
+      "id": "gh300-de95d939be33",
+      "examSlug": "gh300",
+      "domain": "Administration",
+      "topic": "Branding",
+      "tags": [
+        "GH-300",
+        "Administration",
+        "Branding"
+      ],
+      "promptHtml": "Un environnement GitHub Enterprise doit prendre en charge, avec un logo de l’entreprise, un schéma de couleurs et un domaine personnalisé pour les sites GitHub Pages.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Enterprise avec des paramètres de branding personnalisés et un domaine personnalisé GitHub Pages"
+        },
+        {
+          "key": "B",
+          "label": "GitHub.com avec le profil de l’organisation"
+        },
+        {
+          "key": "C",
+          "label": "Serveur Git auto-hébergé avec interface utilisateur personnalisée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Enterprise avec des paramètres de branding personnalisés et un domaine personnalisé GitHub Pages",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Enterprise prend en charge les logos personnalisés, les couleurs, la personnalisation de la navigation et les domaines personnalisés Pages. GitHub.com profils d’organisations ont une personnalisation limitée. Les serveurs auto-hébergés nécessitent de maintenir une interface personnalisée. Enterprise offre des capacités de branding personnalisé et gérée."
+    },
+    {
+      "id": "gh300-553aa143a140",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "DeploymentControl",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "DeploymentControl"
+      ],
+      "promptHtml": "Un pipeline CI/CD doit être déployé en production uniquement pendant une fenêtre de maintenance spécifiée (samedi 00h00-04h00 UTC) avec un flux d’approbation automatisé en dehors de la fenêtre.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec déclencheurs de planification et logique de déploiement conditionnelle basée sur le temps"
+        },
+        {
+          "key": "B",
+          "label": "Calendrier de déploiement manuel"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez les flux de travail en dehors de la fenêtre de maintenance"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec déclencheurs de planification et logique de déploiement conditionnelle basée sur le temps",
+      "rationaleHtml": "",
+      "extraHtml": "Les actions peuvent évaluer le temps actuel, exécuter conditionnellement des étapes de déploiement pendant la fenêtre, ou attendre/exiger une approbation hors fenêtre. Le déploiement manuel comporte des erreurs. Désactiver les workflows fait perdre de la flexibilité. Les conditions temporelles permettent l’application des fenêtres de maintenance dans l’automatisation."
+    },
+    {
+      "id": "gh300-359a28e1dd7c",
+      "examSlug": "gh300",
+      "domain": "AITools",
+      "topic": "UsageAnalytics",
+      "tags": [
+        "GH-300",
+        "AITools",
+        "UsageAnalytics"
+      ],
+      "promptHtml": "Votre organisation a besoin que GitHub Copilot soit déployé auprès de 500 développeurs avec des analyses d’utilisation montrant les taux d’acceptation du code et la distribution des langages.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Copilot for Business avec tableau de bord analytique au niveau de l’organisation"
+        },
+        {
+          "key": "B",
+          "label": "GitHub Copilot Individual pour chaque développeur"
+        },
+        {
+          "key": "C",
+          "label": "Aucun suivi d’utilisation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Copilot for Business avec tableau de bord analytique au niveau de l’organisation",
+      "rationaleHtml": "",
+      "extraHtml": "Copilot for Business propose une facturation centralisée, une gestion des politiques et des analyses d’utilisation montrant suggestions, acceptations et langues. Les licences individuelles manquent d’analyses au niveau de l’organisation. Aucun suivi empêche la mesure du ROI. Le niveau business est le modèle de déploiement d’assistants de codage IA en entreprise."
+    },
+    {
+      "id": "gh300-d1dedc8b9304",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ReleaseAutomation",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ReleaseAutomation"
+      ],
+      "promptHtml": "Une équipe de développement pratique le développement basé sur les troncs avec des indicateurs de fonctionnalités. Les versions doivent être balisées automatiquement lorsque les numéros de version dans package.json changent sur la branche principale.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub détectant les changements de version et créant des versions avec des balises git"
+        },
+        {
+          "key": "B",
+          "label": "Marquage manuel de libération"
+        },
+        {
+          "key": "C",
+          "label": "Compilations automatisées chaque soir sans suivi de version"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub détectant les changements de version et créant des versions avec des balises git",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow d’actions compare package.json version de push à main, crée la version GitHub et le tag git lorsque la version incrémente. Le marquage manuel est sujet aux erreurs. Les builds nocturnes ne correspondent pas aux versions. Les versions automatisées pilotées par versions s’alignent sur le versionnement sémantique et le développement basé sur trunk."
+    },
+    {
+      "id": "gh300-d647fbb76cb3",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "AppManagement",
+      "tags": [
+        "GH-300",
+        "Security",
+        "AppManagement"
+      ],
+      "promptHtml": "Votre entreprise exige que toutes les applications OAuth GitHub utilisées par les développeurs soient pré-approuvées, avec un blocage automatique de l’accès non approuvé aux ressources de l’organisation par des applications tierces.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Politique d’application OAuth de l’organisation GitHub restreignant les applications approuvées"
+        },
+        {
+          "key": "B",
+          "label": "Document de politique par email"
+        },
+        {
+          "key": "C",
+          "label": "Aucun contrôle d’accès aux applications"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Politique d’application OAuth de l’organisation GitHub restreignant les applications approuvées",
+      "rationaleHtml": "",
+      "extraHtml": "La politique d’application OAuth permet aux administrateurs de l’organisation d’approuver ou de refuser les applications, empêchant ainsi l’accès non approuvé aux données de l’organisation. Les politiques de messagerie reposent sur la conformité des utilisateurs. L’absence de contrôles ne crée un risque d’exfiltration de données. Les restrictions des applications OAuth imposent la gouvernance d’accès tierce au niveau de la plateforme."
+    },
+    {
+      "id": "gh300-769932503a55",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "WorkflowEnforcement",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "WorkflowEnforcement"
+      ],
+      "promptHtml": "Un dépôt GitHub doit imposer un flux de travail Gitflow avec un maître protégé et développer des branches, exigeant des pull requests pour tous les changements et empêchant les push forcés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les règles de protection des branches sur master et develop nécessitent une PR et une poussée de force de blocage"
+        },
+        {
+          "key": "B",
+          "label": "Formation uniquement pour développeurs"
+        },
+        {
+          "key": "C",
+          "label": "Git hooks sur les machines clients"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les règles de protection des branches sur master et develop nécessitent une PR et une poussée de force de blocage",
+      "rationaleHtml": "",
+      "extraHtml": "La protection de branche impose l’exigence de PR, bloque la poussée de force, et peut exiger des vérifications de statut par branche. La formation ne fait pas respecter la conformité. Les crochets clients sont contournables. La protection des branches côté serveur offre des contraintes de flux de travail applicables."
+    },
+    {
+      "id": "gh300-2efdeb630d9f",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ContainerOptimization",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ContainerOptimization"
+      ],
+      "promptHtml": "Votre pipeline CI/CD construit des images Docker avec la cache des couches pour optimiser les temps de compilation. Le workflow doit utiliser le cache de la couche de construction précédente depuis le registre du conteneur.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec Docker buildx cache-from et cache-to registry"
+        },
+        {
+          "key": "B",
+          "label": "Pas de mise en cache, je construis à partir de zéro"
+        },
+        {
+          "key": "C",
+          "label": "Gestion manuelle du cache local"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec Docker buildx cache-from et cache-to registry",
+      "rationaleHtml": "",
+      "extraHtml": "Docker Buildx prend en charge les backends de cache externes (registre, cache GitHub), réutilisant les couches entre les flux de travail et réduisant le temps de compilation. Pas de mise en cache ne perd de temps. Le cache manuel ne fonctionne pas dans les runners éphémères. La mise en cache de couches soutenue par le registre optimise la construction de conteneurs CI."
+    },
+    {
+      "id": "gh300-3708b26334dd",
+      "examSlug": "gh300",
+      "domain": "Compliance",
+      "topic": "CLAManagement",
+      "tags": [
+        "GH-300",
+        "Compliance",
+        "CLAManagement"
+      ],
+      "promptHtml": "Un projet logiciel nécessite la signature des accords de licence de contributeur (CLA) avant d’accepter les pull requests, avec une validation automatisée bloquant la fusion jusqu’à l’exécution de la CLA.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Application GitHub du bot CLA avec protection de branchement nécessitant une vérification CLA"
+        },
+        {
+          "key": "B",
+          "label": "Suivi manuel de la CLA dans un tableur"
+        },
+        {
+          "key": "C",
+          "label": "Aucune application de la CLA"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Application GitHub du bot CLA avec protection de branchement nécessitant une vérification CLA",
+      "rationaleHtml": "",
+      "extraHtml": "CLA Assistant ou des applications similaires automatisent la collecte de signatures, valident le statut du contributeur, rapportent via un contrôle de relations publiques lié à la protection des agences. Le suivi manuel ne s’adapte pas. L’absence d’application crée un risque légal. La validation automatisée de CLA assure la conformité IP au moment de la contribution au code."
+    },
+    {
+      "id": "gh300-7e63871f155a",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "DeploymentStrategy",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "DeploymentStrategy"
+      ],
+      "promptHtml": "Votre organisation exige que tous les déploiements en production soient immuables avec une capacité de rollback, en préservant les versions précédentes des applications et l’état de l’infrastructure.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec balises immuables du conteneur et versionnement de l’état IaC"
+        },
+        {
+          "key": "B",
+          "label": "Déploiements de déploiement de remplacement en place"
+        },
+        {
+          "key": "C",
+          "label": "Sauvegarde manuelle avant le déploiement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec balises immuables du conteneur et versionnement de l’état IaC",
+      "rationaleHtml": "",
+      "extraHtml": "Les déploiements immutables utilisent des balises d’image uniques (par exemple, git SHA), l’état IaC est versionné en backend distant permettant le rollback. Les mises à jour sur place empêchent les retours en arrière. Les sauvegardes manuelles sont sujettes aux erreurs. Les déploiements immutables + l’état versionné permettent un retour en arrière fiable et une trace d’audit."
+    },
+    {
+      "id": "gh300-777f1e179911",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "AccessControl",
+      "tags": [
+        "GH-300",
+        "Security",
+        "AccessControl"
+      ],
+      "promptHtml": "Un dépôt GitHub contient une documentation sensible qui ne devrait être accessible qu’aux employés internes, mais le code lui-même peut être public.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dépôt public avec wiki privé pour la documentation"
+        },
+        {
+          "key": "B",
+          "label": "Dépôt privé pour tout"
+        },
+        {
+          "key": "C",
+          "label": "Dépôt public avec documentation dans un dépôt privé séparé"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Dépôt public avec documentation dans un dépôt privé séparé",
+      "rationaleHtml": "",
+      "extraHtml": "Les wikis GitHub héritent de la visibilité des dépôts (wiki public pour les dépôts publics). Le dépôt privé limite inutilement le partage de code. Un dépôt privé séparé pour la documentation sensible + un dépôt public pour le code assure un contrôle d’accès granulaire. La division des dépôts permet des scénarios de visibilité mixte."
+    },
+    {
+      "id": "gh300-4efc022255f8",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "PreviewEnvironments",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "PreviewEnvironments"
+      ],
+      "promptHtml": "Votre flux de développement nécessite des déploiements de prévisualisation pour chaque pull request avec un nettoyage automatique lorsque la PR est fermée, minimisant ainsi les coûts cloud.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions : création d’un environnement de prévisualisation par PR, nettoyage sur l’événement fermé"
+        },
+        {
+          "key": "B",
+          "label": "Environnement de staging partagé écrasé par PR"
+        },
+        {
+          "key": "C",
+          "label": "Provisionnement manuel de l’environnement d’aperçu"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions : création d’un environnement de prévisualisation par PR, nettoyage sur l’événement fermé",
+      "rationaleHtml": "",
+      "extraHtml": "PR déclenche un événement ouvert déploie un aperçu du déploiement, un événement fermé déclenche le nettoyage (destruction IaC). La mise en scène partagée provoque des conflits. Le provisionnement manuel ne s’étend pas. Les environnements éphémères par RP permettent des tests isolés grâce au nettoyage automatique des ressources."
+    },
+    {
+      "id": "gh300-4227fb2b8667",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "CICDStandardization",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "CICDStandardization"
+      ],
+      "promptHtml": "Une organisation GitHub dispose de 100 dépôts avec des pratiques CI/CD incohérentes. La direction souhaite standardiser le linting, les tests et la détection de sécurité sur tous les dépôts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les flux de travail requis au niveau de l’organisation s’appliquaient à tous les dépôts"
+        },
+        {
+          "key": "B",
+          "label": "Copier-coller les fichiers de flux de travail dans chaque dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Documentation développeur uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les flux de travail requis au niveau de l’organisation s’appliquaient à tous les dépôts",
+      "rationaleHtml": "",
+      "extraHtml": "Les flux de travail requis (au niveau de l’organisation) s’exécutent automatiquement sur tous les dépôts, appliquent la standardisation de façon centralisée, mettent à jour une fois et s’appliquent partout. Copier-coller crée une charge de maintenance. La documentation ne garantit pas la conformité. Les flux de travail requis fournissent une gouvernance CI/CD évolutive."
+    },
+    {
+      "id": "gh300-3f9cc29dca2f",
+      "examSlug": "gh300",
+      "domain": "Compliance",
+      "topic": "LogManagement",
+      "tags": [
+        "GH-300",
+        "Compliance",
+        "LogManagement"
+      ],
+      "promptHtml": "Votre entreprise a besoin que les journaux d’audit GitHub soient exportés vers AWS S3 pour une conservation à long terme avec chiffrement au repos et des politiques de cycle de vie archivées vers Glacier après 90 jours.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Streaming de journaux d’audit GitHub vers S3 avec SSE et règles de cycle de vie"
+        },
+        {
+          "key": "B",
+          "label": "Téléchargements manuels des journaux d’audit périodique"
+        },
+        {
+          "key": "C",
+          "label": "Conservation des journaux hébergés uniquement sur GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Streaming de journaux d’audit GitHub vers S3 avec SSE et règles de cycle de vie",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux de journaux d’audit envoie les événements vers S3, SSE-S3/SSE-KMS fournit le chiffrement, et le cycle de vie S3 passe à Glacier pour optimiser les coûts. Les téléchargements manuels ne sont pas à l’échelle. La rétention sur GitHub est limitée. Le cycle de vie Streaming + S3 permet une archivage d’audit d’audit à long terme conforme à long terme."
+    },
+    {
+      "id": "gh300-8bc7a45bb87c",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "KubernetesAuthentication",
+      "tags": [
+        "GH-300",
+        "Security",
+        "KubernetesAuthentication"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions nécessite des identifiants pour être déployés sur le cluster Kubernetes sans stocker les fichiers kubeconfig dans un dépôt ou comme secrets GitHub.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fournisseur OIDC GitHub avec projection de token de compte de service Kubernetes"
+        },
+        {
+          "key": "B",
+          "label": "Kubeconfig dans les secrets GitHub"
+        },
+        {
+          "key": "C",
+          "label": "Intégrer kubeconfig dans le workflow YAML"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fournisseur OIDC GitHub avec projection de token de compte de service Kubernetes",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub OIDC fournit des jetons JWT, Kubernetes peut valider et émettre des jetons de courte durée éliminant ainsi des identifiants statiques. Le stockage de kubeconfig est moins sécurisé (problèmes de rotation). L’intégration dans YAML expose les identifiants dans le contrôle de version. La fédération OIDC élimine les identifiants Kubernetes statiques."
+    },
+    {
+      "id": "gh300-942a14a4f571",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ReleaseManagement",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ReleaseManagement"
+      ],
+      "promptHtml": "Votre équipe de développement doit créer automatiquement des versions brouillons lorsque le code est poussé vers les branches release/*, avec des notes de release générées à partir des messages de commit.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions : créer des versions brouillons avec des notes de version générées automatiquement"
+        },
+        {
+          "key": "B",
+          "label": "Écriture manuelle des notes de publication"
+        },
+        {
+          "key": "C",
+          "label": "Aucune documentation de publication"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions : créer des versions brouillons avec des notes de version générées automatiquement",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux d’actions sur branch push crée des versions brouillonnes via l’API GitHub, les notes de version générées automatiquement tirent les messages de commit et les titres PR. Les notes manuelles prennent du temps. Aucune documentation n’entrave l’adoption. Les versions automatisées simplifient la gestion des versions et la génération de journaux de modifications."
+    },
+    {
+      "id": "gh300-d4a00a7b4286",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "IssueManagement",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "IssueManagement"
+      ],
+      "promptHtml": "Un dépôt GitHub compte 10 000 numéros ouverts. La direction doit automatiquement clore les problèmes obsolètes sans activité pendant 90 jours après une période d’avertissement de 14 jours.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Bot GitHub Action avec des délais configurés"
+        },
+        {
+          "key": "B",
+          "label": "Triage manuel des données"
+        },
+        {
+          "key": "C",
+          "label": "Fermez tous les problèmes immédiatement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Bot GitHub Action avec des délais configurés",
+      "rationaleHtml": "",
+      "extraHtml": "Mode d’action étiquette les problèmes inactifs, commente avec un avertissement, se ferme après la période de grâce si aucune réponse. Le triage manuel ne s’adapte pas (problèmes de 10 000 $). Le gros rapprochement perd le signal. La gestion automatisée des problèmes obsolètes maintient la santé du dépôt avec la notification aux utilisateurs."
+    },
+    {
+      "id": "gh300-cdaa97b2353c",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "AccessAuditing",
+      "tags": [
+        "GH-300",
+        "Security",
+        "AccessAuditing"
+      ],
+      "promptHtml": "Votre organisation exige des journaux d’audit détaillés montrant qui a accédé à quel dépôt, quand et depuis quelle adresse IP pour les enquêtes de sécurité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Journal d’audit GitHub Enterprise avec événements d’accès au dépôt et journal IP"
+        },
+        {
+          "key": "B",
+          "label": "Journaux d’accès serveur uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Aucun suivi d’accès"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Journal d’audit GitHub Enterprise avec événements d’accès au dépôt et journal IP",
+      "rationaleHtml": "",
+      "extraHtml": "Le journal d’audit d’entreprise capture les événements d’accès au dépôt avec les détails de l’acteur, de l’horodatage, de l’adresse IP et des actions interrogeables via API ou en streaming. Les journaux du serveur manquent les actions au niveau de l’application. Aucun suivi empêche l’enquête sur les incidents. Le journal d’audit est la source faisant autorité pour la criminalistique d’accès."
+    },
+    {
+      "id": "gh300-e43eb5cf6aff",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "BranchStrategy",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "BranchStrategy"
+      ],
+      "promptHtml": "Un flux de travail CI/CD doit exécuter différentes étapes de build basées sur la branche git : feature/* exécute uniquement des tests, développer, exécuter des tests et déployer en staging, le déploiement principal en production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec exécution conditionnelle de tâches en utilisant github.ref ou filtres de branchement"
+        },
+        {
+          "key": "B",
+          "label": "Flux de travail séparés par branche"
+        },
+        {
+          "key": "C",
+          "label": "Un seul flux de travail sans différenciation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec exécution conditionnelle de tâches en utilisant github.ref ou filtres de branchement",
+      "rationaleHtml": "",
+      "extraHtml": "if : github.ref == 'refs/heads/main' exécute conditionnellement des jobs, ou les filtres on.push.branches déclenchent des workflows par pattern de branchement. Les workflows séparés dupliquent la logique. Un flux de travail unique et indifférencié manque d’isolation de l’environnement. L’exécution conditionnelle fournit une logique CI/CD consciente des branches."
+    },
+    {
+      "id": "gh300-dda195cd37be",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "VulnerabilityReporting",
+      "tags": [
+        "GH-300",
+        "Security",
+        "VulnerabilityReporting"
+      ],
+      "promptHtml": "Votre équipe de sécurité a besoin d’alertes GitHub Advanced Security agrégées sur 500 dépôts avec des rapports quotidiens par email résumant les nouvelles vulnérabilités selon leur gravité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "API GitHub GraphQL interrogeant les alertes de sécurité des organisations avec une génération de rapports planifiée"
+        },
+        {
+          "key": "B",
+          "label": "Vérifiez manuellement chaque onglet de sécurité du dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Notifications par e-mail par dépôt uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "API GitHub GraphQL interrogeant les alertes de sécurité des organisations avec une génération de rapports planifiée",
+      "rationaleHtml": "",
+      "extraHtml": "L’API GraphQL agrège Dependabot, CodeQL et les alertes de balayage secrète entre les organisations, permettant des rapports personnalisés (résumés quotidiens, répartition de la sévérité). La vérification manuelle ne s’adapte pas (500 dépôts). Les emails par dépôt font du bruit. Des rapports centralisés pilotés par API offrent une visibilité de sécurité exploitable."
+    },
+    {
+      "id": "gh300-67e7e71ac387",
+      "examSlug": "gh300",
+      "domain": "ProjectManagement",
+      "topic": "Automation",
+      "tags": [
+        "GH-300",
+        "ProjectManagement",
+        "Automation"
+      ],
+      "promptHtml": "Un dépôt GitHub suit les bugs, les fonctionnalités et les tâches de documentation. Les tâches doivent être automatiquement catégorisées et priorisées en fonction des étiquettes avec visualisation dans les tableaux de projet.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Automatisation des projets GitHub avec mises à jour de champs et vues basées sur les étiquettes"
+        },
+        {
+          "key": "B",
+          "label": "Mises à jour manuelles du tableau de projet"
+        },
+        {
+          "key": "C",
+          "label": "Pas de gestion de projet"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Automatisation des projets GitHub avec mises à jour de champs et vues basées sur les étiquettes",
+      "rationaleHtml": "",
+      "extraHtml": "Les workflows Projects v2 définissent automatiquement des champs personnalisés (priorité, type) en fonction des étiquettes de problème, les vues filtrées affichent les travaux catégorisés. Les mises à jour manuelles ne s’adaptent pas. Aucun PM ne perd de la visibilité. L’automatisation de projet pilotée par l’étiquette permet un suivi organisé du travail avec un minimum d’effort manuel."
+    },
+    {
+      "id": "gh300-966ef9591966",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "Integration",
+      "tags": [
+        "GH-300",
+        "Security",
+        "Integration"
+      ],
+      "promptHtml": "Votre entreprise exige que tous les push vers les branches de production déclenchent des scans de sécurité, et les vulnérabilités détectées créent automatiquement des tickets Jira assignés à l’équipe sécurité.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions avec analyse de sécurité et intégration de l’API Jira sur les événements push"
+        },
+        {
+          "key": "B",
+          "label": "Revues manuelles de sécurité"
+        },
+        {
+          "key": "C",
+          "label": "Scanners hebdomadaires programmés uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions avec analyse de sécurité et intégration de l’API Jira sur les événements push",
+      "rationaleHtml": "",
+      "extraHtml": "Les actions déclenchées par push exécutent des outils de sécurité (Trivy, Snyk), analysent les résultats, créent des problèmes Jira via une API avec les détails des vulnérabilités. Les avis manuels traînent par rapport aux validations. Les scans hebdomadaires retardent la détection. Le balayage push-push en temps réel + la gestion de tickets offre une boucle de rétroaction de sécurité immédiate."
+    },
+    {
+      "id": "gh300-de6b7ff59893",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "AzureIntegration",
+      "tags": [
+        "GH-300",
+        "Security",
+        "AzureIntegration"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit s’authentifier à Azure en utilisant des identifiants fédérés sans stocker de secrets clients, avec des permissions attribuées à des groupes de ressources spécifiques.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fournisseur OIDC GitHub avec identité fédérée Azure AD et assignations RBAC"
+        },
+        {
+          "key": "B",
+          "label": "Identifiants de principal de service dans GitHub Secrets"
+        },
+        {
+          "key": "C",
+          "label": "Compte administrateur partagé"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fournisseur OIDC GitHub avec identité fédérée Azure AD et assignations RBAC",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub OIDC émet des jetons, Azure AD fait confiance à GitHub comme fournisseur d’identité, le principal de service utilise des identifiants fédérés (sans secret), RBAC limite les permissions. Les secrets stockés posent des défis de rotation. Les comptes partagés manquent de trace d’audit. Identité fédérée + RBAC fournit un accès Azure sans secret et à portée de contrôle."
+    },
+    {
+      "id": "gh300-145924e8a73c",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "PRStandards",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "PRStandards"
+      ],
+      "promptHtml": "Votre équipe de développement a besoin de modèles pull requests pour appliquer les éléments de la liste de contrôle : tests mis à jour, documentation mise à jour, changements de dernière minute documentés.",
+      "options": [
+        {
+          "key": "A",
+          "label": ".github/pull_request_template.md avec la liste de contrôle markdown"
+        },
+        {
+          "key": "B",
+          "label": "Documentation wiki avec directives de relations publiques"
+        },
+        {
+          "key": "C",
+          "label": "Email avec les exigences de résidence permanente"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": ".github/pull_request_template.md avec la liste de contrôle markdown",
+      "rationaleHtml": "",
+      "extraHtml": "Le fichier modèle de PR remplit automatiquement la description PR avec la liste de contrôle, garantissant des informations cohérentes et des critères de révision. Le wiki nécessite une recherche manuelle. Les consignes par email sont ignorées. Les modèles fournissent une collecte structurée et exécutoire d’informations de relations publiques."
+    },
+    {
+      "id": "gh300-541deaa14215",
+      "examSlug": "gh300",
+      "domain": "Administration",
+      "topic": "AirGapped",
+      "tags": [
+        "GH-300",
+        "Administration",
+        "AirGapped"
+      ],
+      "promptHtml": "Une instance GitHub Enterprise Server doit prendre en charge un déploiement en air-gap dans une installation sécurisée sans accès à Internet, y compris l’installation de paquets et la fonctionnalité d’exécuteur GitHub Actions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Installation hors ligne de GitHub Enterprise Server avec actions pré-téléchargées et runners auto-hébergés"
+        },
+        {
+          "key": "B",
+          "label": "GitHub Enterprise Cloud"
+        },
+        {
+          "key": "C",
+          "label": "Besoin d’un accès internet"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Installation hors ligne de GitHub Enterprise Server avec actions pré-téléchargées et runners auto-hébergés",
+      "rationaleHtml": "",
+      "extraHtml": "GHES supporte l’installation hors ligne via téléchargement de paquets, les runners auto-hébergés n’ont pas besoin d’internet, les actions peuvent utiliser des dépôts d’actions locaux. Le cloud nécessite internet. L’accès à Internet viole l’exigence de disposition. GHES hors ligne + actions locales permet un SCM sécurisé et air-gagged (SCM)."
+    },
+    {
+      "id": "gh300-3d03033d4fff",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "ForkManagement",
+      "tags": [
+        "GH-300",
+        "Security",
+        "ForkManagement"
+      ],
+      "promptHtml": "Votre organisation doit empêcher la création de forks de dépôt afin d’éviter les fuites de code, tout en permettant la collaboration interne sur les dépôts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Paramètres d’organisation désactivant la création de forks pour les dépôts privés"
+        },
+        {
+          "key": "B",
+          "label": "Restrictions d’autorisation du dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Formation utilisateur uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Paramètres d’organisation désactivant la création de forks pour les dépôts privés",
+      "rationaleHtml": "",
+      "extraHtml": "La politique de l’organisation contrôle la création de forks par visibilité du dépôt (autoriser le public, le bloc privé). Les restrictions d’autorisation n’empêchent pas le fork. La formation ne fait pas respect. La politique de fork empêche la distribution privée de code via des forks tout en permettant des flux de travail publics de contribution OSS."
+    },
+    {
+      "id": "gh300-ed86e018fc7b",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "IntegrationTesting",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "IntegrationTesting"
+      ],
+      "promptHtml": "Un pipeline CI/CD doit exécuter des tests d’intégration nécessitant trois microservices fonctionnant simultanément avec la découverte de services et le réseau.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Conteneurs de service GitHub Actions avec alias réseau"
+        },
+        {
+          "key": "B",
+          "label": "Configuration d’environnement de test externe"
+        },
+        {
+          "key": "C",
+          "label": "Simuler toutes les dépendances"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Conteneurs de service GitHub Actions avec alias réseau",
+      "rationaleHtml": "",
+      "extraHtml": "Les conteneurs de service fonctionnent dans le même réseau Docker, accessibles via le nom du service comme le nom d’hôte, permettant des tests d’intégration réalistes. Les environnements externes ajoutent de la complexité. Les simulations ne détectent pas les problèmes d’intégration. Les conteneurs de service fournissent des tests multi-services isolés et réalistes en CI."
+    },
+    {
+      "id": "gh300-736e1b25073c",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "VisibilityControl",
+      "tags": [
+        "GH-300",
+        "Security",
+        "VisibilityControl"
+      ],
+      "promptHtml": "Votre entreprise exige une notification lorsqu’un dépôt de l’organisation est rendu public, avec un retour automatique au privé dans les 5 minutes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Webhook GitHub pour les changements de visibilité des dépôts avec un flux de travail automatisé de remédiation"
+        },
+        {
+          "key": "B",
+          "label": "Audit manuel quotidien"
+        },
+        {
+          "key": "C",
+          "label": "Comptez sur la notoriété des utilisateurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Webhook GitHub pour les changements de visibilité des dépôts avec un flux de travail automatisé de remédiation",
+      "rationaleHtml": "",
+      "extraHtml": "Le webhook du dépôt émet un événement au changement de visibilité ; l’automatisation (Action ou externe) redevient privée via API en quelques minutes. L’audit quotidien comporte une grande fenêtre de détection. La sensibilisation des utilisateurs ne prévient pas les accidents. La surveillance en temps réel basée sur des webhooks + la réponse automatisée empêchent l’exposition des données."
+    },
+    {
+      "id": "gh300-3d78f9410461",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "PackageManagement",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "PackageManagement"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit publier des paquets npm dans le registre GitHub Packages avec une validation de version qui empêche la republication accidentelle des versions existantes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec publication npm, authentification GITHUB_TOKEN et script de vérification de version"
+        },
+        {
+          "key": "B",
+          "label": "Publier sans validation de version"
+        },
+        {
+          "key": "C",
+          "label": "Publication manuelle npm"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec publication npm, authentification GITHUB_TOKEN et script de vérification de version",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux de travail de publication d’actions utilise GITHUB_TOKEN (auto-fourni, avec un périmètre d’application), le script vérifie les versions existantes dans le registre avant de publier pour éviter les écrasements. Aucune validation cause des échecs. La publication manuelle manque d’avantages en automatisation. La publication automatisée compatible avec la version permet d’éviter les conflits de registre d’enregistrement."
+    },
+    {
+      "id": "gh300-9c44e34b28c3",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "RepositoryStandards",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "RepositoryStandards"
+      ],
+      "promptHtml": "Votre organisation doit faire respecter que tous les dépôts GitHub disposent de fichiers README, LICENSE et SECURITY.md avec validation automatisée qui bloque la création de dépôts sans ces fichiers.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Modèles de dépôt avec les fichiers requis et les politiques d’organisation"
+        },
+        {
+          "key": "B",
+          "label": "Directives pour les développeurs uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Audits manuels"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Modèles de dépôt avec les fichiers requis et les politiques d’organisation",
+      "rationaleHtml": "",
+      "extraHtml": "Les modèles de dépôt incluent les fichiers requis, combinés aux politiques de l’organisation et aux ensembles de règles des dépôts peuvent imposer la présence de fichiers. Les directives ne sont pas appliquées. Les audits manuels sont réactifs. Les modèles + politiques garantissent de manière proactive les normes de documentation des dépôts."
+    },
+    {
+      "id": "gh300-0568d336c825",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ApprovalGates",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ApprovalGates"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit être déployé dans plusieurs environnements (développement, staging, production) en séquence avec des portes d’approbation manuelles entre staging et production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions avec déploiements basés sur l’environnement et relectures obligatoires en production"
+        },
+        {
+          "key": "B",
+          "label": "Flux de travail unique sans portes"
+        },
+        {
+          "key": "C",
+          "label": "Flux de travail séparés avec déclenchement manuel"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions avec déploiements basés sur l’environnement et relectures obligatoires en production",
+      "rationaleHtml": "",
+      "extraHtml": "Les environnements GitHub définissent l’ordre de déploiement, les évaluateurs doivent mettre en pause le flux de travail pour l’approbation, les secrets de l’environnement définissent les identifiants de champ d’application. Un flux de travail unique sans portes manque de sécurité. Les flux de travail séparés perdent leur orchestration. Le déploiement basé sur l’environnement offre un déploiement progressif avec des points de contrôle humains."
+    },
+    {
+      "id": "gh300-40e32b2e39d3",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "WorkflowSecurity",
+      "tags": [
+        "GH-300",
+        "Security",
+        "WorkflowSecurity"
+      ],
+      "promptHtml": "Votre politique de sécurité exige d’examiner les flux de travail GitHub Actions à la recherche de problèmes de sécurité : utilisation d’actions obsolètes, risques d’exposition des identifiants et schémas d’escalade de privilèges.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse de la sécurité des flux de travail avec actionlint ou des outils tiers en CI"
+        },
+        {
+          "key": "B",
+          "label": "Examen manuel du flux de travail"
+        },
+        {
+          "key": "C",
+          "label": "Aucune validation de flux de travail"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse de la sécurité des flux de travail avec actionlint ou des outils tiers en CI",
+      "rationaleHtml": "",
+      "extraHtml": "Actionlint valide la syntaxe des flux de travail et les pratiques de sécurité, peut être intégré dans les contrôles de relations publiques. La relecture manuelle ne s’adapte pas et manque des problèmes subtils. L’absence de validation crée un risque pour la sécurité. L’analyse automatisée des flux de travail assure la sécurité des pipelines CI/CD."
+    },
+    {
+      "id": "gh300-bbe3fb411898",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "IssueManagement",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "IssueManagement"
+      ],
+      "promptHtml": "Un dépôt GitHub nécessite différents modèles de problèmes pour les bugs, les requêtes de fonctionnalités et les vulnérabilités de sécurité, avec des champs personnalisés spécifiques à chaque type.",
+      "options": [
+        {
+          "key": "A",
+          "label": ".github/ISSUE_TEMPLATE/ avec plusieurs modèles de formulaires de problèmes YAML"
+        },
+        {
+          "key": "B",
+          "label": "Modèle de numéro générique unique"
+        },
+        {
+          "key": "C",
+          "label": "Modèles sans problème"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": ".github/ISSUE_TEMPLATE/ avec plusieurs modèles de formulaires de problèmes YAML",
+      "rationaleHtml": "",
+      "extraHtml": "Les formulaires de problème prennent en charge des champs personnalisés (menus déroulants, cases à cocher, texte), plusieurs modèles fournissent une structure spécifique à chaque type. Un modèle générique manque de structure. Aucun modèle ne conduit à des rapports de problèmes incomplets. Les formulaires à plusieurs issues garantissent une collecte complète et structurée des informations par type de numéro."
+    },
+    {
+      "id": "gh300-8dd8b5de857c",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "ActionGovernance",
+      "tags": [
+        "GH-300",
+        "Security",
+        "ActionGovernance"
+      ],
+      "promptHtml": "Votre entreprise exige que les flux de travail GitHub Actions n’utilisent que les actions des créateurs vérifiés sur GitHub ou des actions internes à l’organisation, bloquant ainsi toutes les autres actions tierces.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Politique d’utilisation des actions de l’organisation autorisant uniquement les actions vérifiées et locales"
+        },
+        {
+          "key": "B",
+          "label": "Audits manuels de flux de travail"
+        },
+        {
+          "key": "C",
+          "label": "Aucune restriction d’action"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Politique d’utilisation des actions de l’organisation autorisant uniquement les actions vérifiées et locales",
+      "rationaleHtml": "",
+      "extraHtml": "Les politiques d’utilisation des actions spécifient les sources d’actions autorisées (créateurs vérifiés, même organisation, dépôts spécifiques), appliquées au moment de l’exécution du workflow. Les audits manuels n’empêchent pas l’utilisation. Aucune restriction ne crée un risque dans la chaîne d’approvisionnement. Les politiques d’utilisation fournissent une liste d’autorisation d’action exécutoire."
+    },
+    {
+      "id": "gh300-ed96509333ac",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "KnowledgeManagement",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "KnowledgeManagement"
+      ],
+      "promptHtml": "Une équipe de développement utilise GitHub Discussions pour les questions-réponses, les RFC et le partage de connaissances. Les discussions populaires doivent être automatiquement converties en pages wiki épinglées.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec discussions API GraphQL et automatisation des mises à jour du wiki"
+        },
+        {
+          "key": "B",
+          "label": "Maintenance manuelle du wiki"
+        },
+        {
+          "key": "C",
+          "label": "Discussions uniquement, pas de wiki"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec discussions API GraphQL et automatisation des mises à jour du wiki",
+      "rationaleHtml": "",
+      "extraHtml": "Requêtes de workflow d’actions Discussions via GraphQL (par votes/activité), formate le contenu en markdown wiki, met à jour wiki via git push. L’entretien manuel ne s’adapte pas. Les discussions uniques perdent des connaissances soigneusement sélectionnées. Un pipeline automatisé de discussion vers wiki crée une documentation vivante à partir des connaissances de la communauté."
+    },
+    {
+      "id": "gh300-f9dfef51c0a8",
+      "examSlug": "gh300",
+      "domain": "Integration",
+      "topic": "ProjectManagement",
+      "tags": [
+        "GH-300",
+        "Integration",
+        "ProjectManagement"
+      ],
+      "promptHtml": "Votre organisation nécessite une synchronisation bidirectionnelle entre les problèmes GitHub et les tickets Jira, avec des mises à jour en temps réel propagées dans les deux sens.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Webhook GitHub + Webhook Jira avec service de synchronisation bidirectionnelle ou application d’intégration"
+        },
+        {
+          "key": "B",
+          "label": "Création manuelle de billets dans les deux systèmes"
+        },
+        {
+          "key": "C",
+          "label": "Synchronisation batch programmée uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Webhook GitHub + Webhook Jira avec service de synchronisation bidirectionnelle ou application d’intégration",
+      "rationaleHtml": "",
+      "extraHtml": "Les webhooks des deux plateformes déclenchent un service de synchronisation mettant à jour l’autre plateforme en temps réel, maintenant un état bidirectionnel. La duplication manuelle provoque la dérive. La synchronisation par lots crée du lag. L’intégration bidirectionnelle pilotée par Webhook permet une synchronisation en temps réel des items de travail multiplateforme."
+    },
+    {
+      "id": "gh300-3d34464becbc",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "TestOptimization",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "TestOptimization"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit exécuter des tests coûteux de bout en bout uniquement lorsque certains chemins de code changent, et non pour la documentation ou les modifications de configuration.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les chemins d’actions de GitHub filtrent déclenchant uniquement les tests E2E pour les chemins du code source"
+        },
+        {
+          "key": "B",
+          "label": "Effectuez tous les tests à chaque poussée"
+        },
+        {
+          "key": "C",
+          "label": "Déclenchement manuel des tests"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les chemins d’actions de GitHub filtrent déclenchant uniquement les tests E2E pour les chemins du code source",
+      "rationaleHtml": "",
+      "extraHtml": "on.push.paths : ['src/**', 'tests/**'] déclenche des tests coûteux uniquement lorsque le code pertinent change, les modifications de docs/config saut. Toujours en fonctionnement gaspille des ressources. Le déclenchement manuel fait perdre l’automatisation. Le test sélectif basé sur les chemins optimise l’utilisation des ressources de l’IC."
+    },
+    {
+      "id": "gh300-d69e21d5db7b",
+      "examSlug": "gh300",
+      "domain": "Compliance",
+      "topic": "LongTermRetention",
+      "tags": [
+        "GH-300",
+        "Compliance",
+        "LongTermRetention"
+      ],
+      "promptHtml": "Votre entreprise exige que les journaux d’audit GitHub Enterprise soient conservés pendant 10 ans dans un stockage immuable pour assurer la conformité, avec des capacités d’interrogation efficaces.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Audit log streaming vers Azure Blob avec la politique d’immutabilité et indexé dans Azure Data Lake"
+        },
+        {
+          "key": "B",
+          "label": "Conservation des journaux d’audit locaux GHES"
+        },
+        {
+          "key": "C",
+          "label": "Aucune rétention à long terme"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Audit log streaming vers Azure Blob avec la politique d’immutabilité et indexé dans Azure Data Lake",
+      "rationaleHtml": "",
+      "extraHtml": "Flux des journaux d’audit vers le stockage Blob avec une conservation légale basée sur le temps empêchant la suppression, Azure Data Lake Analytics permet une requête efficace. La rétention locale a des limites. Aucun stockage à long terme ne viole la conformité. Un stockage cloud immuable + analytique répond aux exigences réglementaires."
+    },
+    {
+      "id": "gh300-72bac3e97159",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "TeamHierarchy",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "TeamHierarchy"
+      ],
+      "promptHtml": "Une organisation GitHub dispose d’équipes avec des membres imbriqués (ingénierie > frontend > équipe React). Les autorisations du dépôt doivent automatiquement hériter de la hiérarchie de l’équipe mère.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Équipes imbriquées avec accès hérité au dépôt"
+        },
+        {
+          "key": "B",
+          "label": "Équipes plates avec réplication manuelle des autorisations"
+        },
+        {
+          "key": "C",
+          "label": "Autorisations individuelles des utilisateurs uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Équipes imbriquées avec accès hérité au dépôt",
+      "rationaleHtml": "",
+      "extraHtml": "Les équipes imbriquées héritent automatiquement des permissions parentes, les équipes enfants ajoutent les permissions sans supprimer l’accès parent. Les équipes plates nécessitent des autorisations en double. Les autorisations individuelles ne sont pas adaptées. Le « team nesting » fournit une structure organisationnelle hiérarchique, avec contrôle d’accès hérité, en miroir."
+    },
+    {
+      "id": "gh300-d6c6f46013a0",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "OSSSecurity",
+      "tags": [
+        "GH-300",
+        "Security",
+        "OSSSecurity"
+      ],
+      "promptHtml": "Votre flux de travail de développement exige que les pull requests de contributeurs externes soient examinées et approuvées avant l’exécution du workflow afin d’éviter tout code malveillant dans les Actions.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Protection des branches nécessitant des examens de pull requests et l’approbation du flux de travail des contributeurs pour la première fois"
+        },
+        {
+          "key": "B",
+          "label": "Autorisez tous les flux de travail à s’exécuter automatiquement"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver les contributions externes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Protection des branches nécessitant des examens de pull requests et l’approbation du flux de travail des contributeurs pour la première fois",
+      "rationaleHtml": "",
+      "extraHtml": "Les dépôts publics nécessitent l’approbation du flux de travail du contributeur pour la première fois par le mainteneur avant que les actions ne s’exécutent, les relecteurs vérifient la sécurité du code. L’auto-run crée des risques (minage de cryptomonnaies, vol de créances). Désactiver les contributions nuit à l’OSS. Les portes d’approbation équilibrent sécurité et collaboration ouverte."
+    },
+    {
+      "id": "gh300-f5917b1a8203",
+      "examSlug": "gh300",
+      "domain": "Authentication",
+      "topic": "LDAPIntegration",
+      "tags": [
+        "GH-300",
+        "Authentication",
+        "LDAPIntegration"
+      ],
+      "promptHtml": "Un déploiement GitHub Enterprise Server doit supporter l’authentification LDAP, l’intégration avec l’appartenance à un groupe imbriquée et la synchronisation automatique des équipes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Enterprise Server LDAP Sync avec support des groupes imbriqués"
+        },
+        {
+          "key": "B",
+          "label": "Gestion manuelle des utilisateurs et de l’équipe"
+        },
+        {
+          "key": "C",
+          "label": "GitHub.com authentification uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Enterprise Server LDAP Sync avec support des groupes imbriqués",
+      "rationaleHtml": "",
+      "extraHtml": "GHES LDAP Sync fournit automatiquement des provisions, synchronise l’appartenance à l’équipe selon les groupes LDAP, y compris les groupes imbriqués. La gestion manuelle ne s’adapte pas et crée des dérives. GitHub.com ne supporte pas LDAP. LDAP Sync fournit l’identité et le cycle de vie d’accès automatisés depuis l’annuaire de l’entreprise."
+    },
+    {
+      "id": "gh300-a4a347e79602",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "MultiArchitecture",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "MultiArchitecture"
+      ],
+      "promptHtml": "Votre pipeline CI/CD doit construire des images conteneurs multi-architectures (amd64, arm64) pour un déploiement multiplateforme avec un manifeste image unique.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec builds multiplateformes Docker buildx et listes de manifestes"
+        },
+        {
+          "key": "B",
+          "label": "Constructions séparées avec des balises spécifiques à l’architecture"
+        },
+        {
+          "key": "C",
+          "label": "Architecture unique uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec builds multiplateformes Docker buildx et listes de manifestes",
+      "rationaleHtml": "",
+      "extraHtml": "Docker buildx construit plusieurs architectures dans une seule commande, crée une liste de manifestes permettant une seule balise pour toutes les plateformes. Des constructions séparées créent une complexité de gestion. L’arc unique limite les cibles de déploiement. Le buildx multiplateforme permet des images conteneurs universelles."
+    },
+    {
+      "id": "gh300-561cd4855f12",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "MergeStrategy",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "MergeStrategy"
+      ],
+      "promptHtml": "Un dépôt GitHub doit imposer des fusions uniquement rebase pour maintenir l’historique linéaire, empêchant ainsi les commits de fusion et les écrasements.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Protection des branches permettant uniquement la fusion de base, désactivant la fusion, la fusion et le squash"
+        },
+        {
+          "key": "B",
+          "label": "Directives pour les développeurs"
+        },
+        {
+          "key": "C",
+          "label": "Crochets avant réception"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Protection des branches permettant uniquement la fusion de base, désactivant la fusion, la fusion et le squash",
+      "rationaleHtml": "",
+      "extraHtml": "Les paramètres des boutons de fusion de dépôt spécifient les types de fusion autorisés, la protection des branches l’applique. Les directives ne font pas respecter les comportements. Les crochets pré-réception sont complexes. Les restrictions de type de fusion native offrent une linéarité d’historique simple et applicable."
+    },
+    {
+      "id": "gh300-11e85e392f19",
+      "examSlug": "gh300",
+      "domain": "ProjectManagement",
+      "topic": "TechnicalDebt",
+      "tags": [
+        "GH-300",
+        "ProjectManagement",
+        "TechnicalDebt"
+      ],
+      "promptHtml": "Votre organisation doit suivre la dette technique en étiquetant les problèmes/PR avec des catégories de dettes et mesurer l’accumulation de dettes au fil du temps grâce à la visualisation.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Problèmes avec les étiquettes personnalisées et les projets suivant les métriques de dette via l’API GraphQL"
+        },
+        {
+          "key": "B",
+          "label": "Suivi de la dette par tableur"
+        },
+        {
+          "key": "C",
+          "label": "Aucun suivi de la dette"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Problèmes avec les étiquettes personnalisées et les projets suivant les métriques de dette via l’API GraphQL",
+      "rationaleHtml": "",
+      "extraHtml": "Problèmes d’étiquettes avec les étiquettes de dette technique (sécurité, performance, refactorisation), les projets agrégent par étiquette, l’API GraphQL exporte des données de séries temporelles pour la création de graphiques. Les tableaux créateurs créent des duplications. Aucun suivi empêche la gestion de la dette. Les fonctionnalités natives de GitHub + API permettent une visibilité intégrée de la dette."
+    },
+    {
+      "id": "gh300-9dac402a84d1",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "InfrastructurePreview",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "InfrastructurePreview"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit provisionner une infrastructure cloud via Terraform avec une aperçu diff dans les commentaires PR avant d’appliquer des modifications.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec Terraform : poster le plan différencier les commentaires PR, postuler sur la fusion"
+        },
+        {
+          "key": "B",
+          "label": "Terraform applique sans aperçu"
+        },
+        {
+          "key": "C",
+          "label": "Modifications manuelles de l’infrastructure"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec Terraform : poster le plan différencier les commentaires PR, postuler sur la fusion",
+      "rationaleHtml": "",
+      "extraHtml": "Actions sur pull_request exécute terraform plan, le bot GitHub commente diff, merge déclenche terraform apply. Aucune prévisualisation ne crée de changements surprises. L’IAC manuel vainc l’automatisation. Plan-in-PR-comments fournit des modifications d’infrastructure réévaluables sous forme de revue de code."
+    },
+    {
+      "id": "gh300-56b3198f6682",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "SecretRotation",
+      "tags": [
+        "GH-300",
+        "Security",
+        "SecretRotation"
+      ],
+      "promptHtml": "Votre équipe de sécurité exige que tous les secrets du dépôt soient tournés tous les 60 jours avec des notifications d’expiration automatisées aux administrateurs du dépôt.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Suivi secret des métadonnées avec workflow programmé, vérification de l’âge et notification via Issues/Slack"
+        },
+        {
+          "key": "B",
+          "label": "Suivi manuel de la rotation secrète"
+        },
+        {
+          "key": "C",
+          "label": "Politique de pas de rotation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Suivi secret des métadonnées avec workflow programmé, vérification de l’âge et notification via Issues/Slack",
+      "rationaleHtml": "",
+      "extraHtml": "Suivre les dates de création des secrets (dans des métadonnées séparées), les actions planifiées vérifient l’âge, créent un problème ou envoient une notification à l’approche de l’expiration. Le suivi manuel ne s’adapte pas. Aucune rotation laisse des références dépassées. La surveillance automatisée de l’âge des secrets permet une gestion proactive du cycle de vie des accréditations."
+    },
+    {
+      "id": "gh300-87c09d784ae4",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "PackageSecurity",
+      "tags": [
+        "GH-300",
+        "Security",
+        "PackageSecurity"
+      ],
+      "promptHtml": "Un dépôt GitHub utilise des packages GitHub pour distribuer des images de conteneurs. L’accès aux images privées doit être contrôlé via des permissions de paquet détaillées, distinctes de l’accès au dépôt.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Paquets GitHub avec visibilité granulaire des paquets et paramètres de permissions"
+        },
+        {
+          "key": "B",
+          "label": "Autorisations uniquement pour le dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Forfaits publics uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Paquets GitHub avec visibilité granulaire des paquets et paramètres de permissions",
+      "rationaleHtml": "",
+      "extraHtml": "Les packages prennent en charge le contrôle d’accès indépendant (héritier d’un dépôt ou personnalisé), permettant à différentes équipes d’accéder aux packages plutôt qu’au code. Les autorisations de dépôt sont trop grossières. Les paquets publics exposent des artefacts privés. Les permissions granulaires des paquets fournissent un contrôle d’accès au niveau des artefacts."
+    },
+    {
+      "id": "gh300-439468cdb305",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "ReviewManagement",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "ReviewManagement"
+      ],
+      "promptHtml": "Votre équipe de développement doit automatiquement attribuer les pull requests aux évaluateurs en fonction de la distribution en round-robin, garantissant ainsi l’équilibre de la charge de travail.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions avec logique d’attribution de relecteur utilisant l’algorithme round-robin et l’API GraphQL"
+        },
+        {
+          "key": "B",
+          "label": "Attribution manuelle de la république."
+        },
+        {
+          "key": "C",
+          "label": "Attribution aléatoire de relecteur uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions avec logique d’attribution de relecteur utilisant l’algorithme round-robin et l’API GraphQL",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux de travail d’action sur PR ouvert suit le dernier assigné en stockage, assigne le relecteur suivant en rotation via la charge d’équilibrage de l’API. L’attribution manuelle crée une distribution inégale. Les affectations aléatoires ne rééquilibrent pas la charge de travail. L’automatisation en round-robin offre une répartition équitable de la charge des évaluateurs."
+    },
+    {
+      "id": "gh300-67860de44134",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "PolicyEnforcement",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "PolicyEnforcement"
+      ],
+      "promptHtml": "Une organisation GitHub Enterprise doit faire respecter que tous les dépôts disposent de la protection des branches activée sur la branche par défaut avant que tout code puisse être poussé.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ensembles de règles de dépôt appliqués au niveau organisationnel nécessitant la protection des branches"
+        },
+        {
+          "key": "B",
+          "label": "Configuration manuelle des dépôts"
+        },
+        {
+          "key": "C",
+          "label": "Audit et dépollution après la création"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ensembles de règles de dépôt appliqués au niveau organisationnel nécessitant la protection des branches",
+      "rationaleHtml": "",
+      "extraHtml": "Les ensembles de règles des dépôts (plus récents que la protection des branches) appliquent des règles à l’échelle de l’organisation ou par motif, appliquées au moment de la création. La configuration manuelle ne s’adapte pas. L’audit post-création permet une période non protégée. Les ensembles de règles offrent une application proactive et évolutive des politiques de dépôt."
+    },
+    {
+      "id": "gh300-d38ee782b974",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "QualityMetrics",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "QualityMetrics"
+      ],
+      "promptHtml": "Votre pipeline CI/CD doit générer et publier des rapports de couverture test avec suivi historique des tendances et des commentaires PR automatiques montrant les changements de couverture.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec outil de couverture, intégration Codecov/Coveralls, et action de commentaire PR"
+        },
+        {
+          "key": "B",
+          "label": "Rapports de couverture locale uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Aucun suivi de couverture"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec outil de couverture, intégration Codecov/Coveralls, et action de commentaire PR",
+      "rationaleHtml": "",
+      "extraHtml": "Les actions exécutent l’outil de couverture (jest, pytest), publient sur le service de couverture avec analyse de tendances, le bot commente les relations publiques avec la différence de couverture. Les rapports locaux manquent de visibilité de l’équipe. Aucun suivi ne permet de dégrader la couverture. Les rapports intégrés de couverture fournissent des indicateurs de qualité avec des retours de relations publiques."
+    },
+    {
+      "id": "gh300-7e08e9da243a",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "ExternalAccess",
+      "tags": [
+        "GH-300",
+        "Security",
+        "ExternalAccess"
+      ],
+      "promptHtml": "Une organisation GitHub doit fournir aux auditeurs externes un accès en lecture seule à tous les dépôts et journaux d’audit sans leur accorder de comptes utilisateurs.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Application GitHub avec les permissions en lecture seule installées au niveau de l’organisation"
+        },
+        {
+          "key": "B",
+          "label": "Créer des comptes utilisateurs pour les auditeurs"
+        },
+        {
+          "key": "C",
+          "label": "Exportez et envoyez régulièrement des données par email"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Application GitHub avec les permissions en lecture seule installées au niveau de l’organisation",
+      "rationaleHtml": "",
+      "extraHtml": "L’application GitHub avec les permissions content :read et organization :read donne un accès API aux dépôts et journaux d’audit sans compte utilisateur (meilleure trace d’audit, permissions limitées). Les comptes utilisateurs offrent plus d’accès que nécessaire. Les exportations d’e-mails ne sont pas en temps réel. L’accès par application offre des capacités d’audit externe sécurisées et avec un périmètre précis."
+    },
+    {
+      "id": "gh300-d6eb4e8755b7",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "Traceability",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "Traceability"
+      ],
+      "promptHtml": "Votre flux de développement exige que tous les commits incluent une référence de problème (#123) avec des validations bloquant les commits manquants des liens de problème.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub validant les messages de validation et bloquant la fusion via les vérifications de statut requises"
+        },
+        {
+          "key": "B",
+          "label": "Directives pour les développeurs uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Audit post-fusion"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub validant les messages de validation et bloquant la fusion via les vérifications de statut requises",
+      "rationaleHtml": "",
+      "extraHtml": "Action on pull_request analyse les commits pour les références de problème (#123), échoue à vérifier si manque, la protection de branchement empêche la fusion. Les directives ne sont pas appliquées. L’audit post-fusion est réactif. La validation du commit avant fusion impose la traçabilité entre le code et les éléments de travail."
+    },
+    {
+      "id": "gh300-de5e92e2fbcb",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "EnvironmentManagement",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "EnvironmentManagement"
+      ],
+      "promptHtml": "Un dépôt GitHub doit prendre en charge plusieurs environnements de déploiement (développement, staging, production) avec des flux de travail d’approbation spécifiques à l’environnement, des secrets et un suivi de l’historique de déploiement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Environnements GitHub avec des secrets par environnement, des relecteurs obligatoires et des journaux de déploiement"
+        },
+        {
+          "key": "B",
+          "label": "Environnement unique avec configuration partagée"
+        },
+        {
+          "key": "C",
+          "label": "Outils de déploiement externes uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Environnements GitHub avec des secrets par environnement, des relecteurs obligatoires et des journaux de déploiement",
+      "rationaleHtml": "",
+      "extraHtml": "Les environnements fournissent des secrets isolés, des exigences des examinateurs, des règles de protection du déploiement et l’historique par environnement. L’environnement partagé manque de séparation. Les outils externes dupliquent les capacités de GitHub. Les environnements sont la construction native de déploiement multi-étapes de GitHub."
+    },
+    {
+      "id": "gh300-1c37df68b28f",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "InfrastructureAsCode",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "InfrastructureAsCode"
+      ],
+      "promptHtml": "Votre organisation a besoin de réglages de dépôt GitHub standardisés sur 300 dépôts avec contrôle de version et contrôles automatisés de cohérence.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Infrastructure-as-code pour les dépôts GitHub utilisant le fournisseur Terraform GitHub"
+        },
+        {
+          "key": "B",
+          "label": "Configuration manuelle des dépôts"
+        },
+        {
+          "key": "C",
+          "label": "Script de mise à jour en bloc à usage unique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Infrastructure-as-code pour les dépôts GitHub utilisant le fournisseur Terraform GitHub",
+      "rationaleHtml": "",
+      "extraHtml": "Le fournisseur Terraform GitHub gère les dépôts, les équipes, la protection des branches en tant que code permettant le contrôle de version, la revue et la cohérence. La configuration manuelle crée un drift (300 dépôts). Les scripts à usage unique ne maintiennent pas l’état. Le dépôt en tant que code offre une gestion de configuration du dépôt versionnée, vérifiable et cohérente."
+    },
+    {
+      "id": "gh300-1ea3cf276e0f",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "TestParallelization",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "TestParallelization"
+      ],
+      "promptHtml": "Un flux de travail CI/CD doit paralléliser l’exécution des tests à travers plusieurs suites de tests avec une isolation des pannes garantissant qu’une suite défaillante ne bloque pas les autres.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Stratégie de matrice GitHub Actions avec la continuation d’erreur par tâche"
+        },
+        {
+          "key": "B",
+          "label": "Exécution séquentielle des tests"
+        },
+        {
+          "key": "C",
+          "label": "Suite de tests unique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Stratégie de matrice GitHub Actions avec la continuation d’erreur par tâche",
+      "rationaleHtml": "",
+      "extraHtml": "Matrix exécute des suites de tests en parallèle, continuation sur erreur : le true sur des tâches individuelles empêche les défaillances en cascade, l’étape finale agrége les résultats. La séquence est lente. La suite individuelle n’a pas d’isolement. Parallèlement à l’isolation des défaillances optimise la vitesse d’exécution des tests et le retour d’information."
+    },
+    {
+      "id": "gh300-65f643e74119",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "NetworkSecurity",
+      "tags": [
+        "GH-300",
+        "Security",
+        "NetworkSecurity"
+      ],
+      "promptHtml": "Votre organisation exige que les packages internes GitHub ne soient pas accessibles de l’extérieur, même avec authentification, ce qui impose un contrôle d’accès au niveau du réseau.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Enterprise avec listes IP limitant l’accès au registre des paquets"
+        },
+        {
+          "key": "B",
+          "label": "Paramètres de visibilité des paquets uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Aucune restriction réseau"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Enterprise avec listes IP limitant l’accès au registre des paquets",
+      "rationaleHtml": "",
+      "extraHtml": "Les listes d’autorisation IP imposent un périmètre réseau pour l’accès aux paquets, même si les jetons d’authentification valides sont bloqués pour les IP non autorisées. La visibilité seule ne limite pas l’accès au réseau. Aucun contrôle réseau n’autorise l’exfiltration des identifiants. Les listes d’autorisation IP offrent une défense approfondie pour les colis sensibles."
+    },
+    {
+      "id": "gh300-e4ef349f1ea9",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "VaultIntegration",
+      "tags": [
+        "GH-300",
+        "Security",
+        "VaultIntegration"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit accéder de manière sécurisée aux secrets de HashiCorp Vault sans stocker de jetons Vault, en utilisant la récupération dynamique des identifiants.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fournisseur OIDC GitHub avec authentification Vault JWT"
+        },
+        {
+          "key": "B",
+          "label": "Jeton Vault dans les secrets GitHub"
+        },
+        {
+          "key": "C",
+          "label": "Identifiants du coffre-fort codés en dur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fournisseur OIDC GitHub avec authentification Vault JWT",
+      "rationaleHtml": "",
+      "extraHtml": "L’OIDC de GitHub émet JWT, l’authentification JWT de Vault valide l’identité de GitHub et émet un jeton Vault de courte durée, aucune identification statique n’est stockée. Le jeton dans Secrets nécessite une rotation. Le codage en dur est peu sécurisé. OIDC + Vault JWT auth offre une intégration de gestion des secrets sans secrets."
+    },
+    {
+      "id": "gh300-30160027caa9",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "CodeQuality",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "CodeQuality"
+      ],
+      "promptHtml": "Votre équipe de développement doit appliquer automatiquement les normes de mise en forme du code, avec les pull requests bloquées si le code ne correspond pas au style défini.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions sur GitHub avec l’outil de formatage (plus joli, noir) et vérification de style obligatoire"
+        },
+        {
+          "key": "B",
+          "label": "Révision manuelle du code pour la mise en forme"
+        },
+        {
+          "key": "C",
+          "label": "Paramètres de l’IDE pour développeurs uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions sur GitHub avec l’outil de formatage (plus joli, noir) et vérification de style obligatoire",
+      "rationaleHtml": "",
+      "extraHtml": "Action exécute la vérification de la formation sur PR, échoue, vérifie si la mise en forme ne correspond pas, les blocs de protection des branches fusionnent. La révision manuelle fait perdre du temps au réviseur. Les paramètres de l’IDE ne sont pas appliqués. Les vérifications automatisées de style imposent une mise en forme cohérente, libérant ainsi les évaluateurs pour une évaluation substantielle."
+    },
+    {
+      "id": "gh300-f0f2ea59c2d7",
+      "examSlug": "gh300",
+      "domain": "Authentication",
+      "topic": "EnterpriseSSO",
+      "tags": [
+        "GH-300",
+        "Authentication",
+        "EnterpriseSSO"
+      ],
+      "promptHtml": "Un déploiement GitHub Enterprise nécessite une connexion unique avec authentification multifactorielle appliquée, un provisionnement automatique des utilisateurs depuis Okta, et un déprovisionnement à la terminaison.",
+      "options": [
+        {
+          "key": "A",
+          "label": "SAML SSO avec Okta, provisionnement SCIM et MFA appliqués dans Okta"
+        },
+        {
+          "key": "B",
+          "label": "Authentification par nom d’utilisateur/mot de passe"
+        },
+        {
+          "key": "C",
+          "label": "Gestion manuelle des comptes utilisateurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "SAML SSO avec Okta, provisionnement SCIM et MFA appliqués dans Okta",
+      "rationaleHtml": "",
+      "extraHtml": "SAML fournit une authentification fédérée, Okta applique la MFA, SCIM automatise le cycle de vie utilisateur (provision à l’embauche, dédisposition à la terminaison). Le nom d’utilisateur/mot de passe n’a ni SSO ni automatisation. La gestion manuelle ne s’adapte pas et est lente. SAML+SCIM+MFA assure une intégration complète de l’identité d’entreprise."
+    },
+    {
+      "id": "gh300-7db0ac80191a",
+      "examSlug": "gh300",
+      "domain": "AITools",
+      "topic": "Compliance",
+      "tags": [
+        "GH-300",
+        "AITools",
+        "Compliance"
+      ],
+      "promptHtml": "Votre organisation exige que les suggestions GitHub Copilot soient filtrées pour exclure les dépôts publics correspondant au code afin d’éviter les problèmes de conformité aux licences.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Copilot avec le filtre de code public activé dans les paramètres de l’organisation"
+        },
+        {
+          "key": "B",
+          "label": "Pas de filtrage, faites confiance à toutes les suggestions"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez complètement Copilot"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Copilot avec le filtre de code public activé dans les paramètres de l’organisation",
+      "rationaleHtml": "",
+      "extraHtml": "Le filtre de code public de Copilot bloque les suggestions correspondant au code public, réduisant ainsi le risque de licence. Aucun filtrage ne crée une exposition à la conformité. Désactiver perd des bénéfices de productivité. Le filtrage du code public équilibre le développement assisté par l’IA et la conformité aux licences."
+    },
+    {
+      "id": "gh300-61b1ac509764",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "Submodules",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "Submodules"
+      ],
+      "promptHtml": "Un dépôt GitHub utilise des sous-modules pour les bibliothèques partagées. Les flux de travail CI/CD doivent vérifier récursivement les sous-modules avec une authentification spécifique pour les dépôts privés de sous-modules.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Action de vérification des actions GitHub avec sous-modules : paramètre récursif et paramètre de jeton"
+        },
+        {
+          "key": "B",
+          "label": "Commandes manuelles de sous-modules git"
+        },
+        {
+          "key": "C",
+          "label": "Aucun support de sous-modules"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Action de vérification des actions GitHub avec sous-modules : paramètre récursif et paramètre de jeton",
+      "rationaleHtml": "",
+      "extraHtml": "Checkout action submodules : le récursif récupère tous les sous-modules imbriqués, le paramètre du jeton fournit l’auth pour les dépôts privés. Les commandes manuelles ajoutent de la complexité. Aucun support de sous-module ne casse les builds. Le support du prêt de sous-modules de première classe permet de gérer des modèles monodépôts avec des bibliothèques partagées."
+    },
+    {
+      "id": "gh300-60318d018f3e",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "DataLossPrevention",
+      "tags": [
+        "GH-300",
+        "Security",
+        "DataLossPrevention"
+      ],
+      "promptHtml": "Votre équipe de sécurité doit identifier tous les dépôts GitHub contenant des types spécifiques de données sensibles (patrons de SSN, numéros de carte bancaire) répartis sur 500 dépôts.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Advanced Security schémas personnalisés de balayage de secrets au niveau organisationnel"
+        },
+        {
+          "key": "B",
+          "label": "Recherche manuelle dans les dépôts"
+        },
+        {
+          "key": "C",
+          "label": "Aucune détection de données sensibles"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Advanced Security schémas personnalisés de balayage de secrets au niveau organisationnel",
+      "rationaleHtml": "",
+      "extraHtml": "Les schémas de balayage secret personnalisés (regex) détectent les données sensibles spécifiques à l’organisation, scannent tous les dépôts, alertent lors de la détection. La recherche manuelle ne s’étale pas (500 dépôts). L’absence de détection laisse des données en danger d’exposition. Les patterns personnalisés étendent le balayage secret aux données sensibles spécifiques à un domaine."
+    },
+    {
+      "id": "gh300-d65bc7b18de2",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "DeploymentApprovals",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "DeploymentApprovals"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions est déployé en production avec une approbation manuelle requise des responsables de déploiement, les demandes d’approbation étant envoyées via Slack pour une visibilité immédiate.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Environment avec les relecteurs requis et l’intégration Actions Slack pour les notifications"
+        },
+        {
+          "key": "B",
+          "label": "Approbation par email uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Pas de flux de travail d’approbation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Environment avec les relecteurs requis et l’intégration Actions Slack pour les notifications",
+      "rationaleHtml": "",
+      "extraHtml": "L’environnement exige que les relecteurs mettent en pause le déploiement, Slack Action envoie une notification avec lien d’approbation lors du déclenchement du déploiement. L’email manque d’immédiateté. L’absence d’approbation crée un risque de gestion du changement. Les approbations d’environnement + les notifications Slack permettent des déploiements en production contrôlés et en temps opportun."
+    },
+    {
+      "id": "gh300-67d44cd2f6c5",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "WorkflowReview",
+      "tags": [
+        "GH-300",
+        "Security",
+        "WorkflowReview"
+      ],
+      "promptHtml": "Votre organisation exige que tous les flux de travail GitHub Actions soient examinés par l’équipe sécurité avant leur exécution, avec un processus d’approbation pour les flux de travail nouveaux ou modifiés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Protection des branches sur .github/workflows/ path nécessitant une revue de l’équipe de sécurité"
+        },
+        {
+          "key": "B",
+          "label": "Audits de flux de travail post-fusion"
+        },
+        {
+          "key": "C",
+          "label": "Pas de revue du flux de travail"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Protection des branches sur .github/workflows/ path nécessitant une revue de l’équipe de sécurité",
+      "rationaleHtml": "",
+      "extraHtml": "CODEOWNERS pour .github/workflows/* assigne une équipe de sécurité, la protection des branches nécessite une revue par le propriétaire avant la fusion. L’audit post-fusion est réactif et les flux de travail sont déjà exécutés. Aucune révision crée un risque de sécurité pour le pipeline. La revue du workflow pré-fusion assure un contrôle préventif de la sécurité CI/CD."
+    },
+    {
+      "id": "gh300-21c978698352",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "DependencyAutomation",
+      "tags": [
+        "GH-300",
+        "Security",
+        "DependencyAutomation"
+      ],
+      "promptHtml": "Un projet de développement nécessite des mises à jour de versions de dépendances proposées automatiquement chaque semaine avec des PR regroupés par type de dépendance (modules npm, pip, go).",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dependabot avec les mises à jour programmées et la stratégie de mises à jour groupées"
+        },
+        {
+          "key": "B",
+          "label": "Mises à jour manuelles des dépendances"
+        },
+        {
+          "key": "C",
+          "label": "Aucune mise à jour de dépendance"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dependabot avec les mises à jour programmées et la stratégie de mises à jour groupées",
+      "rationaleHtml": "",
+      "extraHtml": "Dependabot schedule interval configure la fréquence des mises à jour, regroupe les mises à jour par lots de configuration par gestionnaire de paquets ou réduit le bruit PR de pattern. Les mises à jour manuelles sont en retard par rapport aux correctifs de sécurité. L’absence de mises à jour accumule la dette de vulnérabilité. Le Dependabot groupé programmé permet une gestion régulière et gérable des dépendances."
+    },
+    {
+      "id": "gh300-edc1953a5103",
+      "examSlug": "gh300",
+      "domain": "Compliance",
+      "topic": "SBOM",
+      "tags": [
+        "GH-300",
+        "Compliance",
+        "SBOM"
+      ],
+      "promptHtml": "Votre pipeline CI/CD doit générer une liste de documents logicielles (SBOM) pour la conformité, en suivant toutes les dépendances et leurs versions lors des déploiements en production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions avec l’outil de génération SBOM (syft, cyclonedx) publiant des artefacts"
+        },
+        {
+          "key": "B",
+          "label": "Documentation manuelle des dépendances"
+        },
+        {
+          "key": "C",
+          "label": "Pas de génération de SBOM"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions avec l’outil de génération SBOM (syft, cyclonedx) publiant des artefacts",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux de travail d’actions génère des SBOM (format CycloneDX/SPDX) à partir d’artefacts de compilation, de téléchargements en tant que release asset ou artefact pour l’analyse de conformité/sécurité. Les documents manuels deviennent lassants. Aucun SBOM ne prévient la corrélation des vulnérabilités. La génération automatisée de SBOM offre une transparence dans la chaîne d’approvisionnement."
+    },
+    {
+      "id": "gh300-4b4eaf749e8d",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "TeamPolicies",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "TeamPolicies"
+      ],
+      "promptHtml": "Une organisation GitHub dispose de plusieurs équipes de développement avec des exigences de sécurité distinctes. Les politiques de sécurité doivent être appliquées par équipe avec des seuils de vulnérabilité spécifiques à chaque équipe.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ensembles de règles de dépôt adaptés à des motifs appartenant à l’équipe"
+        },
+        {
+          "key": "B",
+          "label": "Politique de sécurité unique à l’échelle de l’organisation"
+        },
+        {
+          "key": "C",
+          "label": "Aucune application de la sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ensembles de règles de dépôt adaptés à des motifs appartenant à l’équipe",
+      "rationaleHtml": "",
+      "extraHtml": "Les ensembles de règles ciblent les dépôts en nommant un motif ou la propriété de l’équipe, permettant des politiques spécifiques à chaque équipe (analyse de sécurité, protection des branches). Politique d’un seul groupe trop large ou trop restrictif. L’absence d’application crée une incohérence. Les ensembles de règles à portée de main offrent une gouvernance de sécurité flexible et alignée sur l’équipe."
+    },
+    {
+      "id": "gh300-1688ea023219",
+      "examSlug": "gh300",
+      "domain": "Authentication",
+      "topic": "CLIAuthentication",
+      "tags": [
+        "GH-300",
+        "Authentication",
+        "CLIAuthentication"
+      ],
+      "promptHtml": "Votre entreprise exige que la CLI GitHub (gh) soit authentifiée via le flux de périphériques pour des environnements d’IC sans interface sans accès au navigateur.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Authentification par flux de périphérique GitHub CLI avec connexion gh auth --with-token"
+        },
+        {
+          "key": "B",
+          "label": "Variable d’environnement du jeton d’accès personnel"
+        },
+        {
+          "key": "C",
+          "label": "Flux web OAuth"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Authentification par flux de périphérique GitHub CLI avec connexion gh auth --with-token",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux d’appareil affiche le code pour l’activation utilisateur sur un autre appareil, adapté aux environnements sans interface interlocutive. Le PAT dans l’environnement fonctionne mais est moins sécurisé qu’en OAuth. Le flux web nécessite un navigateur (sans interface audiovisuelle indisponible). Le flux d’appareils offre une authentification sans interface utilisateur conviviale."
+    },
+    {
+      "id": "gh300-5478064de55a",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "ReleaseAutomation",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "ReleaseAutomation"
+      ],
+      "promptHtml": "Un dépôt GitHub doit imposer des commits conventionnels (type(scope) : message) avec la génération automatique de changements de journaux à la libération des messages de commit.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Validation de commitlint dans les vérifications PR + libération sémantique pour les journaux de modifications automatisés"
+        },
+        {
+          "key": "B",
+          "label": "Maintenance manuelle du journal des modifications"
+        },
+        {
+          "key": "C",
+          "label": "Pas de standards de commit"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Validation de commitlint dans les vérifications PR + libération sémantique pour les journaux de modifications automatisés",
+      "rationaleHtml": "",
+      "extraHtml": "Le commit CI check applique les commits conventionnels, la release sémantique analyse les types de commits (feat, fix) pour générer automatiquement des changelogs et déterminer les bumps de version. Les journaux de modifications manuels ont du retard et sont sujets aux erreurs. Aucune norme n’empêche l’automatisation. Les commits conventionnels + la gestion automatisée des versions par libération sémantique."
+    },
+    {
+      "id": "gh300-600d990cd2a8",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "DatabaseMigrations",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "DatabaseMigrations"
+      ],
+      "promptHtml": "Votre flux de travail de développement nécessite que les migrations de schémas de base de données soient validées dans CI avant leur déploiement avec des scripts de rollback automatiques générés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec l’outil de migration de base de données (Flyway, Liquibase) validation à blanc"
+        },
+        {
+          "key": "B",
+          "label": "Aucune validation de migration"
+        },
+        {
+          "key": "C",
+          "label": "Migrations de tests en production"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec l’outil de migration de base de données (Flyway, Liquibase) validation à blanc",
+      "rationaleHtml": "",
+      "extraHtml": "Les outils de migration valident la syntaxe, simulent l’application à une base de données de test dans CI, génèrent automatiquement des scripts de rollback. L’absence de validation crée des échecs de déploiement. Les tests en production sont dangereux. La validation de la migration de l’IC détecte les problèmes de schéma avant le déploiement en production."
+    },
+    {
+      "id": "gh300-5d88f7e5808d",
+      "examSlug": "gh300",
+      "domain": "Analytics",
+      "topic": "AdoptionMetrics",
+      "tags": [
+        "GH-300",
+        "Analytics",
+        "AdoptionMetrics"
+      ],
+      "promptHtml": "Une organisation GitHub Enterprise doit mesurer les indicateurs d’adoption : utilisateurs actifs, activité des dépôts, utilisation CI/CD et activation des fonctionnalités de sécurité entre unités métier.",
+      "options": [
+        {
+          "key": "A",
+          "label": "API GitHub Enterprise Server/Cloud Admin et journaux d’audit avec analyses personnalisées"
+        },
+        {
+          "key": "B",
+          "label": "Enquêtes manuelles d’utilisation"
+        },
+        {
+          "key": "C",
+          "label": "Aucun suivi métrique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "API GitHub Enterprise Server/Cloud Admin et journaux d’audit avec analyses personnalisées",
+      "rationaleHtml": "",
+      "extraHtml": "L’API Admin fournit le nombre d’utilisateurs, les statistiques du dépôt, l’utilisation des actions, l’activation des fonctionnalités de sécurité ; Les journaux d’audit suivent les activités. Les tableaux de bord personnalisés agrégent par BU. Les enquêtes manuelles ne capturent pas l’utilisation réelle. Aucune métrique n’empêche la mesure du ROI. Les analyses pilotées par API offrent une visibilité d’adoption sur GitHub basée sur les données."
+    },
+    {
+      "id": "gh300-d5ca772af872",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "KeyManagement",
+      "tags": [
+        "GH-300",
+        "Security",
+        "KeyManagement"
+      ],
+      "promptHtml": "Votre organisation exige que les clés GPG pour la signature des engagements soient gérées de manière centralisée avec une distribution automatique de clés aux développeurs et une révocation au départ des employés.",
+      "options": [
+        {
+          "key": "A",
+          "label": "PKI de l’organisation avec provisionnement automatisé des clés GPG et gestion du cycle de vie"
+        },
+        {
+          "key": "B",
+          "label": "Gestion des clés individuelles par les développeurs"
+        },
+        {
+          "key": "C",
+          "label": "Pas de signature d’engagement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "PKI de l’organisation avec provisionnement automatisé des clés GPG et gestion du cycle de vie",
+      "rationaleHtml": "",
+      "extraHtml": "La PKI d’entreprise délivre automatiquement des clés GPG aux développeurs, la révoque à la terminaison, s’intègre avec le fournisseur d’identité. La gestion individuelle ne s’adapte pas et les clés ne sont pas révoquées. Aucune signature n’autorise l’usurpation d’identité de commet. Le cycle de vie centralisé des clés GPG permet une vérification évolutive de l’authenticité des commits."
+    },
+    {
+      "id": "gh300-339cf447f962",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "CacheManagement",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "CacheManagement"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit mettre en cache les artefacts de construction avec une expulsion automatique du cache après 7 jours afin de gérer les coûts de stockage tout en maximisant les taux de réussite du cache.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Cache GitHub Actions avec stratégie de clé personnalisée et conscience TTL"
+        },
+        {
+          "key": "B",
+          "label": "Pas de mise en cache, je construis à partir de zéro"
+        },
+        {
+          "key": "C",
+          "label": "Stockage de cache permanent"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Cache GitHub Actions avec stratégie de clé personnalisée et conscience TTL",
+      "rationaleHtml": "",
+      "extraHtml": "Le cache GitHub est automatiquement évacué après 7 jours, la stratégie de clé de cache (hachage des dépendances) garantit une invalidation correcte. Aucun cache ne fait perdre du temps. Le cache permanent consomme du stockage indéfiniment. Le cache conscient du TTL avec une stratégie de clé intelligente équilibre performance et coût de stockage."
+    },
+    {
+      "id": "gh300-83f7ef2d5840",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "ProvenanceAttestations",
+      "tags": [
+        "GH-300",
+        "Security",
+        "ProvenanceAttestations"
+      ],
+      "promptHtml": "Votre politique de sécurité exige que tous les déploiements en production soient signés et vérifiables, prouvant la provenance de workflows spécifiques sur GitHub.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Génération d’attestations GitHub Actions avec signatures Sigstore"
+        },
+        {
+          "key": "B",
+          "label": "Déploiements non signés"
+        },
+        {
+          "key": "C",
+          "label": "Documentation de déploiement manuel"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Génération d’attestations GitHub Actions avec signatures Sigstore",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub génère des attestations de provenance de compilation signées en utilisant Sigstore, vérifiables plus tard pour prouver l’origine et l’intégrité de la compilation. Les déploiements non signés ne peuvent pas prouver l’authenticité. Les documents manuels ne sont pas à l’épreuve de la falsification. Les attestations cryptographiques offrent une sécurité de la chaîne d’approvisionnement avec une provenance de construction vérifiable."
+    },
+    {
+      "id": "gh300-4b88c0924ece",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "GlobalTeams",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "GlobalTeams"
+      ],
+      "promptHtml": "Un dépôt GitHub compte 50 contributeurs issus de différents fuseaux horaires. Le temps de réponse à la revue de code doit être minimisé en assignant des évaluateurs dans des fuseaux horaires actuellement en travail.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions avec logique d’attribution de relecteur sensible aux fuseaux horaires"
+        },
+        {
+          "key": "B",
+          "label": "Attribution aléatoire du réviseur"
+        },
+        {
+          "key": "C",
+          "label": "Coordination manuelle des fuseaux horaires"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions avec logique d’attribution de relecteur sensible aux fuseaux horaires",
+      "rationaleHtml": "",
+      "extraHtml": "L’action détermine le fuseau horaire de l’auteur PR, sélectionne les évaluateurs en heures de travail (ou le fuseau horaire suivant), attribue via une API en minimisant la latence de révision. Un devoir aléatoire ignore la disponibilité. La coordination manuelle ne s’éloigne pas. L’automatisation en fonction des fuseaux horaires optimise la réactivité globale à la revue de code de l’équipe."
+    },
+    {
+      "id": "gh300-8a4a84fbe550",
+      "examSlug": "gh300",
+      "domain": "Administration",
+      "topic": "DisasterRecovery",
+      "tags": [
+        "GH-300",
+        "Administration",
+        "DisasterRecovery"
+      ],
+      "promptHtml": "Votre organisation a besoin que le contenu du dépôt GitHub soit sauvegardé sur un stockage séparé en dehors de GitHub pour la reprise après sinistre avec des sauvegardes incrémentales quotidiennes.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Miroir git automatisé avec un travail cron qui pousse pour séparer l’hébergement git et le stockage objet"
+        },
+        {
+          "key": "B",
+          "label": "Sauvegardes périodiques manuelles"
+        },
+        {
+          "key": "C",
+          "label": "Ne vous fiez qu’à GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Miroir git automatisé avec un travail cron qui pousse pour séparer l’hébergement git et le stockage objet",
+      "rationaleHtml": "",
+      "extraHtml": "Cron job git clone tous les dépôts, pousse vers un serveur git de sauvegarde ou exporte quotidiennement le bundle vers le stockage S3/Blob. Les sauvegardes manuelles créent des lacunes. La dépendance à un seul fournisseur crée un risque. Les sauvegardes externes automatisées offrent une reprise après sinistre indépendante de la plateforme SCM principale."
+    },
+    {
+      "id": "gh300-4f6ef3d2274f",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "SmokeTesting",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "SmokeTesting"
+      ],
+      "promptHtml": "Un flux de travail CI/CD doit exécuter des tests de fumée sur l’environnement de staging déployé avec un retour automatique en cas d’échec des tests dans les 10 minutes suivant le déploiement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec déploiement, tâche de test avec timeout, étape de retour en arrière conditionnel"
+        },
+        {
+          "key": "B",
+          "label": "Déploiement sans test"
+        },
+        {
+          "key": "C",
+          "label": "Essais manuels de fumée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec déploiement, tâche de test avec timeout, étape de retour en arrière conditionnel",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow déploie le staging, effectue des smoke tests avec un délai d’attente de 10 minutes, si : fail() condition déclenche le déploiement de rollback. Aucun test ne déploie du code défaillant. Les tests manuels retardent le retour d’information. Les tests automatisés de fumée avec retour en arrière permettent une validation et une récupération rapides du déploiement."
+    },
+    {
+      "id": "gh300-2c952599c784",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "StorageManagement",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "StorageManagement"
+      ],
+      "promptHtml": "Votre organisation GitHub doit imposer des limites maximales de taille de dépôt empêchant les dépôts de dépasser 5 Go afin de gérer les coûts de stockage et les performances.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Hooks pré-réception ou ensembles de règles de dépôt vérifiant la taille du dépôt lors du push"
+        },
+        {
+          "key": "B",
+          "label": "Aucune limite de taille"
+        },
+        {
+          "key": "C",
+          "label": "Surveillance manuelle de la taille"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Hooks pré-réception ou ensembles de règles de dépôt vérifiant la taille du dépôt lors du push",
+      "rationaleHtml": "",
+      "extraHtml": "Les crochets pré-réception rejettent les poussées dépassant le seuil de taille (GHES), les ensembles de règles offrent une capacité similaire. Aucune limite n’autorise le stockage hors contrôle. La surveillance manuelle est réactive. Une application proactive de la taille évite la dégradation des performances et les dépassements de coûts liés aux dépôts surdimensionnés."
+    },
+    {
+      "id": "gh300-6cad05e35623",
+      "examSlug": "gh300",
+      "domain": "AITools",
+      "topic": "Development",
+      "tags": [
+        "GH-300",
+        "AITools",
+        "Development"
+      ],
+      "promptHtml": "Une équipe de développement a besoin de suggestions de code en ligne pendant le développement, avec des complétions contextuelles basées sur la base de code du dépôt et les schémas organisationnels.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Copilot for Business intégré dans les IDE pris en charge"
+        },
+        {
+          "key": "B",
+          "label": "Bibliothèque d’extraits de code manuels"
+        },
+        {
+          "key": "C",
+          "label": "Autocomplétion générique uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Copilot for Business intégré dans les IDE pris en charge",
+      "rationaleHtml": "",
+      "extraHtml": "Copilot fournit des suggestions de code alimentées par l’IA entraînées sur du code public et peut indexer les dépôts d’organisations pour le contexte. Les extraits manuels manquent d’intelligence. L’autocomplétion générique ne comprend pas la sémantique. Copilot transforme la productivité des développeurs grâce à une assistance IA contextuelle."
+    },
+    {
+      "id": "gh300-43e73a25bf14",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "GitHooks",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "GitHooks"
+      ],
+      "promptHtml": "Votre organisation exige que les accroches Git soient standardisées sur toutes les stations de travail développeurs avec une gestion centralisée et des mises à jour automatiques.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Répertoire de modèles Git avec des hooks distribués via le dépôt de l’organisation"
+        },
+        {
+          "key": "B",
+          "label": "Instructions par email pour l’installation manuelle du crochet"
+        },
+        {
+          "key": "C",
+          "label": "Pas d’hameçons standardisés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Répertoire de modèles Git avec des hooks distribués via le dépôt de l’organisation",
+      "rationaleHtml": "",
+      "extraHtml": "Git init.templateDir pointe vers des modèles de hooks partagés, les développeurs clonent le dépôt de templates, les hooks s’appliquent automatiquement sur git init/clone. Les instructions envoyées par email ne sont pas suivies de façon cohérente. L’absence de standardisation crée des portes de qualité incohérentes. La distribution centralisée de modèles permet une validation standardisée avant l’engagement."
+    },
+    {
+      "id": "gh300-7b5a7c1190e5",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ServerlessDeployment",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ServerlessDeployment"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit déployer les fonctions Lambda sur AWS avec un retour en arrière automatique si des alarmes CloudWatch déclenchent des erreurs indicatrices.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec déploiement AWS SAM/CDK, sondage d’alarme CloudWatch, retour en arrière conditionnel"
+        },
+        {
+          "key": "B",
+          "label": "Déploiement sans surveillance"
+        },
+        {
+          "key": "C",
+          "label": "Décision manuelle de retour en arrière"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec déploiement AWS SAM/CDK, sondage d’alarme CloudWatch, retour en arrière conditionnel",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow déploie Lambda, attend la période d’évaluation de l’alarme CloudWatch, interroge l’état de l’alarme, déclenche le déploiement de retour en arrière si l’alarme se déclenche. Aucune surveillance ne déploie des fonctions défaillantes. Les décisions manuelles retardent la récupération. Le retour en arrière automatisé basé sur des vérifications de santé permet des déploiements serverless sécurisés."
+    },
+    {
+      "id": "gh300-9e729bef4e94",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "SIEMIntegration",
+      "tags": [
+        "GH-300",
+        "Security",
+        "SIEMIntegration"
+      ],
+      "promptHtml": "Votre entreprise a besoin que tous les changements du dépôt GitHub soient enregistrés dans un système SIEM externe pour la corrélation de sécurité avec d’autres événements d’entreprise.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Audit GitHub en streaming de journaux vers SIEM via webhook ou API avec schéma normalisé"
+        },
+        {
+          "key": "B",
+          "label": "Exportations manuelles de journal"
+        },
+        {
+          "key": "C",
+          "label": "Uniquement les journaux GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Audit GitHub en streaming de journaux vers SIEM via webhook ou API avec schéma normalisé",
+      "rationaleHtml": "",
+      "extraHtml": "Le flux de journaux d’audit transmet les événements à SIEM (Splunk, Sentinel), permettant une corrélation avec les événements de terminaison, réseau et identité. Les exportations manuelles manquent de rapidité. Les journaux GitHub isolés manquent les attaques inter-systèmes. Le streaming d’audit intégré permet une surveillance holistique de la sécurité."
+    },
+    {
+      "id": "gh300-e009a8e11e24",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "VersionManagement",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "VersionManagement"
+      ],
+      "promptHtml": "Un dépôt GitHub doit supporter la gestion sémantique des versions avec des augmentations automatiques de version basées sur les types de commit conventionnels (feat=mineure, fix=patch, BREAKING CHANGE=major).",
+      "options": [
+        {
+          "key": "A",
+          "label": "outil de publication sémantique dans GitHub Actions : analyse des commits et gestion des versions"
+        },
+        {
+          "key": "B",
+          "label": "Mises à jour des versions manuelles"
+        },
+        {
+          "key": "C",
+          "label": "Numéros de version aléatoires"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "outil de publication sémantique dans GitHub Actions : analyse des commits et gestion des versions",
+      "rationaleHtml": "",
+      "extraHtml": "semantic-release analyse l’historique des commits, détermine la hausse de version selon les règles SemVer, met à jour la version du paquet, crée le tag git et publie la release. La gestion manuelle des versions est sujette aux erreurs. Les versions aléatoires violent les contrats SemVer. Le versionnement sémantique automatisé garantit une gestion des versions cohérente et significative."
+    },
+    {
+      "id": "gh300-31248b79eada",
+      "examSlug": "gh300",
+      "domain": "Administration",
+      "topic": "Observability",
+      "tags": [
+        "GH-300",
+        "Administration",
+        "Observability"
+      ],
+      "promptHtml": "Votre organisation a besoin que les métriques GitHub Enterprise Server soient exportées vers Prometheus pour le dashboarding et les alertes sur l’état du système.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Console de gestion GitHub Enterprise Server exportant les métriques Prometheus"
+        },
+        {
+          "key": "B",
+          "label": "Analyse manuelle de journalisation"
+        },
+        {
+          "key": "C",
+          "label": "Aucune collecte de métriques"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Console de gestion GitHub Enterprise Server exportant les métriques Prometheus",
+      "rationaleHtml": "",
+      "extraHtml": "GHES expose les points de terminaison métriques Prometheus pour le scraping (CPU, mémoire, opérations git, files d’attente Actions, stockage). L’analyse manuelle des journaux ne s’adapte pas. Aucun indicateur n’empêche la détection proactive des problèmes. Les métriques natives de Prometheus permettent l’observabilité GHES de qualité production."
+    },
+    {
+      "id": "gh300-f0f428e74cce",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "SLSA",
+      "tags": [
+        "GH-300",
+        "Security",
+        "SLSA"
+      ],
+      "promptHtml": "Un pipeline CI/CD doit construire et signer des images de conteneurs avec des attestations de provenance répondant aux exigences SLSA niveau 3 pour la sécurité de la chaîne d’approvisionnement.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec provenance Docker buildx, token OIDC, cosign Sigstore et provenance SLSA"
+        },
+        {
+          "key": "B",
+          "label": "Compilations de conteneurs non signés"
+        },
+        {
+          "key": "C",
+          "label": "Signature manuelle d’image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec provenance Docker buildx, token OIDC, cosign Sigstore et provenance SLSA",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub OIDC fournit l’identité de build, buildX génère des images, cosigne avec signature sans clé, la provenance SLSA atteste des étapes de build. Les images non signées manquent de preuve d’authenticité. La signature manuelle ne s’adapte pas. Signature automatisée + provenance répondent aux normes de sécurité de la chaîne d’approvisionnement (SLSA)."
+    },
+    {
+      "id": "gh300-ab705673bfc3",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "RiskManagement",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "RiskManagement"
+      ],
+      "promptHtml": "Votre flux de développement exige que les règles de protection des branches soient testées avant de les déployer dans des dépôts de production afin d’éviter les blocages.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Protection de la branche de test sur le dépôt pilote, exportation via API, importation vers des dépôts de production"
+        },
+        {
+          "key": "B",
+          "label": "Appliquer les règles directement à la production"
+        },
+        {
+          "key": "C",
+          "label": "Aucun test des règles de protection"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Protection de la branche de test sur le dépôt pilote, exportation via API, importation vers des dépôts de production",
+      "rationaleHtml": "",
+      "extraHtml": "Créer un dépôt de test, configurer les règles de protection, vérifier avec les PR de test, exporter la configuration via API, répliquer dans les dépôts de production de manière programmatique. Les changements directs de production risquent des blocages (les correctifs ne peuvent pas fusionner). Aucun test ne crée de surprises. Les tests pilotes + le déploiement programmatique permettent le déploiement sécurisé des règles de protection."
+    },
+    {
+      "id": "gh300-af9019b2d656",
+      "examSlug": "gh300",
+      "domain": "Governance",
+      "topic": "CrossTeamOwnership",
+      "tags": [
+        "GH-300",
+        "Governance",
+        "CrossTeamOwnership"
+      ],
+      "promptHtml": "Une organisation GitHub compte 50 équipes travaillant sur des microservices partagés. La propriété du code entre équipes nécessite l’approbation de plusieurs équipes avant la fusion.",
+      "options": [
+        {
+          "key": "A",
+          "label": "CODEOWNERS avec plusieurs entrées de propriétaire et protection de branche nécessitant toutes les révisions"
+        },
+        {
+          "key": "B",
+          "label": "Propriétaire unique par fichier"
+        },
+        {
+          "key": "C",
+          "label": "Aucune obligation de revoir entre équipes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "CODEOWNERS avec plusieurs entrées de propriétaire et protection de branche nécessitant toutes les révisions",
+      "rationaleHtml": "",
+      "extraHtml": "CODEOWNERS prend en charge plusieurs propriétaires par pattern de chemin (team-platform @team-a @team-b), la protection des branches peut nécessiter des revues de la part de tous les propriétaires. Le propriétaire unique manque de l’avis des parties prenantes. Aucune exigence ne permet de briser les changements. CODEOWNERS multi-propriétaires permet la responsabilité partagée des composants critiques."
+    },
+    {
+      "id": "gh300-d5fad2082d9b",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "ArtifactManagement",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "ArtifactManagement"
+      ],
+      "promptHtml": "Votre pipeline CI/CD doit optimiser le temps d’exécution du workflow en partageant les artefacts de build entre les jobs sans duplication de workspace.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub : actions d’artefact d’upload et d’artefact de téléchargement"
+        },
+        {
+          "key": "B",
+          "label": "Reconstruire dans chaque poste"
+        },
+        {
+          "key": "C",
+          "label": "Stockage externe d’artefacts uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub : actions d’artefact d’upload et d’artefact de téléchargement",
+      "rationaleHtml": "",
+      "extraHtml": "Upload-artifact enregistre les fichiers après la tâche de build, download-artifact récupère dans les jobs suivants en partageant efficacement les artefacts. Reconstruire fait perdre du temps. Le stockage externe ajoute de la complexité. Le partage intégré des artefacts permet une optimisation rapide et rentable des flux de travail entre les tâches."
+    },
+    {
+      "id": "gh300-9b898aa6bab6",
+      "examSlug": "gh300",
+      "domain": "Automation",
+      "topic": "PRLabeling",
+      "tags": [
+        "GH-300",
+        "Automation",
+        "PRLabeling"
+      ],
+      "promptHtml": "Un dépôt GitHub nécessite un étiquetage automatique des pull requests en fonction des chemins de fichiers modifiés, avec des étiquettes pour le frontend, le backend, la base de données et la documentation.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec action de labeler utilisant une configuration basée sur des chemins"
+        },
+        {
+          "key": "B",
+          "label": "Étiquetage manuel PR"
+        },
+        {
+          "key": "C",
+          "label": "Pas d’étiquettes de relations publiques"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec action de labeler utilisant une configuration basée sur des chemins",
+      "rationaleHtml": "",
+      "extraHtml": "L’action de l’étiquetteur applique des étiquettes en fonction des chemins modifiés (src/frontend/* → étiquette frontend), permet le filtrage et le routage. L’étiquetage manuel est oublié. Aucune étiquette réduit la visibilité des relations publiques. L’étiquetage automatique basé sur les chemins offre une catégorisation PR organisée et consultable."
+    },
+    {
+      "id": "gh300-48a5b8e5786b",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "CommitIntegrity",
+      "tags": [
+        "GH-300",
+        "Security",
+        "CommitIntegrity"
+      ],
+      "promptHtml": "Votre organisation exige que les commits GitHub soient immuables, avec une vérification de signature de commit requise au moment du déploiement, empêchant le code non signé en production.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Protection des branches nécessitant des commits signés et workflow de déploiement vérifiant les signatures"
+        },
+        {
+          "key": "B",
+          "label": "Signature optionnelle de commit"
+        },
+        {
+          "key": "C",
+          "label": "Aucune vérification de signature"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Protection des branches nécessitant des commits signés et workflow de déploiement vérifiant les signatures",
+      "rationaleHtml": "",
+      "extraHtml": "La protection des branches bloque les commits non signés, le workflow de déploiement exécute git verify-commit avant de déployer en imposant l’authenticité. La signature optionnelle permet le code non signé. Aucune vérification ne manque l’usurpation d’usurpation. La signature obligatoire + la vérification du déploiement garantissent la chaîne de dépôt de l’engagement."
+    },
+    {
+      "id": "gh300-2144cbb498a6",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "AzureDeployment",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "AzureDeployment"
+      ],
+      "promptHtml": "Un flux de travail GitHub Actions doit être déployé sur Azure App Service avec un déploiement sans temps d’arrêt en utilisant des échanges de slot après des vérifications de santé réussies.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub déployées vers le slot staging, la vérification de santé, le swap conditionnel de slot"
+        },
+        {
+          "key": "B",
+          "label": "Déploiement direct en production"
+        },
+        {
+          "key": "C",
+          "label": "Gestion manuelle des fentes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub déployées vers le slot staging, la vérification de santé, le swap conditionnel de slot",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow se déploie dans le slot staging, effectue des tests de santé sur l’URL du slot, puis passe staging en production si c’est sain. Les déploiements directs en production provoquent des interruptions. Les échanges manuels retardent les déploiements. Le swap automatisé de créneaux avec validation offre des déploiements Azure sans interruption."
+    },
+    {
+      "id": "gh300-acdf16b4dff5",
+      "examSlug": "gh300",
+      "domain": "Security",
+      "topic": "Triage",
+      "tags": [
+        "GH-300",
+        "Security",
+        "Triage"
+      ],
+      "promptHtml": "Votre équipe de sécurité a besoin que les résultats de GitHub Advanced Security soient automatiquement triés avec une affectation basée sur la gravité aux ingénieurs en sécurité et aux équipes produit.",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Actions traitant les alertes de sécurité via l’API GraphQL avec logique de routage"
+        },
+        {
+          "key": "B",
+          "label": "Triage manuel par alerte"
+        },
+        {
+          "key": "C",
+          "label": "Alertes par email uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Actions traitant les alertes de sécurité via l’API GraphQL avec logique de routage",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow programmé interroge les alertes de sécurité via GraphQL, évalue la sévérité/la localisation/type, crée des problèmes assignés aux équipes concernées avec des balises SLA. Le triage manuel ne s’étend pas et crée un retard. Les alertes par e-mail font du bruit. Le triage intelligent automatisé accélère la résolution des problèmes de sécurité."
+    },
+    {
+      "id": "gh300-9890ff46aea1",
+      "examSlug": "gh300",
+      "domain": "CICD",
+      "topic": "Documentation",
+      "tags": [
+        "GH-300",
+        "CICD",
+        "Documentation"
+      ],
+      "promptHtml": "Un dépôt GitHub doit maintenir des versions de documentation séparées pour chaque version produit, avec un déploiement automatique sur GitHub Pages.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Actions GitHub avec dossiers docs versionnés et déploiement Pages par tag/branche"
+        },
+        {
+          "key": "B",
+          "label": "Version de documentation unique"
+        },
+        {
+          "key": "C",
+          "label": "Mises à jour de la documentation manuelle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Actions GitHub avec dossiers docs versionnés et déploiement Pages par tag/branche",
+      "rationaleHtml": "",
+      "extraHtml": "Le workflow sur tag crée un dossier docs versionné (docs/v1.0), construit toutes les versions, puis déploie sur Pages avec le sélecteur de version. La version simple perd ses références historiques. Les mises à jour manuelles sont sujettes aux erreurs et lentes. L’automatisation de la documentation version maintient la documentation pour toutes les versions de produits prises en charge."
+    },
+    {
+      "id": "gh300-77073cdd1bc5",
+      "examSlug": "gh300",
+      "domain": "Administration",
+      "topic": "UpgradeStrategy",
+      "tags": [
+        "GH-300",
+        "Administration",
+        "UpgradeStrategy"
+      ],
+      "promptHtml": "Votre organisation a besoin que GitHub Enterprise Server soit mis à jour sans interruption pour les équipes de développement mondiales nécessitant une disponibilité 24h/24 et 7j/7.",
+      "options": [
+        {
+          "key": "A",
+          "label": "Cluster haute disponibilité GitHub Enterprise Server avec mise à jour continue"
+        },
+        {
+          "key": "B",
+          "label": "Temps d’arrêt programmé pour la mise à niveau"
+        },
+        {
+          "key": "C",
+          "label": "Mises à jour retardées pour éviter les interruptions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Cluster haute disponibilité GitHub Enterprise Server avec mise à jour continue",
+      "rationaleHtml": "",
+      "extraHtml": "Le cluster HA permet d’abord la mise à jour des répliques, le basculement, puis la mise à jour primaire en maintenant la disponibilité. Les temps d’arrêt programmés perturbent les équipes mondiales. Retarder les mises à jour manque les correctifs de sécurité. Les mises à jour continues de l’HA permettent la continuité de la plateforme d’entreprise pendant la maintenance."
+    }
+  ]
+}

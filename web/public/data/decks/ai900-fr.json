@@ -1,0 +1,3073 @@
+{
+  "exam": {
+    "slug": "ai900",
+    "code": "AI-900",
+    "title": "Microsoft Azure AI Fundamentals",
+    "sourceFile": "ai900_flashcards_2026-03-24.csv",
+    "updatedOn": "2026-03-24",
+    "questionCount": 100,
+    "domains": [
+      "AIWorkloads",
+      "ComputerVision",
+      "GenerativeAI",
+      "MachineLearning",
+      "NLP"
+    ],
+    "topics": [
+      "Architecture",
+      "AzureLanguage",
+      "AzureML",
+      "AzureOpenAI",
+      "AzureVision",
+      "Classification",
+      "Concepts",
+      "Conversation",
+      "CoreConcepts",
+      "CustomVision",
+      "DataQuality",
+      "DeepLearning",
+      "Deployment",
+      "DocumentProcessing",
+      "Embeddings",
+      "EntityRecognition",
+      "Evaluation",
+      "Face",
+      "FeaturesLabels",
+      "Forecasting",
+      "Foundry",
+      "GenerativeWorkloads",
+      "Governance",
+      "Integration",
+      "IntentEntity",
+      "KeyPhrases",
+      "KnowledgeMining",
+      "LanguageDetection",
+      "MLOps",
+      "MLWorkloads",
+      "Metrics",
+      "ModelCatalog",
+      "ModelGeneralization",
+      "OCR",
+      "ObjectDetection",
+      "Parameters",
+      "PromptEngineering",
+      "RAG",
+      "Reliability",
+      "ResponsibleAI",
+      "ResponsibleML",
+      "Security",
+      "Sentiment",
+      "Speech",
+      "SpeechAndNLP",
+      "Strategy",
+      "Summarization",
+      "Techniques",
+      "Transformers",
+      "Translation",
+      "Video",
+      "WorkloadMapping"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ai900-1d9cf21c09d9",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une banque met en œuvre un assistant hypothécaire IA. Les régulateurs exigent que la banque prouve que les candidats dans des situations financières similaires obtiennent des résultats cohérents entre les groupes protégés. Quel principe d’IA responsable est validé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Équité"
+        },
+        {
+          "key": "B",
+          "label": "Transparence"
+        },
+        {
+          "key": "C",
+          "label": "Responsabilité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "C’est juste. L’équité vise à prévenir un impact disproportionné entre les groupes situés dans la même situation et à réduire les résultats discriminatoires.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La transparence explique les décisions, tandis que la responsabilité détermine qui détient la remédiation. L’équité est le principe directement lié aux vérifications de parité et à la mitigation des biais dans les résultats."
+    },
+    {
+      "id": "ai900-243f255e539f",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un assureur doit rejeter les résultats de modèles dangereux avant qu’ils n’atteignent les clients via un chatbot de support aux sinistres. L’équipe a besoin d’un contrôle de sécurité préalable à la réponse sur le texte généré. Quel contrôle est le plus approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le nombre maximal de jetons"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter le filtrage de contenu et la modération"
+        },
+        {
+          "key": "C",
+          "label": "Augmentation de la température"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ajoutez le filtrage et la modération du contenu. Les filtres de sécurité sont conçus pour détecter et bloquer les catégories de sorties nuisibles avant leur livraison.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter\">filtrage de contenu Azure OpenAI</a>",
+      "extraHtml": "Les jetons max changent la longueur, et la température change l’aléatoire. Aucun des deux n’est un contrôle de politique de sécurité. Les filtres appliquent les limites des politiques."
+    },
+    {
+      "id": "ai900-6a2142a71f39",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un service d’IA du secteur public doit continuer à fonctionner en toute sécurité lors des défaillances transitoires des modèles et des prévisions incertaines. Quelle considération de l’IA responsable est la plus directement prise en compte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Inclusivité"
+        },
+        {
+          "key": "B",
+          "label": "Fiabilité et sécurité"
+        },
+        {
+          "key": "C",
+          "label": "Transparence"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Fiabilité et sécurité. Ce principe couvre des performances robustes, une gestion élégante des pannes et l’évitement des comportements dangereux dans les cas extrêmes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "L’inclusivité concerne la conception accessible à travers les capacités des utilisateurs. La transparence concerne l’explicabilité. La fiabilité/sécurité vise un comportement fiable sous pression."
+    },
+    {
+      "id": "ai900-4e958be68b92",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une start-up de santé doit protéger les PHI utilisés par un modèle de triage IA et restreindre l’accès des opérateurs au moindre privilège. Quel principe est primaire ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Confidentialité et sécurité"
+        },
+        {
+          "key": "B",
+          "label": "Responsabilité"
+        },
+        {
+          "key": "C",
+          "label": "Équité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Confidentialité et sécurité. Cela nécessite une protection renforcée des données, des contrôles d’accès et une gestion sécurisée des informations sensibles.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La responsabilité attribue la propriété ; L’équité s’attaque aux préjugés. L’exigence est la confidentialité et la gouvernance de l’accès sécurisé."
+    },
+    {
+      "id": "ai900-b5a2b06f3600",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une autorité de transport déploie un robot vocal pour les usagers présentant des variations auditives et vocales, incluant des flux de travail assistés. Quel principe est le mieux reflété ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Inclusivité"
+        },
+        {
+          "key": "B",
+          "label": "Transparence"
+        },
+        {
+          "key": "C",
+          "label": "Fiabilité et sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’inclusivité. Elle met l’accent sur la conception de systèmes d’IA utilisables par des personnes aux besoins et capacités divers.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La fiabilité est la stabilité opérationnelle ; La transparence est la divulgation. La conception inclusive garantit une accessibilité plus large et une utilisabilité équitable."
+    },
+    {
+      "id": "ai900-abf824bfd593",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un bot de support client doit clairement indiquer que les utilisateurs interagissent avec l’IA et fournir confiance et limites. Quel est ce principe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Transparence"
+        },
+        {
+          "key": "B",
+          "label": "Responsabilité"
+        },
+        {
+          "key": "C",
+          "label": "Confidentialité et sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Transparence. Cela nécessite une communication claire sur l’utilisation, le comportement et les limites de l’IA.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La responsabilité définit la propriété après le préjudice ; La confidentialité sécurise les données. La divulgation et l’explicabilité sont des objectifs de transparence."
+    },
+    {
+      "id": "ai900-b1ffbb10f28a",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une entreprise crée des manuels de gouvernance définissant qui approuve les publications de modèles et qui gère la réponse aux incidents en cas de dommages causés par l’IA. Quel principe est central ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Responsabilité"
+        },
+        {
+          "key": "B",
+          "label": "Équité"
+        },
+        {
+          "key": "C",
+          "label": "Inclusivité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La responsabilité. Elle établit la responsabilité humaine des décisions, de la supervision et des actions de remédiation en IA.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "L’équité et l’inclusivité guident les résultats et la conception, mais la responsabilité garantit qu’il y a un propriétaire pour les décisions et les mesures correctives."
+    },
+    {
+      "id": "ai900-71d4b4de7600",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "WorkloadMapping",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "WorkloadMapping"
+      ],
+      "promptHtml": "Un détaillant souhaite auto-étiqueter les images des produits, détecter les ruptures de stock sur les rayons à partir des photos, et transcrire les labels numérisés. Quelle instruction correspond correctement aux charges de travail ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Vision pour les tâches d’image, OCR pour le texte dans les images, NLP pour la compréhension du texte"
+        },
+        {
+          "key": "B",
+          "label": "NLP pour le taging d’images, Parole pour l’OCR, Vision pour le sentiment"
+        },
+        {
+          "key": "C",
+          "label": "La parole pour la détection d’objets, le NLP pour la détection faciale, la vision pour la traduction"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Vision pour les tâches d’image, OCR pour le texte dans les images, NLP pour la compréhension du texte. Cela correspond aux limites courantes de la charge de travail de l’IA.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services\">Aperçu des services Azure AI</a>",
+      "extraHtml": "Les catégories de service mixte option B et C sont incorrectes. Une cartographie architecturale correcte réduit les erreurs de conception et les coûts."
+    },
+    {
+      "id": "ai900-4a9fe540971b",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Un cabinet d’avocats doit extraire des clauses et des signatures des contrats numérisés et également résumer les obligations en termes simples. Quelle paire correspond le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Document Intelligence + Azure AI Language/Azure OpenAI"
+        },
+        {
+          "key": "B",
+          "label": "API Face + Traducteur"
+        },
+        {
+          "key": "C",
+          "label": "SDK de la parole + détecteur d’anomalies"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Document Intelligence + Azure AI Language/Azure OpenAI. L’extraction de documents et la synthèse linguistique sont des charges de travail distinctes mais complémentaires.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview\">Aperçu du renseignement documentaire</a>",
+      "extraHtml": "Face et Translator n’analysent pas la structure des contrats. Le détecteur de parole/anomalies n’est pas lié à l’extraction et au résumé par contrat."
+    },
+    {
+      "id": "ai900-4bf2e6d304b6",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "MLWorkloads",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "MLWorkloads"
+      ],
+      "promptHtml": "Un centre de support souhaite un système d’IA pour classer l’urgence des tickets et les acheminer vers les équipes en fonction des labels historiques. Quelle charge de travail est principalement impliquée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Classification supervisée par apprentissage automatique"
+        },
+        {
+          "key": "B",
+          "label": "Regroupement non supervisé"
+        },
+        {
+          "key": "C",
+          "label": "Détection d’objets"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Classification supervisée par apprentissage automatique. Les résultats historiques qualifiés impliquent une prédiction supervisée des catégories.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml#classification\">Classification in Azure ML</a>",
+      "extraHtml": "Le regroupement ne comporte pas d’étiquettes prédéfinies. La détection d’objets est une vision par ordinateur pour la localisation spatiale, pas le routage des tickets."
+    },
+    {
+      "id": "ai900-2fd897891106",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "SpeechAndNLP",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "SpeechAndNLP"
+      ],
+      "promptHtml": "Une entreprise de médias a besoin de sous-titres en temps quasi réel à partir de flux audio en direct, puis d’une analyse des tendances de sentiment par minute. Quelle paire de charge de travail est la bonne ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse du sentiment de la reconnaissance vocale puis NLP"
+        },
+        {
+          "key": "B",
+          "label": "OCR puis classification d’image"
+        },
+        {
+          "key": "C",
+          "label": "CLU puis détection d’objets"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse du sentiment de la reconnaissance vocale puis NLP. L’audio doit d’abord être transcrit, puis le texte peut être analysé pour détecter le sentiment.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-to-text\">Reconnaissance vocale</a>",
+      "extraHtml": "L’OCR sert au texte en images, pas à l’audio. CLU gère l’extraction d’intention/entité, pas les pipelines de sentiment minute par minute."
+    },
+    {
+      "id": "ai900-1af280066866",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "GenerativeWorkloads",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "GenerativeWorkloads"
+      ],
+      "promptHtml": "Une équipe de sécurité souhaite un modèle qui génère des résumés d’incidents et des brouillons de réponse, mais qui fournit aussi des citations issues de runbooks internes. Quel motif d’IA est-ce ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Charge de travail de génération augmentée par récupération"
+        },
+        {
+          "key": "B",
+          "label": "Charge de travail purement classification"
+        },
+        {
+          "key": "C",
+          "label": "Charge de travail de clustering"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Charge de travail de génération augmentée par la récupération. Il combine la génération avec la récupération à partir de documents fiables pour produire des réponses fondées.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview\">Aperçu de RAG</a>",
+      "extraHtml": "La classification et le regroupement ne génèrent pas de récits contextuels basés sur des preuves fondées sur les sources."
+    },
+    {
+      "id": "ai900-bd5692fa15d6",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Techniques",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Techniques"
+      ],
+      "promptHtml": "Une startup doit détecter des pics de transactions inhabituels sans exemples de fraude identifiés. Quelle approche d’apprentissage automatique est la plus adaptée au départ ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Découverte de motifs de type clustering non supervisé/anomalie"
+        },
+        {
+          "key": "B",
+          "label": "Classification multiclasse"
+        },
+        {
+          "key": "C",
+          "label": "Régression"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Clustering non supervisé/découverte de motifs de type anomalie. Les données non étiquetées nécessitent d’abord des approches de découverte de motifs.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml#clustering\">Clustering in Azure ML</a>",
+      "extraHtml": "La classification doit être étiquetée comme des résultats de fraude. La régression prédit des valeurs continues, pas des groupes de motifs latents."
+    },
+    {
+      "id": "ai900-5f39a2a14412",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Forecasting",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Forecasting"
+      ],
+      "promptHtml": "Un modèle opérationnel prédit la demande horaire en kWh pour 30 jours à venir. Quel type de tâche est-ce ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Prévision par séries temporelles (famille de régression)"
+        },
+        {
+          "key": "B",
+          "label": "Classification binaire"
+        },
+        {
+          "key": "C",
+          "label": "Regroupement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Prévision par séries temporelles (famille de régression). La cible est une valeur numérique continue future indexée par le temps.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml#time-series-forecasting\">Prévisions dans AutoML</a>",
+      "extraHtml": "La classification binaire prédit les étiquettes ; regrouper les enregistrements. La prévision gère les sorties de séquence temporelle et numériques."
+    },
+    {
+      "id": "ai900-9154628c5a63",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Metrics",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Metrics"
+      ],
+      "promptHtml": "Un modèle de fraude produit la fraude/non-fraude. L’équipe souhaite réduire les faux positifs qui bloquent les achats valides. Sur quel critère devraient-ils insister ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Précision"
+        },
+        {
+          "key": "B",
+          "label": "Rappel"
+        },
+        {
+          "key": "C",
+          "label": "MAE"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Précision. La précision s’améliore lorsque moins de cas de fraude prédit sont réellement légitimes, réduisant ainsi les faux positifs.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml-metrics\">Indicateurs de classification</a>",
+      "extraHtml": "Le rappel vise à détecter plus de fraudes réelles (moins de faux négatifs). L’EMA est une métrique de régression, pas une qualité de classification pour ce scénario."
+    },
+    {
+      "id": "ai900-76a81bbd9ba9",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Metrics",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Metrics"
+      ],
+      "promptHtml": "Un classificateur de dépistage du cancer doit émettre le moins de cas réels possible. Quel indicateur doit être priorisé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rappel"
+        },
+        {
+          "key": "B",
+          "label": "Précision"
+        },
+        {
+          "key": "C",
+          "label": "R au carré"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Rappelez-vous. Le rappel maximise la détection des cas réels positifs, minimisant les faux négatifs.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml-metrics\">Indicateurs de classification</a>",
+      "extraHtml": "La précision réduit les faux positifs mais peut tout de même manquer des positifs. Le R-carré s’applique à la régression, pas au criblage binaire."
+    },
+    {
+      "id": "ai900-fd93e390d261",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "ModelGeneralization",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "ModelGeneralization"
+      ],
+      "promptHtml": "Un modèle a une précision de 99 % sur les données d’entraînement mais se dégrade fortement sur les données de validation. Quel est le problème le plus probable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Surappoint"
+        },
+        {
+          "key": "B",
+          "label": "Sous-équipage"
+        },
+        {
+          "key": "C",
+          "label": "Défaillance du chiffrement des données"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sur-équipement. Le modèle mémorise les schémas d’entraînement/bruit et ne généralise pas aux données invisibles.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-train-machine-learning-model#overfitting-and-underfitting\">Surajustement et sous-ajustement</a>",
+      "extraHtml": "L’underfitting fonctionne mal aussi bien sur les trains que sur les ensembles de validation. Le chiffrement n’a aucun lien avec le comportement de généralisation du modèle."
+    },
+    {
+      "id": "ai900-b2c53a7cbd27",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "CoreConcepts",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "CoreConcepts"
+      ],
+      "promptHtml": "Une équipe divise les données en ensembles de train, de validation et de test. Quel est le meilleur rôle des données de validation ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sélection de l’hyperparamètre/modèle avant le test final"
+        },
+        {
+          "key": "B",
+          "label": "Métrique finale non biaisée uniquement après tout réglage"
+        },
+        {
+          "key": "C",
+          "label": "Stockage d’archives à long terme"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sélection de l’hyperparamètre/modèle avant le test final. La validation guide les choix du modèle tout en conservant les données de test pour l’évaluation finale.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-train-machine-learning-model\">Trains ML</a> modèles",
+      "extraHtml": "Le jeu final de test doit rester intact pendant l’accordage. Le stockage d’archives n’est pas le but des divisions de jeux de données."
+    },
+    {
+      "id": "ai900-9bb2dbbff368",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "FeaturesLabels",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "FeaturesLabels"
+      ],
+      "promptHtml": "Un jeu de données de projet comporte des colonnes d’entrée telles que revenu et durée du prêt, et colonne cible approuvé/refusée. Quelle affirmation est correcte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les revenus et la durée du prêt sont des caractéristiques ; Approuvé/Refusé est l’étiquette"
+        },
+        {
+          "key": "B",
+          "label": "Approuvé/refusé est une fonctionnalité ; Le revenu est une étiquette"
+        },
+        {
+          "key": "C",
+          "label": "Tous sont des labels"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les revenus et la durée du prêt sont des caractéristiques ; Approuvé/refusé est l’étiquette. Les caractéristiques sont des entrées, les étiquettes sont des résultats à prédire.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-data-labeling\">concepts d’étiquetage de données</a>",
+      "extraHtml": "Le changement d’étiquette/de fonctionnalité permet de superviser la mise en place et invalide les objectifs d’entraînement du modèle."
+    },
+    {
+      "id": "ai900-e7ef7f65e8a3",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "AzureML",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "AzureML"
+      ],
+      "promptHtml": "Une startup souhaite des expériences no-code/low-code qui testent automatiquement de nombreux algorithmes et hyperparamètres pour des données tabulaires. Quelle capacité Azure convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Apprentissage automatique automatisé dans Azure Machine Learning"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Face"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Translator"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Apprentissage automatique automatisé dans Azure Machine Learning. AutoML orchestre la recherche de modèles/caractéristiques/hyperparamètres pour les tâches prises en charge.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml\">Aperçu d’AutoML</a>",
+      "extraHtml": "Face et Translator sont des API de domaine préconstruites, et non des frameworks de recherche de modèles tabulaires généraux."
+    },
+    {
+      "id": "ai900-9ed958c805e0",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "AzureML",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "AzureML"
+      ],
+      "promptHtml": "Une équipe a besoin d’une formation évolutive qui puisse partir de zéro nœud et ne s’étendre que pendant que les jobs tournent. Quelle option de calcul Azure ML est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Cluster de calcul"
+        },
+        {
+          "key": "B",
+          "label": "Instance de calcul"
+        },
+        {
+          "key": "C",
+          "label": "Ordinateur portable local uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Cluster de calcul. Il prend en charge les tâches en file d’attente et l’auto-scaling pour des charges de travail d’entraînement rentables.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-compute-cluster\">Créer un cluster de calcul</a>",
+      "extraHtml": "Les instances de calcul sont des machines de développement personnelles, pas des clusters multi-tâches élastiques. Le mode local seul manque de mise à l’échelle et d’orchestration gérées."
+    },
+    {
+      "id": "ai900-76250160d3cb",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Deployment",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Deployment"
+      ],
+      "promptHtml": "Une équipe doit exposer un modèle entraîné avec une authentification gérée, une mise à l’échelle et une répartition du trafic entre les versions. Quelle capacité répond à cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure ML managed online endpoints"
+        },
+        {
+          "key": "B",
+          "label": "Azure Blob lifecycle policies"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Vision Analyze Image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure ML managed online endpoints. Ils fournissent l’hébergement API, la mise à l’échelle, l’authentification et le routage canary/A-B pour les versions des modèles.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints\">Azure ML endpoints</a>",
+      "extraHtml": "Les politiques du cycle de vie des blobs gèrent les niveaux de stockage. Vision Analyze Image est une API d’inférence préconstruite, pas une orchestration de déploiement de modèles personnalisés."
+    },
+    {
+      "id": "ai900-1917f67483fd",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Techniques",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Techniques"
+      ],
+      "promptHtml": "Un modèle prédit des valeurs continues, mais les parties prenantes demandent des prédictions de catégorie (faible, moyen, élevé risque). Quelle transition de tâche est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Passage de la régression à la classification"
+        },
+        {
+          "key": "B",
+          "label": "Passage de la classification au regroupement"
+        },
+        {
+          "key": "C",
+          "label": "Passage du regroupement à la régression"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Passez de la régression à la classification. La sortie est passée de la continuité numérique aux catégories discrètes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml\">types de tâches ML</a>",
+      "extraHtml": "Le regroupement est un regroupement non étiqueté et ne correspond pas directement à des bandes de risque prédéfinies à moins que des étiquettes ne soient définies."
+    },
+    {
+      "id": "ai900-9aa7b7af9c55",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "MLOps",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "MLOps"
+      ],
+      "promptHtml": "Une équipe compare deux versions de modèles en production en envoyant 90 % du trafic vers la v1 et 10 % vers la v2, puis évalue les KPI métier. Quelle pratique est-ce ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Test A/B (champion/challenger)"
+        },
+        {
+          "key": "B",
+          "label": "Mise à l’échelle des caractéristiques"
+        },
+        {
+          "key": "C",
+          "label": "Étiquetage des données"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Test A/B (champion/challenger). La division contrôlée du trafic valide les nouvelles versions avec un risque de déploiement moindre.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-online-endpoints\">Déploiement en ligne sur les terminaux</a>",
+      "extraHtml": "L’échelle et l’étiquetage des fonctionnalités ont lieu avant le déploiement ; Ils ne fournissent pas de preuves comparatives de performance en temps réel."
+    },
+    {
+      "id": "ai900-ef1c7fe40ffa",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "DataQuality",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "DataQuality"
+      ],
+      "promptHtml": "Un modèle de support multilingue se dégrade après avoir ajouté de nombreuses étiquettes bruyantes et de faible qualité. Quelle affirmation explique le mieux l’impact ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La qualité des données détermine fortement la qualité du modèle"
+        },
+        {
+          "key": "B",
+          "label": "Le SKU VM seul détermine la qualité du modèle"
+        },
+        {
+          "key": "C",
+          "label": "Le thème du portail affecte la convergence"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La qualité des données influence fortement la qualité des modèles. De mauvaises étiquettes introduisent du bruit et dégradent le signal apprisible.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-data\">Data in Azure ML</a>",
+      "extraHtml": "L’informatique peut accélérer la formation mais ne peut pas corriger une supervision fondamentalement erronée. Les visuels de l’interface n’ont aucune pertinence pour l’entraînement."
+    },
+    {
+      "id": "ai900-6328053a5a78",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "AzureML",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "AzureML"
+      ],
+      "promptHtml": "Une séance d’entraînement modèle est lente. L’équipe demande si passer à un GPU plus grand garantit une meilleure précision prédicative. Qu’est-ce qui est correct ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un calcul plus important affecte principalement la vitesse/la capacité d’entraînement, sans garantie de précision"
+        },
+        {
+          "key": "B",
+          "label": "Un calcul plus important augmente toujours la précision"
+        },
+        {
+          "key": "C",
+          "label": "Le choix du calcul est sans importance pour le temps d’entraînement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un calcul plus important affecte principalement la vitesse/capacité d’entraînement, sans garantie de précision. La précision dépend des données, de l’objectif et de la conception du modèle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-compute-cluster\">Azure ML compute concepts</a>",
+      "extraHtml": "B est une idée reçue courante. C est faux car le matériel et le parallélisme influencent fortement l’exécution."
+    },
+    {
+      "id": "ai900-a2caabaf2bf6",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "ResponsibleML",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "ResponsibleML"
+      ],
+      "promptHtml": "Une équipe veut une explication possible pour expliquer pourquoi un modèle tabulaire prédit le refus de prêt pour un utilisateur. Quelle capacité Azure ML est la plus alignée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Outils d’explicabilité de modèles dans Azure ML/Responsible AI dashboard"
+        },
+        {
+          "key": "B",
+          "label": "API de lecture OCR"
+        },
+        {
+          "key": "C",
+          "label": "Vérification du visage"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Outils d’explicabilité modélisés dans Azure ML/Responsible AI Dashboard. Ces outils aident à interpréter les contributions des fonctionnalités et le comportement du modèle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai-dashboard\">Tableau de bord Responsible AI</a>",
+      "extraHtml": "Les OCR et les API Face sont des services cognitifs spécifiques à chaque tâche et n’expliquent pas les caractéristiques de décision du modèle tabulaire."
+    },
+    {
+      "id": "ai900-face8350767d",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Classification",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Classification"
+      ],
+      "promptHtml": "Une application photo doit attribuer une étiquette globale à chaque image (forêt, plage, ville). Quelle est cette tâche de vision ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Classification des images"
+        },
+        {
+          "key": "B",
+          "label": "Détection d’objets"
+        },
+        {
+          "key": "C",
+          "label": "OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Classification des images. Il prédit une classe pour l’ensemble de l’image plutôt que de localiser plusieurs éléments.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis\">Azure AI Vision analyse d’image</a>",
+      "extraHtml": "La détection d’objets renvoie des encadrements pour plusieurs objets. L’OCR extrait le texte, pas les catégories de scènes."
+    },
+    {
+      "id": "ai900-de1292b78d7b",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "ObjectDetection",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "ObjectDetection"
+      ],
+      "promptHtml": "Une solution de caméra d’entrepôt doit localiser et compter les palettes dans chaque image avec des coordonnées pour le picking robotisé. Quelle tâche convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Détection d’objets"
+        },
+        {
+          "key": "B",
+          "label": "Classification des images"
+        },
+        {
+          "key": "C",
+          "label": "Analyse du sentiment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Détection d’objets. Il identifie les classes d’objets et les emplacements spatiaux via des boîtes englobantes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-object-detection\">Détection d’objets</a>",
+      "extraHtml": "La classification ne peut pas fournir de postes. Le sentiment est un NLP pour les émotions textuelles, sans lien avec la localisation des images."
+    },
+    {
+      "id": "ai900-69f786be8797",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "OCR",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "OCR"
+      ],
+      "promptHtml": "Un système de traitement de factures doit lire les totaux imprimés et le texte des lignes à partir de pages numérisées. Quelle capacité est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR/Lecture"
+        },
+        {
+          "key": "B",
+          "label": "Détection des visages"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR/Lecture. L’OCR extrait du texte lisible par machine à partir de pixels d’image ou de documents.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-ocr\">OCR dans Azure AI Vision</a>",
+      "extraHtml": "La détection des visages identifie les régions faciales, pas les champs de texte de la facture. La synthèse vocale convertit le texte en audio."
+    },
+    {
+      "id": "ai900-3f62cfaa3d09",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Face",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Face"
+      ],
+      "promptHtml": "Un kiosque de détail doit détecter la présence d’un visage et estimer des attributs comme la posture de la tête pour la qualité de l’encadrement. Quel service est le plus spécifique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Face"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Translator"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Face. Elle est spécialisée dans la détection et l’analyse faciale.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-identity\">Détection et analyse des visages</a>",
+      "extraHtml": "Traducteur gère la conversion linguistique, et AI Search indexe le contenu. Aucun des deux ne propose d’analyse faciale spécialisée."
+    },
+    {
+      "id": "ai900-843a6addf465",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "AzureVision",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "AzureVision"
+      ],
+      "promptHtml": "Un fabricant a besoin d’un marquage large d’images, de sous-titrage et d’extraction de caractéristiques visuelles sans entraîner un modèle personnalisé. Quel service devrait-il être le premier choix ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Vision"
+        },
+        {
+          "key": "B",
+          "label": "Azure ML AutoML tabular"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Speech"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Vision. Il offre des capacités d’analyse d’image préconçues pour les tâches de vision commune.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview\">Aperçu Azure AI Vision</a>",
+      "extraHtml": "AutoML tabular n’est pas une API d’image à intégrer directement. Les services de parole traitent l’audio, pas la sémantique d’image."
+    },
+    {
+      "id": "ai900-ac0e6bbb2dec",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "CustomVision",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "CustomVision"
+      ],
+      "promptHtml": "Une équipe a besoin d’une méthode sans code pour entraîner un détecteur personnalisé pour les logos spécifiques à l’entreprise sur les photos des produits. Quel service est le plus adapté ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Custom Vision"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Translator"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Speech"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Custom Vision. Il prend en charge, la classification d’images personnalisée et la détection d’objets avec des exemples identifiés.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/custom-vision-service/overview\">Présentation de Custom Vision</a>",
+      "extraHtml": "Le traducteur et la parole ne forment pas les détecteurs d’images personnalisés. Custom Vision est conçu spécialement pour ce scénario."
+    },
+    {
+      "id": "ai900-e88ebcb705c2",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Une équipe conformité doit extraire des paires clé-valeur et des tables à partir des formulaires tout en préservant la structure du document. Quel service Azure est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Document Intelligence"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Face"
+        },
+        {
+          "key": "C",
+          "label": "Expressions-clés Azure AI Language"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Document Intelligence. Il combine l’OCR avec la mise en page/extraction de champs pour une compréhension structurée des documents.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview\">Aperçu du renseignement documentaire</a>",
+      "extraHtml": "L’extraction de visages et de mots-clés ne fournit pas un traitement robuste de tableaux de formulaires ou de valeurs clés à partir de documents numérisés."
+    },
+    {
+      "id": "ai900-367e6470c943",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "OCR",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "OCR"
+      ],
+      "promptHtml": "Une application de musée traduit le texte des photos d’exposition en plusieurs langues. Quel pipeline est correct ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR puis traduction"
+        },
+        {
+          "key": "B",
+          "label": "Détection d’objets puis regroupement"
+        },
+        {
+          "key": "C",
+          "label": "Détection faciale puis reconnaissance vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR puis traduction. Le texte doit d’abord être extrait avant que la traduction linguistique puisse avoir lieu.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/translator/translator-overview\">Aperçu du traducteur</a>",
+      "extraHtml": "La détection d’objets et de visages ne fournit pas de contenu textuel. La reconnaissance vocale sert à l’audio, pas aux panneaux imprimés."
+    },
+    {
+      "id": "ai900-63abab15d2ed",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Video",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Video"
+      ],
+      "promptHtml": "Une archive média nécessite des transcriptions et une indexation au niveau des scènes pour des milliers de vidéos, y compris des moments consultables. Quel service est le mieux aligné ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Video Indexer"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Face uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Azure SQL Database"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Video Indexer. Il fournit des informations riches sur la chronologie telles que la transcription, les scènes et les métadonnées consultables.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/azure-video-indexer/video-indexer-overview\">Aperçu de l’indexeur vidéo</a>",
+      "extraHtml": "L’analyse en face seule ne fait pas de l’indexation audiovisuelle plus large. SQL stocke des données structurées mais ne génère pas d’insights vidéo sur l’IA."
+    },
+    {
+      "id": "ai900-46458fc2c588",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "ObjectDetection",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "ObjectDetection"
+      ],
+      "promptHtml": "Un modèle de caméra d’autoroute doit signaler plusieurs classes (voiture, camion, bus) et également renvoyer chaque position d’objet pour compter les voies. Quelle sortie est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Étiquettes de classe plus encadrés"
+        },
+        {
+          "key": "B",
+          "label": "Étiquette de scène unique uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Score de sentiment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Étiquettes de classe et encadrés englobants. C’est le format de sortie définissant la détection d’objets.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-object-detection\">Concepts de détection d’objets</a>",
+      "extraHtml": "La classification à étiquette unique ne peut pas supporter le nombre de lignes par objet. Le sentiment s’applique au texte, pas aux objets de trafic."
+    },
+    {
+      "id": "ai900-aefa38993ec4",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Une application bancaire utilise l’OCR sur les images de chèques et reçoit peu de confiance dans les champs manuscrits. Quelle est la meilleure interprétation ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les scores de confiance indiquent la certitude de l’extraction et devraient atteindre les seuils d’évaluation humaine"
+        },
+        {
+          "key": "B",
+          "label": "Les scores de confiance ne sont pas liés à la qualité de l’OCR"
+        },
+        {
+          "key": "C",
+          "label": "Une faible confiance signifie que la traduction a échoué"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les scores de confiance indiquent la certitude de l’extraction et devraient atteindre les seuils d’évaluation humaine. Cela permet une manipulation plus sûre où l’humain est en boucle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept/accuracy-confidence\">concepts de confiance et de précision</a>",
+      "extraHtml": "Ignorer la confiance augmente le risque d’erreur. L’échec de traduction est distinct de l’incertitude de l’OCR sur l’écriture manuscrite."
+    },
+    {
+      "id": "ai900-da81ad209126",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "CustomVision",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "CustomVision"
+      ],
+      "promptHtml": "Une application smartphone doit exécuter la classification d’image hors ligne sur l’appareil pour des raisons de latence et de confidentialité. Quelle approche est la plus alignée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Entraîner/déployer un modèle de vision personnalisé exportable pour l’inférence des bords"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez uniquement le service vocal à distance"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez les requêtes SQL pour l’inférence d’images"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Entraînez/déployez un modèle de vision personnalisé exportable pour l’inférence des bords. Les modèles personnalisés peuvent être exportés vers des formats pris en charge pour un usage local.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/custom-vision-service/export-your-model\">Export modèle Custom Vision</a>",
+      "extraHtml": "La parole et SQL ne fournissent pas d’inférence d’image locale. Le déploiement en périphérie est essentiel pour les exigences hors ligne et à faible latence."
+    },
+    {
+      "id": "ai900-a03057e3d052",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Face",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Face"
+      ],
+      "promptHtml": "Une équipe des opérations de sécurité doit flouter les visages dans les instantanés de surveillance stockés avant l’examen par les analystes. Quelle fonctionnalité permet directement la localisation des visages ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Coordonnées de détection des visages"
+        },
+        {
+          "key": "B",
+          "label": "Extraction des mots-clés"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Coordonnées de détection faciale. Les régions délimitées permettent des flux de travail déterministes de caviardage/floutage.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-identity\">Aperçu de la détection faciale</a>",
+      "extraHtml": "Les fonctionnalités de NLP et de parole ne retournent pas les coordonnées des pixels pour la rédaction dans les images."
+    },
+    {
+      "id": "ai900-5a0e64ebc46e",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "AzureVision",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "AzureVision"
+      ],
+      "promptHtml": "Un produit d’accessibilité nécessite une génération automatique de texte alternatif pour les images téléchargées. Quel service est le plus approprié pour commencer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Légende/analyse d’images Azure AI Vision"
+        },
+        {
+          "key": "B",
+          "label": "Traduction vocale Azure AI"
+        },
+        {
+          "key": "C",
+          "label": "Azure Event Hubs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Légende/analyse d’images Azure AI Vision. Il peut générer des descriptions et des tags à partir de contenus visuels.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis\">Fonctionnalités d’analyse d’image</a>",
+      "extraHtml": "La traduction vocale s’occupe de l’audio. Les Event Hubs intègrent les flux mais ne génèrent pas de légendes d’images."
+    },
+    {
+      "id": "ai900-7e0d250612a2",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "LanguageDetection",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "LanguageDetection"
+      ],
+      "promptHtml": "Une équipe juridique a besoin d’une détection de langage avant de router les documents vers le pipeline NLP régional approprié. Quelle capacité est nécessaire en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Détection du langage"
+        },
+        {
+          "key": "B",
+          "label": "Analyse du sentiment"
+        },
+        {
+          "key": "C",
+          "label": "Détection d’objets"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Détection du langage. La détection du langage permet de sélectionner le modèle/processus en aval approprié.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/language-detection/overview\">Aperçu de la détection linguistique</a>",
+      "extraHtml": "Le sentiment peut venir plus tard ; La détection d’objets est une tâche visuelle et sans rapport avec le routage en langage textuel."
+    },
+    {
+      "id": "ai900-b163f57c869c",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "IntentEntity",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "IntentEntity"
+      ],
+      "promptHtml": "Une plateforme de support doit identifier l’intention du client comme ResetPassword et extraire des entités telles que le type de compte et la région. Quelle capacité est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Compréhension conversationnelle du langage (CLU)"
+        },
+        {
+          "key": "B",
+          "label": "API de lecture OCR"
+        },
+        {
+          "key": "C",
+          "label": "Classification des images"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Compréhension conversationnelle du langage (CLU). CLU est conçu pour la reconnaissance d’intention et l’extraction d’entités dans le texte conversationnel.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/conversational-language-understanding/overview\">Aperçu de CLU</a>",
+      "extraHtml": "L’OCR/classification d’image sont des tâches visuelles. CLU est le choix NLP pour les applications conversationnelles pilotées par l’intention/l’entité."
+    },
+    {
+      "id": "ai900-63650ac9f0f8",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "EntityRecognition",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "EntityRecognition"
+      ],
+      "promptHtml": "Un système de conformité doit retrouver tous les noms de personnes, organisations, lieux et dates à travers les contrats. Quelle fonctionnalité NLP s’applique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Reconnaissance d’Entité Nommée (NER)"
+        },
+        {
+          "key": "B",
+          "label": "Résumé uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Reconnaissance d’Entité Nommée (NER). NER extrait et catégorise les entités à partir des étendues textuelles.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/named-entity-recognition/overview\">Aperçu du NER</a>",
+      "extraHtml": "La synthèse condense le texte mais ne classe pas nécessairement les entités. La synthèse vocale convertit le texte en audio."
+    },
+    {
+      "id": "ai900-f6869c62bcc8",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "KeyPhrases",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "KeyPhrases"
+      ],
+      "promptHtml": "Une équipe produit souhaite une extraction rapide des concepts principaux à partir de longs retours clients, pas des résumés complets. Quelle fonctionnalité est la plus directe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Extraction des mots-clés"
+        },
+        {
+          "key": "B",
+          "label": "Traduction"
+        },
+        {
+          "key": "C",
+          "label": "Détection des visages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Extraction des mots-clés. Il identifie des termes/expressions saillants représentant des thèmes du document.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/key-phrase-extraction/overview\">Aperçu de l’extraction des mots-clés</a>",
+      "extraHtml": "La traduction change la langue ; La détection des visages n’a aucun rapport. L’extraction de mots-clés est une mise en lumière légère de sujets."
+    },
+    {
+      "id": "ai900-1656a59b8d92",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Sentiment",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Sentiment"
+      ],
+      "promptHtml": "Un détaillant veut que chaque phrase d’évaluation soit notée comme positive/neutre/négative et signalée pour un ton mitigé. Quelle capacité convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse du sentiment avec l’exploration d’opinions"
+        },
+        {
+          "key": "B",
+          "label": "Détection linguistique uniquement"
+        },
+        {
+          "key": "C",
+          "label": "OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse du sentiment avec extraction d’opinion. Il apporte polarité et confiance à la granularité du document ou de la phrase.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/overview\">Aperçu de l’analyse du sentiment</a>",
+      "extraHtml": "La détection du langage ne mesure pas le sentiment. L’OCR concerne les images/documents, pas le sentiment de sens textuel."
+    },
+    {
+      "id": "ai900-3ef991ea980d",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Translation",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Translation"
+      ],
+      "promptHtml": "Un service d’assistance mondial doit traduire les tickets de texte entrants en anglais et conserver la mise en forme des documents joints. Quel service est le plus adapté ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Translator (traduction texte/document)"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Face"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Translator (traduction texte/document). Il prend en charge la traduction de texte multilingue et les scénarios de traduction de documents.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/translator/translator-overview\">Aperçu du traducteur</a>",
+      "extraHtml": "Face et Search ne sont pas des moteurs de traduction. Translator est conçu spécialement pour la conversion linguistique."
+    },
+    {
+      "id": "ai900-6132b027c4e6",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Speech",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Speech"
+      ],
+      "promptHtml": "Un centre d’appels souhaite la transcription en direct des appels des agents et des réponses vocales synthétisées à partir de modèles textuels. Quelle paire de capacités est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Reconnaissance vocale et synthèse vocale"
+        },
+        {
+          "key": "B",
+          "label": "OCR et mots-clés"
+        },
+        {
+          "key": "C",
+          "label": "Détection d’objets et CLU"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Reconnaissance vocale et synthèse vocale. Cela combine transcription audio et lecture synthétisée.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview\">Aperçu de Azure AI Speech</a>",
+      "extraHtml": "Les expressions OCR/clés fonctionnent sur du texte ou des images, et non sur l’interaction audio vocale de bout en bout."
+    },
+    {
+      "id": "ai900-9429fca4b2bd",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "AzureLanguage",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "AzureLanguage"
+      ],
+      "promptHtml": "Un assistant virtuel doit classer les énoncés de l’utilisateur en intentions avec des scores de confiance et des recours lorsque la confiance est faible. Quel service Azure est core ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Language (CLU)"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Vision"
+        },
+        {
+          "key": "C",
+          "label": "Azure Content Safety uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Language (CLU). Il renvoie les intentions/entités avec confiance pour la logique de routage et de reply.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/conversational-language-understanding/overview\">Aperçu de CLU</a>",
+      "extraHtml": "La vision est sans importance pour les intentions du texte. La sécurité du contenu filtre les préjudices, pas la classification par intention de domaine."
+    },
+    {
+      "id": "ai900-6e2c7cb36805",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Speech",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Speech"
+      ],
+      "promptHtml": "Un robot vocal doit comprendre le vocabulaire médical et les accents courants dans une région. Quelle amélioration améliore la qualité de reconnaissance ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parole personnalisée"
+        },
+        {
+          "key": "B",
+          "label": "Recherche de dictionnaire traducteur uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Face"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Discours personnalisé. Il adapte la reconnaissance avec les données de domaine/audio pour une meilleure précision de transcription spécialisée.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-speech-overview\">Présentation de Custom Speech</a>",
+      "extraHtml": "La recherche dans le dictionnaire seule n’adapte pas de manière exhaustive les modèles acoustiques/langage. Le visage n’a aucun lien avec la reconnaissance vocale."
+    },
+    {
+      "id": "ai900-25ad7731b667",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Architecture",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Architecture"
+      ],
+      "promptHtml": "Un chatbot multilingue détecte d’abord la langue puis redirige vers des projets CLU spécifiques à chaque localité. Pourquoi ce schéma est-il utile ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il améliore la précision de l’intention en appliquant des modèles adaptés au langage"
+        },
+        {
+          "key": "B",
+          "label": "Cela élimine le besoin d’exemples d’entraînement"
+        },
+        {
+          "key": "C",
+          "label": "Il convertit le NLP en vision par ordinateur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Il améliore la précision de l’intention en appliquant des modèles adaptés au langage. Les modèles spécifiques à la région fonctionnent généralement mieux que le routage universel.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview\">Aperçu du langage Azure AI</a>",
+      "extraHtml": "Vous avez toujours besoin de données d’entraînement. Le schéma reste dans le NLP et ne convertit pas les modalités."
+    },
+    {
+      "id": "ai900-2c4847bc38d9",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "EntityRecognition",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "EntityRecognition"
+      ],
+      "promptHtml": "Une équipe financière cherche à détecter les références aux numéros de compte et aux adresses dans le texte avant de les stocker. Quelle capacité NLP est la plus directement pertinente ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Extraction d’entités (y compris l’analyse axée sur les PII lorsque cela est applicable)"
+        },
+        {
+          "key": "B",
+          "label": "Synthèse vocale"
+        },
+        {
+          "key": "C",
+          "label": "Détection d’objets"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Extraction d’entités (y compris une analyse axée sur les PII lorsque cela est applicable). Il identifie les plages textuelles sensibles pour les flux de travail de masquage/gouvernance.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/overview\">Aperçu de la détection des PII</a>",
+      "extraHtml": "La synthèse vocale et la détection d’objets ne peuvent pas localiser les entités sensibles dans les documents textes."
+    },
+    {
+      "id": "ai900-b336f46554a9",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Summarization",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Summarization"
+      ],
+      "promptHtml": "Une candidature nécessite des résumés abstraits de longs documents de politique pour les managers. Quelle famille de capacités s’applique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Schémas de résumé des services linguistiques / résumé génératif"
+        },
+        {
+          "key": "B",
+          "label": "Détection des visages"
+        },
+        {
+          "key": "C",
+          "label": "Pipeline OCR uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Schémas de synthèse des services linguistiques / résumé génératif. La synthèse condense un texte long en un résultat concis.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview\">Aperçu du résumé du texte</a>",
+      "extraHtml": "La détection des visages est visuale. L’OCR n’extrait que du texte et ne produit pas de résumés sémantiques."
+    },
+    {
+      "id": "ai900-9d4722c67ffb",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Sentiment",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Sentiment"
+      ],
+      "promptHtml": "Une équipe QA observe des dérives de sentiment entre les gammes de produits. Ils ont besoin d’une polarité au niveau d’aspect (batterie positive, support négatif) dans la même critique. Quelle fonctionnalité est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse d’opinion avec analyse de sentiment"
+        },
+        {
+          "key": "B",
+          "label": "Détection du langage"
+        },
+        {
+          "key": "C",
+          "label": "Traduction"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse d’opinion avec analyse de sentiment. Il relie le sentiment aux cibles/aspects dans le texte.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/overview\">Exploration de sentiments et d’opinions</a>",
+      "extraHtml": "La détection et la traduction linguistiques n’identifient pas le sentiment par aspect dans une seule critique."
+    },
+    {
+      "id": "ai900-ff2addef64d5",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Speech",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Speech"
+      ],
+      "promptHtml": "Une application vocale pour les entrepôts nécessite de la ponctuation et de la segmentation des intervenants dans les transcriptions des réunions. Quel ensemble de fonctionnalités doit être activé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Transcription vocale avec diarisation et mise en forme"
+        },
+        {
+          "key": "B",
+          "label": "Extraction uniquement par mots-clés"
+        },
+        {
+          "key": "C",
+          "label": "Modèle de disposition OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Transcription vocale Azure AI avec diarisation et mise en forme. Il prend en charge la génération de transcriptions conscientes du locuteur.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-to-text\">Capacités de reconnaissance vocale</a>",
+      "extraHtml": "L’extraction des mots-clés fonctionne après transcription, et la mise en page OCR est destinée aux documents/images, pas aux réunions parlées."
+    },
+    {
+      "id": "ai900-15abae6ab4a9",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Concepts",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Concepts"
+      ],
+      "promptHtml": "Une startup souhaite un modèle capable de créer de nouveaux textes et codes à partir d’invites plutôt que de se limiter à classifier les entrées. Quel modèle est-ce ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Modèle génératif"
+        },
+        {
+          "key": "B",
+          "label": "Classification discriminative uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Modèle de regroupement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Modèle génératif. Les modèles génératifs produisent un contenu nouveau en modélisant la distribution des données et le contexte.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models\">Azure OpenAI models</a>",
+      "extraHtml": "Les modèles discriminatifs sont optimisés pour la prédiction/classification ; Le regroupement regroupe les données et ne génère pas de code/texte fluent."
+    },
+    {
+      "id": "ai900-8aefe30c9506",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Transformers",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Transformers"
+      ],
+      "promptHtml": "Une équipe se demande pourquoi les LLM basés sur des transformateurs surpassent les anciens modèles de séquence en matière de gestion du contexte. Quelle explication est la plus forte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’attention personnelle capture efficacement les relations de jetons à long terme"
+        },
+        {
+          "key": "B",
+          "label": "Ils ne traitent qu’un seul jeton par requête"
+        },
+        {
+          "key": "C",
+          "label": "Ils ignorent les fenêtres contextuelles"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’attention personnelle permet de capturer efficacement les relations de jetons à long terme. C’est un avantage fondamental des architectures de transformateurs.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models\">concepts de modèles LLM</a>",
+      "extraHtml": "Les transformers n’ignorent pas le contexte ; Ils sont conçus pour la modélisation contextuelle des dépendances à grande échelle."
+    },
+    {
+      "id": "ai900-6e418f47daf0",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "Un assistant juridique doit répondre uniquement à partir de documents de politique approuvés et citer des sources pour réduire les hallucinations. Quel patron faut-il utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Génération augmentée par récupération (RAG)"
+        },
+        {
+          "key": "B",
+          "label": "Augmentez la température à 1,2"
+        },
+        {
+          "key": "C",
+          "label": "Supprimer les invites système"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Génération augmentée par récupération (RAG). La génération de terrains RAG dans les documents d’entreprise récupérés et permet des flux de travail de citation.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview\">Aperçu de RAG</a>",
+      "extraHtml": "Une température plus élevée augmente la variabilité, ce qui aggrave souvent la cohérence factuelle. Supprimer les directives système affaiblit la gouvernance."
+    },
+    {
+      "id": "ai900-c333132f03c2",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "AzureOpenAI",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "AzureOpenAI"
+      ],
+      "promptHtml": "Une équipe choisit Azure OpenAI plutôt que les endpoints publics car elle a besoin de contrôles d’entreprise tels que le réseau privé et la posture de conformité. Quel choix convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure OpenAI Service"
+        },
+        {
+          "key": "B",
+          "label": "Azure Fonctions uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Azure Monitor seulement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure OpenAI Service. Il fournit des contrôles intégrés à Azure pour la sécurité, la gouvernance et le déploiement en entreprise autour des modèles OpenAI.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/overview\">Aperçu d’Azure OpenAI</a>",
+      "extraHtml": "Fonctions et Monitor sont des services de support, et non un accès géré aux modèles de fondation de classe GPT."
+    },
+    {
+      "id": "ai900-dca5b84c9c36",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "ModelCatalog",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "ModelCatalog"
+      ],
+      "promptHtml": "Un product owner souhaite comparer plusieurs modèles de fondation provenant de différents fournisseurs avant leur déploiement au même endroit. Quelle capacité est conçue pour cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Foundry model catalog"
+        },
+        {
+          "key": "B",
+          "label": "Azure DNS zones"
+        },
+        {
+          "key": "C",
+          "label": "Azure Blob lifecycle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Foundry model catalog. Il centralise la découvrabilité/évaluation/déploiement des options pour les modèles de fondation.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/how-to/model-catalog-overview\">Aperçu du catalogue de modèles</a>",
+      "extraHtml": "Les politiques DNS et du cycle de vie gèrent le réseau/le stockage, pas les workflows de marché et d’évaluation des modèles."
+    },
+    {
+      "id": "ai900-767c90249557",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Foundry",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Foundry"
+      ],
+      "promptHtml": "Une équipe a besoin d’un moyen visuel d’orchestrer les invites, les appels de modèles et les nœuds Python avec traçabilité. Quelle fonctionnalité Foundry est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Flux rapide"
+        },
+        {
+          "key": "B",
+          "label": "Azure Bastion"
+        },
+        {
+          "key": "C",
+          "label": "Azure Backup"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Flux rapide. Il prend en chargement les flux de travail LLM en plusieurs étapes avec des tests et une observabilité pour le développement d’applications IA.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/how-to/prompt-flow\">Aperçu du flux de prompts</a>",
+      "extraHtml": "Bastion/Backup sont des services d’infrastructure, pas des outils d’orchestration de flux de travail LLM."
+    },
+    {
+      "id": "ai900-b66af41df0b1",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "PromptEngineering",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "PromptEngineering"
+      ],
+      "promptHtml": "Une équipe ajuste la température de 0,2 à 0,9 et observe des réponses plus diverses mais moins déterministes. Quel comportement de paramètre cela confirme-t-il ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La température contrôle le compromis aléatoire/créativité"
+        },
+        {
+          "key": "B",
+          "label": "Authentification des terminaux par contrôle de température"
+        },
+        {
+          "key": "C",
+          "label": "Contrôle de la température de l’indice vectoriel taille"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La température contrôle le compromis aléatoire/créativité. Des valeurs plus élevées échantillonnent des choix de tokens plus diversifiés.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/completions\">Paramètres du modèle</a>",
+      "extraHtml": "L’authentification et la taille de l’index ne sont pas liées au comportement d’échantillonnage des jetons lors de la génération."
+    },
+    {
+      "id": "ai900-1446cb1a2d0c",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Security",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Security"
+      ],
+      "promptHtml": "Un bot de support ne doit jamais exposer les clés secrètes si les utilisateurs tentent une injection de prompt. Quel contrôle est le plus direct dans l’architecture d’une application ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Gardez les secrets côté serveur et appliquez des listes strictes d’outils et de fonctions"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter max_tokens"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez des couleurs d’interface plus vives"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Gardez les secrets côté serveur et appliquez des listes strictes d’outils et de fonctions. Les limites de sécurité doivent être appliquées en dehors de la génération de texte du modèle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering\">Conseils de sécurité rapides</a>",
+      "extraHtml": "Les limites de jetons et le style de l’interface utilisateur n’imposent pas de contrôles de protection secrète contre les indications malveillantes."
+    },
+    {
+      "id": "ai900-22c777593019",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "PromptEngineering",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "PromptEngineering"
+      ],
+      "promptHtml": "Une équipe souhaite réduire les réponses interminables et imposer une sortie stricte de schéma JSON pour les systèmes en aval. Quelle approche est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ingénierie des prompts avec contraintes de format explicites et exemples"
+        },
+        {
+          "key": "B",
+          "label": "Réglez toujours la température maximale"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver les messages système"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ingénierie des prompts avec des contraintes de format explicites et des exemples. Les contrats de production clairs améliorent significativement l’adhésion de la structure.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering\">Concepts d’ingénierie prompts</a>",
+      "extraHtml": "Une température élevée augmente la variation. La suppression des instructions système affaiblit la cohérence et l’alignement des politiques."
+    },
+    {
+      "id": "ai900-10dc38a50588",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "Un chatbot financier fournit des conseils politiques obsolètes car la pré-formation des modèles est ancienne. Quel schéma maintient le mieux les réponses à jour sans un réentraînement complet ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "RAG sur un contenu indexé frais"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la limite des jetons de réponse"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez uniquement l’OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "RAG plutôt que du contenu indexé frais. La récupération à partir de documents actuels injecte des faits à jour au moment de l’inférence.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview\">architecture RAG</a>",
+      "extraHtml": "Les limites des jetons influencent la longueur, pas la fraîcheur. L’OCR extrait le texte mais n’ajoute pas de logique de récupération et de mise à la terre à elle seule."
+    },
+    {
+      "id": "ai900-10426c2ed73b",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Governance",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Governance"
+      ],
+      "promptHtml": "Une entreprise souhaite tester les changements rapides en toute sécurité avant une sortie générale et comparer les indicateurs de grounded/damage. Quel workflow est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Évaluer en environnement contrôlé et déployer via un déploiement progressif"
+        },
+        {
+          "key": "B",
+          "label": "Remplacer immédiatement l’invite de production pour tous les utilisateurs"
+        },
+        {
+          "key": "C",
+          "label": "Retirez temporairement les filtres de sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Évaluer en environnement contrôlé et déployer par déploiement par étapes. Cela minimise les risques et soutient des barrières de qualité mesurables.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/concepts/evaluation-approach-gen-ai\">Approche d’évaluation de l’IA générative</a>",
+      "extraHtml": "Un déploiement complet immédiat augmente le rayon de souffle. Désactiver les filtres sape les exigences responsables de l’IA."
+    },
+    {
+      "id": "ai900-5b0c902ee885",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Embeddings",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Embeddings"
+      ],
+      "promptHtml": "Une équipe a besoin d’embeddings pour alimenter la recherche sémantique sur les documents internes. Quelle capacité de modèle est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Modèle d’intégration de texte"
+        },
+        {
+          "key": "B",
+          "label": "Modèle de légendes d’image uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Modèle de synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Modèle d’intégration de texte. Les embeddings mappent le texte en vecteurs pour les pipelines de recherche et de récupération de similarité.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#embeddings\">Modèles d’embeddings</a>",
+      "extraHtml": "Le sous-titrage/synthèse ne génère pas de représentations vectorielles sémantiques pour l’indexation par recherche vectorielle."
+    },
+    {
+      "id": "ai900-35f3df7459ab",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un modèle génère des réponses dangereuses pour certains prompts. Quel mécanisme Azure OpenAI intégré devrait être vérifié en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Filtres de contenu et seuils de sévérité configurés"
+        },
+        {
+          "key": "B",
+          "label": "Paramètres d’arrêt automatique des machines virtuelles"
+        },
+        {
+          "key": "C",
+          "label": "Mise en cache CDN"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Filtres de contenu et seuils de gravité configurés. Ces contrôles régissent les politiques nuisibles de détection des prompts/sorties.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter\">concepts de filtre de contenu</a>",
+      "extraHtml": "Les paramètres de calcul et de CDN ne classent pas les catégories de contenu nuisibles dans les interactions avec les modèles."
+    },
+    {
+      "id": "ai900-deba725ccc07",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Strategy",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Strategy"
+      ],
+      "promptHtml": "Un CTO demande si un ajustement fin est toujours nécessaire pour construire un chatbot d’entreprise utile. Quelle réponse est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Non; l’ingénierie des prompts plus le RAG fonctionnent souvent sans réglage fin"
+        },
+        {
+          "key": "B",
+          "label": "Oui ; Chaque chatbot doit d’abord être affiné"
+        },
+        {
+          "key": "C",
+          "label": "Non; car les LLM n’ont pas besoin de gouvernance"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Non; l’ingénierie des prompts plus le RAG fonctionnent souvent sans ajustement fin. De nombreux cas d’utilisation peuvent être réalisés d’abord par mise à la terre et orchestration.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide\">conception de solution RAG</a>",
+      "extraHtml": "B exagère les exigences et le coût. C est incorrect car la gouvernance reste obligatoire quel que soit le réglage de la stratégie."
+    },
+    {
+      "id": "ai900-1bafe3c62bed",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Reliability",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Reliability"
+      ],
+      "promptHtml": "Un assistant de support devrait faire remonter les réponses incertaines à un agent humain. Quel design est le plus approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Vérifications de confiance/mise à la terre avec routage de secours"
+        },
+        {
+          "key": "B",
+          "label": "Désactiver l’historique des conversations"
+        },
+        {
+          "key": "C",
+          "label": "Répondez toujours avec un maximum de créativité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Vérifications de confiance/mise à la terre avec routage de secours. L’utilisation humaine dans la boucle réduit le risque lorsque la confiance est faible ou que le contexte est faible.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering\">Conseils rapides et de fiabilité</a>",
+      "extraHtml": "Désactiver l’historique peut réduire le contexte. Une grande créativité peut augmenter le risque d’hallucinations dans les scénarios de soutien."
+    },
+    {
+      "id": "ai900-9cf9705ab813",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Integration",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Integration"
+      ],
+      "promptHtml": "Une équipe souhaite exposer les API de l’entreprise à un modèle de chat pour des actions déterministes comme la création de tickets. Quel pattern de capacités est pertinent ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Appel d’outils/fonctions avec schémas contraints"
+        },
+        {
+          "key": "B",
+          "label": "Extraction de la disposition OCR"
+        },
+        {
+          "key": "C",
+          "label": "Diarisation de la parole"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Appel d’outils/fonctions avec des schémas contraints. Il permet au modèle de sélectionner des opérations prédéfinies pendant que les systèmes s’exécutent en toute sécurité.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling\">Appel de fonction</a>",
+      "extraHtml": "L’OCR et la diapérisation sont des modalités sans lien et ne fournissent pas d’orchestration transactionnelle par API."
+    },
+    {
+      "id": "ai900-fac1563e9799",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "PromptEngineering",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "PromptEngineering"
+      ],
+      "promptHtml": "Une équipe évalue deux questions de LLM : une verbeuse, une concise avec des rôles/contraintes/exemples explicites. Lequel donne généralement une sortie la plus fiable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le prompt concis mais explicite et structuré"
+        },
+        {
+          "key": "B",
+          "label": "Le prompt le plus long, peu importe la clarté"
+        },
+        {
+          "key": "C",
+          "label": "Une invite sans instructions de tâche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Le prompt concis mais explicite et structuré. La clarté, les contraintes et les exemples comptent plus que la longueur brute.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering\">Prompt Prompt Best Practices en ingénierie</a>",
+      "extraHtml": "De longues consignes peuvent ajouter du bruit et du coût en jetons. L’absence d’instructions augmente l’ambiguïté et les sorties instables."
+    },
+    {
+      "id": "ai900-81cc9f814cc9",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une entreprise doit bloquer la reproduction de texte protégé par le droit d’auteur dans les sorties générées lorsque cela est possible. Quelle capacité de sécurité est pertinente ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Détection des matériaux protégés et contrôles de politique"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter top_p seulement"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez l’OCR sur les invites"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Détection de matériaux protégés et contrôles de politique. Ces contrôles aident à identifier et à régir les schémas de sortie protégés par le droit d’auteur risqués.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter-protected-material\">Détection des matériaux protégés</a>",
+      "extraHtml": "Les paramètres d’échantillonnage ne font pas respecter les vérifications du droit d’auteur. L’OCR n’est pas une garantie en soi liée aux résultats du droit d’auteur."
+    },
+    {
+      "id": "ai900-20920b87ada8",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "Une équipe produit doit comparer les choix de modèles en termes de coût, de latence et de qualité sur la même tâche avant la production. Quel cabinet est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Benchmarking/évaluation structurée des modèles entre modèles candidats"
+        },
+        {
+          "key": "B",
+          "label": "Choisir par défaut le plus grand modèle"
+        },
+        {
+          "key": "C",
+          "label": "Ignorez les indicateurs de latence et de coût"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Benchmarking/évaluation structurée des modèles entre modèles candidats. L’évaluation basée sur les compromis évite de payer trop cher pour une capacité inutile du modèle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/how-to/evaluate-generative-ai-app\">Évaluer les applications d’IA générative</a>",
+      "extraHtml": "Les plus grands modèles peuvent être coûteux et plus lents. Ignorer les métriques non liées à la qualité conduit à des architectures de production peu pratiques."
+    },
+    {
+      "id": "ai900-6b13479540a7",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Embeddings",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Embeddings"
+      ],
+      "promptHtml": "Un développeur demande quand utiliser les embeddings plus recherche ou uniquement la complétion du chat direct. Quelle affirmation est la plus exacte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des embeddings/recherches lorsque la récupération sur des connaissances externes est requise"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez uniquement le chat direct pour tous les scénarios de connaissance entreprise"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez uniquement les embeddings pour la génération d’images"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des embeddings/recherches lorsque la récupération sur des connaissances externes est nécessaire. La récupération vectorielle est centrale pour la mise à la terre des corpus externes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/vector-search-overview\">Aperçu de la recherche vectorielle</a>",
+      "extraHtml": "Le chat direct sans recherche hallucine souvent ou manque de contexte propriétaire. Les embeddings ne se limitent pas à la génération d’images."
+    },
+    {
+      "id": "ai900-76376d4de3fb",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Conversation",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Conversation"
+      ],
+      "promptHtml": "Un bot de support client doit maintenir le contexte conversationnel sur les tours tout en respectant les limites des jetons. Quelle approche est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Continuez à lancer l’historique des conversations avec résumé/fenêtres"
+        },
+        {
+          "key": "B",
+          "label": "Envoyer uniquement le dernier tour utilisateur à chaque fois"
+        },
+        {
+          "key": "C",
+          "label": "Réentraîner le modèle par conversation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Continuez à lancer l’historique des conversations avec des résumés/fenêtres. Cela équilibre la rétention du contexte avec les contraintes de la fenêtre contextuelle.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/chatgpt\">Guide pour la réintégration des discussions</a>",
+      "extraHtml": "Les requêtes à un tour perdent leur continuité. La rééducation par session utilisateur est irréalisable et inutile."
+    },
+    {
+      "id": "ai900-5df003635bc7",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Security",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Security"
+      ],
+      "promptHtml": "Un responsable de conformité demande comment réduire le risque d’évasion dans un chatbot public. Quelle mesure d’atténuation est la plus forte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Défense en profondeur avec instructions système, filtrage des entrées et restrictions d’outils"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la température pour varier les réponses"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver la journalisation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Défense en profondeur avec des instructions système, filtrage des entrées et restrictions d’outils. Des contrôles multicouches sont nécessaires contre les attaques promptes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter-prompt-shields\">Boucliers et protections prompts</a>",
+      "extraHtml": "La température n’est pas une défense contre l’évasion. Désactiver les journaux réduit la visibilité médico-légale et la qualité de gouvernance."
+    },
+    {
+      "id": "ai900-f152a3df45da",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "AzureOpenAI",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "AzureOpenAI"
+      ],
+      "promptHtml": "Une startup doit générer des images marketing à partir d’invites textuelles dans les limites de gouvernance Azure. Quel service est le plus approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure OpenAI modèles de génération d’images"
+        },
+        {
+          "key": "B",
+          "label": "Azure SQL elastic pool"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure OpenAI modèles de génération d’images. Ils supportent la création d’images par prompts sous contrôle Azure.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/overview\">Aperçu d’Azure OpenAI</a>",
+      "extraHtml": "SQL et la synthèse vocale ne génèrent pas d’images à partir des invites."
+    },
+    {
+      "id": "ai900-116d8c62e3ea",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Foundry",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Foundry"
+      ],
+      "promptHtml": "Une équipe doit orchestrer la récupération, le modélage de prompts et le modélisation de la réponse dans un seul flux de travail reproductible. Quelle capacité Foundry correspond le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Flux rapide avec étapes d’évaluation"
+        },
+        {
+          "key": "B",
+          "label": "Azure Backup vault"
+        },
+        {
+          "key": "C",
+          "label": "Règles Azure Front Door uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un flux rapide avec des étapes d’évaluation. Il prend en charge, les pipelines modulaires de LLM et les exécutions de test/évaluation répétables.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/how-to/prompt-flow\">Flux prompt</a>",
+      "extraHtml": "Backup et Front Door sont des services d’infrastructure, pas des frameworks d’orchestration et de score de workflows par IA."
+    },
+    {
+      "id": "ai900-6b1ae43cb994",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "Une application legal-genAI doit fournir des citations traçables pour chaque phrase de réponse. Quel choix architectural est le plus aligné ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "RAG avec retour de passage source et formatage des citations"
+        },
+        {
+          "key": "B",
+          "label": "Génération pure libre sans récupération"
+        },
+        {
+          "key": "C",
+          "label": "Pipeline OCR uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "RAG avec retour de passage source et formatage de citations. La provenance de récupération permet la traçabilité et l’auditabilité.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview\">RAG avec Azure AI Search</a>",
+      "extraHtml": "La génération libre manque de garanties de provenance. L’OCR seul ne permet pas de retrouver sémantique ni de lier les citations."
+    },
+    {
+      "id": "ai900-82b55766c581",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Foundry",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Foundry"
+      ],
+      "promptHtml": "Une équipe de plateforme a besoin d’une distinction digne d’un examen : Azure AI Foundry vs Azure OpenAI Service. Lequel est le plus exact ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Foundry est un environnement de développement d’applications ; Azure OpenAI est un modèle d’accès aux services API"
+        },
+        {
+          "key": "B",
+          "label": "La fonderie n’est qu’un entrepôt ; OpenAI est uniquement en réseau"
+        },
+        {
+          "key": "C",
+          "label": "Ce sont des produits identiques"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Foundry est un environnement de développement d’applications ; Azure OpenAI est un modèle d’accès aux services API. Ils sont complémentaires, pas identiques.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio\">Qu’est-ce qu’Azure AI Foundry</a>",
+      "extraHtml": "Foundry couvre un outillage de cycle de vie plus large. Azure OpenAI expose spécifiquement les modèles OpenAI dans les contrôles Azure."
+    },
+    {
+      "id": "ai900-8970c3cbb663",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une entreprise souhaite faire passer les invites utilisateur par des contrôles de politique avant l’exécution du modèle et bloquer les catégories à haut risque. Quelle étape est essentielle ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pipeline de modération des entrées pré-inférence"
+        },
+        {
+          "key": "B",
+          "label": "Augmentation de la fenêtre de contexte du modèle uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver les messages de rôle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pipeline de modération des entrées avant inférence. Filtrer les invites avant l’inférence aide à prévenir le traitement des requêtes non autorisées.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter\">Architecture des filtres de contenu</a>",
+      "extraHtml": "La taille de la fenêtre de contexte ne fait pas respecter la politique. Supprimer les messages de rôle affaiblit les garde-fouet."
+    },
+    {
+      "id": "ai900-9848355cf455",
+      "examSlug": "ai900",
+      "domain": "GenerativeAI",
+      "topic": "Parameters",
+      "tags": [
+        "AI-900",
+        "GenerativeAI",
+        "Parameters"
+      ],
+      "promptHtml": "Une application de questions-réponses doit réduire les sorties répétitives tout en préservant la factualité. Quel paramètre peut aider à contrôler la répétition ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pénalité de fréquence"
+        },
+        {
+          "key": "B",
+          "label": "Taille du disque VM"
+        },
+        {
+          "key": "C",
+          "label": "Seuil de confiance en OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pénalité de fréquence. Cela peut décourager la répétition des jetons/phrases pendant la génération.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/completions\">Paramètres de génération</a>",
+      "extraHtml": "La taille du disque et la confiance en OCR ne sont pas liées au comportement de répétition au niveau des jetons lors de la génération de texte."
+    },
+    {
+      "id": "ai900-7ff9341f5c8b",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "WorkloadMapping",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "WorkloadMapping"
+      ],
+      "promptHtml": "Un détaillant souhaite enrichir les listes de produits en extrayant des mots-clés des descriptions, en taguant des images et en transcrivant des extraits d’appels clients. Quelle cartographie de charge de travail est correcte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "NLP pour les mots-clés textuels, vision pour les images, reconnaissance vocale pour appels"
+        },
+        {
+          "key": "B",
+          "label": "Vision pour les trois tâches"
+        },
+        {
+          "key": "C",
+          "label": "Parole pour le marquage d’images et l’OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "NLP pour les mots-clés textuels, vision pour les images, reconnaissance vocale pour les appels. Chaque tâche correspond à sa modalité IA native.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services\">Aperçu des services Azure AI</a>",
+      "extraHtml": "Utiliser une seule modalité pour toutes les tâches est une erreur de conception courante. Une cartographie correcte de la charge de travail améliore la précision et l’efficacité des coûts."
+    },
+    {
+      "id": "ai900-bae7a0bbcdfc",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un chatbot hospitalier doit masquer les identifiants personnels avant de stocker les journaux de conversation et imposer un accès aux données à moindre privilège. Quel principe est abordé le plus directement ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Confidentialité et sécurité"
+        },
+        {
+          "key": "B",
+          "label": "Inclusivité"
+        },
+        {
+          "key": "C",
+          "label": "Transparence"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Confidentialité et sécurité. Elle se concentre sur la protection des données sensibles et le contrôle de l’accès tout au long du cycle de vie de l’IA.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La transparence explique le comportement, et l’inclusivité améliore l’accessibilité. Les contrôles de protection des données correspondent à la confidentialité et à la sécurité."
+    },
+    {
+      "id": "ai900-51cf88d3d01c",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un prêteur utilise un score IA pour la pré-approbation et doit documenter qui approuve les mises à jour des modèles et qui est responsable des actions de remédiation des clients. Quel est ce principe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Responsabilité"
+        },
+        {
+          "key": "B",
+          "label": "Équité"
+        },
+        {
+          "key": "C",
+          "label": "Fiabilité et sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La responsabilité. Elle définit la propriété de la gouvernance du modèle, des décisions opérationnelles et des actions correctives.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "L’équité régit les résultats entre groupes, et la fiabilité concerne un comportement stable. La propriété de la gouvernance est la responsabilité."
+    },
+    {
+      "id": "ai900-ddc6afcb2b81",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une application de service municipal doit prendre en charge les interactions vocales et textuelles pour des utilisateurs ayant des besoins d’accessibilité divers et des styles d’interaction variés. Quel principe est le mieux aligné ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Inclusivité"
+        },
+        {
+          "key": "B",
+          "label": "Confidentialité et sécurité"
+        },
+        {
+          "key": "C",
+          "label": "Responsabilité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’inclusivité. Il met l’accent sur la conception de systèmes d’IA utilisables par des personnes ayant une grande variété de capacités et de contextes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "La confidentialité/sécurité protège les données, tandis que la responsabilité concerne la gouvernance et la responsabilité. L’inclusivité consiste à une accessibilité large par conception."
+    },
+    {
+      "id": "ai900-6e360b8c475f",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "KnowledgeMining",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "KnowledgeMining"
+      ],
+      "promptHtml": "Une solution de découverte juridique doit analyser les contrats numérisés en entités consultables puis soutenir la récupération sémantique sur le texte extrait. Quelle architecture est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Document extraction pipeline plus indexation Azure AI Search"
+        },
+        {
+          "key": "B",
+          "label": "Détection faciale et OCR uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Traduction vocale plus regroupement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pipeline d’extraction de documents plus indexation Azure AI Search. Cela combine la compréhension documentaire avec la récupération pour l’exploration de connaissances.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search\">Aperçu de la recherche Azure AI</a>",
+      "extraHtml": "Les services de visage et de parole ne fournissent pas d’architecture de récupération centrée sur les contrats. L’indexation de recherche est nécessaire pour les flux de travail de découverte sémantique."
+    },
+    {
+      "id": "ai900-5c02d53c6952",
+      "examSlug": "ai900",
+      "domain": "AIWorkloads",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-900",
+        "AIWorkloads",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une agence publique exige que tous les citoyens sachent quand une décision est assistée par l’IA et qu’ils prennent en compte les facteurs clés derrière ces décisions. Quel principe est central ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Transparence"
+        },
+        {
+          "key": "B",
+          "label": "Équité"
+        },
+        {
+          "key": "C",
+          "label": "Inclusivité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Transparence. Cela nécessite de communiquer l’utilisation de l’IA et de rendre le comportement du système compréhensible pour les parties prenantes.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai\">Principes de l’IA responsable</a>",
+      "extraHtml": "L’équité concerne les résultats équitables et l’inclusivité concerne l’utilisabilité. La divulgation et l’explicabilité sont des objectifs de transparence."
+    },
+    {
+      "id": "ai900-9516ad0969a6",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "CoreConcepts",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "CoreConcepts"
+      ],
+      "promptHtml": "Un modèle fonctionne exceptionnellement bien en validation car des enregistrements clients en double apparaissent accidentellement dans les ensembles d’entraînement et de validation. Quel problème est le plus probable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fuite de données entre les scissures"
+        },
+        {
+          "key": "B",
+          "label": "Sous-équipage"
+        },
+        {
+          "key": "C",
+          "label": "Déséquilibre de classe uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fuite de données entre les séparations. Le chevauchement entre les données d’entraînement et de validation peut gonfler les performances apparentes et masquer le risque de généralisation.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-train-machine-learning-model\">Concepts de formation et de validation</a>",
+      "extraHtml": "L’underfitting réduit à la fois les performances du train et de la validation. Le déséquilibre de classe peut affecter les indicateurs, mais la fuite fractionnée explique directement les gains de validation suspects."
+    },
+    {
+      "id": "ai900-da975f457caf",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "Metrics",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "Metrics"
+      ],
+      "promptHtml": "Une équipe de fraude abaisse le seuil de décision et détecte davantage de fraudes, mais bloque aussi les achats plus légitimes. Quelle tendance métrique est la plus probable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le rappel augmente tandis que la précision diminue"
+        },
+        {
+          "key": "B",
+          "label": "La précision et le rappel augmentent toujours"
+        },
+        {
+          "key": "C",
+          "label": "Le rappel diminue tandis que la précision augmente"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Le rappel augmente tandis que la précision diminue. Des seuils plus bas classent plus de cas comme positifs, détectant plus de vrais positifs et plus de faux positifs.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml-metrics\">Indicateurs de classification</a>",
+      "extraHtml": "Le compromis précision-rappel est courant dans les modèles de risque déséquilibrés. Vous ajustez le seuil en fonction du coût commercial des faux positifs par rapport aux faux négatifs."
+    },
+    {
+      "id": "ai900-c20447818395",
+      "examSlug": "ai900",
+      "domain": "MachineLearning",
+      "topic": "DeepLearning",
+      "tags": [
+        "AI-900",
+        "MachineLearning",
+        "DeepLearning"
+      ],
+      "promptHtml": "Une équipe compare les options d’apprentissage profond pour la reconnaissance d’images et demande quelle architecture est traditionnellement la plus performante pour l’extraction de caractéristiques spatiales dans les tâches visuelles. Quelle réponse est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Réseaux neuronaux convolutionnels (CNN)"
+        },
+        {
+          "key": "B",
+          "label": "Modèles ARIMA"
+        },
+        {
+          "key": "C",
+          "label": "Regroupement K-means"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Réseaux neuronaux convolutionnels (CNN). Les CNN sont conçus pour apprendre les hiérarchies spatiales et les motifs locaux dans les images.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning\">Concepts d’apprentissage profond</a>",
+      "extraHtml": "ARIMA est orienté prévision et K-means est un regroupement non supervisé. Les CNN sont la référence canonique pour de nombreuses charges de travail en vision."
+    },
+    {
+      "id": "ai900-ee1b6a966fd6",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Face",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Face"
+      ],
+      "promptHtml": "Un système de sécurité doit vérifier si deux images faciales appartiennent à la même personne avant d’accorder l’accès au bâtiment. Quel service est le plus approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Face"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Translator"
+        },
+        {
+          "key": "C",
+          "label": "Azure AI Search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Face. Il offre des capacités spécialisées d’analyse et de mise en relation des visages pour des scénarios de comparaison de visages.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-identity\">Aperçu des capacités faciales</a>",
+      "extraHtml": "Le traducteur et la recherche ne sont pas des services biométriques faciaux. Les API axées sur le visage sont conçues pour ce cas d’usage."
+    },
+    {
+      "id": "ai900-7a7e0485bb94",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Un flux de travail de comptes fournisseurs doit extraire le nom du fournisseur, le numéro de facture, les totaux et les tableaux d’articles à partir de PDF. Quelle option convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Document Intelligence"
+        },
+        {
+          "key": "B",
+          "label": "Sortie OCR en lecture seule avec analyse manuelle"
+        },
+        {
+          "key": "C",
+          "label": "Reconnaissance vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Document Intelligence. Il extrait des champs structurés et des données tabulaires à partir de documents d’entreprise.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview\">Aperçu du renseignement documentaire</a>",
+      "extraHtml": "L’OCR en lecture seule fournit du texte mais pas une extraction structurée robuste. Les services de dialogue ne partent pas la mise en page des documents."
+    },
+    {
+      "id": "ai900-25e05c97451f",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "Architecture",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "Architecture"
+      ],
+      "promptHtml": "Une autorité de transport doit à la fois la classification des scènes routières (normale/congestionnée) et le comptage par véhicule par emplacement. Quelle architecture est la correcte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Combinez la classification des images avec la détection d’objets"
+        },
+        {
+          "key": "B",
+          "label": "OCR uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Analyse de sentiment uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Combinez la classification des images avec la détection d’objets. La classification gère l’état au niveau de la scène, tandis que la détection fournit des comptes et des emplacements au niveau de l’objet.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview\">Charges de travail en vision par ordinateur</a>",
+      "extraHtml": "L’OCR et le sentiment ne localisent pas les véhicules dans les images. Les pipelines de vision multitâches sont courants dans l’analyse du trafic."
+    },
+    {
+      "id": "ai900-b495f9fa3aed",
+      "examSlug": "ai900",
+      "domain": "ComputerVision",
+      "topic": "CustomVision",
+      "tags": [
+        "AI-900",
+        "ComputerVision",
+        "CustomVision"
+      ],
+      "promptHtml": "Un détaillant forme un classificateur d’images personnalisé avec très peu d’exemplaires par classe et une faible variété d’éclairage. La précision est instable en production. Quelle est la meilleure explication ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Données représentatives insuffisantes pour la vision personnalisée"
+        },
+        {
+          "key": "B",
+          "label": "Les étiquettes sont optionnelles dans la classification supervisée"
+        },
+        {
+          "key": "C",
+          "label": "La diversité de l’éclairage est sans importance"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Données représentatives insuffisantes pour la vision personnalisée. La généralisation des modèles dépend de la qualité, de la quantité et de la diversité des données.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/custom-vision-service/overview\">Présentation de Custom Vision</a>",
+      "extraHtml": "La classification supervisée nécessite des étiquettes, et la variation de l’éclairage est cruciale pour une performance visuelle robuste."
+    },
+    {
+      "id": "ai900-afb204dc537c",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "IntentEntity",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "IntentEntity"
+      ],
+      "promptHtml": "Un bot de service desk doit acheminer les requêtes en fonction des objectifs utilisateurs comme ResetPassword et CancelOrder, et non seulement extraire des mots-clés. Quelle capacité NLP est la plus adaptée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Compréhension conversationnelle du langage (reconnaissance de l’intention)"
+        },
+        {
+          "key": "B",
+          "label": "Extraction uniquement par mots-clés"
+        },
+        {
+          "key": "C",
+          "label": "OCR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Compréhension conversationnelle du langage (reconnaissance de l’intention). Les modèles d’intention sont conçus pour le routage basé sur des objectifs dans les systèmes conversationnels.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/conversational-language-understanding/overview\">Aperçu de CLU</a>",
+      "extraHtml": "Les mots-clés identifient les sujets mais n’inférent pas de manière fiable l’intention d’action. L’OCR n’est pas un routeur NLP conversationnel."
+    },
+    {
+      "id": "ai900-1d92302d50fe",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Speech",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Speech"
+      ],
+      "promptHtml": "Une application de voyage doit convertir le français parlé en direct en réponses en anglais parlé en un temps quasi réel. Quelle capacité est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Traduction de la parole"
+        },
+        {
+          "key": "B",
+          "label": "Analyse du sentiment"
+        },
+        {
+          "key": "C",
+          "label": "Détection des visages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Traduction vocale. Il combine reconnaissance vocale et traduction pour des interactions multilingues parlées.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-translation\">Aperçu de la traduction de la parole</a>",
+      "extraHtml": "L’analyse du sentiment ne réalise pas la conversion bilingue de la parole. La détection des visages n’a aucun lien avec la traduction audio."
+    },
+    {
+      "id": "ai900-812e40d961b0",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "Sentiment",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "Sentiment"
+      ],
+      "promptHtml": "Une équipe qualité souhaite détecter les changements de sentiment en un seul long avis afin de séparer l’insatisfaction produit de l’insatisfaction du support. Quelle fonctionnalité est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse du sentiment au niveau de la phrase"
+        },
+        {
+          "key": "B",
+          "label": "Détection linguistique uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Extraction uniquement par mots-clés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse de sentiment au niveau de la phrase. Elle révèle la polarité avec une granularité plus fine que la notation au niveau du document.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/overview\">Exploration de sentiments et d’opinions</a>",
+      "extraHtml": "La détection de la langue identifie la langue, et les mots-clés identifient les thèmes. Aucun des deux ne donne à lui seul la polarité du sentiment phrase par phrase."
+    },
+    {
+      "id": "ai900-69281a85e759",
+      "examSlug": "ai900",
+      "domain": "NLP",
+      "topic": "EntityRecognition",
+      "tags": [
+        "AI-900",
+        "NLP",
+        "EntityRecognition"
+      ],
+      "promptHtml": "Une équipe de conformité doit détecter les noms, identifiants de compte et adresses dans les transcriptions de discussion avant l’archivage. Quelle capacité est la plus directe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Reconnaissance d’entités nommées et détection des PII"
+        },
+        {
+          "key": "B",
+          "label": "Extraction de la disposition OCR"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Reconnaissance d’entités nommées et détection de renseignements personnels. Celles-ci identifient des entités sensibles dans le texte pour le masquage et les flux de travail de gouvernance.",
+      "rationaleHtml": "Référence : <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/overview\">Aperçu de la détection des PII</a>",
+      "extraHtml": "L’OCR sert à l’extraction de texte de documents/images, tandis que la synthèse vocale génère l’audio. L’analyse entité/PII est le contrôle approprié de la gouvernance textuelle."
+    }
+  ]
+}

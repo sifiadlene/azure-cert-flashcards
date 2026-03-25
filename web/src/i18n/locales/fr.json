@@ -1,0 +1,70 @@
+{
+  "app": {
+    "title": "Pratique de Certification Microsoft",
+    "tagline": "Sélectionnez un examen, choisissez votre mode et commencez à pratiquer."
+  },
+  "theme": {
+    "switchToDark": "Passer en mode sombre",
+    "switchToLight": "Passer en mode clair"
+  },
+  "language": {
+    "switchToFrench": "Passer en français",
+    "switchToEnglish": "Passer en anglais"
+  },
+  "setup": {
+    "cardTitle": "Configuration de l'examen",
+    "examLabel": "Examen",
+    "examPlaceholder": "Choisissez un examen...",
+    "questions": "questions",
+    "progress": {
+      "lastAttempt": "Dernière tentative",
+      "lastScore": "Dernier score",
+      "missed": "Manquées",
+      "noAttempts": "Aucune tentative",
+      "missedCount_one": "{{count}} question",
+      "missedCount_other": "{{count}} questions"
+    },
+    "modeLabel": "Mode",
+    "modePractice": "Entraînement",
+    "modeTimed": "Quiz chronométré",
+    "modeHintPractice": "La bonne réponse et l'explication s'affichent après chaque question.",
+    "modeHintTimed": "Les questions sont notées à la fin. Aucune réponse n'est révélée pendant le quiz.",
+    "domainLabel": "Domaine",
+    "domainAll": "Tous les domaines",
+    "topicLabel": "Sujet",
+    "topicAll": "Tous les sujets",
+    "reviewMissedLabel": "Réviser uniquement les questions manquées",
+    "matchCount_one": "{{count}} question correspond",
+    "matchCount_other": "{{count}} questions correspondent",
+    "startSession": "Démarrer la session",
+    "loading": "Chargement..."
+  },
+  "session": {
+    "backToSetup": "Retour à la configuration",
+    "questionOf": "Question {{current}} sur {{total}}",
+    "modePractice": "Entraînement",
+    "modeTimed": "Quiz chronométré",
+    "checkAnswer": "Vérifier la réponse",
+    "next": "Suivant",
+    "finishQuiz": "Terminer le quiz",
+    "correct": "Correct\u00a0: {{option}}) {{label}}",
+    "explanation": "Explication",
+    "additionalContext": "Contexte supplémentaire",
+    "nextQuestion": "Question suivante",
+    "finishSession": "Terminer la session"
+  },
+  "results": {
+    "backToSetup": "Retour à la configuration",
+    "titlePractice": "{{code}} — Entraînement terminé",
+    "titleTimed": "{{code}} — Quiz chronométré terminé",
+    "score": "Score",
+    "percentage": "Pourcentage",
+    "missed": "Manquées",
+    "time": "Temps",
+    "tryAgain": "Réessayer",
+    "reviewMissed": "Réviser les questions manquées",
+    "questionsToRevisit": "Questions à revoir",
+    "correct": "Correct\u00a0: {{option}}) {{label}}",
+    "perfectScore": "Score parfait — toutes les questions réussies !"
+  }
+}

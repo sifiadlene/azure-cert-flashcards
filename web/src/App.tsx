@@ -1,5 +1,6 @@
 import { startTransition, useEffect, useState } from 'react'
 import DOMPurify from 'dompurify'
+import { useTranslation } from 'react-i18next'
 import './App.css'
 import type {
   DeckManifest,
@@ -115,14 +116,30 @@ function formatElapsedTime(totalSeconds: number) {
   return `${minutes}:${String(seconds).padStart(2, '0')}`
 }
 
-function getProgressLabel(progress?: ExamProgress) {
+function getProgressScore(progress?: ExamProgress) {
   if (!progress?.lastTotal || progress.lastScore === undefined) {
-    return 'No attempts yet'
+    return null
   }
 
   const score = Math.round((progress.lastScore / progress.lastTotal) * 100)
 
   return `${progress.lastScore}/${progress.lastTotal} (${score}%)`
+}
+
+async function fetchDeckFile(examSlug: string, lang: 'en' | 'fr'): Promise<ExamDeck> {
+  const urlsToTry =
+    lang === 'en'
+      ? [getDataUrl(`decks/${examSlug}.json`)]
+      : [getDataUrl(`decks/${examSlug}-${lang}.json`), getDataUrl(`decks/${examSlug}.json`)]
+
+  for (const url of urlsToTry) {
+    const response = await fetch(url)
+    if (response.ok) {
+      return (await response.json()) as ExamDeck
+    }
+  }
+
+  throw new Error(`Unable to load exam data`)
 }
 
 function filterQuestions(
@@ -147,8 +164,19 @@ function filterQuestions(
   })
 }
 
+// Language Switcher Component
+function LanguageSwitcher({ lang, onToggle }: { lang: 'en' | 'fr'; onToggle: () => void }) {
+  const nextLabel = lang === 'en' ? 'FR' : 'EN'
+  const ariaLabel = lang === 'en' ? 'Switch to French' : 'Switch to English'
+  return (
+    <button className="lang-toggle" onClick={onToggle} aria-label={ariaLabel} title={ariaLabel}>
+      {nextLabel}
+    </button>
+  )
+}
+
 // Theme Toggle Component
-function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark', onToggle: () => void }) {
+function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark'; onToggle: () => void }) {
   return (
     <button 
       className="theme-toggle" 
@@ -170,6 +198,9 @@ function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark', onToggle: (
 }
 
 function App() {
+  const { t, i18n } = useTranslation()
+  const currentLang = (i18n.language.startsWith('fr') ? 'fr' : 'en') as 'en' | 'fr'
+
   const [manifest, setManifest] = useState<DeckManifest | null>(null)
   const [manifestError, setManifestError] = useState('')
   const [selectedExamSlug, setSelectedExamSlug] = useState('')
@@ -203,6 +234,28 @@ function App() {
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
+
+  const toggleLanguage = () => {
+    const nextLang: 'en' | 'fr' = currentLang === 'en' ? 'fr' : 'en'
+    window.localStorage.setItem('language', nextLang)
+    void i18n.changeLanguage(nextLang)
+    setSession(null)
+    setResult(null)
+
+    if (selectedExamSlug) {
+      const key = `${selectedExamSlug}-${nextLang}`
+      if (!deckCache[key]) {
+        setLoadingDeckSlug(selectedExamSlug)
+        fetchDeckFile(selectedExamSlug, nextLang)
+          .then((deck) => { setDeckCache((prev) => ({ ...prev, [key]: deck })) })
+          .catch((error) => {
+            const message = error instanceof Error ? error.message : 'Unknown error'
+            setManifestError(message)
+          })
+          .finally(() => { setLoadingDeckSlug('') })
+      }
+    }
   }
 
   useEffect(() => {
@@ -243,7 +296,7 @@ function App() {
   }, [session])
 
   const selectedExam = manifest?.exams.find((exam) => exam.slug === selectedExamSlug) ?? null
-  const selectedDeck = selectedExamSlug ? deckCache[selectedExamSlug] : undefined
+  const selectedDeck = selectedExamSlug ? deckCache[`${selectedExamSlug}-${currentLang}`] : undefined
   const selectedProgress = selectedExamSlug ? progress[selectedExamSlug] : undefined
 
   const availableDomains = selectedDeck
@@ -273,23 +326,18 @@ function App() {
     : []
 
   async function loadDeck(examSlug: string) {
-    if (deckCache[examSlug]) {
-      return deckCache[examSlug]
+    const key = `${examSlug}-${currentLang}`
+    if (deckCache[key]) {
+      return deckCache[key]
     }
 
     setLoadingDeckSlug(examSlug)
 
     try {
-      const response = await fetch(getDataUrl(`decks/${examSlug}.json`))
-
-      if (!response.ok) {
-        throw new Error(`Unable to load exam (${response.status})`)
-      }
-
-      const deck = (await response.json()) as ExamDeck
+      const deck = await fetchDeckFile(examSlug, currentLang)
       setDeckCache((currentCache) => ({
         ...currentCache,
-        [examSlug]: deck,
+        [key]: deck,
       }))
 
       return deck
@@ -475,29 +523,32 @@ function App() {
   if (!session && !result) {
     return (
       <>
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="top-controls">
+          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        </div>
         <div className="app-shell">
           <header className="site-header">
-            <h1>Microsoft Certification Practice</h1>
-            <p>Select an exam, choose your mode, and start practicing.</p>
+            <h1>{t('app.title')}</h1>
+            <p>{t('app.tagline')}</p>
           </header>
 
         {manifestError && <div className="alert error">{manifestError}</div>}
 
         <div className="card">
-          <h2 className="card-title">Exam Setup</h2>
+          <h2 className="card-title">{t('setup.cardTitle')}</h2>
 
           <div className="field">
-            <label htmlFor="exam-select">Exam</label>
+            <label htmlFor="exam-select">{t('setup.examLabel')}</label>
             <select
               id="exam-select"
               value={selectedExamSlug}
               onChange={(event) => { void handleExamSelection(event.target.value) }}
             >
-              <option value="">Choose an exam...</option>
+              <option value="">{t('setup.examPlaceholder')}</option>
               {manifest?.exams.map((exam) => (
                 <option key={exam.slug} value={exam.slug}>
-                  {exam.code} &mdash; {exam.title} ({exam.questionCount} questions)
+                  {exam.code} &mdash; {exam.title} ({exam.questionCount} {t('setup.questions')})
                 </option>
               ))}
             </select>
@@ -508,68 +559,68 @@ function App() {
               {selectedProgress && (
                 <div className="progress-summary">
                   <div className="progress-stat">
-                    <span className="stat-label">Last attempt</span>
+                    <span className="stat-label">{t('setup.progress.lastAttempt')}</span>
                     <strong>{formatDate(selectedProgress.lastCompletedAt)}</strong>
                   </div>
                   <div className="progress-stat">
-                    <span className="stat-label">Last score</span>
-                    <strong>{getProgressLabel(selectedProgress)}</strong>
+                    <span className="stat-label">{t('setup.progress.lastScore')}</span>
+                    <strong>{getProgressScore(selectedProgress) ?? t('setup.progress.noAttempts')}</strong>
                   </div>
                   <div className="progress-stat">
-                    <span className="stat-label">Missed</span>
-                    <strong>{selectedProgress.missedIds.length} questions</strong>
+                    <span className="stat-label">{t('setup.progress.missed')}</span>
+                    <strong>{t('setup.progress.missedCount', { count: selectedProgress.missedIds.length })}</strong>
                   </div>
                 </div>
               )}
 
               <div className="field">
-                <label>Mode</label>
-                <div className="mode-toggle" role="group" aria-label="Session mode">
+                <label>{t('setup.modeLabel')}</label>
+                <div className="mode-toggle" role="group" aria-label={t('setup.modeLabel')}>
                   <button
                     type="button"
                     className={`mode-btn ${setup.mode === 'practice' ? 'active' : ''}`}
                     onClick={() => updateSetup('mode', 'practice')}
                   >
-                    Practice
+                    {t('setup.modePractice')}
                   </button>
                   <button
                     type="button"
                     className={`mode-btn ${setup.mode === 'timed' ? 'active' : ''}`}
                     onClick={() => updateSetup('mode', 'timed')}
                   >
-                    Timed Quiz
+                    {t('setup.modeTimed')}
                   </button>
                 </div>
               </div>
 
               <p className="mode-hint">
                 {setup.mode === 'practice'
-                  ? 'You will see the correct answer and explanation after each question.'
-                  : 'Questions are scored at the end. No answers are revealed during the quiz.'}
+                  ? t('setup.modeHintPractice')
+                  : t('setup.modeHintTimed')}
               </p>
 
               <div className="filter-row">
                 <div className="field">
-                  <label htmlFor="domain-select">Domain</label>
+                  <label htmlFor="domain-select">{t('setup.domainLabel')}</label>
                   <select
                     id="domain-select"
                     value={setup.domain}
                     onChange={(event) => updateSetup('domain', event.target.value)}
                   >
-                    <option value="all">All domains</option>
+                    <option value="all">{t('setup.domainAll')}</option>
                     {availableDomains.map((domain) => (
                       <option key={domain} value={domain}>{domain}</option>
                     ))}
                   </select>
                 </div>
                 <div className="field">
-                  <label htmlFor="topic-select">Topic</label>
+                  <label htmlFor="topic-select">{t('setup.topicLabel')}</label>
                   <select
                     id="topic-select"
                     value={setup.topic}
                     onChange={(event) => updateSetup('topic', event.target.value)}
                   >
-                    <option value="all">All topics</option>
+                    <option value="all">{t('setup.topicAll')}</option>
                     {availableTopics.map((topic) => (
                       <option key={topic} value={topic}>{topic}</option>
                     ))}
@@ -583,12 +634,12 @@ function App() {
                   checked={setup.reviewMissed}
                   onChange={(event) => updateSetup('reviewMissed', event.target.checked)}
                 />
-                <span>Only review previously missed questions</span>
+                <span>{t('setup.reviewMissedLabel')}</span>
               </label>
 
               <div className="setup-footer">
                 <span className="match-count">
-                  {matchingQuestions.length} question{matchingQuestions.length !== 1 ? 's' : ''} match
+                  {t('setup.matchCount', { count: matchingQuestions.length })}
                 </span>
                 <button
                   type="button"
@@ -597,7 +648,7 @@ function App() {
                   onClick={() => { void handleStartSession() }}
                   disabled={loadingDeckSlug === selectedExam.slug}
                 >
-                  {loadingDeckSlug === selectedExam.slug ? 'Loading...' : 'Start Session'}
+                  {loadingDeckSlug === selectedExam.slug ? t('setup.loading') : t('setup.startSession')}
                 </button>
               </div>
 
@@ -614,20 +665,23 @@ function App() {
   if (session && currentQuestion) {
     return (
       <>
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="top-controls">
+          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        </div>
         <div className="app-shell">
           <button type="button" className="back-link" onClick={handleBackToSetup}>
-            &larr; Back to setup
+            &larr; {t('session.backToSetup')}
           </button>
 
         <div className="card">
           <div className="session-header">
             <h2>
-              Question {session.questionIndex + 1} of {session.questionIds.length}
+              {t('session.questionOf', { current: session.questionIndex + 1, total: session.questionIds.length })}
             </h2>
             <div className="session-badges">
               <span className="badge primary">
-                {session.mode === 'practice' ? 'Practice' : 'Timed Quiz'}
+                {session.mode === 'practice' ? t('session.modePractice') : t('session.modeTimed')}
               </span>
               <span className="badge">{formatElapsedTime(elapsedSeconds)}</span>
             </div>
@@ -687,21 +741,21 @@ function App() {
                 onClick={handleSubmitAnswer}
               >
                 {session.mode === 'practice'
-                  ? 'Check Answer'
+                  ? t('session.checkAnswer')
                   : session.questionIndex === session.questionIds.length - 1
-                    ? 'Finish Quiz'
-                    : 'Next'}
+                    ? t('session.finishQuiz')
+                    : t('session.next')}
               </button>
             </div>
           ) : (
             <div className="answer-reveal">
               <h3>
-                Correct: {currentQuestion.correctOption}) {currentQuestion.correctLabel}
+                {t('session.correct', { option: currentQuestion.correctOption, label: currentQuestion.correctLabel })}
               </h3>
 
               {currentQuestion.rationaleHtml && (
                 <div>
-                  <p className="rationale-label">Explanation</p>
+                  <p className="rationale-label">{t('session.explanation')}</p>
                   <div
                     className="rationale-text"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentQuestion.rationaleHtml) }}
@@ -711,7 +765,7 @@ function App() {
 
               {currentQuestion.extraHtml && (
                 <div>
-                  <p className="rationale-label">Additional context</p>
+                  <p className="rationale-label">{t('session.additionalContext')}</p>
                   <div
                     className="rationale-text"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentQuestion.extraHtml) }}
@@ -721,7 +775,7 @@ function App() {
 
               <div className="session-actions">
                 <button type="button" className="btn-primary" onClick={handleAdvanceQuestion}>
-                  {session.questionIndex === session.questionIds.length - 1 ? 'Finish Session' : 'Next Question'}
+                  {session.questionIndex === session.questionIds.length - 1 ? t('session.finishSession') : t('session.nextQuestion')}
                 </button>
               </div>
             </div>
@@ -736,32 +790,37 @@ function App() {
   if (result) {
     return (
       <>
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <div className="top-controls">
+          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        </div>
         <div className="app-shell">
           <button type="button" className="back-link" onClick={handleBackToSetup}>
-            &larr; Back to setup
+            &larr; {t('results.backToSetup')}
           </button>
 
         <div className="card">
           <h2 className="card-title">
-            {selectedExam?.code} {result.mode === 'practice' ? 'Practice' : 'Timed Quiz'} Complete
+            {result.mode === 'practice'
+              ? t('results.titlePractice', { code: selectedExam?.code })
+              : t('results.titleTimed', { code: selectedExam?.code })}
           </h2>
 
           <div className="results-grid">
             <div className="progress-stat">
-              <span className="stat-label">Score</span>
+              <span className="stat-label">{t('results.score')}</span>
               <strong>{result.correctCount} / {result.total}</strong>
             </div>
             <div className="progress-stat">
-              <span className="stat-label">Percentage</span>
+              <span className="stat-label">{t('results.percentage')}</span>
               <strong>{Math.round((result.correctCount / result.total) * 100)}%</strong>
             </div>
             <div className="progress-stat">
-              <span className="stat-label">Missed</span>
+              <span className="stat-label">{t('results.missed')}</span>
               <strong>{result.missedIds.length}</strong>
             </div>
             <div className="progress-stat">
-              <span className="stat-label">Time</span>
+              <span className="stat-label">{t('results.time')}</span>
               <strong>{formatElapsedTime(result.elapsedSeconds)}</strong>
             </div>
           </div>
@@ -772,7 +831,7 @@ function App() {
               className="btn-primary"
               onClick={() => { void handleStartSession() }}
             >
-              Try Again
+              {t('results.tryAgain')}
             </button>
             <button
               type="button"
@@ -780,25 +839,25 @@ function App() {
               onClick={handleStartMissedReview}
               disabled={result.missedIds.length === 0}
             >
-              Review Missed Questions
+              {t('results.reviewMissed')}
             </button>
           </div>
 
           {resultQuestions.length > 0 ? (
             <div className="missed-list">
-              <p className="missed-list-title">Questions to revisit</p>
+              <p className="missed-list-title">{t('results.questionsToRevisit')}</p>
               {resultQuestions.map((question) => (
                 <article key={question.id} className="missed-card">
                   <span className="badge">{question.topic}</span>
                   <h3>{buildExcerpt(question.promptHtml)}</h3>
                   <p>
-                    Correct: {question.correctOption}) {question.correctLabel}
+                    {t('results.correct', { option: question.correctOption, label: question.correctLabel })}
                   </p>
                 </article>
               ))}
             </div>
           ) : (
-            <div className="alert success">Perfect score — no missed questions!</div>
+            <div className="alert success">{t('results.perfectScore')}</div>
           )}
         </div>
       </div>
