@@ -42,6 +42,7 @@ interface SetupState {
   domain: string
   topic: string
   reviewMissed: boolean
+  questionLimit: number | null
 }
 
 const progressStorageKey = 'certification-flashcards-progress'
@@ -51,6 +52,7 @@ const defaultSetup: SetupState = {
   domain: 'all',
   topic: 'all',
   reviewMissed: false,
+  questionLimit: null,
 }
 
 function getDataUrl(path: string) {
@@ -408,13 +410,16 @@ function App() {
       setSetupError('')
 
       const randomizedQuestionIds = shuffleArray(filteredQuestions.map((question) => question.id))
+      const limitedQuestionIds = setup.questionLimit
+        ? randomizedQuestionIds.slice(0, Math.min(setup.questionLimit, randomizedQuestionIds.length))
+        : randomizedQuestionIds
 
       startTransition(() => {
         setResult(null)
         setSession({
           examSlug: selectedExamSlug,
           mode: setup.mode,
-          questionIds: randomizedQuestionIds,
+          questionIds: limitedQuestionIds,
           questionIndex: 0,
           answers: {},
           selectedOption: null,
@@ -666,9 +671,25 @@ function App() {
                 <span>{t('setup.reviewMissedLabel')}</span>
               </label>
 
+              <div className="field">
+                <label htmlFor="question-limit-select">Number of questions</label>
+                <select
+                  id="question-limit-select"
+                  value={setup.questionLimit ?? 'all'}
+                  onChange={(event) => updateSetup('questionLimit', event.target.value === 'all' ? null : Number(event.target.value))}
+                >
+                  <option value="10">10 questions</option>
+                  <option value="20">20 questions</option>
+                  <option value="50">50 questions</option>
+                  <option value="all">All questions</option>
+                </select>
+              </div>
+
               <div className="setup-footer">
                 <span className="match-count">
-                  {t('setup.matchCount', { count: matchingQuestions.length })}
+                  {setup.questionLimit && matchingQuestions.length > setup.questionLimit
+                    ? `${matchingQuestions.length} questions match, showing ${setup.questionLimit}`
+                    : t('setup.matchCount', { count: matchingQuestions.length })}
                 </span>
                 <button
                   type="button"

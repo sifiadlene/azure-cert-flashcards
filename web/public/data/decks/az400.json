@@ -1,0 +1,2377 @@
+{
+  "exam": {
+    "slug": "az400",
+    "code": "AZ-400",
+    "title": "AZ-400",
+    "sourceFile": "az400_flashcards_2026-04-02.csv",
+    "updatedOn": "2026-04-02",
+    "questionCount": 76,
+    "domains": [
+      "Instrumentation",
+      "Pipelines",
+      "Processes",
+      "Security",
+      "SourceControl"
+    ],
+    "topics": [
+      "AccessLevels",
+      "AgentModernization",
+      "AgentScaling",
+      "AgentStrategy",
+      "ApprovalStrategy",
+      "Approvals",
+      "ArtifactStrategy",
+      "Authentication",
+      "BranchProtection",
+      "BranchStrategy",
+      "Caching",
+      "CanaryDeployment",
+      "CodeAnalysis",
+      "Collaboration",
+      "ContainerDeployment",
+      "ContainerScanning",
+      "DSC",
+      "Dashboards",
+      "DataRemoval",
+      "DatabaseDeployment",
+      "DatabaseMigration",
+      "DependencyScanning",
+      "DeploymentOptimization",
+      "DeploymentOrder",
+      "Deployments",
+      "DistributedTracing",
+      "DriftDetection",
+      "DynamicTagging",
+      "EnvironmentApprovals",
+      "FeatureFlags",
+      "GitHubInsights",
+      "GitLFS",
+      "GitOptimization",
+      "HealthChecks",
+      "HotfixStrategy",
+      "IaC",
+      "IaCDeployments",
+      "LoadTesting",
+      "LogQuerying",
+      "ManagedIdentity",
+      "ManagedIdentityPipeline",
+      "MergeStrategy",
+      "Metrics",
+      "Migration",
+      "PackageImmutability",
+      "PackageManagement",
+      "PackageResilience",
+      "ParallelExecution",
+      "PermissionsGranularity",
+      "PermissionsManagement",
+      "PipelineAlerts",
+      "PipelineDesign",
+      "QualityGates",
+      "ReleaseCorrelation",
+      "Retention",
+      "SAST",
+      "SecretMasking",
+      "SecretScanning",
+      "SecretsManagement",
+      "SecureFiles",
+      "ServiceConnections",
+      "StageOrchestration",
+      "StorageMonitoring",
+      "TeamIsolation",
+      "Templates",
+      "TerraformState",
+      "TestIsolation",
+      "TestOptimization",
+      "Traceability",
+      "Triggers",
+      "UnifiedSecurity",
+      "VMMonitoring",
+      "Versioning",
+      "VulnerabilityScanning",
+      "WorkTracking",
+      "WorkloadIdentity"
+    ]
+  },
+  "questions": [
+    {
+      "id": "az400-ea16d03d27fa",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "BranchStrategy",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "BranchStrategy"
+      ],
+      "promptHtml": "Your team follows trunk-based development with daily commits to main. Feature development takes 5-10 days. You need a branching strategy that minimizes merge conflicts while maintaining release stability. Which approach best fits this requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Long-lived feature branches merged monthly"
+        },
+        {
+          "key": "B",
+          "label": "Short-lived feature branches with feature flags"
+        },
+        {
+          "key": "C",
+          "label": "GitFlow with separate develop and release branches"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Short-lived feature branches with feature flags",
+      "rationaleHtml": "",
+      "extraHtml": "Short-lived feature branches (1-3 days) aligned with trunk-based development minimize merge conflicts. Feature flags enable incomplete features to be merged safely. Long-lived branches increase merge complexity. GitFlow contradicts trunk-based development principles with multiple long-lived branches.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance\">Azure DevOps branching strategies</a>"
+    },
+    {
+      "id": "az400-c189411deffb",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "GitLFS",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "GitLFS"
+      ],
+      "promptHtml": "A repository contains 50GB of binary assets causing slow clone times. The team needs full history access but wants to reduce local repository size. Which Git strategy optimizes this scenario?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Git Large File Storage (LFS) with pointer files"
+        },
+        {
+          "key": "B",
+          "label": "Shallow clones with limited history depth"
+        },
+        {
+          "key": "C",
+          "label": "Repository squashing to combine commits"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Git Large File Storage (LFS) with pointer files",
+      "rationaleHtml": "",
+      "extraHtml": "Git LFS stores large files externally with lightweight pointers in the repository, reducing clone size while maintaining full history access. Shallow clones limit history accessibility. Repository squashing loses detailed commit history and doesn't address ongoing large file issues.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/repos/git/manage-large-files\">Git LFS implementation</a>"
+    },
+    {
+      "id": "az400-671b22837159",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Approvals",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Approvals"
+      ],
+      "promptHtml": "Your CI pipeline requires approval from security team before deploying to production, but dev team should deploy to staging without approval. Which YAML-based mechanism implements this environment-specific approval?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Branch protection rules with required reviewers"
+        },
+        {
+          "key": "B",
+          "label": "YAML environments with approval checks on production"
+        },
+        {
+          "key": "C",
+          "label": "Manual intervention task in pipeline YAML"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "YAML environments with approval checks on production",
+      "rationaleHtml": "",
+      "extraHtml": "YAML environments enable environment-specific approvals and checks. Production environment can require approval while staging remains automated. Branch protection applies to code reviews, not deployments. Manual intervention tasks aren't environment-specific and lack audit trails.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/environments\">Pipeline environments and approvals</a>"
+    },
+    {
+      "id": "az400-a4cbe444e9ad",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "PackageManagement",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "PackageManagement"
+      ],
+      "promptHtml": "A microservices application uses semantic versioning with 15 NuGet packages. Teams need to consume both stable releases and pre-release versions. Which Azure Artifacts configuration supports this requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Single feed with release and prerelease views"
+        },
+        {
+          "key": "B",
+          "label": "Separate feeds for stable and prerelease packages"
+        },
+        {
+          "key": "C",
+          "label": "Git tags to version packages without feeds"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Single feed with release and prerelease views",
+      "rationaleHtml": "",
+      "extraHtml": "Views enable filtering packages by quality (release, prerelease, deprecated) within a single feed, simplifying management. Separate feeds complicate dependency resolution and package promotion workflows. Git tags don't provide package hosting or dependency management.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/artifacts/concepts/views\">Azure Artifacts views</a>"
+    },
+    {
+      "id": "az400-7f8abc01fd25",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Deployments",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Deployments"
+      ],
+      "promptHtml": "Your pipeline deploys a web app to Azure App Service. You need zero-downtime deployments with immediate rollback capability if health checks fail. Which deployment pattern provides this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "In-place deployment with application restart"
+        },
+        {
+          "key": "B",
+          "label": "Blue-green deployment using deployment slots"
+        },
+        {
+          "key": "C",
+          "label": "Rolling deployment updating instances sequentially"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Blue-green deployment using deployment slots",
+      "rationaleHtml": "",
+      "extraHtml": "Blue-green deployment using App Service slots enables zero-downtime deployment with instant rollback via slot swap. In-place deployments cause downtime. Rolling deployments lack instant rollback and may leave environment in mixed state during rollback.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/app-service/deploy-staging-slots\">App Service deployment slots</a>"
+    },
+    {
+      "id": "az400-98b2ecc85a0d",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "Authentication",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "Authentication"
+      ],
+      "promptHtml": "A GitHub Actions workflow needs to authenticate to Azure without storing credentials. The organization requires secretless authentication using OpenID Connect. Which configuration achieves this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Service principal with certificate stored in GitHub secrets"
+        },
+        {
+          "key": "B",
+          "label": "Workload identity federation with GitHub OIDC provider"
+        },
+        {
+          "key": "C",
+          "label": "Personal access token with limited scope"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Workload identity federation with GitHub OIDC provider",
+      "rationaleHtml": "",
+      "extraHtml": "Workload identity federation uses OIDC tokens from GitHub to authenticate to Azure without storing credentials, aligning with secretless authentication requirements. Service principals with certificates still require secret storage. PATs are credentials that must be secured and rotated.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/developer/github/connect-from-azure\">GitHub OIDC with Azure</a>"
+    },
+    {
+      "id": "az400-49129360a086",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "SecretsManagement",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "SecretsManagement"
+      ],
+      "promptHtml": "Your pipeline uses a connection string containing database credentials. The credentials must rotate monthly and be accessible to multiple pipelines. Which solution securely manages these rotating secrets?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pipeline variables marked as secret"
+        },
+        {
+          "key": "B",
+          "label": "Azure Key Vault with automatic rotation and pipeline integration"
+        },
+        {
+          "key": "C",
+          "label": "Secure files in Azure Pipelines library"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Azure Key Vault with automatic rotation and pipeline integration",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Key Vault provides centralized secret management with automatic rotation, access policies, and native pipeline integration. Pipeline secret variables lack rotation capabilities. Secure files don't support automatic rotation or cross-pipeline access with proper governance.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/release/key-vault-in-own-project\">Key Vault integration with pipelines</a>"
+    },
+    {
+      "id": "az400-3a49c74e59ec",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Triggers",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Triggers"
+      ],
+      "promptHtml": "A monorepo contains 20 microservices. Pull requests should only trigger CI pipelines for services with changed code. Which pipeline trigger configuration implements this selective build?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Path filters in trigger section with include/exclude patterns"
+        },
+        {
+          "key": "B",
+          "label": "Manual pipeline trigger requiring user selection"
+        },
+        {
+          "key": "C",
+          "label": "Scheduled triggers running all services nightly"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Path filters in trigger section with include/exclude patterns",
+      "rationaleHtml": "",
+      "extraHtml": "Path filters enable selective triggering based on changed file paths, building only affected services. Manual triggers don't provide automatic CI. Scheduled triggers don't respond to code changes and waste resources building unchanged services.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/repos/azure-repos-git#paths\">Pipeline path filters</a>"
+    },
+    {
+      "id": "az400-6172d506e148",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "ContainerScanning",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "ContainerScanning"
+      ],
+      "promptHtml": "Your organization requires all container images scanned for vulnerabilities before deployment. Builds must fail if high-severity vulnerabilities are detected. Which tool integrates this container scanning requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Docker build without security scanning"
+        },
+        {
+          "key": "B",
+          "label": "Microsoft Defender for Containers with pipeline integration"
+        },
+        {
+          "key": "C",
+          "label": "Manual security reviews before deployment"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Microsoft Defender for Containers with pipeline integration",
+      "rationaleHtml": "",
+      "extraHtml": "Defender for Containers provides automated vulnerability scanning with policy enforcement that can fail builds on high-severity findings. Manual Docker builds lack security scanning. Manual reviews don't scale and lack automation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction\">Defender for Containers</a>"
+    },
+    {
+      "id": "az400-ce4de2623679",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "IaC",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "IaC"
+      ],
+      "promptHtml": "A pipeline deploys infrastructure using Bicep templates. You need to validate template syntax and best practices before deployment without modifying Azure resources. Which testing approach provides this validation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "What-if deployment showing planned changes"
+        },
+        {
+          "key": "B",
+          "label": "Direct deployment to production with monitoring"
+        },
+        {
+          "key": "C",
+          "label": "Manual template review by infrastructure team"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "What-if deployment showing planned changes",
+      "rationaleHtml": "",
+      "extraHtml": "What-if deployment validates Bicep templates and shows planned changes without creating resources, enabling safe validation. Direct production deployment risks unintended changes. Manual reviews don't validate Azure-specific logic or resource dependencies.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-resource-manager/bicep/deploy-what-if\">ARM/Bicep what-if operations</a>"
+    },
+    {
+      "id": "az400-b133ae7c54ad",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "FeatureFlags",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "FeatureFlags"
+      ],
+      "promptHtml": "Your application uses feature flags stored in Azure App Configuration. Users should see new features gradually increasing from 5% to 100% over 4 days. Which feature management capability implements this progressive rollout?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Targeting filters with percentage-based rollout"
+        },
+        {
+          "key": "B",
+          "label": "Environment-based feature flags with manual updates"
+        },
+        {
+          "key": "C",
+          "label": "A/B testing with fixed 50/50 split"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Targeting filters with percentage-based rollout",
+      "rationaleHtml": "",
+      "extraHtml": "App Configuration targeting filters support percentage-based progressive rollout with dynamic adjustment. Environment-based flags lack gradual rollout capabilities. A/B testing uses fixed splits, not progressive exposure.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-app-configuration/howto-targetingfilter\">Progressive feature rollout</a>"
+    },
+    {
+      "id": "az400-9406f616c51b",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "StageOrchestration",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "StageOrchestration"
+      ],
+      "promptHtml": "Multi-stage pipelines deploy to Dev, Test, and Prod sequentially. Test deployment should wait for Dev deployment completion and automated tests to pass. Which pipeline construct implements this dependency?",
+      "options": [
+        {
+          "key": "A",
+          "label": "dependsOn with stage dependencies and conditions"
+        },
+        {
+          "key": "B",
+          "label": "Separate pipelines triggered manually for each stage"
+        },
+        {
+          "key": "C",
+          "label": "Single-stage pipeline with sequential jobs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "dependsOn with stage dependencies and conditions",
+      "rationaleHtml": "",
+      "extraHtml": "Stage dependencies using dependsOn ensure sequential execution with success conditions. Separate pipelines lose deployment traceability and complicate rollback. Single-stage deployments don't provide stage-specific approvals or reruns.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/stages#dependencies\">Pipeline stage dependencies</a>"
+    },
+    {
+      "id": "az400-709c7451123e",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "AgentStrategy",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "AgentStrategy"
+      ],
+      "promptHtml": "A pipeline builds .NET applications across Windows, Linux, and macOS. Build agents must match OS requirements while minimizing cost. Which agent strategy optimizes this multi-platform build?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Microsoft-hosted agents with matrix strategy for OS selection"
+        },
+        {
+          "key": "B",
+          "label": "Self-hosted Windows agents with cross-compilation"
+        },
+        {
+          "key": "C",
+          "label": "Manual builds on developer workstations"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Microsoft-hosted agents with matrix strategy for OS selection",
+      "rationaleHtml": "",
+      "extraHtml": "Microsoft-hosted agents with matrix strategy execute parallel builds across multiple OS images without agent management overhead. Self-hosted agents require maintenance. Cross-compilation may not validate OS-specific behaviors. Manual builds lack automation and consistency.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/yaml-schema/jobs-job-strategy\">Pipeline matrix strategy</a>"
+    },
+    {
+      "id": "az400-24dcbaf3e7dc",
+      "examSlug": "az400",
+      "domain": "Processes",
+      "topic": "WorkTracking",
+      "tags": [
+        "AZ-400",
+        "Processes",
+        "WorkTracking"
+      ],
+      "promptHtml": "Your team needs unified work tracking across 5 GitHub repositories with sprint planning and burndown charts. Which integration provides this consolidated project management?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Projects with repository integration and custom fields"
+        },
+        {
+          "key": "B",
+          "label": "Separate issue tracking per repository"
+        },
+        {
+          "key": "C",
+          "label": "External project management tool with manual sync"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Projects with repository integration and custom fields",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Projects integrates issues from multiple repositories with sprint planning views, custom fields, and burndown tracking. Separate issue tracking lacks cross-repository visibility. External tools require manual synchronization losing GitHub integration benefits.<br><br>Reference: <a href=\"https://docs.github.com/issues/planning-and-tracking-with-projects\">GitHub Projects</a>"
+    },
+    {
+      "id": "az400-0a8075b133ce",
+      "examSlug": "az400",
+      "domain": "Processes",
+      "topic": "Traceability",
+      "tags": [
+        "AZ-400",
+        "Processes",
+        "Traceability"
+      ],
+      "promptHtml": "Your organization requires all pull requests automatically linked to work items before merge. Commits lacking work item references should trigger build warnings. Which configuration enforces this traceability?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Required commit message format with work item validation"
+        },
+        {
+          "key": "B",
+          "label": "Manual work item linking during code review"
+        },
+        {
+          "key": "C",
+          "label": "Post-merge audit of work item associations"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Required commit message format with work item validation",
+      "rationaleHtml": "",
+      "extraHtml": "Required commit message patterns with automated validation enforce work item traceability at commit time. Manual linking is error-prone and non-enforceable. Post-merge audits don't prevent unlinked commits.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/repos/git/link-work-items\">Work item linking policies</a>"
+    },
+    {
+      "id": "az400-67a5c9c0802e",
+      "examSlug": "az400",
+      "domain": "Processes",
+      "topic": "Collaboration",
+      "tags": [
+        "AZ-400",
+        "Processes",
+        "Collaboration"
+      ],
+      "promptHtml": "A development team needs real-time pipeline status notifications in Microsoft Teams when builds fail or deployments complete. Which integration method provides these automated notifications?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Pipelines app for Teams with subscription filters"
+        },
+        {
+          "key": "B",
+          "label": "Manual status updates posted by engineers"
+        },
+        {
+          "key": "C",
+          "label": "Email notifications forwarded to Teams channel"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Pipelines app for Teams with subscription filters",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Pipelines Teams app provides native integration with configurable event subscriptions for targeted notifications. Manual updates don't scale and miss events. Email forwarding lacks interactivity and proper formatting.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/integrations/microsoft-teams\">Teams integration with Azure Pipelines</a>"
+    },
+    {
+      "id": "az400-1775f60dfac6",
+      "examSlug": "az400",
+      "domain": "Processes",
+      "topic": "Metrics",
+      "tags": [
+        "AZ-400",
+        "Processes",
+        "Metrics"
+      ],
+      "promptHtml": "Your organization tracks deployment frequency, lead time, and mean time to recovery (MTTR) as DORA metrics. Which Azure DevOps feature visualizes these DevOps performance metrics?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analytics views with custom queries and dashboard widgets"
+        },
+        {
+          "key": "B",
+          "label": "Build logs reviewed manually for metrics"
+        },
+        {
+          "key": "C",
+          "label": "Third-party monitoring without Azure DevOps integration"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analytics views with custom queries and dashboard widgets",
+      "rationaleHtml": "",
+      "extraHtml": "Analytics views with OData queries enable custom DORA metrics visualization using dashboard widgets. Manual log review doesn't scale or persist insights. Third-party tools miss native Azure DevOps telemetry.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/report/powerbi/data-connector-connect\">Azure DevOps Analytics</a>"
+    },
+    {
+      "id": "az400-18e3530358ac",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "BranchProtection",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "BranchProtection"
+      ],
+      "promptHtml": "A repository requires branch protection preventing direct commits to main. All changes must come through pull requests with 2 approvals and passing builds. Which branch policy configuration enforces these requirements?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Branch protection rules with minimum reviewers and status checks"
+        },
+        {
+          "key": "B",
+          "label": "Repository permissions removing direct push access"
+        },
+        {
+          "key": "C",
+          "label": "Code review guidelines without technical enforcement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Branch protection rules with minimum reviewers and status checks",
+      "rationaleHtml": "",
+      "extraHtml": "Branch protection rules enforce required reviewers, status checks, and prevent direct pushes through technical controls. Repository permissions alone can be bypassed by admins. Guidelines without enforcement don't prevent policy violations.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/repos/git/branch-policies\">Branch policies in Azure Repos</a>"
+    },
+    {
+      "id": "az400-3d16a921800e",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "GitOptimization",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "GitOptimization"
+      ],
+      "promptHtml": "Your Git repository grew to 5GB with 100K commits. Clones take 20 minutes. You need to improve clone performance while maintaining commit history. Which Git optimization technique addresses this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Scalar with GVFS protocol for partial clones"
+        },
+        {
+          "key": "B",
+          "label": "Deleting old commit history with filter-repo"
+        },
+        {
+          "key": "C",
+          "label": "Migrating to new repository losing history"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Scalar with GVFS protocol for partial clones",
+      "rationaleHtml": "",
+      "extraHtml": "Scalar with Git Virtual File System (GVFS) enables partial clones downloading only needed objects, dramatically improving performance for large repositories. Deleting history loses valuable traceability. New repository migration disrupts team workflows.<br><br>Reference: <a href=\"https://github.com/microsoft/scalar\">Scalar optimization tool</a>"
+    },
+    {
+      "id": "az400-4a7157b124f8",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "DataRemoval",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "DataRemoval"
+      ],
+      "promptHtml": "A developer accidentally committed API keys to a public GitHub repository 30 commits ago. You need to remove the sensitive data from entire repository history. Which Git operation completely removes this data?",
+      "options": [
+        {
+          "key": "A",
+          "label": "git filter-repo removing file from all commits"
+        },
+        {
+          "key": "B",
+          "label": "Deleting the file in a new commit"
+        },
+        {
+          "key": "C",
+          "label": "Making repository private to hide commit history"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "git filter-repo removing file from all commits",
+      "rationaleHtml": "",
+      "extraHtml": "git filter-repo (or BFG Repo-Cleaner) rewrites repository history removing sensitive data from all commits. Simple file deletion leaves data in history. Private repositories don't remove data, only restrict access to already compromised secrets.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/repos/git/remove-binaries\">Removing sensitive data from Git</a>"
+    },
+    {
+      "id": "az400-540e6d3bfa51",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "PermissionsManagement",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "PermissionsManagement"
+      ],
+      "promptHtml": "Your organization has 500 developers across 30 teams. Each team needs isolated repositories with team-specific permissions. Which Azure DevOps structure efficiently manages this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Projects per team with team-specific permissions and repositories"
+        },
+        {
+          "key": "B",
+          "label": "Single project with 500 individual permission grants"
+        },
+        {
+          "key": "C",
+          "label": "Separate Azure DevOps organizations per team"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Projects per team with team-specific permissions and repositories",
+      "rationaleHtml": "",
+      "extraHtml": "Projects provide logical boundaries with inherited permissions, simplifying management for multiple teams. Individual permission grants don't scale to 500 users. Separate organizations fragment work tracking and complicate cross-team collaboration.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/organizations/projects/about-projects\">Azure DevOps project organization</a>"
+    },
+    {
+      "id": "az400-ba2c7802cb63",
+      "examSlug": "az400",
+      "domain": "SourceControl",
+      "topic": "MergeStrategy",
+      "tags": [
+        "AZ-400",
+        "SourceControl",
+        "MergeStrategy"
+      ],
+      "promptHtml": "A team uses GitHub Flow with main branch and feature branches. Merges to main must be fast-forward only with linear history. Which merge strategy enforces this linear history requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Squash merging combining all feature commits"
+        },
+        {
+          "key": "B",
+          "label": "Merge commits creating merge nodes"
+        },
+        {
+          "key": "C",
+          "label": "Rebase and merge maintaining linear history"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Rebase and merge maintaining linear history",
+      "rationaleHtml": "",
+      "extraHtml": "Rebase and merge creates linear history by replaying feature commits on main without merge commits. Squash merging loses individual commit granularity. Merge commits create non-linear history violating the requirement.<br><br>Reference: <a href=\"https://docs.github.com/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges\">GitHub merge strategies</a>"
+    },
+    {
+      "id": "az400-daaf24fa5e21",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Versioning",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Versioning"
+      ],
+      "promptHtml": "Your pipeline publishes NuGet packages to Azure Artifacts. Package versions must follow semantic versioning with automatic version incrementing based on Git tags. Which versioning strategy implements this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitVersion calculating version from Git history and tags"
+        },
+        {
+          "key": "B",
+          "label": "Manually incrementing version in project file each commit"
+        },
+        {
+          "key": "C",
+          "label": "Build number as package version without semantic meaning"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitVersion calculating version from Git history and tags",
+      "rationaleHtml": "",
+      "extraHtml": "GitVersion automatically determines semantic version from Git history, branches, and tags, ensuring consistent versioning without manual intervention. Manual version updates are error-prone. Build numbers don't convey semantic meaning (breaking vs feature vs patch).<br><br>Reference: <a href=\"https://gitversion.net/docs/\">GitVersion semantic versioning</a>"
+    },
+    {
+      "id": "az400-19845b6b2159",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "PackageResilience",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "PackageResilience"
+      ],
+      "promptHtml": "Your application depends on 50 third-party npm packages. You need to ensure upstream package registry failures don't block builds. Which Azure Artifacts configuration provides this resilience?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Upstream sources with package caching in Azure Artifacts feed"
+        },
+        {
+          "key": "B",
+          "label": "Direct consumption of npm registry without caching"
+        },
+        {
+          "key": "C",
+          "label": "Manually downloading packages to repository"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Upstream sources with package caching in Azure Artifacts feed",
+      "rationaleHtml": "",
+      "extraHtml": "Upstream sources cache packages from public registries, providing resilience against upstream failures while maintaining automatic updates. Direct registry consumption lacks resilience. Manual package storage requires constant maintenance and loses automatic updates.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/artifacts/concepts/upstream-sources\">Azure Artifacts upstream sources</a>"
+    },
+    {
+      "id": "az400-5398f944e0b9",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "TestOptimization",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "TestOptimization"
+      ],
+      "promptHtml": "A CI pipeline runs unit tests taking 30 minutes sequentially. Tests are independent. You need to reduce execution time while keeping the same test coverage. Which approach optimizes test execution?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parallel test execution using matrix strategy across agents"
+        },
+        {
+          "key": "B",
+          "label": "Reducing test coverage to decrease test count"
+        },
+        {
+          "key": "C",
+          "label": "Running tests sequentially on faster hardware"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Parallel test execution using matrix strategy across agents",
+      "rationaleHtml": "",
+      "extraHtml": "Parallel execution using matrix strategy distributes independent tests across multiple agents, reducing total time. Reducing coverage compromises quality. Faster hardware provides linear improvement, parallel execution provides multiplicative improvement.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/test/parallel-testing-any-test-runner\">Parallel test execution</a>"
+    },
+    {
+      "id": "az400-6bd4253cc95d",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "PipelineDesign",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "PipelineDesign"
+      ],
+      "promptHtml": "Your pipeline deploys Azure infrastructure and application code. Infrastructure changes are infrequent but application updates occur hourly. Which pipeline design optimizes this pattern?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Separate pipelines for infrastructure and application with conditional triggers"
+        },
+        {
+          "key": "B",
+          "label": "Combined pipeline building everything on every commit"
+        },
+        {
+          "key": "C",
+          "label": "Manual infrastructure deployment without automation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Separate pipelines for infrastructure and application with conditional triggers",
+      "rationaleHtml": "",
+      "extraHtml": "Separate pipelines with path-based triggers optimize execution, deploying infrastructure only when IaC changes and application continuously. Combined pipelines waste time on unchanged infrastructure. Manual deployment lacks automation benefits and consistency.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/architecture/guide/devops/pipelines\">Pipeline design patterns</a>"
+    },
+    {
+      "id": "az400-1f088a2ea51e",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DeploymentOptimization",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DeploymentOptimization"
+      ],
+      "promptHtml": "A multi-stage pipeline deploys to 10 Azure regions sequentially. Deployment takes 2 hours. Business requires reducing deployment time while maintaining safety. Which pattern achieves this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parallel deployment to all regions with phased rollout"
+        },
+        {
+          "key": "B",
+          "label": "Sequential deployment to regions one at a time"
+        },
+        {
+          "key": "C",
+          "label": "Manual deployment to each region"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Parallel deployment to all regions with phased rollout",
+      "rationaleHtml": "",
+      "extraHtml": "Parallel deployment to regions in waves (e.g., 3 regions at once) reduces total time while maintaining controlled rollout. Sequential deployment maximizes time. Phased approach balances speed with risk management better than full parallel or full sequential.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/deployment-jobs\">Deployment strategies</a>"
+    },
+    {
+      "id": "az400-119f4c0219c5",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Templates",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Templates"
+      ],
+      "promptHtml": "Your pipeline uses 15 common tasks across 5 different YAML pipelines. Changes to tasks require updating all 5 pipelines. Which approach improves maintainability?",
+      "options": [
+        {
+          "key": "A",
+          "label": "YAML templates with shared task definitions"
+        },
+        {
+          "key": "B",
+          "label": "Copying task definitions across all pipelines"
+        },
+        {
+          "key": "C",
+          "label": "Classic release definitions instead of YAML"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "YAML templates with shared task definitions",
+      "rationaleHtml": "",
+      "extraHtml": "YAML templates centralize common task definitions enabling single-source updates across multiple pipelines. Copied definitions multiply maintenance effort. Classic definitions lack version control and infrastructure-as-code benefits.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/templates\">YAML templates</a>"
+    },
+    {
+      "id": "az400-848c11e05803",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "EnvironmentApprovals",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "EnvironmentApprovals"
+      ],
+      "promptHtml": "A deployment pipeline requires manual security approval for production but automated approval for non-production. The approval authority should be configured per environment. Which feature implements this environment-specific approval control?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Environment-specific approval gates with approver groups"
+        },
+        {
+          "key": "B",
+          "label": "Pipeline-wide approval requiring all stages to be approved"
+        },
+        {
+          "key": "C",
+          "label": "Branch protection rules for deployment branches"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Environment-specific approval gates with approver groups",
+      "rationaleHtml": "",
+      "extraHtml": "Environment resource with approvals and checks enables per-environment approval policies with designated approvers. Pipeline-wide approval doesn't differentiate environments. Branch protection controls code, not deployments across environments.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/approvals\">Environment approvals</a>"
+    },
+    {
+      "id": "az400-bff672c168ea",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "QualityGates",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "QualityGates"
+      ],
+      "promptHtml": "Your organization requires code coverage above 80% for all pull requests. Builds should fail if coverage drops below threshold. Which pipeline capability enforces this quality gate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Code coverage task with threshold check failing build on violation"
+        },
+        {
+          "key": "B",
+          "label": "Manual code review checking coverage reports"
+        },
+        {
+          "key": "C",
+          "label": "Optional code coverage reporting without enforcement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Code coverage task with threshold check failing build on violation",
+      "rationaleHtml": "",
+      "extraHtml": "Code coverage tasks with FailOnCoverageBelow parameter enforce quality gates automatically. Manual reviews don't scale and miss violations. Optional reporting without enforcement doesn't prevent coverage degradation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/test/review-code-coverage-results\">Code coverage thresholds</a>"
+    },
+    {
+      "id": "az400-b5522f18030f",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DeploymentOrder",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DeploymentOrder"
+      ],
+      "promptHtml": "A microservices application needs to deploy services in specific order due to database migration dependencies. Service B deployment requires Service A migration completion. Which pipeline construct ensures this deployment ordering?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Stage dependencies with deployment order enforcement"
+        },
+        {
+          "key": "B",
+          "label": "Single job deploying all services sequentially"
+        },
+        {
+          "key": "C",
+          "label": "Manual deployment coordination between teams"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Stage dependencies with deployment order enforcement",
+      "rationaleHtml": "",
+      "extraHtml": "Stage dependencies using dependsOn ensure Service B stage waits for Service A stage completion. Single job lacks granular control and rollback capability per service. Manual coordination is error-prone and doesn't scale.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/stages#dependencies\">Deployment order with dependencies</a>"
+    },
+    {
+      "id": "az400-b500ff2098d0",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "CanaryDeployment",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "CanaryDeployment"
+      ],
+      "promptHtml": "Your organization deploys applications using canary releases, exposing new versions to 5% of users initially. You need to automatically roll back if error rates exceed 1%. Which Azure service implements this automated feedback-driven deployment?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure App Service deployment slots with Traffic Manager health probes"
+        },
+        {
+          "key": "B",
+          "label": "Manual deployment with post-deployment monitoring"
+        },
+        {
+          "key": "C",
+          "label": "Blue-green deployment without traffic splitting"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure App Service deployment slots with Traffic Manager health probes",
+      "rationaleHtml": "",
+      "extraHtml": "App Service slots with Traffic Manager enable canary deployment with automatic traffic routing based on health probes, supporting automated rollback based on metrics. Manual deployment lacks automation. Blue-green deploys all-or-nothing without gradual rollout.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/app-service/deploy-best-practices#use-deployment-slots\">Canary deployments with App Service</a>"
+    },
+    {
+      "id": "az400-168dc4411876",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DatabaseDeployment",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DatabaseDeployment"
+      ],
+      "promptHtml": "A database deployment pipeline must run migration scripts against production database during deployment. Rollback must restore database to pre-deployment state if errors occur. Which strategy enables this database deployment pattern?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Transactional migration scripts with rollback scripts in deployment tasks"
+        },
+        {
+          "key": "B",
+          "label": "Manual SQL script execution during maintenance window"
+        },
+        {
+          "key": "C",
+          "label": "Direct database changes without version control"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Transactional migration scripts with rollback scripts in deployment tasks",
+      "rationaleHtml": "",
+      "extraHtml": "Transactional migration scripts with explicit rollback logic enable automated database deployments with safety. Manual execution lacks automation and audit trail. Direct changes violate infrastructure-as-code principles.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/targets/azure-sqldb\">Database deployment pipelines</a>"
+    },
+    {
+      "id": "az400-a53f1bc22cf7",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "ContainerDeployment",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "ContainerDeployment"
+      ],
+      "promptHtml": "Your application uses 5 Docker containers deployed together. Container images must be built, tested, and deployed atomically. Which pipeline pattern ensures atomic multi-container deployment?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Docker Compose with multi-container deployment task"
+        },
+        {
+          "key": "B",
+          "label": "Separate pipelines for each container image"
+        },
+        {
+          "key": "C",
+          "label": "Manual container orchestration commands"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Docker Compose with multi-container deployment task",
+      "rationaleHtml": "",
+      "extraHtml": "Docker Compose enables multi-container application definition with atomic deployment. Separate pipelines lose deployment atomicity and introduce coordination complexity. Manual orchestration lacks reproducibility and automation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/ecosystems/docker-compose\">Multi-container pipelines</a>"
+    },
+    {
+      "id": "az400-9fa11f8ed476",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "HotfixStrategy",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "HotfixStrategy"
+      ],
+      "promptHtml": "A hotfix requires immediate production deployment bypassing normal CI/CD stages. The organization needs audit trail and approval while maintaining speed. Which pipeline design balances urgency with governance?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dedicated hotfix pipeline with expedited approval workflow"
+        },
+        {
+          "key": "B",
+          "label": "Direct production access without pipeline"
+        },
+        {
+          "key": "C",
+          "label": "Standard pipeline requiring all testing stages"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dedicated hotfix pipeline with expedited approval workflow",
+      "rationaleHtml": "",
+      "extraHtml": "Dedicated hotfix pipeline with streamlined (but present) approvals balances speed with governance and maintains audit trail. Direct access violates change control. Standard pipeline lacks urgency handling creating incentive to bypass processes.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/architecture/guide/devops/release-engineering-cd\">Release engineering patterns</a>"
+    },
+    {
+      "id": "az400-f255045e9198",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DriftDetection",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DriftDetection"
+      ],
+      "promptHtml": "Your infrastructure uses ARM templates deployed via pipeline. You need to detect drift between deployed infrastructure and source control templates. Which approach identifies this configuration drift?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Scheduled pipeline running ARM what-if operation detecting changes"
+        },
+        {
+          "key": "B",
+          "label": "Manual comparison of deployed resources with templates"
+        },
+        {
+          "key": "C",
+          "label": "Redeploying templates to overwrite any drift"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Scheduled pipeline running ARM what-if operation detecting changes",
+      "rationaleHtml": "",
+      "extraHtml": "Scheduled what-if operations detect drift by comparing deployed state with template definitions without modifying resources. Manual comparison doesn't scale. Redeployment without detection may overwrite intentional changes or miss security issues.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-resource-manager/templates/deploy-what-if\">Infrastructure drift detection</a>"
+    },
+    {
+      "id": "az400-37300cc3b020",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "TerraformState",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "TerraformState"
+      ],
+      "promptHtml": "A pipeline deploys infrastructure using Terraform. State file must be shared across pipeline runs and team members. Which backend configuration provides safe concurrent state access?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Storage backend with state locking"
+        },
+        {
+          "key": "B",
+          "label": "Local state file committed to Git"
+        },
+        {
+          "key": "C",
+          "label": "Shared network drive for state file"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Storage backend with state locking",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Storage backend with built-in state locking prevents concurrent modification conflicts. Git-committed state files expose sensitive data and cause merge conflicts. Network drives lack atomic operations and state locking.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/developer/terraform/store-state-in-azure-storage\">Terraform backend in Azure Storage</a>"
+    },
+    {
+      "id": "az400-38cb396985cb",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DSC",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DSC"
+      ],
+      "promptHtml": "Your organization requires PowerShell DSC configurations for VM configuration management. Configurations must be version controlled and automatically applied. Which Azure service automates this DSC configuration enforcement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Automation State Configuration with DSC pull server"
+        },
+        {
+          "key": "B",
+          "label": "Manual DSC script execution on VMs"
+        },
+        {
+          "key": "C",
+          "label": "Configuration files stored without automation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Automation State Configuration with DSC pull server",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Automation State Configuration provides centralized DSC configuration management with automatic drift remediation. Manual execution lacks continuous enforcement. Stored configurations without automation don't prevent drift.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/automation/automation-dsc-overview\">Azure Automation DSC</a>"
+    },
+    {
+      "id": "az400-b86a9e562510",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Caching",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Caching"
+      ],
+      "promptHtml": "A pipeline builds artifacts requiring 500MB of download. Builds run 50 times daily. You need to reduce pipeline execution time and data transfer costs. Which caching strategy optimizes this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pipeline cache task with dependency cache keys"
+        },
+        {
+          "key": "B",
+          "label": "Downloading dependencies on every pipeline run"
+        },
+        {
+          "key": "C",
+          "label": "Committing dependencies to source control"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pipeline cache task with dependency cache keys",
+      "rationaleHtml": "",
+      "extraHtml": "Pipeline caching stores and reuses dependencies across runs based on cache keys (e.g., package lock file hash), significantly reducing transfer and restore time. Repeated downloads waste time and bandwidth. Committed dependencies bloat repository and complicate updates.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/release/caching\">Pipeline caching</a>"
+    },
+    {
+      "id": "az400-90fd6ee0e11e",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Retention",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Retention"
+      ],
+      "promptHtml": "Your pipeline artifacts require 90-day retention for compliance but storage costs are high. Historical artifacts beyond 30 days are rarely accessed. Which retention policy optimizes this requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Retention policy with 90-day limit and automated cleanup"
+        },
+        {
+          "key": "B",
+          "label": "Unlimited retention keeping all artifacts permanently"
+        },
+        {
+          "key": "C",
+          "label": "Manual deletion of old artifacts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Retention policy with 90-day limit and automated cleanup",
+      "rationaleHtml": "",
+      "extraHtml": "Configured retention policies automatically delete artifacts after specified duration, balancing compliance with cost. Unlimited retention maximizes cost. Manual deletion lacks consistency and governance.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/policies/retention\">Pipeline retention policies</a>"
+    },
+    {
+      "id": "az400-9e27f64951e5",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "Migration",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "Migration"
+      ],
+      "promptHtml": "A legacy classic pipeline requires migration to YAML for version control and approval processes. The pipeline has 15 stages with complex conditions. Which migration approach minimizes risk?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Incremental migration converting stages one at a time with parallel execution"
+        },
+        {
+          "key": "B",
+          "label": "Complete migration of all stages simultaneously"
+        },
+        {
+          "key": "C",
+          "label": "Maintaining classic pipeline without migration"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Incremental migration converting stages one at a time with parallel execution",
+      "rationaleHtml": "",
+      "extraHtml": "Incremental migration allows validation of each stage while maintaining production stability through parallel execution of classic and YAML versions. Complete migration increases risk. Avoiding migration loses version control and modern features.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/migrate/from-classic-pipelines\">Migrating to YAML pipelines</a>"
+    },
+    {
+      "id": "az400-3bee9c2f8863",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "AgentModernization",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "AgentModernization"
+      ],
+      "promptHtml": "Your pipeline runs on self-hosted agents requiring specific tool versions. Agent maintenance causes downtime. You need to modernize agent infrastructure for reliability. Which strategy improves agent availability?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Containerized agents with immutable images and orchestration"
+        },
+        {
+          "key": "B",
+          "label": "Manual agent maintenance on physical servers"
+        },
+        {
+          "key": "C",
+          "label": "Single self-hosted agent for all workloads"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Containerized agents with immutable images and orchestration",
+      "rationaleHtml": "",
+      "extraHtml": "Containerized agents enable immutable infrastructure with easy updates via image replacement and orchestration-based scaling. Manual maintenance maximizes downtime. Single agent creates bottleneck and single point of failure.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/agents/docker\">Containerized pipeline agents</a>"
+    },
+    {
+      "id": "az400-e759dece58c5",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "ServiceConnections",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "ServiceConnections"
+      ],
+      "promptHtml": "A pipeline consumes GitHub Packages requiring authentication. Credentials should not be stored in code. Which authentication method securely accesses these packages in pipeline?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub service connection with PAT stored in Azure DevOps"
+        },
+        {
+          "key": "B",
+          "label": "GitHub credentials hardcoded in pipeline YAML"
+        },
+        {
+          "key": "C",
+          "label": "Anonymous access without authentication"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub service connection with PAT stored in Azure DevOps",
+      "rationaleHtml": "",
+      "extraHtml": "Service connection securely stores credentials separate from code with proper access control. Hardcoded credentials expose secrets in version control. Anonymous access fails for private packages.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints\">Service connections</a>"
+    },
+    {
+      "id": "az400-3ce1ceaf8dcf",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "ManagedIdentity",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "ManagedIdentity"
+      ],
+      "promptHtml": "Your organization uses both Azure DevOps and GitHub. Deployments from both platforms require identical Azure authentication. Which identity type enables consistent authentication across both platforms?",
+      "options": [
+        {
+          "key": "A",
+          "label": "User-assigned managed identity for consistent authentication"
+        },
+        {
+          "key": "B",
+          "label": "Separate service principals for each platform"
+        },
+        {
+          "key": "C",
+          "label": "Shared personal access token across platforms"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "User-assigned managed identity for consistent authentication",
+      "rationaleHtml": "",
+      "extraHtml": "User-assigned managed identity provides consistent authentication mechanism usable across Azure DevOps and GitHub with same identity. Separate service principals multiply management overhead. Shared PATs violate security best practices and lack auditability.<br><br>Reference: <a href=\"https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview\">Managed identities</a>"
+    },
+    {
+      "id": "az400-7f1080e2f033",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "PermissionsGranularity",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "PermissionsGranularity"
+      ],
+      "promptHtml": "A GitHub repository requires escalated permissions for infrastructure deployment but limited permissions for application code. Which GitHub permission model implements this least privilege access?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Custom repository roles with granular permissions per team"
+        },
+        {
+          "key": "B",
+          "label": "Admin access for all team members"
+        },
+        {
+          "key": "C",
+          "label": "Single permission level for entire repository"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Custom repository roles with granular permissions per team",
+      "rationaleHtml": "",
+      "extraHtml": "Custom repository roles enable granular permission assignment implementing least privilege per team function. Admin access violates least privilege principle. Single permission level prevents appropriate access segregation.<br><br>Reference: <a href=\"https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-repository-roles\">GitHub custom roles</a>"
+    },
+    {
+      "id": "az400-2473cd8d437a",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "AccessLevels",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "AccessLevels"
+      ],
+      "promptHtml": "Your Azure DevOps project requires work item access for external contractors without providing full project member access. Which access level provides this restricted access?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Stakeholder access with work item tracking only"
+        },
+        {
+          "key": "B",
+          "label": "Basic access with full features"
+        },
+        {
+          "key": "C",
+          "label": "Project Collection Administrator access"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Stakeholder access with work item tracking only",
+      "rationaleHtml": "",
+      "extraHtml": "Stakeholder access provides work item viewing and limited editing without code access or license cost, appropriate for contractors. Basic access provides unnecessary features. Project Collection Administrator grants excessive permissions violating least privilege.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/organizations/security/stakeholder-access\">Stakeholder access levels</a>"
+    },
+    {
+      "id": "az400-0cc85f997c6c",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "TeamIsolation",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "TeamIsolation"
+      ],
+      "promptHtml": "Multiple teams share an Azure DevOps project. Each team should only access their work items and repositories. Which organizational construct implements this team-based isolation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure DevOps teams with area paths and repository permissions"
+        },
+        {
+          "key": "B",
+          "label": "Single flat team structure with manual access control"
+        },
+        {
+          "key": "C",
+          "label": "Separate projects per team with no sharing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure DevOps teams with area paths and repository permissions",
+      "rationaleHtml": "",
+      "extraHtml": "Azure DevOps teams with area path security and repository permissions provide team isolation within shared project. Flat structure lacks scalable permissions. Separate projects prevent necessary cross-team collaboration.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/organizations/settings/about-teams-and-settings\">Team configuration</a>"
+    },
+    {
+      "id": "az400-3e077f55de66",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "ManagedIdentityPipeline",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "ManagedIdentityPipeline"
+      ],
+      "promptHtml": "A pipeline requires temporary Azure credentials to deploy resources during pipeline execution. Credentials must be automatically rotated and never persisted. Which authentication mechanism provides this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "System-assigned managed identity for pipeline agent"
+        },
+        {
+          "key": "B",
+          "label": "Service principal with long-lived certificate"
+        },
+        {
+          "key": "C",
+          "label": "Shared administrator credentials"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "System-assigned managed identity for pipeline agent",
+      "rationaleHtml": "",
+      "extraHtml": "System-assigned managed identity provides automatic credential lifecycle management without storage or rotation. Service principal certificates require manual rotation. Shared credentials violate security best practices.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure\">Azure authentication in pipelines</a>"
+    },
+    {
+      "id": "az400-8d7a52e16f80",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "SecretMasking",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "SecretMasking"
+      ],
+      "promptHtml": "Your pipeline deploys application secrets from Azure Key Vault. Development team should not see production secrets in pipeline logs. Which configuration prevents secret exposure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "IsSecret flag on variables and log masking in pipeline"
+        },
+        {
+          "key": "B",
+          "label": "Logging all variable values for debugging"
+        },
+        {
+          "key": "C",
+          "label": "Storing secrets in pipeline YAML files"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "IsSecret flag on variables and log masking in pipeline",
+      "rationaleHtml": "",
+      "extraHtml": "Secret variables are automatically masked in logs preventing accidental exposure. Logging all values exposes secrets. YAML-stored secrets expose credentials in version control.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/set-secret-variables\">Secret variables in pipelines</a>"
+    },
+    {
+      "id": "az400-bbe8376a1cb9",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "SecureFiles",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "SecureFiles"
+      ],
+      "promptHtml": "A pipeline uses SSH keys for Git operations and certificate for signing. These files must be securely stored and accessed during pipeline execution. Which Azure Pipelines feature manages these sensitive files?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Secure files in pipeline library with download task"
+        },
+        {
+          "key": "B",
+          "label": "Committing files to repository"
+        },
+        {
+          "key": "C",
+          "label": "Storing files on pipeline agent filesystem"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Secure files in pipeline library with download task",
+      "rationaleHtml": "",
+      "extraHtml": "Secure files in pipeline library encrypt and control access to sensitive files with audit logging. Repository-committed files expose secrets in version control. Agent filesystem lacks access control and encryption.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/library/secure-files\">Secure files</a>"
+    },
+    {
+      "id": "az400-11330908ed66",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "SecretScanning",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "SecretScanning"
+      ],
+      "promptHtml": "Your organization requires scanning pipeline YAML files for hardcoded secrets before pull request merge. Which tool automates this secret scanning requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Advanced Security secret scanning with push protection"
+        },
+        {
+          "key": "B",
+          "label": "Manual code review checking for secrets"
+        },
+        {
+          "key": "C",
+          "label": "Post-merge secret scanning only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Advanced Security secret scanning with push protection",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Advanced Security with push protection scans commits for secrets and blocks pushes with detected credentials. Manual review doesn't scale. Post-merge scanning detects too late as secrets already entered history.<br><br>Reference: <a href=\"https://docs.github.com/code-security/secret-scanning/about-secret-scanning\">GitHub secret scanning</a>"
+    },
+    {
+      "id": "az400-0b9eb3ee4a99",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "VulnerabilityScanning",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "VulnerabilityScanning"
+      ],
+      "promptHtml": "A Docker image used in pipeline must be scanned for vulnerabilities and blocked if critical CVEs are found. Which service provides this container image scanning with policy enforcement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Microsoft Defender for Containers with admission control"
+        },
+        {
+          "key": "B",
+          "label": "Docker build without scanning"
+        },
+        {
+          "key": "C",
+          "label": "Manual vulnerability assessment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Microsoft Defender for Containers with admission control",
+      "rationaleHtml": "",
+      "extraHtml": "Defender for Containers scans images for vulnerabilities with policy-based admission control blocking deployment of vulnerable images. Standard Docker builds lack security scanning. Manual assessment doesn't scale or automate.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction\">Container vulnerability scanning</a>"
+    },
+    {
+      "id": "az400-cff218e63f9f",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "DependencyScanning",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "DependencyScanning"
+      ],
+      "promptHtml": "Your pipeline depends on 200 open-source npm packages. You need automated alerts when dependencies have known security vulnerabilities or license violations. Which tool provides this supply chain security?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dependabot alerts for vulnerabilities and licensing"
+        },
+        {
+          "key": "B",
+          "label": "Manual review of package documentation"
+        },
+        {
+          "key": "C",
+          "label": "Accepting all dependencies without scanning"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dependabot alerts for vulnerabilities and licensing",
+      "rationaleHtml": "",
+      "extraHtml": "Dependabot automatically detects vulnerable dependencies and license compliance issues with automated alerts and pull requests. Manual review doesn't scale to 200 packages. Unscanned dependencies expose security risks.<br><br>Reference: <a href=\"https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">Dependabot security</a>"
+    },
+    {
+      "id": "az400-06893ecbd5f7",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "CodeAnalysis",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "CodeAnalysis"
+      ],
+      "promptHtml": "A container running in pipeline needs to execute code analysis using CodeQL. The container lacks CodeQL tooling. Which approach enables CodeQL analysis in this containerized pipeline?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Multi-stage container build with CodeQL analysis image"
+        },
+        {
+          "key": "B",
+          "label": "Installing CodeQL inside application container"
+        },
+        {
+          "key": "C",
+          "label": "Skipping analysis for containerized builds"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Multi-stage container build with CodeQL analysis image",
+      "rationaleHtml": "",
+      "extraHtml": "Multi-stage builds enable using CodeQL analysis container separate from application container, maintaining clean application image. Installing analysis tools in application container bloats image. Skipping analysis creates security gaps.<br><br>Reference: <a href=\"https://docs.github.com/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages\">CodeQL in containers</a>"
+    },
+    {
+      "id": "az400-b9081ab8ba22",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "SAST",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "SAST"
+      ],
+      "promptHtml": "Your organization requires all pipeline code scanned for security vulnerabilities including SQL injection and XSS patterns. Analysis must occur on every pull request. Which tool provides this static application security testing (SAST)?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Advanced Security CodeQL scanning in PR workflow"
+        },
+        {
+          "key": "B",
+          "label": "Manual security code review"
+        },
+        {
+          "key": "C",
+          "label": "Runtime security testing only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Advanced Security CodeQL scanning in PR workflow",
+      "rationaleHtml": "",
+      "extraHtml": "CodeQL provides automated SAST detecting security vulnerabilities with PR integration. Manual review doesn't scale and misses subtle vulnerabilities. Runtime testing detects too late after deployment.<br><br>Reference: <a href=\"https://docs.github.com/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql\">CodeQL security scanning</a>"
+    },
+    {
+      "id": "az400-001c13386c92",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "UnifiedSecurity",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "UnifiedSecurity"
+      ],
+      "promptHtml": "Your pipeline integrates GitHub Advanced Security findings with Azure security monitoring. Both platforms should show unified security posture. Which integration consolidates this security telemetry?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Microsoft Defender for Cloud integration with GitHub Advanced Security"
+        },
+        {
+          "key": "B",
+          "label": "Separate security dashboards per platform"
+        },
+        {
+          "key": "C",
+          "label": "Manual aggregation of security data"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Microsoft Defender for Cloud integration with GitHub Advanced Security",
+      "rationaleHtml": "",
+      "extraHtml": "Defender for Cloud integrates with GitHub Advanced Security providing unified security dashboard across code and cloud infrastructure. Separate dashboards require manual correlation. Manual aggregation doesn't scale or provide real-time visibility.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/defender-for-cloud/defender-for-devops-introduction\">Defender for DevOps</a>"
+    },
+    {
+      "id": "az400-7f4c38da8378",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DynamicTagging",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DynamicTagging"
+      ],
+      "promptHtml": "A pipeline deploys infrastructure to Azure. Resources must be tagged with deployment date, pipeline ID, and committer. Which pipeline technique ensures these tags are applied consistently?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pipeline variables with ARM template parameter injection"
+        },
+        {
+          "key": "B",
+          "label": "Manual tagging after deployment"
+        },
+        {
+          "key": "C",
+          "label": "Static tags in template without pipeline context"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pipeline variables with ARM template parameter injection",
+      "rationaleHtml": "",
+      "extraHtml": "Pipeline variables passed as ARM template parameters enable dynamic tagging with pipeline context. Manual tagging is inconsistent and error-prone. Static tags lack traceability to deployment pipeline.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/variables\">Pipeline variables for dynamic tagging</a>"
+    },
+    {
+      "id": "az400-801c3bb4ceb4",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "Dashboards",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "Dashboards"
+      ],
+      "promptHtml": "Your application collects metrics in Azure Monitor Logs. DevOps team needs dashboard showing deployment frequency and failure rate correlated with application errors. Which tool creates this DevOps dashboard?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Monitor workbooks with Log Analytics queries"
+        },
+        {
+          "key": "B",
+          "label": "Application logs reviewed manually"
+        },
+        {
+          "key": "C",
+          "label": "Separate dashboards without correlation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Monitor workbooks with Log Analytics queries",
+      "rationaleHtml": "",
+      "extraHtml": "Monitor workbooks with KQL queries enable custom dashboards correlating deployment metrics with application telemetry. Manual log review doesn't persist insights. Separate dashboards prevent correlation analysis.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-overview\">Azure Monitor workbooks</a>"
+    },
+    {
+      "id": "az400-f763e848a83c",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "DistributedTracing",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "DistributedTracing"
+      ],
+      "promptHtml": "A microservices application spans 20 services deployed via pipeline. You need to correlate requests across services to debug performance issues. Which instrumentation approach enables this distributed tracing?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Application Insights with distributed tracing and correlation IDs"
+        },
+        {
+          "key": "B",
+          "label": "Individual service logs without correlation"
+        },
+        {
+          "key": "C",
+          "label": "Single service monitoring without end-to-end visibility"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Application Insights with distributed tracing and correlation IDs",
+      "rationaleHtml": "",
+      "extraHtml": "Application Insights distributed tracing correlates requests across microservices using correlation IDs enabling end-to-end transaction visibility. Individual logs lack cross-service correlation. Single service monitoring misses cross-service dependencies.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-monitor/app/distributed-trace-data\">Distributed tracing</a>"
+    },
+    {
+      "id": "az400-1af22655ec0e",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "VMMonitoring",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "VMMonitoring"
+      ],
+      "promptHtml": "Your pipeline deploys VMs requiring continuous monitoring of CPU, memory, disk, and network metrics with alerting on anomalies. Which Azure Monitor capability provides this VM performance monitoring?",
+      "options": [
+        {
+          "key": "A",
+          "label": "VM Insights with performance counters and alerting"
+        },
+        {
+          "key": "B",
+          "label": "Manual log file review on VMs"
+        },
+        {
+          "key": "C",
+          "label": "Application-level monitoring without infrastructure visibility"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "VM Insights with performance counters and alerting",
+      "rationaleHtml": "",
+      "extraHtml": "VM Insights provides comprehensive infrastructure performance monitoring with pre-configured performance counters and alerting capabilities. Manual review doesn't scale. Application monitoring misses infrastructure layer issues.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-monitor/vm/vminsights-overview\">Azure VM Insights</a>"
+    },
+    {
+      "id": "az400-1542191234ee",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "StorageMonitoring",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "StorageMonitoring"
+      ],
+      "promptHtml": "A storage account requires monitoring access patterns, latency, and throttling metrics to optimize application performance. Which Azure Monitor feature provides storage-specific telemetry?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Monitor for Storage with metrics and diagnostics"
+        },
+        {
+          "key": "B",
+          "label": "Application Insights without storage visibility"
+        },
+        {
+          "key": "C",
+          "label": "Manual storage log analysis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Monitor for Storage with metrics and diagnostics",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Monitor for Storage provides storage-specific metrics including transactions, latency, availability, and capacity. Application Insights lacks storage-specific telemetry. Manual analysis doesn't provide real-time monitoring or alerting.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/storage/common/monitor-storage\">Monitor Azure Storage</a>"
+    },
+    {
+      "id": "az400-bc96cfbcd339",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "GitHubInsights",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "GitHubInsights"
+      ],
+      "promptHtml": "GitHub Actions workflows fail intermittently. Development team needs visibility into workflow execution patterns and failure rates. Which GitHub feature provides this workflow observability?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Insights with workflow run analytics and charts"
+        },
+        {
+          "key": "B",
+          "label": "Reviewing individual workflow logs manually"
+        },
+        {
+          "key": "C",
+          "label": "External monitoring without GitHub integration"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Insights with workflow run analytics and charts",
+      "rationaleHtml": "",
+      "extraHtml": "GitHub Insights provides workflow analytics including success rates, execution time trends, and failure patterns. Manual log review misses patterns. External monitoring lacks native GitHub workflow context.<br><br>Reference: <a href=\"https://docs.github.com/actions/monitoring-and-troubleshooting-workflows/using-workflow-insights\">GitHub workflow insights</a>"
+    },
+    {
+      "id": "az400-2ad3c176d6b2",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "PipelineAlerts",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "PipelineAlerts"
+      ],
+      "promptHtml": "Your pipeline should trigger alert when build fails 3 consecutive times indicating potential infrastructure or code issues. Which monitoring configuration implements this build failure alerting?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Monitor alert rule on pipeline failure metrics with aggregation"
+        },
+        {
+          "key": "B",
+          "label": "Manual monitoring of build results"
+        },
+        {
+          "key": "C",
+          "label": "Email notifications on every single failure"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Monitor alert rule on pipeline failure metrics with aggregation",
+      "rationaleHtml": "",
+      "extraHtml": "Monitor alert rules with aggregation conditions detect patterns like 3 consecutive failures avoiding alert fatigue. Manual monitoring doesn't scale. Single failure alerts create noise masking systemic issues.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/integrations/azure-monitor\">Pipeline monitoring with Azure Monitor</a>"
+    },
+    {
+      "id": "az400-e1c3f91d20a4",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "ReleaseCorrelation",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "ReleaseCorrelation"
+      ],
+      "promptHtml": "Production application performance degraded after recent deployment. You need to identify which code commit introduced latency increase. Which instrumentation capability enables this deployment correlation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Application Insights release annotations correlating deployment with telemetry"
+        },
+        {
+          "key": "B",
+          "label": "Separate application and deployment monitoring"
+        },
+        {
+          "key": "C",
+          "label": "Manual comparison of deployment times with metrics"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Application Insights release annotations correlating deployment with telemetry",
+      "rationaleHtml": "",
+      "extraHtml": "Release annotations mark deployments in Application Insights timelines enabling direct correlation between deployments and performance changes. Separate monitoring prevents correlation. Manual comparison is time-consuming and imprecise.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-monitor/app/annotations\">Release annotations</a>"
+    },
+    {
+      "id": "az400-bf271a62e248",
+      "examSlug": "az400",
+      "domain": "Instrumentation",
+      "topic": "LogQuerying",
+      "tags": [
+        "AZ-400",
+        "Instrumentation",
+        "LogQuerying"
+      ],
+      "promptHtml": "Application logs contain request telemetry requiring analysis to identify slow endpoints and error patterns. You need to query logs for requests taking over 5 seconds. Which query language enables this log analysis?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Kusto Query Language (KQL) in Log Analytics"
+        },
+        {
+          "key": "B",
+          "label": "SQL queries on application database"
+        },
+        {
+          "key": "C",
+          "label": "Manual log file parsing with grep"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Kusto Query Language (KQL) in Log Analytics",
+      "rationaleHtml": "",
+      "extraHtml": "KQL provides powerful log query capabilities with performance aggregation, filtering, and visualization. SQL queries on application database miss distributed application logs. Manual parsing doesn't scale or persist queries.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview\">KQL for log analysis</a>"
+    },
+    {
+      "id": "az400-96ebec6c5765",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "PackageImmutability",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "PackageImmutability"
+      ],
+      "promptHtml": "Your pipeline publishes NuGet packages using semantic versioning. Packages should be immutable after publishing preventing accidental overwrites. Which Azure Artifacts configuration enforces package immutability?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Feed settings with immutability policy preventing overwrites"
+        },
+        {
+          "key": "B",
+          "label": "No protection allowing package replacement"
+        },
+        {
+          "key": "C",
+          "label": "Manual verification before publishing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Feed settings with immutability policy preventing overwrites",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Artifacts immutability settings prevent republishing same package version ensuring build reproducibility. No protection allows dangerous overwrites. Manual verification doesn't prevent accidental automation errors.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/artifacts/concepts/feeds\">Azure Artifacts feed settings</a>"
+    },
+    {
+      "id": "az400-139b62288a8c",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "ArtifactStrategy",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "ArtifactStrategy"
+      ],
+      "promptHtml": "A repository has binary release artifacts checked in increasing repository size to 10GB. You need to maintain release history while removing binary artifacts. Which approach achieves this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Migrate artifacts to Azure Artifacts while keeping release tags"
+        },
+        {
+          "key": "B",
+          "label": "Deleting entire repository history"
+        },
+        {
+          "key": "C",
+          "label": "Ignoring repository size issues"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Migrate artifacts to Azure Artifacts while keeping release tags",
+      "rationaleHtml": "",
+      "extraHtml": "Migrating artifacts to dedicated artifact storage maintains release tracking through tags while reducing repository size. Deleting history loses traceability. Ignoring size impacts team performance.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/artifacts/quickstarts/universal-packages\">Universal packages for artifacts</a>"
+    },
+    {
+      "id": "az400-ff92b6637232",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "ApprovalStrategy",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "ApprovalStrategy"
+      ],
+      "promptHtml": "Your organization requires deployment approval from security team before production release. Security team works in different timezone. Which approval strategy prevents deployment delays?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Multiple approvers with any-approval policy"
+        },
+        {
+          "key": "B",
+          "label": "Single approver with timezone conflicts"
+        },
+        {
+          "key": "C",
+          "label": "Skipping approvals to avoid delays"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Multiple approvers with any-approval policy",
+      "rationaleHtml": "",
+      "extraHtml": "Multiple approvers across timezones with any-approval policy ensures timely approvals while maintaining governance. Single approver creates bottleneck. Skipping approvals violates security requirements.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/approvals\">Approval policies</a>"
+    },
+    {
+      "id": "az400-71a7f618651b",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "TestIsolation",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "TestIsolation"
+      ],
+      "promptHtml": "A pipeline runs integration tests requiring SQL database. Tests need clean database state before each run. Which approach provides this test isolation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Container-based database with initialization scripts in pipeline"
+        },
+        {
+          "key": "B",
+          "label": "Shared database with manual cleanup between runs"
+        },
+        {
+          "key": "C",
+          "label": "Production database for testing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Container-based database with initialization scripts in pipeline",
+      "rationaleHtml": "",
+      "extraHtml": "Container-based database provides isolated, reproducible test environment with automated initialization. Shared database creates test interdependencies. Production database risks data corruption and availability.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/ecosystems/containers/acr-template\">Containerized test dependencies</a>"
+    },
+    {
+      "id": "az400-c9eaf469c253",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "ParallelExecution",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "ParallelExecution"
+      ],
+      "promptHtml": "Your application has 500 unit tests taking 40 minutes sequentially. Tests are CPU-bound and independent. You have 10 available pipeline agents. Which configuration optimizes test execution efficiency?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parallel execution with maxParallel set to 10 agents"
+        },
+        {
+          "key": "B",
+          "label": "Sequential execution on single agent"
+        },
+        {
+          "key": "C",
+          "label": "Random distribution without optimization"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Parallel execution with maxParallel set to 10 agents",
+      "rationaleHtml": "",
+      "extraHtml": "Parallel execution across 10 agents reduces total time from 40 minutes to ~4 minutes for independent tests. Sequential execution wastes available agent capacity. Random distribution may imbalance load.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs\">Parallel job execution</a>"
+    },
+    {
+      "id": "az400-9b7751c04c26",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "LoadTesting",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "LoadTesting"
+      ],
+      "promptHtml": "A web application requires load testing to validate performance under 10,000 concurrent users before production deployment. Which testing service integrates with Azure Pipelines for automated load testing?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Load Testing with pipeline integration"
+        },
+        {
+          "key": "B",
+          "label": "Manual load testing on developer workstations"
+        },
+        {
+          "key": "C",
+          "label": "Production traffic as load test"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Load Testing with pipeline integration",
+      "rationaleHtml": "",
+      "extraHtml": "Azure Load Testing provides cloud-scale load testing with pipeline integration for automated performance validation. Manual testing lacks scale and reproducibility. Production traffic risks service disruption.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/load-testing/overview-what-is-azure-load-testing\">Azure Load Testing</a>"
+    },
+    {
+      "id": "az400-c29ac23eb61a",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "HealthChecks",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "HealthChecks"
+      ],
+      "promptHtml": "Your pipeline deploys web application to Azure App Service. Health checks should verify application functionality after deployment automatically rolling back on failure. Which deployment feature provides this automatic health validation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Deployment slots with swap with preview and health check"
+        },
+        {
+          "key": "B",
+          "label": "Direct deployment without validation"
+        },
+        {
+          "key": "C",
+          "label": "Manual testing after each deployment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Deployment slots with swap with preview and health check",
+      "rationaleHtml": "",
+      "extraHtml": "Slot swap with preview mode allows health validation before completing swap with automatic rollback on failure. Direct deployment lacks validation and rollback. Manual testing delays deployment and lacks automation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/app-service/deploy-staging-slots#swap-with-preview-multi-phase-swap\">Swap with preview</a>"
+    },
+    {
+      "id": "az400-288dc925178d",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "AgentScaling",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "AgentScaling"
+      ],
+      "promptHtml": "Multiple teams share a pipeline agent pool. Agent capacity is insufficient during peak hours causing build queuing. Which strategy optimizes agent utilization?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Auto-scaling agent pool based on demand metrics"
+        },
+        {
+          "key": "B",
+          "label": "Manual agent provisioning based on guess"
+        },
+        {
+          "key": "C",
+          "label": "Single agent for all teams"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Auto-scaling agent pool based on demand metrics",
+      "rationaleHtml": "",
+      "extraHtml": "Auto-scaling agent pools dynamically provision capacity based on queue length reducing wait times and costs. Manual provisioning leads to over/under provisioning. Single agent creates severe bottleneck.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/agents/scale-set-agents\">Scale set agents</a>"
+    },
+    {
+      "id": "az400-0713acd2a3ec",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "DatabaseMigration",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "DatabaseMigration"
+      ],
+      "promptHtml": "Your deployment pipeline requires zero downtime for database schema changes while application continues serving requests. Which database deployment pattern achieves this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Expand/contract pattern with backward compatible changes"
+        },
+        {
+          "key": "B",
+          "label": "Direct schema modification during deployment"
+        },
+        {
+          "key": "C",
+          "label": "Taking application offline during changes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Expand/contract pattern with backward compatible changes",
+      "rationaleHtml": "",
+      "extraHtml": "Expand/contract pattern deploys backward compatible changes allowing gradual migration without downtime. Direct schema changes risk application errors. Application downtime violates zero-downtime requirement.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/architecture/guide/devops/database-ci-cd\">Database DevOps patterns</a>"
+    },
+    {
+      "id": "az400-d7c0572e6e48",
+      "examSlug": "az400",
+      "domain": "Security",
+      "topic": "WorkloadIdentity",
+      "tags": [
+        "AZ-400",
+        "Security",
+        "WorkloadIdentity"
+      ],
+      "promptHtml": "A GitHub Actions workflow needs to deploy Azure infrastructure in subscription protected by Conditional Access requiring MFA. Which authentication mechanism satisfies this security requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Workload identity federation configured in Entra ID"
+        },
+        {
+          "key": "B",
+          "label": "Service principal with password"
+        },
+        {
+          "key": "C",
+          "label": "Personal access token"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Workload identity federation configured in Entra ID",
+      "rationaleHtml": "",
+      "extraHtml": "Workload identity federation provides trusted authentication satisfying Conditional Access policies without passwords. Service principal passwords are less secure. PATs don't satisfy Conditional Access requirements.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/active-directory/develop/workload-identity-federation\">Workload identity federation</a>"
+    },
+    {
+      "id": "az400-688784cbeee3",
+      "examSlug": "az400",
+      "domain": "Pipelines",
+      "topic": "IaCDeployments",
+      "tags": [
+        "AZ-400",
+        "Pipelines",
+        "IaCDeployments"
+      ],
+      "promptHtml": "Your release pipeline configuration contains approval gates, deployment stages, and variable groups. The configuration must be version controlled and reviewable. Which pipeline approach enables this IaC for release process?",
+      "options": [
+        {
+          "key": "A",
+          "label": "YAML pipelines with multi-stage deployment in version control"
+        },
+        {
+          "key": "B",
+          "label": "Classic release pipelines with UI configuration"
+        },
+        {
+          "key": "C",
+          "label": "Manual deployment with documented procedures"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "YAML pipelines with multi-stage deployment in version control",
+      "rationaleHtml": "",
+      "extraHtml": "YAML pipelines provide infrastructure-as-code for release process with version control and code review. Classic pipelines lack version control for release definitions. Manual deployment loses automation benefits.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/devops/pipelines/process/deployment-jobs\">YAML multi-stage deployments</a>"
+    }
+  ]
+}
