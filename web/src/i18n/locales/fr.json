@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "Pratique de Certification Microsoft",
-    "tagline": "Sélectionnez un examen, choisissez votre mode et commencez à pratiquer."
+    "tagline": "Sélectionnez un examen, choisissez votre mode et commencez à pratiquer.",
+    "settings": "Langue et apparence"
   },
   "theme": {
     "switchToDark": "Passer en mode sombre",
@@ -9,10 +10,15 @@
   },
   "language": {
     "switchToFrench": "Passer en français",
-    "switchToEnglish": "Passer en anglais"
+    "switchToEnglish": "Passer en anglais",
+    "confirmTitle": "Terminer cette session ?",
+    "confirmMessage": "Changer de langue mettra fin à la session en cours. Les réponses de cette session ne seront pas enregistrées.",
+    "confirmAction": "Terminer et changer",
+    "cancelAction": "Continuer la session"
   },
   "setup": {
     "cardTitle": "Configuration de l'examen",
+    "loadingExams": "Chargement des examens disponibles...",
     "examLabel": "Examen",
     "examPlaceholder": "Choisissez un examen...",
     "questions": "questions",
@@ -34,6 +40,7 @@
     "topicLabel": "Sujet",
     "topicAll": "Tous les sujets",
     "reviewMissedLabel": "Réviser uniquement les questions manquées",
+    "noMissedQuestions": "Aucune question manquée",
     "questionLimitLabel": "Nombre de questions",
     "questionLimit": "{{count}} questions",
     "questionLimitAll": "Toutes les questions",
@@ -74,6 +81,9 @@
     "questionOf": "Question {{current}} sur {{total}}",
     "modePractice": "Entraînement",
     "modeTimed": "Quiz chronométré",
+    "progressLabel": "Progression de la session",
+    "correctStatus": "Correcte",
+    "incorrectStatus": "Votre réponse",
     "checkAnswer": "Vérifier la réponse",
     "next": "Suivant",
     "finishQuiz": "Terminer le quiz",
@@ -88,6 +98,7 @@
     "titlePractice": "{{code}} — Entraînement terminé",
     "titleTimed": "{{code}} — Quiz chronométré terminé",
     "score": "Score",
+    "scoreOf": "{{correct}} bonne(s) réponse(s) sur {{total}}",
     "percentage": "Pourcentage",
     "missed": "Manquées",
     "time": "Temps",

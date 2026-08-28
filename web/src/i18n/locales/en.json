@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "Microsoft Certification Practice",
-    "tagline": "Select an exam, choose your mode, and start practicing."
+    "tagline": "Select an exam, choose your mode, and start practicing.",
+    "settings": "Language and appearance"
   },
   "theme": {
     "switchToDark": "Switch to dark mode",
@@ -9,10 +10,15 @@
   },
   "language": {
     "switchToFrench": "Switch to French",
-    "switchToEnglish": "Switch to English"
+    "switchToEnglish": "Switch to English",
+    "confirmTitle": "End this session?",
+    "confirmMessage": "Changing the language will end your current session. Your completed answers from this session will not be saved.",
+    "confirmAction": "End session and switch",
+    "cancelAction": "Keep practicing"
   },
   "setup": {
     "cardTitle": "Exam Setup",
+    "loadingExams": "Loading available exams...",
     "examLabel": "Exam",
     "examPlaceholder": "Choose an exam...",
     "questions": "questions",
@@ -34,6 +40,7 @@
     "topicLabel": "Topic",
     "topicAll": "All topics",
     "reviewMissedLabel": "Only review previously missed questions",
+    "noMissedQuestions": "No missed questions yet",
     "questionLimitLabel": "Number of questions",
     "questionLimit": "{{count}} questions",
     "questionLimitAll": "All questions",
@@ -74,6 +81,9 @@
     "questionOf": "Question {{current}} of {{total}}",
     "modePractice": "Practice",
     "modeTimed": "Timed Quiz",
+    "progressLabel": "Session progress",
+    "correctStatus": "Correct",
+    "incorrectStatus": "Your answer",
     "checkAnswer": "Check Answer",
     "next": "Next",
     "finishQuiz": "Finish Quiz",
@@ -88,6 +98,7 @@
     "titlePractice": "{{code}} Practice Complete",
     "titleTimed": "{{code}} Timed Quiz Complete",
     "score": "Score",
+    "scoreOf": "{{correct}} correct out of {{total}}",
     "percentage": "Percentage",
     "missed": "Missed",
     "time": "Time",

@@ -1,4 +1,4 @@
-import { startTransition, useEffect, useState } from 'react'
+import { startTransition, useEffect, useRef, useState } from 'react'
 import DOMPurify from 'dompurify'
 import { useTranslation } from 'react-i18next'
 import './App.css'
@@ -217,25 +217,38 @@ function shuffleArray<T>(items: T[]) {
   return shuffled
 }
 
-// Language Switcher Component
-function LanguageSwitcher({ lang, onToggle }: { lang: 'en' | 'fr'; onToggle: () => void }) {
+function LanguageSwitcher({
+  lang,
+  label,
+  onToggle,
+}: {
+  lang: 'en' | 'fr'
+  label: string
+  onToggle: () => void
+}) {
   const nextLabel = lang === 'en' ? 'FR' : 'EN'
-  const ariaLabel = lang === 'en' ? 'Switch to French' : 'Switch to English'
   return (
-    <button className="lang-toggle" onClick={onToggle} aria-label={ariaLabel} title={ariaLabel}>
+    <button className="lang-toggle" onClick={onToggle} aria-label={label} title={label}>
       {nextLabel}
     </button>
   )
 }
 
-// Theme Toggle Component
-function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark'; onToggle: () => void }) {
+function ThemeToggle({
+  theme,
+  label,
+  onToggle,
+}: {
+  theme: 'light' | 'dark'
+  label: string
+  onToggle: () => void
+}) {
   return (
-    <button 
-      className="theme-toggle" 
+    <button
+      className="theme-toggle"
       onClick={onToggle}
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={label}
+      title={label}
     >
       {theme === 'light' ? (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -247,6 +260,66 @@ function ThemeToggle({ theme, onToggle }: { theme: 'light' | 'dark'; onToggle: (
         </svg>
       )}
     </button>
+  )
+}
+
+function ConfirmationDialog({
+  title,
+  message,
+  confirmLabel,
+  cancelLabel,
+  onConfirm,
+  onCancel,
+}: {
+  title: string
+  message: string
+  confirmLabel: string
+  cancelLabel: string
+  onConfirm: () => void
+  onCancel: () => void
+}) {
+  const cancelButtonRef = useRef<HTMLButtonElement>(null)
+  const confirmButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    cancelButtonRef.current?.focus()
+  }, [])
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      onCancel()
+      return
+    }
+
+    if (event.key !== 'Tab') {
+      return
+    }
+
+    if (event.shiftKey && document.activeElement === cancelButtonRef.current) {
+      event.preventDefault()
+      confirmButtonRef.current?.focus()
+    } else if (!event.shiftKey && document.activeElement === confirmButtonRef.current) {
+      event.preventDefault()
+      cancelButtonRef.current?.focus()
+    }
+  }
+
+  return (
+    <div className="dialog-backdrop" onKeyDown={handleKeyDown}>
+      <div className="dialog" role="alertdialog" aria-modal="true" aria-labelledby="language-dialog-title" aria-describedby="language-dialog-description">
+        <h2 id="language-dialog-title">{title}</h2>
+        <p id="language-dialog-description">{message}</p>
+        <div className="dialog-actions">
+          <button ref={cancelButtonRef} type="button" className="btn-secondary" onClick={onCancel}>
+            {cancelLabel}
+          </button>
+          <button ref={confirmButtonRef} type="button" className="btn-primary" onClick={onConfirm}>
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -265,6 +338,12 @@ function App() {
   const [result, setResult] = useState<SessionResult | null>(null)
   const [progress, setProgress] = useState<ProgressMap>({})
   const [elapsedSeconds, setElapsedSeconds] = useState(0)
+  const [languageConfirmationOpen, setLanguageConfirmationOpen] = useState(false)
+  const languageButtonRef = useRef<HTMLDivElement>(null)
+  const questionHeadingRef = useRef<HTMLHeadingElement>(null)
+  const answerFeedbackRef = useRef<HTMLDivElement>(null)
+  const activeQuestionIndex = session?.questionIndex
+  const isAnswerRevealed = session?.revealAnswer
 
   // Theme management
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -289,8 +368,9 @@ function App() {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
   }
 
-  const toggleLanguage = () => {
+  const changeLanguage = () => {
     const nextLang: 'en' | 'fr' = currentLang === 'en' ? 'fr' : 'en'
+    setLanguageConfirmationOpen(false)
     window.localStorage.setItem('language', nextLang)
     void i18n.changeLanguage(nextLang)
     setSession(null)
@@ -315,6 +395,22 @@ function App() {
           .finally(() => { setLoadingDeckSlug('') })
       }
     }
+  }
+
+  const requestLanguageChange = () => {
+    if (session) {
+      setLanguageConfirmationOpen(true)
+      return
+    }
+
+    changeLanguage()
+  }
+
+  const cancelLanguageChange = () => {
+    setLanguageConfirmationOpen(false)
+    window.requestAnimationFrame(() => {
+      languageButtonRef.current?.querySelector<HTMLButtonElement>('.lang-toggle')?.focus()
+    })
   }
 
   useEffect(() => {
@@ -353,6 +449,22 @@ function App() {
 
     return () => window.clearInterval(timer)
   }, [session])
+
+  useEffect(() => {
+    if (activeQuestionIndex === undefined) {
+      return
+    }
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      if (isAnswerRevealed) {
+        answerFeedbackRef.current?.focus()
+      } else {
+        questionHeadingRef.current?.focus()
+      }
+    })
+
+    return () => window.cancelAnimationFrame(animationFrame)
+  }, [activeQuestionIndex, isAnswerRevealed])
 
   const selectedExam = manifest?.exams.find((exam) => exam.slug === selectedExamSlug) ?? null
   const selectedDeck = selectedExamSlug ? deckCache[`${selectedExamSlug}-${currentLang}`] : undefined
@@ -586,26 +698,50 @@ function App() {
     setResult(null)
   }
 
+  const languageLabel = currentLang === 'en'
+    ? t('language.switchToFrench')
+    : t('language.switchToEnglish')
+  const themeLabel = theme === 'light'
+    ? t('theme.switchToDark')
+    : t('theme.switchToLight')
+  const appHeader = (
+    <div className="app-header">
+      <header className="site-header">
+        <h1>{t('app.title')}</h1>
+        <p>{t('app.tagline')}</p>
+      </header>
+      <div ref={languageButtonRef} className="top-controls" aria-label={t('app.settings')}>
+        <LanguageSwitcher lang={currentLang} label={languageLabel} onToggle={requestLanguageChange} />
+        <ThemeToggle theme={theme} label={themeLabel} onToggle={toggleTheme} />
+      </div>
+    </div>
+  )
+  const languageDialog = languageConfirmationOpen ? (
+    <ConfirmationDialog
+      title={t('language.confirmTitle')}
+      message={t('language.confirmMessage')}
+      confirmLabel={t('language.confirmAction')}
+      cancelLabel={t('language.cancelAction')}
+      onConfirm={changeLanguage}
+      onCancel={cancelLanguageChange}
+    />
+  ) : null
+
   /* ─── Setup view ─── */
   if (!session && !result) {
     return (
       <>
-        <div className="top-controls">
-          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-        </div>
         <div className="app-shell">
-          <header className="site-header">
-            <h1>{t('app.title')}</h1>
-            <p>{t('app.tagline')}</p>
-          </header>
+          {appHeader}
 
         {manifestError && <div className="alert error">{manifestError}</div>}
 
         <div className="card">
           <h2 className="card-title">{t('setup.cardTitle')}</h2>
 
-          <div className="field">
+          {!manifest && !manifestError ? (
+            <div className="loading-state" role="status">{t('setup.loadingExams')}</div>
+          ) : <div className="field">
             <label htmlFor="exam-select">{t('setup.examLabel')}</label>
             <select
               id="exam-select"
@@ -619,32 +755,34 @@ function App() {
                 </option>
               ))}
             </select>
-          </div>
+          </div>}
 
           {selectedExam && (
             <>
               {selectedProgress && (
-                <div className="progress-summary">
+                <dl className="progress-summary">
                   <div className="progress-stat">
-                    <span className="stat-label">{t('setup.progress.lastAttempt')}</span>
-                    <strong>{formatDate(selectedProgress.lastCompletedAt)}</strong>
+                    <dt>{t('setup.progress.lastAttempt')}</dt>
+                    <dd>{formatDate(selectedProgress.lastCompletedAt)}</dd>
                   </div>
                   <div className="progress-stat">
-                    <span className="stat-label">{t('setup.progress.lastScore')}</span>
-                    <strong>{getProgressScore(selectedProgress) ?? t('setup.progress.noAttempts')}</strong>
+                    <dt>{t('setup.progress.lastScore')}</dt>
+                    <dd>{getProgressScore(selectedProgress) ?? t('setup.progress.noAttempts')}</dd>
                   </div>
                   <div className="progress-stat">
-                    <span className="stat-label">{t('setup.progress.missed')}</span>
-                    <strong>{t('setup.progress.missedCount', { count: selectedProgress.missedIds.length })}</strong>
+                    <dt>{t('setup.progress.missed')}</dt>
+                    <dd>{t('setup.progress.missedCount', { count: selectedProgress.missedIds.length })}</dd>
                   </div>
-                </div>
+                </dl>
               )}
 
-              <div className="field">
+              <div className="setup-section field">
                 <label>{t('setup.modeLabel')}</label>
-                <div className="mode-toggle" role="group" aria-label={t('setup.modeLabel')}>
+                <div className="mode-toggle" role="radiogroup" aria-label={t('setup.modeLabel')}>
                   <button
                     type="button"
+                    role="radio"
+                    aria-checked={setup.mode === 'practice'}
                     className={`mode-btn ${setup.mode === 'practice' ? 'active' : ''}`}
                     onClick={() => updateSetup('mode', 'practice')}
                   >
@@ -652,6 +790,8 @@ function App() {
                   </button>
                   <button
                     type="button"
+                    role="radio"
+                    aria-checked={setup.mode === 'timed'}
                     className={`mode-btn ${setup.mode === 'timed' ? 'active' : ''}`}
                     onClick={() => updateSetup('mode', 'timed')}
                   >
@@ -666,7 +806,7 @@ function App() {
                   : t('setup.modeHintTimed')}
               </p>
 
-              <div className="filter-row">
+              <div className="setup-section filter-row">
                 <div className="field">
                   <label htmlFor="domain-select">{t('setup.domainLabel')}</label>
                   <select
@@ -699,13 +839,17 @@ function App() {
                 </div>
               </div>
 
-              <label className="checkbox-row">
+              <label className={`checkbox-row ${!selectedProgress?.missedIds.length ? 'disabled' : ''}`}>
                 <input
                   type="checkbox"
                   checked={setup.reviewMissed}
+                  disabled={!selectedProgress?.missedIds.length}
                   onChange={(event) => updateSetup('reviewMissed', event.target.checked)}
                 />
-                <span>{t('setup.reviewMissedLabel')}</span>
+                <span>
+                  {t('setup.reviewMissedLabel')}
+                  {!selectedProgress?.missedIds.length && ` — ${t('setup.noMissedQuestions')}`}
+                </span>
               </label>
 
               <div className="field">
@@ -734,7 +878,6 @@ function App() {
                 <button
                   type="button"
                   className="btn-primary"
-                  style={{ width: 'auto' }}
                   onClick={() => { void handleStartSession() }}
                   disabled={loadingDeckSlug === selectedExam.slug}
                 >
@@ -747,6 +890,7 @@ function App() {
           )}
         </div>
       </div>
+      {languageDialog}
       </>
     )
   }
@@ -755,18 +899,15 @@ function App() {
   if (session && currentQuestion) {
     return (
       <>
-        <div className="top-controls">
-          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-        </div>
         <div className="app-shell">
+          {appHeader}
           <button type="button" className="back-link" onClick={handleBackToSetup}>
             &larr; {t('session.backToSetup')}
           </button>
 
         <div className="card">
           <div className="session-header">
-            <h2>
+            <h2 ref={questionHeadingRef} tabIndex={-1}>
               {t('session.questionOf', { current: session.questionIndex + 1, total: session.questionIds.length })}
             </h2>
             <div className="session-badges">
@@ -777,7 +918,14 @@ function App() {
             </div>
           </div>
 
-          <div className="progress-bar" aria-hidden="true">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            aria-label={t('session.progressLabel')}
+            aria-valuemin={1}
+            aria-valuemax={session.questionIds.length}
+            aria-valuenow={session.questionIndex + 1}
+          >
             <span
               style={{
                 width: `${((session.questionIndex + 1) / session.questionIds.length) * 100}%`,
@@ -795,7 +943,7 @@ function App() {
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentQuestion.promptHtml) }}
           />
 
-          <div className="option-list" role="list">
+          <ul className="option-list">
             {currentQuestion.options.map((option) => {
               const isSelected = session.selectedOption === option.key
               const isCorrect = session.revealAnswer && currentQuestion.correctOption === option.key
@@ -803,24 +951,27 @@ function App() {
                 session.revealAnswer && isSelected && currentQuestion.correctOption !== option.key
 
               return (
-                <button
-                  key={option.key}
-                  type="button"
-                  className={[
-                    'option-card',
-                    isSelected ? 'selected' : '',
-                    isCorrect ? 'correct' : '',
-                    isIncorrectSelection ? 'incorrect' : '',
-                  ].filter(Boolean).join(' ')}
-                  onClick={() => handleOptionSelect(option.key)}
-                  disabled={session.revealAnswer}
-                >
-                  <span className="option-key">{option.key}</span>
-                  <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(option.label) }} />
-                </button>
+                <li key={option.key}>
+                  <button
+                    type="button"
+                    className={[
+                      'option-card',
+                      isSelected ? 'selected' : '',
+                      isCorrect ? 'correct' : '',
+                      isIncorrectSelection ? 'incorrect' : '',
+                    ].filter(Boolean).join(' ')}
+                    onClick={() => handleOptionSelect(option.key)}
+                    disabled={session.revealAnswer}
+                  >
+                    <span className="option-key">{option.key}</span>
+                    <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(option.label) }} />
+                    {isCorrect && <span className="option-state">{t('session.correctStatus')}</span>}
+                    {isIncorrectSelection && <span className="option-state">{t('session.incorrectStatus')}</span>}
+                  </button>
+                </li>
               )
             })}
-          </div>
+          </ul>
 
           {!session.revealAnswer ? (
             <div className="session-actions">
@@ -838,7 +989,7 @@ function App() {
               </button>
             </div>
           ) : (
-            <div className="answer-reveal">
+            <div ref={answerFeedbackRef} className="answer-reveal" tabIndex={-1}>
               <h3>
                 {t('session.correct', { option: currentQuestion.correctOption, label: currentQuestion.correctLabel })}
               </h3>
@@ -872,6 +1023,7 @@ function App() {
           )}
         </div>
       </div>
+      {languageDialog}
       </>
     )
   }
@@ -880,11 +1032,8 @@ function App() {
   if (result) {
     return (
       <>
-        <div className="top-controls">
-          <LanguageSwitcher lang={currentLang} onToggle={toggleLanguage} />
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-        </div>
         <div className="app-shell">
+          {appHeader}
           <button type="button" className="back-link" onClick={handleBackToSetup}>
             &larr; {t('results.backToSetup')}
           </button>
@@ -896,40 +1045,45 @@ function App() {
               : t('results.titleTimed', { code: selectedExam?.code })}
           </h2>
 
-          <div className="results-grid">
-            <div className="progress-stat">
-              <span className="stat-label">{t('results.score')}</span>
-              <strong>{result.correctCount} / {result.total}</strong>
-            </div>
-            <div className="progress-stat">
-              <span className="stat-label">{t('results.percentage')}</span>
+          <div className="results-hero">
+            <span className="section-label">{t('results.percentage')}</span>
+            <div className="results-score">
               <strong>{Math.round((result.correctCount / result.total) * 100)}%</strong>
-            </div>
-            <div className="progress-stat">
-              <span className="stat-label">{t('results.missed')}</span>
-              <strong>{result.missedIds.length}</strong>
-            </div>
-            <div className="progress-stat">
-              <span className="stat-label">{t('results.time')}</span>
-              <strong>{formatElapsedTime(result.elapsedSeconds)}</strong>
+              <span>{t('results.scoreOf', { correct: result.correctCount, total: result.total })}</span>
             </div>
           </div>
 
+          <dl className="results-grid">
+            <div className="progress-stat">
+              <dt>{t('results.score')}</dt>
+              <dd>{result.correctCount} / {result.total}</dd>
+            </div>
+            <div className="progress-stat">
+              <dt>{t('results.missed')}</dt>
+              <dd>{result.missedIds.length}</dd>
+            </div>
+            <div className="progress-stat">
+              <dt>{t('results.time')}</dt>
+              <dd>{formatElapsedTime(result.elapsedSeconds)}</dd>
+            </div>
+          </dl>
+
           <div className="results-actions">
+            {result.missedIds.length > 0 && (
+              <button
+                type="button"
+                className="btn-primary"
+                onClick={handleStartMissedReview}
+              >
+                {t('results.reviewMissed')}
+              </button>
+            )}
             <button
               type="button"
-              className="btn-primary"
+              className={result.missedIds.length > 0 ? 'btn-secondary' : 'btn-primary'}
               onClick={() => { void handleStartSession() }}
             >
               {t('results.tryAgain')}
-            </button>
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={handleStartMissedReview}
-              disabled={result.missedIds.length === 0}
-            >
-              {t('results.reviewMissed')}
             </button>
           </div>
 
@@ -951,6 +1105,7 @@ function App() {
           )}
         </div>
       </div>
+      {languageDialog}
       </>
     )
   }
