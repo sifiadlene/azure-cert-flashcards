@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'csv-parse/sync'
@@ -7,6 +7,7 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url))
 const webDirectory = path.resolve(scriptDirectory, '..')
 const repositoryDirectory = path.resolve(webDirectory, '..')
 const flashcardsDirectory = path.join(repositoryDirectory, 'flashcards')
+const decksDirectory = path.join(webDirectory, 'public', 'data', 'decks')
 
 const GH300_SOURCE = 'gh300_flashcards_2026-08-28.csv'
 const GH300_COVERAGE = 'gh300_coverage_2026-08-28.json'
@@ -50,6 +51,7 @@ const ANSWER_TARGETS = { A: 34, B: 33, C: 33 }
 // Guards against the "pick the longest option" tell: the correct answer must not
 // be visually distinguishable by length across the deck or on any single card.
 const LENGTH_GUARD = { maxLongestShare: 0.4, maxOptionRatio: 1.6 }
+export const CHALLENGE_QUESTION_COUNTS = [5, 10, 20]
 
 function increment(counter, key) {
   counter[key] = (counter[key] ?? 0) + 1
@@ -204,12 +206,141 @@ async function validateGh300() {
   }
 }
 
-async function main() {
-  const result = await validateGh300()
+function sameValues(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right)
+}
 
-  if (result.errors.length > 0) {
-    console.error(`GH-300 validation failed with ${result.errors.length} error(s):`)
-    result.errors.forEach((error) => console.error(`- ${error}`))
+export function validateDeckParity(englishDeck, frenchDeck, slug = englishDeck?.exam?.slug ?? 'unknown') {
+  const errors = []
+  const englishQuestions = Array.isArray(englishDeck?.questions) ? englishDeck.questions : []
+  const frenchQuestions = Array.isArray(frenchDeck?.questions) ? frenchDeck.questions : []
+  const englishDeckVersion = englishDeck?.exam?.deckVersion ?? englishDeck?.exam?.updatedOn
+  const frenchDeckVersion = frenchDeck?.exam?.deckVersion ?? frenchDeck?.exam?.updatedOn
+
+  expectEqual(errors, `${slug} exam slug`, frenchDeck?.exam?.slug, englishDeck?.exam?.slug)
+  expectEqual(errors, `${slug} exam code`, frenchDeck?.exam?.code, englishDeck?.exam?.code)
+  expectEqual(errors, `${slug} source file`, frenchDeck?.exam?.sourceFile, englishDeck?.exam?.sourceFile)
+  expectEqual(errors, `${slug} deck version`, frenchDeckVersion, englishDeckVersion)
+  expectEqual(errors, `${slug} updated date`, frenchDeck?.exam?.updatedOn, englishDeck?.exam?.updatedOn)
+  expectEqual(errors, `${slug} declared question count`, frenchDeck?.exam?.questionCount, englishDeck?.exam?.questionCount)
+  expectEqual(errors, `${slug} English declared/actual count`, englishDeck?.exam?.questionCount, englishQuestions.length)
+  expectEqual(errors, `${slug} French declared/actual count`, frenchDeck?.exam?.questionCount, frenchQuestions.length)
+  if (!sameValues(frenchDeck?.exam?.domains, englishDeck?.exam?.domains)) {
+    errors.push(`${slug}: exam domains do not match`)
+  }
+  if (!sameValues(frenchDeck?.exam?.topics, englishDeck?.exam?.topics)) {
+    errors.push(`${slug}: exam topics do not match`)
+  }
+
+  const englishIds = new Set()
+  const frenchIds = new Set()
+  englishQuestions.forEach((question) => {
+    if (englishIds.has(question.id)) {
+      errors.push(`${slug}: duplicate English question ID ${question.id}`)
+    }
+    englishIds.add(question.id)
+  })
+  frenchQuestions.forEach((question) => {
+    if (frenchIds.has(question.id)) {
+      errors.push(`${slug}: duplicate French question ID ${question.id}`)
+    }
+    frenchIds.add(question.id)
+  })
+
+  const questionCount = Math.max(englishQuestions.length, frenchQuestions.length)
+  for (let index = 0; index < questionCount; index += 1) {
+    const english = englishQuestions[index]
+    const french = frenchQuestions[index]
+    const label = `${slug} question ${index + 1}`
+
+    if (!english || !french) {
+      errors.push(`${label}: missing ${english ? 'French' : 'English'} question`)
+      continue
+    }
+
+    expectEqual(errors, `${label} ID`, french.id, english.id)
+    expectEqual(errors, `${label} exam slug`, french.examSlug, english.examSlug)
+    expectEqual(errors, `${label} domain`, french.domain, english.domain)
+    expectEqual(errors, `${label} topic`, french.topic, english.topic)
+    expectEqual(errors, `${label} correct option`, french.correctOption, english.correctOption)
+    if (!sameValues(french.tags, english.tags)) {
+      errors.push(`${label}: tags do not match`)
+    }
+
+    const englishOptionKeys = Array.isArray(english.options) ? english.options.map(({ key }) => key) : []
+    const frenchOptionKeys = Array.isArray(french.options) ? french.options.map(({ key }) => key) : []
+    if (!sameValues(frenchOptionKeys, englishOptionKeys)) {
+      errors.push(`${label} option keys: expected ${englishOptionKeys.join(',')}, found ${frenchOptionKeys.join(',')}`)
+    }
+  }
+
+  return errors
+}
+
+export function summarizeChallengePools(deck) {
+  const questions = Array.isArray(deck?.questions) ? deck.questions : []
+  const poolSizes = new Map([['all', questions.length]])
+
+  questions.forEach((question) => {
+    if (typeof question.domain === 'string' && question.domain) {
+      poolSizes.set(question.domain, (poolSizes.get(question.domain) ?? 0) + 1)
+    }
+  })
+
+  return [...poolSizes.entries()]
+    .sort(([left], [right]) => left === 'all' ? -1 : right === 'all' ? 1 : left.localeCompare(right))
+    .map(([scope, availableQuestionCount]) => ({
+      scope,
+      availableQuestionCount,
+      supportedCounts: CHALLENGE_QUESTION_COUNTS.filter((count) => availableQuestionCount >= count),
+    }))
+}
+
+export async function validateGeneratedDecks(directory = decksDirectory) {
+  const errors = []
+  const pools = {}
+  const filenames = await readdir(directory)
+  const englishFilenames = filenames.filter((filename) => /^[a-z0-9]+\.json$/i.test(filename))
+  const frenchSlugs = new Set(
+    filenames
+      .map((filename) => filename.match(/^([a-z0-9]+)-fr\.json$/i)?.[1]?.toLowerCase())
+      .filter(Boolean),
+  )
+
+  for (const filename of englishFilenames.sort()) {
+    const slug = path.basename(filename, '.json').toLowerCase()
+    const frenchFilename = `${slug}-fr.json`
+    if (!frenchSlugs.has(slug)) {
+      errors.push(`${slug}: missing French deck ${frenchFilename}`)
+      continue
+    }
+
+    const [englishDeck, frenchDeck] = await Promise.all([
+      readFile(path.join(directory, filename), 'utf8').then(JSON.parse),
+      readFile(path.join(directory, frenchFilename), 'utf8').then(JSON.parse),
+    ])
+    errors.push(...validateDeckParity(englishDeck, frenchDeck, slug))
+    pools[slug] = summarizeChallengePools(englishDeck)
+    frenchSlugs.delete(slug)
+  }
+
+  for (const orphanedSlug of [...frenchSlugs].sort()) {
+    errors.push(`${orphanedSlug}: French deck has no matching English deck`)
+  }
+
+  return { errors, pools }
+}
+
+async function main() {
+  const [result, generatedDecks] = await Promise.all([
+    validateGh300(),
+    validateGeneratedDecks(),
+  ])
+  const errors = [...result.errors, ...generatedDecks.errors]
+
+  if (errors.length > 0) {
+    console.error(`Flashcard validation failed with ${errors.length} error(s):`)
+    errors.forEach((error) => console.error(`- ${error}`))
     process.exitCode = 1
     return
   }
@@ -222,9 +353,14 @@ async function main() {
     coveredBullets: result.coveredBullets,
     lengthBias: result.lengthBias,
   }, null, 2))
+  console.log('Generated English/French deck parity passed')
+  console.log('Challenge pool support (small pools are reported, not rejected)')
+  console.log(JSON.stringify(generatedDecks.pools, null, 2))
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : error)
-  process.exitCode = 1
-})
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : error)
+    process.exitCode = 1
+  })
+}
