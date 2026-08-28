@@ -15,8 +15,10 @@
   "homepage": "https://YOUR-USERNAME.github.io/azure-cert-flashcards/",
   "scripts": {
     "build:data": "node scripts/buildFlashcardData.mjs",
+    "validate:data": "node scripts/validateFlashcardData.mjs",
     "dev": "npm run build:data && vite",
-    "build": "npm run build:data && tsc -b && vite build",
+    "build": "npm run validate:data && npm run build:data && tsc -b && vite build",
+    "test:e2e": "playwright test",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.62.1",
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

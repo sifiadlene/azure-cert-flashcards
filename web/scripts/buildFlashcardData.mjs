@@ -17,7 +17,7 @@ const titleMap = {
   az204: 'Developing Solutions for Microsoft Azure',
   az305: 'Designing Microsoft Azure Infrastructure Solutions',
   az500: 'Microsoft Azure Security Technologies',
-  gh300: 'GitHub Foundations',
+  gh300: 'GitHub Copilot',
 }
 
 const filenamePattern = /^(?<slug>[a-z0-9]+)_flashcards(?:_(?<count>\d+))?_(?<date>\d{4}-\d{2}-\d{2})\.csv$/i
@@ -269,7 +269,9 @@ async function buildFlashcardData() {
       topics.add(topic)
 
       questions.push({
-        id: questionId,
+        id: selectedDeck.slug === 'gh300'
+          ? `${selectedDeck.slug}-${selectedDeck.date}-${String(index + 1).padStart(3, '0')}`
+          : questionId,
         examSlug: selectedDeck.slug,
         domain,
         topic,
@@ -288,6 +290,7 @@ async function buildFlashcardData() {
       code: toDisplayCode(selectedDeck.slug),
       title: titleMap[selectedDeck.slug] ?? toDisplayCode(selectedDeck.slug),
       sourceFile: selectedDeck.filename,
+      deckVersion: selectedDeck.date,
       updatedOn: selectedDeck.date,
       questionCount: questions.length,
       domains: [...domains].sort(),

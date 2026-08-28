@@ -77,6 +77,27 @@ function writeProgress(progress: ProgressMap) {
   window.localStorage.setItem(progressStorageKey, JSON.stringify(progress))
 }
 
+function reconcileProgress(progress: ProgressMap, deck: ExamDeck): ProgressMap {
+  const saved = progress[deck.exam.slug]
+
+  if (!saved || saved.deckVersion === deck.exam.deckVersion) {
+    return progress
+  }
+
+  const validIds = new Set(deck.questions.map((question) => question.id))
+  const reconciled = {
+    ...progress,
+    [deck.exam.slug]: {
+      ...saved,
+      deckVersion: deck.exam.deckVersion,
+      missedIds: saved.missedIds.filter((id) => validIds.has(id)),
+    },
+  }
+
+  writeProgress(reconciled)
+  return reconciled
+}
+
 function stripHtml(html: string) {
   return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
 }
@@ -126,6 +147,14 @@ function getProgressScore(progress?: ExamProgress) {
   const score = Math.round((progress.lastScore / progress.lastTotal) * 100)
 
   return `${progress.lastScore}/${progress.lastTotal} (${score}%)`
+}
+
+function taxonomyLabel(
+  t: (key: string, options?: { defaultValue?: string }) => string,
+  kind: 'domains' | 'topics',
+  value: string,
+) {
+  return t(`taxonomy.${kind}.${value}`, { defaultValue: value })
 }
 
 async function fetchDeckFile(
@@ -275,6 +304,7 @@ function App() {
           .then(({ deck, resolvedLang }) => {
             setDeckCache((prev) => ({
               ...prev,
+              [key]: deck,
               [`${selectedExamSlug}-${resolvedLang}`]: deck,
             }))
           })
@@ -366,8 +396,10 @@ function App() {
       const { deck, resolvedLang } = await fetchDeckFile(examSlug, currentLang)
       setDeckCache((currentCache) => ({
         ...currentCache,
+        [key]: deck,
         [`${examSlug}-${resolvedLang}`]: deck,
       }))
+      setProgress((currentProgress) => reconcileProgress(currentProgress, deck))
 
       return deck
     } finally {
@@ -464,6 +496,7 @@ function App() {
     const nextProgress = {
       ...progress,
       [session.examSlug]: {
+        deckVersion: selectedDeck?.exam.deckVersion,
         lastCompletedAt: completedAt,
         lastMode: session.mode,
         lastScore: correctCount,
@@ -643,7 +676,9 @@ function App() {
                   >
                     <option value="all">{t('setup.domainAll')}</option>
                     {availableDomains.map((domain) => (
-                      <option key={domain} value={domain}>{domain}</option>
+                      <option key={domain} value={domain}>
+                        {taxonomyLabel(t, 'domains', domain)}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -656,7 +691,9 @@ function App() {
                   >
                     <option value="all">{t('setup.topicAll')}</option>
                     {availableTopics.map((topic) => (
-                      <option key={topic} value={topic}>{topic}</option>
+                      <option key={topic} value={topic}>
+                        {taxonomyLabel(t, 'topics', topic)}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -672,23 +709,26 @@ function App() {
               </label>
 
               <div className="field">
-                <label htmlFor="question-limit-select">Number of questions</label>
+                <label htmlFor="question-limit-select">{t('setup.questionLimitLabel')}</label>
                 <select
                   id="question-limit-select"
                   value={setup.questionLimit ?? 'all'}
                   onChange={(event) => updateSetup('questionLimit', event.target.value === 'all' ? null : Number(event.target.value))}
                 >
-                  <option value="10">10 questions</option>
-                  <option value="20">20 questions</option>
-                  <option value="50">50 questions</option>
-                  <option value="all">All questions</option>
+                  <option value="10">{t('setup.questionLimit', { count: 10 })}</option>
+                  <option value="20">{t('setup.questionLimit', { count: 20 })}</option>
+                  <option value="50">{t('setup.questionLimit', { count: 50 })}</option>
+                  <option value="all">{t('setup.questionLimitAll')}</option>
                 </select>
               </div>
 
               <div className="setup-footer">
                 <span className="match-count">
                   {setup.questionLimit && matchingQuestions.length > setup.questionLimit
-                    ? `${matchingQuestions.length} questions match, showing ${setup.questionLimit}`
+                    ? t('setup.matchCountLimited', {
+                        count: matchingQuestions.length,
+                        limit: setup.questionLimit,
+                      })
                     : t('setup.matchCount', { count: matchingQuestions.length })}
                 </span>
                 <button
@@ -746,8 +786,8 @@ function App() {
           </div>
 
           <div className="question-meta">
-            <span className="badge">{currentQuestion.domain}</span>
-            <span className="badge">{currentQuestion.topic}</span>
+            <span className="badge">{taxonomyLabel(t, 'domains', currentQuestion.domain)}</span>
+            <span className="badge">{taxonomyLabel(t, 'topics', currentQuestion.topic)}</span>
           </div>
 
           <div
@@ -898,7 +938,7 @@ function App() {
               <p className="missed-list-title">{t('results.questionsToRevisit')}</p>
               {resultQuestions.map((question) => (
                 <article key={question.id} className="missed-card">
-                  <span className="badge">{question.topic}</span>
+                  <span className="badge">{taxonomyLabel(t, 'topics', question.topic)}</span>
                   <h3>{buildExcerpt(question.promptHtml)}</h3>
                   <p>
                     {t('results.correct', { option: question.correctOption, label: question.correctLabel })}

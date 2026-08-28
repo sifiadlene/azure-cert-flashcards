@@ -34,10 +34,40 @@
     "topicLabel": "Sujet",
     "topicAll": "Tous les sujets",
     "reviewMissedLabel": "Réviser uniquement les questions manquées",
+    "questionLimitLabel": "Nombre de questions",
+    "questionLimit": "{{count}} questions",
+    "questionLimitAll": "Toutes les questions",
+    "matchCountLimited": "{{count}} questions correspondent, {{limit}} affichées",
     "matchCount_one": "{{count}} question correspond",
     "matchCount_other": "{{count}} questions correspondent",
     "startSession": "Démarrer la session",
     "loading": "Chargement..."
+  },
+  "taxonomy": {
+    "domains": {
+      "ResponsibleAI": "IA responsable",
+      "CopilotFeatures": "Fonctionnalités de Copilot",
+      "DataArchitecture": "Données et architecture",
+      "PromptEngineering": "Ingénierie des prompts",
+      "DeveloperProductivity": "Productivité des développeurs",
+      "PrivacySafeguards": "Confidentialité et protections"
+    },
+    "topics": {
+      "ResponsibleAIPrinciples": "Principes d’IA responsable",
+      "ValidateOperateAITools": "Valider et exploiter les outils d’IA",
+      "CopilotIDE": "Copilot dans les IDE",
+      "CopilotCLI": "Copilot CLI",
+      "FeaturesCapabilities": "Fonctionnalités et capacités",
+      "OrganizationPolicies": "Stratégies d’organisation",
+      "DataHandlingFlow": "Traitement et flux des données",
+      "LifecycleLimitations": "Cycle de vie et limites",
+      "CraftEffectivePrompts": "Créer des prompts efficaces",
+      "EngineerPrompts": "Concevoir des prompts",
+      "ProductivityCodeQuality": "Productivité et qualité du code",
+      "TestingSecurity": "Tests et sécurité",
+      "PrivacyExclusions": "Confidentialité et exclusion de contenu",
+      "SafeguardsTroubleshooting": "Protections et résolution des problèmes"
+    }
   },
   "session": {
     "backToSetup": "Retour à la configuration",

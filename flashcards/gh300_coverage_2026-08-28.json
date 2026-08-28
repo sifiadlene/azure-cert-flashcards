@@ -1,0 +1,507 @@
+{
+  "exam": "GH-300",
+  "blueprintEffectiveDate": "2026-08-07",
+  "sourceFile": "gh300_flashcards_2026-08-28.csv",
+  "cards": [
+    {
+      "cardNumber": 1,
+      "bulletId": "RAI-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 2,
+      "bulletId": "RAI-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 3,
+      "bulletId": "RAI-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 4,
+      "bulletId": "RAI-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 5,
+      "bulletId": "RAI-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 6,
+      "bulletId": "RAI-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 7,
+      "bulletId": "RAI-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 8,
+      "bulletId": "RAI-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 9,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 10,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 11,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 12,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/copilot-usage-metrics"
+    },
+    {
+      "cardNumber": 13,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/copilot-usage-metrics"
+    },
+    {
+      "cardNumber": 14,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 15,
+      "bulletId": "RAI-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 16,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/copilot-usage-metrics"
+    },
+    {
+      "cardNumber": 17,
+      "bulletId": "RAI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 18,
+      "bulletId": "FEAT-IDE-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/plans"
+    },
+    {
+      "cardNumber": 19,
+      "bulletId": "FEAT-IDE-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 20,
+      "bulletId": "FEAT-IDE-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-content-exclusions-for-github-copilot"
+    },
+    {
+      "cardNumber": 21,
+      "bulletId": "FEAT-IDE-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 22,
+      "bulletId": "FEAT-CLI-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli"
+    },
+    {
+      "cardNumber": 23,
+      "bulletId": "FEAT-CLI-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
+    },
+    {
+      "cardNumber": 24,
+      "bulletId": "FEAT-CLI-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
+    },
+    {
+      "cardNumber": 25,
+      "bulletId": "FEAT-CLI-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview"
+    },
+    {
+      "cardNumber": 26,
+      "bulletId": "FEAT-CLI-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview"
+    },
+    {
+      "cardNumber": 27,
+      "bulletId": "FEAT-CLI-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview"
+    },
+    {
+      "cardNumber": 28,
+      "bulletId": "FEAT-CAP-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide"
+    },
+    {
+      "cardNumber": 29,
+      "bulletId": "FEAT-CAP-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide"
+    },
+    {
+      "cardNumber": 30,
+      "bulletId": "FEAT-CAP-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide"
+    },
+    {
+      "cardNumber": 31,
+      "bulletId": "FEAT-CAP-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review"
+    },
+    {
+      "cardNumber": 32,
+      "bulletId": "FEAT-CAP-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent"
+    },
+    {
+      "cardNumber": 33,
+      "bulletId": "FEAT-CAP-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context/spaces"
+    },
+    {
+      "cardNumber": 34,
+      "bulletId": "FEAT-CAP-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot"
+    },
+    {
+      "cardNumber": 35,
+      "bulletId": "FEAT-CAP-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context"
+    },
+    {
+      "cardNumber": 36,
+      "bulletId": "FEAT-CAP-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide#sharing-feedback"
+    },
+    {
+      "cardNumber": 37,
+      "bulletId": "FEAT-CAP-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide"
+    },
+    {
+      "cardNumber": 38,
+      "bulletId": "FEAT-CAP-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file"
+    },
+    {
+      "cardNumber": 39,
+      "bulletId": "FEAT-CAP-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context/mcp"
+    },
+    {
+      "cardNumber": 40,
+      "bulletId": "FEAT-IDE-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies"
+    },
+    {
+      "cardNumber": 41,
+      "bulletId": "FEAT-ORG-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies"
+    },
+    {
+      "cardNumber": 42,
+      "bulletId": "FEAT-ORG-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies"
+    },
+    {
+      "cardNumber": 43,
+      "bulletId": "FEAT-ORG-03",
+      "sourceUrl": "https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise"
+    },
+    {
+      "cardNumber": 44,
+      "bulletId": "FEAT-ORG-01",
+      "sourceUrl": "https://docs.github.com/en/rest/copilot/copilot-user-management"
+    },
+    {
+      "cardNumber": 45,
+      "bulletId": "FEAT-ORG-02",
+      "sourceUrl": "https://docs.github.com/en/rest/copilot/copilot-user-management"
+    },
+    {
+      "cardNumber": 46,
+      "bulletId": "FEAT-ORG-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-enterprise-policies"
+    },
+    {
+      "cardNumber": 47,
+      "bulletId": "DATA-01",
+      "sourceUrl": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#j-ai-features-training-and-your-data"
+    },
+    {
+      "cardNumber": 48,
+      "bulletId": "DATA-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context"
+    },
+    {
+      "cardNumber": 49,
+      "bulletId": "DATA-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 50,
+      "bulletId": "DATA-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 51,
+      "bulletId": "DATA-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 52,
+      "bulletId": "DATA-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 53,
+      "bulletId": "DATA-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context"
+    },
+    {
+      "cardNumber": 54,
+      "bulletId": "DATA-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/ai-models/model-hosting"
+    },
+    {
+      "cardNumber": 55,
+      "bulletId": "DATA-05",
+      "sourceUrl": "https://learn.microsoft.com/visualstudio/ide/copilot-chat-context-references#monitor-and-optimize-context-window-usage"
+    },
+    {
+      "cardNumber": 56,
+      "bulletId": "DATA-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 57,
+      "bulletId": "DATA-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/responsible-use/chat#7-limitations"
+    },
+    {
+      "cardNumber": 58,
+      "bulletId": "PROMPT-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 59,
+      "bulletId": "PROMPT-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 60,
+      "bulletId": "PROMPT-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 61,
+      "bulletId": "PROMPT-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/context"
+    },
+    {
+      "cardNumber": 62,
+      "bulletId": "PROMPT-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 63,
+      "bulletId": "PROMPT-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/concepts/prompting/prompt-engineering#give-examples"
+    },
+    {
+      "cardNumber": 64,
+      "bulletId": "PROMPT-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 65,
+      "bulletId": "PROMPT-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 66,
+      "bulletId": "PROMPT-06",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 67,
+      "bulletId": "PROMPT-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 68,
+      "bulletId": "PROMPT-06",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 69,
+      "bulletId": "PROMPT-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 70,
+      "bulletId": "PROD-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "cardNumber": 71,
+      "bulletId": "PROD-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 72,
+      "bulletId": "PROD-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 73,
+      "bulletId": "PROD-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 74,
+      "bulletId": "PROD-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide"
+    },
+    {
+      "cardNumber": 75,
+      "bulletId": "PROD-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "cardNumber": 76,
+      "bulletId": "PROD-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 77,
+      "bulletId": "PROD-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 78,
+      "bulletId": "PROD-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 79,
+      "bulletId": "PROD-06",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 80,
+      "bulletId": "PROD-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "cardNumber": 81,
+      "bulletId": "PROD-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 82,
+      "bulletId": "PROD-06",
+      "sourceUrl": "https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+    },
+    {
+      "cardNumber": 83,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-content-exclusions-for-github-copilot"
+    },
+    {
+      "cardNumber": 84,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/how-tos/configure-content-exclusion/exclude-content-from-copilot"
+    },
+    {
+      "cardNumber": 85,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-content-exclusions-for-github-copilot"
+    },
+    {
+      "cardNumber": 86,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 87,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 88,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 89,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-content-exclusions-for-github-copilot"
+    },
+    {
+      "cardNumber": 90,
+      "bulletId": "DATA-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/ai-models/model-hosting"
+    },
+    {
+      "cardNumber": 91,
+      "bulletId": "PRIV-02",
+      "sourceUrl": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#j-ai-features-training-and-your-data"
+    },
+    {
+      "cardNumber": 92,
+      "bulletId": "PRIV-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/troubleshooting-github-copilot/troubleshooting-common-issues-with-github-copilot"
+    },
+    {
+      "cardNumber": 93,
+      "bulletId": "PRIV-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/troubleshooting-github-copilot/troubleshooting-common-issues-with-github-copilot"
+    },
+    {
+      "cardNumber": 94,
+      "bulletId": "PRIV-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-content-exclusions-for-github-copilot"
+    },
+    {
+      "cardNumber": 95,
+      "bulletId": "PRIV-03",
+      "sourceUrl": "https://docs.github.com/en/copilot/responsible-use/chat#9-safety-components-and-mitigations"
+    },
+    {
+      "cardNumber": 96,
+      "bulletId": "PRIV-01",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 97,
+      "bulletId": "PRIV-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot"
+    },
+    {
+      "cardNumber": 98,
+      "bulletId": "PROMPT-04",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 99,
+      "bulletId": "RAI-02",
+      "sourceUrl": "https://docs.github.com/en/copilot/get-started/best-practices"
+    },
+    {
+      "cardNumber": 100,
+      "bulletId": "DATA-05",
+      "sourceUrl": "https://docs.github.com/en/copilot/reference/ai-models/model-hosting"
+    }
+  ]
+}

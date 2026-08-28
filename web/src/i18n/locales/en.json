@@ -34,10 +34,40 @@
     "topicLabel": "Topic",
     "topicAll": "All topics",
     "reviewMissedLabel": "Only review previously missed questions",
+    "questionLimitLabel": "Number of questions",
+    "questionLimit": "{{count}} questions",
+    "questionLimitAll": "All questions",
+    "matchCountLimited": "{{count}} questions match, showing {{limit}}",
     "matchCount_one": "{{count}} question match",
     "matchCount_other": "{{count}} questions match",
     "startSession": "Start Session",
     "loading": "Loading..."
+  },
+  "taxonomy": {
+    "domains": {
+      "ResponsibleAI": "Responsible AI",
+      "CopilotFeatures": "Copilot features",
+      "DataArchitecture": "Data and architecture",
+      "PromptEngineering": "Prompt engineering",
+      "DeveloperProductivity": "Developer productivity",
+      "PrivacySafeguards": "Privacy and safeguards"
+    },
+    "topics": {
+      "ResponsibleAIPrinciples": "Responsible AI principles",
+      "ValidateOperateAITools": "Validate and operate AI tools",
+      "CopilotIDE": "Copilot in IDEs",
+      "CopilotCLI": "Copilot CLI",
+      "FeaturesCapabilities": "Features and capabilities",
+      "OrganizationPolicies": "Organization policies",
+      "DataHandlingFlow": "Data handling and flow",
+      "LifecycleLimitations": "Lifecycle and limitations",
+      "CraftEffectivePrompts": "Craft effective prompts",
+      "EngineerPrompts": "Engineer prompts",
+      "ProductivityCodeQuality": "Productivity and code quality",
+      "TestingSecurity": "Testing and security",
+      "PrivacyExclusions": "Privacy and content exclusion",
+      "SafeguardsTroubleshooting": "Safeguards and troubleshooting"
+    }
   },
   "session": {
     "backToSetup": "Back to setup",

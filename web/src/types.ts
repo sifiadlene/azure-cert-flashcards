@@ -5,6 +5,7 @@ export interface ExamSummary {
   code: string
   title: string
   sourceFile: string
+  deckVersion: string
   updatedOn: string
   questionCount: number
   domains: string[]
@@ -41,6 +42,7 @@ export interface ExamDeck {
 }
 
 export interface ExamProgress {
+  deckVersion?: string
   lastCompletedAt?: string
   lastMode?: PracticeMode
   lastScore?: number

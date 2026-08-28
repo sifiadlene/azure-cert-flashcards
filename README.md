@@ -1,4 +1,10 @@
-# Azure & GitHub Certification Flashcards
+---
+title: Azure and GitHub Certification Flashcards
+description: Anki-compatible and browser-based practice decks for Azure and GitHub certification exams
+ms.date: 2026-08-28
+---
+
+## Overview
 
 High-quality, exam-realistic flashcards for Azure and GitHub certifications, designed for both Anki import and browser-based practice.
 
@@ -14,7 +20,7 @@ All source decks live in [flashcards](flashcards):
 - AZ-204: Developing Solutions for Microsoft Azure
 - AZ-305: Designing Microsoft Azure Infrastructure Solutions
 - AZ-500: Microsoft Azure Security Technologies
-- GH-300: GitHub Foundations
+- GH-300: GitHub Copilot
 
 ## Features
 
@@ -61,7 +67,7 @@ cd web
 npm run build
 ```
 
-This runs the data generation step first, then builds the static frontend.
+This validates the source decks, generates the runtime data, and then builds the static frontend.
 
 ## Website MVP Scope
 
