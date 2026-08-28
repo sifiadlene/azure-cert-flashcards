@@ -17,7 +17,7 @@ Your task: Generate high‑quality exam-realistic flashcards ANKI deck in CSV fo
 ## Preparation Phase
 
 1. **Extract Official Exam Topics First**:
-  - Use only official Microsoft sources, starting with the Microsoft Learn certification exam page for the specified exam code
+  - Use only official vendor sources for the exam (for example, the Microsoft Learn certification exam page for Azure exams, or GitHub Docs and the official study guide for GitHub exams)
   - Extract all listed domains and "skills measured" subtopics from the official exam guide
   - Build a topic map that becomes the required coverage backbone for flashcard generation
 
@@ -37,11 +37,10 @@ Each flashcard must follow this CSV format:
 - Use realistic scenarios that mirror actual exam questions
 - Format: Question text + `<br><br>` + three options separated by `<br>`
 - **STRICT option label format**: Each option MUST start with exactly `A) `, `B) `, or `C) ` (uppercase letter + closing parenthesis + space). Never use `>`, `.`, `:`, `-`, or any other character instead of `)`. Example: `A) Azure Firewall<br>B) Network Security Group<br>C) Application Gateway`
-
 **Back**: A precise, technically accurate answer
 - Single letter (A, B, or C) with the option text — must match the same `X) text` format used in Front
 - Brief justification explaining why it's correct
-- Reference link to official Microsoft documentation (use format: `<br><br>Reference: <a href="URL">Link text</a>`)
+- Reference link to the official documentation for the exam's vendor (Microsoft Learn for Azure exams, GitHub Docs for GitHub exams) (use format: `<br><br>Reference: <a href="URL">Link text</a>`)
 
 **Extra**: Valuable insights beyond the answer (NOT optional - always provide)
 - Compare alternatives: "X is for Y, while Z is for W"
@@ -60,13 +59,13 @@ Generate diverse questions across these types (avoid repetitive patterns):
 1. **Scenario-Based Design**: "A company needs X with requirements Y and Z. Which solution?"
 2. **Feature Comparison**: "Compare services A, B, C for use case X"
 3. **Troubleshooting**: "Application exhibits problem X. What's the cause/fix?"
-4. **Best Practice**: "Which approach follows Azure Well-Architected Framework for scenario X?"
+4. **Best Practice**: "Which approach follows the vendor's recommended best-practice guidance (e.g., the Azure Well-Architected Framework) for scenario X?"
 5. **Constraint Optimization**: "Minimize cost/maximize performance/ensure compliance while meeting requirements X, Y, Z"
 
 ## Distractor Quality (Wrong Answers)
 
 Wrong answer options must be:
-- **Plausible**: Real Azure services/features that exist and seem relevant
+- **Plausible**: Real services/features from the exam's product area that exist and seem relevant
 - **Clearly incorrect**: Fail to meet stated requirements when reasoning is applied
 - **Educational**: Help reinforce understanding of when NOT to use certain services
 
@@ -95,7 +94,7 @@ Rules:
 
 ## Quality Checklist (Apply to Every Flashcard)
 
-✓ **Technical Accuracy**: Answer is definitively correct per official Azure documentation
+✓ **Technical Accuracy**: Answer is definitively correct per the official vendor documentation for the exam
 ✓ **No Ambiguity**: Only one answer can be defended as correct given the constraints
 ✓ **Valuable Extra**: Extra field provides insights beyond the answer explanation
 ✓ **Plausible Distractors**: Wrong answers are real services that seem relevant but fail requirements
@@ -108,8 +107,8 @@ Rules:
 - Generate diverse questions - avoid repetitive patterns in structure or phrasing
 - Every flashcard must test practical, exam-relevant knowledge
 - Scenarios should include specific requirements/constraints that guide the solution
-- Balance across different Azure service categories
-- Anchor all question topics to the extracted official Microsoft exam guide domain/topic map
+- Balance across different product/service categories in the exam scope
+- Anchor all question topics to the extracted official exam guide domain/topic map
 - Keep domain coverage proportional to official exam weighting (or skill-count fallback when weighting is not published)
 
 ## Self-Evaluation
@@ -235,7 +234,7 @@ def validate_flashcard_csv(filepath):
 
 ## Coverage Validation Checklist (Pre-Delivery)
 
-✓ Extracted topic map includes all domains from the official Microsoft exam guide
+✓ Extracted topic map includes all domains from the official exam guide
 ✓ Flashcard distribution across domains follows official exam weighting (or skill-count fallback)
 ✓ Every domain in the official guide is represented by at least one flashcard
 ✓ No flashcards test topics outside the extracted official exam scope (unless user explicitly requests a focused subset)
