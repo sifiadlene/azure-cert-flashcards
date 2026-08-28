@@ -47,9 +47,16 @@ const TOPIC_TARGETS = {
   SafeguardsTroubleshooting: 6,
 }
 const ANSWER_TARGETS = { A: 34, B: 33, C: 33 }
+// Guards against the "pick the longest option" tell: the correct answer must not
+// be visually distinguishable by length across the deck or on any single card.
+const LENGTH_GUARD = { maxLongestShare: 0.4, maxOptionRatio: 1.6 }
 
 function increment(counter, key) {
   counter[key] = (counter[key] ?? 0) + 1
+}
+
+function optionLength(text) {
+  return text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().length
 }
 
 function expectEqual(errors, label, actual, expected) {
@@ -82,6 +89,7 @@ async function validateGh300() {
   const domains = {}
   const topics = {}
   const answers = {}
+  const lengthStats = { total: 0, correctLongest: 0 }
   const fronts = new Set()
   const coveredBullets = new Set()
 
@@ -118,6 +126,20 @@ async function validateGh300() {
       increment(answers, answer)
       if (optionMap[answer] !== correctLabel.trim()) {
         errors.push(`${prefix}: Back label does not match option ${answer}`)
+      }
+
+      const optionLengths = ['A', 'B', 'C'].map((key) => optionLength(optionMap[key] ?? ''))
+      if (optionLengths.every((length) => length > 0)) {
+        const correctLength = optionLengths[{ A: 0, B: 1, C: 2 }[answer]]
+        const median = [...optionLengths].sort((first, second) => first - second)[1]
+        const ratio = median > 0 ? correctLength / median : 1
+        lengthStats.total += 1
+        if (correctLength === Math.max(...optionLengths)) {
+          lengthStats.correctLongest += 1
+        }
+        if (ratio > LENGTH_GUARD.maxOptionRatio) {
+          errors.push(`${prefix}: correct option is ${ratio.toFixed(2)}x the median option length (max ${LENGTH_GUARD.maxOptionRatio}x); lengthen distractors`)
+        }
       }
     }
 
@@ -167,7 +189,19 @@ async function validateGh300() {
     }
   }
 
-  return { errors, domains, topics, answers, coveredBullets: coveredBullets.size }
+  const longestShare = lengthStats.total > 0 ? lengthStats.correctLongest / lengthStats.total : 0
+  if (longestShare > LENGTH_GUARD.maxLongestShare) {
+    errors.push(`Answer-length bias: correct option is longest in ${lengthStats.correctLongest}/${lengthStats.total} cards (${Math.round(longestShare * 100)}%); must be <= ${Math.round(LENGTH_GUARD.maxLongestShare * 100)}%`)
+  }
+
+  return {
+    errors,
+    domains,
+    topics,
+    answers,
+    coveredBullets: coveredBullets.size,
+    lengthBias: { correctLongest: lengthStats.correctLongest, total: lengthStats.total, share: Number(longestShare.toFixed(2)) },
+  }
 }
 
 async function main() {
@@ -186,6 +220,7 @@ async function main() {
     topics: result.topics,
     answers: result.answers,
     coveredBullets: result.coveredBullets,
+    lengthBias: result.lengthBias,
   }, null, 2))
 }
 

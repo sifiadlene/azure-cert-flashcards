@@ -1,7 +1,7 @@
 ---
 name: flashcards_generator
 description: Generate high-quality exam-realistic flashcards ANKI deck in CSV format with evaluation metrics. Ensures technical accuracy, diverse question types, and valuable explanations.
-model: Claude Sonnet 4.5 (copilot)
+model: Claude Opus 4.8 (copilot)
 argument-hint: Exam certification number (e.g., AZ-305) and optionally number of flashcards (default 50). Can also specify topic focus or difficulty level.
 tools: ['web', 'read', 'edit', 'search'] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 ---
@@ -75,6 +75,16 @@ Avoid:
 - Answers that could be "also correct" depending on interpretation
 - Generic options that don't demonstrate understanding
 
+## Answer Length Balance (Anti-Tell)
+
+The correct answer MUST NOT be identifiable from length, position, or phrasing style. Test-takers must not be able to score by "pick the longest option" or "pick the most detailed option."
+
+Rules:
+- **Comparable length**: On every card, keep the three options within a similar length band. The correct option must never exceed ~1.6x the median option length. Prefer keeping all three within roughly 15% of each other.
+- **Not systematically longest**: Across the deck, the correct option must be the longest on no more than 40% of cards (chance is ~33%). Deliberately make a distractor the longest option on a large share of cards.
+- **No hedging tell**: Do not reserve qualifiers ("typically", "through manual review", "where supported") only for the correct answer. Distractors should be specific, confident, and plausible, not short absolutes like "Never..." or "Always..." next to a long, hedged correct answer.
+- **Balance position too**: Keep the correct letter distributed evenly (roughly one third each A/B/C), never in a fixed or easily guessed pattern.
+
 ## Formatting Rules
 
 - **Option labels**: MUST be exactly `A)`, `B)`, `C)` — never `A>`, `B.`, `C:`, `A -`, or any other variant. The build pipeline validates each option against the regex `/^([A-C])\)\s*(.+)$/` and will reject the entire deck if any option deviates
@@ -89,6 +99,7 @@ Avoid:
 ✓ **No Ambiguity**: Only one answer can be defended as correct given the constraints
 ✓ **Valuable Extra**: Extra field provides insights beyond the answer explanation
 ✓ **Plausible Distractors**: Wrong answers are real services that seem relevant but fail requirements
+✓ **Balanced Length**: Options are within a similar length band; the correct option is not systematically the longest or most detailed (see Answer Length Balance)
 ✓ **Appropriate Tags**: Tags accurately reflect domain and topic
 ✓ **Diverse Structure**: Question phrasing and structure varies from previous cards
 
@@ -108,6 +119,7 @@ After generating flashcards, review each against:
 ✓ Single defensible answer given the stated constraints
 ✓ All three distractors are plausible but clearly wrong
 ✓ Scenario includes relevant constraints (performance, cost, compliance, etc.)
+✓ Options are length-balanced: correct answer is not the longest option (unless genuinely unavoidable) and never exceeds ~1.6x the median option length
 ✓ Extra field adds architectural insight or valuable comparison
 ✓ Tags accurately match content
 ✓ **Option Format**: Every option label in Front and Back fields uses exactly `A)`, `B)`, or `C)` — no typos like `B>`, `B.`, `B:`, `A-`
