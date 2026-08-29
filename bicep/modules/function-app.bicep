@@ -221,10 +221,6 @@ resource functionApp 'Microsoft.Web/sites@2024-11-01' = {
           value: 'true'
         }
         {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'node'
-        }
-        {
           name: 'NODE_ENV'
           value: 'production'
         }
