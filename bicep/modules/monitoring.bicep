@@ -123,7 +123,7 @@ resource examRequestAlerts 'Microsoft.Insights/scheduledQueryRules@2023-12-01' =
     actions: {
       actionGroups: alertActionGroupResourceIds
     }
-    autoMitigate: true
+    autoMitigate: false
     checkWorkspaceAlertsStorageConfigured: false
     criteria: {
       allOf: [
