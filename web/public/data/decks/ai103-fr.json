@@ -1,0 +1,3094 @@
+{
+  "exam": {
+    "slug": "ai103",
+    "code": "AI-103",
+    "title": "AI-103",
+    "sourceFile": "ai103_flashcards_2026-08-29.csv",
+    "deckVersion": "2026-08-29",
+    "updatedOn": "2026-08-29",
+    "questionCount": 100,
+    "domains": [
+      "ComputerVision",
+      "GenerativeAI",
+      "InformationExtraction",
+      "PlanManage",
+      "TextAnalysis"
+    ],
+    "topics": [
+      "Accessibility",
+      "AgentGrounding",
+      "AnalyzerOutputs",
+      "AppConfiguration",
+      "ApprovalFlows",
+      "AudioReasoning",
+      "Auditing",
+      "CICD",
+      "ContentUnderstanding",
+      "ConversationMemory",
+      "CostManagement",
+      "CustomSpeech",
+      "Deployment",
+      "DocumentProcessing",
+      "DomainCustomization",
+      "Embeddings",
+      "Enrichment",
+      "ErrorAnalysis",
+      "ErrorHandling",
+      "Evaluation",
+      "FieldExtraction",
+      "FoundrySetup",
+      "FunctionCalling",
+      "Grounding",
+      "HybridOrchestration",
+      "ImageEditing",
+      "ImageGeneration",
+      "Ingestion",
+      "Memory",
+      "ModelOrchestration",
+      "ModelParameters",
+      "ModelSelection",
+      "Monitoring",
+      "MultiAgent",
+      "MultimodalSafety",
+      "OCR",
+      "ObjectDetection",
+      "Observability",
+      "Oversight",
+      "PromptEngineering",
+      "Quotas",
+      "RAG",
+      "RAGSecurity",
+      "Reflection",
+      "ResponsibleAI",
+      "Retrieval",
+      "SDKIntegration",
+      "Safeguards",
+      "Safety",
+      "Scaling",
+      "Search",
+      "SearchHealth",
+      "Security",
+      "SemanticSearch",
+      "SensitiveContent",
+      "Sentiment",
+      "ServiceSelection",
+      "Speech",
+      "SpeechTranslation",
+      "StructuredExtraction",
+      "StructuredOutput",
+      "TokenAnalytics",
+      "ToolControls",
+      "ToolIntegration",
+      "TopicExtraction",
+      "Tracing",
+      "Translation",
+      "VideoAnalysis",
+      "VideoEditing",
+      "VideoGeneration",
+      "VisualUnderstanding",
+      "Workflows"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ai103-22e46d3c55b6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ModelSelection"
+      ],
+      "promptHtml": "Une équipe a besoin d’un classificateur à faible latence qui fonctionne de manière économique à un volume élevé de requêtes et qui ne nécessite pas une connaissance globale du monde. Quelle catégorie de modèle doit-elle évaluer en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un petit modèle de langage"
+        },
+        {
+          "key": "B",
+          "label": "Un modèle de raisonnement large"
+        },
+        {
+          "key": "C",
+          "label": "Un modèle de génération multimodal"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un petit modèle de langage",
+      "rationaleHtml": "Les petits modèles de langage peuvent offrir une latence et un coût plus faibles pour des tâches bornées lorsque leur qualité est suffisante.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">concepts de modèles de fonderie</a>",
+      "extraHtml": "Utilisez l’ajustement de la tâche plutôt que la taille du modèle comme règle de décision. Les grands modèles de raisonnement favorisent le raisonnement complexe ; la génération multimodale est appropriée lorsque la génération d’images ou d’audio est requise. Qualité de benchmark, latence et coût sur les données représentatives."
+    },
+    {
+      "id": "ai103-24620c292cfc",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ModelSelection"
+      ],
+      "promptHtml": "Une application doit répondre aux questions sur les photographies et le texte accompagnant en une seule demande. Quel type de modèle répond le mieux à cette exigence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un modèle d’inclusion de texte"
+        },
+        {
+          "key": "B",
+          "label": "Un modèle multimodal"
+        },
+        {
+          "key": "C",
+          "label": "Un modèle de synthèse vocale"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un modèle multimodal",
+      "rationaleHtml": "Un modèle multimodal peut traiter conjointement des entrées visuelles et textuelles pour des réponses fondées.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">concepts de modèles de fonderie</a>",
+      "extraHtml": "Les modèles d’intégration codent la similarité mais ne raisonnent pas indépendamment sur les images. La synthèse vocale produit de l’audio. Les modèles multimodaux sont sélectionnés lorsque la tâche croise des modalités d’entrée telles que le texte et la vision."
+    },
+    {
+      "id": "ai103-e5769d3344ef",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ServiceSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ServiceSelection"
+      ],
+      "promptHtml": "Une entreprise souhaite un chat ancré plutôt que des politiques avec correspondance de mots-clés, similarité sémantique, filtres et indexation gérée. Quel service est le meilleur choix ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Search"
+        },
+        {
+          "key": "B",
+          "label": "Azure Blob Storage"
+        },
+        {
+          "key": "C",
+          "label": "Azure Cosmos DB"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Search",
+      "rationaleHtml": "Azure AI Search offre une indexation gérée ainsi que des capacités de recherche par mots-clés, vecteurs, hybrides et sémantiques.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/search-what-is-azure-search\">Aperçu de la recherche Azure AI</a>",
+      "extraHtml": "Blob Storage est une source de contenu, pas un moteur de pertinence. Cosmos DB peut supporter des charges de travail vectorielles mais ne fournit pas la même chaîne d’outils intégrée d’enrichissement et de classement sémantique. La recherche est le service de mise à la terre conçu à cet effet."
+    },
+    {
+      "id": "ai103-eea9eb5ad086",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Retrieval",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Retrieval"
+      ],
+      "promptHtml": "Une charge de travail RAG doit préserver les correspondances exactes entre le code produit tout en trouvant des passages sémantiquement similaires. Quelle méthode de récupération doit être choisie ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Recherche vectorielle uniquement"
+        },
+        {
+          "key": "B",
+          "label": "Recherche par mots-clés uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Recherche hybride"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Recherche hybride",
+      "rationaleHtml": "La recherche hybride combine requêtes en texte intégral et vectorielle, de sorte que les jetons exacts et la similarité sémantique contribuent tous deux.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/hybrid-search-overview\">Aperçu de la recherche hybride</a>",
+      "extraHtml": "La recherche par mots-clés protège les identifiants exacts ; la recherche vectorielle capture la similarité conceptuelle. La récupération hybride fusionne les deux ensembles de résultats, souvent suivie d’un classement sémantique. Elle est préférable lorsque ni la preuve lexicale ni la sémantique ne suffisent seule."
+    },
+    {
+      "id": "ai103-7710da2d019c",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Retrieval",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Retrieval"
+      ],
+      "promptHtml": "Les documents changent d’heure à chaque heure et les réponses doivent faire l’objet d’une mise à jour rapide. Quelle approche d’indexation réduit le mieux la monotonie sans tout reconstruire ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Indexation incrémentale programmée"
+        },
+        {
+          "key": "B",
+          "label": "Recréer l’indice complet chaque mois"
+        },
+        {
+          "key": "C",
+          "label": "Les réponses générées en cache indéfiniment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Indexation incrémentale programmée",
+      "rationaleHtml": "Les processus d’indexation incrémentales modifiaient le contenu source selon un calendrier fréquent et limitaient le retraitement inutile.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/search-indexer-overview\">Aperçu des indexeurs</a>",
+      "extraHtml": "Une reconstruction mensuelle viole la fraîcheur, tandis qu’un cache de réponses indéfini préserve des faits obsolètes. Utilisez ensemble la détection des modifications de source, les plannings d’indexation et la surveillance de la fraîcheur ; choisissez l’ingestion push lorsque la latence est encore plus courte."
+    },
+    {
+      "id": "ai103-9bba7d4d8499",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Memory",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Memory"
+      ],
+      "promptHtml": "Un agent a besoin d’un état de conversation durable partagé entre les instances d’application. Que devrait utiliser l’architecture ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Variables locales de processus"
+        },
+        {
+          "key": "B",
+          "label": "Un magasin de conversation persistant"
+        },
+        {
+          "key": "C",
+          "label": "Paramètres du modèle"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un magasin de conversation persistant",
+      "rationaleHtml": "Un store persistant maintient l’état de conversation disponible lors des redémarrages et des instances à échelle horizontale.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/threads-runs-messages\">Fils de discussion et messages d’agents</a>",
+      "extraHtml": "La mémoire des processus est éphémère et liée à l’instance. Les paramètres du modèle ne sont pas par unité de mémoire utilisateur. Conservez l’état d’identité dans un thread ou un magasin de données durable, appliquez des contrôles de rétention, et évitez de placer inutilement des données sensibles dans les invites."
+    },
+    {
+      "id": "ai103-5a3d760bf779",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ToolIntegration"
+      ],
+      "promptHtml": "Un agent doit récupérer les passages de politique approuvés mais ne doit jamais mettre à jour le dépôt source. Quelle conception d’intégration suit le moindre privilège ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Accorder l’accès au propriétaire du dépôt"
+        },
+        {
+          "key": "B",
+          "label": "Accès de récupération en lecture seule Grant"
+        },
+        {
+          "key": "C",
+          "label": "Intégrer les identifiants administrateur"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Accès de récupération en lecture seule Grant",
+      "rationaleHtml": "Les autorisations de récupération en lecture seule fournissent les connaissances requises tout en minimisant le rayon de l’explosion de l’agent.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Aperçu des outils pour agents</a>",
+      "extraHtml": "L’accès du propriétaire dépasse la tâche, et les identifiants intégrés créent une exposition secrète. Traiter les outils comme des limites de sécurité : définir les identités du champ, valider les arguments, restreindre les opérations et enregistrer les appels indépendamment de la réponse du modèle."
+    },
+    {
+      "id": "ai103-f7dfe5d35125",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "FoundrySetup",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "FoundrySetup"
+      ],
+      "promptHtml": "Une application d’IA de production nécessite une gestion du cycle de vie séparée pour les prompts, évaluations, connexions et déploiements. Quel construct d’organisation l’équipe doit-il utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un projet de fonderie"
+        },
+        {
+          "key": "B",
+          "label": "Un conteneur de stockage"
+        },
+        {
+          "key": "C",
+          "label": "Un jeu d’échelles de machine virtuelle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un projet de fonderie",
+      "rationaleHtml": "Un projet Foundry organise les ressources de développement de l’IA, les connexions, les évaluations et les flux de travail applicatifs.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/what-is-azure-ai-foundry\">Aperçu de Microsoft Foundry</a>",
+      "extraHtml": "Les conteneurs de stockage contiennent des objets mais ne gèrent pas le cycle de vie de l’IA. Les ensembles d’échelles VM gèrent le calcul. Les projets offrent une frontière de collaboration et de gouvernance ; utilisez des projets ou environnements séparés où l’isolation des versions l’exige."
+    },
+    {
+      "id": "ai103-97a14d7fd219",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Deployment",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Deployment"
+      ],
+      "promptHtml": "Un point de terminaison modèle a une demande soutenue prévisible et nécessite un débit réservé avec une latence stable. Quelle option de déploiement est la plus appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Déploiement d’API serverless"
+        },
+        {
+          "key": "B",
+          "label": "Déploiement provisionné"
+        },
+        {
+          "key": "C",
+          "label": "Inférence uniquement par lots"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Déploiement provisionné",
+      "rationaleHtml": "Le déploiement provisionné réserve le débit modélisé pour une demande de production prévisible et sensible à la latence.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/deployment-types\">types de déploiement Azure OpenAI</a>",
+      "extraHtml": "Le déploiement serverless pay-as-you-go favorise la demande variable ; l’inférence par lots favorise les tâches asynchrones. La capacité provisionnée est justifiée par une utilisation régulière et l’assurance du débit, et non seulement par un pic élevé et éphémère."
+    },
+    {
+      "id": "ai103-bcac8982ed3a",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Deployment",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Deployment"
+      ],
+      "promptHtml": "Une équipe évalue plusieurs modèles de catalogue sans gérer l’infrastructure d’hébergement et paie selon l’utilisation. Quelle option convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Cluster de calcul géré"
+        },
+        {
+          "key": "B",
+          "label": "Endpoint Kubernetes auto-hébergé"
+        },
+        {
+          "key": "C",
+          "label": "Déploiement d’API serverless"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Déploiement d’API serverless",
+      "rationaleHtml": "Le déploiement d’API serverless expose les modèles pris en charge sans que l’équipe n’oblige l’équipe à provisionner l’infrastructure d’hébergement.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless\">Déploiement de modèles comme APIs serverless</a>",
+      "extraHtml": "Le calcul géré ou auto-hébergé offre plus de contrôle d’infrastructure mais ajoute des opérations. Les terminaux serverless accélèrent la comparaison des modèles et les charges de travail variables ; vérifient la disponibilité du modèle, de la région, du quota et de la facturation avant la sélection."
+    },
+    {
+      "id": "ai103-a0eedc54f93b",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CICD",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CICD"
+      ],
+      "promptHtml": "Un pipeline de release doit promouvoir une configuration testée d’invite et d’agent sans modifications manuelles de portail. Que doit mettre en œuvre l’équipe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ressources versionnées et déploiement automatisé"
+        },
+        {
+          "key": "B",
+          "label": "Sessions partagées du portail administrateur"
+        },
+        {
+          "key": "C",
+          "label": "Expérimentation directe uniquement en production"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ressources versionnées et déploiement automatisé",
+      "rationaleHtml": "Le contrôle de versions combiné au déploiement automatisé rend la promotion reproductible, relisable et auditable.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/continuous-integration-deployment\">CI/CD pour Foundry</a>",
+      "extraHtml": "Les sessions de portail ne sont pas reproductibles, et les expériences uniquement en production contournent les portes de qualité. Traitez les invites, évaluations, infrastructures et définitions d’agents comme des artefacts de libération avec des points de configuration et de retour en arrière spécifiques à l’environnement."
+    },
+    {
+      "id": "ai103-55c51056be20",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CICD",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CICD"
+      ],
+      "promptHtml": "Un pipeline CI est déployé pour le test et la production. La production utilise différents terminaux et identités. Comment gérer la configuration ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Valeurs de production en code dur"
+        },
+        {
+          "key": "B",
+          "label": "Utiliser des paramètres spécifiques à l’environnement"
+        },
+        {
+          "key": "C",
+          "label": "Copie des valeurs via des messages de chat"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Utiliser des paramètres spécifiques à l’environnement",
+      "rationaleHtml": "Les paramètres spécifiques à l’environnement séparent la logique déployable des valeurs de point de terminaison, d’identité et de connexion.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/continuous-integration-deployment\">CI/CD pour Foundry</a>",
+      "extraHtml": "Le codage en dur entrave la promotion en toute sécurité ; la copie ad hoc est sujette aux erreurs et non auditée. Gardez les secrets hors contrôle de version, utilisez l’identité fédérée du pipeline, et exigez les mêmes portes de validation dans chaque environnement."
+    },
+    {
+      "id": "ai103-c7ba73429301",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Quotas",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Quotas"
+      ],
+      "promptHtml": "Les utilisateurs reçoivent des erreurs de limitation alors que le point de terminaison est en bonne santé. La surveillance montre que les demandes dépassent le taux de déploiement des tokens. Quelle est l’action la plus directe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le quota ou réduire le taux de demande"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter plus de documents de recherche"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver le filtrage de contenu"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Augmenter le quota ou réduire le taux de demande",
+      "rationaleHtml": "Les défaillances des limites de taux nécessitent une mise en forme de la demande, des modifications de quotas ou des modifications de capacité plutôt que des modifications non liées des données ou de la sécurité.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/quotas-limits\">quotas et limites Azure OpenAI</a>",
+      "extraHtml": "Utilisez des essais délimités avec des indications serveur, des files de requêtes, un budget de jetons et une planification régionale de capacité. Les filtres de taille de corpus de recherche et de contenu n’augmentent pas la limite de taux de déploiement du modèle."
+    },
+    {
+      "id": "ai103-083cac726af6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CostManagement",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CostManagement"
+      ],
+      "promptHtml": "Une hausse des coûts des chatbots est causée par l’envoi répété d’une longue conversation entière. Quel changement réduit le plus directement la consommation de tokens tout en conservant le contexte pertinent ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le nombre maximal de jetons de sortie"
+        },
+        {
+          "key": "B",
+          "label": "Résumez et réduisez l’historique des conversations"
+        },
+        {
+          "key": "C",
+          "label": "Dupliquer l’invite système"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Résumez et réduisez l’historique des conversations",
+      "rationaleHtml": "Le résumé du contexte et l’historique sélectif réduisent les jetons d’entrée tout en préservant les informations nécessaires pour le tour suivant.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering\">Concepts d’ingénierie prompts</a>",
+      "extraHtml": "Des limites de sortie plus élevées peuvent augmenter le coût, et les instructions dupliquées consomment plus de jetons. Combinez un budget contextuel avec la récupération et une mémoire durable afin que seul l’état pertinent entre dans chaque appel de modèle."
+    },
+    {
+      "id": "ai103-46c200af49e2",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Monitoring",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Monitoring"
+      ],
+      "promptHtml": "Une équipe doit déterminer si la qualité de la réponse a diminué après un changement de récupération. Quelle télémétrie doit-elle comparer en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisation des disques VM"
+        },
+        {
+          "key": "B",
+          "label": "Ancrage et pertinence de récupération"
+        },
+        {
+          "key": "C",
+          "label": "Dimensions de la viewport du navigateur"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ancrage et pertinence de récupération",
+      "rationaleHtml": "La pertinence de la recentrée et de la récupération révèle directement si les réponses restent étayées par des preuves utiles et récupérées.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Évaluateurs de fonderie</a>",
+      "extraHtml": "La télémétrie d’infrastructure peut expliquer la disponibilité mais pas la qualité des preuves. Évaluation segmentée par corpus, classe de requête et release ; associer des ensembles de tests hors ligne avec des traces de production pour distinguer les régressions de récupération des régressions générationnelles."
+    },
+    {
+      "id": "ai103-0d01a27b2bda",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "SearchHealth",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "SearchHealth"
+      ],
+      "promptHtml": "Un indexeur s’achève avec succès, mais les fichiers nouvellement téléchargés n’apparaissent jamais dans la recherche. Quel contrôle opérationnel est le plus pertinent ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Inspecter l’état d’ingestion et la détection des changements de source"
+        },
+        {
+          "key": "B",
+          "label": "Augmentation de la température du modèle"
+        },
+        {
+          "key": "C",
+          "label": "Modifier la voix de sortie vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Inspecter l’état d’ingestion et la détection des changements de source",
+      "rationaleHtml": "Les détails d’exécution de l’indexeur et la configuration de détection de modifications identifient les documents sources sautés ou défaillants.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/search-howto-monitor-indexers\">Indexeurs de surveillance</a>",
+      "extraHtml": "Une exécution de haut niveau réussie peut tout de même inclure des avertissements au niveau des documents ou des modifications non prises en charge. Les paramètres de génération et de parole sont en aval. Surveillez séparément le nombre de documents, les défaillances, la latence et la fraîcheur."
+    },
+    {
+      "id": "ai103-8be0570972a9",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Security",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Security"
+      ],
+      "promptHtml": "Une application fonctionnant sur Azure doit appeler un point de terminaison modèle sans stocker de clés. Quelle méthode d’authentification est préférée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Identité gérée avec RBAC"
+        },
+        {
+          "key": "B",
+          "label": "Une source clé engagée"
+        },
+        {
+          "key": "C",
+          "label": "Une clé partagée dans l’invite"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Identité gérée avec RBAC",
+      "rationaleHtml": "L’identité gérée et l’accès basé sur le rôle fournissent une authentification sans clé avec des autorisations centralisées.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/authentication\">Authentification des services Azure AI</a>",
+      "extraHtml": "Les clés dans le code ou les invites peuvent fuir et sont difficiles à définir dans le champ d’application. Attribuez uniquement le rôle de plan de données requis, séparez la gestion du déploiement de l’inférence, et utilisez l’identité de charge de travail pour les hôtes non Azure pris en charge."
+    },
+    {
+      "id": "ai103-7035df430869",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Security",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Security"
+      ],
+      "promptHtml": "Une charge de travail régulée exige que le trafic modèle reste sur les chemins du réseau privé et que l’accès aux points publics soit bloqué. Quelle conception est appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Endpoint public avec une clé complexe"
+        },
+        {
+          "key": "B",
+          "label": "Terminaison privé avec accès public désactivé"
+        },
+        {
+          "key": "C",
+          "label": "Invocation de terminaison côté navigateur"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Terminaison privé avec accès public désactivé",
+      "rationaleHtml": "Un point de terminaison privé offre une adressabilité privée ; désactiver l’accès public ferme le chemin du réseau public.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/configure-private-link\">Configurer le réseau privé</a>",
+      "extraHtml": "L’authentification seule ne fournit pas d’isolation réseau, et l’invocation du navigateur expose la surface du point d’extrémité. Prévoyez un DNS privé et une connectivité pour les développeurs, pipelines, outils et services dépendants."
+    },
+    {
+      "id": "ai103-7ca2b2c63a65",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Une équipe de sécurité doit bloquer une liste connue de noms internes interdits de projets dans les entrées et sorties du modèle. Quel contrôle est le plus ciblé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une liste de blocage personnalisée"
+        },
+        {
+          "key": "B",
+          "label": "Une limite de taux de jetons"
+        },
+        {
+          "key": "C",
+          "label": "Un profil de recherche sémantique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une liste de blocage personnalisée",
+      "rationaleHtml": "Une liste de blocage personnalisée cible des termes spécifiques à l’organisation dans les flux de filtrage de contenu.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/how-to/use-blocklist\">Utilisez une liste de blocage personnalisée</a>",
+      "extraHtml": "Les limites de débit contrôlent le volume, pas le contenu. Les profils de recherche classent les documents. Les listes de blocage sont des contrôles déterministes et doivent compléter, et non remplacer, les filtres de catégorie et la prévention plus large de la perte de données."
+    },
+    {
+      "id": "ai103-98c24ebf5f10",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Un système RAG ingère des pages web non fiables contenant des instructions visant à écraser l’invite système. Quelle protection traite directement ce risque ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Prompt Shields pour les documents"
+        },
+        {
+          "key": "B",
+          "label": "Une dimension d’immersion plus grande"
+        },
+        {
+          "key": "C",
+          "label": "Un nombre de répliques de recherche plus faible"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Prompt Shields pour les documents",
+      "rationaleHtml": "Les Prompt Shields peuvent détecter des attaques indirectes intégrées dans des documents tiers utilisés pour la mise à la terre.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection\">Boucliers de prompt</a>",
+      "extraHtml": "L’intégration de la taille et du nombre de répliques ne classifie pas les instructions malveillantes. Isolez également les données récupérées des instructions de confiance, limitez les outils, validez les sorties et évitez d’accorder au modèle une autorité inutile."
+    },
+    {
+      "id": "ai103-e71ad728a6da",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Avant de libérer un agent, une équipe a besoin de mesures répétables du risque de contenu nuisible sur un ensemble de données représentatif. Que doit-il exécuter ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Évaluations de sécurité"
+        },
+        {
+          "key": "B",
+          "label": "Tests de résolution DNS"
+        },
+        {
+          "key": "C",
+          "label": "Tests de débit de stockage"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Évaluations de sécurité",
+      "rationaleHtml": "Les évaluateurs de sécurité quantifient le contenu pertinent et les risques de sécurité à partir d’un ensemble de données d’évaluation contrôlée.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Évaluateurs de risques et de sécurité</a>",
+      "extraHtml": "Les tests réseau et de stockage sont des vérifications opérationnelles, et non des preuves de sécurité comportementale. Établir des seuils de publication, conserver les jeux de données et les versions des évaluateurs, et compléter les métriques automatisées par une revue humaine pour les cas d’utilisation à fort impact."
+    },
+    {
+      "id": "ai103-1ce165f9a829",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Auditing",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Auditing"
+      ],
+      "promptHtml": "Les auditeurs doivent reconstituer quelles sources et appels d’outils ont contribué à la décision d’un agent. Quelle implémentation fournit les preuves les plus solides ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Journalisation des traces avec les métadonnées de provenance"
+        },
+        {
+          "key": "B",
+          "label": "Nombre de requêtes uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Une capture d’écran de la réponse finale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Journalisation des traces avec les métadonnées de provenance",
+      "rationaleHtml": "Les traces et la provenance relient une réponse aux résultats de récupération, aux invites, aux appels de modèles et à l’activité des outils.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "Les comptages n’ont pas de causalité par exécution, tandis que les captures d’écran omettent des étapes cachées. Protégez les journaux en tant que données sensibles, appliquez la conservation et le caviardage, et corréléz les traces avec les versions de déploiement et de prompt."
+    },
+    {
+      "id": "ai103-cb01142734e6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Oversight",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Oversight"
+      ],
+      "promptHtml": "Un agent de dépenses peut préparer des remboursements, mais les paiements au-delà d’un certain seuil nécessitent qu’une personne approuve l’exécution. Quel contrôle doit être mis en place ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Approbation humaine avant l’outil de paiement"
+        },
+        {
+          "key": "B",
+          "label": "Température de modèle plus élevée pour les exceptions"
+        },
+        {
+          "key": "C",
+          "label": "Tentatives automatiques jusqu’à ce que le paiement soit réussi"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Approbation humaine avant l’outil de paiement",
+      "rationaleHtml": "Une porte d’approbation humaine dans la boucle limite l’exécution des outils à fort impact tout en permettant une automatisation à moindre risque.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Flux de travail humain dans la boucle</a>",
+      "extraHtml": "La température change de façon aléatoire, pas d’autorisation. Les réessais automatiques peuvent amplifier les dommages. Placez des contrôles de politique déterministes en dehors du modèle et enregistrez l’approver, la décision, les arguments et l’action qui en résulte."
+    },
+    {
+      "id": "ai103-b5271e1194ef",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ToolControls",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ToolControls"
+      ],
+      "promptHtml": "Un agent n’a besoin que de disponibilité dans le calendrier, mais son connecteur peut aussi supprimer des événements. Quelle est la meilleure action de gouvernance ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Donnez à l’agent le connecteur complet"
+        },
+        {
+          "key": "B",
+          "label": "Exposez un outil de disponibilité en lecture seule"
+        },
+        {
+          "key": "C",
+          "label": "Ne vous fiez qu’à l’invite système"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Exposez un outil de disponibilité en lecture seule",
+      "rationaleHtml": "Un schéma et une identité d’outil à portée étroite imposent le moindre privilège au-delà des instructions rapides.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Aperçu des outils pour agents</a>",
+      "extraHtml": "Les invites ne sont pas des limites d’autorisation. Évitez d’exposer les opérations destructrices inutilisées, validez tous les arguments de l’outil côté serveur, et séparez les identités de lecture et d’écriture lorsque cela est possible."
+    },
+    {
+      "id": "ai103-d6b763d8327e",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Scaling",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Scaling"
+      ],
+      "promptHtml": "Un déploiement sert des utilisateurs dans plusieurs régions et une région atteint son quota. Quel plan améliore le mieux la résilience ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Acheminement à travers les déploiements régionaux provisionnés de manière indépendante"
+        },
+        {
+          "key": "B",
+          "label": "Mettre tous les quotas dans la région saturée"
+        },
+        {
+          "key": "C",
+          "label": "Supprimer les limites de réessayage client"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Acheminement à travers les déploiements régionaux provisionnés de manière indépendante",
+      "rationaleHtml": "Les déploiements régionaux avec un routage en fonction de la santé et de la capacité réduisent la dépendance à un seul pool de quotas régionaux.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/deployment-types\">Options de déploiement</a>",
+      "extraHtml": "Le quota de concentration préserve le goulot d’étranglement unique. Les tentatives non illimitées aggravent la surcharge. Confirmez la résidence des données, la disponibilité du modèle, le comportement de quota et de basculement pour chaque région cible."
+    },
+    {
+      "id": "ai103-bf85fb4254d1",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Monitoring",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Monitoring"
+      ],
+      "promptHtml": "Une équipe souhaite des alertes lorsqu’une nouvelle version d’invite augmente la latence et l’utilisation des jetons. Quelle conception d’observabilité est la plus utile ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Appels de modèles de trace avec attributs de version et de jeton"
+        },
+        {
+          "key": "B",
+          "label": "Enregistrez uniquement les totaux mensuels de coûts Azure"
+        },
+        {
+          "key": "C",
+          "label": "Exemples uniquement, codes d’état HTTP réussis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Appels de modèles de trace avec attributs de version et de jeton",
+      "rationaleHtml": "Les traces par appel liées aux versions des invites prennent en charge la ventilation de la latence, l’analyse des jetons et la détection de régression.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "Les totaux mensuels sont trop grossiers et l’échantillonnage uniquement réussi masque les échecs. Suivre la recherche, le modèle et les extensions d’outils ; définir les indicateurs de niveau de service et censurer le contenu sensible des invites."
+    },
+    {
+      "id": "ai103-7a1816cb5cc7",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Oversight",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Oversight"
+      ],
+      "promptHtml": "Un agent en contact avec le public peut proposer des actions ayant un impact juridique. Quel mode d’exploitation gère le mieux le risque lors du déploiement initial ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exécution entièrement autonome"
+        },
+        {
+          "key": "B",
+          "label": "Semi-autonome avec approbations"
+        },
+        {
+          "key": "C",
+          "label": "Exécution en arrière-plan non enregistrée"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Semi-autonome avec approbations",
+      "rationaleHtml": "L’opération semi-autonome ajoute une surveillance humaine aux limites conséquentes tout en recueillant des preuves pour un ajustement ultérieur.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Flux de travail humain dans la boucle</a>",
+      "extraHtml": "L’autonomie doit être acquise grâce à une fiabilité mesurée et à un impact borné. L’opération non enregistrée empêche l’audit et l’apprentissage. Définissez les comportements d’escalade, d’expiration, de dérogation et de retour en arrière avant d’étendre l’autonomie."
+    },
+    {
+      "id": "ai103-015c995d7afd",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Evaluation"
+      ],
+      "promptHtml": "Une équipe doit comparer deux déploiements de modèles tout en maintenant constantes les invites et les cas de test. Quelle méthode donne des résultats défendables ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exécutez les deux sur le même jeu de données d’évaluation"
+        },
+        {
+          "key": "B",
+          "label": "Comparez les anecdotes de production sans rapport"
+        },
+        {
+          "key": "C",
+          "label": "Comparez uniquement les descriptions des catalogues"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Exécutez les deux sur le même jeu de données d’évaluation",
+      "rationaleHtml": "Un ensemble de données représentatif partagé et des évaluateurs communs isolent les différences de modèles et soutiennent la répétabilité.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Évaluer les applications d’IA générative</a>",
+      "extraHtml": "Les anecdotes et le texte de catalogue ne contrôlent pas les entrées. Suivez les versions du modèle et de l’évaluateur, les intervalles de confiance, la latence, le coût, la sécurité et la qualité des tâches plutôt que de vous fier à un score global unique."
+    },
+    {
+      "id": "ai103-d8daf278b2ab",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "SDKIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "SDKIntegration"
+      ],
+      "promptHtml": "Une application Python doit utiliser les connexions de projet et les assets déployés de manière cohérente à travers les environnements. Que doit-elle utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "SDK Foundry avec configuration de projet"
+        },
+        {
+          "key": "B",
+          "label": "Grattage de l’écran sur le portail de la fonderie"
+        },
+        {
+          "key": "C",
+          "label": "Cookies codés en dur dans les navigateurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "SDK Foundry avec configuration de projet",
+      "rationaleHtml": "Le SDK offre un accès programmatique soutenu aux ressources et connexions à l’échelle du projet.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/develop/sdk-overview\">Aperçu du SDK Foundry</a>",
+      "extraHtml": "Le scraping de portails et les cookies sont fragiles et peu sécurisés. Externaliser les noms des points de terminaison et de déploiement des projets, authentifier avec des identifiants de jeton, et utiliser des identités séparées par environnement."
+    },
+    {
+      "id": "ai103-f71aec421626",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "Un assistant de support doit répondre uniquement à partir de manuels approuvés et citer les passages récupérés. Quel schéma doit être mis en œuvre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Génération augmentée par récupération"
+        },
+        {
+          "key": "B",
+          "label": "Complétion non contrainte du modèle"
+        },
+        {
+          "key": "C",
+          "label": "Génération d’images avec un masque"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Génération augmentée par récupération",
+      "rationaleHtml": "RAG récupère des preuves approuvées et les fournit à la génération afin que les réponses puissent être fondées et citées.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/retrieval-augmented-generation-overview\">Aperçu de RAG</a>",
+      "extraHtml": "Une complétion non contrainte dépend de la mémoire du modèle et ne peut garantir le support des sources. Le masquage d’image n’a rien à voir. Appliquer la portée des sources, inclure les métadonnées des citations, et évaluer à la fois la pertinence et la fondation de la récupération."
+    },
+    {
+      "id": "ai103-097a5e5c712a",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "Un assistant RAG récupère les documents pertinents mais oublie souvent le paragraphe exact nécessaire. Quel changement doit être testé en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Améliorer le chunking et le chevauchement"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter le temps d’attente pour la reconnaissance vocale"
+        },
+        {
+          "key": "C",
+          "label": "Ajoutez un filigrane d’image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Améliorer le chunking et le chevauchement",
+      "rationaleHtml": "Les limites de morceaux et les chevauchements influencent fortement la préservation des unités récupérables pour répondre à une question.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/vector-search-how-to-chunk-documents\">Documents Chunk pour la recherche vectorielle</a>",
+      "extraHtml": "Les blocs surdimensionnés diluent la similarité et consomment le contexte ; les petits morceaux perdent le contexte. Les réglages de la parole et du filigrane n’affectent pas la recherche de texte. Évaluez les fragments avec de vraies questions plutôt que de sélectionner la taille uniquement par intuition."
+    },
+    {
+      "id": "ai103-19160899834a",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Workflows",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Workflows"
+      ],
+      "promptHtml": "Un flux de travail doit extraire une commande, valider l’inventaire via une API et demander l’approbation avant la soumission. Quel design est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un flux de travail à plusieurs étapes augmenté par un outil"
+        },
+        {
+          "key": "B",
+          "label": "Une seule opération d’immersion"
+        },
+        {
+          "key": "C",
+          "label": "Une complétion texte statique uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un flux de travail à plusieurs étapes augmenté par un outil",
+      "rationaleHtml": "Un flux de travail en plusieurs étapes peut séquencer l’extraction, valider l’API déterministe, l’approbation et la soumission.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/overview\">Présentation du service d’agent de la fonderie</a>",
+      "extraHtml": "Les embeddings n’exécutent pas les processus métier, et une complétion statique ne peut pas vérifier l’inventaire en direct. Gardez une validation déterministe en dehors de la génération libre et faites de la soumission idempotente."
+    },
+    {
+      "id": "ai103-2fbca94ee384",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "StructuredOutput",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "StructuredOutput"
+      ],
+      "promptHtml": "Une application a besoin de sorties générées que le code en aval peut valider contre des champs et des types fixes. Quelle approche est la plus adaptée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sortie JSON structurée avec un schéma"
+        },
+        {
+          "key": "B",
+          "label": "Prose libre avec heuristiques d’analyse syntaxique"
+        },
+        {
+          "key": "C",
+          "label": "Une réponse d’immersion vectorielle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sortie JSON structurée avec un schéma",
+      "rationaleHtml": "La sortie structurée contrainte par le schéma améliore l’analyse et la validation des champs fiables par la machine.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Sorties structurées</a>",
+      "extraHtml": "L’analyse syntaxique libre est fragile, tandis que les embeddings sont des représentations numériques plutôt que des enregistrements extraits. Validez toujours les règles métier côté serveur car la conformité au schéma ne prouve pas la correction factuelle."
+    },
+    {
+      "id": "ai103-585a5f5af8ea",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "Une réponse modèle est fluide mais affirme des faits absents des preuves fournies. Quel évaluateur détecte le plus directement le problème ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Évaluateur de mise à la terre"
+        },
+        {
+          "key": "B",
+          "label": "Métrique de latence réseau"
+        },
+        {
+          "key": "C",
+          "label": "Taille de stockage de l’index"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Évaluateur de mise à la terre",
+      "rationaleHtml": "La fondation mesure si les affirmations de réponse sont étayées par le contexte fourni.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Évaluateurs de fonderie</a>",
+      "extraHtml": "La latence et le stockage sont des mesures opérationnelles. La mise à la terre diffère de la pertinence : une réponse peut répondre à la question tout en introduisant des affirmations non étayées. Examiner les preuves récupérées lorsque la mise à la terre diminue."
+    },
+    {
+      "id": "ai103-f4b1c71c7c57",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "Une équipe doit évaluer si une réponse répond directement à la question de l’utilisateur, indépendamment du support de la citation. Quelle dimension doit-elle mesurer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pertinence de la réponse"
+        },
+        {
+          "key": "B",
+          "label": "Utilisation des répliques"
+        },
+        {
+          "key": "C",
+          "label": "Taux d’erreur de mot audio"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pertinence de la réponse",
+      "rationaleHtml": "La pertinence de la réponse évalue la capacité d’une réponse à répondre à la requête plutôt que si elle est soutenue par le contexte.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Évaluer les applications d’IA générative</a>",
+      "extraHtml": "La mise à la terre et la pertinence sont complémentaires : l’un vérifie le support, l’autre l’utilité de la requête. L’utilisation des répliques et le taux d’erreur vocale concernent différentes couches système."
+    },
+    {
+      "id": "ai103-2629e192bf75",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "Un modèle fonctionne bien en moyenne mais échoue dans les cas limites critiques pour la sécurité. Comment l’ensemble de données d’évaluation devrait-il être amélioré ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajouter des affaires représentatives contradictoires et des affaires de frontière"
+        },
+        {
+          "key": "B",
+          "label": "Supprimer tous les exemples de faible score"
+        },
+        {
+          "key": "C",
+          "label": "Ne gardez que les prompts les plus courts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajouter des affaires représentatives contradictoires et des affaires de frontière",
+      "rationaleHtml": "Les cas ciblés de périphérie et d’adversaire exposent des défaillances que des moyennes sur des exemples de routine peuvent dissimuler.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Directives d’évaluation</a>",
+      "extraHtml": "La suppression des défaillances biaise le benchmark ; la durée du prompt seule ne couvre pas le risque. Segmentez les résultats par scénario et gravité, et libérez le bloc lorsque les seuils critiques échouent même si la moyenne est élevée."
+    },
+    {
+      "id": "ai103-efd1ead3e2d7",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "AppConfiguration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "AppConfiguration"
+      ],
+      "promptHtml": "Un développeur configure une application pour utiliser un projet Foundry. Quelles valeurs devraient être externalisées plutôt que intégrées dans la logique métier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Terminaison du projet et nom de déploiement"
+        },
+        {
+          "key": "B",
+          "label": "Questions des utilisateurs et réponses aux modèles"
+        },
+        {
+          "key": "C",
+          "label": "Extraits et citations récupérés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Terminaison du projet et nom de déploiement",
+      "rationaleHtml": "Les identifiants de projet et de déploiement sont la configuration de l’environnement et doivent être injectés au moment du déploiement.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/develop/sdk-overview\">Aperçu du SDK Foundry</a>",
+      "extraHtml": "Le contenu utilisateur et les résultats de récupération sont des données d’exécution, pas une configuration de déploiement. L’externalisation permet la promotion à travers les environnements et évite les modifications de source ; authentifier séparément avec des identifiants gérés."
+    },
+    {
+      "id": "ai103-51c961c2268e",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "FunctionCalling",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "FunctionCalling"
+      ],
+      "promptHtml": "Un assistant doit appeler une API météo avec une ville et une date. Qu’est-ce qui rend cet outil fonctionnel le plus sûr et le plus fiable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un schéma de type étroit avec des arguments validés"
+        },
+        {
+          "key": "B",
+          "label": "Une chaîne de commandes shell non restreinte"
+        },
+        {
+          "key": "C",
+          "label": "Un jeton API administrateur large"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un schéma de type étroit avec des arguments validés",
+      "rationaleHtml": "Un schéma d’outil tapé et contraint aide le modèle à former des appels valides et permet la validation côté serveur.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/how-to/tools/function-calling\">Appel de fonction</a>",
+      "extraHtml": "Les chaînes de coquillage invitent à l’injection, et les jetons administrateur violent le privilège le moindre. Traiter les arguments produits par le modèle comme non fiables, contraindre les destinations et les plages de temps, et retourner les erreurs structurées."
+    },
+    {
+      "id": "ai103-7a97025d6609",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ConversationMemory",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ConversationMemory"
+      ],
+      "promptHtml": "Un agent doit préserver le contexte multi-tours d’un utilisateur tout en maintenant différents utilisateurs isolés. Quelle approche faut-il utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un fil séparé par conversation"
+        },
+        {
+          "key": "B",
+          "label": "Un fil de discussion global pour tous les utilisateurs"
+        },
+        {
+          "key": "C",
+          "label": "Une invite système partagée en mémoire"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un fil séparé par conversation",
+      "rationaleHtml": "Les threads à portée de conversation préservent l’historique des messages tout en assurant l’isolation entre les utilisateurs et les sessions.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/threads-runs-messages\">Fils de discussion, exécutions et messages</a>",
+      "extraHtml": "Un thread global risque une fuite de données, et une invite système est l’instruction, pas l’état utilisateur durable. Autoriser l’accès au thread et définir les politiques de rétention, de synthèse et de suppression."
+    },
+    {
+      "id": "ai103-7999e7eea0ce",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ToolIntegration"
+      ],
+      "promptHtml": "Un agent a besoin de données actuelles sur le produit à partir d’un index de recherche et de calculs provenant d’une API de tarification interne. Quel design d’outil est approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajouter des outils de récupération et de fonction"
+        },
+        {
+          "key": "B",
+          "label": "Ajustez les prix actuels uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Saisir tous les prix dans la consigne système"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajouter des outils de récupération et de fonction",
+      "rationaleHtml": "La récupération fournit des connaissances actuelles tandis que l’appel de fonction invoque des calculs autoritaires.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Catalogue d’outils pour agents</a>",
+      "extraHtml": "Le fine-tuning n’est pas un mécanisme de synchronisation de données en temps réel, et les prix intégrés par prompt deviennent obsolètes. Récupération séparée des preuves en lecture seule des outils transactionnels ou computationnels."
+    },
+    {
+      "id": "ai103-1bbbdb1901d3",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Safeguards",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Safeguards"
+      ],
+      "promptHtml": "Un agent du service client ne peut émettre des remboursements qu’après avoir vérifié le statut des commandes et l’éligibilité à la police. Où l’application de l’éligibilité devrait-elle avoir lieu ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En validation déterministe côté outil"
+        },
+        {
+          "key": "B",
+          "label": "Uniquement dans les instructions en langage naturel"
+        },
+        {
+          "key": "C",
+          "label": "En augmentant la récupération de top-k"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "En validation déterministe côté outil",
+      "rationaleHtml": "L’autorisation côté outil et la validation métier appliquent la politique même lorsque la sortie du modèle est incorrecte ou manipulée.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Aperçu des outils pour agents</a>",
+      "extraHtml": "Les consignes guident le comportement mais n’imposent pas l’autorisation. La profondeur de récupération affecte les preuves, pas les droits d’exécution. Exigez l’idempotence, les limites, les journaux d’audit et l’approbation pour des remboursements exceptionnels."
+    },
+    {
+      "id": "ai103-21df2b41c674",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "MultiAgent",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "MultiAgent"
+      ],
+      "promptHtml": "Une demande complexe nécessite un spécialiste de recherche, un relecteur de conformité et un rédacteur final avec des transferts clairs. Quelle architecture convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un flux de travail multi-agents orchestré"
+        },
+        {
+          "key": "B",
+          "label": "Une invocation de modèle d’intégration"
+        },
+        {
+          "key": "C",
+          "label": "Une requête statique unique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un flux de travail multi-agents orchestré",
+      "rationaleHtml": "Un orchestrateur peut attribuer des rôles délimités, passer les artefacts et imposer la révision avant la composition finale.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/multi-agent-workflow\">Flux de travail multi-agents</a>",
+      "extraHtml": "Les embeddings et les requêtes statiques sont des composantes, pas de la coordination des rôles. Utilisez plusieurs agents uniquement lorsque la spécialisation et les transferts contrôlés l’emportent sur la latence supplémentaire, le coût et la complexité du débogage."
+    },
+    {
+      "id": "ai103-44b28844ef8d",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "MultiAgent",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "MultiAgent"
+      ],
+      "promptHtml": "Deux agents se déléguent à répétition la même tâche. Quelle solution empêche le plus directement cette boucle ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajouter des conditions de terminaison et des limites de transfert"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la température de chaque agent"
+        },
+        {
+          "key": "C",
+          "label": "Supprimer tous les identifiants de corrélation de traces"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajouter des conditions de terminaison et des limites de transfert",
+      "rationaleHtml": "Critères d’arrêt explicites, budgets de tournage, et règles de transfert autorisées liées aux boucles d’orchestration.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/multi-agent-workflow\">Flux de travail multi-agents</a>",
+      "extraHtml": "Plus d’aléatoire ne garantit pas la terminaison, et supprimer les traces complique le diagnostic. Incluez un chemin de repli lorsque la confiance, les erreurs d’outils ou les seuils budgétaires sont atteints."
+    },
+    {
+      "id": "ai103-44289395b7ba",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ApprovalFlows",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ApprovalFlows"
+      ],
+      "promptHtml": "Un flux de travail autonome d’approvisionnement peut rédiger une commande mais ne doit pas soumettre des achats au-delà d’un montant fixe. Quelle garantie est la plus forte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un contrôle déterministe du montant plus une porte d’approbation"
+        },
+        {
+          "key": "B",
+          "label": "Un rappel dans l’interface utilisateur"
+        },
+        {
+          "key": "C",
+          "label": "Un réglage maximal de jetons plus élevé"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un contrôle déterministe du montant plus une porte d’approbation",
+      "rationaleHtml": "Un seuil et une porte d’approbation imposés par le code empêchent toute exécution non autorisée à forte valeur.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Flux de travail humain dans la boucle</a>",
+      "extraHtml": "Les rappels UI sont des conseils et les limites des jetons contrôlent la longueur de la réponse. Appliquer la politique à la limite de l’outil, enregistrer les approbations et utiliser des clés d’idempotence pour prévenir les commandes en double."
+    },
+    {
+      "id": "ai103-1e3f5c0a7623",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Observability",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Observability"
+      ],
+      "promptHtml": "Les échecs de production d’un agent sont difficiles à reproduire car seules les réponses finales sont enregistrées. Quelle télémétrie faut-il ajouter ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Traces corrélées pour les portées de modèles, de récupération et d’outils"
+        },
+        {
+          "key": "B",
+          "label": "Captures d’écran quotidiennes de l’interface de chat"
+        },
+        {
+          "key": "C",
+          "label": "Graphiques de capacité de stockage agrégée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Traces corrélées pour les portées de modèles, de récupération et d’outils",
+      "rationaleHtml": "Les pistes de bout en bout exposent des entrées intermédiaires, des sorties, des timings et des erreurs pour chaque étape de l’agent.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "Les captures d’écran et les graphiques de capacité omettent la causalité d’exécution. Incluez les versions de déploiement, d’invite et d’outils, mais censurez les secrets et le contenu sensible avant l’exportation."
+    },
+    {
+      "id": "ai103-72624c77fabe",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ErrorAnalysis",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ErrorAnalysis"
+      ],
+      "promptHtml": "Un agent déployé commence soudainement à choisir le mauvais outil après une mise à jour du schéma. Que devrait comparer l’analyse d’erreur en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Traces d’appel d’outils avant et après le changement de schéma"
+        },
+        {
+          "key": "B",
+          "label": "Capacité disque du service de recherche uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Le langage préféré du navigateur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Traces d’appel d’outils avant et après le changement de schéma",
+      "rationaleHtml": "Comparer la sélection des outils, les arguments et les erreurs entre différentes versions isole les changements de comportement liés au schéma.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "La capacité de l’infrastructure et la localisation du navigateur sont des hypothèses faibles, sauf indication des traces. Maintenir des schémas versionnés et rejouer les traces représentatives dans un environnement de test avant promotion."
+    },
+    {
+      "id": "ai103-4685a4e26893",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelParameters",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelParameters"
+      ],
+      "promptHtml": "Une fonctionnalité d’écriture créative produit un texte répétitif. Quel ajustement de paramètres augmente généralement la diversité des sorties ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter la température modérément"
+        },
+        {
+          "key": "B",
+          "label": "Réglez la température à zéro"
+        },
+        {
+          "key": "C",
+          "label": "Réduction des répliques de récupération"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Augmenter la température modérément",
+      "rationaleHtml": "Une température plus élevée élargit généralement l’échantillonnage des jetons et peut augmenter la variation du texte généré.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/reference\">Azure OpenAI Inference Reference</a>",
+      "extraHtml": "La température zéro favorise le déterminisme, tandis que les répliques de recherche ne modifient pas l’échantillonnage des jetons. Ajustez les évaluations spécifiques à la tâche ; un excès d’aléa peut réduire la cohérence et la fiabilité factuelle."
+    },
+    {
+      "id": "ai103-aa9b93175487",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelParameters",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelParameters"
+      ],
+      "promptHtml": "Une tâche d’extraction de données nécessite des sorties cohérentes sur plusieurs exécutions. Quel paramètre de génération est le meilleur point de départ ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une température basse"
+        },
+        {
+          "key": "B",
+          "label": "Une température élevée"
+        },
+        {
+          "key": "C",
+          "label": "Un schéma d’outil aléatoire"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une température basse",
+      "rationaleHtml": "Une température plus basse réduit la variabilité de l’échantillonnage et convient mieux à l’extraction déterministe.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/reference\">Azure OpenAI Inference Reference</a>",
+      "extraHtml": "Une température élevée favorise la diversité. Le déterminisme nécessite également un schéma précis, une version stable du modèle, un prompt contrôlé et une validation ; la température seule ne garantit pas des résultats identiques."
+    },
+    {
+      "id": "ai103-8ac8a1cc6cb4",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "PromptEngineering",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "PromptEngineering"
+      ],
+      "promptHtml": "Une invite fonctionne sur des exemples mais échoue lorsque l’entrée inclut des instructions provenant d’un document non fiable. Quelle conception d’invite est la plus sûre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Délimitez les données et déclarez qu’elles ne sont pas fiables"
+        },
+        {
+          "key": "B",
+          "label": "Concaténer des données sous forme d’instructions système"
+        },
+        {
+          "key": "C",
+          "label": "Accorder au modèle un accès plus large aux outils"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Délimitez les données et déclarez qu’elles ne sont pas fiables",
+      "rationaleHtml": "Séparer les instructions du contenu non fiable réduit la confusion des instructions et permet de soutenir les défenses par injection rapide.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering\">Concepts d’ingénierie prompts</a>",
+      "extraHtml": "La concaténation au niveau système augmente le texte des attaquants, et les outils plus larges augmentent l’impact. Associez la structure des prompts aux boucliers de prompts, le minimum de privilèges, la validation de sortie et l’autorisation des outils."
+    },
+    {
+      "id": "ai103-67e20aa2dcb8",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Reflection",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Reflection"
+      ],
+      "promptHtml": "Une équipe souhaite qu’un modèle critique son brouillon avant le résultat final. Quel modèle correspond à l’exigence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une boucle d’autocritique ou de réflexion"
+        },
+        {
+          "key": "B",
+          "label": "Un appel d’intégration en un seul passage"
+        },
+        {
+          "key": "C",
+          "label": "Une réplique d’index à l’échelle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une boucle d’autocritique ou de réflexion",
+      "rationaleHtml": "Une boucle de réflexion demande au modèle ou à un modèle évaluateur d’évaluer et de réviser un brouillon selon des critères explicites.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/prompt-flow\">concepts de flux de prompts</a>",
+      "extraHtml": "Les embeddings encodent le texte et les répliques améliorent la disponibilité de la recherche. La réflexion peut améliorer la qualité mais ajoute de la latence et du coût, et les erreurs de modèle corrélées font qu’elle ne remplace pas l’évaluation externe."
+    },
+    {
+      "id": "ai103-cd7a9a78c758",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Reflection",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Reflection"
+      ],
+      "promptHtml": "Une boucle d’autocritique continue de se réviser sans amélioration significative. Quel contrôle devrait être ajouté ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un nombre maximal d’itérations et un seuil de qualité"
+        },
+        {
+          "key": "B",
+          "label": "Appels récursifs illimités"
+        },
+        {
+          "key": "C",
+          "label": "Un indice vectoriel plus grand"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un nombre maximal d’itérations et un seuil de qualité",
+      "rationaleHtml": "Les itérations limitées et les critères d’acceptation explicites évitent les coûts et la latence incontrôlables.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/prompt-flow\">concepts de flux de prompts</a>",
+      "extraHtml": "La récursion illimitée peut amplifier le coût sans gain de qualité ; la taille de l’indice n’est pas liée. Le score de logarithme change à chaque itération et revient à la revue lorsque le seuil n’est pas atteint."
+    },
+    {
+      "id": "ai103-5888dd486ac0",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Tracing",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Tracing"
+      ],
+      "promptHtml": "Operations doit savoir si la latence provient de la récupération, de l’inférence du modèle ou d’un outil en aval. Quelle instrumentation est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Des portées corrélées séparées pour chaque étage"
+        },
+        {
+          "key": "B",
+          "label": "Un coup de temps pour contourner toute la demande"
+        },
+        {
+          "key": "C",
+          "label": "Totales de facturation mensuelles uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Des portées corrélées séparées pour chaque étage",
+      "rationaleHtml": "Les spans au niveau de l’étape fournissent des découpes de latence tandis que la corrélation préserve le chemin d’exécution de bout en bout.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "Un minuteur total révèle un symptôme mais pas le goulot d’étranglement ; les totaux de facturation sont encore plus grossiers. Capturez les tentatives, le nombre de jetons, le statut et les versions sur les plages pertinentes."
+    },
+    {
+      "id": "ai103-ce6f45efbf2f",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "TokenAnalytics",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "TokenAnalytics"
+      ],
+      "promptHtml": "Un tableau de bord de coûts doit attribuer l’utilisation à l’application, au déploiement du modèle et à la fonctionnalité. Quelle télémétrie est la plus utile ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Comptages de jetons associés au déploiement et à l’opération"
+        },
+        {
+          "key": "B",
+          "label": "Un nombre de connexions sur les portails"
+        },
+        {
+          "key": "C",
+          "label": "Le nombre de noms de champs d’index"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Comptages de jetons associés au déploiement et à l’opération",
+      "rationaleHtml": "Les métriques de jetons d’entrée et de sortie étiquetées supportent une utilisation granulaire et une attribution des coûts.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Observabilité de la fonderie</a>",
+      "extraHtml": "L’activité du portail et le nombre de champs de schéma ne sont pas des mesures de consommation. Combinez la télémétrie des jetons avec le nombre de requêtes, le comportement du cache, la latence et les dimensions de tarification."
+    },
+    {
+      "id": "ai103-b769073daec6",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelOrchestration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelOrchestration"
+      ],
+      "promptHtml": "Un routeur doit envoyer une classification simple vers un modèle moins cher et un raisonnement complexe vers un modèle plus solide. Quelle architecture implémente cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un routeur multi-modèles basé sur des politiques"
+        },
+        {
+          "key": "B",
+          "label": "Un modèle fixe unique pour chaque requête"
+        },
+        {
+          "key": "C",
+          "label": "Un pipeline d’indexation uniquement basé sur la recherche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un routeur multi-modèles basé sur des politiques",
+      "rationaleHtml": "Un routeur peut classifier la complexité des tâches et diriger les requêtes vers des modèles qui équilibrent qualité, latence et coût.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Modèles Foundry</a>",
+      "extraHtml": "Un modèle fixe perd l’optimisation, et l’indexation n’effectue pas le routage de génération. Évaluer les erreurs de routage et inclure un plan de secours lorsqu’un modèle sélectionné échoue ou manque de capacité."
+    },
+    {
+      "id": "ai103-ae2fa6261cc4",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "HybridOrchestration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "HybridOrchestration"
+      ],
+      "promptHtml": "Un flux de travail doit appliquer des règles fiscales exactes puis générer une explication conviviale pour le client. Quel design est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Moteur de règles pour le calcul plus LLM pour l’explication"
+        },
+        {
+          "key": "B",
+          "label": "LLM seul pour le calcul et l’explication des impôts"
+        },
+        {
+          "key": "C",
+          "label": "Recherche vectorielle seule pour le calcul final"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Moteur de règles pour le calcul plus LLM pour l’explication",
+      "rationaleHtml": "Les règles déterministes imposent des calculs exacts, tandis que le modèle gère la présentation en langage naturel.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/overview\">Présentation du service d’agent de la fonderie</a>",
+      "extraHtml": "Les LLM peuvent être non déterministes en arithmétique et en application des politiques ; la recherche récupère des informations mais n’applique pas les règles fiscales. Conservez le résultat calculé comme données structurées faisant autorité."
+    },
+    {
+      "id": "ai103-294cae7ce876",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "Une application RAG répond avec précision hors ligne mais mal en production car les requêtes des utilisateurs diffèrent de celles de l’ensemble de test. Quelle est la meilleure étape suivante ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse des cas à partir de traces de production"
+        },
+        {
+          "key": "B",
+          "label": "Supprimer la surveillance de la production"
+        },
+        {
+          "key": "C",
+          "label": "Augmenter la longueur de sortie pour chaque requête"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse des cas à partir de traces de production",
+      "rationaleHtml": "Les traces de production sécurisées pour la confidentialité révèlent de vraies distributions de requêtes et modes de défaillance pour un benchmark représentatif.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Évaluer les applications d’IA générative</a>",
+      "extraHtml": "Supprimer la télémétrie élimine les preuves, et les réponses plus longues ne corrigent pas le décalage de distribution. Échantillonner entre segments, censurer les données sensibles, étiqueter les échecs et préserver un ensemble stable de retenue."
+    },
+    {
+      "id": "ai103-f4e7fa26deb3",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ToolIntegration"
+      ],
+      "promptHtml": "Un agent appelle deux fois le même outil de réservation non idempotent après un temps d’attente. Quel contrôle d’application empêche les réservations en double ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une clé d’idempotence sur l’opération de l’outil"
+        },
+        {
+          "key": "B",
+          "label": "Une température de modèle plus élevée"
+        },
+        {
+          "key": "C",
+          "label": "Plus de dimensions d’immersion"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une clé d’idempotence sur l’opération de l’outil",
+      "rationaleHtml": "Une clé d’idempotence permet aux tentatives de réessayer de résoudre l’opération initiale au lieu de créer une seconde réservation.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/architecture/patterns/idempotent-consumer\">Motif d’idempotence</a>",
+      "extraHtml": "Les paramètres d’échantillonnage et d’intégration ne garantissent pas la sécurité des transactions. Associez l’idempotence à des tentatives bornées, à la réconciliation de statut et à des enregistrements durables des résultats des outils."
+    },
+    {
+      "id": "ai103-670336c867f9",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ErrorHandling",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ErrorHandling"
+      ],
+      "promptHtml": "Un outil fonctionnel renvoie une réponse HTTP 429 transitoire. Comment le flux de travail de l’agent devrait-il gérer cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des tentatives limitées avec recul"
+        },
+        {
+          "key": "B",
+          "label": "Réessayez immédiatement sans limite"
+        },
+        {
+          "key": "C",
+          "label": "Marquez l’appel réussi"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des tentatives limitées avec recul",
+      "rationaleHtml": "Le backoff exponentiel borné respecte la limitation de la limitation de la limitation de la latence et de l’amplification des réessays.<br><br>Référence : Gestion des <a href=\"https://learn.microsoft.com/azure/architecture/best-practices/transient-faults\">pannes transitoires</a>",
+      "extraHtml": "Des réessais immédiats illimités aggravent la limitation de la limitation, tandis que les fausses réussites corrompent l’état du workflow. Respectez les consignes de réessayage, les tentatives de condensation, et exposez un chemin de défaillance récupérable."
+    },
+    {
+      "id": "ai103-213e935cfdc6",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Grounding",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Grounding"
+      ],
+      "promptHtml": "Un modèle ne devrait pas répondre lorsque les preuves récupérées sont insuffisantes. Quelle implémentation est la plus fiable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Définir une règle d’abstention basée sur la qualité des preuves"
+        },
+        {
+          "key": "B",
+          "label": "Forcez une réponse avec une invite plus longue"
+        },
+        {
+          "key": "C",
+          "label": "Augmentez la température jusqu’à ce qu’une réponse apparaisse"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Définir une règle d’abstention basée sur la qualité des preuves",
+      "rationaleHtml": "Une politique d’abstention explicite permet à l’application de refuser lorsque les signaux de récupération ou de mise à la terre sont insuffisants.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/retrieval-augmented-generation-overview\">Aperçu de RAG</a>",
+      "extraHtml": "La génération par forçage augmente le risque de fabrication, et une température plus élevée ajoute de la variabilité. Calibrez les seuils sur les cas marqués et proposez des alternatives d’escalade ou de recherche de source."
+    },
+    {
+      "id": "ai103-9769bcd623ce",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Embeddings",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Embeddings"
+      ],
+      "promptHtml": "Une équipe modifie son modèle d’embedding pour un indice vectoriel existant. Que doit-elle envisager de faire ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Réintégrez régulièrement le corpus et les requêtes"
+        },
+        {
+          "key": "B",
+          "label": "Conservez les anciens vecteurs de documents avec de nouveaux vecteurs de requête"
+        },
+        {
+          "key": "C",
+          "label": "Convertir les vecteurs en audio vocal"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Réintégrez régulièrement le corpus et les requêtes",
+      "rationaleHtml": "Les vecteurs de document et de requête doivent être générés dans le même espace d’inclusion compatible pour une similarité significative.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/vector-search-overview\">Aperçu de la recherche vectorielle</a>",
+      "extraHtml": "Le mélange des espaces d’immersion rend les scores de distance peu fiables. Utilisez un index parallèle versionné pour la migration, évaluez la récupération, et ne basculez le trafic qu’après la fin du rechargement."
+    },
+    {
+      "id": "ai103-f9d37602e2c2",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAGSecurity",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAGSecurity"
+      ],
+      "promptHtml": "Un index de recherche vectorielle doit restreindre les résultats aux documents qu’un utilisateur est autorisé à consulter. Quel design est requis ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Appliquez des filtres de sécurité sensibles à l’identité lors de la récupération"
+        },
+        {
+          "key": "B",
+          "label": "Filtrer les citations après la génération du modèle"
+        },
+        {
+          "key": "C",
+          "label": "Demandez au modèle d’ignorer le texte restreint"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Appliquez des filtres de sécurité sensibles à l’identité lors de la récupération",
+      "rationaleHtml": "L’autorisation au moment de récupération empêche le contenu non autorisé d’entrer dans le contexte du modèle.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/search-security-trimming-for-azure-search\">Coupage de sécurité</a>",
+      "extraHtml": "Le filtrage post-génération est trop tard, et les instructions promptes ne sont pas contrôlées par l’accès. Propagez les revendications d’identité de confiance et testez la fuite inter-locataire."
+    },
+    {
+      "id": "ai103-ba3a2a2f2399",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ImageGeneration",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ImageGeneration"
+      ],
+      "promptHtml": "Un service doit générer une image produit à partir d’une description écrite. Quelle capacité doit être sélectionnée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Génération texte-image"
+        },
+        {
+          "key": "B",
+          "label": "Transcription vocale en texte"
+        },
+        {
+          "key": "C",
+          "label": "Recherche par similarité vectorielle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Génération texte-image",
+      "rationaleHtml": "Les modèles texte en image synthétisent le contenu visuel à partir d’incitations en langage naturel.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/models\">Azure OpenAI models</a>",
+      "extraHtml": "La transcription vocale convertit l’audio en texte, et la recherche vectorielle récupère les éléments existants. Appliquer la politique de contenu, la provenance, la marque et les contrôles de revue humaine aux actifs générés."
+    },
+    {
+      "id": "ai103-9bc716fa109b",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ImageEditing",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ImageEditing"
+      ],
+      "promptHtml": "Un designer doit remplacer uniquement l’arrière-plan d’une image existante tout en préservant l’objet au premier plan. Quel workflow est approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Peinture à base de masque"
+        },
+        {
+          "key": "B",
+          "label": "OCR en image complète"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Peinture à base de masque",
+      "rationaleHtml": "L’inpainting utilise un masque pour identifier la région que le modèle d’image doit modifier.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e\">Guidance pour la génération d’images</a>",
+      "extraHtml": "L’OCR lit le texte et la synthèse vocale crée l’audio. Alignez soigneusement la sémantique du masque avec l’API, préserver l’asset original et évaluer le blending edge et la conformité de marque."
+    },
+    {
+      "id": "ai103-0b729d9d0b46",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoGeneration",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoGeneration"
+      ],
+      "promptHtml": "Une équipe marketing a besoin d’une courte vidéo réalisée à partir d’un storyboard textuel et d’une image de référence. Quelle capacité de modèle est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Génération vidéo à partir du texte et des médias"
+        },
+        {
+          "key": "B",
+          "label": "Extraction de mise en page de document"
+        },
+        {
+          "key": "C",
+          "label": "Recherche par mots-clés uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Génération vidéo à partir du texte et des médias",
+      "rationaleHtml": "Un modèle de génération vidéo pris en charge peut utiliser la direction textuelle et les médias de référence pour synthétiser la vidéo.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">catalogue de modèles Foundry</a>",
+      "extraHtml": "L’extraction de la mise en page, les structures, les documents, et la recherche par mots-clés permet de récupérer le contenu. Vérifier la disponibilité des modèles et utiliser les contrôles pour la durée, le style, la sécurité, la provenance et les droits."
+    },
+    {
+      "id": "ai103-92fafea9806e",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoEditing",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoEditing"
+      ],
+      "promptHtml": "Une vidéo générée contient un segment incorrect qui doit être révisé tandis que le reste reste inchangé. Quelle approche convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez un flux de travail de montage vidéo pris en charge"
+        },
+        {
+          "key": "B",
+          "label": "Reconstruire l’index de recherche"
+        },
+        {
+          "key": "C",
+          "label": "Reformer un reconnaisseur de la parole"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez un flux de travail de montage vidéo pris en charge",
+      "rationaleHtml": "Les contrôles de montage vidéo ciblent les modifications des médias générés sans impliquer de services de recherche ou de parole non liés.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">catalogue de modèles Foundry</a>",
+      "extraHtml": "Les capacités de la plateforme varient selon le modèle, évaluez donc si l’édition de segments, le conditionnement de référence ou la régénération sont prises en charge. Préserver la provenance et examiner les transitions autour du montage."
+    },
+    {
+      "id": "ai103-bb1a57d77e36",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "Accessibility",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "Accessibility"
+      ],
+      "promptHtml": "Une application d’accessibilité nécessite une description concise du contenu essentiel d’une photographie. Quel résultat doit-elle demander ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Texte alternatif ancré dans l’image"
+        },
+        {
+          "key": "B",
+          "label": "Une histoire créative sans rapport"
+        },
+        {
+          "key": "C",
+          "label": "Un schéma d’index vectoriel"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Texte alternatif ancré dans l’image",
+      "rationaleHtml": "Le texte alternatif grounded communique des informations visuelles essentielles aux utilisateurs qui ne peuvent pas accéder directement à l’image.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Descriptions d’images</a>",
+      "extraHtml": "Une prose créative peut inventer des détails et un schéma d’index ne décrit pas le contenu. Gardez le texte alternatif concis, contextuel et exempt de phrases redondantes ; n’utilisez des descriptions étendues que lorsque la complexité le justifie."
+    },
+    {
+      "id": "ai103-d410a1e16559",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "Accessibility",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "Accessibility"
+      ],
+      "promptHtml": "Une image de musée contient un tableau complexe qui ne peut être expliqué de manière concise. Quel résultat sur l’accessibilité est le plus adapté ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une description d’image étendue"
+        },
+        {
+          "key": "B",
+          "label": "Une étiquette de sentiment en un seul mot"
+        },
+        {
+          "key": "C",
+          "label": "Une transcription de reconnaissance vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une description d’image étendue",
+      "rationaleHtml": "Les descriptions étendues fournissent le détail et la structure nécessaires pour une information visuelle complexe.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Descriptions d’images</a>",
+      "extraHtml": "Un court champ de texte alternatif peut identifier le graphique et pointer vers la description plus longue. Le sentiment et la transcription ne transmettent pas d’axes, de tendances, d’annotations et de relations."
+    },
+    {
+      "id": "ai103-a643d9e3e3e5",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VisualUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VisualUnderstanding"
+      ],
+      "promptHtml": "Une application de réclamations doit répondre aux questions concernant les dommages visibles du véhicule et citer ce qui peut être visible dans l’image téléchargée. Quelle approche doit-elle adopter ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Réponse à une question visuelle multimodale"
+        },
+        {
+          "key": "B",
+          "label": "Correspondance de mots-clés uniquement par texte"
+        },
+        {
+          "key": "C",
+          "label": "Identification des haut-parleurs audio"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Réponse à une question visuelle multimodale",
+      "rationaleHtml": "Un modèle multimodal peut raisonner sur l’image et la question pour produire une réponse fondée sur des preuves visuelles.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Concepts d’analyse de la vision</a>",
+      "extraHtml": "La recherche par mots-clés ne peut pas inspecter les pixels ni l’identification des haut-parleurs concernant l’audio. Nécessite une gestion de l’incertitude et une revue humaine car les preuves visuelles peuvent être incomplètes ou ambiguës."
+    },
+    {
+      "id": "ai103-523c64a0d5e9",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "Un pipeline doit extraire des caractéristiques visuelles de documents et médias mixtes en champs structurés. Quel outil Foundry est conçu pour cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Content Understanding"
+        },
+        {
+          "key": "B",
+          "label": "Azure DNS"
+        },
+        {
+          "key": "C",
+          "label": "Azure Load Testing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Content Understanding",
+      "rationaleHtml": "Content Understanding analyse le contenu multimodal et produit des sorties structurées à l’aide d’analyseurs configurés.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Le DNS résout les noms et les tests de charge mesurent la performance de l’application. Définir un schéma aligné sur les décisions en aval et valider les valeurs extraites par rapport au contenu représentatif."
+    },
+    {
+      "id": "ai103-d1e58457ba6f",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "Un développeur a besoin d’une extraction prédéfinie rapide pour une tâche média ciblée plutôt qu’un analyseur personnalisable de bout en bout. Quel mode Compréhension de contenu est le meilleur point de départ ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Mode monotâche"
+        },
+        {
+          "key": "B",
+          "label": "Mode Pro"
+        },
+        {
+          "key": "C",
+          "label": "Mode de recherche de réplique"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Mode monotâche",
+      "rationaleHtml": "Le mode à tâche unique cible une opération ciblée et prédéfinie avec moins de configuration.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Le mode Pro est approprié lorsque des schémas personnalisés et un traitement plus riche sont nécessaires. Recherche de répliques à l’échelle du service de requêtes et ne sont pas des modes de pipeline Content Understanding."
+    },
+    {
+      "id": "ai103-362124509e6e",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "Un flux de travail média personnalisé nécessite une extraction guidée par schéma à travers plusieurs types de contenu et un contrôle plus riche. Quel mode de compréhension du contenu faut-il choisir ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Mode Pro"
+        },
+        {
+          "key": "B",
+          "label": "Mode monotâche"
+        },
+        {
+          "key": "C",
+          "label": "Mode analyseur de mots-clés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Mode Pro",
+      "rationaleHtml": "Le mode Pro prend en charge une analyse multimodale configurable orientée schéma pour des flux de travail plus complexes.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Le mode tâche unique est plus simple mais moins adaptable. Un analyseur de mots-clés est un concept de traitement de texte par recherche, et non l’analyseur multimodal riche demandé."
+    },
+    {
+      "id": "ai103-192df72d89ff",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ObjectDetection",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ObjectDetection"
+      ],
+      "promptHtml": "Un système de sécurité doit identifier les objets et leurs emplacements dans chaque image, et non simplement décrire l’image dans son ensemble. Quelle sortie est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Détection d’objets avec des régions"
+        },
+        {
+          "key": "B",
+          "label": "Un score de sentiment documentaire"
+        },
+        {
+          "key": "C",
+          "label": "Une traduction audio"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Détection d’objets avec des régions",
+      "rationaleHtml": "La détection d’objets renvoie les objets identifiés ainsi que les régions spatiales telles que les boîtes englobantes.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-object-detection-40\">Détection d’objets</a>",
+      "extraHtml": "Une légende résume globalement mais peut omettre la localisation. La traduction de sentiment et audio traite d’autres modalités. Définissez des seuils de confiance et examinez les taux d’échec pour les objets petits, occultés ou peu communs."
+    },
+    {
+      "id": "ai103-58817b07b791",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoAnalysis",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoAnalysis"
+      ],
+      "promptHtml": "Un pipeline d’analyse vidéo doit interpréter les événements au fil du temps plutôt que d’analyser une seule image échantillonnée. Que doit-il faire ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Traiter les segments vidéo temporellement pertinents"
+        },
+        {
+          "key": "B",
+          "label": "Analysez uniquement la première image"
+        },
+        {
+          "key": "C",
+          "label": "Convertir le nom de fichier en un embedding"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Traiter les segments vidéo temporellement pertinents",
+      "rationaleHtml": "L’analyse au niveau des segments préserve le contexte temporel nécessaire pour interpréter les actions et les changements.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/azure-video-indexer/video-indexer-overview\">Aperçu d’Azure AI Video Indexer</a>",
+      "extraHtml": "Une seule image manque le mouvement et la séquence ; les embeddings de noms de fichiers ne contiennent aucune preuve visuelle d’événement. Équilibrez le taux d’images et la longueur des segments avec le coût et la durée de l’événement."
+    },
+    {
+      "id": "ai103-cd4857853cac",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "MultimodalSafety",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "MultimodalSafety"
+      ],
+      "promptHtml": "Une image téléchargée peut contenir un texte intégré qui ordonne à l’agent d’exfiltrer les données. Quelle menace le pipeline doit-il détecter ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Injection indirecte d’invite dans le texte de l’image"
+        },
+        {
+          "key": "B",
+          "label": "Limitation du réseau ordinaire"
+        },
+        {
+          "key": "C",
+          "label": "Décalage de dimension vectorielle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Injection indirecte d’invite dans le texte de l’image",
+      "rationaleHtml": "Les instructions malveillantes intégrées dans un contenu visuel représentent un risque indirect d’injection de prompts pour les systèmes multimodaux.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection\">Boucliers de prompt</a>",
+      "extraHtml": "Les erreurs de limitation et de forme vectorielle sont des problèmes opérationnels. Considérez l’OCR et le texte visuel comme des données non fiables, limitez les outils et faites respecter l’autorisation en dehors du modèle."
+    },
+    {
+      "id": "ai103-cf4fa1ab8b4b",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "StructuredExtraction",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "StructuredExtraction"
+      ],
+      "promptHtml": "Un système de support doit extraire des entités et un court résumé des messages dans un seul enregistrement prévisible. Quelle solution est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Invite pour JSON sous contrainte de schéma"
+        },
+        {
+          "key": "B",
+          "label": "Générer une prose sans restriction"
+        },
+        {
+          "key": "C",
+          "label": "Retourner uniquement un vecteur d’immersion"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Invite pour JSON sous contrainte de schéma",
+      "rationaleHtml": "La sortie structurée peut représenter des entités et des résumés dans des champs que le code en aval peut valider.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Sorties structurées</a>",
+      "extraHtml": "La prose libre est plus difficile à analyser et les embeddings ne sont pas des étiquettes extraites. Validez les valeurs d’enum, champs requis, preuves et contraintes de domaine après génération."
+    },
+    {
+      "id": "ai103-e2b585f874fd",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Sentiment",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Sentiment"
+      ],
+      "promptHtml": "Une entreprise doit déterminer l’attitude positive, neutre ou négative du client dans chaque avis. Quelle tâche d’analyse est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyse du sentiment"
+        },
+        {
+          "key": "B",
+          "label": "Détection d’objets"
+        },
+        {
+          "key": "C",
+          "label": "Vérification des locuteurs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyse du sentiment",
+      "rationaleHtml": "L’analyse du sentiment classe la polarité des opinions exprimées dans le texte.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/language-service/sentiment-opinion-mining/overview\">Aperçu de l’analyse du sentiment</a>",
+      "extraHtml": "La détection d’objets gère les images et la vérification des haut-parleurs gère l’identité vocale. Considérez l’exploration d’opinions lorsque le sentiment envers certains aspects du produit est nécessaire."
+    },
+    {
+      "id": "ai103-a6b6bf4ec9e0",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "SensitiveContent",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "SensitiveContent"
+      ],
+      "promptHtml": "Un flux de travail de conformité doit identifier les numéros de compte et autres textes sensibles avant d’envoyer du contenu à un modèle. Quelle fonctionnalité doit-elle appliquer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Détection et rédaction des PII"
+        },
+        {
+          "key": "B",
+          "label": "Peinture d’image"
+        },
+        {
+          "key": "C",
+          "label": "Échelle de réplique de recherche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Détection et rédaction des PII",
+      "rationaleHtml": "La détection des informations personnelles peut localiser des entités sensibles afin que l’application puisse les caviarder ou les traiter selon la politique.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/language-service/personally-identifiable-information/overview\">Aperçu de la détection des PII</a>",
+      "extraHtml": "L’inpainting modifie les images et les répliques affecte la capacité de recherche. La rédaction est un contrôle ; il faut aussi minimiser la collection, restreindre l’accès et définir la conservation du texte original et transformé."
+    },
+    {
+      "id": "ai103-fc2a6ff630a8",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Translation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Translation"
+      ],
+      "promptHtml": "Une application globale nécessite une traduction déterministe de la documentation produit via un service de traduction managé. Quel outil Foundry doit-elle choisir ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Translator"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Search"
+        },
+        {
+          "key": "C",
+          "label": "Azure Content Safety"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Translator",
+      "rationaleHtml": "Azure Translator est le service géré conçu pour la traduction de texte entre les langues prises en charge.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/translator/translator-overview\">Aperçu du traducteur</a>",
+      "extraHtml": "La recherche récupère des documents et la sécurité du contenu classe les risques. La traduction par LLM peut s’adapter à des flux de travail très contextuels, mais évaluez la terminologie, le coût et la cohérence avant de remplacer un service spécialisé."
+    },
+    {
+      "id": "ai103-b215e4a60fa1",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Translation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Translation"
+      ],
+      "promptHtml": "Le texte juridique traduit doit utiliser de manière cohérente la terminologie approuvée par l’organisation. Quel design répond le mieux à cette exigence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utiliser une terminologie personnalisée et une évaluation supportées"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la température pour plus de variété"
+        },
+        {
+          "key": "C",
+          "label": "Supprimer le glossaire du domaine"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utiliser une terminologie personnalisée et une évaluation supportées",
+      "rationaleHtml": "Les contrôles terminologiques de domaine et l’évaluation représentative améliorent la cohérence pour une traduction spécialisée.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/translator/custom-translator/overview\">Aperçu du traducteur personnalisé</a>",
+      "extraHtml": "Une température plus élevée peut augmenter la variation, et supprimer le glossaire fait perdre les correspondances approuvées. Gardez une vérification humaine des résultats juridiques et suivez séparément les erreurs de terminologie."
+    },
+    {
+      "id": "ai103-5ce46d3c4727",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "DomainCustomization",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "DomainCustomization"
+      ],
+      "promptHtml": "Une équipe politique a besoin de résumés qui incluent toujours les obligations, les délais et les parties responsables dans des domaines distincts. Quelle approche est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Invite de domaine avec un schéma de sortie structuré"
+        },
+        {
+          "key": "B",
+          "label": "Résumé créatif générique uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Conserver la police sous forme d’image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Invite de domaine avec un schéma de sortie structuré",
+      "rationaleHtml": "Les instructions de domaine plus un schéma rendent explicites et vérifiables par la machine les éléments de conformité requis.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Sorties structurées</a>",
+      "extraHtml": "Les résumés génériques peuvent omettre des champs critiques, et convertir le format n’ajoute pas de logique d’extraction. Évaluer les omissions et exiger des preuves de source pour chaque obligation extraite."
+    },
+    {
+      "id": "ai103-af0aa6f015a8",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Speech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Speech"
+      ],
+      "promptHtml": "Un assistant de centre d’appels doit convertir la voix client en texte en direct pour le raisonnement en aval. Quelle capacité est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Reconnaissance vocale"
+        },
+        {
+          "key": "B",
+          "label": "Synthèse vocale"
+        },
+        {
+          "key": "C",
+          "label": "Légende de l’image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Reconnaissance vocale",
+      "rationaleHtml": "La reconnaissance vocale transcrit l’audio en texte qu’un agent ou un workflow peut traiter.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/speech-to-text\">Reconnaissance vocale en texte</a>",
+      "extraHtml": "La synthèse vocale effectue l’inverse, et le sous-titrage des images gère la vision. La reconnaissance en streaming est appropriée lorsque des transcriptions partielles à faible latence sont nécessaires."
+    },
+    {
+      "id": "ai103-e42b4d384c3f",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Speech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Speech"
+      ],
+      "promptHtml": "Un agent doit donner sa réponse finale à un appelant. Quelle capacité l’application doit-elle invoquer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Synthèse vocale"
+        },
+        {
+          "key": "B",
+          "label": "Reconnaissance vocale"
+        },
+        {
+          "key": "C",
+          "label": "Recherche vectorielle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Synthèse vocale",
+      "rationaleHtml": "La synthèse vocale convertit la réponse texte de l’agent en audio.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/text-to-speech\">Synthèse vocale</a>",
+      "extraHtml": "La reconnaissance vocale convertit dans la direction opposée, et la recherche vectorielle récupère le contenu. Sélectionnez la voix, la langue, le format et le comportement de diffusion en fonction des exigences de la chaîne."
+    },
+    {
+      "id": "ai103-abc57d1353fe",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "CustomSpeech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "CustomSpeech"
+      ],
+      "promptHtml": "Une usine a des noms de produits spécialisés qu’un reconnaît général transcrit incorrectement. Quelle amélioration est la plus appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utiliser un modèle de parole personnalisé"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la qualité de génération d’images"
+        },
+        {
+          "key": "C",
+          "label": "Ajouter uniquement les synonymes de recherche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utiliser un modèle de parole personnalisé",
+      "rationaleHtml": "La parole personnalisée peut adapter la reconnaissance au vocabulaire du domaine et aux conditions acoustiques en utilisant des données appropriées.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/custom-speech-overview\">Présentation de Custom Speech</a>",
+      "extraHtml": "Les contrôles d’image ne sont pas liés, et les synonymes de recherche ne peuvent pas réparer la transcription originale. Comparez le taux d’erreur des mots sur un jeu de données de domaine non utilisé avant et après la personnalisation."
+    },
+    {
+      "id": "ai103-b98e2c3cc624",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "AudioReasoning",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "AudioReasoning"
+      ],
+      "promptHtml": "Un agent vocal doit raisonner directement sur une entrée audio incluant des indices de parole et non verbaux. Quel type de modèle doit être évalué ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un modèle multimodal compatible audio"
+        },
+        {
+          "key": "B",
+          "label": "Un modèle d’intégration de texte uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Un modèle d’image-peinture"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un modèle multimodal compatible audio",
+      "rationaleHtml": "Un modèle multimodal compatible audio peut traiter le contexte audio au-delà d’une transcription texte uniquement lorsque cela est supporté.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Modèles Foundry</a>",
+      "extraHtml": "Les embeddings de texte ne peuvent pas inspecter les signaux audio, et l’inpainting modifie les images. Confirmez le support de l’entrée du modèle, la latence, le consentement, la confidentialité, et si une transcription reste nécessaire pour l’audit."
+    },
+    {
+      "id": "ai103-3a5802abedb3",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "SpeechTranslation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "SpeechTranslation"
+      ],
+      "promptHtml": "Une réunion en direct doit être transcrite et rendue dans une autre langue avec des capacités de parole spécialisées. Quel workflow est approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Traduction vocale avec services assistés"
+        },
+        {
+          "key": "B",
+          "label": "Détection d’objets suivie de l’OCR"
+        },
+        {
+          "key": "C",
+          "label": "Compression vectorielle suivie de classement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Traduction vocale avec services assistés",
+      "rationaleHtml": "La traduction vocale combine la reconnaissance et les capacités de traduction pour la conversion en langue parlée.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/speech-translation\">Traduction de la parole</a>",
+      "extraHtml": "Les opérations de vision et de vecteur ne traitent pas le langage parlé. Décidez si un texte traduit ou un audio traduit synthétisé est nécessaire et mesurez à la fois la reconnaissance et la qualité de la traduction."
+    },
+    {
+      "id": "ai103-1fa986c93277",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Safety",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Safety"
+      ],
+      "promptHtml": "Un classificateur de texte doit distinguer le risque de sécurité du sentiment négatif ordinaire. Quel design est correct ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez une classification de sécurité dédiée en fonction du sentiment"
+        },
+        {
+          "key": "B",
+          "label": "Considérez chaque avis négatif comme dangereux"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez le nombre de pages de documents comme score de risque"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez une classification de sécurité dédiée en fonction du sentiment",
+      "rationaleHtml": "La sécurité et le sentiment sont des dimensions différentes et nécessitent une classification ou une évaluation spécialement conçue.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/overview\">Aperçu de la sécurité du contenu</a>",
+      "extraHtml": "Les retours négatifs sur les produits ne sont pas nécessairement un contenu nuisible, et le nombre de pages n’a pas de sens sémantique. Maintenez des seuils et des chemins de revue séparés pour le ton, le risque politique et les données sensibles."
+    },
+    {
+      "id": "ai103-2cb2a394f156",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "TopicExtraction",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "TopicExtraction"
+      ],
+      "promptHtml": "La transcription d’une réunion nécessite des sujets identifiés sans taxonomie prédéfinie. Quelle approche doit être évaluée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Extraction générative de sujets avec sortie structurée"
+        },
+        {
+          "key": "B",
+          "label": "Détection d’objets image"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Extraction générative de sujets avec sortie structurée",
+      "rationaleHtml": "L’incitation générative peut identifier des sujets émergents et les renvoyer dans un schéma défini.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Sorties structurées</a>",
+      "extraHtml": "La vision et la synthèse abordent d’autres modalités. Normaliser les sujets quasi-doublés, exiger des périodes de preuve et évaluer la stabilité à travers des transcriptions représentatives."
+    },
+    {
+      "id": "ai103-c389974260c1",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Ingestion",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Ingestion"
+      ],
+      "promptHtml": "Un système RAG doit ingérer des PDF, images, audio et vidéo dans un magasin de mise à la terre consultable. Quelle architecture est appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Multimodal ingestion plus un index Azure AI Search"
+        },
+        {
+          "key": "B",
+          "label": "Une boîte de texte sans pipeline d’ingestion"
+        },
+        {
+          "key": "C",
+          "label": "Une galerie vocale uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Multimodal ingestion plus un index Azure AI Search",
+      "rationaleHtml": "Un pipeline d’ingestion multimodal peut extraire des représentations et des métadonnées avant de les indexer pour leur récupération.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/search-what-is-azure-search\">Aperçu de la recherche Azure AI</a>",
+      "extraHtml": "Une boîte de texte et une galerie vocale ne créent pas un corpus de mise à la terre géré. Préservez l’identité de la source, les métadonnées d’accès, les horodatages et les preuves spécifiques à la modalité lors de l’ingestion."
+    },
+    {
+      "id": "ai103-467b8c2c9c85",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Search",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Search"
+      ],
+      "promptHtml": "Une solution de recherche doit trouver des numéros de régulation exacts et des passages conceptuellement similaires dans une seule requête. Quel mode de recherche doit-elle utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Recherche hybride"
+        },
+        {
+          "key": "B",
+          "label": "Recherche vectorielle uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Recherche en texte intégral uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Recherche hybride",
+      "rationaleHtml": "La recherche hybride combine l’appariement lexical pour les identifiants exacts avec la similarité vectorielle pour les concepts sémantiques.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/hybrid-search-overview\">Aperçu de la recherche hybride</a>",
+      "extraHtml": "L’un ou l’autre mode peut manquer les preuves favorisées par l’autre. Ajustez la fusion et le classement sémantique en utilisant des jugements de pertinence identifiés plutôt que de ne vous fier qu’aux paramètres par défaut."
+    },
+    {
+      "id": "ai103-aaa4e29a337c",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "SemanticSearch",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "SemanticSearch"
+      ],
+      "promptHtml": "Une application de recherche nécessite un ordre amélioré basé sur le sens sémantique après la récupération initiale. Quelle fonctionnalité doit être ajoutée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Classement sémantique"
+        },
+        {
+          "key": "B",
+          "label": "Une règle du cycle de vie de stockage"
+        },
+        {
+          "key": "C",
+          "label": "Un lexique de prononciation de la parole"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Classement sémantique",
+      "rationaleHtml": "Le classeur sémantique reclasse un texte initial ou un ensemble de résultats hybride en utilisant la compréhension du langage.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/semantic-search-overview\">Aperçu sémantique du classement</a>",
+      "extraHtml": "Le cycle de vie de stockage et les lexiques de la parole résolvent des problèmes non liés. Le classement sémantique ne remplace pas la récupération ; il améliore l’ordre au sein de l’ensemble candidat et doit être évalué pour sa pertinence et son coût."
+    },
+    {
+      "id": "ai103-53c70097ef50",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "OCR",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "OCR"
+      ],
+      "promptHtml": "Les contrats numérisés ne contiennent aucun texte intégré, mais leur contenu doit être indexé pour le RAG. Quelle étape d’enrichissement est requise ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR pendant l’ingestion"
+        },
+        {
+          "key": "B",
+          "label": "Synthèse vocale"
+        },
+        {
+          "key": "C",
+          "label": "Génération d’images"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR pendant l’ingestion",
+      "rationaleHtml": "L’OCR convertit le texte visible des pages numérisées en contenu lisible par machine pour l’indexation et l’extraction.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-skill-ocr\">compétence OCR</a>",
+      "extraHtml": "La synthèse vocale et la génération d’images ne récupèrent pas le texte du document. Préservez les métadonnées de page et de région afin que les réponses générées puissent citer la bonne source géographique."
+    },
+    {
+      "id": "ai103-242ea9acaaf1",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Enrichment",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Enrichment"
+      ],
+      "promptHtml": "Un pipeline d’ingestion doit diviser les documents et créer des embeddings sans code personnalisé lorsque cela est supporté. Que doit-il configurer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Compétences d’enrichissement intégrées dans un ensemble de compétences"
+        },
+        {
+          "key": "B",
+          "label": "Une extension de navigateur sur chaque appareil utilisateur"
+        },
+        {
+          "key": "C",
+          "label": "Un processus manuel mensuel de copie"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Compétences d’enrichissement intégrées dans un ensemble de compétences",
+      "rationaleHtml": "Les compétences Azure AI Search peuvent orchestrer un enrichissement intégré tel que la division et la vectorisation lors de l’indexation.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-working-with-skillsets\">Aperçu des compétences</a>",
+      "extraHtml": "Les extensions client et la copie manuelle ne sont pas des conceptions d’ingestion évolutives. Utilisez des compétences personnalisées uniquement lorsque les intégrées ne peuvent pas répondre aux exigences de transformation, et surveillez les avertissements d’enrichissement."
+    },
+    {
+      "id": "ai103-04a53ca7c0c8",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Enrichment",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Enrichment"
+      ],
+      "promptHtml": "Un classificateur propriétaire doit enrichir chaque document indexé. Comment devrait-il être intégré à un pipeline Azure AI Search ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajouter une compétence personnalisée de l’API Web"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter uniquement un classeur sémantique"
+        },
+        {
+          "key": "C",
+          "label": "Ajouter une voix de synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajouter une compétence personnalisée de l’API Web",
+      "rationaleHtml": "Une compétence personnalisée d’API Web invoque une logique d’enrichissement spécifique à l’organisation au sein d’un ensemble de compétences indexeurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-custom-skill-web-api\">compétence API Web personnalisée</a>",
+      "extraHtml": "Résultats sémantiques des ordres de classement mais ne les classent pas lors de l’ingestion. Concevez la compétence personnalisée pour le batching, les tentatives, les délais d’attente, la cohérence du schéma et l’authentification sécurisée."
+    },
+    {
+      "id": "ai103-ac70b6f7db93",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Ingestion",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Ingestion"
+      ],
+      "promptHtml": "Un index RAG contient des en-têtes et pieds de page dupliqués qui réduisent la qualité de récupération. Où doivent-ils être retirés ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Lors du prétraitement ou de l’enrichissement des documents"
+        },
+        {
+          "key": "B",
+          "label": "Après que la réponse finale ait atteint l’utilisateur"
+        },
+        {
+          "key": "C",
+          "label": "En augmentant la température du modèle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Lors du prétraitement ou de l’enrichissement des documents",
+      "rationaleHtml": "Le nettoyage répété des artefacts de mise en page avant le chunking empêche le texte bruyant de contaminer les embeddings et la récupération.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-concept-intro\">aperçu de l’enrichissement de l’IA</a>",
+      "extraHtml": "Le nettoyage post-réponse ne peut pas réparer la récupération, et la température affecte l’échantillonnage de génération. Conservez les références sources originales tout en indexant une représentation propre."
+    },
+    {
+      "id": "ai103-99269a662d5e",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "AgentGrounding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "AgentGrounding"
+      ],
+      "promptHtml": "Un agent doit rechercher un index de connaissances régi à l’exécution. Quelle intégration est appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exposez le pipeline de récupération comme un outil de connaissance de l’agent"
+        },
+        {
+          "key": "B",
+          "label": "Copiez l’index complet dans l’invite système"
+        },
+        {
+          "key": "C",
+          "label": "Accorder à l’agent des droits d’index-administrateur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Exposez le pipeline de récupération comme un outil de connaissance de l’agent",
+      "rationaleHtml": "Un outil de récupération donne à l’agent un accès en temps d’exécution à l’autonomie aux preuves indexées pertinentes.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Catalogue d’outils pour agents</a>",
+      "extraHtml": "La copie du corpus dépasse les limites contextuelles et devient obsolète ; les droits d’administrateur violent le moindre privilège. Appliquer le coupage de sécurité et retourner les citations avec les chunks récupérés."
+    },
+    {
+      "id": "ai103-d79e32b5c16d",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Les factures nécessitent du texte, des tableaux, des marques de sélection et des relations spatiales pour l’extraction en aval. Quelle capacité documentaire doit être utilisée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR plus analyse de mise en page"
+        },
+        {
+          "key": "B",
+          "label": "Analyse du sentiment seule"
+        },
+        {
+          "key": "C",
+          "label": "Synthèse vocale"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR plus analyse de mise en page",
+      "rationaleHtml": "L’OCR récupère le texte tandis que l’analyse de mise en page préserve les relations structurelles nécessaires à l’extraction du document.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/document-intelligence/concept-layout\">Modèle de mise en page de document</a>",
+      "extraHtml": "Le sentiment et la synthèse ne récupèrent pas la structure du document. Conservez les informations sur la page, le polygone, la table et la confiance lorsque le raisonnement en aval dépend de la localisation."
+    },
+    {
+      "id": "ai103-9a25c730f925",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "FieldExtraction",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "FieldExtraction"
+      ],
+      "promptHtml": "Un pipeline de documents doit extraire le fournisseur, le total et la date de facture dans des champs fixes. Quelle approche convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Extraction de champs avec un schéma défini"
+        },
+        {
+          "key": "B",
+          "label": "Classement par mot-clé sans extraction"
+        },
+        {
+          "key": "C",
+          "label": "Identification audio des langues"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Extraction de champs avec un schéma défini",
+      "rationaleHtml": "L’extraction de champs basée sur le schéma renvoie les valeurs métier requises dans des emplacements prévisibles.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/document-intelligence/overview\">Aperçu du renseignement documentaire</a>",
+      "extraHtml": "Le classement trouve des documents mais ne produit pas de champs de facture, et l’identification audio n’est pas liée. Validez les totaux, devises, confiance et portions de source avant de publier les transactions."
+    },
+    {
+      "id": "ai103-6f5d9f3437aa",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "Les types de documents mixtes doivent devenir des représentations structurées et claires sur lesquelles les agents peuvent raisonner. Quel service est conçu pour l’extraction multimodale basée sur un schéma ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Content Understanding"
+        },
+        {
+          "key": "B",
+          "label": "Azure Traffic Manager"
+        },
+        {
+          "key": "C",
+          "label": "Azure Queue Storage"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Content Understanding",
+      "rationaleHtml": "La compréhension du contenu crée des sorties structurées et ancrées à partir de contenus multimodaux à l’aide d’analyseurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Le gestionnaire de trafic aroute le DNS et le stockage en file d’attente transporte les messages. Choisissez les schémas en fonction des tâches en aval et conservez les informations de mise à la terre et de confiance de la source."
+    },
+    {
+      "id": "ai103-e31abaf7df15",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "AnalyzerOutputs",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "AnalyzerOutputs"
+      ],
+      "promptHtml": "Les agents en aval ont besoin d’un contenu documentaire qui préserve les titres, listes et tableaux sous une forme lisible. Quel résultat d’analyseur est le plus utile ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sortie à remarques"
+        },
+        {
+          "key": "B",
+          "label": "Une miniature d’image brute uniquement"
+        },
+        {
+          "key": "C",
+          "label": "Une forme d’onde audio uniquement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sortie à remarques",
+      "rationaleHtml": "Markdown préserve une structure documentaire utile sous forme de texte adaptée au chunking et au raisonnement en continu.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Les vignettes et les formes d’onde omettent la structure textuelle requise. Validez la conversion des tableaux et de l’ordre de lecture, et conservez les liens vers les preuves sources au niveau de la page."
+    },
+    {
+      "id": "ai103-c1564573d50f",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Grounding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Grounding"
+      ],
+      "promptHtml": "Un analyseur personnalisé extrait un numéro de politique mais les évaluateurs doivent vérifier d’où il provienne. Quelles métadonnées la sortie doit-elle conserver ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ancrage et confiance en sources"
+        },
+        {
+          "key": "B",
+          "label": "Seule la valeur finale du champ"
+        },
+        {
+          "key": "C",
+          "label": "Seule la facture de traitement"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ancrage et confiance en sources",
+      "rationaleHtml": "Les emplacements de mise à la terre et la confiance soutiennent la vérification, la révision du routage et l’analyse des erreurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Aperçu de la compréhension du contenu</a>",
+      "extraHtml": "Une valeur minimale est difficile à auditer, et les données de facturation ne prouvent pas l’extraction. Utilisez la confiance comme un signal de triage plutôt qu’une vérité incontestée et validez les champs à fort impact."
+    }
+  ]
+}

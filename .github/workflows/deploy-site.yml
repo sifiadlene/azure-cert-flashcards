@@ -67,6 +67,20 @@ jobs:
       - name: Run end-to-end tests
         run: npm run test:e2e
 
+      # Generates any missing {slug}-fr.json; skips decks already translated.
+      - name: Translate decks to French
+        if: ${{ vars.AZURE_TRANSLATOR_REGION != '' }}
+        working-directory: ${{ github.workspace }}
+        env:
+          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
+        run: |
+          if [ -z "$AZURE_TRANSLATOR_KEY" ]; then
+            echo "AZURE_TRANSLATOR_KEY secret not set; skipping French translation."
+            exit 0
+          fi
+          node tools/translate-decks.mjs
+
       - name: Build site
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/

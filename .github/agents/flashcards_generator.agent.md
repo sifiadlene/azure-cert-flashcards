@@ -3,7 +3,7 @@ name: flashcards_generator
 description: Generate high-quality exam-realistic flashcards ANKI deck in CSV format with evaluation metrics. Ensures technical accuracy, diverse question types, and valuable explanations.
 model: Claude Opus 4.8 (copilot)
 argument-hint: Exam certification number (e.g., AZ-305) and optionally number of flashcards (default 50). Can also specify topic focus or difficulty level.
-tools: ['web', 'read', 'edit', 'search'] # specify the tools this agent can use. If not set, all enabled tools are allowed.
+tools: ['web', 'read', 'edit', 'search', 'runCommands'] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 ---
 Your task: Generate high‑quality exam-realistic flashcards ANKI deck in CSV format.
 
@@ -239,6 +239,29 @@ def validate_flashcard_csv(filepath):
 ✓ Every domain in the official guide is represented by at least one flashcard
 ✓ No flashcards test topics outside the extracted official exam scope (unless user explicitly requests a focused subset)
 ✓ Tags map to extracted domain/topic names rather than invented categories
+
+## Generate English Deck (Post-Validation Build)
+
+After CSV format validation passes with zero errors, generate the English JSON deck that the web app consumes.
+
+1. **Run the build** from the `web/` directory:
+   ```bash
+   cd web && npm run build:data
+   ```
+   This reads `flashcards/*.csv`, selects the latest CSV per exam slug, and writes `web/public/data/decks/{slug}.json` plus `web/public/data/exams.json`. Translated `*-fr.json` decks are preserved.
+
+2. **Do NOT run `npm run validate:data` here.** That step enforces English/French deck parity and fails for any English-only deck that has no `{slug}-fr.json` yet. `build:data` already throws on malformed rows (wrong column count, missing question/options separator, non-A/B/C options), so a clean run confirms the CSV is structurally valid.
+
+3. **Confirm the outputs.** Verify `web/public/data/decks/{slug}.json` was created or updated and that `exams.json` lists the exam, then review the full generated diff:
+   ```bash
+   git status --short web/public/data
+   git diff -- web/public/data
+   ```
+   `build:data` regenerates every English deck and always refreshes the `generatedAt` timestamp in `exams.json`, so `exams.json` always shows a diff; individual decks change only when their CSV changed.
+
+4. **Set a friendly exam title for new slugs.** If the exam slug is new, add it to `titleMap` in `web/scripts/buildFlashcardData.mjs` (e.g. `gh900: 'GitHub Foundations'`) so the deck shows a readable title instead of the raw display code, then re-run the build.
+
+5. **Commit the CSV and the generated JSON together.** The GitHub Pages deploy workflow does not run `build:data`; it serves the committed JSON and guards against drift, so the deck files must be committed alongside the CSV.
 
 ## Final Output
 

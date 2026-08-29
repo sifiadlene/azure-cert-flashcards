@@ -1,0 +1,3087 @@
+{
+  "exam": {
+    "slug": "gh900",
+    "code": "GH-900",
+    "title": "Fondations GitHub",
+    "sourceFile": "gh900_flashcards_2026-08-29.csv",
+    "deckVersion": "2026-08-29",
+    "updatedOn": "2026-08-29",
+    "questionCount": 100,
+    "domains": [
+      "CollaborationFeatures",
+      "GitHubCommunity",
+      "GitHubRepositories",
+      "IntroToGitAndGitHub",
+      "ModernDevelopment",
+      "ProjectManagement",
+      "SecurityAndAdministration"
+    ],
+    "topics": [
+      "Accounts",
+      "AuditLog",
+      "Authentication",
+      "Automation",
+      "BestPractices",
+      "BranchProtection",
+      "Branching",
+      "CICD",
+      "CodeOwners",
+      "CodeReview",
+      "CodeScanning",
+      "Codespaces",
+      "CommunityHealth",
+      "Copilot",
+      "Dependabot",
+      "Discoverability",
+      "Discussions",
+      "Engagement",
+      "Forking",
+      "Gists",
+      "GitCommands",
+      "GitFundamentals",
+      "GitHubActions",
+      "GitHubCLI",
+      "GitHubFlow",
+      "GitHubMobile",
+      "GitHubPages",
+      "GitVsGitHub",
+      "History",
+      "InnerSource",
+      "Insights",
+      "Integrations",
+      "Issues",
+      "Labels",
+      "Licensing",
+      "Linking",
+      "Markdown",
+      "Marketplace",
+      "Mentions",
+      "Merging",
+      "Milestones",
+      "Notifications",
+      "Permissions",
+      "Products",
+      "Projects",
+      "PullRequests",
+      "Reactions",
+      "Releases",
+      "Remotes",
+      "Repositories",
+      "RepositoryFiles",
+      "RepositoryManagement",
+      "SavedReplies",
+      "Search",
+      "SecretScanning",
+      "SecurityAdvisories",
+      "Sponsors",
+      "TaskLists",
+      "Teams",
+      "Templates",
+      "Triage",
+      "Visibility",
+      "Wikis"
+    ]
+  },
+  "questions": [
+    {
+      "id": "gh900-f2224c7f60db",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitVsGitHub",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitVsGitHub"
+      ],
+      "promptHtml": "Un nouveau membre de l’équipe demande en quoi Git et GitHub diffèrent. Quelle affirmation décrit le plus précisément la relation ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Git est un système de gestion de versions distribué, tandis que GitHub est une plateforme cloud qui héberge des dépôts Git et ajoute des fonctionnalités de collaboration"
+        },
+        {
+          "key": "B",
+          "label": "Git et GitHub sont deux systèmes de gestion de versions concurrents, et un projet doit en choisir exactement un pour suivre l’historique"
+        },
+        {
+          "key": "C",
+          "label": "GitHub est l’outil en ligne de commande qui enregistre les commits, tandis que Git est le site web utilisé pour examiner et fusionner ces commits en ligne"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Git est un système de gestion de versions distribué, tandis que GitHub est une plateforme cloud qui héberge des dépôts Git et ajoute des fonctionnalités de collaboration",
+      "rationaleHtml": "Git est le VCS sous-jacent créé par Linus Torvalds ; GitHub est une plateforme d’hébergement et de collaboration construite autour de Git.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/start-your-journey/about-github-and-git\">À propos de GitHub et Git - GitHub Docs</a>",
+      "extraHtml": "N’oubliez pas : Git fonctionne entièrement hors ligne sur votre machine ; GitHub ajoute des pull requests, des issues, des actions et un contrôle d’accès au-dessus de Git. Vous pouvez utiliser Git sans GitHub, mais pas l’inverse."
+    },
+    {
+      "id": "gh900-eb9adc922db8",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitFundamentals",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitFundamentals"
+      ],
+      "promptHtml": "Pourquoi Git est-il décrit comme un système de contrôle de versions « distribué » plutôt que centralisé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Toute l’histoire ne vit que sur un serveur central, donc les développeurs doivent rester connectés pour soumettre toute modification au projet"
+        },
+        {
+          "key": "B",
+          "label": "Chaque clone contient l’historique complet du projet, afin que les développeurs puissent valider et consulter l’historique localement sans connexion réseau"
+        },
+        {
+          "key": "C",
+          "label": "Le dépôt est divisé en fragments répartis sur de nombreux serveurs, et aucune machine ne détient jamais l’historique complet des commits"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Chaque clone contient l’historique complet du projet, afin que les développeurs puissent valider et consulter l’historique localement sans connexion réseau",
+      "rationaleHtml": "Dans Git, chaque clone est un dépôt complet avec un historique complet, permettant un travail hors ligne et une résilience.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "À l’inverse, avec des systèmes centralisés comme SVN où l’historique se trouve sur un seul serveur. L’historique distribué signifie qu’il n’y a pas de point de défaillance unique et des opérations locales rapides."
+    },
+    {
+      "id": "gh900-0c15155116ce",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitCommands",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitCommands"
+      ],
+      "promptHtml": "Un développeur souhaite une copie locale et fonctionnelle d’un dépôt GitHub distant, incluant son historique complet de commits. Quelle commande Git doit-il utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "git init, qui commence à suivre le dossier vide actuel comme un tout nouveau dépôt local sans historique distant lié"
+        },
+        {
+          "key": "B",
+          "label": "Git Pull, qui met à jour un dépôt local déjà existant avec les derniers commits depuis sa zone à distance en amont configurée"
+        },
+        {
+          "key": "C",
+          "label": "clone de git"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "clone de git",
+      "rationaleHtml": "Git Clone télécharge une copie complète d’un dépôt distant, incluant tout l’historique, et configure automatiquement la télécommande.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository\">Cloner un dépôt - GitHub Docs</a>",
+      "extraHtml": "Git Init crée un nouveau dépôt vide ; git pull ne fonctionne qu’après qu’un dépôt existe déjà localement. Utilise clone une fois pour commencer, puis pull pour rester à jour."
+    },
+    {
+      "id": "gh900-9615429b529e",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitFundamentals",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitFundamentals"
+      ],
+      "promptHtml": "Dans Git, quel est le but de la zone de staging (l’index) lorsqu’on utilise git add ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il écrit de façon permanente les modifications sélectionnées dans l’historique du projet et les publie immédiatement dans le dépôt distant"
+        },
+        {
+          "key": "B",
+          "label": "Cela vous permet de sélectionner exactement quels changements seront inclus dans le prochain commit avant d’enregistrer effectivement ce commit"
+        },
+        {
+          "key": "C",
+          "label": "Cela crée automatiquement une branche séparée afin que les modifications inachevées n’affectent jamais la branche actuelle sur laquelle vous vous trouvez"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Cela vous permet de sélectionner exactement quels changements seront inclus dans le prochain commit avant d’enregistrer effectivement ce commit",
+      "rationaleHtml": "La zone de staging contient l’instantané des modifications que le commit git enregistrera, offrant un contrôle précis sur le contenu du commit.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "Flux de travail : modifier les fichiers, ajouter à l’étape par git, commit git à l’enregistrement. La staging permet de diviser des changements sans lien en commits séparés et significatifs."
+    },
+    {
+      "id": "gh900-ebae28ee4dcc",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitFundamentals",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitFundamentals"
+      ],
+      "promptHtml": "Que représente un commit Git dans un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un instantané sauvegardé des changements en phase à un moment donné, accompagné de l’auteur, du message et d’un lien vers les commits précédents"
+        },
+        {
+          "key": "B",
+          "label": "Un brouillon temporaire de modifications stocké uniquement en mémoire qui disparaît dès que la fenêtre de l’éditeur ou du terminal est fermée"
+        },
+        {
+          "key": "C",
+          "label": "Une demande demandant à un responsable de projet de revoir et de combiner une branche dans une autre branche sur GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un instantané sauvegardé des changements en phase à un moment donné, accompagné de l’auteur, du message et d’un lien vers les commits précédents",
+      "rationaleHtml": "Chaque commit enregistre un instantané ainsi que des métadonnées et fait référence à son parent, formant ainsi l’historique du projet.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "Un commit est immuable et identifié par un hachage SHA. La description « demande de combinaison des branches » est une pull request, pas un commit."
+    },
+    {
+      "id": "gh900-aa1806e84f50",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Branching",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Branching"
+      ],
+      "promptHtml": "Un développeur souhaite travailler sur une nouvelle fonctionnalité sans affecter le code stable. Quelle est l’approche Git recommandée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Copiez l’ensemble du projet dans un second dossier et fusionnez manuellement les fichiers modifiés un par un une fois terminé"
+        },
+        {
+          "key": "B",
+          "label": "Modifier les fichiers directement sur la branche principale mais éviter de valider les fichiers tant que la fonctionnalité n’est pas complètement terminée et testée"
+        },
+        {
+          "key": "C",
+          "label": "Créez une nouvelle branche, faites des commits là-bas, puis refusionnez-la ensuite dans la branche principale"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Créez une nouvelle branche, faites des commits là-bas, puis refusionnez-la ensuite dans la branche principale",
+      "rationaleHtml": "Les branches isolent le travail pour que la ligne principale reste stable ; les changements reviennent lorsqu’ils sont prêts, généralement via une pull request.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-github/github-flow\">GitHub Flow - GitHub Docs</a>",
+      "extraHtml": "Le branchement est léger dans Git. C’est la base du flux GitHub : brancher, commit, ouvrir une PR, réviser, fusionner."
+    },
+    {
+      "id": "gh900-85e966afc7fe",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitCommands",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitCommands"
+      ],
+      "promptHtml": "Après avoir validé les modifications localement, quelle commande télécharge ces commits dans la branche correspondante sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Git Commit, qui finalise les modifications en phase dans l’historique local mais n’envoie rien au dépôt distant"
+        },
+        {
+          "key": "B",
+          "label": "git push"
+        },
+        {
+          "key": "C",
+          "label": "Git Fetch, qui télécharge de nouveaux commits et références depuis la télécommande mais ne téléverse aucun de vos commits locaux"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "git push",
+      "rationaleHtml": "git push transfère les commits locaux sur une branche vers la branche correspondante sur la branche distante (GitHub).<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository\">Pousser des commits vers un dépôt distant - GitHub Docs</a>",
+      "extraHtml": "commit les enregistrements localement ; push publie. fetch est dans la direction opposée (téléchargement uniquement). Push régulièrement pour que les collaborateurs puissent voir votre travail."
+    },
+    {
+      "id": "gh900-57b1a3e402cd",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitCommands",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitCommands"
+      ],
+      "promptHtml": "Quelle est la différence clé entre git fetch et git pull ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Git Fetch télécharge les modifications à distance sans les fusionner, tandis que Git retire les téléchargements puis les fusionne dans votre branche actuelle"
+        },
+        {
+          "key": "B",
+          "label": "Git Fetch écrase définitivement vos commits locaux avec la version distante, tandis que Git Pull garde en toute sécurité une sauvegarde de votre travail local en priorité"
+        },
+        {
+          "key": "C",
+          "label": "git fetch ne fonctionne que sur des dépôts privés, tandis que git pull est nécessaire pour tout dépôt rendu public sur GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Git Fetch télécharge les modifications à distance sans les fusionner, tandis que Git retire les téléchargements puis les fusionne dans votre branche actuelle",
+      "rationaleHtml": "Git Pull est en fait Git Fetch suivi d’une fusion (ou rebase) dans la branche courante.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository\">Obtenir des modifications depuis un dépôt distant - GitHub Docs</a>",
+      "extraHtml": "Utilisez le fetch pour inspecter les changements entrants avant l’intégration ; utilisez pull quand vous voulez mettre à jour votre branche immédiatement. Aucun des deux ne dépend de la visibilité des dépôts."
+    },
+    {
+      "id": "gh900-1be48f16976d",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitHubFlow",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitHubFlow"
+      ],
+      "promptHtml": "Quelle séquence décrit le mieux le flux GitHub pour proposer un changement ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Push directement vers le main, puis préviens tes coéquipiers par email pour qu’ils puissent examiner le changement une fois qu’il est déjà en production"
+        },
+        {
+          "key": "B",
+          "label": "Créer une branche, faire un commit des modifications, ouvrir une pull request, revoir et discuter, puis fusionner dans la branche par défaut"
+        },
+        {
+          "key": "C",
+          "label": "Forkez le dépôt, supprimez la branche par défaut, et reconstruisez l’historique du projet à partir de zéro avant de soumettre les modifications"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Créer une branche, faire un commit des modifications, ouvrir une pull request, revoir et discuter, puis fusionner dans la branche par défaut",
+      "rationaleHtml": "GitHub Flow est un flux de travail léger, basé sur des branchements, centré sur des pull requests à examiner avant la fusion.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-github/github-flow\">GitHub Flow - GitHub Docs</a>",
+      "extraHtml": "Le flux GitHub maintient la main déployable en permanence. La pull request est le hub de collaboration pour la revue, la discussion et les vérifications automatisées."
+    },
+    {
+      "id": "gh900-f41549f871d9",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Remotes",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Remotes"
+      ],
+      "promptHtml": "Dans un dépôt cloné, à quoi se réfère généralement l'« origine » nommée à distance ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le dossier .git local sur votre ordinateur où toutes les modifications en phase sont temporairement écrites avant qu’elles ne deviennent des commits"
+        },
+        {
+          "key": "B",
+          "label": "L’alias par défaut pointant vers le dépôt distant dont le projet a été cloné, comme son URL GitHub"
+        },
+        {
+          "key": "C",
+          "label": "Une branche protégée à laquelle seuls les administrateurs de dépôt sont autorisés à pousser les commits après avoir passé les vérifications de statut"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "L’alias par défaut pointant vers le dépôt distant dont le projet a été cloné, comme son URL GitHub",
+      "rationaleHtml": "Par convention, git clone nomme la distance source « origin », que vous envoyez et récupérez.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories\">Gestion des dépôts distants - GitHub Docs</a>",
+      "extraHtml": "Origin est juste un nom pratique ; vous pouvez ajouter d’autres commandes (par exemple, « en amont » en travaillant à partir d’un fork). Ce n’est pas une branche."
+    },
+    {
+      "id": "gh900-d363b01192c9",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Markdown",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Markdown"
+      ],
+      "promptHtml": "Quel langage de balisage léger GitHub utilise-t-il pour formater les fichiers README, les problèmes et les commentaires ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Markdown"
+        },
+        {
+          "key": "B",
+          "label": "Un format binaire propriétaire qui ne peut être modifié qu’avec l’application de bureau propre à GitHub sous Windows"
+        },
+        {
+          "key": "C",
+          "label": "Exclusivement HTML, c’est-à-dire que le texte brut et les symboles de formatage abrégés sont supprimés et jamais rendus sur GitHub"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Markdown",
+      "rationaleHtml": "GitHub utilise GitHub Flavored Markdown pour afficher le texte formaté dans les README, les numéros, les PR et les commentaires.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax\">Syntaxe d’écriture et de mise en forme de base - GitHub Docs</a>",
+      "extraHtml": "GitHub prend en charge un HTML limité dans Markdown, ainsi que des extensions comme les listes de tâches, les tableaux et @mentions. Les fichiers Markdown utilisent l’extension .md."
+    },
+    {
+      "id": "gh900-7b7e72abe7c9",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Repositories",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Repositories"
+      ],
+      "promptHtml": "Comment décrire au mieux un dépôt GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un seul fichier texte immuable qui ne stocke que la dernière version du code source d’un projet et rien d’autre"
+        },
+        {
+          "key": "B",
+          "label": "La page de profil publique d’un utilisateur qui résume son activité de contribution sur tous les projets de la plateforme"
+        },
+        {
+          "key": "C",
+          "label": "Un conteneur pour les fichiers d’un projet et leur historique complet des versions, ainsi que les paramètres, problèmes et pull requests"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un conteneur pour les fichiers d’un projet et leur historique complet des versions, ainsi que les paramètres, problèmes et pull requests",
+      "rationaleHtml": "Un dépôt contient des fichiers de projet, un historique complet et des fonctionnalités de collaboration telles que les problèmes et les pull requests.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories\">À propos des dépôts - GitHub Docs</a>",
+      "extraHtml": "Un dépôt est l’unité fondamentale sur GitHub. Il peut appartenir à un compte personnel ou à une organisation et peut être public, privé ou interne."
+    },
+    {
+      "id": "gh900-cc0418fba365",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Accounts",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Accounts"
+      ],
+      "promptHtml": "Quelle est une différence clé entre un compte personnel et un compte d’organisation sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les comptes personnels peuvent héberger du code, mais les comptes d’organisation sont limités à l’hébergement de la documentation et des tableaux de projets uniquement"
+        },
+        {
+          "key": "B",
+          "label": "Une organisation est un compte partagé pour la collaboration de groupe avec des équipes et les autorisations centralisées, tandis qu’un compte personnel représente un individu"
+        },
+        {
+          "key": "C",
+          "label": "Seuls les comptes personnels peuvent créer des dépôts privés, tandis que les comptes d’organisation sont exclusivement réservés aux dépôts publics"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Une organisation est un compte partagé pour la collaboration de groupe avec des équipes et les autorisations centralisées, tandis qu’un compte personnel représente un individu",
+      "rationaleHtml": "Les organisations permettent à de nombreux utilisateurs de collaborer avec des équipes, des rôles et une administration centralisée.<br><br>Référence : <a href=\"https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations\">À propos des organisations - GitHub Docs</a>",
+      "extraHtml": "Les organisations possèdent collectivement des dépôts et soutiennent les équipes pour une gestion d’accès évolutive. Les deux types de comptes peuvent héberger des dépôts publics et privés."
+    },
+    {
+      "id": "gh900-388683638a50",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Forking",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Forking"
+      ],
+      "promptHtml": "Un développeur souhaite contribuer à un projet open source où il n’a pas accès à l’écriture. Quelle est la première étape standard ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Forkez le dépôt pour créer leur propre copie, puis effectuez des modifications et ouvrez une requête de tirage vers l’original"
+        },
+        {
+          "key": "B",
+          "label": "Demandez à un mainteneur de leur accorder des droits d’administrateur sur le projet afin qu’ils puissent envoyer directement les commits vers le principal"
+        },
+        {
+          "key": "C",
+          "label": "Clonez le dépôt localement et forcez à pousser leurs nouveaux commits sur la branche par défaut du projet une fois terminé"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Forkez le dépôt pour créer leur propre copie, puis effectuez des modifications et ouvrez une requête de tirage vers l’original",
+      "rationaleHtml": "Le fork crée une copie personnelle côté serveur ; les contributeurs y travaillent et proposent des modifications via pull requests.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project\">Contribuer à un projet - GitHub Docs</a>",
+      "extraHtml": "Le modèle fork-and-pull est la colonne vertébrale de la contribution open source. Vous n’avez jamais besoin d’un accès en écriture au dépôt original pour proposer des modifications."
+    },
+    {
+      "id": "gh900-da559b761371",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitFundamentals",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitFundamentals"
+      ],
+      "promptHtml": "Dans Git, vers quoi HEAD pointe-t-il normalement ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le commit le plus ancien du dépôt, qui sert d’ancrage permanent dont toutes les branches ultérieures descendent finalement"
+        },
+        {
+          "key": "B",
+          "label": "La référence de suivi distante qui reflète toujours l’état exact actuel de la branche stockée sur le serveur GitHub"
+        },
+        {
+          "key": "C",
+          "label": "La branche ou commit actuel que vous avez empruntée, indiquant votre position actuelle dans l’historique du dépôt"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "La branche ou commit actuel que vous avez empruntée, indiquant votre position actuelle dans l’historique du dépôt",
+      "rationaleHtml": "HEAD est un pointeur vers le branchement actuellement emprunté (ou commit), marquant l’emplacement où les nouveaux commits s’attachent.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "Lorsque vous changez de branche avec git checkout/switch, HEAD se déplace pour pointer vers la nouvelle branche. Un « HEAD détaché » pointe directement vers un commit au lieu d’une branche."
+    },
+    {
+      "id": "gh900-e963e7aca7c5",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "Merging",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "Merging"
+      ],
+      "promptHtml": "Deux développeurs ont modifié les mêmes lignes du même fichier sur des branches différentes. Lors de la fusion, que se passe-t-il ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Git ignore silencieusement les modifications d’un développeur et ne conserve que la version la plus récente et confirmée sans aucun avertissement"
+        },
+        {
+          "key": "B",
+          "label": "Git rapporte un conflit de fusion qu’une personne doit résoudre en choisissant ou en combinant les changements conflictuels"
+        },
+        {
+          "key": "C",
+          "label": "Git envoie automatiquement des e-mails aux deux développeurs et verrouille le dépôt jusqu’à ce qu’un administrateur approuve manuellement la fusion"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Git rapporte un conflit de fusion qu’une personne doit résoudre en choisissant ou en combinant les changements conflictuels",
+      "rationaleHtml": "Lorsque les mêmes lignes changent des deux côtés, Git ne peut pas fusionner automatiquement et marque un conflit pour résolution manuelle.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts\">À propos des conflits de fusion - GitHub Docs</a>",
+      "extraHtml": "Git fusionne automatiquement les changements non superposés. Les conflits nécessitent un jugement humain car Git ne peut pas savoir quelle version est correcte. Communiquez pour les réduire."
+    },
+    {
+      "id": "gh900-c239f9be1125",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "BestPractices",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "BestPractices"
+      ],
+      "promptHtml": "Quelle pratique rend l’historique des engagements le plus utile pour une équipe ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rédiger des messages de commit clairs et concis qui expliquent ce qui a changé et pourquoi pour chaque changement logique"
+        },
+        {
+          "key": "B",
+          "label": "Valider toutes les modifications d’une version entière dans un seul gros commit à la toute fin pour garder le journal court"
+        },
+        {
+          "key": "C",
+          "label": "Réutiliser le même message générique comme « update » pour chaque commit afin que l’historique reste visuellement cohérent"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Rédiger des messages de commit clairs et concis qui expliquent ce qui a changé et pourquoi pour chaque changement logique",
+      "rationaleHtml": "Des messages descriptifs et de petits commits logiques rendent l’historique lisible, facile à examiner et facile à déboguer.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "Un bon historique aide avec git blame, les reverts et la relecture de code. Je préfère de petits commits ciblés à un gros commit ou à des messages vagues répétés."
+    },
+    {
+      "id": "gh900-ff77537ca127",
+      "examSlug": "gh900",
+      "domain": "IntroToGitAndGitHub",
+      "topic": "GitFundamentals",
+      "tags": [
+        "GH-900",
+        "IntroToGitAndGitHub",
+        "GitFundamentals"
+      ],
+      "promptHtml": "Qu’est-ce qui est stocké dans le répertoire .git caché à l’intérieur d’un dépôt Git ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Seulement une copie de sauvegarde en texte brut de la version la plus récente de chaque fichier suivi, sans aucune version historique antérieure"
+        },
+        {
+          "key": "B",
+          "label": "Les identifiants des serveurs distants et les jetons d’accès personnels nécessaires pour authentifier chaque poussée sur GitHub"
+        },
+        {
+          "key": "C",
+          "label": "La base de données d’objets complète et les métadonnées du dépôt, incluant tous les commits, branches et configurations"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "La base de données d’objets complète et les métadonnées du dépôt, incluant tous les commits, branches et configurations",
+      "rationaleHtml": "Le dossier .git contient tout ce dont Git a besoin : objets, références, configuration et historique qui font du dossier un dépôt.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-git/about-git\">À propos de Git - GitHub Docs</a>",
+      "extraHtml": "Supprimer .git ramène le dossier en fichiers ordinaires sans historique. Les identifiants sont généralement stockés par un assistant d’identifiants séparé, et non dans des objets .git."
+    },
+    {
+      "id": "gh900-b365e7465aee",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Visibility",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Visibility"
+      ],
+      "promptHtml": "Une organisation souhaite un dépôt visible pour tous les membres de l’entreprise mais caché à l’accès public à Internet. Quel paramètre de visibilité convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "visibilité publique, qui expose le dépôt et son code à toute personne sur Internet, y compris aux non-membres"
+        },
+        {
+          "key": "B",
+          "label": "Visibilité privée, qui limite strictement l’accès aux collaborateurs individuellement invités et à personne d’autre dans l’entreprise"
+        },
+        {
+          "key": "C",
+          "label": "Visibilité interne, qui rend le dépôt lisible pour tous les membres de l’entreprise tout en le maintenant caché au public"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Visibilité interne, qui rend le dépôt lisible pour tous les membres de l’entreprise tout en le maintenant caché au public",
+      "rationaleHtml": "Les dépôts internes sont visibles pour tous les membres de l’entreprise mais pas pour le public, idéal pour InnerSource.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories\">À propos des dépôts - GitHub Docs</a>",
+      "extraHtml": "La visibilité interne nécessite GitHub Enterprise. Cela permet InnerSource : le partage à travers toute l’organisation tout en restant caché de l’extérieur de l’entreprise."
+    },
+    {
+      "id": "gh900-5f90661a2f42",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "RepositoryFiles",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "RepositoryFiles"
+      ],
+      "promptHtml": "Quel est le but principal du fichier README d’un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il liste tous les utilisateurs ayant jamais bénéficié d’un accès administrateur au dépôt au cours de toute sa durée de vie"
+        },
+        {
+          "key": "B",
+          "label": "Il communique ce que fait le projet et comment l’utiliser, et est affiché sur la page d’accueil du dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Il définit quels fichiers et dossiers Git doit ignorer afin qu’ils ne soient jamais suivis ou engagés dans le dépôt"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Il communique ce que fait le projet et comment l’utiliser, et est affiché sur la page d’accueil du dépôt",
+      "rationaleHtml": "Le README introduit le projet et s’affiche automatiquement sur la page d’accueil du dépôt.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes\">À propos des README - GitHub Docs</a>",
+      "extraHtml": "Un README de profil (dans un dépôt nommé d’après votre nom d’utilisateur) apparaît sur votre profil GitHub. Le fichier qui liste les chemins ignorés est .gitignore, pas le README."
+    },
+    {
+      "id": "gh900-bf5a7681b7a6",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "RepositoryFiles",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "RepositoryFiles"
+      ],
+      "promptHtml": "Que fait un fichier .gitignore dans un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il spécifie des fichiers et des motifs intentionnellement non suivis que Git ne doit pas mettre en scène ou faire un commit"
+        },
+        {
+          "key": "B",
+          "label": "Il enregistre les termes de licence qui régissent comment d’autres peuvent réutiliser et distribuer le code source du projet"
+        },
+        {
+          "key": "C",
+          "label": "Il stocke une liste prioritaire des problèmes en cours afin que les contributeurs sachent sur quelles tâches travailler en premier"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Il spécifie des fichiers et des motifs intentionnellement non suivis que Git ne doit pas mettre en scène ou faire un commit",
+      "rationaleHtml": ".gitignore liste les chemins et les motifs (comme la sortie de compilation ou les secrets) que Git devrait exclure du suivi.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files\">Ignorer les fichiers - GitHub Docs</a>",
+      "extraHtml": "Les fichiers déjà suivis ne sont pas affectés par leur ajout à .gitignore ; vous devez d’abord les délocaliser. GitHub propose des modèles spécifiques à chaque langage lors de la création d’un dépôt."
+    },
+    {
+      "id": "gh900-464ea55c407f",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Licensing",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Licensing"
+      ],
+      "promptHtml": "Pourquoi est-il important d’ajouter un fichier LICENCE pour un dépôt public open source ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sans fichier de licence, GitHub supprimera automatiquement le dépôt après une période de grâce fixe d’inactivité"
+        },
+        {
+          "key": "B",
+          "label": "Un fichier de licence est exigé par Git avant que tout commit puisse être envoyé vers un dépôt rendu public"
+        },
+        {
+          "key": "C",
+          "label": "Elle définit les termes juridiques sous lesquels d’autres peuvent utiliser, modifier et distribuer le code"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Elle définit les termes juridiques sous lesquels d’autres peuvent utiliser, modifier et distribuer le code",
+      "rationaleHtml": "Sans licence, le droit d’auteur par défaut s’applique et les autres n’ont généralement aucun droit de réutiliser le code.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository\">Licence d’un dépôt - GitHub Docs</a>",
+      "extraHtml": "Pas de licence signifie « tous droits réservés » par défaut. GitHub peut suggérer des licences courantes (MIT, Apache 2.0, GPL) lorsque vous en créez ou ajoutez une via l’interface web."
+    },
+    {
+      "id": "gh900-eeb4995af187",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Releases",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Releases"
+      ],
+      "promptHtml": "Une équipe souhaite intégrer une version spécifique de son logiciel avec des binaires et des notes de version pour que les utilisateurs puissent les télécharger. Quelle fonctionnalité GitHub devraient-ils utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les sorties, qui sont basées sur des balises Git et peuvent inclure des notes et des assets téléchargeables"
+        },
+        {
+          "key": "B",
+          "label": "Gists, qui sont des documents extraits autonomes destinés à partager de petits morceaux de code en dehors d’un dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Le wiki du dépôt, qui fournit des pages de documentation libres mais n’associe pas de téléchargements binaires versionnés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les sorties, qui sont basées sur des balises Git et peuvent inclure des notes et des assets téléchargeables",
+      "rationaleHtml": "Les versions reposent sur des balises pour publier des livrables versionnés, des notes de version et des binaires joints.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases\">À propos des versions - GitHub Docs</a>",
+      "extraHtml": "Un tag marque un moment historique ; une release ajoute un paquet destiné à l’utilisateur autour de ce tag. Les gists et wikis ne fournissent pas de distribution binaire versionnée."
+    },
+    {
+      "id": "gh900-8b87415b5e0a",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Gists",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Gists"
+      ],
+      "promptHtml": "À quoi sert principalement un GitHub Gist ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Héberger et exécuter des flux d’intégration continus qui construisent et testent une application complète à chaque poussée"
+        },
+        {
+          "key": "B",
+          "label": "Partageant de petits extraits de code ou de notes, publiquement ou secrètement, avec un historique de versions optionnel"
+        },
+        {
+          "key": "C",
+          "label": "Stockage de grands actifs médias binaires tels que des vidéos et des jeux de données dépassant les limites normales de taille de dépôt"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Partageant de petits extraits de code ou de notes, publiquement ou secrètement, avec un historique de versions optionnel",
+      "rationaleHtml": "Les gists sont des extraits légers et partageables qui sont eux-mêmes des dépôts Git, disponibles publiquement ou secrets.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists\">Création de concepts - GitHub Docs</a>",
+      "extraHtml": "Les gists secrets ne sont pas consultables mais restent accessibles à quiconque possède l’URL. Les gists conviennent aux partages rapides ; les projets complets doivent être dans les dépôts."
+    },
+    {
+      "id": "gh900-ebf9ff554efc",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Templates",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Templates"
+      ],
+      "promptHtml": "Une organisation crée à plusieurs reprises des dépôts avec les mêmes fichiers de départ et la même structure. Quelle fonctionnalité réduit cette configuration répétitive ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un dépôt de modèles, qui permet aux utilisateurs de générer de nouveaux dépôts préchargés avec les mêmes fichiers de départ et la même structure"
+        },
+        {
+          "key": "B",
+          "label": "Une fork de dépôt, qui relie une copie complète à la source dans le but de contribuer des modifications en amont"
+        },
+        {
+          "key": "C",
+          "label": "Une règle de branchement protégé, qui impose des revues et des vérifications de statut avant que le code puisse être fusionné avec le code principal"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un dépôt de modèles, qui permet aux utilisateurs de générer de nouveaux dépôts préchargés avec les mêmes fichiers de départ et la même structure",
+      "rationaleHtml": "Marquer un dépôt comme modèle permet à d’autres de créer des dépôts neufs, non liés, ensemencés avec son contenu.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository\">Création d’un dépôt de modèles - GitHub Docs</a>",
+      "extraHtml": "Contrairement à un fork, un dépôt généré à partir d’un modèle n’a pas d’historique de commit partagé ni de lien vers la source, offrant un point de départ propre."
+    },
+    {
+      "id": "gh900-939a1e10d267",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Insights",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Insights"
+      ],
+      "promptHtml": "Où un mainteneur peut-il consulter le trafic, les clones et l’activité des contributeurs pour un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dans l’onglet Actions, qui est dédié à l’exécution et à la révision des exécutions automatisées de flux de travail et de leurs journaux"
+        },
+        {
+          "key": "B",
+          "label": "Dans l’onglet Insights du dépôt, qui affiche des analyses telles que le trafic, les contributeurs et les données de dépendances"
+        },
+        {
+          "key": "C",
+          "label": "Dans l’onglet Sécurité, qui met en avant les alertes de vulnérabilité et les résultats de l’analyse de code plutôt que les statistiques d’utilisation"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Dans l’onglet Insights du dépôt, qui affiche des analyses telles que le trafic, les contributeurs et les données de dépendances",
+      "rationaleHtml": "L’onglet Insights agrège les analyses du dépôt, y compris le trafic, les commits, les contributeurs et les dépendances.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-traffic-to-a-repository\">Visualisation du trafic vers un dépôt - GitHub Docs</a>",
+      "extraHtml": "Insights inclut également la liste de contrôle des normes communautaires et le graphique de dépendances. Actions affiche les exécutions de flux de travail ; Sécurité affiche les alertes."
+    },
+    {
+      "id": "gh900-bc081b971e2d",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Branching",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Branching"
+      ],
+      "promptHtml": "Quel est le rôle de la branche par défaut dans un dépôt GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "C’est une branche archivistique en lecture seule qui stocke les versions historiques et ne peut pas recevoir de nouveaux commits après création"
+        },
+        {
+          "key": "B",
+          "label": "C’est la branche de base affichée par défaut et la cible pour les nouvelles pull requests et clones, communément appelée main"
+        },
+        {
+          "key": "C",
+          "label": "C’est une branche cachée utilisée exclusivement par GitHub Actions pour stocker des journaux de workflow et des artefacts de compilation temporaires"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "C’est la branche de base affichée par défaut et la cible pour les nouvelles pull requests et clones, communément appelée main",
+      "rationaleHtml": "La branche par défaut est la branche principale présentée aux utilisateurs et la base par défaut pour les PR et les clones.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch\">Modification de la branche par défaut - GitHub Docs</a>",
+      "extraHtml": "Historiquement « maître », la branche par défaut est désormais généralement « main ». Vous pouvez renommer ou changer quelle branche est par défaut dans les paramètres du dépôt."
+    },
+    {
+      "id": "gh900-01282f4dd1ec",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "CodeOwners",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "CodeOwners"
+      ],
+      "promptHtml": "Une équipe veut que des personnes spécifiques soient automatiquement sollicitées pour une relecture dès que certains fichiers changent. Quel fichier permet cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le fichier CONTRIBUTING.md, qui explique les consignes de contribution mais n’assigne pas les évaluateurs à une pull request"
+        },
+        {
+          "key": "B",
+          "label": "Le fichier CODEOWNERS, qui associe les chemins de fichiers aux propriétaires qui doivent automatiquement examiner les modifications correspondantes"
+        },
+        {
+          "key": "C",
+          "label": "Le fichier SECURITY.md, qui documente comment signaler les vulnérabilités mais ne joue aucun rôle dans l’attribution de la révision"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Le fichier CODEOWNERS, qui associe les chemins de fichiers aux propriétaires qui doivent automatiquement examiner les modifications correspondantes",
+      "rationaleHtml": "CODEOWNERS définit les propriétaires par chemin ; les pull requests correspondants demandent automatiquement ces relecteurs.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners\">À propos des propriétaires de code - GitHub Docs</a>",
+      "extraHtml": "Combinée à la protection des branches, la revue du code owner peut être rendue obligatoire. CONTRIBUTION et SÉCURITÉ guident les contributeurs mais n’assignent pas de réviseurs."
+    },
+    {
+      "id": "gh900-0b5ef3349b53",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Discoverability",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Discoverability"
+      ],
+      "promptHtml": "Comment un utilisateur peut-il faciliter la découverte d’un dépôt en le catégorisant autour de sujets comme « apprentissage automatique » ou « cli-styl » ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En ajoutant des sujets de dépôt, qui sont des étiquettes catégorisant les dépôts et améliorant la découvrabilité dans la recherche"
+        },
+        {
+          "key": "B",
+          "label": "En renommant la branche par défaut pour correspondre au sujet afin que les moteurs de recherche indexent le dépôt plus efficacement"
+        },
+        {
+          "key": "C",
+          "label": "En créant un numéro pour chaque domaine thématique et en épinglant ces numéros en haut de la liste des thèmes du dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "En ajoutant des sujets de dépôt, qui sont des étiquettes catégorisant les dépôts et améliorant la découvrabilité dans la recherche",
+      "rationaleHtml": "Les sujets sont des balises consultables ajoutées à un dépôt pour décrire son objectif, son langage ou son domaine.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics\">Classification de votre dépôt avec des sujets - GitHub Docs</a>",
+      "extraHtml": "Les sujets favorisent l’exploration à github.com/topics. Ils diffèrent des étiquettes de numéros, qui catégorisent les numéros et les PR au sein d’un seul dépôt."
+    },
+    {
+      "id": "gh900-b6dc5359a9b9",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Engagement",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Engagement"
+      ],
+      "promptHtml": "Quelle est la différence entre mettre en vedette et regarder un dépôt sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Starring vous abonne à toutes les notifications, tandis que le visionnement ajoute simplement le dépôt à une liste privée en lecture seule"
+        },
+        {
+          "key": "B",
+          "label": "Mettre en place un dépôt et montrer de la reconnaissance, tandis que regarder vous abonne à ses notifications d’activité"
+        },
+        {
+          "key": "C",
+          "label": "Starring vous donne un accès d’écriture au dépôt, tandis que regarder vous donne un accès en lecture seule à son code source"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Mettre en place un dépôt et montrer de la reconnaissance, tandis que regarder vous abonne à ses notifications d’activité",
+      "rationaleHtml": "Les étoiles sont des signets/signaux d’intérêt ; le visionnage contrôle votre abonnement de notification pour l’activité de dépôt (dépo).<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars\">Sauvegarder les dépôts avec étoiles - GitHub Docs</a>",
+      "extraHtml": "Ni le fait de star ni de regarder ne modifient les permissions d’accès. Le visionnage peut être personnalisé selon toutes les activités, uniquement les participants ou certains types d’événements."
+    },
+    {
+      "id": "gh900-a60eefc492ea",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "RepositoryManagement",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "RepositoryManagement"
+      ],
+      "promptHtml": "Un projet n’est plus maintenu mais l’équipe souhaite le garder en lecture seule et signaler clairement son statut. Que devraient-ils faire ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Supprimez le dépôt pour qu’il disparaisse complètement, puis recréez-le plus tard si quelqu’un a besoin du code à nouveau"
+        },
+        {
+          "key": "B",
+          "label": "Changez la visibilité du dépôt en privée afin que seuls les mainteneurs d’origine puissent continuer à consulter le code"
+        },
+        {
+          "key": "C",
+          "label": "Archivez le dépôt, ce qui le rend en lecture seule et le marque clairement comme n’étant plus activement maintenu"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Archivez le dépôt, ce qui le rend en lecture seule et le marque clairement comme n’étant plus activement maintenu",
+      "rationaleHtml": "L’archivage préserve le dépôt en lecture seule et affiche une bannière indiquant qu’il n’est plus maintenu.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories\">Archivage des dépôts - GitHub Docs</a>",
+      "extraHtml": "Les dépôts archivés peuvent toujours être vus, clonés et mis en étoile mais pas modifiés. Vous pouvez désarchiver plus tard. Supprimer perd l’historique et les liens ; la visibilité n’a aucun rapport."
+    },
+    {
+      "id": "gh900-37f2389ecad2",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "GitHubPages",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "GitHubPages"
+      ],
+      "promptHtml": "Un développeur souhaite héberger un site web statique gratuit directement à partir de fichiers dans un dépôt GitHub. Quelle fonctionnalité offre cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub Pages, qui publie un site web statique hébergé directement depuis une branche ou un dossier dans le dépôt"
+        },
+        {
+          "key": "B",
+          "label": "GitHub Codespaces, qui prévoit un environnement de développement cloud pour l’édition et l’exécution du code dans le navigateur"
+        },
+        {
+          "key": "C",
+          "label": "GitHub Packages, qui héberge et distribue des logiciels et des images de conteneurs liés au dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "GitHub Pages, qui publie un site web statique hébergé directement depuis une branche ou un dossier dans le dépôt",
+      "rationaleHtml": "GitHub Pages sert des sites statiques directement depuis une branche de dépôt ou un dossier /docs, éventuellement construits avec Jekyll.<br><br>Référence : <a href=\"https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages\">À propos de GitHub Pages - GitHub Docs</a>",
+      "extraHtml": "Pages est destiné au contenu statique (HTML/CSS/JS). Codespaces est un environnement de développement, et Packages est un registre de paquets, aucun des deux n’hébergeant de site public."
+    },
+    {
+      "id": "gh900-fd6f9d4a9ebf",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Search",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Search"
+      ],
+      "promptHtml": "Quel qualificateur de recherche GitHub restreint une recherche de code aux résultats d’un seul dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le qualificateur utilisateur : qui restreint les résultats à chaque dépôt appartenant à un compte spécifié sur la plateforme"
+        },
+        {
+          "key": "B",
+          "label": "Le qualificateur repo :owner/name, qui limite la recherche au code à l’intérieur de ce dépôt spécifique"
+        },
+        {
+          "key": "C",
+          "label": "Le qualificateur du langage : qui filtre par langage de programmation mais ne limite pas les résultats à un seul dépôt"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Le qualificateur repo :owner/name, qui limite la recherche au code à l’intérieur de ce dépôt spécifique",
+      "rationaleHtml": "Le dépôt : qualifier enchaîne les recherches vers un dépôt spécifique par propriétaire et nom.<br><br>Référence : <a href=\"https://docs.github.com/en/search-github/searching-on-github/searching-code\">Recherche de code - GitHub Docs</a>",
+      "extraHtml": "Combiner des qualificateurs pour affiner les résultats, par exemple, dépôt : propriétaire/nom langage : python. utilisateur : élargit à un compte ; langage : filtre par langage sur plusieurs dépôts."
+    },
+    {
+      "id": "gh900-cad8ac94356b",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "History",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "History"
+      ],
+      "promptHtml": "Un mainteneur veut savoir qui a modifié en dernier une ligne de code spécifique et dans quel commit. Quelle fonctionnalité aide ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La vue blâme, qui annote chaque ligne d’un fichier avec le commit et l’auteur qui l’a modifiée en dernier"
+        },
+        {
+          "key": "B",
+          "label": "La page des releases, qui liste les versions et notes identifiées mais n’attribue pas de lignes de code individuelles"
+        },
+        {
+          "key": "C",
+          "label": "Le graphe de dépendance, qui montre les bibliothèques externes sur lesquelles le projet s’appuie plutôt que l’auteur des lignes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La vue blâme, qui annote chaque ligne d’un fichier avec le commit et l’auteur qui l’a modifiée en dernier",
+      "rationaleHtml": "Git Blame associe chaque ligne au commit qui l’a modifiée en dernier, aidant à l’investigation et au codage de l’archéologie.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file\">Visualisation d’un fichier - GitHub Docs</a>",
+      "extraHtml": "Blame est excellent pour comprendre pourquoi une ligne existe. Depuis une ligne de blâme, vous pouvez passer directement au commit et à sa pull request pour un contexte complet."
+    },
+    {
+      "id": "gh900-b5d161967109",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "Forking",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "Forking"
+      ],
+      "promptHtml": "Quelle est la différence clé entre forker un dépôt et le cloner ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le fork télécharge le dépôt sur votre ordinateur, tandis que le clonage crée une copie côté serveur sous votre compte sur GitHub"
+        },
+        {
+          "key": "B",
+          "label": "Le fork transfère définitivement la propriété du dépôt original, tandis que le clonage vous donne simplement un accès temporaire à la lecture"
+        },
+        {
+          "key": "C",
+          "label": "Le fork crée une copie serveur liée sous votre compte sur GitHub, tandis que le clonage télécharge un dépôt sur votre machine locale"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Le fork crée une copie serveur liée sous votre compte sur GitHub, tandis que le clonage télécharge un dépôt sur votre machine locale",
+      "rationaleHtml": "Un fork est une copie côté serveur sur GitHub liée à l’original ; un clone est un téléchargement local d’un dépôt.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks\">À propos des forks - GitHub Docs</a>",
+      "extraHtml": "Un flux commun combine les deux : forker sur GitHub, puis cloner localement votre fork. Le fork ne transfère pas la propriété ; le dépôt original n’est pas affecté."
+    },
+    {
+      "id": "gh900-82cc5e3a220e",
+      "examSlug": "gh900",
+      "domain": "GitHubRepositories",
+      "topic": "CommunityHealth",
+      "tags": [
+        "GH-900",
+        "GitHubRepositories",
+        "CommunityHealth"
+      ],
+      "promptHtml": "Où GitHub recherche-t-il les fichiers de santé communautaire comme CONTRIBUTING.md et CODE_OF_CONDUCT.md s’ils ne sont pas dans un dépôt spécifique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dans un dépôt nommé .github appartenant au même compte ou organisation, qui fournit des fichiers de santé communautaire par défaut"
+        },
+        {
+          "key": "B",
+          "label": "Sur la page des versions du dépôt, où GitHub stocke la documentation de secours applicable lorsqu’aucun autre fichier n’est présent"
+        },
+        {
+          "key": "C",
+          "label": "Dans le profil public du compte README, que GitHub réutilise comme guide de contribution par défaut pour chaque dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dans un dépôt nommé .github appartenant au même compte ou organisation, qui fournit des fichiers de santé communautaire par défaut",
+      "rationaleHtml": "Les fichiers de santé communautaire par défaut placés dans un dépôt .github spécial s’appliquent à tous les dépôts appartenant à ce compte ou organisation qui n’ont pas le sien.<br><br>Référence : <a href=\"https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file\">Création d’un fichier de santé communautaire par défaut - GitHub Docs</a>",
+      "extraHtml": "Cela centralise les modèles de CONTRIBUTION, de CODE_OF_CONDUCT et de publication sur de nombreux dépôts. Les propres fichiers d’un dépôt prennent toujours le dessus sur les valeurs par défaut."
+    },
+    {
+      "id": "gh900-651be065133f",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Issues",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Issues"
+      ],
+      "promptHtml": "Quel est le but principal d’un problème sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Déploiement automatique en production de la dernière version d’une application chaque fois que la branche par défaut est mise à jour"
+        },
+        {
+          "key": "B",
+          "label": "Pour suivre une tâche, un bug, une amélioration ou une question et permettre la discussion et l’attribution au sein d’un dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Stocker les artefacts de compilation et les binaires résultant d’une intégration continue réussie"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Pour suivre une tâche, un bug, une amélioration ou une question et permettre la discussion et l’attribution au sein d’un dépôt",
+      "rationaleHtml": "Les numéros suivent les éléments de travail et les discussions, en soutenant les étiquettes, les assignés, les étapes importantes et les références.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues\">À propos des problèmes - GitHub Docs</a>",
+      "extraHtml": "Les questions sont l’unité de planification et de collaboration. Elles peuvent être liées à des pull requests et organisées sur les forums GitHub Projects."
+    },
+    {
+      "id": "gh900-ec3a2446feb1",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Labels",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Labels"
+      ],
+      "promptHtml": "Comment les étiquettes sont-elles utilisées dans les issues et les pull requests d’un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils restreignent quels collaborateurs sont autorisés à commenter ou à clôturer un problème ou un fil de pull request donné"
+        },
+        {
+          "key": "B",
+          "label": "Ils catégorisent et filtrent les problèmes et les pull requests, par exemple « bug », « documentation » ou « bon premier numéro »"
+        },
+        {
+          "key": "C",
+          "label": "Ils fusionnent automatiquement une pull request dès que toutes les vérifications de statut requises ont terminé de la transmettre"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ils catégorisent et filtrent les problèmes et les pull requests, par exemple « bug », « documentation » ou « bon premier numéro »",
+      "rationaleHtml": "Les étiquettes, les problèmes d’étiquettes et les PR pour la classification et le filtrage ; ils ne contrôlent pas les permissions ni la fusion.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels\">Étiquettes de gestion - GitHub Docs</a>",
+      "extraHtml": "Les labels sont délimités par le repo-scope et codés par couleur. « Good First Issue » aide les nouveaux venus à trouver des tâches accessibles. Ils organisent le travail mais n’accordent aucun accès."
+    },
+    {
+      "id": "gh900-b752e87856b1",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Milestones",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Milestones"
+      ],
+      "promptHtml": "Une équipe souhaite regrouper les problèmes et les requêtes de tirage vers une version cible avec une date d’échéance et un suivi de l’avancement. Quelle fonctionnalité convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Jalons, qui regroupe et pull requests vers un objectif et suit l’avancement de l’achèvement ainsi qu’une date d’échéance"
+        },
+        {
+          "key": "B",
+          "label": "Réactions, qui permettent aux utilisateurs d’ajouter des réponses par des emojis aux commentaires pour exprimer leur accord sans ajouter de bruit supplémentaire"
+        },
+        {
+          "key": "C",
+          "label": "Réponses sauvegardées, qui stockent du texte réutilisable afin que les mainteneurs puissent répondre plus rapidement aux questions courantes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Jalons, qui regroupe et pull requests vers un objectif et suit l’avancement de l’achèvement ainsi qu’une date d’échéance",
+      "rationaleHtml": "Les jalons regroupent les problèmes/PR liés vers un objectif de sortie et affichent une barre de progression ainsi qu’une date d’échéance optionnelle.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones\">À propos des jalons - GitHub Docs</a>",
+      "extraHtml": "Les jalons sont idéaux pour le suivi des sprints ou des sorties. Les étiquettes catégorisent ; les jalons mesurent les progrès vers un objectif obsolète."
+    },
+    {
+      "id": "gh900-3a56e86549bb",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Issues",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Issues"
+      ],
+      "promptHtml": "Que permet d’assigner un problème à un utilisateur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il accorde à cet utilisateur des permissions administrateur sur le dépôt afin qu’il puisse modifier les paramètres et gérer d’autres membres"
+        },
+        {
+          "key": "B",
+          "label": "Il ferme automatiquement le problème et enregistre l’utilisateur assigné comme la personne ayant résolu le problème sous-jacent"
+        },
+        {
+          "key": "C",
+          "label": "Il indique qui est responsable de la gestion du problème, rendant la propriété visible à toute l’équipe"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Il indique qui est responsable de la gestion du problème, rendant la propriété visible à toute l’équipe",
+      "rationaleHtml": "Les cessionnaires indiquent qui possède un problème ou une pull request ; cela ne modifie pas les permissions ni le statut.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users\">Attribution des problèmes et des pull requests - GitHub Docs</a>",
+      "extraHtml": "Plusieurs assignés sont autorisés. L’attribution clarifie la responsabilité mais ne modifie pas les droits d’accès ni ne ferme automatiquement quoi que ce soit."
+    },
+    {
+      "id": "gh900-032221c67b48",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "PullRequests",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "PullRequests"
+      ],
+      "promptHtml": "Quelle est la fonction principale d’une pull request sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Proposer de fusionner les changements d’une branche dans une autre, permettant d’abord la révision, la discussion et les vérifications automatisées"
+        },
+        {
+          "key": "B",
+          "label": "Supprimer définitivement une branche de fonctionnalité après la fin de son travail sans permettre la moindre révision des modifications"
+        },
+        {
+          "key": "C",
+          "label": "Pour télécharger les dernières modifications d’un dépôt distant dans la copie locale du code du développeur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Proposer de fusionner les changements d’une branche dans une autre, permettant d’abord la révision, la discussion et les vérifications automatisées",
+      "rationaleHtml": "Une pull request propose des modifications à examiner avant la fusion, intégrant les vérifications de discussion et de statut.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests\">À propos des pull requests - GitHub Docs</a>",
+      "extraHtml": "Les PR sont au cœur de la collaboration sur GitHub. Télécharger des modifications à distance est git pull ; supprimer une branche est une étape de nettoyage séparée après la fusion."
+    },
+    {
+      "id": "gh900-0a75eafb631a",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "PullRequests",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "PullRequests"
+      ],
+      "promptHtml": "Quand un développeur devrait-il ouvrir une demande de draft ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Quand ils veulent que la pull request contourne toutes les vérifications de statut requises et fusionne instantanément sans aucun contrôle"
+        },
+        {
+          "key": "B",
+          "label": "Quand le travail est encore en cours et qu’ils veulent un retour mais signalent que ce n’est pas encore prêt à fusionner"
+        },
+        {
+          "key": "C",
+          "label": "Quand ils doivent archiver définitivement une succursale abandonnée afin qu’elle ne puisse jamais être rouverte ou fusionnée ultérieurement"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Quand le travail est encore en cours et qu’ils veulent un retour mais signalent que ce n’est pas encore prêt à fusionner",
+      "rationaleHtml": "Les projets de PR marquent les travaux comme non prêts à être fusionnés ; ils ne peuvent pas être fusionnés tant qu’ils ne sont pas marqués comme prêts à être examinés.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests\">À propos des pull requests - GitHub Docs</a>",
+      "extraHtml": "Les brouillons continuent d’exécuter des CI et permettent les commentaires mais permettent la fusion de blocs et (optionnellement) les demandes du propriétaire du code jusqu’à ce que vous cliquiez sur « Prêt pour la révision »."
+    },
+    {
+      "id": "gh900-fa61cda894d2",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "CodeReview"
+      ],
+      "promptHtml": "Lors d’une évaluation de pull request, quels sont les trois résultats qu’un évaluateur peut-il soumettre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Approuver, demander des modifications ou commenter"
+        },
+        {
+          "key": "B",
+          "label": "Fusionnez immédiatement, supprimez la branche source ou verrouillez définitivement toute la conversation pour toute réponse ultérieure"
+        },
+        {
+          "key": "C",
+          "label": "Attribuez une étape importante, ajoutez une étiquette, ou convertissez la requête de pull en un problème simple pour un triage ultérieur"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Approuver, demander des modifications ou commenter",
+      "rationaleHtml": "Un avis peut approuver les modifications, demander des modifications (blocage) ou laisser des commentaires généraux.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews\">À propos des avis sur les pull requests - GitHub Docs</a>",
+      "extraHtml": "« Demander des modifications » peut bloquer la fusion si nécessaire. Le commentaire laisse un retour sans approbation explicite ni blocage. Ce sont des verdicts de révision, pas des actions de fusion."
+    },
+    {
+      "id": "gh900-5a60ceb93512",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "BranchProtection",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "BranchProtection"
+      ],
+      "promptHtml": "Un dépôt nécessite au moins deux examens d’approbation avant la fusion. Quel mécanisme impose cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une étiquette de dépôt nommée « needs-review » que les mainteneurs doivent retirer manuellement avant que le bouton de fusion ne devienne actif"
+        },
+        {
+          "key": "B",
+          "label": "Une date d’échéance par jalon qui empêche automatiquement la fusion tant que la date de sortie cible configurée n’est pas passée"
+        },
+        {
+          "key": "C",
+          "label": "Une règle de protection des branches qui exige un nombre défini d’examens de pull requests avant la fusion"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une règle de protection des branches qui exige un nombre défini d’examens de pull requests avant la fusion",
+      "rationaleHtml": "Les règles de protection des branches peuvent nécessiter des approbations, des vérifications de statut et d’autres conditions avant qu’une fusion ne soit autorisée.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches\">À propos des branches protégées - GitHub Docs</a>",
+      "extraHtml": "La protection des branches peut également nécessiter de réussir des vérifications, la revue du propriétaire du code et des branches à jour. Les étiquettes et jalons ne font pas respecter les règles de fusion."
+    },
+    {
+      "id": "gh900-3ac219b8faa2",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Discussions",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Discussions"
+      ],
+      "promptHtml": "En quoi les discussions sur GitHub diffèrent-elles des problèmes ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les discussions exécutent des pipelines CI automatisés, tandis que les problèmes se limitent au stockage de texte statique et de captures d’écran uniquement"
+        },
+        {
+          "key": "B",
+          "label": "Les discussions offrent un forum pour des conversations ouvertes et des questions-réponses, tandis que les questions suivent les tâches concrètes"
+        },
+        {
+          "key": "C",
+          "label": "Les discussions sont privées aux administrateurs des dépôts, tandis que les problèmes sont toujours visibles sur l’ensemble de l’internet public"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Les discussions offrent un forum pour des conversations ouvertes et des questions-réponses, tandis que les questions suivent les tâches concrètes",
+      "rationaleHtml": "Les discussions correspondent aux questions, idées et annonces de la communauté ; les problèmes suivent des tâches concrètes et traçables.<br><br>Référence : <a href=\"https://docs.github.com/en/discussions/collaborating-with-your-community-using-discussions/about-discussions\">À propos des discussions - GitHub Docs</a>",
+      "extraHtml": "Les discussions soutiennent les questions-réponses avec des réponses notées, des catégories et des votes positifs. Transformez une discussion en sujet lorsqu’elle devient un travail exploitable."
+    },
+    {
+      "id": "gh900-4e484dd7382f",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Linking",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Linking"
+      ],
+      "promptHtml": "Un développeur écrit « Closes #42 » dans une description de pull request. Que se passe-t-il lorsque la PR fusionne avec la branche par défaut ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le problème #42 est automatiquement fermé et lié à la pull request qui l’a résolu"
+        },
+        {
+          "key": "B",
+          "label": "Le texte est traité comme une chaîne simple, et le numéro #42 doit toujours être fermé manuellement par un responsable de maintenance par la suite"
+        },
+        {
+          "key": "C",
+          "label": "Un tout nouveau numéro 42 est créé et immédiatement attribué à celui qui a rédigé la pull request"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Le problème #42 est automatiquement fermé et lié à la pull request qui l’a résolu",
+      "rationaleHtml": "Des mots-clés comme « ferme », « corrige » ou « résolve » suivis d’une référence de problème ferment automatiquement le problème lors de la fusion.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue\">Lien entre une pull request et un problème - GitHub Docs</a>",
+      "extraHtml": "Cela ne ferme le problème que lorsqu’il est fusionné dans la branche par défaut. Les mots-clés pris en charge incluent fermer, fermer, fermer, corriger, corriger, corriger, résolvre, résolu."
+    },
+    {
+      "id": "gh900-7cd4a9d76bd2",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Mentions",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Mentions"
+      ],
+      "promptHtml": "Quel est l’effet de taper @username dans un commentaire issue ou pull request ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il assigne définitivement à cet utilisateur la seule personne responsable de la résolution du problème ou de la pull request"
+        },
+        {
+          "key": "B",
+          "label": "Il mentionne et informe cet utilisateur, attirant son attention sur le commentaire ou le fil de discussion"
+        },
+        {
+          "key": "C",
+          "label": "Il accorde à cet utilisateur un accès temporaire en écriture au dépôt afin qu’il puisse envoyer des commits vers la branche"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Il mentionne et informe cet utilisateur, attirant son attention sur le commentaire ou le fil de discussion",
+      "rationaleHtml": "@mentions notifier l’utilisateur référencé (ou son équipe) afin qu’il soit informé de la conversation.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams\">Syntaxe d’écriture et de mise en forme de base - GitHub Docs</a>",
+      "extraHtml": "Vous pouvez aussi @mention équipes. Mentionner notifie, mais n’attribue pas ou n’accorde pas l’accès ; ce sont des actions distinctes."
+    },
+    {
+      "id": "gh900-6d6c4dee86eb",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Linking",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Linking"
+      ],
+      "promptHtml": "Taper le #123 dans un commentaire de problème crée quoi ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un lien croisé vers la demande d’émission ou de tirage numéro 123 dans le même dépôt"
+        },
+        {
+          "key": "B",
+          "label": "Une nouvelle étiquette nommée 123 est immédiatement appliquée au numéro en cours pour un filtrage ultérieur"
+        },
+        {
+          "key": "C",
+          "label": "Un commit dont le message est le numéro 123, enregistré contre la branche par défaut du dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un lien croisé vers la demande d’émission ou de tirage numéro 123 dans le même dépôt",
+      "rationaleHtml": "La syntaxe #number renvoie automatiquement au numéro ou aux relations publiques référencées, construisant ainsi un réseau d’ouvrages connexes.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls\">Références et URLs auto-liées - GitHub Docs</a>",
+      "extraHtml": "Les références croisées apparaissent sous forme d’événements chronologiques sur l’élément référencé, aidant à retracer les relations entre les problèmes et les pull requests."
+    },
+    {
+      "id": "gh900-6e8a66266dae",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "TaskLists",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "TaskLists"
+      ],
+      "promptHtml": "Comment les listes de tâches dans un organisme de numéro Markdown aident-elles à suivre l’avancement ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils affichent des cases interactives dont le pourcentage d’achèvement est affiché sur le numéro et dans les vues du projet"
+        },
+        {
+          "key": "B",
+          "label": "Ils attribuent automatiquement chaque case à cocher à un collaborateur différent en fonction des autorisations d’écriture du dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Ils convertissent chaque élément non coché en un nouveau numéro distinct dès que le corps du numéro est enregistré pour la première fois"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ils affichent des cases interactives dont le pourcentage d’achèvement est affiché sur le numéro et dans les vues du projet",
+      "rationaleHtml": "Les éléments de la liste de tâches avec - [ ] et - [x] s’affichent sous forme de cases à cocher et affichent la progression de la fin de la fin.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists\">À propos des listes de tâches - GitHub Docs</a>",
+      "extraHtml": "Cocher une case met à jour le problème en temps réel. Les listes de tâches sont un moyen léger de décomposer le travail en sous-étapes traçables au sein d’un seul problème."
+    },
+    {
+      "id": "gh900-70e3714b0e58",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Notifications",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Notifications"
+      ],
+      "promptHtml": "Un utilisateur veut contrôler quels événements du dépôt lui envoient des mises à jour. Quelle fonctionnalité régit cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les forks de dépôt, qui créent des copies indépendantes mais n’influencent pas les événements qui envoient les mises à jour de l’utilisateur"
+        },
+        {
+          "key": "B",
+          "label": "Abonnements de notification et paramètres de montre, qui déterminent quels événements du dépôt génèrent des mises à jour pour l’utilisateur"
+        },
+        {
+          "key": "C",
+          "label": "Les revues de pull requests, qui enregistrent les approbations ou les demandes de modification mais ne gèrent pas les préférences de mise à jour de l’utilisateur"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Abonnements de notification et paramètres de montre, qui déterminent quels événements du dépôt génèrent des mises à jour pour l’utilisateur",
+      "rationaleHtml": "Les paramètres de surveillance et d’abonnement contrôlent quels événements (numéros, relations publiques, sorties) déclenchent les notifications.<br><br>Référence : <a href=\"https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications\">À propos des notifications - GitHub Docs</a>",
+      "extraHtml": "Vous pouvez regarder toutes les activités, les participations uniquement, ou les types d’événements personnalisés. Les notifications arrivent dans la boîte mail et éventuellement par email."
+    },
+    {
+      "id": "gh900-f974c3d689e9",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "SavedReplies",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "SavedReplies"
+      ],
+      "promptHtml": "Un mainteneur tape fréquemment la même réponse à des problèmes en double. Quelle fonctionnalité accélère cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Réponses sauvegardées, qui stockent du texte réutilisable des commentaires pouvant être insérés dans les réponses issues des problèmes et des pull requests"
+        },
+        {
+          "key": "B",
+          "label": "Jalons, qui regroupent les problèmes liés à une sortie mais ne stockent aucun texte de réponse réutilisable"
+        },
+        {
+          "key": "C",
+          "label": "Protection des branches, qui applique les règles de révision sur les fusions et n’a rien à voir avec la rédaction de commentaires répétés"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Réponses sauvegardées, qui stockent du texte réutilisable des commentaires pouvant être insérés dans les réponses issues des problèmes et des pull requests",
+      "rationaleHtml": "Les réponses sauvegardées permettent de stocker et d’insérer rapidement les réponses couramment utilisées dans les problèmes et les PR.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/writing-on-github/working-with-saved-replies/about-saved-replies\">À propos des réponses sauvegardées - GitHub Docs</a>",
+      "extraHtml": "Les réponses sauvegardées sont au niveau du compte, donc elles fonctionnent sur tous vos dépôts. Elles coupent la saisie répétitive pour le triage et le soutien."
+    },
+    {
+      "id": "gh900-cb5d86371c06",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "CodeReview"
+      ],
+      "promptHtml": "Avec un fichier CODEOWNERS configuré, que se passe-t-il lorsqu’une pull request modifie un chemin détenu ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La pull request est complètement bloquée tant que chaque propriétaire de code listé n’a pas déjà laissé un avis d’approbation"
+        },
+        {
+          "key": "B",
+          "label": "Les propriétaires de codes listés sont automatiquement sollicités comme évaluateurs pour cette pull request"
+        },
+        {
+          "key": "C",
+          "label": "La pull request est fusionnée automatiquement dès que les vérifications d’intégration continues se terminent, en sautant la revue humaine"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Les propriétaires de codes listés sont automatiquement sollicités comme évaluateurs pour cette pull request",
+      "rationaleHtml": "Lorsqu’un PR touche un chemin possédé, GitHub demande automatiquement une relecture aux propriétaires du code correspondants.<br><br>Référence : <a href=\"https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners\">À propos des propriétaires de code - GitHub Docs</a>",
+      "extraHtml": "Avec la protection des branches, l’approbation du propriétaire du code peut être requise. Pris seul, CODEOWNERS demande des réviseurs mais ne bloque pas l’ouverture ni la fusion automatique."
+    },
+    {
+      "id": "gh900-31f7326e988a",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Forking",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Forking"
+      ],
+      "promptHtml": "Un contributeur a forké un dépôt, a apporté des modifications, et veut maintenant qu’il soit pris en compte pour le projet original. Que font-ils ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ouvrir une pull request de la branche de leur fork vers la branche du dépôt d’origine pour que les mainteneurs puissent la revoir"
+        },
+        {
+          "key": "B",
+          "label": "Envoyez aux mainteneurs une archive ZIP téléchargeable de leur fork afin qu’ils puissent copier les fichiers manuellement"
+        },
+        {
+          "key": "C",
+          "label": "Poussez la branche de leur fork directement sur la branche par défaut du dépôt d’origine en utilisant leur accès de lecture existant"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ouvrir une pull request de la branche de leur fork vers la branche du dépôt d’origine pour que les mainteneurs puissent la revoir",
+      "rationaleHtml": "Les pull requests cross-fork permettent aux contributeurs de proposer des modifications de leur fork vers le dépôt en amont.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork\">Créer une pull request à partir d’un fork - GitHub Docs</a>",
+      "extraHtml": "L’accès en lecture n’autorise pas la poussée vers la branche par défaut en amont. Le modèle fork-and-PR est la façon dont les contributeurs externes participent à l’open source."
+    },
+    {
+      "id": "gh900-38fb133951ef",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Wikis",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Wikis"
+      ],
+      "promptHtml": "À quoi sert un wiki de dépôt GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exécution de tâches d’automatisation planifiées qui construisent, testent et déploient le projet de manière récurrente chaque nuit"
+        },
+        {
+          "key": "B",
+          "label": "Hébergement de documentation longue forme telle que guides et références dans des pages modifiables et contrôlées par version"
+        },
+        {
+          "key": "C",
+          "label": "Stockage de secrets chiffrés et de clés API que les flux d’intégration continus lisent lors d’une compilation"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Hébergement de documentation longue forme telle que guides et références dans des pages modifiables et contrôlées par version",
+      "rationaleHtml": "Les wikis fournissent des pages de documentation collaboratives et versionnées distinctes de la base de code principale.<br><br>Référence : <a href=\"https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis\">À propos des wikis - GitHub Docs</a>",
+      "extraHtml": "Les wikis sont eux-mêmes des dépôts Git. Pour la documentation versionnée avec du code, de nombreuses équipes préfèrent plutôt un dossier /docs ou des pages GitHub."
+    },
+    {
+      "id": "gh900-5a804543222e",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "CodeReview"
+      ],
+      "promptHtml": "Un évaluateur souhaite voir les différences exactes ligne par ligne entre deux branches avant d’ouvrir une pull request. Quelle fonctionnalité est utile ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La vue comparative, qui montre les commits et diff entre deux branches, tags ou commits"
+        },
+        {
+          "key": "B",
+          "label": "Le graphique de trafic Insights, qui rapporte les clones et visiteurs mais n’affiche pas les différences de code entre les branches"
+        },
+        {
+          "key": "C",
+          "label": "La page des versions, qui liste les versions publiées et les notes plutôt qu’une comparaison ligne par ligne des branches"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La vue comparative, qui montre les commits et diff entre deux branches, tags ou commits",
+      "rationaleHtml": "La vue de comparaison affiche les commits et un différentiel unifié entre deux références quelconque, utile avant de créer un PR.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/committing-changes-to-your-project/viewing-and-comparing-commits/comparing-commits\">Comparaison des commits - GitHub Docs</a>",
+      "extraHtml": "Vous pouvez même comparer entre forks. Ouvrir une PR, c’est essentiellement formaliser une vue de comparaison pour la relecture et la fusion."
+    },
+    {
+      "id": "gh900-10199a8bc447",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Reactions",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Reactions"
+      ],
+      "promptHtml": "Quel est le but des réactions par emoji sur les problèmes, des pull requests et des commentaires ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils permettent aux utilisateurs d’exprimer rapidement leur accord ou leur sentiment sans ajouter un autre commentaire complet au fil"
+        },
+        {
+          "key": "B",
+          "label": "Ils escaladent automatiquement l’élément aux administrateurs du dépôt dès qu’un nombre de réactions est atteint"
+        },
+        {
+          "key": "C",
+          "label": "Ils verrouillent le commentaire pour qu’aucune modification ou réponse supplémentaire ne puisse être ajoutée par quiconque dans la conversation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ils permettent aux utilisateurs d’exprimer rapidement leur accord ou leur sentiment sans ajouter un autre commentaire complet au fil",
+      "rationaleHtml": "Les réactions fournissent un retour léger (comme un pouce levé) et réduisent le bruit de commentaires de '+1'.<br><br>Référence : <a href=\"https://docs.github.com/en/rest/reactions\">Réactions - GitHub Docs</a>",
+      "extraHtml": "Les réactions peuvent aider à mesurer l’intérêt de la communauté pour les demandes de fonctionnalités sans encombrer la discussion avec des commentaires en double."
+    },
+    {
+      "id": "gh900-e29500d64d3a",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Merging",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Merging"
+      ],
+      "promptHtml": "Lors de la fusion d’une pull request, quelle méthode de fusion regroupe tous les commits de la branche en un seul nouveau commit sur la branche de base ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’option squash and merge, qui condense tous les commits de la requête pull en un seul commit sur la branche de base"
+        },
+        {
+          "key": "B",
+          "label": "L’option rebase and merge, qui rejoue chaque commit individuel de la branche vers la pointe de la branche de base"
+        },
+        {
+          "key": "C",
+          "label": "L’option de création d’un commit de fusion qui préserve chaque commit de branche et ajoute un commit de fusion supplémentaire qui les rejoint"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’option squash and merge, qui condense tous les commits de la requête pull en un seul commit sur la branche de base",
+      "rationaleHtml": "Squash and merge fusionne tous les engagements de PR en un seul, produisant une histoire de base propre et linéaire.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges\">À propos des fusions de pull requests - GitHub Docs</a>",
+      "extraHtml": "Le commit de fusion conserve l’historique complet avec un nœud de fusion ; rebase rejoue les commits sans commit de fusion ; le squash donne un commit bien rangé. Choisissez selon la convention d’équipe."
+    },
+    {
+      "id": "gh900-bdc65c5e45a5",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Issues",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Issues"
+      ],
+      "promptHtml": "Un responsable souhaite que deux ou trois problèmes clés apparaissent en tête de la liste des problèmes du dépôt. Quelle fonctionnalité y parvient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Épingler les numéros, qui affiche un nombre limité de numéros sélectionnés en haut de la liste des numéros"
+        },
+        {
+          "key": "B",
+          "label": "Ajout d’une étiquette « épinglée », qui modifie la couleur des numéros sélectionnés mais ne réorganise pas la liste des numéros"
+        },
+        {
+          "key": "C",
+          "label": "Attribuer les numéros à une étape importante, qui les regroupe par sortie sans les déplacer en haut de la liste"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Épingler les numéros, qui affiche un nombre limité de numéros sélectionnés en haut de la liste des numéros",
+      "rationaleHtml": "Les problèmes épinglés font apparaître des éléments importants (comme les FAQ ou les feuilles de route) en haut de l’onglet des problèmes.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/tracking-your-work-with-issues/pinning-an-issue-to-your-repository\">Épingler un problème - GitHub Docs</a>",
+      "extraHtml": "Vous pouvez épingler jusqu’à trois numéros par dépôt. Les étiquettes catégorisent et les jalons regroupent par objectif, mais aucune ne réorganise la liste en haut."
+    },
+    {
+      "id": "gh900-6d092b82596c",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "Templates",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "Templates"
+      ],
+      "promptHtml": "Comment les modèles de problèmes améliorent-ils le signalement des bugs dans un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils résolvent automatiquement les bugs signalés en générant une correction de code et en ouvrant une pull request pour le mainteneur"
+        },
+        {
+          "key": "B",
+          "label": "Ils incitent les journalistes à avoir une structure prédéfinie afin que les numéros soumis incluent les informations dont les mainteneurs ont besoin"
+        },
+        {
+          "key": "C",
+          "label": "Ils restreignent la création de problèmes aux administrateurs du dépôt afin que seuls les mainteneurs de confiance puissent déposer de nouveaux rapports"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ils incitent les journalistes à avoir une structure prédéfinie afin que les numéros soumis incluent les informations dont les mainteneurs ont besoin",
+      "rationaleHtml": "Les modèles et formulaires de publication standardisent les soumissions, guidant les rapporteurs à inclure les détails nécessaires.<br><br>Référence : <a href=\"https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates\">À propos des modèles de problèmes et de pull requests - GitHub Docs</a>",
+      "extraHtml": "Les modèles sont disponibles dans .github/ISSUE_TEMPLATE. Les formulaires de problème utilisent YAML pour créer des champs structurés et validés. Ils améliorent la qualité mais ne restreignent pas qui peut faire le classement."
+    },
+    {
+      "id": "gh900-82250e27133d",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "CodeReview"
+      ],
+      "promptHtml": "Lors d’une révision, un évaluateur propose une modification exacte du code que l’auteur peut appliquer d’un seul clic. Quelle fonctionnalité est-ce ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un changement suggéré, qui permet aux évaluateurs de proposer des modifications spécifiques que l’auteur peut soumettre directement à partir de la critique"
+        },
+        {
+          "key": "B",
+          "label": "Un contrôle de statut obligatoire, qui bloque la fusion jusqu’à ce qu’un flux de test automatisé rapporte un résultat de passage"
+        },
+        {
+          "key": "C",
+          "label": "Une réponse sauvegardée, qui insère un texte de commentaire réutilisable mais ne peut pas appliquer de véritable modification de code au fichier"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un changement suggéré, qui permet aux évaluateurs de proposer des modifications spécifiques que l’auteur peut soumettre directement à partir de la critique",
+      "rationaleHtml": "Les modifications suggérées permettent aux évaluateurs d’écrire des modifications exactes dans un bloc de suggestion que l’auteur commit d’un seul clic.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request\">Intégrer des retours dans votre pull request - GitHub Docs</a>",
+      "extraHtml": "Les suggestions accélèrent les petites corrections comme les fautes de frappe. Plusieurs suggestions peuvent être regroupées en un seul commit. Les vérifications de statut et les réponses sauvegardées n’éditent pas le code."
+    },
+    {
+      "id": "gh900-e746b741feda",
+      "examSlug": "gh900",
+      "domain": "CollaborationFeatures",
+      "topic": "CodeReview",
+      "tags": [
+        "GH-900",
+        "CollaborationFeatures",
+        "CodeReview"
+      ],
+      "promptHtml": "Après que les retours d’un fil de discussion de révision ont été traités, que fait le fait de marquer la conversation comme étant réglée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il supprime définitivement le fil de commentaires et toutes ses réponses de l’historique des pull requests"
+        },
+        {
+          "key": "B",
+          "label": "Il efface le fil et le marque comme traité, aidant les évaluateurs à suivre quels retours restent ouverts"
+        },
+        {
+          "key": "C",
+          "label": "Il fusionne immédiatement la requête de pull dans la branche de base, peu importe les autres fils de révision en attente"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Il efface le fil et le marque comme traité, aidant les évaluateurs à suivre quels retours restent ouverts",
+      "rationaleHtml": "Résoudre une conversation la fait s’effondrer et signale que le retour a été pris en compte, ce qui permet de garder les avis organisés.<br><br>Référence : <a href=\"https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request\">Commenter une pull request - GitHub Docs</a>",
+      "extraHtml": "La protection des branches peut exiger que toutes les conversations soient résolues avant la fusion. La résolution préserve le thread (il n’est pas supprimé) et ne fusionne pas la PR."
+    },
+    {
+      "id": "gh900-c9a496e731d7",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Qu’est-ce que les actions sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un éditeur de code intégré qui s’exécute entièrement dans le navigateur pour effectuer des modifications rapides des fichiers de dépôt en ligne"
+        },
+        {
+          "key": "B",
+          "label": "Une plateforme CI/CD et d’automatisation qui exécute des flux de travail déclenchés par des événements dans un dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Un scanner de vulnérabilités qui examine les dépendances pour détecter des avis de sécurité connus et envoie des alertes à leur sujet"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Une plateforme CI/CD et d’automatisation qui exécute des flux de travail déclenchés par des événements dans un dépôt",
+      "rationaleHtml": "GitHub Actions automatise les flux de travail de compilation, de test et de déploiement en réponse aux événements du dépôt.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions\">Comprendre les actions sur GitHub - GitHub Docs</a>",
+      "extraHtml": "Les actions alimentent CI/CD et automatisation générale (étiquetage, releases, notifications). L’analyse des dépendances est Dependabot ; l’éditeur navigateur est github.dev."
+    },
+    {
+      "id": "gh900-4d7b8607c664",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Où un fichier de workflow GitHub Actions doit-il être stocké pour être reconnu par un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dans le répertoire .github/workflows, en utilisant un fichier YAML qui définit les déclencheurs et les tâches du workflow"
+        },
+        {
+          "key": "B",
+          "label": "Dans la racine du dépôt sous forme d’un fichier nommé actions.json, que GitHub analyse au début de chaque événement push"
+        },
+        {
+          "key": "C",
+          "label": "À l’intérieur du wiki du dépôt, une page Markdown que GitHub convertit automatiquement en un flux de travail exécutable"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dans le répertoire .github/workflows, en utilisant un fichier YAML qui définit les déclencheurs et les tâches du workflow",
+      "rationaleHtml": "Les définitions de workflow sont des fichiers YAML placés dans .github/workflows au sein du dépôt.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/using-workflows/about-workflows\">À propos des flux de travail - GitHub Docs</a>",
+      "extraHtml": "Vous pouvez avoir plusieurs fichiers de workflow, chacun déclenché par différents événements. YAML définit sur (déclencheurs), jobs et steps."
+    },
+    {
+      "id": "gh900-ae0847dcec2e",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Dans un flux de travail GitHub Actions, que définit la touche 'on' ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’image spécifique du système d’exploitation de la machine virtuelle sur laquelle chaque tâche du workflow exécutera ses étapes"
+        },
+        {
+          "key": "B",
+          "label": "La liste des collaborateurs du dépôt autorisés à déclencher et relancer manuellement les tâches du workflow"
+        },
+        {
+          "key": "C",
+          "label": "Les événements qui déclenchent l’exécution du workflow, comme le push, le pull_request ou un planning"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Les événements qui déclenchent l’exécution du workflow, comme le push, le pull_request ou un planning",
+      "rationaleHtml": "La touche 'on' précise quels événements lancent le workflow, comme push, pull_request ou cron programmé.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows\">Événements qui déclenchent des flux de travail - GitHub Docs</a>",
+      "extraHtml": "Le système d’exploitation du runner est configuré avec runs-on, pas on. Les workflows peuvent répondre à de nombreux types d’événements, y compris les workflow_dispatch manuels."
+    },
+    {
+      "id": "gh900-b77d32598a54",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Quelle est la différence entre les runners hébergés sur GitHub et ceux auto-hébergés dans GitHub Actions ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les runners hébergés sur GitHub sont maintenus par GitHub sur de nouvelles machines virtuelles, tandis que les runners auto-hébergés tournent sur une infrastructure que vous gérez"
+        },
+        {
+          "key": "B",
+          "label": "Les runners hébergés sur GitHub ne peuvent exécuter que des dépôts publics, tandis que les runners auto-hébergés sont la seule option disponible pour tout dépôt privé"
+        },
+        {
+          "key": "C",
+          "label": "Les runners hébergés sur GitHub exécutent les tâches de façon séquentielle indéfiniment, tandis que les runners auto-hébergés sont les seuls capables d’exécuter des tâches en parallèle"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les runners hébergés sur GitHub sont maintenus par GitHub sur de nouvelles machines virtuelles, tandis que les runners auto-hébergés tournent sur une infrastructure que vous gérez",
+      "rationaleHtml": "GitHub propose des runners gérés et éphémères ; les runners auto-hébergés permettent d’utiliser du matériel personnalisé ou des environnements que vous contrôlez.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners\">À propos des runners hébergés sur GitHub - GitHub Docs</a>",
+      "extraHtml": "Les runners auto-hébergés conviennent à un matériel spécial, des réseaux privés ou des logiciels spécifiques. Les deux prennent en charge les dépôts privés et les tâches parallèles."
+    },
+    {
+      "id": "gh900-9bb33f49ea23",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Dans GitHub Actions, comment les jobs, les étapes et les actions sont-ils liés ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une étape contient plusieurs tâches, et chaque tâche enchaîne une action unique qui s’exécute lorsque l’ensemble du workflow est déclenché"
+        },
+        {
+          "key": "B",
+          "label": "Un workflow contient des jobs, chaque job contient des étapes, et un step peut exécuter une commande ou utiliser une action réutilisable"
+        },
+        {
+          "key": "C",
+          "label": "Une action contient des jobs, et chaque job est une seule ligne de commande qui s’exécute directement sur la branche par défaut du dépôt"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un workflow contient des jobs, chaque job contient des étapes, et un step peut exécuter une commande ou utiliser une action réutilisable",
+      "rationaleHtml": "Les workflows retiennent les jobs ; les jobs retiennent les étapes ordonnées ; les steps exécutent des commandes shell ou appellent des actions réutilisables.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions\">Comprendre les actions sur GitHub - GitHub Docs</a>",
+      "extraHtml": "Les tâches fonctionnent en parallèle par défaut et peuvent déclarer des dépendances avec des « besoins ». Les actions sont des unités réutilisables partagées via le Marketplace."
+    },
+    {
+      "id": "gh900-28fe536bdd6a",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Copilot",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Copilot"
+      ],
+      "promptHtml": "Qu’est-ce que GitHub Copilot ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un service de gestion des dépendances qui met à jour les bibliothèques obsolètes et ouvre automatiquement les pull requests pour les nouvelles versions"
+        },
+        {
+          "key": "B",
+          "label": "Un bot de revue de code qui applique les règles de protection des branches et bloque les pull requests qui échouent aux vérifications de statut requises"
+        },
+        {
+          "key": "C",
+          "label": "Un programmeur en duo IA qui suggère du code et des fonctions entières dans l’éditeur pendant que vous tapez"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un programmeur en duo IA qui suggère du code et des fonctions entières dans l’éditeur pendant que vous tapez",
+      "rationaleHtml": "GitHub Copilot est un assistant de codage IA qui fournit des suggestions contextuelles à l’intérieur des éditeurs pris en charge.<br><br>Référence : <a href=\"https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot\">Qu’est-ce que GitHub Copilot - GitHub Docs</a>",
+      "extraHtml": "Copilot suggère du code, répond aux questions via le chat et aide à rédiger des tests et de la documentation. Les mises à jour des dépendances sont Dependabot ; l’application des revues est la protection des branches."
+    },
+    {
+      "id": "gh900-1b5d410ae7f8",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Codespaces",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Codespaces"
+      ],
+      "promptHtml": "Que propose GitHub Codespaces ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un environnement de développement hébergé dans le cloud, configurable, qui s’exécute dans le navigateur ou un éditeur, soutenu par un conteneur"
+        },
+        {
+          "key": "B",
+          "label": "Un service d’hébergement statique qui publie du HTML directement depuis une branche ou le dossier /docs d’un dépôt"
+        },
+        {
+          "key": "C",
+          "label": "Un registre de paquets qui stocke et distribue des images de conteneurs et des paquets langages pour les compilations d’un dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un environnement de développement hébergé dans le cloud, configurable, qui s’exécute dans le navigateur ou un éditeur, soutenu par un conteneur",
+      "rationaleHtml": "Codespaces développe des environnements cloud prêts à coder définis par une configuration de conteneur de développement.<br><br>Référence : <a href=\"https://docs.github.com/en/codespaces/overview\">Aperçu de GitHub Codespaces - GitHub Docs</a>",
+      "extraHtml": "Codespaces supprime la configuration « fonctionne sur ma machine » en standardisant les environnements. L’hébergement statique correspond à Pages ; l’hébergement de paquets, c’est à Package."
+    },
+    {
+      "id": "gh900-5c8d09890ebf",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubMobile",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubMobile"
+      ],
+      "promptHtml": "Que peut faire un utilisateur avec l’application mobile GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Compiler et exécuter des compilations de production complètes de n’importe quel dépôt directement sur le téléphone sans aucune infrastructure cloud"
+        },
+        {
+          "key": "B",
+          "label": "Trier les notifications, examiner et commenter les pull requests, et gérer les problèmes depuis un téléphone ou une tablette"
+        },
+        {
+          "key": "C",
+          "label": "Remplacez l’ensemble de l’interface web de GitHub, y compris chaque réglage de facturation et de politique d’entreprise au niveau de l’organisation"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Trier les notifications, examiner et commenter les pull requests, et gérer les problèmes depuis un téléphone ou une tablette",
+      "rationaleHtml": "GitHub Mobile vous permet de gérer les notifications, les problèmes et les pull requests en déplacement.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-github/github-mobile\">GitHub Mobile - GitHub Docs</a>",
+      "extraHtml": "Le mobile est excellent pour rester réactif aux avis et notifications. Il complète, mais ne remplace pas totalement, les expériences web et bureau."
+    },
+    {
+      "id": "gh900-cdb33f8f8892",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Marketplace",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Marketplace"
+      ],
+      "promptHtml": "À quoi sert principalement le GitHub Marketplace ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Vente de matériel et de produits physiques pour développeurs que GitHub expédie directement aux comptes d’achat dans le monde entier"
+        },
+        {
+          "key": "B",
+          "label": "Héberger le code source de chaque dépôt public afin qu’il puisse être recherché et cloné en un seul endroit central"
+        },
+        {
+          "key": "C",
+          "label": "Découvrir et installer des applications et des actions qui étendent et s’intègrent aux flux de travail GitHub"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Découvrir et installer des applications et des actions qui étendent et s’intègrent aux flux de travail GitHub",
+      "rationaleHtml": "Le Marketplace propose des applications et actions GitHub qui ajoutent des fonctionnalités et des intégrations à vos flux de travail.<br><br>Référence : <a href=\"https://docs.github.com/en/apps/github-marketplace/github-marketplace-overview/about-github-marketplace-for-apps\">À propos de GitHub Marketplace - GitHub Docs</a>",
+      "extraHtml": "Les éléments du marché incluent des outils d’intégration continue, des applications de qualité de code et des actions réutilisables. Certaines sont gratuites ; d’autres sont payantes. Il étend GitHub, pas tout le code."
+    },
+    {
+      "id": "gh900-efb5ac5169bf",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "CICD",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "CICD"
+      ],
+      "promptHtml": "Comment GitHub Actions permet-il généralement une intégration continue pour un projet ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En compilant et testant automatiquement le code à chaque requête push ou pull et en rapportant les résultats sous forme de vérifications de statut"
+        },
+        {
+          "key": "B",
+          "label": "En empêchant les développeurs de jamais pousser vers une branche avant qu’un administrateur ne revoie et approuve manuellement le changement"
+        },
+        {
+          "key": "C",
+          "label": "En chiffreant tout le code source du dépôt au repos, de sorte que seuls les serveurs d’intégration continue authentifiés puissent le lire"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "En compilant et testant automatiquement le code à chaque requête push ou pull et en rapportant les résultats sous forme de vérifications de statut",
+      "rationaleHtml": "Les workflows CI exécutent des compilations et des tests sur les événements et les résultats de réussite/échec de surface comme contrôles de statut sur les pull requests.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration\">À propos de l’intégration continue - GitHub Docs</a>",
+      "extraHtml": "Les vérifications de statut requises peuvent bloquer les fusions jusqu’à ce que le CI soit passé. Le CI fournit un retour rapide afin que les problèmes soient détectés avant la fusion."
+    },
+    {
+      "id": "gh900-2c80aab5ee60",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubCLI",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubCLI"
+      ],
+      "promptHtml": "Qu’est-ce que la CLI GitHub (gh) ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une extension de navigateur qui superpose des boutons supplémentaires sur le site GitHub pour accélérer la navigation entre les pages"
+        },
+        {
+          "key": "B",
+          "label": "Un outil en ligne de commande qui vous permet de gérer les problèmes, les pull requests et d’autres fonctionnalités de GitHub depuis le terminal"
+        },
+        {
+          "key": "C",
+          "label": "Un remplacement de Git lui-même qui stocke l’historique des commits dans un format propriétaire incompatible avec les clients Git standards"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un outil en ligne de commande qui vous permet de gérer les problèmes, les pull requests et d’autres fonctionnalités de GitHub depuis le terminal",
+      "rationaleHtml": "La ligne de commande GitHub apporte les flux de travail GitHub (issues, PR, releases, actions) en ligne de commande.<br><br>Référence : <a href=\"https://docs.github.com/en/github-cli/github-cli/about-github-cli\">À propos de la ligne de ligne de ligne GitHub - Docs GitHub</a>",
+      "extraHtml": "gh complète Git, ne le remplace pas. Par exemple, « gh pr create » ouvre une pull request sans quitter le terminal."
+    },
+    {
+      "id": "gh900-5f75867187cd",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Dependabot",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Dependabot"
+      ],
+      "promptHtml": "Que font les mises à jour de version de Dependabot pour un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il ouvre automatiquement les pull requests pour maintenir les dépendances d’un projet à jour avec les versions plus récentes"
+        },
+        {
+          "key": "B",
+          "label": "Il analyse le code engagé à la recherche de secrets codés en dur comme les clés API et les révoque automatiquement auprès du fournisseur"
+        },
+        {
+          "key": "C",
+          "label": "Il exécute la suite de tests unitaires du projet à chaque poussée et la fusion de blocs lorsque l’un des tests échoue"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Il ouvre automatiquement les pull requests pour maintenir les dépendances d’un projet à jour avec les versions plus récentes",
+      "rationaleHtml": "Les mises à jour de version de Dependabot surveillent les dépendances et ouvrent des PR pour les mettre à jour selon un calendrier.<br><br>Référence : <a href=\"https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates\">À propos des mises à jour de version de Dependabot - GitHub Docs</a>",
+      "extraHtml": "Les mises à jour de sécurité de Dependabot ciblent spécifiquement les versions vulnérables. Le scan secret gère les identifiants fuités ; CI effectue des tests."
+    },
+    {
+      "id": "gh900-097e50f8a837",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "GitHubActions",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "GitHubActions"
+      ],
+      "promptHtml": "Comment les valeurs sensibles comme les clés API doivent-elles être fournies dans un flux de travail GitHub Actions ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En les codant directement dans le fichier YAML du workflow afin que chaque étape du travail puisse les lire sans configuration supplémentaire"
+        },
+        {
+          "key": "B",
+          "label": "En les encommettant dans un fichier en clair dans la racine du dépôt et en lisant ce fichier au début de chaque tâche"
+        },
+        {
+          "key": "C",
+          "label": "En les stockant sous forme de secrets chiffrés dans un dépôt ou une organisation et en les référençant dans le flux de travail"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "En les stockant sous forme de secrets chiffrés dans un dépôt ou une organisation et en les référençant dans le flux de travail",
+      "rationaleHtml": "Les secrets chiffrés empêchent les identifiants d’entrer dans le code source et sont injectés dans les flux de travail à l’exécution.<br><br>Référence : <a href=\"https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions\">Utilisation des secrets dans les actions GitHub - Documents GitHub</a>",
+      "extraHtml": "Les secrets sont masqués dans les journaux. Ne communiquez jamais les identifiants du dépôt ; le scan secret existe précisément parce que c’est une erreur courante et dangereuse."
+    },
+    {
+      "id": "gh900-2e921c66fcef",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Codespaces",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Codespaces"
+      ],
+      "promptHtml": "Quel est le but d’une configuration de conteneur de développement (devcontainer.json) utilisée par Codespaces ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il enregistre quels collaborateurs sont autorisés à ouvrir un espace de code pour le dépôt et combien de temps chacun peut fonctionner"
+        },
+        {
+          "key": "B",
+          "label": "Il définit les outils, extensions et paramètres afin que chaque espace de code pour le dépôt commence à partir d’un environnement cohérent"
+        },
+        {
+          "key": "C",
+          "label": "Il liste les dépendances à l’exécution du dépôt pour Dependabot afin que les paquets obsolètes puissent être signalés pour les mises à jour"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Il définit les outils, extensions et paramètres afin que chaque espace de code pour le dépôt commence à partir d’un environnement cohérent",
+      "rationaleHtml": "La configuration du conteneur dev spécifie l’image, les outils et les paramètres pour que les environnements soient reproductibles.<br><br>Référence : <a href=\"https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers\">Introduction aux conteneurs de développement - GitHub Docs</a>",
+      "extraHtml": "Les conteneurs de développement standardisent l’intégration afin que les contributeurs obtiennent des configurations identiques, prêtes à coder. Le suivi des dépendances est une préoccupation distincte prise en charge par Dependabot."
+    },
+    {
+      "id": "gh900-a87d6f4bc8be",
+      "examSlug": "gh900",
+      "domain": "ModernDevelopment",
+      "topic": "Integrations",
+      "tags": [
+        "GH-900",
+        "ModernDevelopment",
+        "Integrations"
+      ],
+      "promptHtml": "Qu’est-ce qu’un webhook dans le contexte des intégrations GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un rappel HTTP que GitHub envoie à un service externe lorsqu’un événement de dépôt abonné survient"
+        },
+        {
+          "key": "B",
+          "label": "Un paramètre de branchement protégé qui exige que toutes les pull requests passent des tests automatisés avant de pouvoir être fusionnées"
+        },
+        {
+          "key": "C",
+          "label": "Une syntaxe de commentaire spéciale qui relie un problème à une pull request et le ferme lors de la fusion du PR"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un rappel HTTP que GitHub envoie à un service externe lorsqu’un événement de dépôt abonné survient",
+      "rationaleHtml": "Les webhooks livrent des charges utiles d’événements vers une URL configurée, permettant des intégrations en temps réel avec des systèmes externes.<br><br>Référence : <a href=\"https://docs.github.com/en/webhooks/about-webhooks\">À propos des webhooks - GitHub Docs</a>",
+      "extraHtml": "Les Webhooks alimentent les notifications de chat, les déclencheurs CI et l’automatisation personnalisée. Ils envoient les données vers votre endpoint lorsque des événements surviennent."
+    },
+    {
+      "id": "gh900-38f5f7eb11a5",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "À quoi sont conçus les projets GitHub (l’expérience actuelle de Projects) ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fournir un outil flexible de planification basé sur des tableaux et des tableaux qui organise les problèmes et les requêtes en vues personnalisables"
+        },
+        {
+          "key": "B",
+          "label": "Hébergez les binaires compilés du projet et les assets de publication afin que les utilisateurs finaux puissent télécharger des versions spécifiques du logiciel"
+        },
+        {
+          "key": "C",
+          "label": "Générer automatiquement le code source du projet à partir d’une description en langage naturel de l’application souhaitée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fournir un outil flexible de planification basé sur des tableaux et des tableaux qui organise les problèmes et les requêtes en vues personnalisables",
+      "rationaleHtml": "Projects est un outil de planification adaptable qui relie les enjeux et les RP dans des tables, des tableaux et des feuilles de route.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">À propos des projets - GitHub Docs</a>",
+      "extraHtml": "Les projets peuvent se dérouler au niveau utilisateur ou organisationnel et s’étendre sur plusieurs dépôts. Il planifie le travail ; les versions distribuent les binaires."
+    },
+    {
+      "id": "gh900-0d422a40f65a",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Dans GitHub Projects, quelle est la différence entre la disposition du tableau et celle du tableau pour les mêmes éléments ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La disposition du tableau supprime définitivement les éléments fermés, tandis que la disposition du tableau est la seule qui conserve le travail terminé"
+        },
+        {
+          "key": "B",
+          "label": "Le plateau affiche les éléments sous forme de cartes dans des colonnes pour un flux de style kanban, tandis que le tableau les montre comme des lignes triables et filtrables"
+        },
+        {
+          "key": "C",
+          "label": "Le tableau ne peut afficher que les problèmes, tandis que la table est la seule disposition capable d’afficher les pull requests dans un projet"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Le plateau affiche les éléments sous forme de cartes dans des colonnes pour un flux de style kanban, tandis que le tableau les montre comme des lignes triables et filtrables",
+      "rationaleHtml": "La disposition du tableau donne une vue kanban ; la disposition des tableaux donne une grille de type tableur. Les deux affichent les mêmes éléments sous-jacents.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/changing-the-layout-of-a-view\">Modification de la disposition d’une vue - GitHub Docs</a>",
+      "extraHtml": "Les mises en page sont simplement différentes vues d’un même jeu de données ; changer ne supprime rien. Les deux gèrent les problèmes et les PR."
+    },
+    {
+      "id": "gh900-8b6636df5960",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Comment les champs personnalisés améliorent-ils un projet GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils restreignent quels dépôts peuvent être liés au projet afin que seules les équipes approuvées puissent ajouter leurs problèmes"
+        },
+        {
+          "key": "B",
+          "label": "Ils permettent d’ajouter des métadonnées telles que priorité, statut, itération ou effort aux éléments pour un suivi et un filtrage plus riches"
+        },
+        {
+          "key": "C",
+          "label": "Ils rédigent automatiquement le texte de mise à jour du statut du projet et l’adressent par email à chaque partie prenante à la fin de chaque semaine"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ils permettent d’ajouter des métadonnées telles que priorité, statut, itération ou effort aux éléments pour un suivi et un filtrage plus riches",
+      "rationaleHtml": "Les champs personnalisés (texte, numéro, date, sélection unique, itération) ajoutent des données structurées utilisées pour regrouper, trier et filtrer.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields\">À propos des champs personnalisés - GitHub Docs</a>",
+      "extraHtml": "Les champs à sélection unique et itération sont particulièrement utiles pour les colonnes de statut et la planification des sprints. Les champs génèrent des vues, du regroupement et des insights."
+    },
+    {
+      "id": "gh900-231b4d53b647",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Une équipe souhaite visualiser les éléments du projet sur un calendrier par rapport aux champs de date pour planifier sur plusieurs semaines. Quelle vue Projets correspond le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La mise en page de la feuille de route, qui trace les éléments sur une chronologie en utilisant leurs champs de date ou d’itération pour la planification dans le temps"
+        },
+        {
+          "key": "B",
+          "label": "La disposition du tableau, qui organise les éléments en colonnes kanban mais ne les place pas sur une timeline de calendrier"
+        },
+        {
+          "key": "C",
+          "label": "La disposition des tableaux, qui liste les éléments sous forme de lignes et de colonnes mais ne rend pas de chronologie horizontale des dates"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "La mise en page de la feuille de route, qui trace les éléments sur une chronologie en utilisant leurs champs de date ou d’itération pour la planification dans le temps",
+      "rationaleHtml": "La mise en page de la feuille de route visualise les éléments sur une timeline en fonction des champs de date et d’itération.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout\">Personnalisation de la mise en page de la feuille de route - GitHub Docs</a>",
+      "extraHtml": "La feuille de route est idéale pour la planification à long terme et les dépendances dans le temps. Le tableau et la table manquent de visualisation du calendrier."
+    },
+    {
+      "id": "gh900-a0057c49f1d7",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Automation",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Automation"
+      ],
+      "promptHtml": "Comment un projet GitHub peut-il réduire l’effort manuel lorsqu’un problème est fermé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En utilisant des flux de travail intégrés qui mettent automatiquement à jour le statut d’un article, par exemple en déplaçant les issues fermées vers Terminé"
+        },
+        {
+          "key": "B",
+          "label": "En exigeant qu’un mainteneur glisse manuellement chaque issue fermée dans la colonne Fait avant qu’elle ne disparaisse de la carte"
+        },
+        {
+          "key": "C",
+          "label": "En supprimant complètement le numéro fermé du dépôt pour qu’il n’apparaisse plus dans aucun projet ou résultat de recherche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "En utilisant des flux de travail intégrés qui mettent automatiquement à jour le statut d’un article, par exemple en déplaçant les issues fermées vers Terminé",
+      "rationaleHtml": "Les projets intègrent des flux de travail automatisés qui définissent le statut lors de l’ajout d’éléments lors de l’ajout, de la fermeture ou de la fusion.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-built-in-automations\">Utilisation des automatisations intégrées - GitHub Docs</a>",
+      "extraHtml": "Les automatisations réduisent la maintenance manuelle de la carte. Fermer un problème ne le supprime pas ; l’automatisation se contente de mettre à jour le statut de son projet."
+    },
+    {
+      "id": "gh900-61c4e112418f",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Milestones",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Milestones"
+      ],
+      "promptHtml": "Comment les jalons complètent-ils les projets GitHub pour le suivi des sorties ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les jalons remplacent entièrement les projets en fournissant les mêmes tableaux et tables visuales personnalisables avec une automatisation"
+        },
+        {
+          "key": "B",
+          "label": "Les jalons regroupent les problèmes et les demandes de tirage vers un objectif daté et affichent un pourcentage d’achèvement pour cet objectif"
+        },
+        {
+          "key": "C",
+          "label": "Les jalons stockent des identifiants de déploiement chiffrés que les flux de travail d’automatisation de projet utilisent pour publier une version"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Les jalons regroupent les problèmes et les demandes de tirage vers un objectif daté et affichent un pourcentage d’achèvement pour cet objectif",
+      "rationaleHtml": "Les jalons regroupent les problèmes/PR vers un objectif avec une date d’échéance et une barre de progression, ce qui est utile en parallèle avec les projets.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones\">À propos des jalons - GitHub Docs</a>",
+      "extraHtml": "Les jalons sont des objectifs à portée de dépôt ; Les projets sont des conseils de planification croisés flexibles. Les équipes utilisent souvent les deux ensemble."
+    },
+    {
+      "id": "gh900-26e40e4c7384",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Comment un problème existant est-il ajouté à un projet GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "En forkant le dépôt du numéro, qui copie automatiquement tous ses numéros ouverts dans un projet nouvellement généré"
+        },
+        {
+          "key": "B",
+          "label": "En ajoutant le problème au projet depuis la barre latérale du problème ou en collant son URL dans la vue projet"
+        },
+        {
+          "key": "C",
+          "label": "En convertissant le problème en pull request, c’est la seule façon prise en charge de le faire apparaître dans un projet"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "En ajoutant le problème au projet depuis la barre latérale du problème ou en collant son URL dans la vue projet",
+      "rationaleHtml": "Les numéros peuvent être ajoutés à un projet via la barre latérale Projets du numéro ou en ajoutant leur URL dans le projet.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/adding-items-to-your-project\">Ajouter des éléments à votre projet - GitHub Docs</a>",
+      "extraHtml": "Un problème peut appartenir à plusieurs projets. Le fork copie un dépôt, pas l’adhésion au projet, et les problèmes ne doivent pas nécessairement devenir des PR à suivre."
+    },
+    {
+      "id": "gh900-5ba53b5ec651",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Triage",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Triage"
+      ],
+      "promptHtml": "Comment les labels supportent-ils le triage au sein d’un projet ou d’un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ils catégorisent les problèmes et les pull requests afin que les équipes puissent filtrer et prioriser, comme séparer les bugs des améliorations"
+        },
+        {
+          "key": "B",
+          "label": "Ils attribuent une date d’échéance fixe à chaque problème et ferment automatiquement le problème lorsque cette date est enfin arrivée"
+        },
+        {
+          "key": "C",
+          "label": "Ils accordent à certains contributeurs la permission de fusionner les pull requests sans attendre les revues requises"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ils catégorisent les problèmes et les pull requests afin que les équipes puissent filtrer et prioriser, comme séparer les bugs des améliorations",
+      "rationaleHtml": "Les étiquettes classent les éléments pour filtrer et prioriser lors du triage ; elles ne fixent ni dates ni permissions.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels\">Étiquettes de gestion - GitHub Docs</a>",
+      "extraHtml": "Dans Projets, vous pouvez aussi utiliser des champs personnalisés à sélection unique pour le statut. Les étiquettes restent un moyen simple, à l’échelle du dépôt, de trier et filtrer."
+    },
+    {
+      "id": "gh900-95a84116006c",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Un chef de projet souhaite voir tous les éléments en cours regroupés par assigné dans un projet. Quelle capacité de Projets permet cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Filtrer et regrouper la vue par valeurs de champ, comme le regroupement par assigné et le filtrage par un champ d’état"
+        },
+        {
+          "key": "B",
+          "label": "Archiver le dépôt de façon à ce que seuls les éléments en cours restent visibles pour toute l’équipe dans le tableau du projet"
+        },
+        {
+          "key": "C",
+          "label": "Créer un jalon distinct pour chaque assigné afin que les objets de chaque personne apparaissent dans son propre objectif de sortie"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Filtrer et regrouper la vue par valeurs de champ, comme le regroupement par assigné et le filtrage par un champ d’état",
+      "rationaleHtml": "Les vues de projet permettent de filtrer par valeurs de champ et de regrouper les éléments par assigné, statut ou autres champs.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects\">Filtrage des projets - GitHub Docs</a>",
+      "extraHtml": "Les vues sauvegardées permettent à chaque membre de l’équipe de conserver une tranche préférée. Le regroupement et le filtrage sont bien plus flexibles que les jalons par assigné."
+    },
+    {
+      "id": "gh900-d300ab6f6215",
+      "examSlug": "gh900",
+      "domain": "ProjectManagement",
+      "topic": "Projects",
+      "tags": [
+        "GH-900",
+        "ProjectManagement",
+        "Projects"
+      ],
+      "promptHtml": "Comment les problèmes et les projets GitHub se rapportent-ils ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un problème est un élément de travail unique et traçable, tandis qu’un projet organise de nombreux problèmes et extrait les requêtes dans des vues de planification"
+        },
+        {
+          "key": "B",
+          "label": "Un projet est un seul élément de travail, tandis qu’un problème est le tableau qui organise de nombreux projets en colonnes et en calendriers"
+        },
+        {
+          "key": "C",
+          "label": "Les numéros et les projets sont des noms interchangeables pour la même fonctionnalité, et l’un ou l’autre terme peut être utilisé sans différence"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un problème est un élément de travail unique et traçable, tandis qu’un projet organise de nombreux problèmes et extrait les requêtes dans des vues de planification",
+      "rationaleHtml": "Les questions représentent des tâches individuelles ; Les projets agrégent et organisent de nombreux éléments pour la planification.<br><br>Référence : <a href=\"https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects\">À propos des projets - GitHub Docs</a>",
+      "extraHtml": "Considérez les enjeux comme les tâches et les projets comme la surface de planification qui organise ces tâches en tableaux, tableaux et feuilles de route."
+    },
+    {
+      "id": "gh900-41b4e3c3960c",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Authentication",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Authentication"
+      ],
+      "promptHtml": "Pourquoi est-elle importante activer l’authentification à deux facteurs (2FA) sur un compte GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il chiffre automatiquement tous les dépôts privés appartenant au compte afin que leur contenu ne puisse pas être lu par d’autres membres"
+        },
+        {
+          "key": "B",
+          "label": "Cela supprime la nécessité de faire tourner les jetons d’accès personnels car le second facteur maintient ces jetons valides indéfiniment"
+        },
+        {
+          "key": "C",
+          "label": "Cela ajoute une seconde étape de vérification au-delà du mot de passe, réduisant considérablement le risque de compromission du compte"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Cela ajoute une seconde étape de vérification au-delà du mot de passe, réduisant considérablement le risque de compromission du compte",
+      "rationaleHtml": "La 2FA nécessite un second facteur (code d’application, clé de sécurité ou clé d’accès) en plus du mot de passe, protégeant le compte.<br><br>Référence : <a href=\"https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication\">À propos de l’authentification à deux facteurs - GitHub Docs</a>",
+      "extraHtml": "GitHub impose désormais la 2FA à de nombreux contributeurs. La 2FA protège la connexion ; elle ne chiffre pas les dépôts ni ne rend les tokens permanents."
+    },
+    {
+      "id": "gh900-19c71b810665",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "SecretScanning",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "SecretScanning"
+      ],
+      "promptHtml": "Que fait le scan secret sur GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il exécute la suite de tests automatisés du dépôt à chaque pull request et bloque la fusion lorsqu’un test échoue"
+        },
+        {
+          "key": "B",
+          "label": "Il détecte des formats secrets connus tels que les clés API et les jetons engagés dans un dépôt et les alerte à leur sujet"
+        },
+        {
+          "key": "C",
+          "label": "Il met à jour les dépendances obsolètes en ouvrant des pull requests qui font passer chaque paquet à sa dernière version disponible"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Il détecte des formats secrets connus tels que les clés API et les jetons engagés dans un dépôt et les alerte à leur sujet",
+      "rationaleHtml": "Les recherches à balayage secret commettent des commits pour des motifs d’identifiants connus et des alertes (et peuvent activer la protection pour les bloquer).<br><br>Référence : <a href=\"https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning\">À propos de la détection de secrets - GitHub Docs</a>",
+      "extraHtml": "La protection push peut bloquer un commit contenant un secret avant qu’il ne soit atterri. Les partenaires peuvent être informés pour révoquer automatiquement les identifiants fuités."
+    },
+    {
+      "id": "gh900-22c68d8fc17a",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Dependabot",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Dependabot"
+      ],
+      "promptHtml": "De quoi les alertes Dependabot notifient-elles un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dépendances présentant des vulnérabilités de sécurité connues, permettant aux mainteneurs de mettre à jour vers une version correcte"
+        },
+        {
+          "key": "B",
+          "label": "Des pull requests ouvertes depuis plus d’un certain nombre de jours configurés sans recevoir de révision"
+        },
+        {
+          "key": "C",
+          "label": "Collaborateurs qui n’ont pas activé l’authentification à deux facteurs sur leurs comptes au sein de l’organisation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dépendances présentant des vulnérabilités de sécurité connues, permettant aux mainteneurs de mettre à jour vers une version correcte",
+      "rationaleHtml": "Les alertes Dependabot signalent les dépendances présentant des vulnérabilités connues à partir de la base de données de conseil.<br><br>Référence : <a href=\"https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts\">À propos des alertes Dependabot - GitHub Docs</a>",
+      "extraHtml": "Les alertes peuvent être associées aux mises à jour de sécurité Dependabot qui ouvrent automatiquement les PR de correction. Elles reposent sur le graphe de dépendances et la base de données GitHub Advisor."
+    },
+    {
+      "id": "gh900-57186eb01922",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "CodeScanning",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "CodeScanning"
+      ],
+      "promptHtml": "Quel est le but de l’analyse de code sur GitHub (par exemple avec CodeQL) ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Analyser le code source pour détecter les vulnérabilités de sécurité et les erreurs de codage, puis les mettre en avant sous forme d’alertes"
+        },
+        {
+          "key": "B",
+          "label": "Pour mesurer le nombre de lignes de code ajoutées par chaque contributeur, afin que les managers puissent classer la productivité des développeurs"
+        },
+        {
+          "key": "C",
+          "label": "Formater automatiquement le code source selon un guide de style à chaque fois qu’un commit est envoyé vers une branche"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Analyser le code source pour détecter les vulnérabilités de sécurité et les erreurs de codage, puis les mettre en avant sous forme d’alertes",
+      "rationaleHtml": "Le balayage de code analyse statiquement le code (par exemple, avec CodeQL) pour détecter des problèmes de sécurité et des bugs, en signalant des alertes.<br><br>Référence : <a href=\"https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning\">À propos de la numérisation de code - GitHub Docs</a>",
+      "extraHtml": "Le balayage de code peut s’exécuter sur des pull requests pour détecter les problèmes avant la fusion. Il analyse le code pour détecter les défauts, contrairement à Dependabot qui vérifie les dépendances."
+    },
+    {
+      "id": "gh900-a50edde01b2a",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "SecurityAdvisories",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "SecurityAdvisories"
+      ],
+      "promptHtml": "Quel est le but d’un avis de sécurité pour un dépôt ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Cela permet aux mainteneurs de discuter, corriger puis publier les détails d’une vulnérabilité dans leur projet en privé"
+        },
+        {
+          "key": "B",
+          "label": "Il déploie automatiquement une version correcte à tous les utilisateurs ayant installé la version affectée du logiciel"
+        },
+        {
+          "key": "C",
+          "label": "Il bloque définitivement tout contributeur ayant signalé une vulnérabilité pour qu’il n’ouvre pas de futurs problèmes dans le dépôt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Cela permet aux mainteneurs de discuter, corriger puis publier les détails d’une vulnérabilité dans leur projet en privé",
+      "rationaleHtml": "Les avis de sécurité offrent un espace privé pour coordonner une correction puis divulguer la vulnérabilité de manière responsable.<br><br>Référence : <a href=\"https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/about-repository-security-advisories\">À propos des avis de sécurité des dépôts - GitHub Docs</a>",
+      "extraHtml": "Les avis prennent en charge les forks privés pour la collaboration et peuvent demander des identifiants CVE. La divulgation coordonnée protège les utilisateurs jusqu’à ce qu’une solution soit disponible."
+    },
+    {
+      "id": "gh900-c3e4d6df380e",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Permissions",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Permissions"
+      ],
+      "promptHtml": "Un mainteneur veut un collaborateur capable de gérer les problèmes et les pull requests, y compris les étiqueter et les fermer, mais pas de push code. Quel rôle dans le dépôt correspond le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le rôle Admin, qui accorde un contrôle total sur le dépôt, y compris les paramètres, la sécurité et la suppression"
+        },
+        {
+          "key": "B",
+          "label": "Le rôle Triage, qui permet de gérer les problèmes et les pull requests sans accorder l’accès en écriture au code"
+        },
+        {
+          "key": "C",
+          "label": "Le rôle Lecture, qui permet de visualiser et cloner le dépôt sans gérer les problèmes ni les pull requests"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Le rôle Triage, qui permet de gérer les problèmes et les pull requests sans accorder l’accès en écriture au code",
+      "rationaleHtml": "Le triage permet à un utilisateur de gérer les problèmes/PR (étiqueter, assigner, fermer) sans accéder à la base de code par push (push).<br><br>Référence : <a href=\"https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization\">Rôles de dépôt pour une organisation - GitHub Docs</a>",
+      "extraHtml": "Les rôles de dépôt s’intensifient : lire, trier, écrire, maintenir, administrer. Accorder le moins de privilèges nécessaires. La lecture ne peut pas gérer les problèmes ; l’administration est bien plus que nécessaire ici."
+    },
+    {
+      "id": "gh900-94fb22f27660",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Teams",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Teams"
+      ],
+      "promptHtml": "Comment les équipes aident-elles à gérer l’accès au sein d’une organisation GitHub ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Teams Group Members pour accorder des permissions à plusieurs personnes en même temps, et Teams peut être imbriqué pour une structure en miroir"
+        },
+        {
+          "key": "B",
+          "label": "Les équipes sont des unités de facturation qui déterminent combien de dépôts privés chaque membre individuel est personnellement autorisé à créer"
+        },
+        {
+          "key": "C",
+          "label": "Les équipes sont des robots automatisés qui examinent les pull requests et les fusionnent une fois que toutes les vérifications de statut requises ont été validées"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Teams Group Members pour accorder des permissions à plusieurs personnes en même temps, et Teams peut être imbriqué pour une structure en miroir",
+      "rationaleHtml": "Les équipes permettent aux organisations d’attribuer l’accès aux référentiels à des groupes de membres et de soutenir le nesting pour la hiérarchie.<br><br>Référence : <a href=\"https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams\">À propos de Teams - GitHub Docs</a>",
+      "extraHtml": "Les équipes imbriquées héritent de l’accès parent, simplifiant ainsi la gestion. Les équipes peuvent aussi être @mentioned et définies comme propriétaires de code. Elles gèrent l’accès, pas la facturation."
+    },
+    {
+      "id": "gh900-59b4464400ed",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Permissions",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Permissions"
+      ],
+      "promptHtml": "Qu’est-ce qui distingue un propriétaire d’organisation d’un membre d’une organisation ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les propriétaires ne peuvent consulter que les dépôts, tandis que les membres ont la possibilité exclusive de modifier les paramètres de sécurité à l’échelle de l’organisation"
+        },
+        {
+          "key": "B",
+          "label": "Les propriétaires et les membres ont des autorisations identiques, et les étiquettes existent uniquement pour être affichées sur la page des personnes de l’organisation"
+        },
+        {
+          "key": "C",
+          "label": "Les propriétaires ont un contrôle administratif total sur l’organisation, tandis que les membres ont un accès limité en fonction des rôles qui leur sont attribués"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Les propriétaires ont un contrôle administratif total sur l’organisation, tandis que les membres ont un accès limité en fonction des rôles qui leur sont attribués",
+      "rationaleHtml": "Les propriétaires gèrent tous les paramètres de l’organisation, la facturation et les membres ; les membres ont accès selon les rôles de l’équipe et des repos.<br><br>Référence : <a href=\"https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization\">Rôles dans une organisation - GitHub Docs</a>",
+      "extraHtml": "Limitez le nombre de propriétaires pour réduire les risques. Les membres peuvent obtenir des autorisations spécifiques de dépôt et d’équipe sans contrôle total de l’organisation."
+    },
+    {
+      "id": "gh900-c1c56c40cd8e",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "AuditLog",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "AuditLog"
+      ],
+      "promptHtml": "Quelles informations le journal d’audit d’une organisation fournit-il ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un enregistrement des activités et des changements, tels que les mises à jour des permissions et les actions du dépôt, pour examen et conformité"
+        },
+        {
+          "key": "B",
+          "label": "Une liste classée des contributeurs les plus actifs afin que les administrateurs puissent récompenser chaque mois les meilleurs"
+        },
+        {
+          "key": "C",
+          "label": "Une file d’attente de pull requests automatisées de mise à jour de dépendance en attente d’un responsable de la révision et de la fusion"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un enregistrement des activités et des changements, tels que les mises à jour des permissions et les actions du dépôt, pour examen et conformité",
+      "rationaleHtml": "Le journal d’audit indique qui a fait quoi et quand dans toute l’organisation, soutenant les revues de sécurité et de conformité.<br><br>Référence : <a href=\"https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization\">Révision du journal d’audit - GitHub Docs</a>",
+      "extraHtml": "Les journaux d’audit aident à enquêter sur les incidents et à démontrer la conformité. Ils peuvent souvent être exportés ou diffusés vers des systèmes externes pour leur conservation."
+    },
+    {
+      "id": "gh900-79989e5b9086",
+      "examSlug": "gh900",
+      "domain": "SecurityAndAdministration",
+      "topic": "Authentication",
+      "tags": [
+        "GH-900",
+        "SecurityAndAdministration",
+        "Authentication"
+      ],
+      "promptHtml": "Pour authentifier les opérations Git via HTTPS, que recommande GitHub au lieu d’utiliser un mot de passe de compte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Réutiliser le même mot de passe statique sur chaque appareil afin que les opérations Git restent simples et cohérentes à configurer"
+        },
+        {
+          "key": "B",
+          "label": "Un jeton d’accès personnel (ou autre identifiant pris en charge) pouvant être délimité et révoqué indépendamment du mot de passe du compte"
+        },
+        {
+          "key": "C",
+          "label": "Désactiver entièrement l’authentification pour les dépôts privés afin que les collaborateurs de confiance n’aient jamais à se connecter"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un jeton d’accès personnel (ou autre identifiant pris en charge) pouvant être délimité et révoqué indépendamment du mot de passe du compte",
+      "rationaleHtml": "GitHub nécessite une authentification basée sur des jetons (PAT, clés SSH ou jetons d’application GitHub) au lieu de mots de passe pour Git sur HTTPS.<br><br>Référence : <a href=\"https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens\">Gérer vos jetons d’accès personnels - GitHub Docs</a>",
+      "extraHtml": "Les PAT à grain fin permettent d’accéder à des dépôts et permissions spécifiques et de définir des expirations. Les clés SSH sont une autre option prise en charge pour les opérations Git."
+    },
+    {
+      "id": "gh900-aaaefe2a331b",
+      "examSlug": "gh900",
+      "domain": "GitHubCommunity",
+      "topic": "Sponsors",
+      "tags": [
+        "GH-900",
+        "GitHubCommunity",
+        "Sponsors"
+      ],
+      "promptHtml": "Que permet GitHub Sponsors ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Répartir automatiquement les revenus publicitaires d’un projet de manière égale entre chaque contributeur ayant déjà fusionné une pull request"
+        },
+        {
+          "key": "B",
+          "label": "Fournir un soutien financier aux développeurs et organisations open source directement via leurs profils GitHub"
+        },
+        {
+          "key": "C",
+          "label": "Vendre des licences propriétaires, propriétaires, au nom d’un développeur et gérer toutes les demandes de facturation et de support client"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Fournir un soutien financier aux développeurs et organisations open source directement via leurs profils GitHub",
+      "rationaleHtml": "GitHub Sponsors permet à la communauté de financer les mainteneurs et les projets avec des paiements récurrents ou ponctuels.<br><br>Référence : <a href=\"https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors\">À propos des sponsors GitHub - Documents GitHub</a>",
+      "extraHtml": "Le parrainage aide à soutenir financièrement l’open source. Il s’agit d’un financement volontaire, pas d’un partage des revenus publicitaires ni de la revente de licences."
+    },
+    {
+      "id": "gh900-3663a24c2111",
+      "examSlug": "gh900",
+      "domain": "GitHubCommunity",
+      "topic": "InnerSource",
+      "tags": [
+        "GH-900",
+        "GitHubCommunity",
+        "InnerSource"
+      ],
+      "promptHtml": "Une entreprise souhaite partager le code en interne entre toutes les équipes afin d’encourager la réutilisation et la collaboration, en suivant un modèle InnerSource. Quelle approche soutient cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Marquer chaque projet interne comme un dépôt public afin que les contributeurs externes puissent également participer et réutiliser le code"
+        },
+        {
+          "key": "B",
+          "label": "Restreindre chaque projet à un seul dépôt privé que seuls les membres immédiats de l’équipe sont autorisés à consulter"
+        },
+        {
+          "key": "C",
+          "label": "Utiliser des dépôts internes pour que tous les membres de l’entreprise puissent consulter et contribuer, appliquer des pratiques open source au sein de l’entreprise"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Utiliser des dépôts internes pour que tous les membres de l’entreprise puissent consulter et contribuer, appliquer des pratiques open source au sein de l’entreprise",
+      "rationaleHtml": "Les dépôts internes permettent InnerSource : une collaboration de type open source visible pour l’ensemble de l’entreprise mais pas pour le public.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/using-github/exploring-early-access-releases-with-feature-preview\">GitHub Docs</a>",
+      "extraHtml": "InnerSource apporte transparence et réutilisation open source au sein d’une organisation. Le public expose le code à l’extérieur ; le strict privé le scloisonne par équipe."
+    },
+    {
+      "id": "gh900-e8ee7f34698f",
+      "examSlug": "gh900",
+      "domain": "GitHubCommunity",
+      "topic": "Marketplace",
+      "tags": [
+        "GH-900",
+        "GitHubCommunity",
+        "Marketplace"
+      ],
+      "promptHtml": "Au-delà des applications et des actions, comment le GitHub Marketplace profite-t-il à la communauté des développeurs ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il offre un lieu central pour découvrir à la fois des outils gratuits et payants qui s’intègrent et étendent les flux de travail GitHub"
+        },
+        {
+          "key": "B",
+          "label": "Il héberge la seule copie officielle de chaque dépôt open source, remplaçant ainsi le besoin de cloner les projets individuellement"
+        },
+        {
+          "key": "C",
+          "label": "Cela garantit que tous les outils listés sont maintenus par GitHub lui-même et ne nécessitent donc jamais de contrôle de sécurité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Il offre un lieu central pour découvrir à la fois des outils gratuits et payants qui s’intègrent et étendent les flux de travail GitHub",
+      "rationaleHtml": "Le Marketplace centralise la découverte d’outils communautaires et partenaires qui étendent GitHub à de nombreux flux de travail.<br><br>Référence : <a href=\"https://docs.github.com/en/apps/github-marketplace/github-marketplace-overview/about-github-marketplace-for-apps\">À propos de GitHub Marketplace - GitHub Docs</a>",
+      "extraHtml": "Les annonces proviennent de nombreux éditeurs, pas seulement de GitHub, donc vous évaluez toujours la confiance et les permissions. Cela facilite la découverte, pas l’hébergement du code."
+    },
+    {
+      "id": "gh900-af1a90e1e647",
+      "examSlug": "gh900",
+      "domain": "GitHubCommunity",
+      "topic": "Products",
+      "tags": [
+        "GH-900",
+        "GitHubCommunity",
+        "Products"
+      ],
+      "promptHtml": "Quelle déclaration décrit correctement les plans produits payants de GitHub pour les comptes ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "GitHub ne propose qu’un seul forfait payant, et toutes les fonctionnalités, y compris la sécurité avancée, sont regroupées dans ce seul niveau"
+        },
+        {
+          "key": "B",
+          "label": "GitHub propose des forfaits gratuits, Team et Enterprise, avec des niveaux supérieurs ajoutant des fonctionnalités comme l’administration avancée et le support"
+        },
+        {
+          "key": "C",
+          "label": "GitHub facture chaque dépôt créé, donc les comptes sont facturés avec des frais récurrents séparés pour chaque dépôt individuel qu’ils possèdent"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "GitHub propose des forfaits gratuits, Team et Enterprise, avec des niveaux supérieurs ajoutant des fonctionnalités comme l’administration avancée et le support",
+      "rationaleHtml": "GitHub propose des forfaits à plusieurs niveaux (Gratuit, Équipe, Entreprise) qui débloquent progressivement plus de fonctionnalités de collaboration, d’administration et de support.<br><br>Référence : <a href=\"https://docs.github.com/en/get-started/learning-about-github/githubs-plans\">Plans de GitHub - GitHub Docs</a>",
+      "extraHtml": "Le gratuit inclut déjà des dépôts publics et privés illimités avec des fonctionnalités de base. Les niveaux supérieurs ajoutent des contrôles comme SAML SSO, un audit avancé et un support."
+    }
+  ]
+}

@@ -18,6 +18,7 @@ const titleMap = {
   az305: 'Designing Microsoft Azure Infrastructure Solutions',
   az500: 'Microsoft Azure Security Technologies',
   gh300: 'GitHub Copilot',
+  gh900: 'GitHub Foundations',
 }
 
 const filenamePattern = /^(?<slug>[a-z0-9]+)_flashcards(?:_(?<count>\d+))?_(?<date>\d{4}-\d{2}-\d{2})\.csv$/i
