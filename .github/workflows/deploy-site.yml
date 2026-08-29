@@ -61,6 +61,10 @@ jobs:
       - name: Test exam catalog parser offline
         run: npm run test:catalog
 
+      - name: Copy canonical data for API validation
+        working-directory: api
+        run: node scripts/copyDecks.mjs
+
       - name: Validate flashcard data
         run: npm run validate:data
 
