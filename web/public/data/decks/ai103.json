@@ -1,0 +1,3094 @@
+{
+  "exam": {
+    "slug": "ai103",
+    "code": "AI-103",
+    "title": "AI-103",
+    "sourceFile": "ai103_flashcards_2026-08-29.csv",
+    "deckVersion": "2026-08-29",
+    "updatedOn": "2026-08-29",
+    "questionCount": 100,
+    "domains": [
+      "ComputerVision",
+      "GenerativeAI",
+      "InformationExtraction",
+      "PlanManage",
+      "TextAnalysis"
+    ],
+    "topics": [
+      "Accessibility",
+      "AgentGrounding",
+      "AnalyzerOutputs",
+      "AppConfiguration",
+      "ApprovalFlows",
+      "AudioReasoning",
+      "Auditing",
+      "CICD",
+      "ContentUnderstanding",
+      "ConversationMemory",
+      "CostManagement",
+      "CustomSpeech",
+      "Deployment",
+      "DocumentProcessing",
+      "DomainCustomization",
+      "Embeddings",
+      "Enrichment",
+      "ErrorAnalysis",
+      "ErrorHandling",
+      "Evaluation",
+      "FieldExtraction",
+      "FoundrySetup",
+      "FunctionCalling",
+      "Grounding",
+      "HybridOrchestration",
+      "ImageEditing",
+      "ImageGeneration",
+      "Ingestion",
+      "Memory",
+      "ModelOrchestration",
+      "ModelParameters",
+      "ModelSelection",
+      "Monitoring",
+      "MultiAgent",
+      "MultimodalSafety",
+      "OCR",
+      "ObjectDetection",
+      "Observability",
+      "Oversight",
+      "PromptEngineering",
+      "Quotas",
+      "RAG",
+      "RAGSecurity",
+      "Reflection",
+      "ResponsibleAI",
+      "Retrieval",
+      "SDKIntegration",
+      "Safeguards",
+      "Safety",
+      "Scaling",
+      "Search",
+      "SearchHealth",
+      "Security",
+      "SemanticSearch",
+      "SensitiveContent",
+      "Sentiment",
+      "ServiceSelection",
+      "Speech",
+      "SpeechTranslation",
+      "StructuredExtraction",
+      "StructuredOutput",
+      "TokenAnalytics",
+      "ToolControls",
+      "ToolIntegration",
+      "TopicExtraction",
+      "Tracing",
+      "Translation",
+      "VideoAnalysis",
+      "VideoEditing",
+      "VideoGeneration",
+      "VisualUnderstanding",
+      "Workflows"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ai103-22e46d3c55b6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ModelSelection"
+      ],
+      "promptHtml": "A team needs a low-latency classifier that runs economically at high request volume and does not require broad world knowledge. Which model category should it evaluate first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A small language model"
+        },
+        {
+          "key": "B",
+          "label": "A large reasoning model"
+        },
+        {
+          "key": "C",
+          "label": "A multimodal generation model"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A small language model",
+      "rationaleHtml": "Small language models can provide lower latency and cost for bounded tasks when their quality is sufficient.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry model concepts</a>",
+      "extraHtml": "Use task fit rather than model size as the decision rule. Large reasoning models favor complex reasoning; multimodal generation is appropriate when image or audio generation is required. Benchmark quality, latency, and cost on representative data."
+    },
+    {
+      "id": "ai103-24620c292cfc",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ModelSelection"
+      ],
+      "promptHtml": "An app must answer questions about photographs and accompanying text in one request. Which model type best meets the requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A text embedding model"
+        },
+        {
+          "key": "B",
+          "label": "A multimodal model"
+        },
+        {
+          "key": "C",
+          "label": "A speech synthesis model"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "A multimodal model",
+      "rationaleHtml": "A multimodal model can jointly process visual and textual inputs for grounded responses.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry model concepts</a>",
+      "extraHtml": "Embedding models encode similarity but do not independently reason over images. Speech synthesis produces audio. Multimodal models are selected when the task crosses input modalities such as text and vision."
+    },
+    {
+      "id": "ai103-e5769d3344ef",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ServiceSelection",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ServiceSelection"
+      ],
+      "promptHtml": "A company wants grounded chat over policies with keyword matching, semantic similarity, filters, and managed indexing. Which service is the best fit?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure AI Search"
+        },
+        {
+          "key": "B",
+          "label": "Azure Blob Storage"
+        },
+        {
+          "key": "C",
+          "label": "Azure Cosmos DB"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure AI Search",
+      "rationaleHtml": "Azure AI Search provides managed indexing plus keyword, vector, hybrid, and semantic search capabilities.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/search-what-is-azure-search\">Azure AI Search overview</a>",
+      "extraHtml": "Blob Storage is a content source, not a relevance engine. Cosmos DB can support vector workloads but does not provide the same integrated enrichment and semantic ranking toolchain. Search is the purpose-built grounding service."
+    },
+    {
+      "id": "ai103-eea9eb5ad086",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Retrieval",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Retrieval"
+      ],
+      "promptHtml": "A RAG workload must preserve exact product-code matches while also finding semantically similar passages. Which retrieval method should be selected?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Vector search only"
+        },
+        {
+          "key": "B",
+          "label": "Keyword search only"
+        },
+        {
+          "key": "C",
+          "label": "Hybrid search"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Hybrid search",
+      "rationaleHtml": "Hybrid search combines full-text and vector queries so exact tokens and semantic similarity both contribute.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/hybrid-search-overview\">Hybrid search overview</a>",
+      "extraHtml": "Keyword search protects exact identifiers; vector search captures conceptual similarity. Hybrid retrieval fuses both result sets, often followed by semantic ranking. It is preferable when neither lexical nor semantic evidence alone is sufficient."
+    },
+    {
+      "id": "ai103-7710da2d019c",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Retrieval",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Retrieval"
+      ],
+      "promptHtml": "Documents change hourly and answers must reflect updates quickly. Which indexing approach best reduces staleness without rebuilding everything?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Run scheduled incremental indexing"
+        },
+        {
+          "key": "B",
+          "label": "Recreate the full index monthly"
+        },
+        {
+          "key": "C",
+          "label": "Cache generated answers indefinitely"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Run scheduled incremental indexing",
+      "rationaleHtml": "Incremental indexing processes changed source content on a frequent schedule and limits unnecessary reprocessing.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/search-indexer-overview\">Indexers overview</a>",
+      "extraHtml": "A monthly rebuild violates freshness, while an indefinite answer cache preserves stale facts. Use source change detection, indexing schedules, and freshness monitoring together; choose push ingestion when even shorter latency is required."
+    },
+    {
+      "id": "ai103-9bba7d4d8499",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Memory",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Memory"
+      ],
+      "promptHtml": "An agent needs durable conversation state shared across application instances. What should the architecture use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Process-local variables"
+        },
+        {
+          "key": "B",
+          "label": "A persistent conversation store"
+        },
+        {
+          "key": "C",
+          "label": "Model parameters"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "A persistent conversation store",
+      "rationaleHtml": "A persistent store keeps conversation state available across restarts and horizontally scaled instances.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/threads-runs-messages\">Agent threads and messages</a>",
+      "extraHtml": "Process memory is ephemeral and instance-bound. Model parameters are not per-user memory. Keep identity-scoped state in a durable thread or data store, apply retention controls, and avoid placing sensitive data into prompts unnecessarily."
+    },
+    {
+      "id": "ai103-5a3d760bf779",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ToolIntegration"
+      ],
+      "promptHtml": "An agent must retrieve approved policy passages but must never update the source repository. Which integration design follows least privilege?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Grant repository-owner access"
+        },
+        {
+          "key": "B",
+          "label": "Grant read-only retrieval access"
+        },
+        {
+          "key": "C",
+          "label": "Embed administrator credentials"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Grant read-only retrieval access",
+      "rationaleHtml": "Read-only retrieval permissions provide the required knowledge while minimizing the agent blast radius.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Agent tools overview</a>",
+      "extraHtml": "Owner access exceeds the task, and embedded credentials create secret exposure. Treat tools as security boundaries: scope identities, validate arguments, restrict operations, and log calls independently of the model response."
+    },
+    {
+      "id": "ai103-f7dfe5d35125",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "FoundrySetup",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "FoundrySetup"
+      ],
+      "promptHtml": "A production AI application needs separate lifecycle management for prompts, evaluations, connections, and deployments. Which organizing construct should the team use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A Foundry project"
+        },
+        {
+          "key": "B",
+          "label": "A storage container"
+        },
+        {
+          "key": "C",
+          "label": "A virtual machine scale set"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A Foundry project",
+      "rationaleHtml": "A Foundry project organizes AI development assets, connections, evaluations, and application workflows.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/what-is-azure-ai-foundry\">Microsoft Foundry overview</a>",
+      "extraHtml": "Storage containers hold objects but do not manage the AI lifecycle. VM scale sets manage compute. Projects provide a collaboration and governance boundary; use separate projects or environments where release isolation requires it."
+    },
+    {
+      "id": "ai103-97a14d7fd219",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Deployment",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Deployment"
+      ],
+      "promptHtml": "A model endpoint has predictable sustained demand and requires reserved throughput with stable latency. Which deployment option is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Serverless API deployment"
+        },
+        {
+          "key": "B",
+          "label": "Provisioned deployment"
+        },
+        {
+          "key": "C",
+          "label": "Batch-only inference"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Provisioned deployment",
+      "rationaleHtml": "Provisioned deployment reserves model throughput for predictable, latency-sensitive production demand.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/deployment-types\">Azure OpenAI deployment types</a>",
+      "extraHtml": "Pay-as-you-go serverless deployment favors variable demand; batch inference favors asynchronous jobs. Provisioned capacity is justified by steady utilization and throughput assurance, not merely by a high short-lived peak."
+    },
+    {
+      "id": "ai103-bcac8982ed3a",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Deployment",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Deployment"
+      ],
+      "promptHtml": "A team evaluates several catalog models without managing hosting infrastructure and pays according to usage. Which option best fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Managed compute cluster"
+        },
+        {
+          "key": "B",
+          "label": "Self-hosted Kubernetes endpoint"
+        },
+        {
+          "key": "C",
+          "label": "Serverless API deployment"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Serverless API deployment",
+      "rationaleHtml": "Serverless API deployment exposes supported models without requiring the team to provision hosting infrastructure.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless\">Deploy models as serverless APIs</a>",
+      "extraHtml": "Managed or self-hosted compute provides more infrastructure control but adds operations. Serverless endpoints accelerate model comparison and variable workloads; verify model, region, quota, and billing availability before selection."
+    },
+    {
+      "id": "ai103-a0eedc54f93b",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CICD",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CICD"
+      ],
+      "promptHtml": "A release pipeline must promote a tested prompt and agent configuration without manual portal edits. What should the team implement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Versioned assets and automated deployment"
+        },
+        {
+          "key": "B",
+          "label": "Shared administrator portal sessions"
+        },
+        {
+          "key": "C",
+          "label": "Direct production-only experimentation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Versioned assets and automated deployment",
+      "rationaleHtml": "Version control plus automated deployment makes promotion repeatable, reviewable, and auditable.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/continuous-integration-deployment\">CI/CD for Foundry</a>",
+      "extraHtml": "Portal sessions are not reproducible, and production-only experiments bypass quality gates. Treat prompts, evaluations, infrastructure, and agent definitions as release artifacts with environment-specific configuration and rollback points."
+    },
+    {
+      "id": "ai103-55c51056be20",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CICD",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CICD"
+      ],
+      "promptHtml": "A CI pipeline deploys to test and production. Production uses different endpoints and identities. How should configuration be handled?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Hard-code production values"
+        },
+        {
+          "key": "B",
+          "label": "Use environment-specific parameters"
+        },
+        {
+          "key": "C",
+          "label": "Copy values through chat messages"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use environment-specific parameters",
+      "rationaleHtml": "Environment-specific parameters separate deployable logic from endpoint, identity, and connection values.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/continuous-integration-deployment\">CI/CD for Foundry</a>",
+      "extraHtml": "Hard-coding impedes safe promotion; ad hoc copying is error-prone and unaudited. Keep secrets outside source control, use federated pipeline identity, and require the same validation gates in each environment."
+    },
+    {
+      "id": "ai103-c7ba73429301",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Quotas",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Quotas"
+      ],
+      "promptHtml": "Users receive throttling errors although the endpoint is healthy. Monitoring shows requests exceed the deployment token rate. What is the most direct action?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase quota or reduce request rate"
+        },
+        {
+          "key": "B",
+          "label": "Add more search documents"
+        },
+        {
+          "key": "C",
+          "label": "Disable content filtering"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Increase quota or reduce request rate",
+      "rationaleHtml": "Rate-limit failures require demand shaping, quota changes, or capacity changes rather than unrelated data or safety changes.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/quotas-limits\">Azure OpenAI quotas and limits</a>",
+      "extraHtml": "Use bounded retries with server guidance, request queues, token budgeting, and regional capacity planning. Search corpus size and content filters do not increase the model deployment rate limit."
+    },
+    {
+      "id": "ai103-083cac726af6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "CostManagement",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "CostManagement"
+      ],
+      "promptHtml": "A chatbot cost spike is caused by repeatedly sending an entire long conversation. Which change most directly lowers token consumption while retaining relevant context?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase maximum output tokens"
+        },
+        {
+          "key": "B",
+          "label": "Summarize and trim conversation history"
+        },
+        {
+          "key": "C",
+          "label": "Duplicate the system prompt"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Summarize and trim conversation history",
+      "rationaleHtml": "Context summarization and selective history reduce input tokens while preserving information needed for the next turn.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering\">Prompt engineering concepts</a>",
+      "extraHtml": "Higher output limits can increase cost, and duplicated instructions consume more tokens. Combine a context budget with retrieval and durable memory so only relevant state enters each model call."
+    },
+    {
+      "id": "ai103-46c200af49e2",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Monitoring",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Monitoring"
+      ],
+      "promptHtml": "A team must determine whether answer quality declined after a retrieval change. Which telemetry should it compare first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "VM disk utilization"
+        },
+        {
+          "key": "B",
+          "label": "Groundedness and retrieval relevance"
+        },
+        {
+          "key": "C",
+          "label": "Browser viewport dimensions"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Groundedness and retrieval relevance",
+      "rationaleHtml": "Groundedness and retrieval relevance directly reveal whether answers remain supported by useful retrieved evidence.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Foundry evaluators</a>",
+      "extraHtml": "Infrastructure telemetry can explain availability but not evidence quality. Segment evaluation by corpus, query class, and release; pair offline test sets with production traces to distinguish retrieval regressions from generation regressions."
+    },
+    {
+      "id": "ai103-0d01a27b2bda",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "SearchHealth",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "SearchHealth"
+      ],
+      "promptHtml": "An indexer completes successfully, but newly uploaded files never appear in search. Which operational check is most relevant?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Inspect ingestion status and source change detection"
+        },
+        {
+          "key": "B",
+          "label": "Increase model temperature"
+        },
+        {
+          "key": "C",
+          "label": "Modify speech output voice"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Inspect ingestion status and source change detection",
+      "rationaleHtml": "Indexer execution details and change-detection configuration identify skipped or failed source documents.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/search-howto-monitor-indexers\">Monitor indexers</a>",
+      "extraHtml": "A successful top-level run can still include document-level warnings or unsupported changes. Generation and speech settings are downstream. Monitor document counts, failures, latency, and freshness separately."
+    },
+    {
+      "id": "ai103-8be0570972a9",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Security",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Security"
+      ],
+      "promptHtml": "An application running on Azure must call a model endpoint without storing keys. Which authentication method is preferred?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Managed identity with RBAC"
+        },
+        {
+          "key": "B",
+          "label": "A key committed to source"
+        },
+        {
+          "key": "C",
+          "label": "A shared key in the prompt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Managed identity with RBAC",
+      "rationaleHtml": "Managed identity and role-based access provide keyless authentication with centrally scoped permissions.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/authentication\">Azure AI services authentication</a>",
+      "extraHtml": "Keys in code or prompts can leak and are difficult to scope. Assign only the data-plane role required, separate deployment management from inference, and use workload identity for supported non-Azure hosts."
+    },
+    {
+      "id": "ai103-7035df430869",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Security",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Security"
+      ],
+      "promptHtml": "A regulated workload requires model traffic to remain on private network paths and public endpoint access to be blocked. Which design is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Public endpoint with a complex key"
+        },
+        {
+          "key": "B",
+          "label": "Private endpoint with public access disabled"
+        },
+        {
+          "key": "C",
+          "label": "Browser-side endpoint invocation"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Private endpoint with public access disabled",
+      "rationaleHtml": "A private endpoint provides private addressability; disabling public access closes the public network path.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/configure-private-link\">Configure private networking</a>",
+      "extraHtml": "Authentication alone does not provide network isolation, and browser invocation exposes the endpoint surface. Plan private DNS and connectivity for developers, pipelines, tools, and dependent services."
+    },
+    {
+      "id": "ai103-7ca2b2c63a65",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "A security team must block a known list of prohibited internal project names in model inputs and outputs. Which control is most targeted?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A custom blocklist"
+        },
+        {
+          "key": "B",
+          "label": "A token rate limit"
+        },
+        {
+          "key": "C",
+          "label": "A semantic search profile"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A custom blocklist",
+      "rationaleHtml": "A custom blocklist targets organization-specific terms in content filtering flows.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/how-to/use-blocklist\">Use a custom blocklist</a>",
+      "extraHtml": "Rate limits control volume, not content. Search profiles rank documents. Blocklists are deterministic term controls and should complement, not replace, category filters and broader data-loss prevention."
+    },
+    {
+      "id": "ai103-98c24ebf5f10",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "A RAG system ingests untrusted webpages containing instructions aimed at overriding the system prompt. Which protection directly addresses this risk?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Prompt Shields for documents"
+        },
+        {
+          "key": "B",
+          "label": "A larger embedding dimension"
+        },
+        {
+          "key": "C",
+          "label": "A lower search replica count"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Prompt Shields for documents",
+      "rationaleHtml": "Prompt Shields can detect indirect prompt attacks embedded in third-party documents used for grounding.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection\">Prompt Shields</a>",
+      "extraHtml": "Embedding size and replica count do not classify malicious instructions. Also isolate retrieved data from trusted instructions, constrain tools, validate outputs, and avoid granting the model unnecessary authority."
+    },
+    {
+      "id": "ai103-e71ad728a6da",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Before releasing an agent, a team needs repeatable measurements of harmful-content risk on a representative dataset. What should it run?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Safety evaluations"
+        },
+        {
+          "key": "B",
+          "label": "DNS resolution tests"
+        },
+        {
+          "key": "C",
+          "label": "Storage throughput tests"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Safety evaluations",
+      "rationaleHtml": "Safety evaluators quantify relevant content and security risks against a controlled evaluation dataset.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Risk and safety evaluators</a>",
+      "extraHtml": "Network and storage tests are operational checks, not behavioral safety evidence. Establish release thresholds, retain datasets and evaluator versions, and supplement automated metrics with human review for high-impact use cases."
+    },
+    {
+      "id": "ai103-1ce165f9a829",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Auditing",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Auditing"
+      ],
+      "promptHtml": "Auditors must reconstruct which sources and tool calls contributed to an agent decision. Which implementation provides the strongest evidence?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Trace logging with provenance metadata"
+        },
+        {
+          "key": "B",
+          "label": "Aggregate request counts only"
+        },
+        {
+          "key": "C",
+          "label": "A screenshot of the final answer"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Trace logging with provenance metadata",
+      "rationaleHtml": "Traces and provenance connect a response to retrieval results, prompts, model calls, and tool activity.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "Counts lack per-run causality, while screenshots omit hidden steps. Protect logs as sensitive data, apply retention and redaction, and correlate traces with deployment and prompt versions."
+    },
+    {
+      "id": "ai103-cb01142734e6",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Oversight",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Oversight"
+      ],
+      "promptHtml": "An expense agent may prepare reimbursements but payments above a threshold require a person to approve execution. Which control should be implemented?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Human approval before the payment tool"
+        },
+        {
+          "key": "B",
+          "label": "Higher model temperature for exceptions"
+        },
+        {
+          "key": "C",
+          "label": "Automatic retries until payment succeeds"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Human approval before the payment tool",
+      "rationaleHtml": "A human-in-the-loop approval gate constrains high-impact tool execution while allowing lower-risk automation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Human-in-the-loop workflows</a>",
+      "extraHtml": "Temperature changes randomness, not authorization. Automatic retries can amplify harm. Place deterministic policy checks outside the model and record the approver, decision, arguments, and resulting action."
+    },
+    {
+      "id": "ai103-b5271e1194ef",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "ToolControls",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "ToolControls"
+      ],
+      "promptHtml": "An agent needs only calendar availability but its connector can also delete events. What is the best governance action?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Give the agent the full connector"
+        },
+        {
+          "key": "B",
+          "label": "Expose a read-only availability tool"
+        },
+        {
+          "key": "C",
+          "label": "Rely on the system prompt alone"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Expose a read-only availability tool",
+      "rationaleHtml": "A narrowly scoped tool schema and identity enforce least privilege beyond prompt instructions.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Agent tools overview</a>",
+      "extraHtml": "Prompts are not authorization boundaries. Avoid exposing unused destructive operations, validate all tool arguments server-side, and separate read and write identities where practical."
+    },
+    {
+      "id": "ai103-d6b763d8327e",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Scaling",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Scaling"
+      ],
+      "promptHtml": "A deployment serves users in several regions and one region reaches quota. Which plan best improves resilience?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Route across independently provisioned regional deployments"
+        },
+        {
+          "key": "B",
+          "label": "Put all quota in the saturated region"
+        },
+        {
+          "key": "C",
+          "label": "Remove client retry limits"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Route across independently provisioned regional deployments",
+      "rationaleHtml": "Regional deployments with health- and capacity-aware routing reduce dependence on one regional quota pool.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/deployment-types\">Deployment options</a>",
+      "extraHtml": "Concentrating quota preserves the single bottleneck. Unbounded retries worsen overload. Confirm data residency, model availability, quota, and failover behavior for every target region."
+    },
+    {
+      "id": "ai103-bf85fb4254d1",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Monitoring",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Monitoring"
+      ],
+      "promptHtml": "A team wants alerts when a new prompt version increases latency and token use. Which observability design is most useful?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Trace model calls with version and token attributes"
+        },
+        {
+          "key": "B",
+          "label": "Record only monthly Azure cost totals"
+        },
+        {
+          "key": "C",
+          "label": "Sample only successful HTTP status codes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Trace model calls with version and token attributes",
+      "rationaleHtml": "Per-call traces linked to prompt versions support latency breakdowns, token analysis, and regression detection.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "Monthly totals are too coarse and success-only sampling hides failures. Track retrieval, model, and tool spans; define service-level indicators and redact sensitive prompt content."
+    },
+    {
+      "id": "ai103-7a1816cb5cc7",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Oversight",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Oversight"
+      ],
+      "promptHtml": "A public-facing agent can propose actions with legal impact. Which operating mode best manages risk during initial rollout?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fully autonomous execution"
+        },
+        {
+          "key": "B",
+          "label": "Semiautonomous with approvals"
+        },
+        {
+          "key": "C",
+          "label": "Unlogged background execution"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Semiautonomous with approvals",
+      "rationaleHtml": "Semiautonomous operation adds human oversight at consequential boundaries while collecting evidence for later tuning.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Human-in-the-loop workflows</a>",
+      "extraHtml": "Autonomy should be earned through measured reliability and bounded impact. Unlogged operation prevents audit and learning. Define escalation, timeout, override, and rollback behavior before expanding autonomy."
+    },
+    {
+      "id": "ai103-015c995d7afd",
+      "examSlug": "ai103",
+      "domain": "PlanManage",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "PlanManage",
+        "Evaluation"
+      ],
+      "promptHtml": "A team must compare two model deployments while holding prompts and test cases constant. Which method yields defensible results?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Run both against the same evaluation dataset"
+        },
+        {
+          "key": "B",
+          "label": "Compare unrelated production anecdotes"
+        },
+        {
+          "key": "C",
+          "label": "Compare catalog descriptions only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Run both against the same evaluation dataset",
+      "rationaleHtml": "A shared representative dataset and common evaluators isolate model differences and support repeatability.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Evaluate generative AI apps</a>",
+      "extraHtml": "Anecdotes and catalog text do not control inputs. Track model and evaluator versions, confidence intervals, latency, cost, safety, and task quality rather than relying on one aggregate score."
+    },
+    {
+      "id": "ai103-d8daf278b2ab",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "SDKIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "SDKIntegration"
+      ],
+      "promptHtml": "A Python application must use project connections and deployed assets consistently across environments. What should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Foundry SDK with project configuration"
+        },
+        {
+          "key": "B",
+          "label": "Screen scraping the Foundry portal"
+        },
+        {
+          "key": "C",
+          "label": "Hard-coded browser cookies"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Foundry SDK with project configuration",
+      "rationaleHtml": "The SDK provides supported programmatic access to project-scoped resources and connections.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/develop/sdk-overview\">Foundry SDK overview</a>",
+      "extraHtml": "Portal scraping and cookies are brittle and insecure. Externalize project endpoint and deployment names, authenticate with token credentials, and use separate identities per environment."
+    },
+    {
+      "id": "ai103-f71aec421626",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "A support assistant must answer only from approved manuals and cite the retrieved passages. Which pattern should be implemented?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Retrieval-augmented generation"
+        },
+        {
+          "key": "B",
+          "label": "Unconstrained model completion"
+        },
+        {
+          "key": "C",
+          "label": "Image generation with a mask"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Retrieval-augmented generation",
+      "rationaleHtml": "RAG retrieves approved evidence and supplies it to generation so answers can be grounded and cited.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/retrieval-augmented-generation-overview\">RAG overview</a>",
+      "extraHtml": "An unconstrained completion relies on model memory and cannot guarantee source support. Image masking is unrelated. Enforce source scope, include citation metadata, and evaluate both retrieval relevance and groundedness."
+    },
+    {
+      "id": "ai103-097a5e5c712a",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAG",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAG"
+      ],
+      "promptHtml": "A RAG assistant retrieves relevant documents but often misses the exact paragraph needed. Which change should be tested first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Improve chunking and overlap"
+        },
+        {
+          "key": "B",
+          "label": "Increase speech recognition timeout"
+        },
+        {
+          "key": "C",
+          "label": "Add an image watermark"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Improve chunking and overlap",
+      "rationaleHtml": "Chunk boundaries and overlap strongly affect whether retrievable units preserve the evidence needed to answer a query.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/vector-search-how-to-chunk-documents\">Chunk documents for vector search</a>",
+      "extraHtml": "Oversized chunks dilute similarity and consume context; tiny chunks lose context. Speech and watermark settings do not affect text retrieval. Evaluate chunking with real questions rather than selecting size by intuition alone."
+    },
+    {
+      "id": "ai103-19160899834a",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Workflows",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Workflows"
+      ],
+      "promptHtml": "A workflow must extract an order, validate inventory through an API, and request approval before submission. Which design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A multistep tool-augmented workflow"
+        },
+        {
+          "key": "B",
+          "label": "A single embedding operation"
+        },
+        {
+          "key": "C",
+          "label": "A static text completion only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A multistep tool-augmented workflow",
+      "rationaleHtml": "A multistep workflow can sequence extraction, deterministic API validation, approval, and submission.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/overview\">Foundry Agent Service overview</a>",
+      "extraHtml": "Embeddings do not execute business processes, and a static completion cannot verify live inventory. Keep deterministic validation outside free-form generation and make submission idempotent."
+    },
+    {
+      "id": "ai103-2fbca94ee384",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "StructuredOutput",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "StructuredOutput"
+      ],
+      "promptHtml": "An application needs generated output that downstream code can validate against fixed fields and types. Which approach is most suitable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Structured JSON output with a schema"
+        },
+        {
+          "key": "B",
+          "label": "Free-form prose with parsing heuristics"
+        },
+        {
+          "key": "C",
+          "label": "A vector embedding response"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Structured JSON output with a schema",
+      "rationaleHtml": "Schema-constrained structured output improves reliable machine parsing and field validation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Structured outputs</a>",
+      "extraHtml": "Free-form parsing is fragile, while embeddings are numerical representations rather than extracted records. Still validate business rules server-side because schema conformance does not prove factual correctness."
+    },
+    {
+      "id": "ai103-585a5f5af8ea",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "A model response is fluent but asserts facts absent from the supplied evidence. Which evaluator most directly detects the issue?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Groundedness evaluator"
+        },
+        {
+          "key": "B",
+          "label": "Network latency metric"
+        },
+        {
+          "key": "C",
+          "label": "Index storage size"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Groundedness evaluator",
+      "rationaleHtml": "Groundedness measures whether response claims are supported by the provided context.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/evaluation-evaluators/risk-safety-evaluators\">Foundry evaluators</a>",
+      "extraHtml": "Latency and storage are operational measures. Groundedness differs from relevance: a response can address the question yet introduce unsupported claims. Review retrieved evidence when groundedness declines."
+    },
+    {
+      "id": "ai103-f4b1c71c7c57",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "A team must evaluate whether an answer directly addresses the user question, independent of citation support. Which dimension should it measure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Response relevance"
+        },
+        {
+          "key": "B",
+          "label": "Replica utilization"
+        },
+        {
+          "key": "C",
+          "label": "Audio word error rate"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Response relevance",
+      "rationaleHtml": "Response relevance assesses how well an answer addresses the query rather than whether it is supported by context.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Evaluate generative AI apps</a>",
+      "extraHtml": "Groundedness and relevance are complementary: one checks support, the other checks usefulness to the query. Replica utilization and speech error rate concern different system layers."
+    },
+    {
+      "id": "ai103-2629e192bf75",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "A model performs well on average but fails on safety-critical edge cases. How should the evaluation dataset be improved?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Add representative adversarial and boundary cases"
+        },
+        {
+          "key": "B",
+          "label": "Remove all low-scoring examples"
+        },
+        {
+          "key": "C",
+          "label": "Keep only the shortest prompts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Add representative adversarial and boundary cases",
+      "rationaleHtml": "Targeted edge and adversarial cases expose failures that averages over routine examples can hide.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Evaluation guidance</a>",
+      "extraHtml": "Removing failures biases the benchmark; prompt length alone is not risk coverage. Segment results by scenario and severity, and block release when critical thresholds fail even if the mean is high."
+    },
+    {
+      "id": "ai103-efd1ead3e2d7",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "AppConfiguration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "AppConfiguration"
+      ],
+      "promptHtml": "A developer is configuring an application to use a Foundry project. Which values should be externalized instead of embedded in business logic?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Project endpoint and deployment name"
+        },
+        {
+          "key": "B",
+          "label": "User questions and model answers"
+        },
+        {
+          "key": "C",
+          "label": "Retrieved chunks and citations"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Project endpoint and deployment name",
+      "rationaleHtml": "Project and deployment identifiers are environment configuration and should be injected at deployment time.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/develop/sdk-overview\">Foundry SDK overview</a>",
+      "extraHtml": "User content and retrieval results are runtime data, not deployment configuration. Externalization supports promotion across environments and avoids source edits; authenticate separately with managed credentials."
+    },
+    {
+      "id": "ai103-51c961c2268e",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "FunctionCalling",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "FunctionCalling"
+      ],
+      "promptHtml": "An assistant must call a weather API with a city and date. What makes the function tool safest and most reliable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A narrow typed schema with validated arguments"
+        },
+        {
+          "key": "B",
+          "label": "An unrestricted shell command string"
+        },
+        {
+          "key": "C",
+          "label": "A broad administrator API token"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A narrow typed schema with validated arguments",
+      "rationaleHtml": "A typed, constrained tool schema helps the model form valid calls and enables server-side validation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/how-to/tools/function-calling\">Function calling</a>",
+      "extraHtml": "Shell strings invite injection, and administrator tokens violate least privilege. Treat model-produced arguments as untrusted, constrain destinations and time ranges, and return structured errors."
+    },
+    {
+      "id": "ai103-7a97025d6609",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ConversationMemory",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ConversationMemory"
+      ],
+      "promptHtml": "An agent must preserve a user's multi-turn context while keeping different users isolated. Which approach should be used?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A separate thread per conversation"
+        },
+        {
+          "key": "B",
+          "label": "One global thread for all users"
+        },
+        {
+          "key": "C",
+          "label": "A shared system prompt as memory"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A separate thread per conversation",
+      "rationaleHtml": "Conversation-scoped threads preserve message history while supporting isolation between users and sessions.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/threads-runs-messages\">Threads, runs, and messages</a>",
+      "extraHtml": "A global thread risks data leakage, and a system prompt is instruction, not durable user state. Authorize thread access and define retention, summarization, and deletion policies."
+    },
+    {
+      "id": "ai103-7999e7eea0ce",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ToolIntegration"
+      ],
+      "promptHtml": "An agent needs current product facts from a search index and calculations from an internal pricing API. Which tool design is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Add retrieval and function tools"
+        },
+        {
+          "key": "B",
+          "label": "Fine-tune on current prices only"
+        },
+        {
+          "key": "C",
+          "label": "Put all prices in the system prompt"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Add retrieval and function tools",
+      "rationaleHtml": "Retrieval supplies current knowledge while function calling invokes authoritative calculations.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Agent tool catalog</a>",
+      "extraHtml": "Fine-tuning is not a live data synchronization mechanism, and prompt-embedded prices become stale. Separate read-only evidence retrieval from transactional or computational tools."
+    },
+    {
+      "id": "ai103-1bbbdb1901d3",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Safeguards",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Safeguards"
+      ],
+      "promptHtml": "A customer-service agent may issue refunds only after checking order status and policy eligibility. Where should eligibility enforcement occur?",
+      "options": [
+        {
+          "key": "A",
+          "label": "In deterministic tool-side validation"
+        },
+        {
+          "key": "B",
+          "label": "Only in natural-language instructions"
+        },
+        {
+          "key": "C",
+          "label": "By increasing retrieval top-k"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "In deterministic tool-side validation",
+      "rationaleHtml": "Tool-side authorization and business validation enforce policy even when model output is incorrect or manipulated.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Agent tools overview</a>",
+      "extraHtml": "Prompts guide behavior but do not enforce authorization. Retrieval depth affects evidence, not execution rights. Require idempotency, limits, audit logs, and approval for exceptional refunds."
+    },
+    {
+      "id": "ai103-21df2b41c674",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "MultiAgent",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "MultiAgent"
+      ],
+      "promptHtml": "A complex request requires a research specialist, a compliance reviewer, and a final writer with clear handoffs. Which architecture fits best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An orchestrated multi-agent workflow"
+        },
+        {
+          "key": "B",
+          "label": "One embedding model invocation"
+        },
+        {
+          "key": "C",
+          "label": "A single static search query"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An orchestrated multi-agent workflow",
+      "rationaleHtml": "An orchestrator can assign bounded roles, pass artifacts, and enforce review before final composition.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/multi-agent-workflow\">Multi-agent workflows</a>",
+      "extraHtml": "Embeddings and static queries are components, not role coordination. Use multiple agents only when specialization and controlled handoffs outweigh added latency, cost, and debugging complexity."
+    },
+    {
+      "id": "ai103-44b28844ef8d",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "MultiAgent",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "MultiAgent"
+      ],
+      "promptHtml": "Two agents repeatedly delegate the same task to each other. Which fix most directly prevents the loop?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Add termination conditions and handoff limits"
+        },
+        {
+          "key": "B",
+          "label": "Increase each agent's temperature"
+        },
+        {
+          "key": "C",
+          "label": "Remove all trace correlation IDs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Add termination conditions and handoff limits",
+      "rationaleHtml": "Explicit stop criteria, turn budgets, and allowed handoff rules bound orchestration loops.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/multi-agent-workflow\">Multi-agent workflows</a>",
+      "extraHtml": "More randomness does not ensure termination, and removing traces makes diagnosis harder. Include a fallback path when confidence, tool errors, or budget thresholds are reached."
+    },
+    {
+      "id": "ai103-44289395b7ba",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ApprovalFlows",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ApprovalFlows"
+      ],
+      "promptHtml": "An autonomous procurement workflow can draft an order but must not submit purchases over a fixed amount. Which safeguard is strongest?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A deterministic amount check plus approval gate"
+        },
+        {
+          "key": "B",
+          "label": "A reminder in the user interface"
+        },
+        {
+          "key": "C",
+          "label": "A higher maximum token setting"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A deterministic amount check plus approval gate",
+      "rationaleHtml": "A code-enforced threshold and approval gate prevent unauthorized high-value execution.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/human-in-the-loop\">Human-in-the-loop workflows</a>",
+      "extraHtml": "UI reminders are advisory and token limits control response length. Enforce policy at the tool boundary, record approvals, and use idempotency keys to prevent duplicate orders."
+    },
+    {
+      "id": "ai103-1e3f5c0a7623",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Observability",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Observability"
+      ],
+      "promptHtml": "An agent's production failures are difficult to reproduce because only final responses are logged. What telemetry should be added?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Correlated traces for model, retrieval, and tool spans"
+        },
+        {
+          "key": "B",
+          "label": "Daily screenshots of the chat interface"
+        },
+        {
+          "key": "C",
+          "label": "Aggregate storage capacity charts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Correlated traces for model, retrieval, and tool spans",
+      "rationaleHtml": "End-to-end traces expose intermediate inputs, outputs, timing, and errors for each agent step.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "Screenshots and capacity charts omit execution causality. Include deployment, prompt, and tool versions, but redact secrets and sensitive content before export."
+    },
+    {
+      "id": "ai103-72624c77fabe",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ErrorAnalysis",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ErrorAnalysis"
+      ],
+      "promptHtml": "A deployed agent suddenly starts choosing the wrong tool after a schema update. What should error analysis compare first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Tool-call traces before and after the schema change"
+        },
+        {
+          "key": "B",
+          "label": "Search service disk capacity only"
+        },
+        {
+          "key": "C",
+          "label": "The browser's preferred language"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Tool-call traces before and after the schema change",
+      "rationaleHtml": "Comparing tool selection, arguments, and errors across versions isolates schema-related behavior changes.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "Infrastructure capacity and browser locale are weak hypotheses unless traces indicate them. Maintain versioned schemas and replay representative traces in a test environment before promotion."
+    },
+    {
+      "id": "ai103-4685a4e26893",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelParameters",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelParameters"
+      ],
+      "promptHtml": "A creative writing feature produces repetitive text. Which parameter adjustment generally increases output diversity?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase temperature moderately"
+        },
+        {
+          "key": "B",
+          "label": "Set temperature to zero"
+        },
+        {
+          "key": "C",
+          "label": "Reduce retrieval replicas"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Increase temperature moderately",
+      "rationaleHtml": "Higher temperature generally broadens token sampling and can increase variation in generated text.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/reference\">Azure OpenAI inference reference</a>",
+      "extraHtml": "Temperature zero favors determinism, while search replicas do not change token sampling. Tune on task-specific evaluations; excessive randomness can reduce coherence and factual reliability."
+    },
+    {
+      "id": "ai103-aa9b93175487",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelParameters",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelParameters"
+      ],
+      "promptHtml": "A data-extraction task requires consistent outputs across repeated runs. Which generation setting is the better starting point?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A low temperature"
+        },
+        {
+          "key": "B",
+          "label": "A high temperature"
+        },
+        {
+          "key": "C",
+          "label": "A random tool schema"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A low temperature",
+      "rationaleHtml": "Lower temperature reduces sampling variability and is a better fit for deterministic extraction.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/reference\">Azure OpenAI inference reference</a>",
+      "extraHtml": "High temperature favors diversity. Determinism also requires a precise schema, stable model version, controlled prompt, and validation; temperature alone does not guarantee identical results."
+    },
+    {
+      "id": "ai103-8ac8a1cc6cb4",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "PromptEngineering",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "PromptEngineering"
+      ],
+      "promptHtml": "A prompt works on examples but fails when input includes instructions from an untrusted document. Which prompt design is safer?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Delimit data and state that it is untrusted"
+        },
+        {
+          "key": "B",
+          "label": "Concatenate data as system instructions"
+        },
+        {
+          "key": "C",
+          "label": "Grant the model broader tool access"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Delimit data and state that it is untrusted",
+      "rationaleHtml": "Separating instructions from untrusted content reduces instruction confusion and supports prompt-injection defenses.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering\">Prompt engineering concepts</a>",
+      "extraHtml": "System-level concatenation elevates attacker text, and broader tools increase impact. Pair prompt structure with Prompt Shields, least privilege, output validation, and tool authorization."
+    },
+    {
+      "id": "ai103-67e20aa2dcb8",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Reflection",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Reflection"
+      ],
+      "promptHtml": "A team wants a model to critique its draft before final output. Which pattern matches the requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A self-critique or reflection loop"
+        },
+        {
+          "key": "B",
+          "label": "A one-pass embedding call"
+        },
+        {
+          "key": "C",
+          "label": "An index replica scale-out"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A self-critique or reflection loop",
+      "rationaleHtml": "A reflection loop asks the model or a reviewer model to assess and revise a draft against explicit criteria.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/prompt-flow\">Prompt flow concepts</a>",
+      "extraHtml": "Embeddings encode text and replicas improve search availability. Reflection can improve quality but adds latency and cost, and correlated model errors mean it does not replace external evaluation."
+    },
+    {
+      "id": "ai103-cd7a9a78c758",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Reflection",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Reflection"
+      ],
+      "promptHtml": "A self-critique loop continues revising without meaningful improvement. Which control should be added?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A maximum iteration count and quality threshold"
+        },
+        {
+          "key": "B",
+          "label": "Unlimited recursive calls"
+        },
+        {
+          "key": "C",
+          "label": "A larger vector index"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A maximum iteration count and quality threshold",
+      "rationaleHtml": "Bounded iterations and explicit acceptance criteria prevent runaway cost and latency.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/prompt-flow\">Prompt flow concepts</a>",
+      "extraHtml": "Unlimited recursion can amplify cost without quality gains; index size is unrelated. Log score changes per iteration and fall back to review when the threshold is not reached."
+    },
+    {
+      "id": "ai103-5888dd486ac0",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Tracing",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Tracing"
+      ],
+      "promptHtml": "Operations needs to know whether latency comes from retrieval, model inference, or a downstream tool. Which instrumentation is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Separate correlated spans for each stage"
+        },
+        {
+          "key": "B",
+          "label": "One timer around the whole request"
+        },
+        {
+          "key": "C",
+          "label": "Monthly billing totals only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Separate correlated spans for each stage",
+      "rationaleHtml": "Stage-level spans provide latency breakdowns while correlation preserves the end-to-end execution path.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "A total timer reveals a symptom but not the bottleneck; billing totals are even coarser. Capture retries, token counts, status, and versions on relevant spans."
+    },
+    {
+      "id": "ai103-ce6f45efbf2f",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "TokenAnalytics",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "TokenAnalytics"
+      ],
+      "promptHtml": "A cost dashboard must attribute usage to application, model deployment, and feature. Which telemetry is most useful?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Token counts tagged with deployment and operation"
+        },
+        {
+          "key": "B",
+          "label": "A count of portal sign-ins"
+        },
+        {
+          "key": "C",
+          "label": "The number of index field names"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Token counts tagged with deployment and operation",
+      "rationaleHtml": "Tagged input and output token metrics support granular usage and cost attribution.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/concepts/observability\">Foundry observability</a>",
+      "extraHtml": "Portal activity and schema field counts are not consumption measures. Combine token telemetry with request counts, cache behavior, latency, and pricing dimensions."
+    },
+    {
+      "id": "ai103-b769073daec6",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ModelOrchestration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ModelOrchestration"
+      ],
+      "promptHtml": "A router should send simple classification to a cheaper model and complex reasoning to a stronger model. Which architecture implements this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A policy-based multi-model router"
+        },
+        {
+          "key": "B",
+          "label": "A single fixed model for every request"
+        },
+        {
+          "key": "C",
+          "label": "A search-only indexing pipeline"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A policy-based multi-model router",
+      "rationaleHtml": "A router can classify task complexity and direct requests to models that balance quality, latency, and cost.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry models</a>",
+      "extraHtml": "A fixed model forfeits optimization, and indexing does not perform generation routing. Evaluate routing mistakes and include fallback when a selected model fails or lacks capability."
+    },
+    {
+      "id": "ai103-ae2fa6261cc4",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "HybridOrchestration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "HybridOrchestration"
+      ],
+      "promptHtml": "A workflow must apply exact tax rules and then generate a customer-friendly explanation. What design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rules engine for calculation plus LLM for explanation"
+        },
+        {
+          "key": "B",
+          "label": "LLM alone for tax calculation and explanation"
+        },
+        {
+          "key": "C",
+          "label": "Vector search alone for final calculation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Rules engine for calculation plus LLM for explanation",
+      "rationaleHtml": "Deterministic rules enforce exact calculations, while the model handles natural-language presentation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/overview\">Foundry Agent Service overview</a>",
+      "extraHtml": "LLMs can be nondeterministic with arithmetic and policy enforcement; search retrieves information but does not execute tax rules. Preserve the calculated result as authoritative structured data."
+    },
+    {
+      "id": "ai103-294cae7ce876",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Evaluation",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Evaluation"
+      ],
+      "promptHtml": "A RAG application answers accurately offline but poorly in production because user queries differ from the test set. What is the best next step?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Curate evaluation cases from production traces"
+        },
+        {
+          "key": "B",
+          "label": "Remove production monitoring"
+        },
+        {
+          "key": "C",
+          "label": "Increase output length for every query"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Curate evaluation cases from production traces",
+      "rationaleHtml": "Privacy-safe production traces reveal real query distributions and failure modes for a representative benchmark.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/how-to/evaluate-generative-ai-app\">Evaluate generative AI apps</a>",
+      "extraHtml": "Removing telemetry eliminates evidence, and longer answers do not fix distribution shift. Sample across segments, redact sensitive data, label failures, and preserve a stable holdout set."
+    },
+    {
+      "id": "ai103-f4e7fa26deb3",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ToolIntegration",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ToolIntegration"
+      ],
+      "promptHtml": "An agent calls the same non-idempotent booking tool twice after a timeout. Which application control prevents duplicate reservations?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An idempotency key on the tool operation"
+        },
+        {
+          "key": "B",
+          "label": "A higher model temperature"
+        },
+        {
+          "key": "C",
+          "label": "More embedding dimensions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An idempotency key on the tool operation",
+      "rationaleHtml": "An idempotency key lets retries resolve to the original operation instead of creating a second booking.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/architecture/patterns/idempotent-consumer\">Idempotency pattern</a>",
+      "extraHtml": "Sampling and embedding settings do not provide transaction safety. Pair idempotency with bounded retries, status reconciliation, and durable records of tool outcomes."
+    },
+    {
+      "id": "ai103-670336c867f9",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "ErrorHandling",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "ErrorHandling"
+      ],
+      "promptHtml": "A function tool returns a transient HTTP 429 response. How should the agent workflow handle it?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use bounded retries with backoff"
+        },
+        {
+          "key": "B",
+          "label": "Retry immediately without a limit"
+        },
+        {
+          "key": "C",
+          "label": "Mark the call successful"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use bounded retries with backoff",
+      "rationaleHtml": "Bounded exponential backoff respects transient throttling while limiting latency and retry amplification.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/architecture/best-practices/transient-faults\">Transient fault handling</a>",
+      "extraHtml": "Unbounded immediate retries worsen throttling, while false success corrupts workflow state. Honor retry guidance, cap attempts, and expose a recoverable failure path."
+    },
+    {
+      "id": "ai103-213e935cfdc6",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Grounding",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Grounding"
+      ],
+      "promptHtml": "A model should return no answer when retrieved evidence is insufficient. Which implementation is most reliable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Define an abstention rule based on evidence quality"
+        },
+        {
+          "key": "B",
+          "label": "Force an answer with a longer prompt"
+        },
+        {
+          "key": "C",
+          "label": "Increase temperature until an answer appears"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Define an abstention rule based on evidence quality",
+      "rationaleHtml": "An explicit abstention policy lets the application decline when retrieval or groundedness signals are inadequate.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/retrieval-augmented-generation-overview\">RAG overview</a>",
+      "extraHtml": "Forcing generation increases fabrication risk, and higher temperature adds variability. Calibrate thresholds on labeled cases and offer escalation or source-search alternatives."
+    },
+    {
+      "id": "ai103-9769bcd623ce",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "Embeddings",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "Embeddings"
+      ],
+      "promptHtml": "A team changes its embedding model for an existing vector index. What must it plan to do?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Re-embed the corpus and queries consistently"
+        },
+        {
+          "key": "B",
+          "label": "Keep old document vectors with new query vectors"
+        },
+        {
+          "key": "C",
+          "label": "Convert vectors into speech audio"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Re-embed the corpus and queries consistently",
+      "rationaleHtml": "Document and query vectors must be generated in the same compatible embedding space for meaningful similarity.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/vector-search-overview\">Vector search overview</a>",
+      "extraHtml": "Mixing embedding spaces makes distance scores unreliable. Use a versioned parallel index for migration, evaluate retrieval, and switch traffic only after backfill completes."
+    },
+    {
+      "id": "ai103-f9d37602e2c2",
+      "examSlug": "ai103",
+      "domain": "GenerativeAI",
+      "topic": "RAGSecurity",
+      "tags": [
+        "AI-103",
+        "GenerativeAI",
+        "RAGSecurity"
+      ],
+      "promptHtml": "A vector search index must restrict results to documents a user is authorized to view. Which design is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Apply identity-aware security filters during retrieval"
+        },
+        {
+          "key": "B",
+          "label": "Filter citations after model generation"
+        },
+        {
+          "key": "C",
+          "label": "Ask the model to ignore restricted text"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Apply identity-aware security filters during retrieval",
+      "rationaleHtml": "Retrieval-time authorization prevents unauthorized content from entering the model context.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/search-security-trimming-for-azure-search\">Security trimming</a>",
+      "extraHtml": "Post-generation filtering is too late, and prompt instructions are not access control. Propagate trusted identity claims and test for cross-tenant leakage."
+    },
+    {
+      "id": "ai103-ba3a2a2f2399",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ImageGeneration",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ImageGeneration"
+      ],
+      "promptHtml": "A service must generate a product image from a written description. Which capability should be selected?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Text-to-image generation"
+        },
+        {
+          "key": "B",
+          "label": "Speech-to-text transcription"
+        },
+        {
+          "key": "C",
+          "label": "Vector similarity search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Text-to-image generation",
+      "rationaleHtml": "Text-to-image models synthesize visual content from natural-language prompts.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/concepts/models\">Azure OpenAI models</a>",
+      "extraHtml": "Speech transcription converts audio to text, and vector search retrieves existing items. Apply content policy, provenance, brand, and human-review controls to generated assets."
+    },
+    {
+      "id": "ai103-9bc716fa109b",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ImageEditing",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ImageEditing"
+      ],
+      "promptHtml": "A designer must replace only the background of an existing image while preserving the foreground object. Which workflow is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Mask-based inpainting"
+        },
+        {
+          "key": "B",
+          "label": "Full-image OCR"
+        },
+        {
+          "key": "C",
+          "label": "Speech synthesis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Mask-based inpainting",
+      "rationaleHtml": "Inpainting uses a mask to identify the region that the image model should modify.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e\">Image generation guidance</a>",
+      "extraHtml": "OCR reads text and speech synthesis creates audio. Carefully align mask semantics with the API, preserve the original asset, and evaluate edge blending and brand compliance."
+    },
+    {
+      "id": "ai103-0b729d9d0b46",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoGeneration",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoGeneration"
+      ],
+      "promptHtml": "A marketing team needs a short video created from a text storyboard and a reference image. Which model capability is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Video generation from text and media"
+        },
+        {
+          "key": "B",
+          "label": "Document layout extraction"
+        },
+        {
+          "key": "C",
+          "label": "Keyword-only search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Video generation from text and media",
+      "rationaleHtml": "A supported video generation model can use textual direction and reference media to synthesize video.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry model catalog</a>",
+      "extraHtml": "Layout extraction structures documents, and keyword search retrieves content. Verify model availability and use controls for duration, style, safety, provenance, and rights."
+    },
+    {
+      "id": "ai103-92fafea9806e",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoEditing",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoEditing"
+      ],
+      "promptHtml": "A generated video contains one incorrect segment that must be revised while the rest remains unchanged. What approach best fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use a supported video-editing workflow"
+        },
+        {
+          "key": "B",
+          "label": "Rebuild the search index"
+        },
+        {
+          "key": "C",
+          "label": "Retrain a speech recognizer"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use a supported video-editing workflow",
+      "rationaleHtml": "Video-editing controls target generated media modifications without involving unrelated search or speech services.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry model catalog</a>",
+      "extraHtml": "Platform capabilities vary by model, so assess whether segment editing, reference conditioning, or regeneration is supported. Preserve provenance and review transitions around the edit."
+    },
+    {
+      "id": "ai103-bb1a57d77e36",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "Accessibility",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "Accessibility"
+      ],
+      "promptHtml": "An accessibility application needs a concise description of the essential content in a photograph. Which output should it request?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Alt text grounded in the image"
+        },
+        {
+          "key": "B",
+          "label": "An unrelated creative story"
+        },
+        {
+          "key": "C",
+          "label": "A vector index schema"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Alt text grounded in the image",
+      "rationaleHtml": "Grounded alt text communicates essential visual information for users who cannot access the image directly.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Image descriptions</a>",
+      "extraHtml": "Creative prose may invent details and an index schema does not describe content. Keep alt text concise, contextual, and free of redundant phrases; use extended descriptions only when complexity warrants them."
+    },
+    {
+      "id": "ai103-d410a1e16559",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "Accessibility",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "Accessibility"
+      ],
+      "promptHtml": "A museum image contains a complex chart that cannot be explained concisely. Which accessibility output is most suitable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An extended image description"
+        },
+        {
+          "key": "B",
+          "label": "A one-word sentiment label"
+        },
+        {
+          "key": "C",
+          "label": "A speech recognition transcript"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An extended image description",
+      "rationaleHtml": "Extended descriptions provide the detail and structure needed for complex visual information.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Image descriptions</a>",
+      "extraHtml": "A short alt-text field may identify the chart and point to the longer description. Sentiment and transcription do not convey axes, trends, annotations, and relationships."
+    },
+    {
+      "id": "ai103-a643d9e3e3e5",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VisualUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VisualUnderstanding"
+      ],
+      "promptHtml": "A claims app must answer questions about visible vehicle damage and cite what can be seen in the uploaded image. Which approach should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Multimodal visual question answering"
+        },
+        {
+          "key": "B",
+          "label": "Text-only keyword matching"
+        },
+        {
+          "key": "C",
+          "label": "Audio speaker identification"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Multimodal visual question answering",
+      "rationaleHtml": "A multimodal model can reason over the image and question to produce an answer grounded in visual evidence.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40\">Vision analysis concepts</a>",
+      "extraHtml": "Keyword search cannot inspect pixels and speaker identification concerns audio. Require uncertainty handling and human review because visual evidence may be incomplete or ambiguous."
+    },
+    {
+      "id": "ai103-523c64a0d5e9",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "A pipeline must extract visual characteristics from mixed documents and media into structured fields. Which Foundry Tool is designed for this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Content Understanding"
+        },
+        {
+          "key": "B",
+          "label": "Azure DNS"
+        },
+        {
+          "key": "C",
+          "label": "Azure Load Testing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Content Understanding",
+      "rationaleHtml": "Content Understanding analyzes multimodal content and produces structured outputs using configured analyzers.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "DNS resolves names and Load Testing measures application performance. Define a schema aligned to downstream decisions and validate extracted values against representative content."
+    },
+    {
+      "id": "ai103-d1e58457ba6f",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "A developer needs a quick predefined extraction for one focused media task rather than a customizable end-to-end analyzer. Which Content Understanding mode is the better starting point?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Single-task mode"
+        },
+        {
+          "key": "B",
+          "label": "Pro mode"
+        },
+        {
+          "key": "C",
+          "label": "Search replica mode"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Single-task mode",
+      "rationaleHtml": "Single-task mode targets a focused predefined operation with less configuration.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "Pro mode is appropriate when custom schemas and richer processing are needed. Search replicas scale query serving and are not Content Understanding pipeline modes."
+    },
+    {
+      "id": "ai103-362124509e6e",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "A custom media workflow needs schema-driven extraction across multiple content types and richer control. Which Content Understanding mode should be chosen?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pro mode"
+        },
+        {
+          "key": "B",
+          "label": "Single-task mode"
+        },
+        {
+          "key": "C",
+          "label": "Keyword analyzer mode"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Pro mode",
+      "rationaleHtml": "Pro mode supports configurable, schema-oriented multimodal analysis for more complex workflows.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "Single-task mode is simpler but less adaptable. A keyword analyzer is a search text-processing concept, not the rich multimodal analyzer requested."
+    },
+    {
+      "id": "ai103-192df72d89ff",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "ObjectDetection",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "ObjectDetection"
+      ],
+      "promptHtml": "A security system must identify objects and their locations within each frame, not merely describe the whole image. Which output is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Object detections with regions"
+        },
+        {
+          "key": "B",
+          "label": "A document sentiment score"
+        },
+        {
+          "key": "C",
+          "label": "An audio translation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Object detections with regions",
+      "rationaleHtml": "Object detection returns identified objects together with spatial regions such as bounding boxes.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/computer-vision/concept-object-detection-40\">Object detection</a>",
+      "extraHtml": "A caption summarizes globally but may omit location. Sentiment and audio translation address other modalities. Define confidence thresholds and review failure rates for small, occluded, or uncommon objects."
+    },
+    {
+      "id": "ai103-58817b07b791",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "VideoAnalysis",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "VideoAnalysis"
+      ],
+      "promptHtml": "A video-analysis pipeline must interpret events over time rather than analyze one sampled frame. What should it do?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Process temporally relevant video segments"
+        },
+        {
+          "key": "B",
+          "label": "Analyze only the first frame"
+        },
+        {
+          "key": "C",
+          "label": "Convert the filename into an embedding"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Process temporally relevant video segments",
+      "rationaleHtml": "Segment-level analysis preserves temporal context needed to interpret actions and changes.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/azure-video-indexer/video-indexer-overview\">Azure AI Video Indexer overview</a>",
+      "extraHtml": "A single frame misses motion and sequence; filename embeddings contain no visual event evidence. Balance frame rate and segment length against cost and event duration."
+    },
+    {
+      "id": "ai103-cd4857853cac",
+      "examSlug": "ai103",
+      "domain": "ComputerVision",
+      "topic": "MultimodalSafety",
+      "tags": [
+        "AI-103",
+        "ComputerVision",
+        "MultimodalSafety"
+      ],
+      "promptHtml": "An uploaded image may contain embedded text that instructs the agent to exfiltrate data. Which threat must the pipeline detect?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Indirect prompt injection in image text"
+        },
+        {
+          "key": "B",
+          "label": "Ordinary network throttling"
+        },
+        {
+          "key": "C",
+          "label": "Vector dimension mismatch"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Indirect prompt injection in image text",
+      "rationaleHtml": "Malicious instructions embedded in visual content are an indirect prompt-injection risk for multimodal systems.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection\">Prompt Shields</a>",
+      "extraHtml": "Throttling and vector shape errors are operational issues. Treat OCR and visual text as untrusted data, constrain tools, and enforce authorization outside the model."
+    },
+    {
+      "id": "ai103-cf4fa1ab8b4b",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "StructuredExtraction",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "StructuredExtraction"
+      ],
+      "promptHtml": "A support system must extract entities and a short summary from messages in one predictable record. Which solution is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Prompt for schema-constrained JSON"
+        },
+        {
+          "key": "B",
+          "label": "Generate unrestricted prose"
+        },
+        {
+          "key": "C",
+          "label": "Return only an embedding vector"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Prompt for schema-constrained JSON",
+      "rationaleHtml": "Structured output can represent entities and summaries in fields that downstream code can validate.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Structured outputs</a>",
+      "extraHtml": "Free prose is harder to parse and embeddings are not extracted labels. Validate enum values, required fields, evidence, and domain constraints after generation."
+    },
+    {
+      "id": "ai103-e2b585f874fd",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Sentiment",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Sentiment"
+      ],
+      "promptHtml": "A company must determine positive, neutral, or negative customer attitude in each review. Which analysis task is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sentiment analysis"
+        },
+        {
+          "key": "B",
+          "label": "Object detection"
+        },
+        {
+          "key": "C",
+          "label": "Speaker verification"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Sentiment analysis",
+      "rationaleHtml": "Sentiment analysis classifies expressed opinion polarity in text.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/language-service/sentiment-opinion-mining/overview\">Sentiment analysis overview</a>",
+      "extraHtml": "Object detection handles images and speaker verification handles voice identity. Consider opinion mining when sentiment toward specific product aspects is required."
+    },
+    {
+      "id": "ai103-a6b6bf4ec9e0",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "SensitiveContent",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "SensitiveContent"
+      ],
+      "promptHtml": "A compliance workflow must identify account numbers and other sensitive text before sending content to a model. Which capability should it apply?",
+      "options": [
+        {
+          "key": "A",
+          "label": "PII detection and redaction"
+        },
+        {
+          "key": "B",
+          "label": "Image inpainting"
+        },
+        {
+          "key": "C",
+          "label": "Search replica scaling"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "PII detection and redaction",
+      "rationaleHtml": "PII detection can locate sensitive entities so the application can redact or handle them under policy.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/language-service/personally-identifiable-information/overview\">PII detection overview</a>",
+      "extraHtml": "Inpainting edits images and replicas affect search capacity. Redaction is one control; also minimize collection, restrict access, and define retention for original and transformed text."
+    },
+    {
+      "id": "ai103-fc2a6ff630a8",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Translation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Translation"
+      ],
+      "promptHtml": "A global application requires deterministic translation of product documentation using a managed translation service. Which Foundry Tool should it select?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Translator"
+        },
+        {
+          "key": "B",
+          "label": "Azure AI Search"
+        },
+        {
+          "key": "C",
+          "label": "Azure Content Safety"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Translator",
+      "rationaleHtml": "Azure Translator is the managed service designed for text translation across supported languages.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/translator/translator-overview\">Translator overview</a>",
+      "extraHtml": "Search retrieves documents and Content Safety classifies risk. LLM translation may fit context-heavy workflows, but evaluate terminology, cost, and consistency before replacing a specialized service."
+    },
+    {
+      "id": "ai103-b215e4a60fa1",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Translation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Translation"
+      ],
+      "promptHtml": "Translated legal text must use an organization's approved terminology consistently. Which design best meets the requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use supported custom terminology and evaluation"
+        },
+        {
+          "key": "B",
+          "label": "Increase temperature for more variety"
+        },
+        {
+          "key": "C",
+          "label": "Remove the domain glossary"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use supported custom terminology and evaluation",
+      "rationaleHtml": "Domain terminology controls and representative evaluation improve consistency for specialized translation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/translator/custom-translator/overview\">Custom Translator overview</a>",
+      "extraHtml": "Higher temperature can increase variation, and removing the glossary loses approved mappings. Keep human review for legally consequential output and track terminology errors separately."
+    },
+    {
+      "id": "ai103-5ce46d3c4727",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "DomainCustomization",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "DomainCustomization"
+      ],
+      "promptHtml": "A policy team needs summaries that always include obligations, deadlines, and responsible parties in separate fields. Which approach is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Domain prompt with a structured output schema"
+        },
+        {
+          "key": "B",
+          "label": "Generic creative summarization only"
+        },
+        {
+          "key": "C",
+          "label": "Store the policy as an image"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Domain prompt with a structured output schema",
+      "rationaleHtml": "Domain instructions plus a schema make required compliance elements explicit and machine-checkable.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Structured outputs</a>",
+      "extraHtml": "Generic summaries can omit critical fields, and converting format does not add extraction logic. Evaluate omissions and require source evidence for each extracted obligation."
+    },
+    {
+      "id": "ai103-af0aa6f015a8",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Speech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Speech"
+      ],
+      "promptHtml": "A call-center assistant must convert live customer speech into text for downstream reasoning. Which capability is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Speech to text"
+        },
+        {
+          "key": "B",
+          "label": "Text to speech"
+        },
+        {
+          "key": "C",
+          "label": "Image captioning"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Speech to text",
+      "rationaleHtml": "Speech recognition transcribes audio into text that an agent or workflow can process.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/speech-to-text\">Speech to text</a>",
+      "extraHtml": "Text to speech performs the reverse direction, and image captioning handles vision. Streaming recognition is appropriate when partial low-latency transcripts are needed."
+    },
+    {
+      "id": "ai103-e42b4d384c3f",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Speech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Speech"
+      ],
+      "promptHtml": "An agent must speak its final response to a caller. Which capability should the application invoke?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Text to speech"
+        },
+        {
+          "key": "B",
+          "label": "Speech to text"
+        },
+        {
+          "key": "C",
+          "label": "Vector search"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Text to speech",
+      "rationaleHtml": "Speech synthesis converts the agent's text response into audio.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/text-to-speech\">Text to speech</a>",
+      "extraHtml": "Speech recognition converts in the opposite direction, and vector search retrieves content. Select voice, language, format, and streaming behavior based on channel requirements."
+    },
+    {
+      "id": "ai103-abc57d1353fe",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "CustomSpeech",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "CustomSpeech"
+      ],
+      "promptHtml": "A factory has specialized product names that a general recognizer transcribes incorrectly. Which improvement is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use a custom speech model"
+        },
+        {
+          "key": "B",
+          "label": "Increase image-generation quality"
+        },
+        {
+          "key": "C",
+          "label": "Add search synonyms only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use a custom speech model",
+      "rationaleHtml": "Custom Speech can adapt recognition to domain vocabulary and acoustic conditions using appropriate data.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/custom-speech-overview\">Custom Speech overview</a>",
+      "extraHtml": "Image controls are unrelated, and search synonyms cannot repair the original transcript. Compare word error rate on a held-out domain dataset before and after customization."
+    },
+    {
+      "id": "ai103-b98e2c3cc624",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "AudioReasoning",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "AudioReasoning"
+      ],
+      "promptHtml": "A voice agent must reason directly over an audio input that includes speech and nonverbal cues. Which model type should be evaluated?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An audio-capable multimodal model"
+        },
+        {
+          "key": "B",
+          "label": "A text embedding model only"
+        },
+        {
+          "key": "C",
+          "label": "An image inpainting model"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An audio-capable multimodal model",
+      "rationaleHtml": "An audio-capable multimodal model can process audio context beyond a text-only transcript where supported.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure\">Foundry models</a>",
+      "extraHtml": "Text embeddings cannot inspect audio signals, and inpainting edits images. Confirm model input support, latency, consent, privacy, and whether a transcript remains necessary for audit."
+    },
+    {
+      "id": "ai103-3a5802abedb3",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "SpeechTranslation",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "SpeechTranslation"
+      ],
+      "promptHtml": "A live meeting must be transcribed and rendered in another language with specialized speech capabilities. Which workflow is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Speech translation with supported services"
+        },
+        {
+          "key": "B",
+          "label": "Object detection followed by OCR"
+        },
+        {
+          "key": "C",
+          "label": "Vector compression followed by ranking"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Speech translation with supported services",
+      "rationaleHtml": "Speech translation combines recognition and translation capabilities for spoken-language conversion.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/speech-service/speech-translation\">Speech translation</a>",
+      "extraHtml": "Vision and vector operations do not process spoken language. Decide whether translated text or synthesized translated audio is required and measure both recognition and translation quality."
+    },
+    {
+      "id": "ai103-1fa986c93277",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "Safety",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "Safety"
+      ],
+      "promptHtml": "A text classifier must distinguish safety risk from ordinary negative sentiment. Which design is correct?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use dedicated safety classification alongside sentiment"
+        },
+        {
+          "key": "B",
+          "label": "Treat every negative review as unsafe"
+        },
+        {
+          "key": "C",
+          "label": "Use document page count as the risk score"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use dedicated safety classification alongside sentiment",
+      "rationaleHtml": "Safety and sentiment are different dimensions and require purpose-built classification or evaluation.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-safety/overview\">Content Safety overview</a>",
+      "extraHtml": "Negative product feedback is not necessarily harmful content, and page count has no semantic meaning. Keep separate thresholds and review paths for tone, policy risk, and sensitive data."
+    },
+    {
+      "id": "ai103-2cb2a394f156",
+      "examSlug": "ai103",
+      "domain": "TextAnalysis",
+      "topic": "TopicExtraction",
+      "tags": [
+        "AI-103",
+        "TextAnalysis",
+        "TopicExtraction"
+      ],
+      "promptHtml": "A meeting transcript needs topics identified without a predefined taxonomy. Which approach should be evaluated?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Generative topic extraction with structured output"
+        },
+        {
+          "key": "B",
+          "label": "Image object detection"
+        },
+        {
+          "key": "C",
+          "label": "Text-to-speech synthesis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Generative topic extraction with structured output",
+      "rationaleHtml": "Generative prompting can identify emergent topics and return them in a defined schema.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/openai/how-to/structured-outputs\">Structured outputs</a>",
+      "extraHtml": "Vision and synthesis address other modalities. Normalize near-duplicate topics, require evidence spans, and evaluate stability across representative transcripts."
+    },
+    {
+      "id": "ai103-c389974260c1",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Ingestion",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Ingestion"
+      ],
+      "promptHtml": "A RAG system must ingest PDFs, images, audio, and video into a searchable grounding store. Which architecture is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Multimodal ingestion plus an Azure AI Search index"
+        },
+        {
+          "key": "B",
+          "label": "A text box with no ingestion pipeline"
+        },
+        {
+          "key": "C",
+          "label": "A speech voice gallery only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Multimodal ingestion plus an Azure AI Search index",
+      "rationaleHtml": "A multimodal ingestion pipeline can extract representations and metadata before indexing them for retrieval.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/search-what-is-azure-search\">Azure AI Search overview</a>",
+      "extraHtml": "A text box and voice gallery do not create a managed grounding corpus. Preserve source identity, access metadata, timestamps, and modality-specific evidence during ingestion."
+    },
+    {
+      "id": "ai103-467b8c2c9c85",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Search",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Search"
+      ],
+      "promptHtml": "A search solution must find exact regulation numbers and conceptually similar passages in one query. Which search mode should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Hybrid search"
+        },
+        {
+          "key": "B",
+          "label": "Vector search only"
+        },
+        {
+          "key": "C",
+          "label": "Full-text search only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Hybrid search",
+      "rationaleHtml": "Hybrid search combines lexical matching for exact identifiers with vector similarity for semantic concepts.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/hybrid-search-overview\">Hybrid search overview</a>",
+      "extraHtml": "Either single mode can miss evidence favored by the other. Tune fusion and semantic ranking using labeled relevance judgments rather than relying only on default settings."
+    },
+    {
+      "id": "ai103-aaa4e29a337c",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "SemanticSearch",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "SemanticSearch"
+      ],
+      "promptHtml": "A search application needs improved ordering based on semantic meaning after initial retrieval. Which feature should be added?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Semantic ranker"
+        },
+        {
+          "key": "B",
+          "label": "A storage lifecycle rule"
+        },
+        {
+          "key": "C",
+          "label": "A speech pronunciation lexicon"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Semantic ranker",
+      "rationaleHtml": "Semantic ranker reranks an initial text or hybrid result set using language understanding.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/semantic-search-overview\">Semantic ranking overview</a>",
+      "extraHtml": "Storage lifecycle and speech lexicons solve unrelated problems. Semantic ranking does not replace retrieval; it improves ordering within the candidate set and should be evaluated for relevance and cost."
+    },
+    {
+      "id": "ai103-53c70097ef50",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "OCR",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "OCR"
+      ],
+      "promptHtml": "Scanned contracts contain no embedded text, but their content must be indexed for RAG. Which enrichment step is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR during ingestion"
+        },
+        {
+          "key": "B",
+          "label": "Text-to-speech synthesis"
+        },
+        {
+          "key": "C",
+          "label": "Image generation"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR during ingestion",
+      "rationaleHtml": "OCR converts visible text in scanned pages into machine-readable content for indexing and extraction.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-skill-ocr\">OCR skill</a>",
+      "extraHtml": "Speech synthesis and image generation do not recover document text. Preserve page and region metadata so generated answers can cite the correct source location."
+    },
+    {
+      "id": "ai103-242ea9acaaf1",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Enrichment",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Enrichment"
+      ],
+      "promptHtml": "An ingestion pipeline must split documents and create embeddings without custom code where supported. What should it configure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Built-in enrichment skills in a skillset"
+        },
+        {
+          "key": "B",
+          "label": "A browser extension on each user device"
+        },
+        {
+          "key": "C",
+          "label": "A manual monthly copy process"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Built-in enrichment skills in a skillset",
+      "rationaleHtml": "Azure AI Search skillsets can orchestrate built-in enrichment such as splitting and vectorization during indexing.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-working-with-skillsets\">Skillsets overview</a>",
+      "extraHtml": "Client extensions and manual copying are not scalable ingestion designs. Use custom skills only when built-ins cannot meet transformation requirements, and monitor enrichment warnings."
+    },
+    {
+      "id": "ai103-04a53ca7c0c8",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Enrichment",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Enrichment"
+      ],
+      "promptHtml": "A proprietary classifier must enrich every indexed document. How should it be integrated into an Azure AI Search pipeline?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Add a custom Web API skill"
+        },
+        {
+          "key": "B",
+          "label": "Add a semantic ranker only"
+        },
+        {
+          "key": "C",
+          "label": "Add a speech synthesis voice"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Add a custom Web API skill",
+      "rationaleHtml": "A custom Web API skill invokes organization-specific enrichment logic within an indexer skillset.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-custom-skill-web-api\">Custom Web API skill</a>",
+      "extraHtml": "Semantic ranking orders results but does not classify during ingestion. Design the custom skill for batching, retries, timeouts, schema consistency, and secure authentication."
+    },
+    {
+      "id": "ai103-ac70b6f7db93",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Ingestion",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Ingestion"
+      ],
+      "promptHtml": "A RAG index contains duplicated headers and footers that reduce retrieval quality. Where should they be removed?",
+      "options": [
+        {
+          "key": "A",
+          "label": "During document preprocessing or enrichment"
+        },
+        {
+          "key": "B",
+          "label": "After the final answer reaches the user"
+        },
+        {
+          "key": "C",
+          "label": "By raising model temperature"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "During document preprocessing or enrichment",
+      "rationaleHtml": "Cleaning repeated layout artifacts before chunking prevents noisy text from contaminating embeddings and retrieval.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/search/cognitive-search-concept-intro\">AI enrichment overview</a>",
+      "extraHtml": "Post-answer cleanup cannot repair retrieval, and temperature affects generation sampling. Keep original source references while indexing a clean representation."
+    },
+    {
+      "id": "ai103-99269a662d5e",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "AgentGrounding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "AgentGrounding"
+      ],
+      "promptHtml": "An agent must search a governed knowledge index at runtime. Which integration is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Expose the retrieval pipeline as an agent knowledge tool"
+        },
+        {
+          "key": "B",
+          "label": "Copy the entire index into the system prompt"
+        },
+        {
+          "key": "C",
+          "label": "Grant the agent index-administrator rights"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Expose the retrieval pipeline as an agent knowledge tool",
+      "rationaleHtml": "A retrieval tool gives the agent scoped runtime access to relevant indexed evidence.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-foundry/agents/concepts/tool-catalog\">Agent tool catalog</a>",
+      "extraHtml": "Copying the corpus exceeds context limits and becomes stale; administrator rights violate least privilege. Apply security trimming and return citations with retrieved chunks."
+    },
+    {
+      "id": "ai103-d79e32b5c16d",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "DocumentProcessing",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "DocumentProcessing"
+      ],
+      "promptHtml": "Invoices require text, tables, selection marks, and spatial relationships for downstream extraction. Which document capability should be used?",
+      "options": [
+        {
+          "key": "A",
+          "label": "OCR plus layout analysis"
+        },
+        {
+          "key": "B",
+          "label": "Sentiment analysis alone"
+        },
+        {
+          "key": "C",
+          "label": "Text-to-speech synthesis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "OCR plus layout analysis",
+      "rationaleHtml": "OCR recovers text while layout analysis preserves structural relationships needed for document extraction.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/document-intelligence/concept-layout\">Document layout model</a>",
+      "extraHtml": "Sentiment and synthesis do not recover document structure. Keep page, polygon, table, and confidence information when downstream reasoning depends on location."
+    },
+    {
+      "id": "ai103-9a25c730f925",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "FieldExtraction",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "FieldExtraction"
+      ],
+      "promptHtml": "A document pipeline must extract vendor, total, and invoice date into fixed fields. Which approach best fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Field extraction with a defined schema"
+        },
+        {
+          "key": "B",
+          "label": "Keyword ranking without extraction"
+        },
+        {
+          "key": "C",
+          "label": "Audio language identification"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Field extraction with a defined schema",
+      "rationaleHtml": "Schema-based field extraction returns the required business values in predictable locations.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/document-intelligence/overview\">Document Intelligence overview</a>",
+      "extraHtml": "Ranking finds documents but does not produce invoice fields, and audio identification is unrelated. Validate totals, currencies, confidence, and source spans before posting transactions."
+    },
+    {
+      "id": "ai103-6f5d9f3437aa",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "ContentUnderstanding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "ContentUnderstanding"
+      ],
+      "promptHtml": "Mixed document types must become clean structured representations that agents can reason over. Which service is designed for schema-based multimodal extraction?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure Content Understanding"
+        },
+        {
+          "key": "B",
+          "label": "Azure Traffic Manager"
+        },
+        {
+          "key": "C",
+          "label": "Azure Queue Storage"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure Content Understanding",
+      "rationaleHtml": "Content Understanding creates structured, grounded outputs from multimodal content using analyzers.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "Traffic Manager routes DNS and Queue Storage transports messages. Choose schemas based on downstream tasks and retain source grounding and confidence information."
+    },
+    {
+      "id": "ai103-e31abaf7df15",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "AnalyzerOutputs",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "AnalyzerOutputs"
+      ],
+      "promptHtml": "Downstream agents need document content that preserves headings, lists, and tables in a readable form. Which analyzer output is most useful?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Markdown output"
+        },
+        {
+          "key": "B",
+          "label": "A raw image thumbnail only"
+        },
+        {
+          "key": "C",
+          "label": "An audio waveform only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Markdown output",
+      "rationaleHtml": "Markdown preserves useful document structure in a text form that is suitable for chunking and downstream reasoning.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "Thumbnails and waveforms omit the required textual structure. Validate conversion of tables and reading order, and keep links back to page-level source evidence."
+    },
+    {
+      "id": "ai103-c1564573d50f",
+      "examSlug": "ai103",
+      "domain": "InformationExtraction",
+      "topic": "Grounding",
+      "tags": [
+        "AI-103",
+        "InformationExtraction",
+        "Grounding"
+      ],
+      "promptHtml": "A custom analyzer extracts a policy number but reviewers need to verify where it came from. What metadata should the output retain?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Source grounding and confidence"
+        },
+        {
+          "key": "B",
+          "label": "Only the final field value"
+        },
+        {
+          "key": "C",
+          "label": "Only the processing bill"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Source grounding and confidence",
+      "rationaleHtml": "Grounding locations and confidence support verification, review routing, and error analysis.<br><br>Reference: <a href=\"https://learn.microsoft.com/azure/ai-services/content-understanding/overview\">Content Understanding overview</a>",
+      "extraHtml": "A bare value is difficult to audit, and billing data does not prove extraction. Use confidence as a triage signal rather than unquestioned truth and validate high-impact fields."
+    }
+  ]
+}

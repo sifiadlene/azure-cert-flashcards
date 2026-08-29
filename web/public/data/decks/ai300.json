@@ -1,0 +1,3279 @@
+{
+  "exam": {
+    "slug": "ai300",
+    "code": "AI-300",
+    "title": "AI-300",
+    "sourceFile": "ai300_flashcards_2026-08-29.csv",
+    "deckVersion": "2026-08-29",
+    "updatedOn": "2026-08-29",
+    "questionCount": 106,
+    "domains": [
+      "GenAIOpsInfrastructure",
+      "GenAIOptimization",
+      "GenAIQuality",
+      "MLLifecycle",
+      "MLOpsInfrastructure"
+    ],
+    "topics": [
+      "ABTesting",
+      "AgentIdentity",
+      "AutomatedEvaluation",
+      "AutomatedML",
+      "Automation",
+      "BatchEndpoints",
+      "CapacityPlanning",
+      "Chunking",
+      "Coherence",
+      "Components",
+      "ComputeTargets",
+      "Connections",
+      "ContinuousMonitoring",
+      "CostMonitoring",
+      "CustomEvaluation",
+      "DataAssets",
+      "DataDrift",
+      "DataMapping",
+      "Datastores",
+      "DistributedTraining",
+      "EmbeddingModels",
+      "EndpointSecurity",
+      "EndpointTroubleshooting",
+      "Environments",
+      "EvaluationData",
+      "FeatureRetrieval",
+      "FineTuning",
+      "FineTuningEvaluation",
+      "FineTuningLifecycle",
+      "Fluency",
+      "FoundryProjects",
+      "GitHubIntegration",
+      "Groundedness",
+      "HybridSearch",
+      "HyperparameterTuning",
+      "IdentityAccess",
+      "InfrastructureAsCode",
+      "MLflow",
+      "ManagedCompute",
+      "ManagedIdentity",
+      "ManagedInference",
+      "ModelCatalog",
+      "ModelComparison",
+      "ModelDeployment",
+      "ModelLifecycle",
+      "ModelMonitoring",
+      "ModelPromotion",
+      "ModelRegistration",
+      "ModelSelection",
+      "ModelVersioning",
+      "NetworkSecurity",
+      "Notebooks",
+      "OnlineEndpoints",
+      "PerformanceMonitoring",
+      "ProductionDeployment",
+      "ProgressiveRollout",
+      "PromptVariants",
+      "PromptVersioning",
+      "ProvisionedThroughput",
+      "RAGEvaluation",
+      "RBAC",
+      "Registries",
+      "ReleaseManagement",
+      "Relevance",
+      "ResponsibleAI",
+      "RetrainingTriggers",
+      "RetrievalStrategies",
+      "RetrievalTuning",
+      "SafeRollback",
+      "SafetyConfiguration",
+      "SafetyEvaluation",
+      "SourceControl",
+      "SyntheticData",
+      "Tracing",
+      "TrainingJobs",
+      "TrainingPipelines",
+      "Workspaces"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ai300-cad15a7586ff",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Workspaces",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Workspaces"
+      ],
+      "promptHtml": "A team needs a central Azure resource for jobs, assets, compute, and access control used by its machine learning project. What should it create?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An Azure Machine Learning workspace"
+        },
+        {
+          "key": "B",
+          "label": "A Microsoft Foundry project resource"
+        },
+        {
+          "key": "C",
+          "label": "An Azure AI Search service"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An Azure Machine Learning workspace",
+      "rationaleHtml": "A Machine Learning workspace is the top-level resource for coordinating Azure Machine Learning jobs, assets, compute, and security.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-workspace\">Azure Machine Learning workspace</a>",
+      "extraHtml": "A workspace governs the ML lifecycle. A Foundry project organizes generative AI development, while AI Search indexes and retrieves content rather than managing ML training operations."
+    },
+    {
+      "id": "ai300-d3ed17f7760b",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Datastores",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Datastores"
+      ],
+      "promptHtml": "Training jobs must access an existing ADLS Gen2 location without copying its files into the workspace. Which workspace object should reference it?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A versioned data asset"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning datastore"
+        },
+        {
+          "key": "C",
+          "label": "An Azure Machine Learning environment"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "An Azure Machine Learning datastore",
+      "rationaleHtml": "A datastore securely stores connection information that lets jobs access an external storage service.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-datastore\">Create and manage datastores</a>",
+      "extraHtml": "A datastore represents the storage connection; a data asset identifies particular data within storage. An environment defines runtime dependencies and cannot provide storage connectivity."
+    },
+    {
+      "id": "ai300-8cba79a0077a",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "ComputeTargets",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "ComputeTargets"
+      ],
+      "promptHtml": "A nightly training workload needs multiple CPU nodes only while jobs run and must scale to zero afterward. Which compute target is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A permanently running compute instance"
+        },
+        {
+          "key": "B",
+          "label": "An attached Azure Kubernetes cluster"
+        },
+        {
+          "key": "C",
+          "label": "A managed compute cluster with minimum nodes set to zero"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "A managed compute cluster with minimum nodes set to zero",
+      "rationaleHtml": "A managed compute cluster can autoscale across nodes and deallocate all nodes when idle.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-compute-cluster\">Create a compute cluster</a>",
+      "extraHtml": "Compute instances suit interactive development and remain single-node. Attached Kubernetes is appropriate when the organization needs cluster control, but adds operational overhead for an elastic training requirement."
+    },
+    {
+      "id": "ai300-ed7d844c8431",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "ComputeTargets",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "ComputeTargets"
+      ],
+      "promptHtml": "A data scientist needs an individually managed cloud workstation for notebooks, terminals, and interactive debugging. Which target should be provisioned?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An Azure Machine Learning compute instance"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning compute cluster"
+        },
+        {
+          "key": "C",
+          "label": "An Azure Machine Learning batch endpoint"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An Azure Machine Learning compute instance",
+      "rationaleHtml": "A compute instance is a managed development environment intended for interactive work by an individual user.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-compute-instance\">Compute instance</a>",
+      "extraHtml": "A compute cluster is optimized for scalable job execution, while a batch endpoint performs asynchronous inference. Use instances for authoring and clusters for repeatable production runs."
+    },
+    {
+      "id": "ai300-33b95dd5dcb9",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "IdentityAccess",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "IdentityAccess"
+      ],
+      "promptHtml": "A pipeline must read blobs without storing account keys in code. Security requires revocable Azure authorization and least privilege. What should be configured?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A shared access signature embedded in the component YAML"
+        },
+        {
+          "key": "B",
+          "label": "The workspace managed identity with an appropriate data-plane role"
+        },
+        {
+          "key": "C",
+          "label": "The storage account key saved as a GitHub repository secret"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "The workspace managed identity with an appropriate data-plane role",
+      "rationaleHtml": "Managed identity plus Azure RBAC enables credential-free access and narrowly scoped authorization.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-identity-based-service-authentication\">Authentication with managed identities</a>",
+      "extraHtml": "SAS tokens and account keys are secrets that require rotation and can be overprivileged. Managed identity removes secret distribution while RBAC controls the exact storage scope and actions."
+    },
+    {
+      "id": "ai300-caa757884d2c",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "DataAssets",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "DataAssets"
+      ],
+      "promptHtml": "A curated training folder must be referenced by a stable name, versioned when its definition changes, and mounted by jobs. Which asset type fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A uri_folder data asset"
+        },
+        {
+          "key": "B",
+          "label": "A custom Docker environment"
+        },
+        {
+          "key": "C",
+          "label": "A registered MLflow model"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A uri_folder data asset",
+      "rationaleHtml": "A uri_folder data asset creates a versioned reference to a folder that jobs can download or mount.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-data-assets\">Create data assets</a>",
+      "extraHtml": "Data assets describe inputs and preserve lineage without necessarily duplicating data. Environments package dependencies; models package inference artifacts rather than source training folders."
+    },
+    {
+      "id": "ai300-253b2126ee6d",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Environments",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Environments"
+      ],
+      "promptHtml": "Training must use the same Python and CUDA dependencies in development and CI runs. Which reusable asset should the team version?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A compute instance schedule"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning environment"
+        },
+        {
+          "key": "C",
+          "label": "A workspace diagnostic setting"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "An Azure Machine Learning environment",
+      "rationaleHtml": "An environment versions the Docker image and Python dependencies used to execute jobs consistently.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-environments-v2\">Manage environments</a>",
+      "extraHtml": "Compute schedules control availability and diagnostic settings route logs. Environments address runtime reproducibility and should be pinned to explicit versions in production jobs."
+    },
+    {
+      "id": "ai300-3a68df0e8d4e",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Components",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Components"
+      ],
+      "promptHtml": "A preprocessing step will be reused in several pipelines and must declare inputs, outputs, code, and runtime independently. What should be created?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A reusable command component"
+        },
+        {
+          "key": "B",
+          "label": "A standalone online deployment"
+        },
+        {
+          "key": "C",
+          "label": "A storage lifecycle policy"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A reusable command component",
+      "rationaleHtml": "A component packages executable logic with its interface and environment for reuse in pipelines.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-component\">Azure Machine Learning components</a>",
+      "extraHtml": "Components are modular pipeline building blocks that support versioning and lineage. Online deployments serve requests, and lifecycle policies manage stored objects rather than ML workflow logic."
+    },
+    {
+      "id": "ai300-8e3005ff2048",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Registries",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Registries"
+      ],
+      "promptHtml": "Two workspaces in different subscriptions must consume the same approved models, components, and environments. Which service should hold these assets?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A shared Azure Machine Learning registry"
+        },
+        {
+          "key": "B",
+          "label": "A shared Log Analytics workspace"
+        },
+        {
+          "key": "C",
+          "label": "A shared Azure Container Registry repository only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A shared Azure Machine Learning registry",
+      "rationaleHtml": "A registry shares versioned Machine Learning assets across workspaces and organizational boundaries.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-registries\">Manage Azure Machine Learning registries</a>",
+      "extraHtml": "A container registry shares images but not complete ML asset metadata, lineage, models, and components. Log Analytics centralizes telemetry rather than reusable ML assets."
+    },
+    {
+      "id": "ai300-261bc44b4660",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "GitHubIntegration",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "GitHubIntegration"
+      ],
+      "promptHtml": "A GitHub Actions workflow must submit Azure ML jobs without a long-lived client secret. Which authentication pattern should be used?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A storage account access key in GitHub secrets"
+        },
+        {
+          "key": "B",
+          "label": "OpenID Connect federation with an Azure identity"
+        },
+        {
+          "key": "C",
+          "label": "A workspace user token committed to the repository"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "OpenID Connect federation with an Azure identity",
+      "rationaleHtml": "GitHub OIDC federation exchanges a short-lived token for Azure access and avoids stored client credentials.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect\">Connect GitHub Actions to Azure with OpenID Connect</a>",
+      "extraHtml": "OIDC reduces secret rotation and leakage risk. Storage keys do not authenticate Azure Resource Manager operations, and user tokens are unsuitable for unattended automation."
+    },
+    {
+      "id": "ai300-15096ab0f790",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "InfrastructureAsCode",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "InfrastructureAsCode"
+      ],
+      "promptHtml": "Development and production workspaces must be recreated consistently through pull requests. Which approach provides declarative and repeatable resource deployment?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Manual creation in Azure portal with screenshots"
+        },
+        {
+          "key": "B",
+          "label": "An Azure CLI script containing interactive prompts"
+        },
+        {
+          "key": "C",
+          "label": "Version-controlled Bicep modules with parameter files"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Version-controlled Bicep modules with parameter files",
+      "rationaleHtml": "Bicep provides declarative Azure infrastructure definitions that can be reviewed, parameterized, and repeatedly deployed.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview\">Bicep overview</a>",
+      "extraHtml": "Portal steps are difficult to audit and reproduce. CLI can be automated, but interactive imperative scripts provide weaker desired-state semantics than parameterized Bicep modules."
+    },
+    {
+      "id": "ai300-f61238661f24",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Automation",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Automation"
+      ],
+      "promptHtml": "Infrastructure changes must be validated on pull requests and deployed only after merge to the main branch. What should orchestrate this policy?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A recurring Azure Machine Learning pipeline schedule"
+        },
+        {
+          "key": "B",
+          "label": "Separate GitHub Actions workflows triggered by pull_request and push"
+        },
+        {
+          "key": "C",
+          "label": "A notebook that an administrator runs after each merge"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Separate GitHub Actions workflows triggered by pull_request and push",
+      "rationaleHtml": "GitHub Actions event triggers can validate proposed IaC on pull requests and deploy approved changes after a push to the protected branch.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-github-actions-machine-learning\">Use GitHub Actions with Azure Machine Learning</a>",
+      "extraHtml": "ML pipeline schedules orchestrate model workflows, not repository governance. Manual notebooks weaken auditability; protected branches plus event-driven workflows separate validation from deployment."
+    },
+    {
+      "id": "ai300-cda78fdb4e37",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "NetworkSecurity",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "NetworkSecurity"
+      ],
+      "promptHtml": "An Azure ML workspace must be reachable only from approved virtual networks while public access is disabled. Which configuration meets the requirement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A private endpoint with private DNS integration"
+        },
+        {
+          "key": "B",
+          "label": "A public endpoint protected only by resource locks"
+        },
+        {
+          "key": "C",
+          "label": "A service health alert scoped to the workspace"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A private endpoint with private DNS integration",
+      "rationaleHtml": "Private Link exposes the workspace through a private IP, while private DNS resolves workspace endpoints inside the virtual network.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link\">Configure a private endpoint</a>",
+      "extraHtml": "Resource locks prevent deletion or modification but do not filter network traffic. Health alerts report platform issues and provide no network isolation."
+    },
+    {
+      "id": "ai300-a0ff2041e3d0",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "SourceControl",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "SourceControl"
+      ],
+      "promptHtml": "A team needs reviewable history for training code, component YAML, and environment definitions while large datasets remain in cloud storage. What should be placed in Git?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Source and declarative definitions, excluding data and generated artifacts"
+        },
+        {
+          "key": "B",
+          "label": "Every training dataset and model binary in normal Git objects"
+        },
+        {
+          "key": "C",
+          "label": "Only notebook outputs, excluding scripts and configuration files"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Source and declarative definitions, excluding data and generated artifacts",
+      "rationaleHtml": "Git should track code and configuration; durable data and large model artifacts belong in managed data and model stores.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-train-model-git-integration\">Git integration for Azure Machine Learning</a>",
+      "extraHtml": "Committing large data bloats repository history and risks data exposure. Notebook outputs are generated state; the reproducible inputs—code and definitions—are the important reviewable assets."
+    },
+    {
+      "id": "ai300-a28d8afe2202",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Datastores",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Datastores"
+      ],
+      "promptHtml": "A datastore accesses ADLS Gen2 through the identity of each interactive user, so storage permissions must differ by user. Which datastore authentication mode is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Account-key authentication shared by every user"
+        },
+        {
+          "key": "B",
+          "label": "Identity-based authentication with user credentials"
+        },
+        {
+          "key": "C",
+          "label": "Anonymous public-container authentication"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Identity-based authentication with user credentials",
+      "rationaleHtml": "Identity-based access can pass through the signed-in user's identity so storage RBAC determines individual authorization.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-administrate-data-authentication\">Data authentication administration</a>",
+      "extraHtml": "A shared key erases per-user accountability and grants common privileges. Anonymous access cannot enforce identity-specific permissions and is inappropriate for protected training data."
+    },
+    {
+      "id": "ai300-cb2e77ddde81",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "ComputeTargets",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "ComputeTargets"
+      ],
+      "promptHtml": "A CPU cluster is idle most weekends but receives unpredictable weekday jobs. How should it minimize cost without delaying cluster recreation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Delete and redeploy the cluster after every job"
+        },
+        {
+          "key": "B",
+          "label": "Keep one node running continuously for readiness"
+        },
+        {
+          "key": "C",
+          "label": "Set minimum nodes to zero and configure an idle timeout"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Set minimum nodes to zero and configure an idle timeout",
+      "rationaleHtml": "Autoscaling to zero releases compute cost after the configured idle period while preserving the cluster definition.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-compute-cluster\">Configure compute cluster autoscaling</a>",
+      "extraHtml": "Deleting infrastructure adds provisioning overhead and operational churn. A permanent node reduces startup latency but violates the cost-minimization requirement during long idle periods."
+    },
+    {
+      "id": "ai300-7ecdde847cd5",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Environments",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Environments"
+      ],
+      "promptHtml": "A production job unexpectedly changes behavior after a curated environment receives a new version. Which practice best preserves reproducibility?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Reference the environment by name and explicit version"
+        },
+        {
+          "key": "B",
+          "label": "Resolve the newest environment version at each run"
+        },
+        {
+          "key": "C",
+          "label": "Rebuild dependencies from unpinned package names"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Reference the environment by name and explicit version",
+      "rationaleHtml": "Pinning the environment asset version gives each job a stable and auditable runtime definition.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-environments-v2\">Manage environment versions</a>",
+      "extraHtml": "Using latest introduces silent runtime changes. Unpinned package resolution is even less deterministic because upstream packages can change without an Azure ML asset update."
+    },
+    {
+      "id": "ai300-9a0a49bc8778",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Components",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Components"
+      ],
+      "promptHtml": "A pipeline step is unchanged, but teams repeatedly copy its YAML and code into new projects. Which action best improves governance and reuse?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Convert the step into a versioned component"
+        },
+        {
+          "key": "B",
+          "label": "Convert the step into an online endpoint"
+        },
+        {
+          "key": "C",
+          "label": "Convert the step into a datastore credential"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Convert the step into a versioned component",
+      "rationaleHtml": "A versioned component exposes a stable contract and can be reused without duplicating implementation details.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-component\">Machine Learning component concepts</a>",
+      "extraHtml": "Endpoints host inference and datastores provide storage connections. Neither supplies the composable interface, lineage, and runtime encapsulation needed for pipeline reuse."
+    },
+    {
+      "id": "ai300-42223aca407e",
+      "examSlug": "ai300",
+      "domain": "MLOpsInfrastructure",
+      "topic": "Registries",
+      "tags": [
+        "AI-300",
+        "MLOpsInfrastructure",
+        "Registries"
+      ],
+      "promptHtml": "A central platform team publishes an approved model, and regional workspaces must consume that exact version without separate copies owned by each team. What should they reference?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A model asset in a Machine Learning registry"
+        },
+        {
+          "key": "B",
+          "label": "A model file attached to a GitHub release"
+        },
+        {
+          "key": "C",
+          "label": "A model output inside one workspace job"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A model asset in a Machine Learning registry",
+      "rationaleHtml": "Registry assets are centrally versioned and can be referenced from jobs or deployments in multiple workspaces.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-models\">Manage models in registries</a>",
+      "extraHtml": "GitHub releases lack Azure ML deployment metadata and governance. A job output is scoped operational state until it is registered and is not a governed cross-workspace contract."
+    },
+    {
+      "id": "ai300-4c458fbb1de3",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "MLflow",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "MLflow"
+      ],
+      "promptHtml": "A training script logs parameters, metrics, and artifacts, and analysts need a standard experiment UI without custom tracking infrastructure. What should be integrated?",
+      "options": [
+        {
+          "key": "A",
+          "label": "MLflow tracking in Azure Machine Learning"
+        },
+        {
+          "key": "B",
+          "label": "Azure Policy compliance scan results"
+        },
+        {
+          "key": "C",
+          "label": "Azure Storage lifecycle management"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "MLflow tracking in Azure Machine Learning",
+      "rationaleHtml": "Azure ML integrates with MLflow to record runs, parameters, metrics, and artifacts in workspace experiments.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-mlflow\">MLflow and Azure Machine Learning</a>",
+      "extraHtml": "Policy evaluates resource compliance, and storage lifecycle rules move or delete blobs. Neither provides experiment semantics or comparison of model-training runs."
+    },
+    {
+      "id": "ai300-90272cf1cc93",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "MLflow",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "MLflow"
+      ],
+      "promptHtml": "A supported scikit-learn training script needs automatic capture of common parameters, metrics, and model artifacts with minimal logging code. Which MLflow capability should be enabled?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Model serving with a batch endpoint"
+        },
+        {
+          "key": "B",
+          "label": "MLflow autologging for the framework"
+        },
+        {
+          "key": "C",
+          "label": "Data drift monitoring on the input asset"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "MLflow autologging for the framework",
+      "rationaleHtml": "MLflow autologging automatically records framework-specific training information and artifacts.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-log-view-metrics\">Log and view metrics with MLflow</a>",
+      "extraHtml": "Serving and drift monitoring happen after or outside training. Autologging reduces instrumentation effort, though explicit logging remains useful for custom business metrics."
+    },
+    {
+      "id": "ai300-50eaa3b67ff7",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "AutomatedML",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "AutomatedML"
+      ],
+      "promptHtml": "A team wants Azure to test preprocessing and algorithm combinations for a labeled tabular classification dataset under a time budget. Which capability is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Automated machine learning classification"
+        },
+        {
+          "key": "B",
+          "label": "A manual sweep over one script parameter"
+        },
+        {
+          "key": "C",
+          "label": "A responsible AI dashboard for one model"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Automated machine learning classification",
+      "rationaleHtml": "Automated ML explores supported algorithms and featurization choices while honoring experiment constraints.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml\">Automated machine learning</a>",
+      "extraHtml": "A sweep tunes parameters defined by the author but does not broadly select algorithms and preprocessing. A responsible AI dashboard analyzes an existing model rather than searching candidates."
+    },
+    {
+      "id": "ai300-eb96e01f39ef",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "Notebooks",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "Notebooks"
+      ],
+      "promptHtml": "A data scientist is exploring distributions and debugging feature code interactively before converting the work into a repeatable job. Which tool is most suitable now?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed online endpoint deployment"
+        },
+        {
+          "key": "B",
+          "label": "A notebook on a compute instance"
+        },
+        {
+          "key": "C",
+          "label": "A scheduled batch endpoint invocation"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "A notebook on a compute instance",
+      "rationaleHtml": "Notebooks provide interactive code execution and visualization for exploration on managed development compute.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-run-jupyter-notebooks\">Run Jupyter notebooks</a>",
+      "extraHtml": "Endpoints are production inference interfaces and do not provide an exploratory authoring loop. Once exploration stabilizes, move logic into scripts and components for reproducibility."
+    },
+    {
+      "id": "ai300-2c165f20ce10",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "HyperparameterTuning",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "HyperparameterTuning"
+      ],
+      "promptHtml": "A training job must evaluate learning rate and batch size combinations in parallel and select the run with the best validation score. What should be submitted?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A hyperparameter sweep job"
+        },
+        {
+          "key": "B",
+          "label": "A model monitor definition"
+        },
+        {
+          "key": "C",
+          "label": "A managed feature store materialization job"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A hyperparameter sweep job",
+      "rationaleHtml": "A sweep job samples a defined parameter space and optimizes child runs against a primary metric.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters\">Tune hyperparameters</a>",
+      "extraHtml": "Model monitoring evaluates production behavior, while feature materialization computes feature values. Neither launches comparative training trials against an optimization metric."
+    },
+    {
+      "id": "ai300-4c4305496524",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "HyperparameterTuning",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "HyperparameterTuning"
+      ],
+      "promptHtml": "Many weak hyperparameter trials consume the full budget even after their metric is clearly worse than leading runs. Which change reduces wasted compute?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase the maximum nodes of the cluster"
+        },
+        {
+          "key": "B",
+          "label": "Configure an early termination policy"
+        },
+        {
+          "key": "C",
+          "label": "Disable the primary optimization metric"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Configure an early termination policy",
+      "rationaleHtml": "An early termination policy stops poorly performing child runs according to intermediate metric results.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters\">Early termination of sweep runs</a>",
+      "extraHtml": "More nodes increase concurrency but not efficiency per trial. The primary metric is required to compare runs; early termination conserves budget without eliminating optimization guidance."
+    },
+    {
+      "id": "ai300-31054304086e",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "TrainingJobs",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "TrainingJobs"
+      ],
+      "promptHtml": "Production training must execute a Python script noninteractively with declared inputs, outputs, environment, and compute. Which Azure ML job type is the direct fit?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A command job"
+        },
+        {
+          "key": "B",
+          "label": "An interactive notebook session"
+        },
+        {
+          "key": "C",
+          "label": "An online inference request"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A command job",
+      "rationaleHtml": "A command job runs a specified command on managed compute with explicit data and environment dependencies.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-train-model\">Train models with jobs</a>",
+      "extraHtml": "Notebooks are suited to exploration and can hide state. Online requests invoke deployed inference; they do not provide repeatable training execution and output lineage."
+    },
+    {
+      "id": "ai300-15d9f2d9c55c",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "DistributedTraining",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "DistributedTraining"
+      ],
+      "promptHtml": "A deep learning job no longer fits efficiently on one GPU and must coordinate training across several GPU nodes. What should the job configure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A parallel distribution strategy such as PyTorch or MPI"
+        },
+        {
+          "key": "B",
+          "label": "A larger batch endpoint retry count"
+        },
+        {
+          "key": "C",
+          "label": "A semantic ranker configuration for the dataset"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A parallel distribution strategy such as PyTorch or MPI",
+      "rationaleHtml": "Azure ML distribution settings launch and coordinate processes across GPUs and nodes for supported frameworks.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-distributed-training\">Distributed training</a>",
+      "extraHtml": "Endpoint retries concern inference reliability, and semantic ranking concerns search relevance. Distributed training also requires code and framework behavior compatible with multi-process execution."
+    },
+    {
+      "id": "ai300-950d600bf2de",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "TrainingPipelines",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "TrainingPipelines"
+      ],
+      "promptHtml": "Data preparation, training, and evaluation must execute as a dependency graph with reusable steps and recorded lineage. What should the team build?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A sequence of portal operations documented in a wiki"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning pipeline job"
+        },
+        {
+          "key": "C",
+          "label": "A single long-running online deployment"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "An Azure Machine Learning pipeline job",
+      "rationaleHtml": "A pipeline composes components into a directed workflow with dependencies, inputs, outputs, and lineage.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-ml-pipelines\">Machine Learning pipelines</a>",
+      "extraHtml": "Manual portal actions are not repeatable, and online deployments serve predictions rather than orchestrating training stages. Components keep pipeline steps independently reusable."
+    },
+    {
+      "id": "ai300-da9e608794f2",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "TrainingPipelines",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "TrainingPipelines"
+      ],
+      "promptHtml": "A pipeline reruns daily, but an expensive preprocessing component should reuse prior output whenever its code, environment, and inputs are unchanged. Which feature helps?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Component output reuse in the pipeline"
+        },
+        {
+          "key": "B",
+          "label": "Online endpoint traffic mirroring"
+        },
+        {
+          "key": "C",
+          "label": "Workspace soft-delete protection"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Component output reuse in the pipeline",
+      "rationaleHtml": "Azure ML can reuse a prior component result when the step definition and relevant inputs remain unchanged.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-debug-pipeline-reuse-issues\">Pipeline reuse</a>",
+      "extraHtml": "Traffic mirroring validates deployments, and soft delete protects resources. Neither avoids repeated deterministic pipeline computation; disable reuse only for genuinely nondeterministic steps."
+    },
+    {
+      "id": "ai300-a71c3fbed316",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelComparison",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelComparison"
+      ],
+      "promptHtml": "Twenty training runs used different parameters. The team needs to sort them by validation AUC and inspect metrics side by side. Which mechanism should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Experiment run comparison using logged MLflow metrics"
+        },
+        {
+          "key": "B",
+          "label": "Storage account metrics grouped by container"
+        },
+        {
+          "key": "C",
+          "label": "Endpoint access logs grouped by status code"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Experiment run comparison using logged MLflow metrics",
+      "rationaleHtml": "Logged runs can be queried and compared by metrics and parameters to identify candidate models.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-track-experiments-mlflow\">Track experiments with MLflow</a>",
+      "extraHtml": "Storage and endpoint telemetry describe infrastructure and serving behavior, not validation quality across training candidates. Consistent metric names are essential for reliable comparisons."
+    },
+    {
+      "id": "ai300-eeb10b00b4ea",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "FeatureRetrieval",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "FeatureRetrieval"
+      ],
+      "promptHtml": "An online model requires point-in-time feature retrieval at inference, and its retrieval definition must travel with the model artifact. What should registration include?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A packaged feature retrieval specification"
+        },
+        {
+          "key": "B",
+          "label": "A compute cluster autoscale schedule"
+        },
+        {
+          "key": "C",
+          "label": "A workspace private DNS zone export"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A packaged feature retrieval specification",
+      "rationaleHtml": "Packaging the retrieval specification with the model preserves the feature contract needed for consistent serving.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-what-is-managed-feature-store\">Managed feature store concepts</a>",
+      "extraHtml": "Autoscale and DNS settings govern infrastructure, not feature semantics. Coupling the retrieval specification to the model reduces training-serving skew and improves deployment reproducibility."
+    },
+    {
+      "id": "ai300-19d43efe1140",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelRegistration",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelRegistration"
+      ],
+      "promptHtml": "A model logged during training must become a governed, versioned workspace asset that can be deployed later. Which action is required?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Register the MLflow model in Azure Machine Learning"
+        },
+        {
+          "key": "B",
+          "label": "Leave the artifact only in the temporary run output"
+        },
+        {
+          "key": "C",
+          "label": "Copy the pickle file into the source repository"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Register the MLflow model in Azure Machine Learning",
+      "rationaleHtml": "Registration creates a named and versioned model asset from the MLflow artifact.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-models-mlflow\">Manage MLflow models</a>",
+      "extraHtml": "Run outputs provide lineage but are not the promoted deployment contract. Git is unsuitable for large binaries and lacks Azure ML model lifecycle metadata."
+    },
+    {
+      "id": "ai300-344624823ef7",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelVersioning",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelVersioning"
+      ],
+      "promptHtml": "A retrained model uses the same logical name but must coexist with the currently deployed model until validation finishes. How should it be registered?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Overwrite the deployed model files in place"
+        },
+        {
+          "key": "B",
+          "label": "Create a new version under the same model name"
+        },
+        {
+          "key": "C",
+          "label": "Rename the workspace before every retraining run"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Create a new version under the same model name",
+      "rationaleHtml": "Model versions preserve immutable candidates under a stable logical name for comparison and controlled promotion.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-models\">Register and manage model versions</a>",
+      "extraHtml": "In-place mutation destroys provenance and rollback safety. Workspace renaming does not version an artifact and disrupts dependent automation."
+    },
+    {
+      "id": "ai300-e04760041cea",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "Before promoting a loan model, reviewers must inspect performance disparities across demographic cohorts and understand influential features. Which capability should they use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Responsible AI dashboard analysis"
+        },
+        {
+          "key": "B",
+          "label": "Compute cluster node diagnostics"
+        },
+        {
+          "key": "C",
+          "label": "Azure Resource Graph inventory"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Responsible AI dashboard analysis",
+      "rationaleHtml": "The Responsible AI dashboard combines model explanations, error analysis, and fairness-oriented cohort assessment.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai-dashboard\">Responsible AI dashboard</a>",
+      "extraHtml": "Compute diagnostics investigate infrastructure, while Resource Graph inventories Azure resources. Responsible evaluation complements—not replaces—domain review and governance decisions."
+    },
+    {
+      "id": "ai300-a101e13aecca",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelLifecycle",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelLifecycle"
+      ],
+      "promptHtml": "An obsolete model must no longer appear in normal active-model workflows, but audit history and lineage must be retained. What should be done?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Delete every run and artifact permanently"
+        },
+        {
+          "key": "B",
+          "label": "Archive the registered model asset"
+        },
+        {
+          "key": "C",
+          "label": "Move the workspace to another subscription"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Archive the registered model asset",
+      "rationaleHtml": "Archiving removes an asset from active use while preserving its metadata and history for governance.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-models\">Manage the model lifecycle</a>",
+      "extraHtml": "Permanent deletion conflicts with retention and audit requirements. Subscription movement changes resource ownership but does not express lifecycle status for the model."
+    },
+    {
+      "id": "ai300-c4d5ec5b57f8",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "OnlineEndpoints",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "OnlineEndpoints"
+      ],
+      "promptHtml": "A fraud-scoring API must return one prediction synchronously for each request with low latency. Which deployment target is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed online endpoint"
+        },
+        {
+          "key": "B",
+          "label": "A recurring batch endpoint job"
+        },
+        {
+          "key": "C",
+          "label": "A training pipeline schedule"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A managed online endpoint",
+      "rationaleHtml": "Online endpoints provide synchronous request-response inference for low-latency applications.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints-online\">Online endpoints</a>",
+      "extraHtml": "Batch endpoints process large asynchronous datasets and do not serve interactive calls. Pipeline schedules orchestrate workflows rather than expose inference APIs."
+    },
+    {
+      "id": "ai300-0bdccbfa3f84",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "BatchEndpoints",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "BatchEndpoints"
+      ],
+      "promptHtml": "A retailer scores 50 million records overnight and writes results to storage; no caller waits for an immediate response. Which target should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed online endpoint with one request per row"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning batch endpoint"
+        },
+        {
+          "key": "C",
+          "label": "A compute instance running an open notebook"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "An Azure Machine Learning batch endpoint",
+      "rationaleHtml": "Batch endpoints provide asynchronous, scalable inference over large datasets and persist outputs.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints-batch\">Batch endpoints</a>",
+      "extraHtml": "Online endpoints add per-request overhead for an offline workload. An interactive notebook lacks production scheduling, isolation, retry, and scalable parallel execution."
+    },
+    {
+      "id": "ai300-c96bb3db5157",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ManagedInference",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ManagedInference"
+      ],
+      "promptHtml": "A team wants Azure to provision and patch the inference infrastructure while it controls deployment instances and scaling. Which option minimizes operational burden?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed online endpoint"
+        },
+        {
+          "key": "B",
+          "label": "A self-managed Kubernetes web service"
+        },
+        {
+          "key": "C",
+          "label": "A virtual machine with a custom API daemon"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A managed online endpoint",
+      "rationaleHtml": "Managed online endpoints handle serving infrastructure while exposing deployment, instance, traffic, and scaling controls.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints-online\">Managed online endpoints</a>",
+      "extraHtml": "Kubernetes and VMs offer more infrastructure control but require cluster or host operations. Choose them only when requirements justify that additional responsibility."
+    },
+    {
+      "id": "ai300-262b05382eab",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "EndpointTroubleshooting",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "EndpointTroubleshooting"
+      ],
+      "promptHtml": "A new online deployment returns HTTP 500 responses. The team needs container startup output and scoring-script exceptions. What should it inspect first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Deployment logs for the managed online endpoint"
+        },
+        {
+          "key": "B",
+          "label": "The model card description in the registry"
+        },
+        {
+          "key": "C",
+          "label": "Git branch protection audit events"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Deployment logs for the managed online endpoint",
+      "rationaleHtml": "Deployment logs expose container initialization and scoring failures needed to diagnose unhealthy inference replicas.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-online-endpoints\">Troubleshoot online endpoints</a>",
+      "extraHtml": "Model descriptions and Git governance do not show runtime exceptions. Also validate locally and invoke the endpoint with representative payloads before shifting production traffic."
+    },
+    {
+      "id": "ai300-bcd32f5fa5e3",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ProgressiveRollout",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ProgressiveRollout"
+      ],
+      "promptHtml": "A replacement model must receive 10% of production requests while the current model receives 90%, with both behind one endpoint URL. What should be configured?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Weighted traffic allocation across two deployments"
+        },
+        {
+          "key": "B",
+          "label": "Two unrelated workspaces with separate DNS names"
+        },
+        {
+          "key": "C",
+          "label": "A batch deployment with ten parallel workers"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Weighted traffic allocation across two deployments",
+      "rationaleHtml": "An online endpoint can split traffic by percentage among deployments to support controlled rollout.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-safely-rollout-online-endpoints\">Safely roll out online endpoints</a>",
+      "extraHtml": "Separate endpoints complicate client routing and measurement. Batch worker count controls parallel offline processing, not request allocation between model versions."
+    },
+    {
+      "id": "ai300-ff1bdd73c66c",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ProgressiveRollout",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ProgressiveRollout"
+      ],
+      "promptHtml": "A team wants to observe how a candidate deployment responds to live requests without returning its predictions to callers. Which rollout technique should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Mirrored traffic to the candidate deployment"
+        },
+        {
+          "key": "B",
+          "label": "Fifty-percent weighted production traffic"
+        },
+        {
+          "key": "C",
+          "label": "A permanent batch scoring schedule"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Mirrored traffic to the candidate deployment",
+      "rationaleHtml": "Traffic mirroring sends copies of requests to a deployment while excluding its responses from client results.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-safely-rollout-online-endpoints\">Mirror online endpoint traffic</a>",
+      "extraHtml": "Weighted traffic exposes users to candidate responses, which violates the constraint. Batch scoring cannot reproduce live request shape, timing, or serving conditions."
+    },
+    {
+      "id": "ai300-f7325c25119c",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "SafeRollback",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "SafeRollback"
+      ],
+      "promptHtml": "Error rate rises immediately after all endpoint traffic moves to the new deployment. The old deployment is still healthy. What is the fastest safe response?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Retrain the new model while it serves all traffic"
+        },
+        {
+          "key": "B",
+          "label": "Reallocate traffic to the previous deployment"
+        },
+        {
+          "key": "C",
+          "label": "Delete the endpoint and create a different workspace"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Reallocate traffic to the previous deployment",
+      "rationaleHtml": "Keeping the prior deployment available enables rapid rollback by changing endpoint traffic weights.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-safely-rollout-online-endpoints\">Rollback an online deployment</a>",
+      "extraHtml": "Retraining does not immediately protect users, and endpoint deletion creates unnecessary downtime. Define health thresholds and automated rollback criteria before rollout."
+    },
+    {
+      "id": "ai300-8066cef1c683",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "DataDrift",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "DataDrift"
+      ],
+      "promptHtml": "A model's input distributions may change after deployment even though ground-truth labels arrive weeks later. Which signal can detect this earliest?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Data drift between baseline and production inputs"
+        },
+        {
+          "key": "B",
+          "label": "Workspace resource-group naming drift"
+        },
+        {
+          "key": "C",
+          "label": "Git commit frequency for training scripts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Data drift between baseline and production inputs",
+      "rationaleHtml": "Data drift monitoring compares production feature distributions with a reference dataset without requiring immediate labels.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-monitoring\">Model monitoring</a>",
+      "extraHtml": "Infrastructure naming and source activity do not measure statistical changes in model inputs. Drift signals risk; it does not by itself prove that predictive quality declined."
+    },
+    {
+      "id": "ai300-2bba370a4a1c",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelMonitoring",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelMonitoring"
+      ],
+      "promptHtml": "Labels for production predictions are available. Which measure most directly reveals whether a classifier's quality has degraded?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Prediction performance metrics computed against ground truth"
+        },
+        {
+          "key": "B",
+          "label": "Average CPU utilization of inference replicas"
+        },
+        {
+          "key": "C",
+          "label": "Number of registered environment versions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Prediction performance metrics computed against ground truth",
+      "rationaleHtml": "Comparing predictions with ground truth enables direct monitoring of quality metrics such as accuracy, precision, recall, or AUC.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-monitoring\">Monitor model performance</a>",
+      "extraHtml": "CPU utilization indicates infrastructure load, not correctness. Asset counts are governance metadata; neither can establish predictive degradation."
+    },
+    {
+      "id": "ai300-93f45008c6a2",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelMonitoring",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelMonitoring"
+      ],
+      "promptHtml": "A production model should be checked every day against a recent data window without manual execution. What should the team configure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A scheduled model monitoring job"
+        },
+        {
+          "key": "B",
+          "label": "An always-open notebook kernel"
+        },
+        {
+          "key": "C",
+          "label": "A repository issue template"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A scheduled model monitoring job",
+      "rationaleHtml": "A scheduled monitor repeatedly computes configured signals over production data and baseline windows.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-monitor-model-performance\">Configure model monitoring</a>",
+      "extraHtml": "Notebook kernels are interactive and fragile for operations, while issue templates only standardize human reports. Monitoring schedules should align with data arrival and business response time."
+    },
+    {
+      "id": "ai300-cf38bbe9a83e",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "RetrainingTriggers",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "RetrainingTriggers"
+      ],
+      "promptHtml": "Retraining is costly and must start only after a drift metric exceeds the approved limit, while operators must also be notified. Which design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Trigger an alert and an automated retraining workflow from the threshold breach"
+        },
+        {
+          "key": "B",
+          "label": "Retrain continuously after every individual prediction"
+        },
+        {
+          "key": "C",
+          "label": "Wait for an annual manual review regardless of the metric"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Trigger an alert and an automated retraining workflow from the threshold breach",
+      "rationaleHtml": "Threshold-driven automation links monitored degradation to timely notification and controlled retraining.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-monitoring\">Production model monitoring</a>",
+      "extraHtml": "Per-prediction retraining is wasteful and unstable, while annual review ignores the required response. Promotion should still require evaluation gates rather than automatically replacing production."
+    },
+    {
+      "id": "ai300-3a26864dced6",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "BatchEndpoints",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "BatchEndpoints"
+      ],
+      "promptHtml": "A batch deployment processes many independent files too slowly on one node. The scoring code already supports mini-batches. Which change improves throughput?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase batch parallelism and instance count"
+        },
+        {
+          "key": "B",
+          "label": "Convert the workload into one synchronous request"
+        },
+        {
+          "key": "C",
+          "label": "Disable partitioning of the input dataset"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Increase batch parallelism and instance count",
+      "rationaleHtml": "Batch deployments can divide input into mini-batches and process them concurrently across compute instances.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-batch-model-deployments\">Use batch model deployments</a>",
+      "extraHtml": "One synchronous request sacrifices batch scalability and risks timeout. Disabling partitioning prevents parallel work distribution and worsens the bottleneck."
+    },
+    {
+      "id": "ai300-59f8ee8ed6e5",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "EndpointSecurity",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "EndpointSecurity"
+      ],
+      "promptHtml": "Only approved callers should invoke a managed online endpoint, and keys must not be distributed. Which authentication mode best fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Microsoft Entra token authentication"
+        },
+        {
+          "key": "B",
+          "label": "Anonymous public access"
+        },
+        {
+          "key": "C",
+          "label": "A shared endpoint key in source control"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Microsoft Entra token authentication",
+      "rationaleHtml": "Microsoft Entra authentication supports identity-based access and avoids distributing static endpoint keys.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-authenticate-online-endpoint\">Authenticate clients for online endpoints</a>",
+      "extraHtml": "Anonymous access cannot enforce caller identity, and committed keys are easily leaked and shared. Pair identity authentication with least-privilege role assignments."
+    },
+    {
+      "id": "ai300-00e3a1f7cbcf",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "EndpointTroubleshooting",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "EndpointTroubleshooting"
+      ],
+      "promptHtml": "A batch endpoint invocation failed on several mini-batches because input files were malformed. Where should operators look for per-job failure details?",
+      "options": [
+        {
+          "key": "A",
+          "label": "The batch job logs and output/error artifacts"
+        },
+        {
+          "key": "B",
+          "label": "The workspace's model description field"
+        },
+        {
+          "key": "C",
+          "label": "The repository's pull request labels"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "The batch job logs and output/error artifacts",
+      "rationaleHtml": "Each batch invocation creates a job whose logs and artifacts expose scoring and mini-batch failures.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-batch-endpoints\">Troubleshoot batch endpoints</a>",
+      "extraHtml": "Model metadata and PR labels cannot reveal runtime parsing errors. A robust scoring script should log failed items and define retry/error-threshold behavior deliberately."
+    },
+    {
+      "id": "ai300-6f8c89ffb099",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ModelPromotion",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ModelPromotion"
+      ],
+      "promptHtml": "A team must promote only models whose test metric exceeds 0.90 and whose responsible AI review is approved. Where should this decision be enforced?",
+      "options": [
+        {
+          "key": "A",
+          "label": "In an automated deployment gate before production traffic changes"
+        },
+        {
+          "key": "B",
+          "label": "In the endpoint description after deployment completes"
+        },
+        {
+          "key": "C",
+          "label": "In a compute instance startup script for each developer"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "In an automated deployment gate before production traffic changes",
+      "rationaleHtml": "A release gate can evaluate model metrics and governance approvals before a candidate is promoted.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/machine-learning-operations-v2\">Machine learning operations process</a>",
+      "extraHtml": "Descriptions document state but do not enforce it, and developer startup scripts are not centralized release controls. Keep evaluation evidence immutable and tied to the registered model version."
+    },
+    {
+      "id": "ai300-d0e8a2a64010",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "TrainingPipelines",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "TrainingPipelines"
+      ],
+      "promptHtml": "The same pipeline definition must run with different datasets in development and production without editing component code. What design supports this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parameterize pipeline inputs and environment-specific bindings"
+        },
+        {
+          "key": "B",
+          "label": "Hard-code production storage paths in every component"
+        },
+        {
+          "key": "C",
+          "label": "Duplicate the entire pipeline for each dataset version"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Parameterize pipeline inputs and environment-specific bindings",
+      "rationaleHtml": "Explicit pipeline inputs separate reusable workflow logic from environment-specific data references.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-component-pipeline-python\">Create component pipelines</a>",
+      "extraHtml": "Hard-coding reduces portability and may expose production paths. Duplication causes configuration drift; parameterization preserves one governed workflow definition."
+    },
+    {
+      "id": "ai300-005bbe4c5271",
+      "examSlug": "ai300",
+      "domain": "MLLifecycle",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "AI-300",
+        "MLLifecycle",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "A model candidate has better aggregate accuracy but performs substantially worse for a protected cohort. What should block automatic promotion?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A responsible AI acceptance criterion for cohort performance"
+        },
+        {
+          "key": "B",
+          "label": "A lower compute-cluster idle timeout"
+        },
+        {
+          "key": "C",
+          "label": "A newer Docker base image tag"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A responsible AI acceptance criterion for cohort performance",
+      "rationaleHtml": "Promotion criteria should include disaggregated performance and fairness risks, not only aggregate quality.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/concept-responsible-ai-dashboard\">Responsible AI assessment</a>",
+      "extraHtml": "Compute cost and image freshness matter operationally but do not resolve harmful cohort disparity. Human governance should define acceptable tradeoffs and escalation paths."
+    },
+    {
+      "id": "ai300-f04361a15905",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "FoundryProjects",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "FoundryProjects"
+      ],
+      "promptHtml": "A Foundry team needs a governed boundary for connections, deployments, agents, evaluations, and collaborators for one application. What should it create?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A Microsoft Foundry project"
+        },
+        {
+          "key": "B",
+          "label": "An Azure Machine Learning datastore"
+        },
+        {
+          "key": "C",
+          "label": "An Azure Monitor action group"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A Microsoft Foundry project",
+      "rationaleHtml": "A Foundry project organizes application resources, connections, deployments, assets, and team access.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry\">What is Microsoft Foundry</a>",
+      "extraHtml": "A datastore abstracts storage connectivity, while an action group routes alerts. Neither provides the application development and governance boundary required here."
+    },
+    {
+      "id": "ai300-db4ddd6a26aa",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ManagedIdentity",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ManagedIdentity"
+      ],
+      "promptHtml": "A Foundry application must access Azure AI Search without API keys. Which configuration is preferred?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed identity assigned an appropriate Search data role"
+        },
+        {
+          "key": "B",
+          "label": "An admin key embedded in the system prompt"
+        },
+        {
+          "key": "C",
+          "label": "A query key committed to the application repository"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A managed identity assigned an appropriate Search data role",
+      "rationaleHtml": "Managed identity and Azure RBAC provide credential-free, least-privilege access to the search service.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/managed-identity\">Use managed identities in Foundry</a>",
+      "extraHtml": "Admin keys grant broad privileges and prompts can leak. Query keys are less privileged but remain static secrets requiring distribution and rotation."
+    },
+    {
+      "id": "ai300-04036645bb2e",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "RBAC",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "RBAC"
+      ],
+      "promptHtml": "A developer should build and evaluate a Foundry application but must not change project role assignments. Which access design follows least privilege?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Assign the narrow project-level development role needed"
+        },
+        {
+          "key": "B",
+          "label": "Assign Owner at the subscription scope"
+        },
+        {
+          "key": "C",
+          "label": "Share the project administrator's access token"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Assign the narrow project-level development role needed",
+      "rationaleHtml": "Azure RBAC should grant only required actions at the smallest practical scope.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/rbac-azure-ai-foundry\">Role-based access control in Foundry</a>",
+      "extraHtml": "Subscription Owner can modify access across unrelated resources, and token sharing destroys identity and audit boundaries. Separate resource administration from application development duties."
+    },
+    {
+      "id": "ai300-3e738f33295f",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "NetworkSecurity",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "NetworkSecurity"
+      ],
+      "promptHtml": "A regulated Foundry deployment must keep service traffic on private IP addresses and disable public network access. What should be implemented?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Private endpoints and correctly linked private DNS zones"
+        },
+        {
+          "key": "B",
+          "label": "Public endpoints protected only by randomized names"
+        },
+        {
+          "key": "C",
+          "label": "Resource locks on every project and deployment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Private endpoints and correctly linked private DNS zones",
+      "rationaleHtml": "Private Link and DNS integration route supported service access privately from approved networks.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/configure-private-link\">Configure private networking for Foundry</a>",
+      "extraHtml": "Obscure names are not a security boundary, and resource locks prevent changes rather than network access. Validate every dependency because private networking must cover the complete data path."
+    },
+    {
+      "id": "ai300-8f277d2c81d8",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "InfrastructureAsCode",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "InfrastructureAsCode"
+      ],
+      "promptHtml": "Development, test, and production Foundry environments must use identical topology but different names and capacities. Which deployment method is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Parameterized Bicep templates invoked by automation"
+        },
+        {
+          "key": "B",
+          "label": "Repeated manual portal configuration in each environment"
+        },
+        {
+          "key": "C",
+          "label": "Exported screenshots stored with the application source"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Parameterized Bicep templates invoked by automation",
+      "rationaleHtml": "Parameterized IaC keeps topology consistent while allowing controlled environment-specific values.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-resource-template\">Create Foundry resources with templates</a>",
+      "extraHtml": "Manual recreation encourages drift, and screenshots are documentation rather than executable desired state. Validate changes with what-if before deployment."
+    },
+    {
+      "id": "ai300-281845198a8e",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelDeployment",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelDeployment"
+      ],
+      "promptHtml": "A team wants to call a catalog model through a provider-managed API and avoid managing virtual machines or containers. Which deployment type should it choose?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A serverless API deployment"
+        },
+        {
+          "key": "B",
+          "label": "A self-hosted Kubernetes deployment"
+        },
+        {
+          "key": "C",
+          "label": "A local compute instance deployment"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A serverless API deployment",
+      "rationaleHtml": "Serverless API deployments expose supported catalog models as managed endpoints without customer-managed serving infrastructure.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/deploy-models-serverless\">Deploy models as serverless APIs</a>",
+      "extraHtml": "Kubernetes is appropriate for custom infrastructure control but adds operations. A compute instance is an interactive development machine, not a production serving service."
+    },
+    {
+      "id": "ai300-8bbda7738739",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ManagedCompute",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ManagedCompute"
+      ],
+      "promptHtml": "A specialized model requires a custom inference environment and dedicated compute sizing not offered by its serverless option. Which deployment approach fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Managed compute deployment in Foundry"
+        },
+        {
+          "key": "B",
+          "label": "A prompt asset with no model deployment"
+        },
+        {
+          "key": "C",
+          "label": "A Log Analytics saved query"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Managed compute deployment in Foundry",
+      "rationaleHtml": "Managed compute supports model serving with selected compute and deployment configuration when serverless APIs do not meet requirements.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/deploy-models-managed\">Deploy models to managed compute</a>",
+      "extraHtml": "Prompts orchestrate model behavior but do not host model weights. Saved queries analyze telemetry and cannot execute inference."
+    },
+    {
+      "id": "ai300-06671b83fe04",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelSelection"
+      ],
+      "promptHtml": "A customer-support application prioritizes instruction following, supported context length, regional availability, and cost. How should the team choose a foundation model?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Evaluate eligible catalog models against representative tasks and constraints"
+        },
+        {
+          "key": "B",
+          "label": "Select the model with the largest parameter count automatically"
+        },
+        {
+          "key": "C",
+          "label": "Select whichever model was added to the catalog most recently"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Evaluate eligible catalog models against representative tasks and constraints",
+      "rationaleHtml": "Model selection should combine workload requirements, availability, safety, quality evaluation, latency, and cost.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/foundry-models-overview\">Models in Microsoft Foundry</a>",
+      "extraHtml": "Parameter count and release date are weak proxies and may conflict with cost, region, context, or latency requirements. Representative evaluation provides workload-specific evidence."
+    },
+    {
+      "id": "ai300-2d94fa21fed8",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelVersioning",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelVersioning"
+      ],
+      "promptHtml": "A provider announces a new model version, but production must remain reproducible until regression tests pass. What should the deployment reference?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An explicitly selected model version"
+        },
+        {
+          "key": "B",
+          "label": "An automatically resolved latest alias only"
+        },
+        {
+          "key": "C",
+          "label": "An unversioned model name stored in a notebook cell"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An explicitly selected model version",
+      "rationaleHtml": "Pinning a model version prevents unreviewed provider updates from silently changing production behavior.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/model-versions\">Model versions and upgrades</a>",
+      "extraHtml": "Latest-style resolution trades control for convenience. Use a staged deployment and evaluation suite before deliberately promoting a newer model version."
+    },
+    {
+      "id": "ai300-7e749cd6d843",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ProductionDeployment",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ProductionDeployment"
+      ],
+      "promptHtml": "A new foundation-model deployment must be tested with a small share of users and rolled back quickly if quality falls. Which strategy is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A canary rollout with measured promotion gates"
+        },
+        {
+          "key": "B",
+          "label": "Immediate replacement of the only production deployment"
+        },
+        {
+          "key": "C",
+          "label": "Manual prompt edits directly in the production portal"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A canary rollout with measured promotion gates",
+      "rationaleHtml": "A canary strategy limits exposure, compares production signals, and retains a known-good rollback target.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/safe-deployments\">Safe deployment practices</a>",
+      "extraHtml": "Immediate replacement increases blast radius. Unversioned portal edits bypass review and make attribution or rollback difficult."
+    },
+    {
+      "id": "ai300-5f9cba33b149",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ProvisionedThroughput",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ProvisionedThroughput"
+      ],
+      "promptHtml": "A high-volume generative AI workload needs predictable reserved capacity and stable latency rather than consumption-based shared throughput. What should be configured?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Provisioned throughput units"
+        },
+        {
+          "key": "B",
+          "label": "A larger Log Analytics retention period"
+        },
+        {
+          "key": "C",
+          "label": "A higher Azure AI Search replica count only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Provisioned throughput units",
+      "rationaleHtml": "Provisioned throughput reserves model-processing capacity for predictable high-volume workloads.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/provisioned-throughput\">Provisioned throughput</a>",
+      "extraHtml": "Telemetry retention does not affect inference capacity, and search replicas improve retrieval throughput rather than language-model token processing."
+    },
+    {
+      "id": "ai300-39a9d32feeb3",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelDeployment",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelDeployment"
+      ],
+      "promptHtml": "Traffic is intermittent and low, and the application can tolerate variable shared-service latency. Which capacity model generally avoids paying for reserved model throughput?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Standard consumption-based deployment"
+        },
+        {
+          "key": "B",
+          "label": "Provisioned throughput deployment"
+        },
+        {
+          "key": "C",
+          "label": "Dedicated GPU virtual machines kept online"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Standard consumption-based deployment",
+      "rationaleHtml": "Standard deployments charge for usage and are often appropriate for variable workloads that do not justify reserved capacity.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/deployment-types\">Azure OpenAI deployment types</a>",
+      "extraHtml": "Provisioned throughput targets predictable sustained demand, while dedicated VMs add management and idle cost. Validate regional availability and quota before choosing a type."
+    },
+    {
+      "id": "ai300-f60865408b9b",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "CapacityPlanning",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "CapacityPlanning"
+      ],
+      "promptHtml": "A planned PTU deployment fails despite valid Bicep syntax because the subscription cannot allocate the requested model capacity in that region. What should be checked?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Model quota and capacity availability for the region"
+        },
+        {
+          "key": "B",
+          "label": "The Git repository's default branch name"
+        },
+        {
+          "key": "C",
+          "label": "The prompt's groundedness evaluation score"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Model quota and capacity availability for the region",
+      "rationaleHtml": "Model deployments depend on subscription quota and available capacity for the chosen model, version, type, and region.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/quota\">Azure OpenAI quota and limits</a>",
+      "extraHtml": "Branch naming and prompt quality cannot resolve resource allocation failure. Capacity planning should precede production-region selection and IaC rollout."
+    },
+    {
+      "id": "ai300-47bcf5eb9f9d",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "PromptVersioning",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "PromptVersioning"
+      ],
+      "promptHtml": "A prompt change must be reviewed, reproduced, and correlated with evaluation results. How should the prompt be managed?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Store the prompt as a version-controlled source artifact"
+        },
+        {
+          "key": "B",
+          "label": "Edit only the live deployment with no saved history"
+        },
+        {
+          "key": "C",
+          "label": "Save the prompt in a developer's terminal history"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Store the prompt as a version-controlled source artifact",
+      "rationaleHtml": "Git-based prompt management provides history, review, branching, and linkage to tests and releases.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/flow-develop\">Develop and manage generative AI flows</a>",
+      "extraHtml": "Direct production edits and shell history lack governed review and reproducibility. Treat prompts, model settings, tools, and evaluation data as coordinated release inputs."
+    },
+    {
+      "id": "ai300-2a9f66361d89",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "PromptVariants",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "PromptVariants"
+      ],
+      "promptHtml": "Two system prompts differ in tone and instruction ordering. The team needs objective evidence about which performs better. What should it do?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Evaluate both variants on the same representative dataset and metrics"
+        },
+        {
+          "key": "B",
+          "label": "Compare only the character count of each prompt"
+        },
+        {
+          "key": "C",
+          "label": "Deploy the newer prompt to all users without a baseline"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Evaluate both variants on the same representative dataset and metrics",
+      "rationaleHtml": "Controlled evaluation isolates prompt variation while holding test examples and scoring criteria constant.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk\">Evaluate generative AI applications</a>",
+      "extraHtml": "Prompt length is a cost signal, not a quality verdict. Full deployment without baseline evidence increases risk and prevents a controlled comparison."
+    },
+    {
+      "id": "ai300-a996b2b30a7b",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "SourceControl",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "SourceControl"
+      ],
+      "promptHtml": "Developers frequently overwrite one another's prompt changes and cannot reproduce the version used in last week's release. Which practice fixes both issues?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Branch, review, and tag prompt files in Git"
+        },
+        {
+          "key": "B",
+          "label": "Share one mutable prompt in a team chat message"
+        },
+        {
+          "key": "C",
+          "label": "Put the latest prompt only in an endpoint description"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Branch, review, and tag prompt files in Git",
+      "rationaleHtml": "Git workflows preserve immutable history and enable collaborative review and release tagging.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/devops/develop/git/what-is-version-control\">What is version control</a>",
+      "extraHtml": "Chat and descriptions are mutable communication surfaces, not source-control systems. Release tags should identify prompt, configuration, and model versions together."
+    },
+    {
+      "id": "ai300-1dc0e421deea",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "AgentIdentity",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "AgentIdentity"
+      ],
+      "promptHtml": "A production agent calls Azure services on behalf of the application. Credentials must rotate automatically and each call must be attributable to the workload. What should it use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "The project's managed identity with scoped RBAC"
+        },
+        {
+          "key": "B",
+          "label": "A developer's personal access token"
+        },
+        {
+          "key": "C",
+          "label": "A subscription key pasted into agent instructions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "The project's managed identity with scoped RBAC",
+      "rationaleHtml": "A managed workload identity supplies short-lived tokens and auditable authorization without embedded secrets.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/managed-identity\">Managed identity for Foundry projects</a>",
+      "extraHtml": "Personal tokens couple production to a person, and prompts are unsafe secret stores. Scope each tool's permissions independently where practical."
+    },
+    {
+      "id": "ai300-745df5232dd8",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "Connections",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "Connections"
+      ],
+      "promptHtml": "A Foundry project needs governed access to an existing Azure AI Search service used by its RAG application. Which project object should represent that dependency?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A configured project connection"
+        },
+        {
+          "key": "B",
+          "label": "A model evaluation dataset"
+        },
+        {
+          "key": "C",
+          "label": "A prompt variant label"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A configured project connection",
+      "rationaleHtml": "Project connections define how Foundry applications access dependent Azure and external resources.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/connections-add\">Add connections to a Foundry project</a>",
+      "extraHtml": "Evaluation datasets measure behavior, and variant labels distinguish prompt alternatives. Neither establishes resource connectivity or authentication."
+    },
+    {
+      "id": "ai300-1f93275dc46d",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "RBAC",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "RBAC"
+      ],
+      "promptHtml": "An automation identity needs to create model deployments but must not grant roles to other principals. Which control should enforce this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A custom or built-in RBAC role excluding role-assignment actions"
+        },
+        {
+          "key": "B",
+          "label": "Subscription Owner assigned to the automation identity"
+        },
+        {
+          "key": "C",
+          "label": "Shared use of a Global Administrator account"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A custom or built-in RBAC role excluding role-assignment actions",
+      "rationaleHtml": "Least-privilege RBAC can permit resource deployment while withholding Microsoft.Authorization role-assignment permissions.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/role-based-access-control/overview\">Azure role-based access control</a>",
+      "extraHtml": "Owner includes access delegation, and shared administrative accounts defeat separation of duties. Scope the role to the resource group or project where possible."
+    },
+    {
+      "id": "ai300-3ce57b114ddb",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "InfrastructureAsCode",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "InfrastructureAsCode"
+      ],
+      "promptHtml": "A pull request changes a model SKU and network setting in Bicep. The team wants to preview Azure resource changes before approval. Which operation should CI run?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An Azure Resource Manager what-if deployment"
+        },
+        {
+          "key": "B",
+          "label": "A production model inference benchmark only"
+        },
+        {
+          "key": "C",
+          "label": "A destructive resource-group deletion test"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An Azure Resource Manager what-if deployment",
+      "rationaleHtml": "What-if predicts resource additions, removals, and modifications without applying the Bicep deployment.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if\">Bicep what-if operation</a>",
+      "extraHtml": "Inference benchmarks test runtime performance but not infrastructure drift. Destructive tests are unnecessary and unsafe for change preview."
+    },
+    {
+      "id": "ai300-ab0841f45b58",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelVersioning",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelVersioning"
+      ],
+      "promptHtml": "Clients must keep a stable logical endpoint while a tested model version replaces the old one. Which practice best decouples clients from model versions?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Route through a stable deployment or application endpoint name"
+        },
+        {
+          "key": "B",
+          "label": "Embed the provider's model version in every client binary"
+        },
+        {
+          "key": "C",
+          "label": "Require users to discover a new URL after each release"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Route through a stable deployment or application endpoint name",
+      "rationaleHtml": "A stable abstraction lets operators change the backing model through a controlled release without coordinating every client.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource\">Create and deploy Azure OpenAI models</a>",
+      "extraHtml": "Hard-coded versions and changing URLs tightly couple clients to releases. Preserve version details in deployment metadata and observability for auditability."
+    },
+    {
+      "id": "ai300-8c7530f725e2",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "SafetyConfiguration",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "SafetyConfiguration"
+      ],
+      "promptHtml": "A model's default safety behavior is insufficient for an application's policy, but the team still needs platform-level filtering at inference. What should be associated with the deployment?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A configured content filter policy"
+        },
+        {
+          "key": "B",
+          "label": "A higher embedding vector dimension"
+        },
+        {
+          "key": "C",
+          "label": "A compute cluster idle shutdown rule"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A configured content filter policy",
+      "rationaleHtml": "Content filtering can be configured and applied to model deployments to enforce supported harm-category thresholds.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/content-filters\">Configure content filters</a>",
+      "extraHtml": "Embedding dimensions affect retrieval representation, and compute shutdown affects cost. Filtering is one defense layer and does not replace application safeguards or evaluation."
+    },
+    {
+      "id": "ai300-d46d2f84df39",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelCatalog",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelCatalog"
+      ],
+      "promptHtml": "A team needs to compare model offerings, deployment options, task capabilities, and benchmarks before selecting a foundation model. Where should it start?",
+      "options": [
+        {
+          "key": "A",
+          "label": "The Foundry model catalog"
+        },
+        {
+          "key": "B",
+          "label": "The Azure Policy compliance dashboard"
+        },
+        {
+          "key": "C",
+          "label": "The Machine Learning datastore list"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "The Foundry model catalog",
+      "rationaleHtml": "The model catalog supports discovery and comparison of available foundation models and deployment paths.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/model-catalog-overview\">Explore the model catalog</a>",
+      "extraHtml": "Policy reports governance compliance and datastores list storage connections. Neither supplies model capability and deployment metadata."
+    },
+    {
+      "id": "ai300-ee534a3153a3",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "InfrastructureAsCode",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "InfrastructureAsCode"
+      ],
+      "promptHtml": "A deployment pipeline must create a Foundry resource, project, and dependent services in a deterministic order. Which design is most maintainable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Modular Bicep with explicit resource dependencies and outputs"
+        },
+        {
+          "key": "B",
+          "label": "Independent portal clicks performed in any order"
+        },
+        {
+          "key": "C",
+          "label": "One notebook cell containing undocumented REST calls"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Modular Bicep with explicit resource dependencies and outputs",
+      "rationaleHtml": "Bicep modules and dependency expressions make provisioning order and resource contracts reviewable and repeatable.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules\">Bicep modules</a>",
+      "extraHtml": "Portal operations are manual, and undocumented notebook calls obscure idempotency and failure handling. Module outputs should pass resource identifiers rather than duplicate naming logic."
+    },
+    {
+      "id": "ai300-ad1ccf64eb23",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ModelSelection",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ModelSelection"
+      ],
+      "promptHtml": "A model performs well in English but the production workload includes Spanish and Japanese. What should happen before model selection is finalized?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Evaluate candidate models on representative multilingual examples"
+        },
+        {
+          "key": "B",
+          "label": "Assume benchmark leadership guarantees equal language quality"
+        },
+        {
+          "key": "C",
+          "label": "Translate all outputs after deployment without testing inputs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Evaluate candidate models on representative multilingual examples",
+      "rationaleHtml": "Workload-specific evaluation must represent languages, tasks, and distributions expected in production.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk\">Evaluate models and applications</a>",
+      "extraHtml": "Aggregate benchmarks can hide language-specific weaknesses. Post-translation adds another model and does not validate understanding of multilingual inputs."
+    },
+    {
+      "id": "ai300-f89abc6d2d51",
+      "examSlug": "ai300",
+      "domain": "GenAIOpsInfrastructure",
+      "topic": "ReleaseManagement",
+      "tags": [
+        "AI-300",
+        "GenAIOpsInfrastructure",
+        "ReleaseManagement"
+      ],
+      "promptHtml": "A project has separate development and production model deployments. Operators need to know exactly which prompt commit and model version formed each release. What should be recorded?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Immutable release metadata linking prompt commit and deployment version"
+        },
+        {
+          "key": "B",
+          "label": "Only the current prompt text in a shared document"
+        },
+        {
+          "key": "C",
+          "label": "Only the model family name in the resource group tag"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Immutable release metadata linking prompt commit and deployment version",
+      "rationaleHtml": "Release traceability requires a durable mapping among source, prompt, configuration, model, and deployment versions.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/genaiops-for-mops\">GenAIOps for generative AI</a>",
+      "extraHtml": "A mutable document loses history, while a model family omits prompt and configuration changes. Complete linkage enables rollback and root-cause analysis."
+    },
+    {
+      "id": "ai300-6172e18da455",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "EvaluationData",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "EvaluationData"
+      ],
+      "promptHtml": "A customer-facing assistant will be evaluated before release. The team needs examples covering normal requests, edge cases, and known failures with expected context fields. What should it create?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A representative versioned test dataset"
+        },
+        {
+          "key": "B",
+          "label": "A larger production compute instance"
+        },
+        {
+          "key": "C",
+          "label": "A private DNS zone for evaluation results"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A representative versioned test dataset",
+      "rationaleHtml": "A curated test dataset supplies stable inputs and context for repeatable application and model evaluation.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk\">Prepare data for evaluation</a>",
+      "extraHtml": "Compute size affects execution speed and DNS controls name resolution. Neither defines what quality and risk cases are tested."
+    },
+    {
+      "id": "ai300-2b887197475a",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "DataMapping",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "DataMapping"
+      ],
+      "promptHtml": "An evaluator expects fields named query, response, and context, but the test file uses question, answer, and passages. What must be configured?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Data mapping from dataset columns to evaluator inputs"
+        },
+        {
+          "key": "B",
+          "label": "A new provisioned throughput deployment"
+        },
+        {
+          "key": "C",
+          "label": "A content filter with higher severity thresholds"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Data mapping from dataset columns to evaluator inputs",
+      "rationaleHtml": "Evaluation data mapping binds application dataset fields to the evaluator's required input schema.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk\">Evaluation data mapping</a>",
+      "extraHtml": "Throughput and filtering affect serving and safety, not evaluator schema compatibility. Incorrect mapping can produce invalid or misleading scores."
+    },
+    {
+      "id": "ai300-f5948a5f3cc7",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "Groundedness",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "Groundedness"
+      ],
+      "promptHtml": "A RAG assistant gives a fluent answer that contains claims absent from the retrieved documents. Which quality metric most directly exposes the problem?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Groundedness"
+        },
+        {
+          "key": "B",
+          "label": "Fluency"
+        },
+        {
+          "key": "C",
+          "label": "Throughput"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Groundedness",
+      "rationaleHtml": "Groundedness measures whether response claims are supported by the supplied context.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Built-in evaluation metrics</a>",
+      "extraHtml": "Fluency measures linguistic quality and can be high for fabricated claims. Throughput measures operational capacity, not factual support from retrieved evidence."
+    },
+    {
+      "id": "ai300-9a594f525ede",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "Relevance",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "Relevance"
+      ],
+      "promptHtml": "An answer is fully supported by documents but does not address the user's actual question. Which metric should be emphasized?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Relevance"
+        },
+        {
+          "key": "B",
+          "label": "Groundedness"
+        },
+        {
+          "key": "C",
+          "label": "Token consumption"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Relevance",
+      "rationaleHtml": "Relevance assesses how well the response addresses the user's query and informational need.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Quality evaluation metrics</a>",
+      "extraHtml": "Groundedness can be high for an off-topic but supported statement. Token consumption measures cost and size rather than task alignment."
+    },
+    {
+      "id": "ai300-3d9feddb4ead",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "Coherence",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "Coherence"
+      ],
+      "promptHtml": "A generated report contradicts itself between sections even though each sentence is grammatical. Which metric targets this weakness?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Coherence"
+        },
+        {
+          "key": "B",
+          "label": "Fluency"
+        },
+        {
+          "key": "C",
+          "label": "Request latency"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Coherence",
+      "rationaleHtml": "Coherence evaluates logical consistency, organization, and meaningful flow across the response.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Coherence evaluation</a>",
+      "extraHtml": "Fluency focuses on language form and readability; latency measures speed. A response can be fluent and fast while logically inconsistent."
+    },
+    {
+      "id": "ai300-dc213e47d272",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "Fluency",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "Fluency"
+      ],
+      "promptHtml": "A response contains awkward grammar and unnatural phrasing but follows a logically consistent outline. Which metric best captures the defect?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Fluency"
+        },
+        {
+          "key": "B",
+          "label": "Coherence"
+        },
+        {
+          "key": "C",
+          "label": "Groundedness"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Fluency",
+      "rationaleHtml": "Fluency measures grammatical correctness, readability, and natural language quality.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Fluency evaluation</a>",
+      "extraHtml": "Coherence evaluates logical structure, while groundedness checks support from context. These quality dimensions should be evaluated separately to avoid masking tradeoffs."
+    },
+    {
+      "id": "ai300-06aade3efab3",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "SafetyEvaluation",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "SafetyEvaluation"
+      ],
+      "promptHtml": "Before launch, an agent must be tested for hateful, sexual, violent, and self-harm content across adversarial prompts. What evaluation should be run?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Risk and safety evaluation"
+        },
+        {
+          "key": "B",
+          "label": "Retrieval latency benchmark only"
+        },
+        {
+          "key": "C",
+          "label": "Embedding dimensionality analysis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Risk and safety evaluation",
+      "rationaleHtml": "Risk and safety evaluators assess supported harmful-content categories and severities in generated interactions.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Risk and safety evaluators</a>",
+      "extraHtml": "Latency and vector dimensions do not measure harmful output. Combine pre-release red-team-style cases, platform controls, and post-release monitoring."
+    },
+    {
+      "id": "ai300-6e526add0f5d",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "CustomEvaluation",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "CustomEvaluation"
+      ],
+      "promptHtml": "A legal assistant has a domain rule that citations must use an approved identifier format. No built-in metric checks it. What should the team add?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A custom evaluator for citation compliance"
+        },
+        {
+          "key": "B",
+          "label": "A larger standard model deployment"
+        },
+        {
+          "key": "C",
+          "label": "A lower search similarity threshold"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A custom evaluator for citation compliance",
+      "rationaleHtml": "Custom evaluators encode application-specific quality rules not covered by general built-in metrics.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk\">Create custom evaluators</a>",
+      "extraHtml": "A larger model may still violate formatting, and search thresholds affect retrieval candidates. Explicit domain metrics make release criteria measurable."
+    },
+    {
+      "id": "ai300-7cdaf318c2f3",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "AutomatedEvaluation",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "AutomatedEvaluation"
+      ],
+      "promptHtml": "Every pull request that changes a prompt must run the same evaluation suite and fail when quality drops below thresholds. Where should this run?",
+      "options": [
+        {
+          "key": "A",
+          "label": "An automated CI workflow"
+        },
+        {
+          "key": "B",
+          "label": "An annual manual production review"
+        },
+        {
+          "key": "C",
+          "label": "An interactive notebook with no saved results"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "An automated CI workflow",
+      "rationaleHtml": "CI evaluation provides consistent regression checks before prompt changes merge or deploy.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/continuous-evaluation-generative-ai\">Continuous evaluation for generative AI</a>",
+      "extraHtml": "Annual review is too late, and unsaved notebook runs are not enforceable or auditable. Version the dataset and evaluator configuration with the release inputs."
+    },
+    {
+      "id": "ai300-1822c32b0b25",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "ContinuousMonitoring",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "ContinuousMonitoring"
+      ],
+      "promptHtml": "Offline tests pass, but production traffic evolves over time. Which capability should detect ongoing quality changes on sampled live interactions?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Continuous monitoring in Foundry"
+        },
+        {
+          "key": "B",
+          "label": "A one-time local unit test run"
+        },
+        {
+          "key": "C",
+          "label": "A resource-group naming convention"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Continuous monitoring in Foundry",
+      "rationaleHtml": "Continuous monitoring evaluates operational traces and quality signals after deployment to detect changes in real usage.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/monitor-applications\">Monitor generative AI applications</a>",
+      "extraHtml": "Unit tests remain useful but cannot observe distribution shifts in live traffic. Naming conventions aid organization, not behavioral detection."
+    },
+    {
+      "id": "ai300-5c4c96c82dff",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "PerformanceMonitoring",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "PerformanceMonitoring"
+      ],
+      "promptHtml": "Users report that responses feel slow. Which metric most directly quantifies time from request submission until the response completes?",
+      "options": [
+        {
+          "key": "A",
+          "label": "End-to-end response latency"
+        },
+        {
+          "key": "B",
+          "label": "Tokens per billing month"
+        },
+        {
+          "key": "C",
+          "label": "Groundedness score"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "End-to-end response latency",
+      "rationaleHtml": "End-to-end latency captures user-perceived request duration across retrieval, orchestration, model inference, and post-processing.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/monitor-applications\">Monitor application performance</a>",
+      "extraHtml": "Monthly tokens quantify usage and groundedness measures context support. Trace spans are then needed to identify which stage dominates latency."
+    },
+    {
+      "id": "ai300-292f37aa670c",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "PerformanceMonitoring",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "PerformanceMonitoring"
+      ],
+      "promptHtml": "A service meets single-request latency targets but cannot sustain the required requests per minute during peak load. Which metric reveals this limitation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Throughput"
+        },
+        {
+          "key": "B",
+          "label": "Coherence"
+        },
+        {
+          "key": "C",
+          "label": "Citation precision"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Throughput",
+      "rationaleHtml": "Throughput measures the amount of work completed per unit time and exposes capacity constraints under load.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/latency\">Latency and throughput</a>",
+      "extraHtml": "Coherence and citation precision are quality measures. Diagnose throughput alongside rate limits, concurrency, token sizes, and deployment capacity."
+    },
+    {
+      "id": "ai300-9ccf937eb366",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "CostMonitoring",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "CostMonitoring"
+      ],
+      "promptHtml": "A generative AI application's monthly cost rises although request count is stable. Which telemetry should be examined first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Input and output token consumption by operation"
+        },
+        {
+          "key": "B",
+          "label": "Number of Git branches in the prompt repository"
+        },
+        {
+          "key": "C",
+          "label": "Count of private DNS records in the virtual network"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Input and output token consumption by operation",
+      "rationaleHtml": "Token telemetry reveals whether larger prompts, retrieved context, or responses increased model usage per request.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/monitor-applications\">Monitor cost and token usage</a>",
+      "extraHtml": "Source branches and DNS records do not drive model token billing. Correlate tokens with model deployment, route, customer, and prompt version to locate regressions."
+    },
+    {
+      "id": "ai300-3e07a1dfdd25",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "Tracing",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "Tracing"
+      ],
+      "promptHtml": "An agent intermittently calls the wrong tool. Operators need to reconstruct model calls, tool calls, timing, and errors for one request. What should be enabled?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Distributed tracing with correlated spans and detailed logs"
+        },
+        {
+          "key": "B",
+          "label": "Only aggregate monthly token totals"
+        },
+        {
+          "key": "C",
+          "label": "Only Azure Resource Manager activity logs"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Distributed tracing with correlated spans and detailed logs",
+      "rationaleHtml": "Traces show the sequence and timing of application, model, retrieval, and tool operations for a request.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/trace-application\">Trace generative AI applications</a>",
+      "extraHtml": "Aggregate totals lack request detail, while activity logs record management-plane changes rather than agent execution. Redact sensitive prompt and tool data according to policy."
+    },
+    {
+      "id": "ai300-fa3090ff832a",
+      "examSlug": "ai300",
+      "domain": "GenAIQuality",
+      "topic": "PerformanceMonitoring",
+      "tags": [
+        "AI-300",
+        "GenAIQuality",
+        "PerformanceMonitoring"
+      ],
+      "promptHtml": "A release dashboard shows average latency is acceptable, but a small group experiences severe delays. Which analysis should be added?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Tail latency percentiles such as p95 and p99"
+        },
+        {
+          "key": "B",
+          "label": "Only the arithmetic mean latency"
+        },
+        {
+          "key": "C",
+          "label": "Only the total number of model deployments"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Tail latency percentiles such as p95 and p99",
+      "rationaleHtml": "High percentiles reveal slow outliers hidden by an acceptable average and better represent poor user experiences.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/well-architected/performance-efficiency/performance-test\">Performance testing guidance</a>",
+      "extraHtml": "The mean can conceal a long tail, and deployment counts say nothing about request duration. Segment percentiles by model, route, region, and prompt version."
+    },
+    {
+      "id": "ai300-e3b6816ae430",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "RetrievalTuning",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "RetrievalTuning"
+      ],
+      "promptHtml": "RAG retrieval returns many weakly related passages that distract the model. Relevant documents usually score much higher. What should be tuned first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Raise the similarity threshold using evaluation evidence"
+        },
+        {
+          "key": "B",
+          "label": "Increase response temperature for more variety"
+        },
+        {
+          "key": "C",
+          "label": "Increase model output-token allowance"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Raise the similarity threshold using evaluation evidence",
+      "rationaleHtml": "A higher similarity cutoff can exclude low-relevance retrieval results when score separation supports that choice.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-query\">Vector query configuration</a>",
+      "extraHtml": "Temperature and output limits affect generation, not which passages are retrieved. Tune thresholds against recall and relevance because an excessive cutoff can omit needed evidence."
+    },
+    {
+      "id": "ai300-a1b112033622",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "Chunking",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "Chunking"
+      ],
+      "promptHtml": "Large documents are indexed as entire files, causing broad embeddings and oversized context. Which change is most likely to improve retrieval precision?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Split documents into semantically meaningful chunks with controlled overlap"
+        },
+        {
+          "key": "B",
+          "label": "Concatenate all documents into one index record"
+        },
+        {
+          "key": "C",
+          "label": "Remove document metadata before indexing"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Split documents into semantically meaningful chunks with controlled overlap",
+      "rationaleHtml": "Chunking creates focused retrieval units while overlap can preserve concepts crossing boundaries.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents\">Chunk documents for vector search</a>",
+      "extraHtml": "A single record reduces granularity, and removing metadata discards useful filtering and citation context. Evaluate chunk size rather than assuming smaller is always better."
+    },
+    {
+      "id": "ai300-c9255f350cad",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "RetrievalStrategies",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "RetrievalStrategies"
+      ],
+      "promptHtml": "A RAG system retrieves one excellent passage but often misses a second passage needed to answer multi-part questions. Which parameter should be evaluated?",
+      "options": [
+        {
+          "key": "A",
+          "label": "The number of top results returned"
+        },
+        {
+          "key": "B",
+          "label": "The model's maximum output tokens only"
+        },
+        {
+          "key": "C",
+          "label": "The deployment's content filter severity only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "The number of top results returned",
+      "rationaleHtml": "Increasing top-k can improve retrieval recall for questions requiring evidence from multiple chunks.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-query\">Configure vector query results</a>",
+      "extraHtml": "Generation limits and content filters do not add retrieved evidence. Larger top-k can add noise and cost, so tune it with end-to-end relevance evaluation."
+    },
+    {
+      "id": "ai300-9026cfafc51f",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "EmbeddingModels",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "EmbeddingModels"
+      ],
+      "promptHtml": "A multilingual legal corpus uses specialized terminology. The current general embedding model performs poorly on cross-language retrieval. What is the best next step?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Evaluate multilingual or domain-suitable embedding models on labeled query-document pairs"
+        },
+        {
+          "key": "B",
+          "label": "Select an embedding model solely by its vector dimension"
+        },
+        {
+          "key": "C",
+          "label": "Increase the chat model temperature during retrieval"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Evaluate multilingual or domain-suitable embedding models on labeled query-document pairs",
+      "rationaleHtml": "Embedding selection should be based on retrieval quality for representative languages and domain semantics.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/foundry-models-overview\">Select models in Foundry</a>",
+      "extraHtml": "Dimension affects storage and compatibility but does not prove relevance. Chat temperature applies during generation and cannot repair the embedding space."
+    },
+    {
+      "id": "ai300-70eb518fc9d1",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "EmbeddingModels",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "EmbeddingModels"
+      ],
+      "promptHtml": "An embedding model is adapted for a medical vocabulary. What must happen before it replaces the production embedding model?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Re-embed indexed content and validate queries in a compatible index"
+        },
+        {
+          "key": "B",
+          "label": "Keep old document vectors and change only query embeddings"
+        },
+        {
+          "key": "C",
+          "label": "Change the chat model without touching the search index"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Re-embed indexed content and validate queries in a compatible index",
+      "rationaleHtml": "Queries and documents must be encoded into the same compatible embedding space for meaningful vector similarity.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-create-index\">Create a vector index</a>",
+      "extraHtml": "Mixing old document vectors with new query embeddings yields invalid similarity comparisons. Use a parallel index for safe evaluation and rollback."
+    },
+    {
+      "id": "ai300-30895ebc2afa",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "HybridSearch",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "HybridSearch"
+      ],
+      "promptHtml": "Users search with exact product codes plus natural-language descriptions. Which retrieval design best combines lexical precision and semantic similarity?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Hybrid search with keyword and vector queries"
+        },
+        {
+          "key": "B",
+          "label": "Vector search with all text fields removed"
+        },
+        {
+          "key": "C",
+          "label": "Keyword search with embeddings disabled permanently"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Hybrid search with keyword and vector queries",
+      "rationaleHtml": "Hybrid search executes lexical and vector retrieval together and merges their results.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview\">Hybrid search overview</a>",
+      "extraHtml": "Vector-only retrieval can miss exact identifiers, while keyword-only retrieval can miss paraphrases. Hybrid retrieval is especially useful when both behaviors matter."
+    },
+    {
+      "id": "ai300-efb812a62bd3",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "HybridSearch",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "HybridSearch"
+      ],
+      "promptHtml": "Hybrid retrieval returns a strong candidate set, but ranking still poorly reflects the meaning of complex natural-language questions. Which feature can rerank the results?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Semantic ranker"
+        },
+        {
+          "key": "B",
+          "label": "Storage lifecycle management"
+        },
+        {
+          "key": "C",
+          "label": "Compute instance autostop"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Semantic ranker",
+      "rationaleHtml": "Semantic ranker applies language understanding to rerank an initial search result set for semantic relevance.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/search/semantic-search-overview\">Semantic ranking in Azure AI Search</a>",
+      "extraHtml": "Storage lifecycle and compute schedules control cost, not search ordering. Semantic ranking complements retrieval and does not replace a well-designed index or filters."
+    },
+    {
+      "id": "ai300-08bdb2f4e881",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "RAGEvaluation",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "RAGEvaluation"
+      ],
+      "promptHtml": "A team changes chunk size and retrieval strategy. Which evaluation most directly determines whether the retriever improved before generation?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Retrieval relevance metrics on labeled query-document judgments"
+        },
+        {
+          "key": "B",
+          "label": "GPU utilization of the chat model deployment"
+        },
+        {
+          "key": "C",
+          "label": "Grammatical fluency of generated answers only"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Retrieval relevance metrics on labeled query-document judgments",
+      "rationaleHtml": "Retriever metrics compare returned documents with relevance judgments and isolate search quality from generation behavior.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/evaluation-metrics-built-in\">Retrieval evaluation metrics</a>",
+      "extraHtml": "GPU utilization is operational, and answer fluency can remain high with poor evidence. Also run end-to-end groundedness and relevance tests before release."
+    },
+    {
+      "id": "ai300-04ac87b92b99",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "ABTesting",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "ABTesting"
+      ],
+      "promptHtml": "Two RAG configurations pass offline tests. The team needs evidence from real users while limiting risk. Which experiment is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A randomized A/B test with predefined success and guardrail metrics"
+        },
+        {
+          "key": "B",
+          "label": "A full replacement with no control group"
+        },
+        {
+          "key": "C",
+          "label": "A comparison of configuration file lengths"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A randomized A/B test with predefined success and guardrail metrics",
+      "rationaleHtml": "A controlled A/B test estimates causal performance differences while monitoring quality, safety, latency, and cost.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/genaiops-for-mops\">GenAIOps experimentation</a>",
+      "extraHtml": "Full replacement confounds change with time and raises blast radius. File length has no reliable relationship to user outcomes."
+    },
+    {
+      "id": "ai300-659ad3f4d199",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "FineTuning",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "FineTuning"
+      ],
+      "promptHtml": "A base model follows general instructions but repeatedly mishandles a stable, specialized output task despite prompt optimization and sufficient examples. Which customization may help?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Supervised fine-tuning with curated input-output examples"
+        },
+        {
+          "key": "B",
+          "label": "Increasing search replicas without using retrieval"
+        },
+        {
+          "key": "C",
+          "label": "Adding more private DNS records to the project"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Supervised fine-tuning with curated input-output examples",
+      "rationaleHtml": "Supervised fine-tuning can adapt model behavior to a recurring task using high-quality labeled demonstrations.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/fine-tuning-considerations\">Fine-tuning considerations</a>",
+      "extraHtml": "Search capacity and DNS do not teach model behavior. Fine-tuning should follow prompt and RAG baselines because it adds data, evaluation, cost, and lifecycle obligations."
+    },
+    {
+      "id": "ai300-6ff9587ffb00",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "SyntheticData",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "SyntheticData"
+      ],
+      "promptHtml": "A fine-tuning project lacks enough examples of rare but important cases. The team plans to generate synthetic examples. Which practice is essential?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Validate synthetic data for correctness, diversity, and leakage before training"
+        },
+        {
+          "key": "B",
+          "label": "Accept every generated example without review"
+        },
+        {
+          "key": "C",
+          "label": "Replace the real validation set with synthetic training data"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Validate synthetic data for correctness, diversity, and leakage before training",
+      "rationaleHtml": "Synthetic data can expand coverage but requires quality controls to avoid amplifying errors, bias, duplication, or contamination.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/concept-synthetic-data\">Synthetic data generation</a>",
+      "extraHtml": "Unreviewed examples can teach false patterns. Keep an independent representative validation set so evaluation does not merely reward synthetic artifacts."
+    },
+    {
+      "id": "ai300-99bf866b2f8f",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "FineTuningEvaluation",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "FineTuningEvaluation"
+      ],
+      "promptHtml": "A fine-tuned model improves task accuracy but doubles latency and increases harmful-output failures. What should determine promotion?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A multi-metric gate covering quality, safety, latency, and cost"
+        },
+        {
+          "key": "B",
+          "label": "Task accuracy alone regardless of regressions"
+        },
+        {
+          "key": "C",
+          "label": "The number of completed training epochs alone"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A multi-metric gate covering quality, safety, latency, and cost",
+      "rationaleHtml": "Production readiness is a constrained optimization problem; improvement in one metric cannot excuse failed operational or safety requirements.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/fine-tuning-deploy\">Deploy and evaluate fine-tuned models</a>",
+      "extraHtml": "Accuracy and epoch count are insufficient decision criteria. Define thresholds before training and compare against the base-model baseline on identical tests."
+    },
+    {
+      "id": "ai300-ce882cb3adf2",
+      "examSlug": "ai300",
+      "domain": "GenAIOptimization",
+      "topic": "FineTuningLifecycle",
+      "tags": [
+        "AI-300",
+        "GenAIOptimization",
+        "FineTuningLifecycle"
+      ],
+      "promptHtml": "A new fine-tuned model version is approved, but production rollback must remain immediate. Which release approach is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Register and deploy it as a separate version, then shift traffic gradually"
+        },
+        {
+          "key": "B",
+          "label": "Overwrite the only production model artifact in place"
+        },
+        {
+          "key": "C",
+          "label": "Delete the prior deployment before testing the new model"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Register and deploy it as a separate version, then shift traffic gradually",
+      "rationaleHtml": "Separate immutable versions support controlled promotion, comparison, traceability, and rapid rollback.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/fine-tuning-deploy\">Deploy a fine-tuned model</a>",
+      "extraHtml": "In-place overwrite and early deletion remove the known-good rollback target. Keep training data, hyperparameters, base model, evaluations, and deployment metadata linked to each version."
+    }
+  ]
+}
