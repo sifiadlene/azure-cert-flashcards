@@ -16,6 +16,116 @@
     "confirmAction": "Terminer et changer",
     "cancelAction": "Continuer la session"
   },
+  "challenge": {
+    "experienceLabel": "Type d’entraînement",
+    "soloPractice": "Entraînement solo",
+    "soloDescription": "Étudiez à votre rythme",
+    "liveChallenge": "Défi en direct",
+    "liveDescription": "Jouez ensemble avec un code de salle",
+    "liveLabel": "Multijoueur en direct",
+    "title": "Défi de certification",
+    "nickname": "Pseudonyme",
+    "roomCode": "Code de salle",
+    "copyLink": "Copier le lien d’invitation",
+    "linkCopied": "Lien d’invitation copié",
+    "working": "Traitement...",
+    "seconds_one": "{{count}} seconde",
+    "seconds_other": "{{count}} secondes",
+    "roster": "Joueurs",
+    "leaderboard": "Classement",
+    "host": "Hôte",
+    "you": "(vous)",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "kickPlayer": "Retirer {{name}} de la salle",
+    "exit": "Quitter le défi",
+    "reconnecting": "Connexion interrompue. Le dernier état de la salle reste affiché pendant la reconnexion...",
+    "hostInactive": "L’hôte semble inactif. Ses commandes reviendront après sa reconnexion.",
+    "entry": {
+      "eyebrow": "Créer une salle",
+      "hostTitle": "Organiser un défi",
+      "hostDescription": "Choisissez l’examen commun et invitez jusqu’à neuf autres joueurs.",
+      "hostAction": "Créer le défi",
+      "invited": "Vous avez une invitation ?",
+      "joinTitle": "Rejoindre avec un code",
+      "joinDescription": "Saisissez le code à six caractères et un pseudonyme pour cette salle.",
+      "joinAction": "Rejoindre le défi",
+      "prefilled": "Le code de salle provient de votre lien d’invitation."
+    },
+    "setup": {
+      "questionCount": "Questions",
+      "timer": "Temps par question",
+      "available_one": "{{count}} question disponible dans cette sélection",
+      "available_other": "{{count}} questions disponibles dans cette sélection"
+    },
+    "lobby": {
+      "status": "Salle ouverte",
+      "title": "Rassemblez les participants",
+      "description": "Partagez le code ou le lien. Tout le monde restera synchronisé après le démarrage.",
+      "waitingForPlayer": "En attente d’un autre joueur",
+      "start": "Démarrer le défi",
+      "waitingForHost": "Vous êtes dans la salle. En attente du démarrage par l’hôte."
+    },
+    "presence": {
+      "active": "Actif",
+      "reconnecting": "Reconnexion",
+      "inactive": "Inactif"
+    },
+    "game": {
+      "questionOf": "Question {{current}} sur {{total}}",
+      "questionHeading": "Question du défi",
+      "timeRemaining_one": "{{count}} seconde restante",
+      "timeRemaining_other": "{{count}} secondes restantes",
+      "progress": "Progression du défi",
+      "submit": "Verrouiller la réponse",
+      "answerLocked": "Réponse verrouillée. En attente des autres joueurs...",
+      "answeredCount": "{{answered}} joueur(s) sur {{total}} ont répondu"
+    },
+    "reveal": {
+      "roundComplete": "Révélation de la réponse",
+      "correct": "Bonne réponse !",
+      "notCorrect": "Pas cette fois",
+      "answer": "Correct : {{option}}) {{label}}",
+      "thisRound": "points pour cette manche",
+      "playerResults": "Résultats de cette manche",
+      "nextNow": "Question suivante maintenant",
+      "results": "Afficher les résultats finaux",
+      "nextIn_one": "L’hôte peut continuer. La suite est prête dans {{count}} seconde.",
+      "nextIn_other": "L’hôte peut continuer. La suite est prête dans {{count}} secondes."
+    },
+    "outcome": {
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "late": "Trop tard",
+      "missing": "Aucune réponse"
+    },
+    "results": {
+      "complete": "Défi terminé",
+      "title": "Classement final",
+      "placement": "Votre classement",
+      "points": "Points",
+      "correct": "Bonnes réponses",
+      "responseTime": "Temps de réponse",
+      "replay": "Rejouer"
+    },
+    "errors": {
+      "roomNotFound": "Ce code est incorrect ou la salle n’est plus disponible.",
+      "roomFull": "Cette salle est complète.",
+      "nicknameUnavailable": "Ce pseudonyme est déjà utilisé dans cette salle.",
+      "staleVersion": "La salle a changé avant la fin de l’action. Actualisation en cours...",
+      "answerTooLate": "La réponse est arrivée après l’échéance et n’a pas été acceptée.",
+      "deckMismatch": "Ce navigateur ne possède pas la version du jeu utilisée par la salle. Actualisez le site ou choisissez une autre salle.",
+      "roomExpired": "Ce défi a expiré.",
+      "kicked": "Votre accès à la salle n’est plus valide. L’hôte vous a peut-être retiré.",
+      "rateLimited": "Trop de requêtes. Reconnexion dans quelques instants...",
+      "forbidden": "Seul l’hôte peut effectuer cette action.",
+      "phaseConflict": "Cette action n’est plus disponible pendant la manche actuelle.",
+      "duplicateAnswer": "Votre réponse est déjà verrouillée pour cette manche.",
+      "unsupportedPool": "La sélection ne contient pas assez de questions pour ce défi.",
+      "validation": "Vérifiez les informations de la salle et réessayez.",
+      "apiUnavailable": "Le service de défi est indisponible. Nouvelle tentative avec un délai sécurisé..."
+    }
+  },
   "setup": {
     "cardTitle": "Configuration de l'examen",
     "loadingExams": "Chargement des examens disponibles...",

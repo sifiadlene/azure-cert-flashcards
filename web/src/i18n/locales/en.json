@@ -16,6 +16,116 @@
     "confirmAction": "End session and switch",
     "cancelAction": "Keep practicing"
   },
+  "challenge": {
+    "experienceLabel": "Practice experience",
+    "soloPractice": "Solo Practice",
+    "soloDescription": "Study at your own pace",
+    "liveChallenge": "Live Challenge",
+    "liveDescription": "Play together with a room code",
+    "liveLabel": "Live multiplayer",
+    "title": "Certification Challenge",
+    "nickname": "Nickname",
+    "roomCode": "Room code",
+    "copyLink": "Copy invite link",
+    "linkCopied": "Invite link copied",
+    "working": "Working...",
+    "seconds_one": "{{count}} second",
+    "seconds_other": "{{count}} seconds",
+    "roster": "Players",
+    "leaderboard": "Leaderboard",
+    "host": "Host",
+    "you": "(you)",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "kickPlayer": "Remove {{name}} from the room",
+    "exit": "Exit challenge",
+    "reconnecting": "Connection interrupted. Keeping the latest room state while reconnecting...",
+    "hostInactive": "The host appears inactive. Host controls will return when they reconnect.",
+    "entry": {
+      "eyebrow": "Create a room",
+      "hostTitle": "Host a challenge",
+      "hostDescription": "Choose the shared exam and invite up to nine other players.",
+      "hostAction": "Create challenge",
+      "invited": "Have an invite?",
+      "joinTitle": "Join with code",
+      "joinDescription": "Enter the six-character code and a nickname for this room.",
+      "joinAction": "Join challenge",
+      "prefilled": "The room code was filled from your invite link."
+    },
+    "setup": {
+      "questionCount": "Questions",
+      "timer": "Time per question",
+      "available_one": "{{count}} question available in this pool",
+      "available_other": "{{count}} questions available in this pool"
+    },
+    "lobby": {
+      "status": "Room open",
+      "title": "Gather your challengers",
+      "description": "Share the code or invite link. Everyone stays synchronized once the host starts.",
+      "waitingForPlayer": "Waiting for another player",
+      "start": "Start challenge",
+      "waitingForHost": "You are in. Waiting for the host to start."
+    },
+    "presence": {
+      "active": "Active",
+      "reconnecting": "Reconnecting",
+      "inactive": "Inactive"
+    },
+    "game": {
+      "questionOf": "Question {{current}} of {{total}}",
+      "questionHeading": "Challenge question",
+      "timeRemaining_one": "{{count}} second remaining",
+      "timeRemaining_other": "{{count}} seconds remaining",
+      "progress": "Challenge progress",
+      "submit": "Lock in answer",
+      "answerLocked": "Answer locked. Waiting for the other players...",
+      "answeredCount": "{{answered}} of {{total}} players answered"
+    },
+    "reveal": {
+      "roundComplete": "Answer reveal",
+      "correct": "Correct answer!",
+      "notCorrect": "Not this time",
+      "answer": "Correct: {{option}}) {{label}}",
+      "thisRound": "points this round",
+      "playerResults": "Results for this round",
+      "nextNow": "Next question now",
+      "results": "Show final results",
+      "nextIn_one": "The host can continue. Next round is ready in {{count}} second.",
+      "nextIn_other": "The host can continue. Next round is ready in {{count}} seconds."
+    },
+    "outcome": {
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "late": "Too late",
+      "missing": "No answer"
+    },
+    "results": {
+      "complete": "Challenge complete",
+      "title": "Final standings",
+      "placement": "Your placement",
+      "points": "Points",
+      "correct": "Correct answers",
+      "responseTime": "Response time",
+      "replay": "Play again"
+    },
+    "errors": {
+      "roomNotFound": "That room code is invalid or the room is no longer available.",
+      "roomFull": "This room is full.",
+      "nicknameUnavailable": "That nickname is already in use in this room.",
+      "staleVersion": "The room changed before that action completed. Refreshing the latest state...",
+      "answerTooLate": "The answer arrived after the deadline and was not accepted.",
+      "deckMismatch": "This browser does not have the deck version used by the room. Refresh the site or choose another room.",
+      "roomExpired": "This challenge has expired.",
+      "kicked": "Your room access is no longer valid. You may have been removed by the host.",
+      "rateLimited": "Too many requests. Reconnecting shortly...",
+      "forbidden": "Only the host can perform that action.",
+      "phaseConflict": "That action is no longer available in the current round.",
+      "duplicateAnswer": "Your answer was already locked for this round.",
+      "unsupportedPool": "The selected question pool is too small for this challenge.",
+      "validation": "Check the room details and try again.",
+      "apiUnavailable": "The challenge service is unavailable. Retrying with a safe backoff..."
+    }
+  },
   "setup": {
     "cardTitle": "Exam Setup",
     "loadingExams": "Loading available exams...",

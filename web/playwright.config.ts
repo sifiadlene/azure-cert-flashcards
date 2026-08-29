@@ -16,9 +16,16 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: {
-    command: 'npm run dev -- --host 127.0.0.1 --port 4173',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: 'npm --prefix ../api run start:test',
+      url: 'http://127.0.0.1:7071/health',
+      reuseExistingServer: false,
+    },
+    {
+      command: 'npx vite --host 127.0.0.1 --port 4173',
+      url: 'http://127.0.0.1:4173',
+      reuseExistingServer: false,
+    },
+  ],
 })

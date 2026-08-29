@@ -1,0 +1,211 @@
+name: Validate and Deploy Challenge API
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: challenge-api-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            api/package-lock.json
+            web/package-lock.json
+
+      - name: Install API dependencies
+        working-directory: api
+        run: npm ci
+
+      - name: Test API
+        working-directory: api
+        run: npm test
+
+      - name: Type-check API
+        working-directory: api
+        run: npm run typecheck
+
+      - name: Lint API
+        working-directory: api
+        run: npm run lint
+
+      - name: Build API and copy canonical decks
+        working-directory: api
+        run: npm run build
+
+      - name: Assemble Function deployment package
+        run: |
+          rm -rf .artifacts/function-app
+          mkdir -p .artifacts/function-app
+          cp api/host.json api/package.json api/package-lock.json .artifacts/function-app/
+          cp -R api/dist api/data .artifacts/function-app/
+          npm ci --omit=dev --ignore-scripts --prefix .artifacts/function-app
+          test -f .artifacts/function-app/host.json
+          test -f .artifacts/function-app/dist/api/src/functions/challenge.js
+          test -n "$(find .artifacts/function-app/data/decks -maxdepth 1 -name '*.json' -print -quit)"
+
+      - name: Upload Function deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: challenge-function-package
+          path: .artifacts/function-app
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Test web application
+        working-directory: web
+        run: npm test
+
+      - name: Lint web application
+        working-directory: web
+        run: npm run lint
+
+      - name: Validate checked-in flashcard data
+        working-directory: web
+        run: npm run validate:data
+
+      - name: Build web application without regenerating data
+        working-directory: web
+        run: |
+          before="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
+          npx tsc -b
+          npx vite build
+          after="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
+          test "$before" = "$after"
+
+      - name: Install Playwright browser
+        working-directory: web
+        run: npx playwright install --with-deps chromium
+
+      - name: Run full browser test suite
+        working-directory: web
+        run: npm run test:e2e
+
+      - name: Build Bicep templates
+        run: |
+          az bicep build --file bicep/main.bicep
+          az bicep build-params --file bicep/environments/dev.bicepparam
+          az bicep build-params --file bicep/environments/prod.bicepparam
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    needs: validate
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      ALLOWED_ORIGINS_JSON: ${{ vars.AZURE_ALLOWED_ORIGINS_JSON }}
+      AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+      AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+      AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+      AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      CHALLENGE_TOKEN_PEPPER: ${{ secrets.CHALLENGE_TOKEN_PEPPER }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Function deployment package
+        uses: actions/download-artifact@v4
+        with:
+          name: challenge-function-package
+          path: .artifacts/function-app
+
+      - name: Validate deployment inputs
+        run: |
+          test -n "$AZURE_CLIENT_ID"
+          test -n "$AZURE_TENANT_ID"
+          test -n "$AZURE_SUBSCRIPTION_ID"
+          test -n "$AZURE_RESOURCE_GROUP"
+          test -n "$AZURE_LOCATION"
+          test -n "$CHALLENGE_TOKEN_PEPPER"
+          node -e "const origins=JSON.parse(process.env.ALLOWED_ORIGINS_JSON ?? ''); if (!Array.isArray(origins) || origins.length === 0 || origins.some((origin) => typeof origin !== 'string' || !origin.startsWith('https://') || origin.includes('*'))) process.exit(1)"
+          node -e "const value=Buffer.from(process.env.CHALLENGE_TOKEN_PEPPER ?? '', 'base64'); if (value.length < 32) process.exit(1)"
+
+      - name: Sign in to Azure with GitHub OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ env.AZURE_CLIENT_ID }}
+          tenant-id: ${{ env.AZURE_TENANT_ID }}
+          subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build deployment parameters
+        run: |
+          parameters_file="$RUNNER_TEMP/prod.parameters.json"
+          az bicep build-params \
+            --file bicep/environments/prod.bicepparam \
+            --outfile "$parameters_file"
+          jq \
+            --arg location "$AZURE_LOCATION" \
+            --argjson origins "$ALLOWED_ORIGINS_JSON" \
+            --arg pepper "$CHALLENGE_TOKEN_PEPPER" \
+            '.parameters.location.value = $location
+              | .parameters.allowedOrigins.value = $origins
+              | .parameters.challengeTokenPepper.value = $pepper' \
+            "$parameters_file" > "$parameters_file.tmp"
+          mv "$parameters_file.tmp" "$parameters_file"
+          echo "DEPLOYMENT_PARAMETERS_FILE=$parameters_file" >> "$GITHUB_ENV"
+
+      - name: Validate infrastructure deployment
+        run: |
+          az deployment group validate \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --template-file bicep/main.bicep \
+            --parameters @"$DEPLOYMENT_PARAMETERS_FILE"
+
+      - name: Preview infrastructure changes
+        run: |
+          az deployment group what-if \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --template-file bicep/main.bicep \
+            --parameters @"$DEPLOYMENT_PARAMETERS_FILE" \
+            --no-pretty-print
+
+      - name: Deploy infrastructure
+        id: infrastructure
+        run: |
+          outputs="$(az deployment group create \
+            --name "challenge-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --template-file bicep/main.bicep \
+            --parameters @"$DEPLOYMENT_PARAMETERS_FILE" \
+            --query properties.outputs \
+            --output json)"
+          function_app_name="$(jq -r '.functionAppName.value' <<< "$outputs")"
+          test -n "$function_app_name"
+          test "$function_app_name" != "null"
+          echo "function-app-name=$function_app_name" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy API package
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ steps.infrastructure.outputs.function-app-name }}
+          package: .artifacts/function-app
+          remote-build: false
+
+      - name: Remove generated secret parameters
+        if: always()
+        run: rm -f "$DEPLOYMENT_PARAMETERS_FILE"

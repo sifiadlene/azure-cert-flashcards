@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "../web/src/challenge/contracts.ts",
+    "../web/src/challenge/domain.ts"
+  ],
+  "exclude": ["test/**/*.ts"]
+}

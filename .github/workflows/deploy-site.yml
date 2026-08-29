@@ -1,9 +1,11 @@
 name: Deploy Practice Site
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - Validate and Deploy Challenge API
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -12,11 +14,15 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event.workflow_run.head_sha || github.sha }}
   cancel-in-progress: true
 
 jobs:
   build:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -24,13 +30,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: npm
-          cache-dependency-path: web/package-lock.json
+          cache-dependency-path: |
+            api/package-lock.json
+            web/package-lock.json
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -38,8 +48,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install API dependencies for browser tests
+        working-directory: api
+        run: npm ci
+
       - name: Lint application
         run: npm run lint
+
+      - name: Test application
+        run: npm test
 
       - name: Validate flashcard data
         run: npm run validate:data
@@ -53,7 +70,13 @@ jobs:
       - name: Build site
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-        run: npm run build
+          VITE_PUBLIC_API_BASE: ${{ vars.VITE_PUBLIC_API_BASE }}
+        run: |
+          before="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
+          npx tsc -b
+          npx vite build
+          after="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
+          test "$before" = "$after"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "NODE_ENV": "development",
+    "CHALLENGE_TOKEN_PEPPER": "<replace-with-base64-encoded-32-byte-development-value>",
+    "CHALLENGE_RETENTION_SECONDS": "86400",
+    "CHALLENGE_DECK_DIRECTORY": "data/decks",
+    "CHALLENGE_LOCAL_IN_MEMORY": "true",
+    "CHALLENGE_COSMOS_ENDPOINT": "https://your-account.documents.azure.com:443/",
+    "CHALLENGE_COSMOS_DATABASE": "challenge",
+    "CHALLENGE_COSMOS_ROOMS_CONTAINER": "rooms",
+    "CHALLENGE_COSMOS_ROOM_CODES_CONTAINER": "room-codes",
+    "CHALLENGE_COSMOS_EMULATOR_CONNECTION_STRING": ""
+  }
+}

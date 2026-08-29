@@ -14,6 +14,8 @@
   --color-success-bg: #eaf6ef;
   --color-error: #b42318;
   --color-error-bg: #fdefec;
+  --color-warning: #865d08;
+  --color-warning-bg: #fff8df;
   --color-focus: #0866c6;
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -47,6 +49,8 @@
   --color-success-bg: #163829;
   --color-error: #ff9b91;
   --color-error-bg: #48211d;
+  --color-warning: #f1c75b;
+  --color-warning-bg: #403513;
   --color-focus: #8bc0f5;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.28);

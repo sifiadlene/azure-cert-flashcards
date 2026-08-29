@@ -20,7 +20,6 @@ export const CHALLENGE_PRESENCE = {
   reconnectingThroughMs: 15_000,
 } as const
 
-export const CHALLENGE_RETENTION_SECONDS = 86_400 as const
 
 export type ChallengeQuestionCount = (typeof CHALLENGE_QUESTION_COUNTS)[number]
 export type ChallengeTimerSeconds = (typeof CHALLENGE_TIMER_SECONDS)[number]

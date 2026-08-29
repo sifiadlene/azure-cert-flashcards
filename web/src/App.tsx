@@ -2,6 +2,7 @@ import { startTransition, useEffect, useRef, useState } from 'react'
 import DOMPurify from 'dompurify'
 import { useTranslation } from 'react-i18next'
 import './App.css'
+import { ChallengeFeature } from './challenge/ChallengeFeature'
 import type {
   DeckManifest,
   ExamDeck,
@@ -326,8 +327,10 @@ function ConfirmationDialog({
 function App() {
   const { t, i18n } = useTranslation()
   const currentLang = (i18n.language.startsWith('fr') ? 'fr' : 'en') as 'en' | 'fr'
+  const initialChallengeCode = new URLSearchParams(window.location.search).get('challenge')?.trim().toUpperCase() ?? ''
 
   const [manifest, setManifest] = useState<DeckManifest | null>(null)
+  const [experience, setExperience] = useState<'solo' | 'challenge'>(initialChallengeCode ? 'challenge' : 'solo')
   const [manifestError, setManifestError] = useState('')
   const [selectedExamSlug, setSelectedExamSlug] = useState('')
   const [setup, setSetup] = useState<SetupState>(defaultSetup)
@@ -731,11 +734,32 @@ function App() {
   if (!session && !result) {
     return (
       <>
-        <div className="app-shell">
+        <div className={`app-shell ${experience === 'challenge' ? 'challenge-shell' : ''}`}>
           {appHeader}
+
+        <nav className="experience-switcher" aria-label={t('challenge.experienceLabel')}>
+          <button type="button" aria-current={experience === 'solo' ? 'page' : undefined} className={experience === 'solo' ? 'active' : ''} onClick={() => setExperience('solo')}>
+            <span>{t('challenge.soloPractice')}</span>
+            <small>{t('challenge.soloDescription')}</small>
+          </button>
+          <button type="button" aria-current={experience === 'challenge' ? 'page' : undefined} className={experience === 'challenge' ? 'active' : ''} onClick={() => setExperience('challenge')}>
+            <span>{t('challenge.liveChallenge')}</span>
+            <small>{t('challenge.liveDescription')}</small>
+          </button>
+        </nav>
 
         {manifestError && <div className="alert error">{manifestError}</div>}
 
+        {experience === 'challenge' && manifest ? (
+          <ChallengeFeature
+            manifest={manifest}
+            language={currentLang}
+            prefilledCode={initialChallengeCode}
+            onExitToSolo={() => setExperience('solo')}
+          />
+        ) : experience === 'challenge' ? (
+          !manifestError && <div className="loading-state card" role="status">{t('setup.loadingExams')}</div>
+        ) : (
         <div className="card">
           <h2 className="card-title">{t('setup.cardTitle')}</h2>
 
@@ -889,6 +913,7 @@ function App() {
             </>
           )}
         </div>
+        )}
       </div>
       {languageDialog}
       </>
