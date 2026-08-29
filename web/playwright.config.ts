@@ -23,7 +23,7 @@ export default defineConfig({
       reuseExistingServer: false,
     },
     {
-      command: 'npx vite --host 127.0.0.1 --port 4173',
+      command: 'VITE_TURNSTILE_SITE_KEY=1x00000000000000000000AA VITE_TURNSTILE_BLOCK_SITE_KEY=2x00000000000000000000AB npx vite --host 127.0.0.1 --port 4173',
       url: 'http://127.0.0.1:4173',
       reuseExistingServer: false,
     },

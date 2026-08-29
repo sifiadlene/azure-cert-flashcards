@@ -12,6 +12,25 @@
     "CHALLENGE_COSMOS_DATABASE": "challenge",
     "CHALLENGE_COSMOS_ROOMS_CONTAINER": "rooms",
     "CHALLENGE_COSMOS_ROOM_CODES_CONTAINER": "room-codes",
-    "CHALLENGE_COSMOS_EMULATOR_CONNECTION_STRING": ""
+    "CHALLENGE_COSMOS_EMULATOR_CONNECTION_STRING": "",
+    "EXAM_REQUEST_COSMOS_ENDPOINT": "https://your-account.documents.azure.com:443/",
+    "EXAM_REQUEST_COSMOS_DATABASE": "challenge",
+    "EXAM_REQUEST_COSMOS_CONTAINER": "exam-requests",
+    "EXAM_REQUEST_COSMOS_EMULATOR_CONNECTION_STRING": "",
+    "EXAM_REQUEST_CATALOG_PATH": "data/microsoft-learn-practice-assessments.json",
+    "EXAM_REQUEST_SUPPORTED_CODES_PATH": "data/supported-exam-codes.json",
+    "EXAM_REQUEST_RATE_LIMIT": "3",
+    "EXAM_REQUEST_PENDING_TTL_SECONDS": "120",
+    "EXAM_REQUEST_PENDING_WAIT_MS": "4000",
+    "EXAM_REQUEST_UPSTREAM_TIMEOUT_MS": "5000",
+    "EXAM_REQUEST_IP_HASH_KEY": "<replace-with-base64-encoded-32-byte-development-value>",
+    "EXAM_REQUEST_TURNSTILE_SECRET": "1x0000000000000000000000000000000AA",
+    "EXAM_REQUEST_TURNSTILE_HOSTNAMES": "localhost,127.0.0.1",
+    "EXAM_REQUEST_GITHUB_APP_ID": "<replace-with-github-app-id>",
+    "EXAM_REQUEST_GITHUB_INSTALLATION_ID": "<replace-with-installation-id>",
+    "EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64": "<replace-with-base64-encoded-pem-private-key>",
+    "EXAM_REQUEST_GITHUB_OWNER": "sifiadlene",
+    "EXAM_REQUEST_GITHUB_REPOSITORY": "azure-cert-flashcards",
+    "EXAM_REQUEST_GITHUB_ASSIGNEE": "sifiadlene"
   }
 }

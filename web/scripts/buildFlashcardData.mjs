@@ -1,12 +1,21 @@
 import { createHash } from 'node:crypto'
-import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  buildSupportedExamCodes,
+  readJson,
+  serializeJson,
+  validateCatalog,
+} from '../../tools/exam-catalog.mjs'
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url))
 const webDirectory = path.resolve(scriptDirectory, '..')
 const repositoryDirectory = path.resolve(webDirectory, '..')
 const flashcardsDirectory = path.join(repositoryDirectory, 'flashcards')
+const catalogDirectory = path.join(repositoryDirectory, 'catalog')
+const examCatalogPath = path.join(catalogDirectory, 'microsoft-learn-practice-assessments.json')
+const supportedExamCodesPath = path.join(catalogDirectory, 'supported-exam-codes.json')
 const outputDirectory = path.join(webDirectory, 'public', 'data')
 const deckOutputDirectory = path.join(outputDirectory, 'decks')
 
@@ -306,7 +315,17 @@ async function buildFlashcardData() {
     )
   }
 
-  await writeFile(path.join(outputDirectory, 'exams.json'), JSON.stringify(manifest, null, 2))
+  const supportedExamCodes = buildSupportedExamCodes(manifest)
+  validateCatalog(await readJson(examCatalogPath))
+
+  await Promise.all([
+    writeFile(path.join(outputDirectory, 'exams.json'), serializeJson(manifest)),
+    writeFile(supportedExamCodesPath, serializeJson(supportedExamCodes)),
+  ])
+  await Promise.all([
+    copyFile(examCatalogPath, path.join(outputDirectory, path.basename(examCatalogPath))),
+    copyFile(supportedExamCodesPath, path.join(outputDirectory, path.basename(supportedExamCodesPath))),
+  ])
 }
 
 buildFlashcardData().catch((error) => {

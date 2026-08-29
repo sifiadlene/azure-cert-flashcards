@@ -58,6 +58,9 @@ jobs:
       - name: Test application
         run: npm test
 
+      - name: Test exam catalog parser offline
+        run: npm run test:catalog
+
       - name: Validate flashcard data
         run: npm run validate:data
 
@@ -85,7 +88,10 @@ jobs:
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
           VITE_PUBLIC_API_BASE: ${{ vars.VITE_PUBLIC_API_BASE }}
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
         run: |
+          test -n "$VITE_PUBLIC_API_BASE"
+          test -n "$VITE_TURNSTILE_SITE_KEY"
           before="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
           npx tsc -b
           npx vite build

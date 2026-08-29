@@ -9,6 +9,7 @@ import {
   type RoomSnapshot,
 } from './contracts'
 import type { ExamDeck, DeckManifest, QuestionRecord } from '../types'
+import { RequestExamTrigger } from '../examRequest/RequestExamTrigger'
 import { sanitizeChallengeHtml } from './sanitize'
 
 export interface HostSetupValue {
@@ -34,6 +35,7 @@ interface StartProps {
   onJoinNicknameChange: (value: string) => void
   onCreate: () => void
   onJoin: () => void
+  onRequestExam: (trigger: HTMLButtonElement) => void
 }
 
 export function ChallengeStartView(props: StartProps) {
@@ -103,6 +105,9 @@ export function ChallengeStartView(props: StartProps) {
           {props.busy ? t('challenge.working') : t('challenge.entry.joinAction')}
         </button>
       </section>
+      <div className="challenge-request-exam">
+        <RequestExamTrigger onOpen={props.onRequestExam} />
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 metadata name = 'Certification Flashcards Challenge Infrastructure'
-metadata description = 'Orchestrates the minimal Azure Functions, Cosmos DB, storage, and monitoring footprint for multiplayer challenges.'
+metadata description = 'Orchestrates Azure Functions, Cosmos DB, storage, and monitoring for multiplayer challenges and exam requests.'
 
 targetScope = 'resourceGroup'
 
@@ -66,6 +66,9 @@ param functionMaximumInstanceCount int = 20
 @maxValue(2147483647)
 param cosmosTtlSeconds int = 86400
 
+@description('Resource IDs of Azure Monitor action groups notified by exam-request alerts.')
+param alertActionGroupResourceIds string[] = []
+
 /*
  * Security parameters
  */
@@ -73,6 +76,65 @@ param cosmosTtlSeconds int = 86400
 @description('Base64-encoded random pepper used to hash opaque capability tokens. Supply only at deployment time.')
 @secure()
 param challengeTokenPepper string
+
+@description('GitHub account that owns the repository receiving exam-request issues.')
+@minLength(1)
+param examRequestGitHubOwner string
+
+@description('GitHub repository receiving exam-request issues.')
+@minLength(1)
+param examRequestGitHubRepository string
+
+@description('GitHub user assigned to created exam-request issues.')
+@minLength(1)
+param examRequestGitHubAssignee string
+
+@description('GitHub App identifier used to mint installation tokens.')
+@minLength(1)
+param examRequestGitHubAppId string
+
+@description('GitHub App installation identifier scoped to the target repository.')
+@minLength(1)
+param examRequestGitHubInstallationId string
+
+@description('Base64-encoded GitHub App PEM private key. Supply only at deployment time.')
+@secure()
+@minLength(1)
+param examRequestGitHubPrivateKeyBase64 string
+
+@description('Base64-encoded HMAC key used to hash client addresses. Supply only at deployment time.')
+@secure()
+@minLength(1)
+param examRequestIpHashKey string
+
+@description('Maximum accepted first-time exam requests per client address and UTC day.')
+@minValue(1)
+@maxValue(100)
+param examRequestRateLimit int = 3
+
+@description('Pending exam-request reservation retention in seconds.')
+@minValue(1)
+@maxValue(3600)
+param examRequestPendingTtlSeconds int = 120
+
+@description('Maximum time in milliseconds to wait for another request to complete.')
+@minValue(1)
+@maxValue(15000)
+param examRequestPendingWaitMs int = 4000
+
+@description('Cloudflare Turnstile hostnames accepted for exam-request verification.')
+@minLength(1)
+param examRequestTurnstileHostnames string[]
+
+@description('Cloudflare Turnstile secret. Supply only at deployment time.')
+@secure()
+@minLength(1)
+param examRequestTurnstileSecret string
+
+@description('Timeout in milliseconds for Turnstile and GitHub requests.')
+@minValue(1)
+@maxValue(30000)
+param examRequestUpstreamTimeoutMs int = 5000
 
 /*
  * Variables
@@ -88,6 +150,7 @@ var cosmosAccountName = take('cosmos-${nameStem}-${uniqueness}', 44)
 var databaseName = 'challenge'
 var roomsContainerName = 'rooms'
 var roomCodesContainerName = 'room-codes'
+var examRequestsContainerName = 'exam-requests'
 var deploymentContainerName = 'function-releases'
 var standardTags = union(tags, {
   application: 'certification-flashcards'
@@ -111,6 +174,7 @@ module storage 'modules/storage.bicep' = {
 
 module monitoring 'modules/monitoring.bicep' = {
   params: {
+    alertActionGroupResourceIds: alertActionGroupResourceIds
     applicationInsightsName: take('appi-${nameStem}', 260)
     location: location
     logAnalyticsWorkspaceName: take('log-${nameStem}', 63)
@@ -123,6 +187,7 @@ module cosmos 'modules/cosmos.bicep' = {
   params: {
     accountName: cosmosAccountName
     databaseName: databaseName
+    examRequestsContainerName: examRequestsContainerName
     location: location
     roomCodesContainerName: roomCodesContainerName
     roomsContainerName: roomsContainerName
@@ -140,6 +205,22 @@ module functionApp 'modules/function-app.bicep' = {
     databaseName: cosmos.outputs.databaseName
     deckDirectory: 'data/decks'
     deploymentContainerEndpoint: storage.outputs.deploymentContainerEndpoint
+    examRequestCatalogPath: 'data/microsoft-learn-practice-assessments.json'
+    examRequestGitHubAppId: examRequestGitHubAppId
+    examRequestGitHubAssignee: examRequestGitHubAssignee
+    examRequestGitHubInstallationId: examRequestGitHubInstallationId
+    examRequestGitHubOwner: examRequestGitHubOwner
+    examRequestGitHubPrivateKeyBase64: examRequestGitHubPrivateKeyBase64
+    examRequestGitHubRepository: examRequestGitHubRepository
+    examRequestIpHashKey: examRequestIpHashKey
+    examRequestPendingTtlSeconds: examRequestPendingTtlSeconds
+    examRequestPendingWaitMs: examRequestPendingWaitMs
+    examRequestRateLimit: examRequestRateLimit
+    examRequestsContainerName: cosmos.outputs.examRequestsContainerName
+    examRequestSupportedCodesPath: 'data/supported-exam-codes.json'
+    examRequestTurnstileHostnames: examRequestTurnstileHostnames
+    examRequestTurnstileSecret: examRequestTurnstileSecret
+    examRequestUpstreamTimeoutMs: examRequestUpstreamTimeoutMs
     functionAppName: functionAppName
     instanceMemoryMb: functionInstanceMemoryMb
     location: location

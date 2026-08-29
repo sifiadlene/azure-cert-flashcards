@@ -1,4 +1,66 @@
-# Translation Tools
+---
+title: Repository Tools
+description: Commands for refreshing exam metadata and translating flashcard decks
+ms.date: 2026-08-29
+---
+
+## Microsoft Learn exam catalog
+
+The canonical snapshot is stored in
+`catalog/microsoft-learn-practice-assessments.json`. It contains the approved
+49-entry Microsoft Learn Availability catalog retrieved on 2026-08-29.
+
+Refresh the snapshot from the live Availability table:
+
+```bash
+node tools/refresh-exam-catalog.mjs
+```
+
+For a deterministic offline refresh, supply the checked-in fixture and the
+snapshot timestamp:
+
+```bash
+node tools/refresh-exam-catalog.mjs \
+   --input tools/fixtures/microsoft-learn-practice-assessments.html \
+   --retrieved-at 2026-08-29T00:00:00.000Z
+```
+
+The parser accepts only HTTPS links on Microsoft Learn and Microsoft AI Skills
+Navigator. It fails when the Availability heading or table shape changes,
+codes repeat, links are malformed, or a refresh produces fewer entries than
+the checked-in catalog.
+
+Generate the shared supported-code set and runtime copies:
+
+```bash
+cd web
+npm run build:data
+```
+
+Validate parser behavior and detect drift across the canonical, web, and API
+copies without making a network request:
+
+```bash
+node --test tools/exam-catalog.test.mjs
+node tools/validate-exam-data.mjs
+```
+
+Run the offline parser test before a live refresh. After a live refresh, review
+the diff for source URL, title, retrieval timestamp, and unexpected removals.
+Then run `npm run build:data` from `web` and the drift validator. Commit the
+canonical file, `web/public/data` copies, and `api/data` copies in the same
+change.
+
+The supported set is derived only from `web/public/data/exams.json`. Requestable
+exams are the catalog entries whose codes are absent from that set. The current
+baseline contains 14 supported codes and 37 requestable catalog entries.
+
+The 49 catalog entries and 14 supported codes overlap on 12 codes. Two local
+decks are not present in the current Learn table, so the requestable count is
+49 minus 12, not 49 minus 14. A lower live result is rejected to protect the
+snapshot from accidental source-page changes.
+
+## Translation tools
 
 This directory contains scripts for translating flashcard decks into other languages.
 

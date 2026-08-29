@@ -31,6 +31,9 @@ param logAnalyticsWorkspaceName string
 @maxValue(730)
 param retentionInDays int
 
+@description('Resource IDs of Azure Monitor action groups notified by exam-request alerts.')
+param alertActionGroupResourceIds string[]
+
 /*
  * Resources
  */
@@ -67,6 +70,88 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
     publicNetworkAccessForQuery: 'Enabled'
   }
 }
+
+var examRequestAlertDefinitions = [
+  {
+    suffix: 'rate-limited'
+    displayName: 'Exam requests - rate limiting spike'
+    description: 'More than five exam requests were rate limited within 15 minutes.'
+    query: 'traces | where message has "exam_request.rate_limited"'
+    threshold: 5
+    severity: 2
+  }
+  {
+    suffix: 'turnstile-failed'
+    displayName: 'Exam requests - Turnstile failures'
+    description: 'More than five Turnstile rejections or upstream failures occurred within 15 minutes.'
+    query: 'traces | where message has_any ("exam_request.rejected", "exam_request.turnstile_failed")'
+    threshold: 5
+    severity: 2
+  }
+  {
+    suffix: 'github-failed'
+    displayName: 'Exam requests - GitHub failures'
+    description: 'At least two GitHub failures occurred within 15 minutes.'
+    query: 'traces | where message has "exam_request.github_failed"'
+    threshold: 1
+    severity: 1
+  }
+  {
+    suffix: 'abnormal-volume'
+    displayName: 'Exam requests - abnormal volume'
+    description: 'More than 50 exam-request operations occurred within 15 minutes.'
+    query: 'traces | where message startswith "exam_request."'
+    threshold: 50
+    severity: 2
+  }
+  {
+    suffix: 'stale-pending'
+    displayName: 'Exam requests - stale pending reservations'
+    description: 'At least one stale pending exam-request reservation was observed within 15 minutes.'
+    query: 'traces | where message has "exam_request.stale_pending"'
+    threshold: 0
+    severity: 1
+  }
+]
+
+resource examRequestAlerts 'Microsoft.Insights/scheduledQueryRules@2023-12-01' = [for definition in examRequestAlertDefinitions: {
+  name: take('${applicationInsightsName}-${definition.suffix}', 260)
+  location: location
+  tags: tags
+  kind: 'LogAlert'
+  properties: {
+    actions: {
+      actionGroups: alertActionGroupResourceIds
+    }
+    autoMitigate: true
+    checkWorkspaceAlertsStorageConfigured: false
+    criteria: {
+      allOf: [
+        {
+          failingPeriods: {
+            minFailingPeriodsToAlert: 1
+            numberOfEvaluationPeriods: 1
+          }
+          operator: 'GreaterThan'
+          query: definition.query
+          threshold: definition.threshold
+          timeAggregation: 'Count'
+        }
+      ]
+    }
+    description: definition.description
+    displayName: definition.displayName
+    enabled: true
+    evaluationFrequency: 'PT5M'
+    muteActionsDuration: 'PT15M'
+    scopes: [
+      applicationInsights.id
+    ]
+    severity: definition.severity
+    skipQueryValidation: false
+    windowSize: 'PT15M'
+  }
+}]
 
 /*
  * Outputs

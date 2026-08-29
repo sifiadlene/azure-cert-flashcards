@@ -1,5 +1,5 @@
 metadata name = 'Challenge Cosmos DB'
-metadata description = 'Deploys a serverless Azure Cosmos DB for NoSQL account, database, and ephemeral room containers.'
+metadata description = 'Deploys a serverless Azure Cosmos DB for NoSQL account, database, challenge containers, and exam-request state.'
 
 targetScope = 'resourceGroup'
 
@@ -26,6 +26,11 @@ param accountName string
 @minLength(1)
 @maxLength(255)
 param databaseName string
+
+@description('Exam-request state container name.')
+@minLength(1)
+@maxLength(255)
+param examRequestsContainerName string
 
 @description('Room-code lookup container name.')
 @minLength(1)
@@ -123,6 +128,25 @@ resource roomCodesContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/
   }
 }
 
+resource examRequestsContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers@2025-04-15' = {
+  parent: database
+  name: examRequestsContainerName
+  properties: {
+    resource: {
+      // Durable per-exam mappings omit ttl; ephemeral records set a positive item-level ttl.
+      defaultTtl: -1
+      id: examRequestsContainerName
+      partitionKey: {
+        kind: 'Hash'
+        paths: [
+          '/id'
+        ]
+        version: 2
+      }
+    }
+  }
+}
+
 /*
  * Outputs
  */
@@ -138,6 +162,9 @@ output accountId string = account.id
 
 @description('Cosmos DB for NoSQL database name.')
 output databaseName string = database.name
+
+@description('Exam-request state container name.')
+output examRequestsContainerName string = examRequestsContainer.name
 
 @description('Room-code lookup container name.')
 output roomCodesContainerName string = roomCodesContainer.name

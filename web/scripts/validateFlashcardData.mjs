@@ -2,12 +2,15 @@ import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'csv-parse/sync'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url))
 const webDirectory = path.resolve(scriptDirectory, '..')
 const repositoryDirectory = path.resolve(webDirectory, '..')
 const flashcardsDirectory = path.join(repositoryDirectory, 'flashcards')
 const decksDirectory = path.join(webDirectory, 'public', 'data', 'decks')
+const execFileAsync = promisify(execFile)
 
 const GH300_SOURCE = 'gh300_flashcards_2026-08-28.csv'
 const GH300_COVERAGE = 'gh300_coverage_2026-08-28.json'
@@ -332,6 +335,7 @@ export async function validateGeneratedDecks(directory = decksDirectory) {
 }
 
 async function main() {
+  await execFileAsync(process.execPath, [path.join(repositoryDirectory, 'tools', 'validate-exam-data.mjs')])
   const [result, generatedDecks] = await Promise.all([
     validateGh300(),
     validateGeneratedDecks(),

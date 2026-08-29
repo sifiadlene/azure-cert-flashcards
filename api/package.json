@@ -13,6 +13,7 @@
     "lint": "eslint src test",
     "start": "npm run build && func start",
     "start:test": "npm run build && NODE_ENV=test node dist/api/src/testServer.js",
+    "validate:data": "node ../tools/validate-exam-data.mjs",
     "test": "vitest run --config vitest.config.mts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "exams": [
+    {
+      "code": "AB-100",
+      "title": "Agentic AI Business Solutions Architect",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/ab-100/practice/assessment?assessment-type=practice&assessmentId=1815645847&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AB-730",
+      "title": "AI Business Professional",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/ai-business-professional/practice/assessment?assessment-type=practice&assessmentId=650120434&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AB-731",
+      "title": "AI Transformation Leader",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/ai-transformation-leader/practice/assessment?assessment-type=practice&assessmentId=13027212&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AB-900",
+      "title": "Copilot and Agent Administration Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/copilot-and-agent-administration-fundamentals/practice/assessment?assessment-type=practice&assessmentId=428463062&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AI-103",
+      "title": "Microsoft Certified: Azure AI Apps and Agents Developer Associate",
+      "sourceUrl": "https://aiskillsnavigator.microsoft.com/credentials/cert-3fb198f57997226a824aa5f52a1a22af9a4597941b2288ed39371c7a9e6bd7c9",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AI-300",
+      "title": "Operationalizing Machine Learning and Generative AI Solutions",
+      "sourceUrl": "https://aiskillsnavigator.microsoft.com/credentials/cert-6e7fcf9954d1620318e5d199346ace3b7bd84edc8be79e735bcdc09ada8437bf",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AI-900",
+      "title": "Microsoft Azure AI Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-900/practice/assessment?assessment-type=practice&assessmentId=26",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AI-901",
+      "title": "Microsoft Azure AI Fundamentals",
+      "sourceUrl": "https://aiskillsnavigator.microsoft.com/credentials/cert-83587e0a0754cfee561ade3e27d9fa1cdaf15ae03be52d2413b2b858d1b4eda4",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-104",
+      "title": "Microsoft Azure Administrator",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/practice/assessment?assessment-type=practice&assessmentId=21&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-140",
+      "title": "Configuring and Operating Microsoft Azure Virtual Desktop",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-virtual-desktop-specialty/practice/assessment?assessment-type=practice&assessmentId=69&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-305",
+      "title": "Designing Microsoft Azure Infrastructure Solutions",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/az-305/practice/assessment?assessment-type=practice&assessmentId=15",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-400",
+      "title": "Designing and Implementing Microsoft DevOps Solutions",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400/practice/assessment?assessment-type=practice&assessmentId=56",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-500",
+      "title": "Microsoft Azure Security Technologies",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/practice/assessment?assessment-type=practice&assessmentId=57&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-700",
+      "title": "Designing and Implementing Microsoft Azure Networking Solutions",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-network-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=70&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-800",
+      "title": "Administering Windows Server Hybrid Core Infrastructure",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/az-800/practice/assessment?assessment-type=practice&assessmentId=67",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-801",
+      "title": "Configuring Windows Server Hybrid Advanced Services",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/az-801/practice/assessment?assessment-type=practice&assessmentId=68",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "AZ-900",
+      "title": "Microsoft Azure Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/practice/assessment?assessment-type=practice&assessmentId=23&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-300",
+      "title": "Administering Microsoft Azure SQL Solutions",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator-associate/practice/assessment?assessment-type=practice&assessmentId=58&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-420",
+      "title": "Azure Cosmos DB Developer Specialty",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/practice/assessment?assessment-type=practice&assessmentId=104&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-600",
+      "title": "Implementing Analytics Solutions Using Microsoft Fabric",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=90&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-700",
+      "title": "Microsoft Certified: Fabric Data Engineer Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=1704375541&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-750",
+      "title": "Microsoft Certified: Azure Databricks Data Engineer Associate",
+      "sourceUrl": "https://aiskillsnavigator.microsoft.com/credentials/cert-6818382e4ae0a7b840cb7d1f87e51c0b08fe0213fdb2c309b2ba5f295625014e",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-800",
+      "title": "Microsoft Certified: SQL AI Developer Associate",
+      "sourceUrl": "https://aiskillsnavigator.microsoft.com/credentials/cert-f7c226fff388981b97e2bafd239786aba2d62e74bf8e3d50b04d341899bd55f4",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "DP-900",
+      "title": "Microsoft Azure Data Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/practice/assessment?assessment-type=practice&assessmentId=24&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "GH-100",
+      "title": "GitHub Administration",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/github-administration/practice/assessment?assessment-type=practice&assessmentId=1841205577&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "GH-200",
+      "title": "GitHub Actions",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/github-actions/practice/assessment?assessment-type=practice&assessmentId=1001&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "GH-300",
+      "title": "GitHub Copilot",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/github-copilot/practice/assessment?assessment-type=practice&assessmentId=218035372&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "GH-500",
+      "title": "GitHub Advanced Security",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/github-advanced-security/practice/assessment?assessment-type=practice&assessmentId=590484996&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "GH-900",
+      "title": "GitHub Foundations",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/github-advanced-security/practice/assessment?assessment-type=practice&assessmentId=954809103&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-230",
+      "title": "Microsoft Dynamics 365 Customer Service Functional Consultant",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-functional-consultant-customer-service-v3/practice/assessment?assessment-type=practice&assessmentId=72&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-240",
+      "title": "Microsoft Dynamics 365 Field Service Functional Consultant",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-functional-consultant-field-service/practice/assessment?assessment-type=practice&assessmentId=106&practice-assessment-type=certification&source=docs",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-310",
+      "title": "Microsoft Dynamics 365 Finance Functional Consultant",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-functional-consultant-financials/practice/assessment?assessment-type=practice&assessmentId=107&practice-assessment-type=certification&source=docs",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-330",
+      "title": "Microsoft Dynamics 365 Supply Chain Management Functional Consultant Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-functional-consultant-supply-chain-management/practice/assessment?assessment-type=practice&assessmentId=105&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-500",
+      "title": "Dynamics 365: Finance and Operations Apps Developer Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-finance-and-operations-apps-developer-associate/practice/assessment?assessment-type=practice&assessmentId=108&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-800",
+      "title": "Microsoft Dynamics 365 Business Central Functional Consultant Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-business-central-functional-consultant-associate/practice/assessment?assessment-type=practice&assessmentId=109&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MB-820",
+      "title": "Microsoft Dynamics 365 Business Central Developer Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-business-central-developer-associate/practice/assessment?assessment-type=practice&assessmentId=66154329&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MD-102",
+      "title": "Endpoint Administrator",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/modern-desktop/practice/assessment?assessment-type=practice&assessmentId=76&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MS-102",
+      "title": "Microsoft 365 Administrator",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/ms-102/practice/assessment?assessment-type=practice&assessmentId=75",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MS-700",
+      "title": "Managing Microsoft Teams",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/m365-teams-administrator-associate/practice/assessment?assessment-type=practice&assessmentId=55&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "MS-721",
+      "title": "Collaboration Communications Systems Engineer",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/m365-collaboration-communications-systems-engineer/practice/assessment?assessment-type=practice&assessmentId=78&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "PL-200",
+      "title": "Microsoft Power Platform Functional Consultant",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/power-platform-functional-consultant-associate/practice/assessment?assessment-type=practice&assessmentId=64&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "PL-300",
+      "title": "Microsoft Power BI Data Analyst",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/data-analyst-associate/practice/assessment?assessment-type=practice&assessmentId=48&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "PL-400",
+      "title": "Microsoft Power Platform Developer",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/power-platform-developer-associate/practice/assessment?assessment-type=practice&assessmentId=66&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "PL-900",
+      "title": "Microsoft Power Platform Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/power-platform-fundamentals/practice/assessment?assessment-type=practice&assessmentId=34&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "SC-100",
+      "title": "Microsoft Cybersecurity Architect",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/exams/sc-100/practice/assessment?assessment-type=practice&assessmentId=87",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "SC-200",
+      "title": "Microsoft Security Operations Analyst",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/practice/assessment?assessment-type=practice&assessmentId=59&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "SC-300",
+      "title": "Microsoft Identity and Access Administrator",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/practice/assessment?assessment-type=practice&assessmentId=60&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "SC-401",
+      "title": "Microsoft Certified: Information Security Administrator Associate",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/information-security-administrator/practice/assessment?assessment-type=practice&assessmentId=1801497482&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "code": "SC-900",
+      "title": "Microsoft Security, Compliance, and Identity Fundamentals",
+      "sourceUrl": "https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/practice/assessment?assessment-type=practice&assessmentId=11&practice-assessment-type=certification",
+      "sourcePageUrl": "https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications",
+      "retrievedAt": "2026-08-29T00:00:00.000Z"
+    }
+  ]
+}

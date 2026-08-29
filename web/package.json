@@ -16,6 +16,7 @@
   "scripts": {
     "build:data": "node scripts/buildFlashcardData.mjs",
     "validate:data": "node scripts/validateFlashcardData.mjs",
+    "test:catalog": "node --test ../tools/exam-catalog.test.mjs",
     "dev": "npm run build:data && vite",
     "build": "npm run validate:data && npm run build:data && tsc -b && vite build",
     "test": "vitest run",

@@ -81,6 +81,66 @@ param databaseName string
 @description('Packaged canonical deck directory relative to the Function App root.')
 param deckDirectory string
 
+@description('Packaged canonical exam catalog path relative to the Function App root.')
+param examRequestCatalogPath string
+
+@description('Exam-request state container name.')
+param examRequestsContainerName string
+
+@description('GitHub account that owns the exam-request repository.')
+param examRequestGitHubOwner string
+
+@description('GitHub repository that receives exam-request issues.')
+param examRequestGitHubRepository string
+
+@description('GitHub user assigned to created exam-request issues.')
+param examRequestGitHubAssignee string
+
+@description('GitHub App identifier used to mint installation tokens.')
+param examRequestGitHubAppId string
+
+@description('GitHub App installation identifier scoped to the target repository.')
+param examRequestGitHubInstallationId string
+
+@description('Base64-encoded GitHub App PEM private key.')
+@secure()
+param examRequestGitHubPrivateKeyBase64 string
+
+@description('Base64-encoded HMAC key used to hash client addresses for rate limiting.')
+@secure()
+param examRequestIpHashKey string
+
+@description('Maximum accepted first-time exam requests per client address and UTC day.')
+@minValue(1)
+@maxValue(100)
+param examRequestRateLimit int
+
+@description('Pending exam-request reservation retention in seconds.')
+@minValue(1)
+@maxValue(3600)
+param examRequestPendingTtlSeconds int
+
+@description('Maximum time in milliseconds to wait for another request to complete.')
+@minValue(1)
+@maxValue(15000)
+param examRequestPendingWaitMs int
+
+@description('Turnstile hostnames accepted for exam-request verification.')
+@minLength(1)
+param examRequestTurnstileHostnames string[]
+
+@description('Cloudflare Turnstile secret used only by the Function App.')
+@secure()
+param examRequestTurnstileSecret string
+
+@description('Packaged supported-exam code artifact path relative to the Function App root.')
+param examRequestSupportedCodesPath string
+
+@description('Timeout in milliseconds for Turnstile and GitHub requests.')
+@minValue(1)
+@maxValue(30000)
+param examRequestUpstreamTimeoutMs int
+
 @description('Room-code lookup container name.')
 param roomCodesContainerName string
 
@@ -211,6 +271,78 @@ resource functionApp 'Microsoft.Web/sites@2024-11-01' = {
         {
           name: 'CHALLENGE_TOKEN_PEPPER'
           value: tokenPepper
+        }
+        {
+          name: 'EXAM_REQUEST_COSMOS_CONTAINER'
+          value: examRequestsContainerName
+        }
+        {
+          name: 'EXAM_REQUEST_COSMOS_DATABASE'
+          value: databaseName
+        }
+        {
+          name: 'EXAM_REQUEST_COSMOS_ENDPOINT'
+          value: cosmosEndpoint
+        }
+        {
+          name: 'EXAM_REQUEST_CATALOG_PATH'
+          value: examRequestCatalogPath
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_APP_ID'
+          value: examRequestGitHubAppId
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_ASSIGNEE'
+          value: examRequestGitHubAssignee
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_INSTALLATION_ID'
+          value: examRequestGitHubInstallationId
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_OWNER'
+          value: examRequestGitHubOwner
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64'
+          value: examRequestGitHubPrivateKeyBase64
+        }
+        {
+          name: 'EXAM_REQUEST_GITHUB_REPOSITORY'
+          value: examRequestGitHubRepository
+        }
+        {
+          name: 'EXAM_REQUEST_IP_HASH_KEY'
+          value: examRequestIpHashKey
+        }
+        {
+          name: 'EXAM_REQUEST_PENDING_TTL_SECONDS'
+          value: string(examRequestPendingTtlSeconds)
+        }
+        {
+          name: 'EXAM_REQUEST_PENDING_WAIT_MS'
+          value: string(examRequestPendingWaitMs)
+        }
+        {
+          name: 'EXAM_REQUEST_RATE_LIMIT'
+          value: string(examRequestRateLimit)
+        }
+        {
+          name: 'EXAM_REQUEST_SUPPORTED_CODES_PATH'
+          value: examRequestSupportedCodesPath
+        }
+        {
+          name: 'EXAM_REQUEST_TURNSTILE_HOSTNAMES'
+          value: join(examRequestTurnstileHostnames, ',')
+        }
+        {
+          name: 'EXAM_REQUEST_TURNSTILE_SECRET'
+          value: examRequestTurnstileSecret
+        }
+        {
+          name: 'EXAM_REQUEST_UPSTREAM_TIMEOUT_MS'
+          value: string(examRequestUpstreamTimeoutMs)
         }
         {
           name: 'FUNCTIONS_EXTENSION_VERSION'

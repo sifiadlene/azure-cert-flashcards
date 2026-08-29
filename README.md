@@ -1,7 +1,7 @@
 ---
 title: Azure and GitHub Certification Flashcards
 description: Anki-compatible and browser-based practice decks for Azure and GitHub certification exams
-ms.date: 2026-08-28
+ms.date: 2026-08-29
 ---
 
 ## Overview
@@ -29,6 +29,7 @@ All source decks live in [flashcards](flashcards):
 - Timed quiz mode with end-of-session scoring
 - Domain and topic filtering
 - Missed-question review stored locally in the browser
+- Requests for Microsoft Learn exams that do not yet have a deck
 - Anki-compatible CSV source files for offline study
 
 ## Project Structure
@@ -37,13 +38,41 @@ All source decks live in [flashcards](flashcards):
 - [web](web): static React application for online practice
 - [web/scripts/buildFlashcardData.mjs](web/scripts/buildFlashcardData.mjs): CSV-to-JSON build pipeline
 - [tools/translate-decks.mjs](tools/translate-decks.mjs): Azure AI Translator script for French deck generation
+- [catalog/microsoft-learn-practice-assessments.json](catalog/microsoft-learn-practice-assessments.json): versioned Microsoft Learn practice-assessment catalog
+- [api](api): Azure Functions API for multiplayer challenges and exam requests
+- [bicep](bicep): Azure infrastructure and operations guidance
 - [.github/agents/flashcards_generator.agent.md](.github/agents/flashcards_generator.agent.md): Copilot flashcard generation agent
+
+## Exam Catalog and Requests
+
+The checked-in Microsoft Learn snapshot contains 49 catalog entries. The
+generated supported-code artifact contains 14 local decks, including two codes
+that are not in the current Learn table. The catalog-minus-supported result is
+therefore 37 requestable exams.
+
+Refresh and validate the catalog from the repository root:
+
+```bash
+node tools/refresh-exam-catalog.mjs
+node --test tools/exam-catalog.test.mjs
+cd web
+npm run build:data
+cd ..
+node tools/validate-exam-data.mjs
+```
+
+The refresh is deliberate and versioned. Neither the browser nor the API
+scrapes Microsoft Learn at runtime. Review and commit the canonical catalog and
+its generated web and API copies together. See [tools/README.md](tools/README.md)
+for deterministic offline refresh instructions.
 
 ## Running the Website Locally
 
 Prerequisites:
 
-- Node.js 20+
+- Node.js 22+
+- Azure Functions Core Tools v4 for the local API
+- Azurite for `AzureWebJobsStorage=UseDevelopmentStorage=true`
 
 Steps:
 
@@ -59,6 +88,60 @@ The dev command automatically:
 - selects the latest deck for each exam
 - generates normalized JSON in [web/public/data](web/public/data)
 - starts the Vite development server
+
+The exam-request flow also needs a local API, Turnstile keys, and GitHub App
+configuration. Copy [api/local.settings.json.example](api/local.settings.json.example)
+to `api/local.settings.json`. Keep the official always-pass Turnstile secret for
+local testing, generate a separate IP hashing key, and encode the GitHub App PEM:
+
+```bash
+openssl rand -base64 32
+base64 -w 0 path/to/github-app.private-key.pem
+```
+
+Replace the remaining placeholders. Configure either
+`EXAM_REQUEST_COSMOS_EMULATOR_CONNECTION_STRING` for a development emulator or
+the Cosmos endpoint and a local Azure identity with data-plane access. Never
+commit `api/local.settings.json`. Start the API in a second terminal:
+
+```bash
+cd api
+npm install
+npm start
+```
+
+Set `VITE_PUBLIC_API_BASE` and `VITE_TURNSTILE_SITE_KEY` before starting the
+website. The complete local key setup and official Cloudflare test values are
+in [web/README.md](web/README.md). Production secrets, GitHub App permissions,
+rate limiting, alerts, rotation, and recovery are in
+[bicep/README.md](bicep/README.md).
+
+## Exam-request API
+
+`POST /api/exam-requests` accepts only a normalized `examCode`, a UUID
+`idempotencyKey`, and a Turnstile token. The API derives the issue title, Learn
+URL, label, repository, and assignee from trusted configuration.
+
+Outcomes are:
+
+- `201` when GitHub confirms a new issue
+- `200` with `reused: true` when an existing open issue is reused
+- `400` for malformed JSON, an oversized body, or an invalid or stale exam
+- `403` for a rejected, expired, or already-used Turnstile challenge
+- `409` when the selected exam now has a supported deck
+- `429` with `Retry-After` when the client reaches the daily limit
+- `502` for a non-retryable GitHub response
+- `503` with `Retry-After` for unavailable Turnstile, GitHub, Cosmos DB, or a
+  pending concurrent request
+- `500` for an unexpected internal failure
+
+All responses are JSON with `Cache-Control: no-store` and a trace ID. The API
+does not return GitHub response bodies or credentials. A success response is
+never emitted before GitHub confirms the issue or reconciliation finds the
+already-created issue. Before issue creation starts, the API records a durable,
+non-expiring reconciliation state. Retries list open repository issues and scan
+their bodies for the server marker, so a delayed GitHub result cannot trigger a
+second create after the ordinary pending-reservation TTL.
 
 ## Building the Website
 

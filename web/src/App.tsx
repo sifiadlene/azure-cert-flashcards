@@ -3,6 +3,8 @@ import DOMPurify from 'dompurify'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import { ChallengeFeature } from './challenge/ChallengeFeature'
+import { RequestExamDialog } from './examRequest/RequestExamDialog'
+import { RequestExamTrigger } from './examRequest/RequestExamTrigger'
 import type {
   DeckManifest,
   ExamDeck,
@@ -342,7 +344,9 @@ function App() {
   const [progress, setProgress] = useState<ProgressMap>({})
   const [elapsedSeconds, setElapsedSeconds] = useState(0)
   const [languageConfirmationOpen, setLanguageConfirmationOpen] = useState(false)
+  const [requestDialogOpen, setRequestDialogOpen] = useState(false)
   const languageButtonRef = useRef<HTMLDivElement>(null)
+  const requestDialogTriggerRef = useRef<HTMLButtonElement>(null)
   const questionHeadingRef = useRef<HTMLHeadingElement>(null)
   const answerFeedbackRef = useRef<HTMLDivElement>(null)
   const activeQuestionIndex = session?.questionIndex
@@ -366,6 +370,10 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme)
     window.localStorage.setItem('theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    document.documentElement.lang = currentLang
+  }, [currentLang])
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
@@ -414,6 +422,16 @@ function App() {
     window.requestAnimationFrame(() => {
       languageButtonRef.current?.querySelector<HTMLButtonElement>('.lang-toggle')?.focus()
     })
+  }
+
+  const openRequestDialog = (trigger: HTMLButtonElement) => {
+    requestDialogTriggerRef.current = trigger
+    setRequestDialogOpen(true)
+  }
+
+  const closeRequestDialog = () => {
+    setRequestDialogOpen(false)
+    window.requestAnimationFrame(() => requestDialogTriggerRef.current?.focus())
   }
 
   useEffect(() => {
@@ -729,12 +747,19 @@ function App() {
       onCancel={cancelLanguageChange}
     />
   ) : null
+  const requestDialog = requestDialogOpen
+    ? <RequestExamDialog onClose={closeRequestDialog} language={currentLang} theme={theme} />
+    : null
 
   /* ─── Setup view ─── */
   if (!session && !result) {
     return (
       <>
-        <div className={`app-shell ${experience === 'challenge' ? 'challenge-shell' : ''}`}>
+        <div
+          className={`app-shell ${experience === 'challenge' ? 'challenge-shell' : ''}`}
+          inert={requestDialogOpen}
+          aria-hidden={requestDialogOpen || undefined}
+        >
           {appHeader}
 
         <nav className="experience-switcher" aria-label={t('challenge.experienceLabel')}>
@@ -756,6 +781,7 @@ function App() {
             language={currentLang}
             prefilledCode={initialChallengeCode}
             onExitToSolo={() => setExperience('solo')}
+            onRequestExam={openRequestDialog}
           />
         ) : experience === 'challenge' ? (
           !manifestError && <div className="loading-state card" role="status">{t('setup.loadingExams')}</div>
@@ -779,6 +805,7 @@ function App() {
                 </option>
               ))}
             </select>
+            <RequestExamTrigger onOpen={openRequestDialog} />
           </div>}
 
           {selectedExam && (
@@ -916,6 +943,7 @@ function App() {
         )}
       </div>
       {languageDialog}
+      {requestDialog}
       </>
     )
   }

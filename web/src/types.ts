@@ -17,6 +17,24 @@ export interface DeckManifest {
   exams: ExamSummary[]
 }
 
+export interface ExamCatalogEntry {
+  code: string
+  title: string
+  sourceUrl: string
+  sourcePageUrl: string
+  retrievedAt: string
+}
+
+export interface ExamCatalog {
+  schemaVersion: 1
+  exams: ExamCatalogEntry[]
+}
+
+export interface SupportedExamCodes {
+  schemaVersion: 1
+  codes: string[]
+}
+
 export interface QuestionOption {
   key: 'A' | 'B' | 'C'
   label: string

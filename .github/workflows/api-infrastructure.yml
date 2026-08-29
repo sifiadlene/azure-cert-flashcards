@@ -30,6 +30,9 @@ jobs:
             api/package-lock.json
             web/package-lock.json
 
+      - name: Test exam catalog parser offline
+        run: node --test tools/exam-catalog.test.mjs
+
       - name: Install API dependencies
         working-directory: api
         run: npm ci
@@ -50,6 +53,9 @@ jobs:
         working-directory: api
         run: npm run build
 
+      - name: Validate shared exam data drift
+        run: node tools/validate-exam-data.mjs
+
       - name: Assemble Function deployment package
         run: |
           rm -rf .artifacts/function-app
@@ -59,7 +65,10 @@ jobs:
           npm ci --omit=dev --ignore-scripts --prefix .artifacts/function-app
           test -f .artifacts/function-app/host.json
           test -f .artifacts/function-app/dist/api/src/functions/challenge.js
+          test -f .artifacts/function-app/dist/api/src/functions/examRequests.js
           test -n "$(find .artifacts/function-app/data/decks -maxdepth 1 -name '*.json' -print -quit)"
+          test -f .artifacts/function-app/data/microsoft-learn-practice-assessments.json
+          test -f .artifacts/function-app/data/supported-exam-codes.json
 
       - name: Upload Function deployment package
         uses: actions/upload-artifact@v4
@@ -117,6 +126,7 @@ jobs:
       contents: read
       id-token: write
     env:
+      ALERT_ACTION_GROUP_RESOURCE_IDS_JSON: ${{ vars.AZURE_ALERT_ACTION_GROUP_RESOURCE_IDS_JSON }}
       ALLOWED_ORIGINS_JSON: ${{ vars.AZURE_ALLOWED_ORIGINS_JSON }}
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
@@ -124,6 +134,15 @@ jobs:
       AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
       AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
       CHALLENGE_TOKEN_PEPPER: ${{ secrets.CHALLENGE_TOKEN_PEPPER }}
+      EXAM_REQUEST_GITHUB_APP_ID: ${{ vars.EXAM_REQUEST_GITHUB_APP_ID }}
+      EXAM_REQUEST_GITHUB_ASSIGNEE: ${{ vars.EXAM_REQUEST_GITHUB_ASSIGNEE }}
+      EXAM_REQUEST_GITHUB_INSTALLATION_ID: ${{ vars.EXAM_REQUEST_GITHUB_INSTALLATION_ID }}
+      EXAM_REQUEST_GITHUB_OWNER: ${{ vars.EXAM_REQUEST_GITHUB_OWNER }}
+      EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64: ${{ secrets.EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64 }}
+      EXAM_REQUEST_GITHUB_REPOSITORY: ${{ vars.EXAM_REQUEST_GITHUB_REPOSITORY }}
+      EXAM_REQUEST_IP_HASH_KEY: ${{ secrets.EXAM_REQUEST_IP_HASH_KEY }}
+      EXAM_REQUEST_TURNSTILE_HOSTNAMES_JSON: ${{ vars.EXAM_REQUEST_TURNSTILE_HOSTNAMES_JSON }}
+      EXAM_REQUEST_TURNSTILE_SECRET: ${{ secrets.EXAM_REQUEST_TURNSTILE_SECRET }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -141,9 +160,24 @@ jobs:
           test -n "$AZURE_SUBSCRIPTION_ID"
           test -n "$AZURE_RESOURCE_GROUP"
           test -n "$AZURE_LOCATION"
+          test -n "$ALERT_ACTION_GROUP_RESOURCE_IDS_JSON"
           test -n "$CHALLENGE_TOKEN_PEPPER"
+          test -n "$EXAM_REQUEST_GITHUB_APP_ID"
+          test -n "$EXAM_REQUEST_GITHUB_ASSIGNEE"
+          test -n "$EXAM_REQUEST_GITHUB_INSTALLATION_ID"
+          test -n "$EXAM_REQUEST_GITHUB_OWNER"
+          test -n "$EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64"
+          test -n "$EXAM_REQUEST_GITHUB_REPOSITORY"
+          test -n "$EXAM_REQUEST_IP_HASH_KEY"
+          test -n "$EXAM_REQUEST_TURNSTILE_SECRET"
+          node -e "const ids=JSON.parse(process.env.ALERT_ACTION_GROUP_RESOURCE_IDS_JSON ?? ''); const pattern=/^\/subscriptions\/[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\/resourceGroups\/[^/]+\/providers\/Microsoft\.Insights\/actionGroups\/[^/]+$/i; if (!Array.isArray(ids) || ids.length === 0 || ids.some((id) => typeof id !== 'string' || !pattern.test(id))) process.exit(1)"
           node -e "const origins=JSON.parse(process.env.ALLOWED_ORIGINS_JSON ?? ''); if (!Array.isArray(origins) || origins.length === 0 || origins.some((origin) => typeof origin !== 'string' || !origin.startsWith('https://') || origin.includes('*'))) process.exit(1)"
           node -e "const value=Buffer.from(process.env.CHALLENGE_TOKEN_PEPPER ?? '', 'base64'); if (value.length < 32) process.exit(1)"
+          node -e "for (const name of ['EXAM_REQUEST_GITHUB_APP_ID','EXAM_REQUEST_GITHUB_INSTALLATION_ID']) if (!/^[0-9]+$/.test(process.env[name] ?? '')) process.exit(1)"
+          node -e "for (const name of ['EXAM_REQUEST_GITHUB_OWNER','EXAM_REQUEST_GITHUB_REPOSITORY','EXAM_REQUEST_GITHUB_ASSIGNEE']) if (!/^[A-Za-z0-9_.-]+$/.test(process.env[name] ?? '')) process.exit(1)"
+          node -e "const hosts=JSON.parse(process.env.EXAM_REQUEST_TURNSTILE_HOSTNAMES_JSON ?? ''); if (!Array.isArray(hosts) || hosts.length === 0 || hosts.some((host) => typeof host !== 'string' || !/^[A-Za-z0-9.-]+$/.test(host))) process.exit(1)"
+          node -e "const value=Buffer.from(process.env.EXAM_REQUEST_IP_HASH_KEY ?? '', 'base64'); if (value.length < 32 || value.toString('base64').replace(/=+$/,'') !== (process.env.EXAM_REQUEST_IP_HASH_KEY ?? '').replace(/=+$/,'')) process.exit(1)"
+          node -e "const value=Buffer.from(process.env.EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64 ?? '', 'base64').toString('utf8'); if (!value.includes('BEGIN') || !value.includes('PRIVATE KEY')) process.exit(1)"
 
       - name: Sign in to Azure with GitHub OIDC
         uses: azure/login@v2
@@ -155,19 +189,40 @@ jobs:
       - name: Build deployment parameters
         run: |
           parameters_file="$RUNNER_TEMP/prod.parameters.json"
+          echo "DEPLOYMENT_PARAMETERS_FILE=$parameters_file" >> "$GITHUB_ENV"
+          trap 'rm -f "$parameters_file" "$parameters_file.tmp"' ERR
           az bicep build-params \
             --file bicep/environments/prod.bicepparam \
             --outfile "$parameters_file"
           jq \
             --arg location "$AZURE_LOCATION" \
+            --argjson actionGroupResourceIds "$ALERT_ACTION_GROUP_RESOURCE_IDS_JSON" \
             --argjson origins "$ALLOWED_ORIGINS_JSON" \
             --arg pepper "$CHALLENGE_TOKEN_PEPPER" \
+            --arg appId "$EXAM_REQUEST_GITHUB_APP_ID" \
+            --arg assignee "$EXAM_REQUEST_GITHUB_ASSIGNEE" \
+            --arg installationId "$EXAM_REQUEST_GITHUB_INSTALLATION_ID" \
+            --arg owner "$EXAM_REQUEST_GITHUB_OWNER" \
+            --arg privateKey "$EXAM_REQUEST_GITHUB_PRIVATE_KEY_BASE64" \
+            --arg repository "$EXAM_REQUEST_GITHUB_REPOSITORY" \
+            --arg ipHashKey "$EXAM_REQUEST_IP_HASH_KEY" \
+            --argjson turnstileHostnames "$EXAM_REQUEST_TURNSTILE_HOSTNAMES_JSON" \
+            --arg turnstileSecret "$EXAM_REQUEST_TURNSTILE_SECRET" \
             '.parameters.location.value = $location
+              | .parameters.alertActionGroupResourceIds.value = $actionGroupResourceIds
               | .parameters.allowedOrigins.value = $origins
-              | .parameters.challengeTokenPepper.value = $pepper' \
+              | .parameters.challengeTokenPepper.value = $pepper
+              | .parameters.examRequestGitHubAppId.value = $appId
+              | .parameters.examRequestGitHubAssignee.value = $assignee
+              | .parameters.examRequestGitHubInstallationId.value = $installationId
+              | .parameters.examRequestGitHubOwner.value = $owner
+              | .parameters.examRequestGitHubPrivateKeyBase64.value = $privateKey
+              | .parameters.examRequestGitHubRepository.value = $repository
+              | .parameters.examRequestIpHashKey.value = $ipHashKey
+              | .parameters.examRequestTurnstileHostnames.value = $turnstileHostnames
+              | .parameters.examRequestTurnstileSecret.value = $turnstileSecret' \
             "$parameters_file" > "$parameters_file.tmp"
           mv "$parameters_file.tmp" "$parameters_file"
-          echo "DEPLOYMENT_PARAMETERS_FILE=$parameters_file" >> "$GITHUB_ENV"
 
       - name: Validate infrastructure deployment
         run: |
@@ -208,4 +263,7 @@ jobs:
 
       - name: Remove generated secret parameters
         if: always()
-        run: rm -f "$DEPLOYMENT_PARAMETERS_FILE"
+        run: |
+          if [ -n "${DEPLOYMENT_PARAMETERS_FILE:-}" ]; then
+            rm -f "$DEPLOYMENT_PARAMETERS_FILE" "$DEPLOYMENT_PARAMETERS_FILE.tmp"
+          fi

@@ -22,6 +22,7 @@ interface ChallengeFeatureProps {
   language: 'en' | 'fr'
   prefilledCode: string
   onExitToSolo: () => void
+  onRequestExam: (trigger: HTMLButtonElement) => void
 }
 
 const defaultHost: HostSetupValue = {
@@ -73,7 +74,7 @@ async function loadLocalizedDeck(examSlug: string, language: 'en' | 'fr'): Promi
   throw new Error('deck-unavailable')
 }
 
-export function ChallengeFeature({ manifest, language, prefilledCode, onExitToSolo }: ChallengeFeatureProps) {
+export function ChallengeFeature({ manifest, language, prefilledCode, onExitToSolo, onRequestExam }: ChallengeFeatureProps) {
   const { t } = useTranslation()
   const api = useMemo(() => new ChallengeApiClient(), [])
   const [state, dispatch] = useReducer(challengeReducer, initialChallengeState)
@@ -336,6 +337,7 @@ export function ChallengeFeature({ manifest, language, prefilledCode, onExitToSo
       onJoinNicknameChange={setJoinNickname}
       onCreate={() => { void createRoom() }}
       onJoin={() => { void joinRoom() }}
+      onRequestExam={onRequestExam}
     />}
 
     {shared && phase?.kind === 'lobby' && <ChallengeLobbyView {...shared} onStart={() => { void runCommand((version) => api.start(shared.capability, version)) }} />}
