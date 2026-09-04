@@ -13,6 +13,6 @@ describe('API runtime exam catalog', () => {
       code: 'AI-901',
       title: 'Microsoft Azure AI Fundamentals',
     })
-    expect(catalog.requestableExams()).toHaveLength(37)
+    expect(catalog.requestableExams()).toHaveLength(36)
   })
 })
