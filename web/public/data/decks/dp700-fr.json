@@ -1,0 +1,3081 @@
+{
+  "exam": {
+    "slug": "dp700",
+    "code": "DP-700",
+    "title": "Mise en œuvre de solutions d’ingénierie des données avec Microsoft Fabric",
+    "sourceFile": "dp700_flashcards_2026-09-04.csv",
+    "deckVersion": "2026-09-04",
+    "updatedOn": "2026-09-04",
+    "questionCount": 100,
+    "domains": [
+      "ImplementManage",
+      "IngestTransform",
+      "MonitorOptimize"
+    ],
+    "topics": [
+      "AirflowWorkspaceSettings",
+      "AuditLogs",
+      "ChooseDataStore",
+      "ColumnLevelSecurity",
+      "ConfigureAlerts",
+      "DataQuality",
+      "DatabaseProjects",
+      "DenormalizeAggregate",
+      "DeploymentPipelines",
+      "DimensionalModel",
+      "DomainWorkspaceSettings",
+      "DuplicateData",
+      "DynamicDataMasking",
+      "Endorsement",
+      "EventBasedTriggers",
+      "Eventstreams",
+      "GroupAndAggregate",
+      "IncrementalLoads",
+      "IngestWithPipelines",
+      "ItemLevelAccessControls",
+      "LateArrivingData",
+      "LoadingPatterns",
+      "Mirroring",
+      "MissingData",
+      "MonitorDataIngestion",
+      "MonitorDataTransformation",
+      "MonitorItems",
+      "NativeVsShortcut",
+      "OneLakeSecurity",
+      "OneLakeWorkspaceSettings",
+      "OptimizeEventhouses",
+      "OptimizeEventstreams",
+      "OptimizeLakehouseTable",
+      "OptimizePipeline",
+      "OptimizeQuery",
+      "OptimizeSpark",
+      "OptimizeWarehouse",
+      "OrchestrationChoice",
+      "OrchestrationParameters",
+      "OrchestrationPatterns",
+      "QueryAcceleration",
+      "ResolveDataflowErrors",
+      "ResolveEventhouseErrors",
+      "ResolveEventstreamErrors",
+      "ResolveNotebookErrors",
+      "ResolvePipelineErrors",
+      "ResolveShortcutErrors",
+      "ResolveTSQLErrors",
+      "RowLevelSecurity",
+      "SemanticModelRefresh",
+      "SensitivityLabels",
+      "Shortcuts",
+      "SparkWorkspaceSettings",
+      "StreamingEngine",
+      "StreamingLoadingPattern",
+      "TransformKQL",
+      "TransformPySpark",
+      "TransformationChoice",
+      "VersionControl",
+      "WindowingFunctions",
+      "WorkspaceAccessControls"
+    ]
+  },
+  "questions": [
+    {
+      "id": "dp700-4efb3d395dfd",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "SparkWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "SparkWorkspaceSettings"
+      ],
+      "promptHtml": "Un espace de travail Fabric exécute de nombreux petits travaux de notebook, et l’équipe souhaite que chaque session commence en quelques secondes sans attendre le provisionnement du cluster. Sur quel paramètre d’espace de travail Spark devriez-vous vous appuyer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Désactivez le pool de démarrage et forcez chaque tâche à lancer un pool personnalisé neuf par charge de travail"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez la piscine de départ, qui garde les grappes d’étincelles préchauffées prêtes pour que les sessions commencent presque immédiatement"
+        },
+        {
+          "key": "C",
+          "label": "Augmentez le nombre de nœuds du pool personnalisé au maximum pour que les départs à froid se terminent plus rapidement pendant les heures de pointe"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Utilisez la piscine de départ, qui garde les grappes d’étincelles préchauffées prêtes pour que les sessions commencent presque immédiatement",
+      "rationaleHtml": "Les pools de démarrage sont des clusters Spark pré-hydratés et toujours prêts qui offrent un démarrage quasi instantané pour les petits travaux ou les travaux rapides.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/configure-starter-pools\">Configurer les pools de démarrage - Microsoft Fabric</a>",
+      "extraHtml": "Les pools personnalisés ont un délai de démarrage à froid car les nœuds sont alloués à la demande ; ils échangent le démarrage rapide contre l’isolation et une dimensionnement spécifique. Les pools personnalisés plus grands ne suppriment pas l’attente de provisionnement. Utilisez les pools de démarrage pour un travail interactif rapide, les pools personnalisés pour des tâches contrôlées et prévisibles de grande taille."
+    },
+    {
+      "id": "dp700-252e21355a2c",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DomainWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DomainWorkspaceSettings"
+      ],
+      "promptHtml": "Vous devez regrouper plusieurs espaces de travail Fabric liés afin qu’un responsable des données puisse les gouverner ensemble et déléguer l’administration sans être un administrateur locataire. Que devriez-vous configurer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un grand espace de travail unique contenant chaque élément afin qu’un propriétaire contrôle centralement tous les actifs de données"
+        },
+        {
+          "key": "B",
+          "label": "Une attribution de capacité qui lie les espaces de travail à un seul SKU et applique ainsi des règles de gouvernance partagée"
+        },
+        {
+          "key": "C",
+          "label": "Un domaine Fabric qui regroupe logiquement les espaces de travail et vous permet d’assigner des administrateurs de domaine et des contributeurs"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un domaine Fabric qui regroupe logiquement les espaces de travail et vous permet d’assigner des administrateurs de domaine et des contributeurs",
+      "rationaleHtml": "Les domaines regroupent les espaces de travail par zone d’activité et permettent une gouvernance déléguée via les administrateurs et contributeurs de domaine, ainsi que des paramètres à portée de domaine.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/governance/domains\">Domaines Fabric - Microsoft Fabric</a>",
+      "extraHtml": "Les capacités contrôlent l’allocation de calcul, pas la délégation de gouvernance. Réduire tout en un seul espace de travail brise l’isolement et le moindre privilège. Les domaines sont la couche de regroupement de gouvernance au-dessus des espaces de travail."
+    },
+    {
+      "id": "dp700-2f3f369a7b07",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OneLakeWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OneLakeWorkspaceSettings"
+      ],
+      "promptHtml": "Un administrateur d’espace de travail veut que tous les nouveaux éléments dans l’espace de travail soient par défaut à un format de stockage de données spécifique et contrôle qui peut créer des raccourcis OneLake. Quelle zone de paramètres s’applique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Paramètres de capacité, car le comportement OneLake est défini au niveau du SKU pour l’ensemble du locataire"
+        },
+        {
+          "key": "B",
+          "label": "Les paramètres de l’espace de travail OneLake, où l’accès OneLake et le comportement de création de raccourcis pour l’espace de travail sont gérés"
+        },
+        {
+          "key": "C",
+          "label": "Paramètres du pipeline de déploiement, puisque c’est la promotion des éléments qui régissent les paramètres par défaut de stockage OneLake"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Les paramètres de l’espace de travail OneLake, où l’accès OneLake et le comportement de création de raccourcis pour l’espace de travail sont gérés",
+      "rationaleHtml": "Les paramètres de l’espace de travail OneLake contrôlent l’accès à OneLake, notamment la possibilité pour les utilisateurs de créer des raccourcis et la manière dont l’espace de travail interagit avec OneLake.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/onelake-security\">Aperçu de la sécurité OneLake - Microsoft Fabric</a>",
+      "extraHtml": "Les paramètres de capacité régissent le calcul, pas l’accès OneLake par espace de travail. Les pipelines de déploiement déplacent le contenu entre les étapes et ne sont pas liés aux paramètres de stockage par défaut. Associez le réglage à la bonne portée : les contrôles OneLake au niveau de l’espace de travail sont en cours dans les paramètres de l’espace de travail."
+    },
+    {
+      "id": "dp700-17b482c1a042",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "AirflowWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "AirflowWorkspaceSettings"
+      ],
+      "promptHtml": "Votre équipe souhaite créer des DAG complexes d’orchestration de données basés sur du code en Fabric en utilisant Python et des opérateurs existants issus de l’écosystème open source. Quelle capacité d’espace de travail devriez-vous activer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les pipelines de données, qui fournissent un canvas glisser-déposer low-code mais pas d’authoring DAG en Python"
+        },
+        {
+          "key": "B",
+          "label": "Dataflow Gen2, qui propose des transformations Power Query plutôt que l’orchestration programmatique DAG"
+        },
+        {
+          "key": "C",
+          "label": "Apache Airflow, qui permet de créer des DAG en Python avec des opérateurs communautaires"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Apache Airflow, qui permet de créer des DAG en Python avec des opérateurs communautaires",
+      "rationaleHtml": "Les jobs Apache Airflow dans Fabric exécutent Airflow managé, ce qui permet de définir l’orchestration comme des DAG Python et de réutiliser l’écosystème opérateur Airflow.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-concepts\">Emplois Apache Airflow - Microsoft Fabric</a>",
+      "extraHtml": "Les pipelines de données sont l’orchestrateur natif low-code ; Dataflow Gen2 est destinée à la transformation, pas à l’orchestration. Choisissez Airflow lorsque vous avez besoin de DAGs en premier de code, de génération dynamique de tâches ou de portabilité à partir des déploiements Airflow existants."
+    },
+    {
+      "id": "dp700-83225285b6e1",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "VersionControl",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "VersionControl"
+      ],
+      "promptHtml": "Une équipe d’ingénierie des données souhaite le contrôle de version des notebooks et des pipelines afin que les modifications soient examinées via pull requests avant d’atteindre l’espace de travail partagé. Que devriez-vous mettre en œuvre en premier ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pipelines de déploiement pour promouvoir automatiquement les éléments du développement à la production à chaque sortie"
+        },
+        {
+          "key": "B",
+          "label": "Intégration Git qui relie l’espace de travail à une branche de dépôt Azure DevOps ou GitHub"
+        },
+        {
+          "key": "C",
+          "label": "Exportation manuelle des définitions d’éléments vers un partage de fichiers que les coéquipiers copient avant chaque version"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Intégration Git qui relie l’espace de travail à une branche de dépôt Azure DevOps ou GitHub",
+      "rationaleHtml": "L’intégration Fabric Git synchronise les éléments supportés dans une branche de dépôt, permettant le versionnage, le branchement et la revue des pull requests.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/cicd/git-integration/intro-to-git-integration\">Introduction à l’intégration Git - Microsoft Fabric</a>",
+      "extraHtml": "Les pipelines de déploiement gèrent la promotion étape à étape mais ne sont pas eux-mêmes contrôlés par la version ; ils complètent Git. Les exportations manuelles de fichiers manquent d’historique, de revue et de gestion des conflits. L’intégration Git est la base du contrôle de version Fabric."
+    },
+    {
+      "id": "dp700-5d8b303a1d72",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DatabaseProjects",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DatabaseProjects"
+      ],
+      "promptHtml": "Vous devez gérer un schéma d’entrepôt Fabric comme du code, avec validation de build et la possibilité de publier des modifications incrémentales de schéma dans plusieurs environnements. Quelle approche vous convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un script T-SQL unique s’exécute manuellement en production chaque fois qu’une définition de table doit changer"
+        },
+        {
+          "key": "B",
+          "label": "Un Dataflow Gen2 qui recrée toutes les tables à chaque exécution pour garder le schéma parfaitement synchronisé"
+        },
+        {
+          "key": "C",
+          "label": "Un projet de base de données SQL (projet SQL) qui capture le schéma de manière déclarative et publie les diffs"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un projet de base de données SQL (projet SQL) qui capture le schéma de manière déclarative et publie les diffs",
+      "rationaleHtml": "Les projets de bases de données SQL définissent le schéma souhaité de manière déclarative ; l’opération de publication calcule et applique le delta, prenant en charge le CI/CD à travers les environnements.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/sql-database-projects\">Projets de bases de données SQL - Microsoft Fabric</a>",
+      "extraHtml": "Les scripts ad hoc manuels dérivent et manquent de validation. Les flux de données servent au mouvement/transformation des données, pas à la gestion de schéma, et recréer des tables détruit les données. Les projets de bases de données offrent des déploiements de schémas reproductibles et réexaminés."
+    },
+    {
+      "id": "dp700-f7a08c7f99f7",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DeploymentPipelines",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DeploymentPipelines"
+      ],
+      "promptHtml": "Un pipeline de déploiement promeut un modèle sémantique de Test à Production, mais Production doit pointer vers une connexion Lakehouse différente de Test. Comment gérez-vous cela de manière propre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez les règles de déploiement sur l’étape de production pour écraser la connexion de la source de données pendant le déploiement"
+        },
+        {
+          "key": "B",
+          "label": "Dupliquez manuellement le modèle sémantique en Production et repointez-le après chaque déploiement"
+        },
+        {
+          "key": "C",
+          "label": "Stockez les deux chaînes de connexion dans le modèle et laissez-le sélectionner aléatoirement une chaîne de requête par session"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez les règles de déploiement sur l’étape de production pour écraser la connexion de la source de données pendant le déploiement",
+      "rationaleHtml": "Les règles de déploiement permettent à chaque étape de passer outre des paramètres tels que les connexions aux sources de données, afin que les éléments promus se lient aux sources adaptées à l’environnement.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/create-rules\">Créer des règles de déploiement - Microsoft Fabric</a>",
+      "extraHtml": "La duplication manuelle va à l’encontre de l’objectif des pipelines et invite à la dérive. Stocker plusieurs connexions avec sélection aléatoire n’est pas une fonctionnalité réelle et est dangereux. Les règles de déploiement sont la méthode prise en charge pour paramétrer par étape."
+    },
+    {
+      "id": "dp700-9b5553df73ca",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "WorkspaceAccessControls",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "WorkspaceAccessControls"
+      ],
+      "promptHtml": "Un utilisateur devrait pouvoir consulter et exécuter des rapports dans un espace de travail, mais ne doit pas modifier, publier des éléments ni gérer les permissions. Quelle attribution de rôle d’espace de travail est correcte ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Contributeur, qui permet de créer et d’éditer des éléments en plus de consulter le contenu existant"
+        },
+        {
+          "key": "B",
+          "label": "Member, qui peut modifier des éléments et ajouter d’autres utilisateurs à l’espace de travail avec des rôles inférieurs"
+        },
+        {
+          "key": "C",
+          "label": "Viewer, qui accorde l’accès à la lecture et à la consommation sans droits de gestion d’édition, de publication ou de partage"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Viewer, qui accorde l’accès à la lecture et à la consommation sans droits de gestion d’édition, de publication ou de partage",
+      "rationaleHtml": "Le rôle de Spectateur offre un accès en lecture seule pour visualiser et interagir avec le contenu tout en bloquant les modifications de l’auteur et des permissions.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces\">Rôles dans les espaces de travail - Microsoft Fabric</a>",
+      "extraHtml": "Le contributeur peut créer/modifier des éléments ; Le membre ajoute des personnes et modifie ; L’administrateur a le contrôle total. Attribuer le rôle le moins privilégié qui remplit toujours l’exigence (Visualiseur) suit le privilège le minimum."
+    },
+    {
+      "id": "dp700-3b14c5a3f7a8",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "RowLevelSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "RowLevelSecurity"
+      ],
+      "promptHtml": "Dans un Fabric Lakehouse, les analystes de différentes régions doivent chacun ne voir que les lignes de leur propre région lorsqu’ils interrogent la même table endpoint SQL analytics. Quel contrôle devriez-vous implémenter ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sécurité au niveau de la colonne pour masquer la colonne régionale afin que les utilisateurs ne puissent pas filtrer par régions qui ne leur appartiennent pas"
+        },
+        {
+          "key": "B",
+          "label": "Sécurité au niveau des lignes avec des prédicats de sécurité filtrant les lignes en fonction de l’identité de l’utilisateur interrogé"
+        },
+        {
+          "key": "C",
+          "label": "Sécurité au niveau objet qui retire toute la table des utilisateurs en dehors de la région correspondante"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Sécurité au niveau des lignes avec des prédicats de sécurité filtrant les lignes en fonction de l’identité de l’utilisateur interrogé",
+      "rationaleHtml": "La sécurité au niveau des lignes utilise des fonctions de prédicat liées au contexte utilisateur pour restreindre les lignes retournées, permettant ainsi un filtrage par région sur une table partagée.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/row-level-security\">Sécurité au niveau des lignes - Microsoft Fabric</a>",
+      "extraHtml": "La sécurité au niveau de la colonne masque les colonnes, pas les lignes. La sécurité au niveau objet masque des objets entiers, ce qui bloquerait un accès légitime. RLS est le mécanisme de filtrage à portée de ligne."
+    },
+    {
+      "id": "dp700-9fbb10f496ca",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "ColumnLevelSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "ColumnLevelSecurity"
+      ],
+      "promptHtml": "Une table d’entrepôt contient une colonne Salaire que seuls les RH devraient voir, tandis que tous les autres interrogent librement les autres colonnes. Quel est le contrôle le plus précis ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sécurité au niveau des lignes pour que les utilisateurs non-RH reçoivent moins de lignes de la table des employés lors des requêtes"
+        },
+        {
+          "key": "B",
+          "label": "Sécurité au niveau de la colonne qui refuse SELECT dans la colonne Salaire uniquement pour les principaux responsables non-RH"
+        },
+        {
+          "key": "C",
+          "label": "Masquage dynamique des données qui affiche une valeur masquée fixe du salaire à chaque utilisateur en permanence"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Sécurité au niveau de la colonne qui refuse SELECT dans la colonne Salaire uniquement pour les principaux responsables non-RH",
+      "rationaleHtml": "La sécurité au niveau de la colonne accorde ou refuse l’accès à certaines colonnes, permettant aux RH de lire le salaire tandis que les autres utilisateurs sont bloqués uniquement sur cette colonne.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/column-level-security\">Sécurité au niveau des colonnes - Microsoft Fabric</a>",
+      "extraHtml": "RLS filtre les lignes, pas les colonnes. Le masquage dynamique des données masque les valeurs des résultats mais ne fait pas respecter l’autorisation et peut être contourné par les utilisateurs privilégiés ; CLS refuse en fait l’accès. Utilisez CLS pour bloquer complètement une colonne sensible."
+    },
+    {
+      "id": "dp700-86ba72a37f9c",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DynamicDataMasking",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DynamicDataMasking"
+      ],
+      "promptHtml": "Le personnel support doit ne voir les adresses e-mail des clients que comme ab***@***.com dans les résultats des requêtes, mais la valeur stockée sous-jacente doit rester inchangée pour les processus autorisés. Quelle fonctionnalité convient le mieux ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sécurité au niveau des colonnes, qui bloque complètement la colonne d’email afin que le support ne puisse pas la interroger du tout"
+        },
+        {
+          "key": "B",
+          "label": "Le chiffrement au repos, qui protège les octets stockés mais renvoie l’e-mail réel dans les résultats de la requête"
+        },
+        {
+          "key": "C",
+          "label": "Le masquage dynamique des données, qui obscurcit les valeurs au moment de la requête pour les utilisateurs non privilégiés sans modifier le stockage"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Le masquage dynamique des données, qui obscurcit les valeurs au moment de la requête pour les utilisateurs non privilégiés sans modifier le stockage",
+      "rationaleHtml": "Le masquage dynamique des données applique des règles de masquage aux résultats pour les utilisateurs non privilégiés tandis que les données réelles restent intactes pour ceux qui ont un masque démuni.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/dynamic-data-masking\">Masquage dynamique des données - Microsoft Fabric</a>",
+      "extraHtml": "CLS bloquerait entièrement la colonne, mais l’exigence est une visibilité partielle. Le chiffrement au repos protège le stockage, pas la visibilité au moment de la requête. DDM est le contrôle de masquage de la couche de présentation."
+    },
+    {
+      "id": "dp700-32f351e65c90",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "Endorsement",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "Endorsement"
+      ],
+      "promptHtml": "Votre équipe de gouvernance souhaite des ensembles de données fiables et contrôlés par la qualité, clairement indiqués afin que les consommateurs sachent quels éléments sont officiellement bénis par l’organisation. Que devraient appliquer les propriétaires de données ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une étiquette de sensibilité telle que Confidentiel pour communiquer que le jeu de données est fiable et à jour"
+        },
+        {
+          "key": "B",
+          "label": "Une approbation promoutée uniquement, car la certification exige que chaque consommateur l’approuve individuellement"
+        },
+        {
+          "key": "C",
+          "label": "Une recommandation de Certifié, qui marque l’article comme officiellement examiné et recommandé pour usage"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une recommandation de Certifié, qui marque l’article comme officiellement examiné et recommandé pour usage",
+      "rationaleHtml": "L’endossement certifié marque qu’un article répond aux normes de qualité organisationnelle ; il est appliqué par des évaluateurs autorisés, contrairement à Promoted en libre-service.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/governance/endorsement-overview\">Aperçu des recommandations - Microsoft Fabric</a>",
+      "extraHtml": "Les étiquettes de sensibilité transmettent la classification des données, pas la confiance/la qualité. Promou est un signal plus léger et en libre-service que tout contributeur peut définir ; Certifié est contrôlé par des évaluateurs désignés. Certifié est le signal de confiance le plus fort."
+    },
+    {
+      "id": "dp700-15208adc19ba",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "SensitivityLabels",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "SensitivityLabels"
+      ],
+      "promptHtml": "Une organisation a besoin que le contenu Fabric soit classifié pour la confidentialité, avec une protection qui persiste lorsque les données sont exportées vers Excel ou PDF. Quelle capacité offre cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les badges d’endossement qui marquent les éléments comme Certifiés afin que les exportations en aval héritent automatiquement du chiffrement"
+        },
+        {
+          "key": "B",
+          "label": "Étiquettes de sensibilité de Microsoft Purview qui classifient les articles et appliquent la protection sur les exportations"
+        },
+        {
+          "key": "C",
+          "label": "Rôles de visualiseur d’espace de travail qui empêchent tout téléchargement et rendent donc la classification inutile"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Étiquettes de sensibilité de Microsoft Purview qui classifient les articles et appliquent la protection sur les exportations",
+      "rationaleHtml": "Les étiquettes de sensibilité Purview Information Protection classifient les éléments Fabric et contiennent la protection (chiffrement, droits d’utilisation) dans les fichiers exportés pris en charge.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/governance/information-protection\">Protection de l’information dans Fabric - Microsoft Fabric</a>",
+      "extraHtml": "L’endossement communique la confiance, pas la confidentialité ou la protection à l’exportation. Les rôles de spectateur limitent les actions dans le produit mais ne classifient ni ne protègent les fichiers exportés. Les étiquettes de sensibilité assurent une classification et une protection persistantes."
+    },
+    {
+      "id": "dp700-8b383ea9550a",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "AuditLogs",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "AuditLogs"
+      ],
+      "promptHtml": "Un agent de sécurité doit examiner qui a accédé, exporté ou partagé des articles Fabric à travers le locataire au cours des 30 derniers jours pour une enquête de conformité. Où doit-il se tourner ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "La vue de la ligne de travail de l’espace de travail, qui montre les dépendances des éléments mais pas l’activité d’accès utilisateur au fil du temps"
+        },
+        {
+          "key": "B",
+          "label": "Les journaux d’audit Fabric/Microsoft 365, qui enregistrent les activités des utilisateurs et des administrateurs telles que l’accès et le partage"
+        },
+        {
+          "key": "C",
+          "label": "L’application de métriques de capacité, qui rapporte la consommation de calcul plutôt que les événements d’accès liés à la sécurité"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Les journaux d’audit Fabric/Microsoft 365, qui enregistrent les activités des utilisateurs et des administrateurs telles que l’accès et le partage",
+      "rationaleHtml": "Les activités Fabric s’intègrent dans le journal d’audit unifié, vous permettant de rechercher l’accédre, d’exporter et de partager des événements pour les enquêtes de conformité.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/admin/track-user-activities\">Suivre les activités des utilisateurs - Microsoft Fabric</a>",
+      "extraHtml": "La lignée montre les relations, pas qui a fait quoi. L’application de métriques de capacité sert à la performance/consommation. Les journaux d’audit sont la source faisant autorité pour le suivi des activités de sécurité et de conformité."
+    },
+    {
+      "id": "dp700-c2facb8aa321",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OneLakeSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OneLakeSecurity"
+      ],
+      "promptHtml": "Vous devez restreindre l’accès à des dossiers et fichiers spécifiques à l’intérieur d’un Lakehouse dans OneLake afin qu’une seule équipe puisse lire un sous-dossier sensible, indépendamment des rôles de l’espace de travail. Que devriez-vous configurer ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rôle d’administrateur d’espace de travail pour l’équipe, afin qu’ils héritent de l’accès uniquement au sous-dossier sensible spécifique"
+        },
+        {
+          "key": "B",
+          "label": "Une capacité distincte pour le sous-dossier afin d’isoler le calcul limite implicitement qui peut le lire"
+        },
+        {
+          "key": "C",
+          "label": "Des rôles d’accès aux données OneLake (OneLake security) accordent des permissions au niveau dossier et fichier dans l’élément"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Des rôles d’accès aux données OneLake (OneLake security) accordent des permissions au niveau dossier et fichier dans l’élément",
+      "rationaleHtml": "La sécurité OneLake vous permet de définir des rôles d’accès aux données répartis par des dossiers et fichiers, fournissant une autorisation granulaire au-delà des rôles d’espace de travail.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/security/get-started-security\">Débutez avec la sécurité OneLake - Microsoft Fabric</a>",
+      "extraHtml": "Workspace Admin accorde un accès large, violant le privilège minimum. Les capacités isolent le calcul, pas l’autorisation des données. Les rôles d’accès aux données OneLake fournissent le contrôle au niveau des dossiers ou fichiers requis."
+    },
+    {
+      "id": "dp700-45bff174d9de",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationPatterns",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationPatterns"
+      ],
+      "promptHtml": "Un pipeline doit exécuter trois activités en parallèle, et ce n’est qu’après que les trois soient terminées avec succès qu’une quatrième activité de notebook devrait commencer. Quel construct d’orchestration y parvient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Relier les trois activités parallèles au carnet avec des contraintes de préséance Sur le succès convergeant vers lui"
+        },
+        {
+          "key": "B",
+          "label": "Enchaînez les quatre activités séquentiellement avec des dépendances On de réussite afin que l’ordre soit strictement linéaire"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez une seule boucle ForEach sur les quatre activités afin que l’exécution décide de l’ordre d’exécution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Relier les trois activités parallèles au carnet avec des contraintes de préséance Sur le succès convergeant vers lui",
+      "rationaleHtml": "Plusieurs activités en amont peuvent pointer vers une activité en aval ; avec les contraintes On succès, la sortie en aval ne s’exécute qu’après que tous les prédécesseurs aient réussi.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/activity-overview\">Activités de pipeline - Microsoft Fabric</a>",
+      "extraHtml": "Le chaînage séquentiel supprime le parallélisme requis. ForEach itère une collection et ne modélise pas les dépendances fan-in. Les contraintes de succès convergentes implémentent le fan-out puis rejoind."
+    },
+    {
+      "id": "dp700-74f6daeddd1b",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationChoice",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationChoice"
+      ],
+      "promptHtml": "Une équipe a besoin d’un moyen low-code et en libre-service pour nettoyer et remodeler les données provenant de nombreuses sources en utilisant une expérience Power Query familière, ce qui donne lieu à un Lakehouse. Quel article Fabric est le plus approprié ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un Dataflow Gen2, qui propose des transformations basées sur Power Query avec des destinations de sortie comme Lakehouse"
+        },
+        {
+          "key": "B",
+          "label": "Un carnet, car le code Spark offre le chemin le plus rapide possible pour les transformations citoyen-analyste"
+        },
+        {
+          "key": "C",
+          "label": "Un ensemble de requêtes KQL, puisque KQL est le langage standard pour remodeler les données relationnelles par lots dans Fabric"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un Dataflow Gen2, qui propose des transformations basées sur Power Query avec des destinations de sortie comme Lakehouse",
+      "rationaleHtml": "Dataflow Gen2 propose une interface Power Query low-code avec de nombreux connecteurs et des destinations de sortie configurables, idéale pour l’ETL en libre-service.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-overview\">Aperçu de Dataflow Gen2 - Microsoft Fabric</a>",
+      "extraHtml": "Les notebooks sont puissants mais axés sur le code, pas idéaux pour les analystes citoyens. KQL vise la télémétrie/analyse de journaux dans Eventhouse, pas la reconfiguration générale de Power Query. Dataflow Gen2 correspond à l’exigence low-code."
+    },
+    {
+      "id": "dp700-e92523c56f91",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "EventBasedTriggers",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "EventBasedTriggers"
+      ],
+      "promptHtml": "Un pipeline devrait se déclencher automatiquement chaque fois qu’un nouveau fichier atterrit sur un chemin ADLS Gen2 spécifique, plutôt que sur un calendrier d’horloge fixe. Quel type de déclenchement configurez-vous ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un déclencheur programmé est configuré pour interroger le dossier chaque minute et copier les fichiers qu’il trouve"
+        },
+        {
+          "key": "B",
+          "label": "Un déclencheur d’événement de stockage qui déclenche le pipeline en réponse aux événements créés par des blobs sur le chemin"
+        },
+        {
+          "key": "C",
+          "label": "Un déclencheur de fenêtre à roulement qui traite des tranches de temps historiques fixes indépendamment de l’arrivée des fichiers"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un déclencheur d’événement de stockage qui déclenche le pipeline en réponse aux événements créés par des blobs sur le chemin",
+      "rationaleHtml": "Les déclencheurs d’événements de stockage s’abonnent aux événements créés/supprimés par le blob, lançant le pipeline immédiatement à l’arrivée des fichiers correspondants.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/pipeline-storage-event-triggers\">Déclencheurs d’événements de stockage - Microsoft Fabric</a>",
+      "extraHtml": "Le sondage programmé ajoute de la latence et des exécutions perdues. Les déclencheurs de fenêtres de chute sont basés sur la tranche de temps, pas sur l’arrivée de fichiers. Les déclencheurs basés sur les événements réagissent en temps réel aux nouvelles données."
+    },
+    {
+      "id": "dp700-12fa1892d2a9",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationParameters",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationParameters"
+      ],
+      "promptHtml": "Vous voulez qu’une seule définition de pipeline charge 20 tables, en passant chaque nom de table à l’exécution au lieu de copier le pipeline 20 fois. Quelle technique devriez-vous utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Utilisez des paramètres de pipeline avec une activité ForEach qui itère une liste de tableaux et transmet des expressions dynamiques"
+        },
+        {
+          "key": "B",
+          "label": "Codez en dur 20 activités de copie, une par tableau, pour garder chaque correspondance explicite et facile à lire"
+        },
+        {
+          "key": "C",
+          "label": "Créer 20 pipelines distincts et les planifier tous de façon à ce que chaque table ait sa propre définition isolée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Utilisez des paramètres de pipeline avec une activité ForEach qui itère une liste de tableaux et transmet des expressions dynamiques",
+      "rationaleHtml": "Paramétrer le pipeline et boucler avec ForEach sur une liste pilotée par les métadonnées rend la charge réutilisable et maintenable pour de nombreuses tables.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/parameters\">paramètres et expressions dynamiques - Microsoft Fabric</a>",
+      "extraHtml": "Le codage ou la duplication en dur des pipelines multiplie la maintenance et les erreurs. ForEach piloté par métadonnées avec des paramètres est le modèle standard d’orchestration évolutif."
+    },
+    {
+      "id": "dp700-58e60cd4e8b6",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DeploymentPipelines",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DeploymentPipelines"
+      ],
+      "promptHtml": "Avant de promouvoir du contenu avec un pipeline de déploiement, vous devez confirmer précisément quels éléments diffèrent entre les phases de développement et de test. Que fournit le pipeline ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un différentiel de données complet qui compare chaque ligne de chaque table afin de valider les valeurs transformées"
+        },
+        {
+          "key": "B",
+          "label": "Une vue git blame qui attribue chaque changement de métadonnées au développeur spécifique qui l’a créé"
+        },
+        {
+          "key": "C",
+          "label": "Une comparaison des niveaux qui met en lumière les éléments nouveaux, modifiés ou identiques entre deux niveaux"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une comparaison des niveaux qui met en lumière les éléments nouveaux, modifiés ou identiques entre deux niveaux",
+      "rationaleHtml": "Les pipelines de déploiement affichent des indicateurs de comparaison au niveau des items (différents, nouveaux, identiques) afin que vous sachiez ce qu’un déploiement va changer avant de l’exécuter.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Comprendre le processus de déploiement - Microsoft Fabric</a>",
+      "extraHtml": "Les pipelines comparent les métadonnées des éléments, pas les données au niveau des lignes. Git Blame est une fonctionnalité de contrôle source, pas une partie des pipelines de déploiement. La comparaison des étapes est la vérification de sécurité avant le déploiement."
+    },
+    {
+      "id": "dp700-e7318cb7a349",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "VersionControl",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "VersionControl"
+      ],
+      "promptHtml": "Une équipe pratique le développement basé sur le trunk et a besoin que chaque ingénieur travaille sur des changements isolés dans Fabric avant la fusion. Quel workflow d’intégration Git supporte cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Tout le monde connecte le même espace de travail à la branche principale et modifie directement les éléments dans la branche principale partagée"
+        },
+        {
+          "key": "B",
+          "label": "Chaque ingénieur connecte un espace de travail à une branche de fonctionnalités, envoie des commits de modifications, puis ouvre une pull request vers le principal"
+        },
+        {
+          "key": "C",
+          "label": "Les ingénieurs exportent les éléments vers des fichiers locaux et les envagent par email à un responsable qui applique les modifications en production"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Chaque ingénieur connecte un espace de travail à une branche de fonctionnalités, envoie des commits de modifications, puis ouvre une pull request vers le principal",
+      "rationaleHtml": "Le branchement par fonctionnalité avec la correspondance workspace-to-branch permet un développement isolé et une révision basée sur la PR avant la fusion vers la branche principale.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/cicd/git-integration/manage-branches\">Gérer les branches - Microsoft Fabric</a>",
+      "extraHtml": "Modifier le principal partagé supprime directement l’isolement et la révision. Les flux de travail de fichiers et d’e-mails n’ont ni historique ni sécurité. Les branches de fonctionnalités ainsi que les pull requests sont le schéma supporté et réexaminé."
+    },
+    {
+      "id": "dp700-feb123178c72",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Shortcuts",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Shortcuts"
+      ],
+      "promptHtml": "Vous avez besoin que les données OneLake dans un Lakehouse apparaissent dans le Lakehouse d’un autre espace de travail sans copier ni dupliquer le stockage. Quelle fonctionnalité devriez-vous utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une activité de copie de pipeline qui réplique physiquement les fichiers dans le second Lakehouse selon un calendrier récurrent"
+        },
+        {
+          "key": "B",
+          "label": "Un raccourci OneLake qui fait référence à la source afin que les données soient accessibles sur place sans duplication"
+        },
+        {
+          "key": "C",
+          "label": "Un pipeline de déploiement qui promeut l’intégralité de l’élément Lakehouse dans l’autre espace de travail chaque nuit"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un raccourci OneLake qui fait référence à la source afin que les données soient accessibles sur place sans duplication",
+      "rationaleHtml": "Les raccourcis OneLake créent des références virtuelles à des données à un autre endroit, les exposant sans copier, de sorte qu’une seule copie sert de nombreux consommateurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/onelake-shortcuts\">Raccourcis OneLake - Microsoft Fabric</a>",
+      "extraHtml": "Les activités de copie dupliquent le stockage et ajoutent de la latence. Les pipelines de déploiement déplacent les définitions d’éléments entre les étapes, pas les références de données en direct. Les raccourcis donnent un accès sans aucune copie."
+    },
+    {
+      "id": "dp700-9ebd56237107",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Mirroring",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Mirroring"
+      ],
+      "promptHtml": "Une base de données Azure SQL opérationnelle doit être continuellement répliquée dans Fabric pour l’analyse avec une fraîcheur quasi en temps réel et sans ETL personnalisé à maintenir. Quelle approche est la meilleure ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un rechargement complet Dataflow Gen2 chaque nuit qui tronque et recharge chaque table depuis la source chaque nuit"
+        },
+        {
+          "key": "B",
+          "label": "Un export manuel hebdomadaire en CSV que les ingénieurs importent dans un Lakehouse puis transforment à la main"
+        },
+        {
+          "key": "C",
+          "label": "Mirroring Fabric, qui réplique en continu la base de données source dans OneLake avec une configuration minimale"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Mirroring Fabric, qui réplique en continu la base de données source dans OneLake avec une configuration minimale",
+      "rationaleHtml": "Le miroirement offre une réplication gérée et à faible latence des bases de données prises en charge dans OneLake au format Delta sans pipelines construits à la main.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/database/mirrored-database/overview\">Aperçu du miroir - Microsoft Fabric</a>",
+      "extraHtml": "Les rechargements complets chaque nuit sont lourds et répétitifs entre les sorties. Les exportations manuelles de CSV sont sujettes aux erreurs et peu fréquentes. Le miroir est conçu spécialement pour une réplication continue quasi en temps réel."
+    },
+    {
+      "id": "dp700-8f0a1c672165",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "LoadingPatterns",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "LoadingPatterns"
+      ],
+      "promptHtml": "Une table de dimension doit conserver l’historique afin que, lorsque la ville d’un client change, les faits passés correspondent toujours à l’ancienne ville. Quel schéma de chargement met cela en œuvre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Changement progressif de dimension Type 1, écrasant la ville pour que seule la valeur actuelle soit jamais stockée"
+        },
+        {
+          "key": "B",
+          "label": "Changement progressif de dimension Type 2, ajout d’une nouvelle version de ligne avec des dates d’effet pour préserver l’historique"
+        },
+        {
+          "key": "C",
+          "label": "Un « truncate-and-reload » qui reconstruit la dimension chaque nuit pour qu’elle reflète toujours les dernières valeurs sources"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Changement progressif de dimension Type 2, ajout d’une nouvelle version de ligne avec des dates d’effet pour préserver l’historique",
+      "rationaleHtml": "Le SCD Type 2 insère une nouvelle ligne versionnée (avec les dates de début/fin et un drapeau actuel) lors du changement, préservant les valeurs historiques des attributs pour une cartographie factuelle précise.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/dimensional-modeling-dimension-tables\">Tables de dimensions - Microsoft Fabric</a>",
+      "extraHtml": "Le Type 1 écrase et perd l’historique. Truncate-and-reload supprime également les états antérieurs. Le versionnement de Type 2 est nécessaire lorsque la précision historique des attributs dimensionnels est importante."
+    },
+    {
+      "id": "dp700-39f44b0763c5",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "IncrementalLoads",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "IncrementalLoads"
+      ],
+      "promptHtml": "Une grande table de faits est chargée quotidiennement, et vous devez n’ingérer que les lignes modifiées depuis la dernière exécution pour éviter de retraiter des milliards de documents historiques. Quel motif s’applique ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une charge complète qui lit la table source entière chaque jour pour garantir que rien n’est jamais oublié, même pour des lignes inchangées"
+        },
+        {
+          "key": "B",
+          "label": "Une charge d’échantillon aléatoire qui ingère un sous-ensemble chaque jour et reconstruit les totaux par extrapolation"
+        },
+        {
+          "key": "C",
+          "label": "Un chargement incrémental utilisant une colonne d’eau pour sélectionner uniquement les enregistrements plus récents que le dernier temps de chargement"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un chargement incrémental utilisant une colonne d’eau pour sélectionner uniquement les enregistrements plus récents que le dernier temps de chargement",
+      "rationaleHtml": "Le chargement incrémental suit un seuil de sommet (comme un horodatage modifié) et ne retire que les nouvelles lignes ou les lignes modifiées, minimisant ainsi le coût et le temps d’exécution.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/tutorial-incremental-copy-data-warehouse\">Chargement progressif des données - Microsoft Fabric</a>",
+      "extraHtml": "Calcul des déchets à charge maximale à grande échelle. L’échantillonnage fait perdre des données et n’est pas une stratégie de charge valide. La charge incrémentale basée sur filigrane est le motif standard à grand volume."
+    },
+    {
+      "id": "dp700-649a607bb17e",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "ChooseDataStore",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "ChooseDataStore"
+      ],
+      "promptHtml": "Pour une nouvelle charge d’analyse, les ingénieurs écrivent principalement PySpark et ont besoin de tables Delta ouvertes plus de fichiers, avec un point de terminaison SQL analytics pour les requêtes de lecture. Quel magasin devraient-ils choisir ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un Fabric Warehouse, puisqu’il est optimisé pour l’écriture T-SQL et ne prend pas du tout en charge la création de tables Spark"
+        },
+        {
+          "key": "B",
+          "label": "Un Fabric Lakehouse, qui stocke des tables et fichiers Delta et expose un point d’accès SQL analytique en lecture seule"
+        },
+        {
+          "key": "C",
+          "label": "Une base de données KQL, car elle est le magasin polyvalent pour l’ingénierie par lots basée sur Spark dans Fabric"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un Fabric Lakehouse, qui stocke des tables et fichiers Delta et expose un point d’accès SQL analytique en lecture seule",
+      "rationaleHtml": "Le Lakehouse est Spark-first, stocke des tables Delta et des fichiers non structurés dans OneLake, et fournit un point de terminaison de lecture T-SQL sur ces tables.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview\">Aperçu de Lakehouse - Microsoft Fabric</a>",
+      "extraHtml": "L’entrepôt est optimisé pour l’écriture T-SQL et n’accepte pas directement les écritures Spark. Les bases de données KQL ciblent l’analyse de logs/télémétrie, pas le lot général de Spark. Lakehouse s’inscrit dans une équipe centrée sur PySpark."
+    },
+    {
+      "id": "dp700-dcf59c8b9565",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "ChooseDataStore",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "ChooseDataStore"
+      ],
+      "promptHtml": "Une charge de travail nécessite des transactions multi-tables T-SQL complètes et des procédures stockées pour écrire et mettre à jour des données sélectionnées. Quel magasin Fabric est conçu pour cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un Fabric Warehouse, qui est le moteur T-SQL transactionnel prenant en charge les transactions DML et multi-états"
+        },
+        {
+          "key": "B",
+          "label": "Un Fabric Lakehouse, dont le point de terminaison d’analyse SQL supporte directement INSERT, UPDATE et DELETE contre les tables Delta"
+        },
+        {
+          "key": "C",
+          "label": "Un Eventhouse, car KQL offre le support de transactions ACID le plus riche pour les écritures batch curées"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Un Fabric Warehouse, qui est le moteur T-SQL transactionnel prenant en charge les transactions DML et multi-états",
+      "rationaleHtml": "Le Warehouse propose une surface T-SQL complète avec DML, procédures stockées et transactions ACID multi-tables pour des charges de travail très chargées en écriture.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing\">Data Warehousing - Microsoft Fabric</a>",
+      "extraHtml": "Le point de terminaison SQL de Lakehouse est en lecture seule ; les écritures se font via Spark. Eventhouse/KQL est une analyse orientée append, pas des transactions T-SQL multi-tables. Warehouse est le choix transactionnel T-SQL."
+    },
+    {
+      "id": "dp700-c03e22f8c642",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "DenormalizeAggregate",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "DenormalizeAggregate"
+      ],
+      "promptHtml": "Une table de rapports dénormalisée doit être construite en associant les commandes aux clients et aux produits, puis en agrégeant les totaux par client. Dans un carnet Lakehouse, quelle est la bonne approche générale ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exportez toutes les tables en CSV, rejoignez-les dans un tableur, puis téléchargez le résultat final dans le Lakehouse"
+        },
+        {
+          "key": "B",
+          "label": "Créez trois sorties séparées à table unique et comptez sur l’outil de rapport pour les rejoindre au moment de la requête"
+        },
+        {
+          "key": "C",
+          "label": "Lisez les tables Delta dans DataFrames, rejoignez-les, puis groupez-les par client et agrégeez-les avec la somme"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Lisez les tables Delta dans DataFrames, rejoignez-les, puis groupez-les par client et agrégeez-les avec la somme",
+      "rationaleHtml": "Les jointures Spark DataFrame suivies de groupBy/agg produisent efficacement une table dénormalisée et pré-agrégée à grande échelle au sein du Lakehouse.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/tutorial-lakehouse-data-preparation\">Préparer et transformer les données Lakehouse - Microsoft Fabric</a>",
+      "extraHtml": "Les jointures par tableur ne s’étendent pas et ne brisent pas l’automatisation. Pousser les jointures vers la couche rapport va à l’encontre des objectifs de dénormalisation et nuit aux performances. Spark joint+aggregate est l’approche d’ingénierie."
+    },
+    {
+      "id": "dp700-dbcd81dbed52",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "DuplicateData",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "DuplicateData"
+      ],
+      "promptHtml": "Les enregistrements entrants arrivent parfois deux fois avec des clés métier identiques, et votre table sélectionnée doit contenir exactement une ligne par clé. Quelle transformation supprime de manière fiable les doublons ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dédupliquez par la clé métier, en conservant le dernier enregistrement par clé via une fenêtre classée selon le temps de chargement"
+        },
+        {
+          "key": "B",
+          "label": "Supprimer aléatoirement la moitié de toutes les lignes entrantes avant le chargement, donc les clés dupliquées sont statistiquement peu susceptibles de rester"
+        },
+        {
+          "key": "C",
+          "label": "Ajoutez chaque ligne et laissez le rapport filtrer les valeurs distinctes plus tard afin que l’ingestion n’ait jamais à changer"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dédupliquez par la clé métier, en conservant le dernier enregistrement par clé via une fenêtre classée selon le temps de chargement",
+      "rationaleHtml": "Le fenêtrage (row_number sur la clé ordonnée par récent) permet de conserver un enregistrement autoritaire par clé, en traitant les doublons de manière déterministe.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/tutorial-lakehouse-data-preparation\">Gérer les données dupliquées - Microsoft Fabric</a>",
+      "extraHtml": "La suppression aléatoire fait perdre des données valides et est non déterministe. Reporter la déduplication aux rapports rend la table sale et lente. La déduplication fenêtrée basée sur des clés est déterministe et correcte."
+    },
+    {
+      "id": "dp700-dcc42b75962b",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "MissingData",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "MissingData"
+      ],
+      "promptHtml": "Un Courant d’Événements délivre des événements, mais certains champs arrivent parfois nuls et doivent être remplacés par un défaut avant d’atterrir dans une table Lakehouse. Où appliquer au mieux cette règle ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dans une transformation Eventstream ou le carnet de traitement, remplir les nuls avec des valeurs par défaut avant la persistance"
+        },
+        {
+          "key": "B",
+          "label": "Dans un rapport en aval, mesure que chaque tableau de bord réapplique indépendamment le défaut à chaque fois qu’il rend le visuel"
+        },
+        {
+          "key": "C",
+          "label": "En supprimant toutes les lignes contenant une valeur nulle afin que la table ne stocke que les enregistrements entièrement remplis"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dans une transformation Eventstream ou le carnet de traitement, remplir les nuls avec des valeurs par défaut avant la persistance",
+      "rationaleHtml": "La gestion des valeurs manquantes lors de l’ingestion/transformation (par exemple fillna/coalesce) garantit que les données propres et cohérentes tombent une seule fois pour tous les consommateurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/add-manage-eventstream-destinations\">Traitement Eventstream - Microsoft Fabric</a>",
+      "extraHtml": "Corriger les nulls par rapport duplique la logique et invite à l’incohérence. Supprimer toutes les lignes nulles élimine les enregistrements autrement valides. Nettoyez lors de l’ingestion pour que les données stockées soient fiables."
+    },
+    {
+      "id": "dp700-cd4deb9a015f",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Shortcuts",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Shortcuts"
+      ],
+      "promptHtml": "Vous devez exposer les données stockées dans un bucket Amazon S3 existant aux analystes Fabric sans les copier dans OneLake. Quelle fonctionnalité permet cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une base de données miroir, puisque le miroir est la méthode prise en charge pour référencer les compartiments de stockage d’objets externes"
+        },
+        {
+          "key": "B",
+          "label": "Un Dataflow Gen2 qui copie les objets S3 dans OneLake afin qu’ils puissent ensuite être interrogés localement"
+        },
+        {
+          "key": "C",
+          "label": "Un raccourci OneLake vers l’emplacement S3, qui met en avant les données externes dans la maison du lac"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un raccourci OneLake vers l’emplacement S3, qui met en avant les données externes dans la maison du lac",
+      "rationaleHtml": "Les raccourcis OneLake prennent en charge des cibles externes telles que S3 et ADLS Gen2, exposant ces données virtuellement sans copies physiques.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/create-s3-shortcut\">Créer un raccourci S3 - Microsoft Fabric</a>",
+      "extraHtml": "Le miroirement cible les bases de données, et non les buckets de stockage d’objets arbitraires. Une copie Dataflow dupliquerait les données, contredisant l’exigence de non-copie. Les raccourcis offrent un accès externe sans copie nulle."
+    },
+    {
+      "id": "dp700-5c452d9e80b7",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "ChooseDataStore",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "ChooseDataStore"
+      ],
+      "promptHtml": "Pour un pipeline de télémétrie à haut débit, vous devez choisir un magasin optimisé pour l’analyse des journaux en séries temporelles et les requêtes KQL en moins de seconde sur des milliards d’événements. Quel magasin convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un Entrepôt Tissu, car T-SQL sur tables relationnelles est optimal pour l’analyse de télémétrie à grand volume à n’importe quelle échelle"
+        },
+        {
+          "key": "B",
+          "label": "Une base de données Eventhouse/KQL, optimisée pour l’analyse de séries temporelles et de journaux à forte consommation via KQL"
+        },
+        {
+          "key": "C",
+          "label": "Une table Delta Lakehouse interrogée via le point de terminaison SQL pour obtenir la latence de télémétrie la plus faible possible"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Une base de données Eventhouse/KQL, optimisée pour l’analyse de séries temporelles et de journaux à forte consommation via KQL",
+      "rationaleHtml": "Eventhouse (base de données KQL) est conçue pour des analyses de séries temporelles et de journaux à grande échelle et faible latence avec le langage de requête Kusto.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/eventhouse\">Aperçu d’Eventhouse - Microsoft Fabric</a>",
+      "extraHtml": "Les points d’accès Warehouse et Lakehouse sont solides pour l’analyse relationnelle/batch mais ne sont pas conçus pour la télémétrie à haute vitesse comme les moteurs KQL. Choisissez Eventhouse pour des séries temporelles en temps réel."
+    },
+    {
+      "id": "dp700-fc8fb3ec8f21",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "StreamingEngine",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "StreamingEngine"
+      ],
+      "promptHtml": "Une source de streaming doit être transformée avec des agrégations à états et assemblée aux données de référence en utilisant Python, en écrivant les résultats dans une table Delta exactement une fois. Quel moteur est le plus adapté ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un Dataflow Gen2 programmé fonctionnant chaque minute pour approximer le comportement de streaming sur des micro-lots"
+        },
+        {
+          "key": "B",
+          "label": "Spark Structured Streaming, qui prend en charge les transformations de streaming avec état, et écrit exactement une fois sur Delta"
+        },
+        {
+          "key": "C",
+          "label": "Une procédure stockée T-SQL boucle en continu pour interroger et traiter les nouvelles lignes au fur et à mesure de leur arrivée"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Spark Structured Streaming, qui prend en charge les transformations de streaming avec état, et écrit exactement une fois sur Delta",
+      "rationaleHtml": "Le streaming structuré fournit des opérations avec état, des jointures, des points de contrôle et une sémantique exacte lors de l’écriture sur des puits Delta.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-structured-streaming\">Spark Structured Streaming - Microsoft Fabric</a>",
+      "extraHtml": "Un Dataflow programmé interroge en mini-lots sans véritable état de streaming ni garantie d’une seule fois. Les procédures stockées en boucle sont des anti-patterns pour le streaming. Le streaming structuré répond à toutes les exigences."
+    },
+    {
+      "id": "dp700-741b1b21674e",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "WindowingFunctions",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "WindowingFunctions"
+      ],
+      "promptHtml": "Un Eventstream absorbe les relevés IoT et doit calculer la température moyenne sur chaque période de 5 minutes non chevauchante. Quelle fonction de fenêtrage devriez-vous utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une fenêtre de rotation de 5 minutes, qui crée des intervalles fixes, contigus et non chevauchants pour l’agrégation"
+        },
+        {
+          "key": "B",
+          "label": "Une fenêtre de saut, qui produit des périodes qui se chevauchent et comptait deux fois certaines lectures à chaque fois"
+        },
+        {
+          "key": "C",
+          "label": "Une fenêtre de session, qui regroupe par intervalles d’activité et donne des périodes de durée variable plutôt que des périodes fixes de cinq minutes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une fenêtre de rotation de 5 minutes, qui crée des intervalles fixes, contigus et non chevauchants pour l’agrégation",
+      "rationaleHtml": "Les fenêtres à tumbling divisent le flux en intervalles de taille fixe, non chevauchants, idéales pour des moyennes par période sans double comptage.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/windowing-functions\">Fonctions de fenêtrage - Microsoft Fabric</a>",
+      "extraHtml": "Les fenêtres de saut se chevauchent et répètent les données. Les fenêtres de session sont basées sur des trous et de durée variable. Les fenêtres de chute offrent des périodes fixes propres et contiguës."
+    },
+    {
+      "id": "dp700-30f6143896a7",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "WindowingFunctions",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "WindowingFunctions"
+      ],
+      "promptHtml": "Il faut des agrégats de 10 minutes qui se chevauchent toutes les 2 minutes pour lisser une métrique en temps réel. Quelle fonction de fenêtrage correspond à cette exigence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une fenêtre de chute, car ses intervalles fixes non chevauchants émettent naturellement des résultats lissés et chevauchants"
+        },
+        {
+          "key": "B",
+          "label": "Une fenêtre d’instantané, qui capture la valeur instantanée exacte et fournit donc la métrique la plus lisse"
+        },
+        {
+          "key": "C",
+          "label": "Une fenêtre sautillante avec une taille de 10 minutes et un saut de 2 minutes, produisant des fenêtres qui se chevauchent à chaque saut"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une fenêtre sautillante avec une taille de 10 minutes et un saut de 2 minutes, produisant des fenêtres qui se chevauchent à chaque saut",
+      "rationaleHtml": "Les fenêtres de saut ont une taille supérieure à leur saut, donc les fenêtres se chevauchent et émettent à l’intervalle de saut, idéal pour les agrégats en mouvement ou lissés.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/windowing-functions\">Fonctions de fenêtrage - Microsoft Fabric</a>",
+      "extraHtml": "Les fenêtres à effet de rechute ne se chevauchent pas. Les fenêtres à instantanés agrégent les événements avec le même horodatage, et non avec des moyennes mobiles. Les fenêtres sautantes livrent des agrégats glissants qui se chevauchent."
+    },
+    {
+      "id": "dp700-7a0376e97b2d",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Eventstreams",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Eventstreams"
+      ],
+      "promptHtml": "Un Eventstream devrait router différents types d’événements vers différentes destinations et enrichir les événements avant d’atterrir, le tout sans écrire de code Spark. Quelle capacité gère cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les opérateurs de traitement de l’éditeur Eventstream et les multiples destinations pour le routage sans code et l’enrichissement"
+        },
+        {
+          "key": "B",
+          "label": "Une seule requête KQL dans un Eventhouse qui doit s’exécuter après que les données ont déjà été entièrement persistées en aval"
+        },
+        {
+          "key": "C",
+          "label": "Un pipeline de déploiement qui favorise les événements à travers les étapes tout en filtrant les types d’événements indésirables"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Les opérateurs de traitement de l’éditeur Eventstream et les multiples destinations pour le routage sans code et l’enrichissement",
+      "rationaleHtml": "Les eventstreams fournissent un éditeur visuel avec des opérateurs de transformation (filtre, agréger, jointure, gestion des champs) et plusieurs destinations routées sans code.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/overview\">Aperçu des Eventstreams - Microsoft Fabric</a>",
+      "extraHtml": "Après persistance, KQL ne peut pas router au moment de l’ingestion. Les pipelines de déploiement déplacent les définitions d’éléments, pas les événements en direct. Les opérateurs d’eventstream gèrent le routage et l’enrichissement en cours."
+    },
+    {
+      "id": "dp700-a96870e38c16",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "NativeVsShortcut",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "NativeVsShortcut"
+      ],
+      "promptHtml": "Dans l’intelligence en temps réel, vous devez décider si vous devez physiquement ingérer des données dans une table KQL ou les référer en externe. Vous avez besoin des requêtes interactives répétées les plus rapides sur le même ensemble de données historique. Quel choix est le meilleur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une table KQL native (ingestée), qui stocke les données dans le format optimisé du moteur pour les requêtes répétées les plus rapides"
+        },
+        {
+          "key": "B",
+          "label": "Un raccourci OneLake standard, puisque le référencement des données en place surpasse toujours l’interrogation des tables ingérées natives"
+        },
+        {
+          "key": "C",
+          "label": "Une copie de pipeline de déploiement, qui avance les données à travers les environnements et accélère ainsi les requêtes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une table KQL native (ingestée), qui stocke les données dans le format optimisé du moteur pour les requêtes répétées les plus rapides",
+      "rationaleHtml": "L’ingestion dans une table KQL native stocke les données dans le format indexé et en colonnes du moteur, offrant ainsi les meilleures performances pour les requêtes interactives répétées.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/onelake-shortcuts\">Tables natifs vs raccourcis - Microsoft Fabric</a>",
+      "extraHtml": "Les raccourcis standards évitent les copies mais interrogent les données externes avec plus de surcharge. Les pipelines de déploiement ne sont pas liés à la vitesse de requête. L’ingestion native échange le stockage contre la performance maximale des requêtes."
+    },
+    {
+      "id": "dp700-49f11e3e42fe",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "QueryAcceleration",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "QueryAcceleration"
+      ],
+      "promptHtml": "Vous interrogez une grande table Delta dans OneLake via un raccourci dans Real-Time Intelligence et souhaitez réduire la latence des requêtes KQL sans l’ingérer nativement. Quelle fonctionnalité aide ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter la taille du pool de démarreurs Spark pour que le moteur KQL emprunte ces nœuds inactifs lors de l’exécution de la requête"
+        },
+        {
+          "key": "B",
+          "label": "Convertir le raccourci en étape de pipeline de déploiement pour que la promotion mette en cache les résultats pour des lectures plus rapides la prochaine fois"
+        },
+        {
+          "key": "C",
+          "label": "Accélération des requêtes pour les raccourcis OneLake, qui construit une couche de performance pour accélérer KQL sur les données de raccourcis"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Accélération des requêtes pour les raccourcis OneLake, qui construit une couche de performance pour accélérer KQL sur les données de raccourcis",
+      "rationaleHtml": "L’accélération des requêtes ajoute une couche de mise en cache/indexation optimisée sur les données de raccourcis OneLake afin que les requêtes KQL s’exécutent plus rapidement sans ingestion native complète.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/query-acceleration\">Accélération des requêtes pour les raccourcis OneLake - Microsoft Fabric</a>",
+      "extraHtml": "Les pools d’étincelles ne répondent pas aux requêtes du moteur KQL. Les pipelines de déploiement ne sont pas liés à la mise en cache des requêtes. L’accélération des requêtes est la fonctionnalité spécialement conçue pour des requêtes raccourcis plus rapides."
+    },
+    {
+      "id": "dp700-949ed7403bd3",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "IngestWithPipelines",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "IngestWithPipelines"
+      ],
+      "promptHtml": "Une activité de copie pipeline déplace 500 gros fichiers d’ADLS Gen2 vers un Lakehouse chaque nuit et vous voulez un débit maximal. Quel réglage augmente le plus directement le transfert parallèle ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le degré de parallélisme de copie afin que plusieurs fichiers soient transférés simultanément au sein de l’activité"
+        },
+        {
+          "key": "B",
+          "label": "Réduire le degré de parallélisme de copie à un afin que les fichiers soient transférés strictement un par un pour la stabilité"
+        },
+        {
+          "key": "C",
+          "label": "Passez le sink à un seul petit fichier afin que toutes les données passent par un seul flux d’écriture pour plus de cohérence"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Augmenter le degré de parallélisme de copie afin que plusieurs fichiers soient transférés simultanément au sein de l’activité",
+      "rationaleHtml": "Augmenter les copies parallèles de l’activité Copy permet de transférer de nombreux fichiers simultanément, améliorant le débit pour les chargements multi-fichiers.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/copy-data-activity\">Performance de l’activité de copie - Microsoft Fabric</a>",
+      "extraHtml": "La sérialise sur un fichier à la fois réduit le débit. Le canalisation dans un seul petit fichier sink crée un goulot d’étranglement. Le parallélisme est le levier de débit direct pour de nombreux fichiers."
+    },
+    {
+      "id": "dp700-b96cdd5b3a1f",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "TransformPySpark",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "TransformPySpark"
+      ],
+      "promptHtml": "Vous devez transformer la télémétrie JSON semi-structurée avec des tableaux imbriqués en une forme relationnelle aplatie en utilisant du code et les fonctions riches de Spark. Quel langage/outil est le plus approprié dans un Lakehouse ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "T-SQL dans le point de terminaison SQL analytics, puisqu’il peut réécrire les résultats aplatis directement dans des tables Delta"
+        },
+        {
+          "key": "B",
+          "label": "Un Power Query Dataflow Gen2, car c’est le seul outil capable d’analyser des structures JSON imbriquées"
+        },
+        {
+          "key": "C",
+          "label": "PySpark avec explosion et struct fonctionne dans un carnet pour aplatir les tableaux imbriqués en lignes et colonnes"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "PySpark avec explosion et struct fonctionne dans un carnet pour aplatir les tableaux imbriqués en lignes et colonnes",
+      "rationaleHtml": "PySpark fournit la gestion de explode, selectExpr et struct pour aplatir efficacement le JSON profondément imbriqué à grande échelle, puis écrire en Delta.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-explore\">Transformer les données avec des notebooks - Microsoft Fabric</a>",
+      "extraHtml": "Le point de terminaison SQL de Lakehouse est en lecture seule, il ne peut donc pas écrire de résultats. Dataflow Gen2 peut aussi analyser le JSON, mais le scénario spécifie le code et les fonctions Spark, faisant de PySpark l’option souhaitée."
+    },
+    {
+      "id": "dp700-17c657de279b",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "LateArrivingData",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "LateArrivingData"
+      ],
+      "promptHtml": "Les événements arrivant en retard pour une heure donnée apparaissent parfois après que l’agrégat de cette heure ait été écrit. Vous devez corriger les agrégats affectés sans tout retraiter. Quelle approche est appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ignorez complètement les événements tardifs afin que les agrégats restent immuables et ne nécessitent jamais de retraitement correctif"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez le filigranage et la logique de fusion/upsert pour ne mettre à jour que les agrégats de fenêtres temporelles affectées lorsque les données arrivent en retard"
+        },
+        {
+          "key": "C",
+          "label": "Recalculez l’historique complet depuis le début de chaque partie pour vous assurer que les événements tardifs sont capturés"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Utilisez le filigranage et la logique de fusion/upsert pour ne mettre à jour que les agrégats de fenêtres temporelles affectées lorsque les données arrivent en retard",
+      "rationaleHtml": "Les filigranes limitent la durée de conservation de l’état pour les données tardives, et MERGE/upsert ne met à jour que les fenêtres affectées, évitant ainsi un recalcul complet.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-structured-streaming\">Gérer les données en retard - Microsoft Fabric</a>",
+      "extraHtml": "Ignorer les événements tardifs donne des totaux erronés. Le recalcul complet est gaspilleur à grande échelle. Watermark plus upsert ciblé ne corrige que les fenêtres affectées."
+    },
+    {
+      "id": "dp700-e663d170aedc",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "DimensionalModel",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "DimensionalModel"
+      ],
+      "promptHtml": "Un modèle dimensionnel nécessite des clés de substitution générées lors du chargement afin que les lignes de faits fassent référence à des clés entières stables plutôt qu’à des clés métier volatiles. Où les clés de substitution doivent-elles être attribuées ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Lors du chargement dimensionnel dans Fabric, générer des clés de substitution et mapper les clés métier à celles-ci avant de charger les faits"
+        },
+        {
+          "key": "B",
+          "label": "Dans le système source, en demandant à l’équipe opérationnelle d’ajouter des clés entières à leurs tables"
+        },
+        {
+          "key": "C",
+          "label": "Au moment du rapport, en faisant calculer à chaque visuel un hachage de la clé métier pour remplacer une clé de substitution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Lors du chargement dimensionnel dans Fabric, générer des clés de substitution et mapper les clés métier à celles-ci avant de charger les faits",
+      "rationaleHtml": "Les clés de substitution sont attribuées au fur et à mesure du chargement des dimensions ; les faits recherchent ensuite le substitut via la clé métier, découplant le modèle des clés sources.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/dimensional-modeling-overview\">Modélisation dimensionnelle - Microsoft Fabric</a>",
+      "extraHtml": "Les systèmes sources possèdent rarement des clés de substitution d’entrepôt et peuvent ne pas coopérer. Le hachage au moment du rapport est fragile et non stable. Attribuez des clés de substitution à l’étape ETL dimension-charge."
+    },
+    {
+      "id": "dp700-3bd11658ab74",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "TransformationChoice",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "TransformationChoice"
+      ],
+      "promptHtml": "Vous devez choisir entre Dataflow Gen2 et un notebook pour transformer un très grand jeu de données avec une logique complexe, très codée et des bibliothèques Python personnalisées. Quel facteur justifie le plus le choix du notebook ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’équipe préfère une expérience purement visuelle et low-code et souhaite éviter d’écrire tout code de transformation"
+        },
+        {
+          "key": "B",
+          "label": "La transformation nécessite des packages Python personnalisés et un ajustement Spark à grain fin que les notebooks cod-first fournissent"
+        },
+        {
+          "key": "C",
+          "label": "Le jeu de données est minuscule et la logique se résume à quelques simples renommages de colonnes que n’importe quel outil peut facilement effectuer"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "La transformation nécessite des packages Python personnalisés et un ajustement Spark à grain fin que les notebooks cod-first fournissent",
+      "rationaleHtml": "Les notebooks conviennent à la logique très codée, aux bibliothèques personnalisées et à l’optimisation des performances Spark ; Dataflow Gen2 s’adapte à des transformations low-code pilotées par connecteurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-explore\">Notebooks pour l’ingénierie des données - Microsoft Fabric</a>",
+      "extraHtml": "Une préférence low-code favorise Dataflow, pas les notebooks. Les renommages triviaux ne justifient pas la complexité du code. Les bibliothèques personnalisées et le réglage Spark sont les éléments différenciateurs du notebook."
+    },
+    {
+      "id": "dp700-610a635b8eee",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "StreamingLoadingPattern",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "StreamingLoadingPattern"
+      ],
+      "promptHtml": "Une table Lakehouse doit être construite à partir de données en flux afin que de nouveaux micro-lots s’ajoutent en continu pendant que les consommateurs interrogent une table Delta cohérente. Quel schéma de chargement est le correct ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un chargement batch unique qui lit un instantané statique et ne se met jamais à jour à mesure que de nouvelles données de flux continuent d’arriver ensuite"
+        },
+        {
+          "key": "B",
+          "label": "Une requête de streaming structuré qui écrit des micro-lots dans la table Delta avec des points de contrôle pour la continuité"
+        },
+        {
+          "key": "C",
+          "label": "Une exportation manuelle quotidienne où un opérateur copie à la main les derniers événements dans la table chaque matin"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Une requête de streaming structuré qui écrit des micro-lots dans la table Delta avec des points de contrôle pour la continuité",
+      "rationaleHtml": "Les écritures en streaming avec points de contrôle s’ajoutent continuellement à Delta, gardant une table en direct que les consommateurs peuvent interroger régulièrement.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-structured-streaming\">Streaming vers Delta - Microsoft Fabric</a>",
+      "extraHtml": "Un instantané statique par lots devient immédiatement obsolète. La copie manuelle quotidienne n’est ni en streaming ni fiable. Le streaming structuré avec points de contrôle est le schéma de chargement en streaming."
+    },
+    {
+      "id": "dp700-d712bd3655d9",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "LoadingPatterns",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "LoadingPatterns"
+      ],
+      "promptHtml": "Les codes de raison de référence stockés dans une petite dimension changent rarement, et vous n’avez besoin que de la valeur actuelle sans historique. Quelle approche SCD minimise le stockage et la complexité ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "SCD Type 1, écraser l’attribut en place pour que seule la valeur actuelle du code raison soit conservée"
+        },
+        {
+          "key": "B",
+          "label": "SCD Type 2, ajout de lignes versionnées avec des dates d’effet même si l’historique n’est pas requis ici"
+        },
+        {
+          "key": "C",
+          "label": "Une annexe en streaming qui conserve chaque valeur passée à jamais afin que les analystes puissent reconstituer l’historique si nécessaire"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "SCD Type 1, écraser l’attribut en place pour que seule la valeur actuelle du code raison soit conservée",
+      "rationaleHtml": "Le SCD Type 1 écrase simplement les attributs modifiés, ce qui est le choix le plus simple et le plus économe en stockage lorsque l’historique n’est pas nécessaire.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/dimensional-modeling-dimension-tables\">Types SCD - Microsoft Fabric</a>",
+      "extraHtml": "Le type 2 ajoute ici de l’histoire et de la complexité inutiles. Ajouter chaque valeur gonfle indéfiniment le stockage sans bénéfice. La réécriture du type 1 correspond à l’exigence de l’actuel uniquement."
+    },
+    {
+      "id": "dp700-640f49e63ab6",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Eventstreams",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Eventstreams"
+      ],
+      "promptHtml": "Un Eventstream doit afficher les événements bruts inchangés dans un Lakehouse et alimenter simultanément une base de données KQL pour des analyses en temps réel. Comment les destinations doivent-elles être configurées ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajoutez deux destinations sur l’Eventstream, une base de données Lakehouse et une base de données Eventhouse/KQL, à partir du même flux"
+        },
+        {
+          "key": "B",
+          "label": "Choisissez une seule destination car un Eventstream peut acheminer ses événements vers une seule cible à la fois"
+        },
+        {
+          "key": "C",
+          "label": "Dupliquez l’élément Eventstream entier afin que chaque copie incarne indépendamment les mêmes événements sources séparément"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajoutez deux destinations sur l’Eventstream, une base de données Lakehouse et une base de données Eventhouse/KQL, à partir du même flux",
+      "rationaleHtml": "Un seul Event stream peut se disperser vers plusieurs destinations, de sorte que les mêmes événements se retrouvent dans une Lakehouse et une base de données KQL sans duplication.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/add-manage-eventstream-destinations\">Gérer les destinations Eventstream - Microsoft Fabric</a>",
+      "extraHtml": "Les flux d’événements ne sont pas limités à une seule destination. Dupliquer le flux double le coût d’ingestion et la complexité. La conception prévue est de multiples destinations sur un même flux."
+    },
+    {
+      "id": "dp700-d59c75e26afb",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "DataQuality",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "DataQuality"
+      ],
+      "promptHtml": "Vous devez supprimer les lignes contenant des valeurs impossibles (par exemple des âges négatifs) lors de la transformation par lots avant de charger une table Lakehouse sélectionnée. Quelle est la gestion appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Chargez tout inchangé et ajoutez un filtre de rapport pour que les mauvaises valeurs ne soient cachées que dans les tableaux de bord qui s’inscrivent"
+        },
+        {
+          "key": "B",
+          "label": "Appliquez un filtre de validation dans la transformation pour supprimer ou mettre en quarantaine les lignes qui échouent à la règle métier avant le chargement"
+        },
+        {
+          "key": "C",
+          "label": "Comptez sur la sécurité au niveau des colonnes pour masquer les lignes invalides aux utilisateurs sans permissions élevées"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Appliquez un filtre de validation dans la transformation pour supprimer ou mettre en quarantaine les lignes qui échouent à la règle métier avant le chargement",
+      "rationaleHtml": "Les règles de qualité des données doivent être à l’étape de transformation ; filtrer ou mettre en quarantaine les lignes invalides permet de garder la table sélectionnée propre pour tous les consommateurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/tutorial-lakehouse-data-preparation\">Préparation des données - Microsoft Fabric</a>",
+      "extraHtml": "Les filtres uniquement à rapport laissent des données indésirables pour les autres consommateurs. La sécurité au niveau colonne contrôle l’accès aux colonnes, pas la validité des lignes. Valider et nettoyer pendant la transformation."
+    },
+    {
+      "id": "dp700-8fe6cefedfcc",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "TransformKQL",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "TransformKQL"
+      ],
+      "promptHtml": "Une base de données KQL reçoit des journaux de haute cardinalité, et les analystes effectuent des recherches ad hoc au cours des 90 derniers jours. Quel langage les ingénieurs doivent-ils utiliser pour construire ces requêtes analytiques interactives ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "KQL (Kusto Query Language), qui est le langage natif optimisé pour interroger les données Eventhouse"
+        },
+        {
+          "key": "B",
+          "label": "T-SQL, car les instructions relationnelles SELECT sont le langage natif de requête pour les bases de données Fabric KQL"
+        },
+        {
+          "key": "C",
+          "label": "PySpark, puisque Spark doit lire toutes les données stockées dans une base de données Fabric Eventhouse"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "KQL (Kusto Query Language), qui est le langage natif optimisé pour interroger les données Eventhouse",
+      "rationaleHtml": "KQL est conçu spécialement pour un filtrage, une agrégation rapide et une analyse de séries temporelles sur les données de base de données Eventhouse/KQL.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/kusto-query-set\">Requête avec KQL - Microsoft Fabric</a>",
+      "extraHtml": "T-SQL et PySpark ne sont pas les moteurs natifs des bases de données KQL. KQL est optimisé spécifiquement pour ce magasin d’analyse de journaux/séries temporelles."
+    },
+    {
+      "id": "dp700-d934e84df389",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "StreamingEngine",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "StreamingEngine"
+      ],
+      "promptHtml": "Vous choisissez un moteur de streaming. L’exigence est un chemin entièrement no-code pour capturer les données des Event Hubs Azure, les transformer légèrement et les acheminer vers un Lakehouse. Lequel est le meilleur choix ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Spark Structured Streaming dans un notebook, nécessitant du code mais offrant l’expérience la plus adaptée au code"
+        },
+        {
+          "key": "B",
+          "label": "Un travail T-SQL à fenêtre de chute qui interroge à plusieurs reprises les Event Hubs depuis l’Entrepôt sans aucun code"
+        },
+        {
+          "key": "C",
+          "label": "Un Eventstream, qui fournit un pipeline visuel sans code pour capturer, transformer et router les données en flux"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un Eventstream, qui fournit un pipeline visuel sans code pour capturer, transformer et router les données en flux",
+      "rationaleHtml": "Les Eventstreams offrent une expérience visuelle sans code pour connecter des sources comme les Event Hubs, appliquer les opérateurs et orienter vers les destinations.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/overview\">Aperçu des Eventstreams - Microsoft Fabric</a>",
+      "extraHtml": "Le streaming structuré est axé sur le code, ce qui contredit l’exigence de no-code. Le sondage T-SQL des Event Hubs n’est pas un schéma de streaming supporté. Eventstream est le choix de streaming sans code."
+    },
+    {
+      "id": "dp700-79a348866149",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "GroupAndAggregate",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "GroupAndAggregate"
+      ],
+      "promptHtml": "Une transformation batch doit regrouper des millions de lignes de vente par catégorie de produit et calculer efficacement le chiffre d’affaires total et moyen dans Spark. Quelle opération exprime cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une boucle Python ligne par ligne sur le DataFrame qui accumule manuellement les totaux de catégories dans un dictionnaire sur le pilote"
+        },
+        {
+          "key": "B",
+          "label": "Un groupBy sur une catégorie avec agg(somme et moyenne), laissant Spark calculer les agrégats de manière distribuée"
+        },
+        {
+          "key": "C",
+          "label": "Une collecte de la DataFrame complète vers le pilote suivie du regroupement des pandas sur une seule machine"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un groupBy sur une catégorie avec agg(somme et moyenne), laissant Spark calculer les agrégats de manière distribuée",
+      "rationaleHtml": "DataFrame GroupBy avec agg pousse l’agrégation dans le moteur distribué de Spark, évoluant bien mieux que les boucles côté conducteur ou collect.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-explore\">Données agrégées avec Spark - Microsoft Fabric</a>",
+      "extraHtml": "Les boucles Python et collect-to-driver forcent un traitement à nœud unique et risquent des pannes de manque de mémoire. Distributed groupBy/agg est le bon modèle évolutif."
+    },
+    {
+      "id": "dp700-6a71d1339f7f",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "TransformPySpark",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "TransformPySpark"
+      ],
+      "promptHtml": "Lors de la transformation, il faut combiner deux grandes tables Delta qui partagent une clé, mais l’une est très petite (une recherche). Quelle technique réduit le mélange et améliore les performances de jonction dans Spark ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Forcez une jointure complète de tri et fusion et désactivez tout indice afin que les deux camps se déplacent uniformément à travers le groupe à chaque partie"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez une jointure de diffusion afin que la petite table de recherche soit envoyée à chaque exécuteur, évitant ainsi un grand mélange"
+        },
+        {
+          "key": "C",
+          "label": "Convertissez d’abord les deux tables en CSV afin que la jointure fonctionne sur une représentation sur disque plus plate et plus simple"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Utilisez une jointure de diffusion afin que la petite table de recherche soit envoyée à chaque exécuteur, évitant ainsi un grand mélange",
+      "rationaleHtml": "La diffusion d’une petite table la reproduit aux exécuteurs et la rejoint localement, éliminant ainsi le brassage coûteux de la grande table.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-job-definition\">Optimize Spark joints - Microsoft Fabric</a>",
+      "extraHtml": "Forcer une jointure aléatoire est exactement ce que vous voulez éviter. Convertir en CSV perd des optimisations Delta et n’aide en rien. La jointure broadcast est l’optimisation standard sur petites tables."
+    },
+    {
+      "id": "dp700-1e9cdaee6cfa",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "SemanticModelRefresh",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "SemanticModelRefresh"
+      ],
+      "promptHtml": "Les analystes rapportent qu’un modèle sémantique montre les chiffres d’hier même si de nouvelles données ont été chargées pendant la nuit. Où confirmez-vous d’abord si le modèle s’est réellement actualisé avec succès ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’historique sémantique des rafrahissements du modèle, qui montre l’état de rafraîchissement, le timing et les détails de défaillance du modèle"
+        },
+        {
+          "key": "B",
+          "label": "La sortie de l’activité Copy du pipeline, qui indique si les fichiers sources ont été téléchargés dans le stockage la nuit dernière lors de l’ingestion"
+        },
+        {
+          "key": "C",
+          "label": "Le journal de validation Git de l’espace de travail, qui enregistre les changements de métadonnées plutôt que les résultats d’exécution des données"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’historique sémantique des rafrahissements du modèle, qui montre l’état de rafraîchissement, le timing et les détails de défaillance du modèle",
+      "rationaleHtml": "L’historique des actualisations est l’endroit autoritaire pour confirmer si et quand un modèle sémantique s’est actualisé et pour détecter d’éventuelles erreurs.<br><br>Référence : Monitoring actualisation <a href=\"https://learn.microsoft.com/en-us/power-bi/connect-data/refresh-data\">des ensembles de données - Microsoft Learn</a>",
+      "extraHtml": "Copie de la sortie d’activité confirme l’ingestion, pas le rafraîchissement du modèle. Les journaux git suivent les versions des métadonnées, pas les exécutions de rafraîchissement. L’historique des rafraîchissements répond directement à la question des rafraîchissements."
+    },
+    {
+      "id": "dp700-887df246c316",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "MonitorItems",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "MonitorItems"
+      ],
+      "promptHtml": "Vous voulez un seul endroit pour voir l’historique des exécutions et l’état de tous les pipelines, notebooks et jobs Spark dans l’espace de travail. Quelle fonctionnalité Fabric offre cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’application de métriques de capacité, qui se concentre sur le calcul de la consommation d’unités plutôt que sur l’historique d’exécution individuelle des items"
+        },
+        {
+          "key": "B",
+          "label": "Le hub de surveillance, qui centralise l’état et l’historique des exécutions des activités Fabric à travers l’espace de travail,"
+        },
+        {
+          "key": "C",
+          "label": "La comparaison du pipeline de déploiement, qui montre les différences de métadonnées entre les étapes, et non les résultats de l’exécution"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Le hub de surveillance, qui centralise l’état et l’historique des exécutions des activités Fabric à travers l’espace de travail,",
+      "rationaleHtml": "Le hub de surveillance agrège les exécutions d’activités (pipelines, notebooks, Spark, actualisations) avec l’état et l’historique pour une observabilité centralisée.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/admin/monitoring-hub\">Centre de surveillance - Microsoft Fabric</a>",
+      "extraHtml": "L’application de métriques de capacité suit la consommation, pas l’état par exécution. La comparaison de déploiement est un outil de promotion. Le hub de surveillance est la surface unifiée de surveillance des exécutions."
+    },
+    {
+      "id": "dp700-4ce1a78bf1ca",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ConfigureAlerts",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ConfigureAlerts"
+      ],
+      "promptHtml": "Une partie prenante souhaite être informée automatiquement lorsqu’un KPI dans les données en streaming franchit un seuil, déclenchant un e-mail ou un message Teams. Quelle fonctionnalité Fabric devriez-vous utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un pipeline programmé qui envoie par email une extraction complète des données chaque heure afin que les destinataires puissent scanner eux-mêmes le seuil"
+        },
+        {
+          "key": "B",
+          "label": "Des règles Fabric Activator (Data Activator) qui surveillent les données et déclenchent des actions lorsque des conditions sont remplies"
+        },
+        {
+          "key": "C",
+          "label": "Le hub de surveillance, qui liste les activités exécutées mais ne peut pas évaluer les seuils de KPI ni envoyer d’alertes métier"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Des règles Fabric Activator (Data Activator) qui surveillent les données et déclenchent des actions lorsque des conditions sont remplies",
+      "rationaleHtml": "Activator surveille les données de streaming/événements pour détecter les conditions et déclenche automatiquement des actions telles que des emails ou des alertes Teams lorsque les seuils sont dépassés.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-activator/data-activator-introduction\">Fabric Activator - Microsoft Fabric</a>",
+      "extraHtml": "Les extractions complètes horaires ne sont pas des alertes en temps réel. Le hub de surveillance suit les exécutions, pas les conditions des KPI métier. Activator est le moteur d’alerte événement-condition."
+    },
+    {
+      "id": "dp700-358401a044de",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeLakehouseTable",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeLakehouseTable"
+      ],
+      "promptHtml": "Une table Delta Lakehouse a dégradé la performance de lecture après des millions de petits fichiers accumulés lors de fréquents ajouts en streaming. Quelle opération de maintenance s’attaque directement à cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Exécutez VACUUM immédiatement, ce qui supprime les anciens fichiers de données et fusionne ainsi les petits fichiers restants"
+        },
+        {
+          "key": "B",
+          "label": "Supprimez et recréez la table chaque nuit pour que le nombre de fichiers se réinitialise naturellement à un petit nombre"
+        },
+        {
+          "key": "C",
+          "label": "Exécutez OPTIMIZE (bin-compactation) pour condenser de nombreux petits fichiers en moins de fichiers, plus grands et plus efficaces"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Exécutez OPTIMIZE (bin-compactation) pour condenser de nombreux petits fichiers en moins de fichiers, plus grands et plus efficaces",
+      "rationaleHtml": "OPTIMIZE compacte les petits fichiers en plus grands, réduisant ainsi la liste des fichiers et la surcharge d’E/S qui causent le problème des petits fichiers.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-table-maintenance\">Maintenance de table - Microsoft Fabric</a>",
+      "extraHtml": "VACUUM supprime les anciens fichiers non référencés pour le nettoyage et la conservation du voyage dans le temps, pas la compactation. La suppression ou la recréation risque de perdre des données et est perturbatrice. OPTIMIZE est l’opération de compactage."
+    },
+    {
+      "id": "dp700-482ae4fbb965",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeWarehouse",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeWarehouse"
+      ],
+      "promptHtml": "Une requête Fabric Warehouse reliant plusieurs grandes tables s’exécute lentement, et l’optimiseur semble mal estimer le nombre de lignes. Quelle action aide le plus directement l’optimiseur à choisir un meilleur plan ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Assurez-vous que les statistiques sont créées et à jour afin que l’optimiseur dispose d’estimations précises de cardinalité"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter plus de conditions OR à la clause WHERE afin que l’optimiseur ait des prédicats supplémentaires à évaluer"
+        },
+        {
+          "key": "C",
+          "label": "Convertir chaque jointure en joint croisé puis filtrer ensuite pour que le moteur prenne en compte toutes les combinaisons de lignes"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Assurez-vous que les statistiques sont créées et à jour afin que l’optimiseur dispose d’estimations précises de cardinalité",
+      "rationaleHtml": "Des statistiques précises permettent à l’optimiseur de requête d’estimer correctement les cardinalités et de choisir des ordres de jointure et des algorithmes efficaces.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/statistics\">Statistiques - Microsoft Fabric</a>",
+      "extraHtml": "Des prédicats OR supplémentaires et des croisements augmentent le travail et détériorent les plans. Les statistiques actuelles sont le levier direct pour de meilleures estimations et plans de cardinalité."
+    },
+    {
+      "id": "dp700-59cb46c9ad11",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeLakehouseTable",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeLakehouseTable"
+      ],
+      "promptHtml": "Une table Delta largement utilisée par les rapports Power BI Direct Lake nécessite les meilleures performances de lecture en colonne. Quelle optimisation Fabric Delta doit être appliquée lors de l’écriture de la table ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Activez l’optimisation de l’écriture en V-Order afin que la disposition Parquet soit réglée pour des lectures rapides en colonnes et Direct Lake"
+        },
+        {
+          "key": "B",
+          "label": "Désactivez V-Order pour réduire le temps d’écriture, en acceptant que les scans de lecture traitent plus d’octets bruts par requête"
+        },
+        {
+          "key": "C",
+          "label": "Stockez la table sous forme de petits fichiers CSV non compressés afin que le rapport puisse diffuser des lignes sans décodage"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Activez l’optimisation de l’écriture en V-Order afin que la disposition Parquet soit réglée pour des lectures rapides en colonnes et Direct Lake",
+      "rationaleHtml": "V-Order applique un tri/encodage optimisé pour la lecture à Parquet lors de l’écriture, accélérant les analyses en colonnes et la consommation Direct Lake.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/delta-optimization-and-v-order\">Optimisation V-Order et Delta - Microsoft Fabric</a>",
+      "extraHtml": "Désactiver V-Order sacrifie la vitesse de lecture. CSV perd complètement la compression colonnaire et est beaucoup plus lent. V-Order est l’optimisation de lecture pour les charges de travail Direct Lake."
+    },
+    {
+      "id": "dp700-0fb0c51caeba",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolvePipelineErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolvePipelineErrors"
+      ],
+      "promptHtml": "Un pipeline échoue parfois parce qu’une API REST en aval est brièvement indisponible, mais réussit lorsqu’elle est relancée quelques minutes plus tard. Quelle est la configuration de résilience la plus appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Supprimer complètement l’appel API du pipeline afin que les défaillances transitoires ne puissent plus jamais se produire en production"
+        },
+        {
+          "key": "B",
+          "label": "Configurez le pipeline pour qu’il ignore toutes les erreurs afin qu’il rapporte toujours le succès, peu importe ce qui s’est réellement passé"
+        },
+        {
+          "key": "C",
+          "label": "Configurez la réévaluation d’activité avec un intervalle de tentative afin que les échecs transitoires soient automatiquement retentés avant l’échec"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Configurez la réévaluation d’activité avec un intervalle de tentative afin que les échecs transitoires soient automatiquement retentés avant l’échec",
+      "rationaleHtml": "La réévaluation au niveau d’activité avec un intervalle gère automatiquement les pannes transitoires, améliorant ainsi la fiabilité sans rediffusion manuelle.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/activity-overview\">Politique de réessai d’activité - Microsoft Fabric</a>",
+      "extraHtml": "Supprimer les fonctionnalités nécessaires n’est pas une solution. Ignorer toutes les erreurs masque les vraies défaillances et corrompt la confiance dans les résultats. Les politiques de réessai sont conçues pour les défauts transitoires."
+    },
+    {
+      "id": "dp700-2be00d1ccb76",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeSpark",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeSpark"
+      ],
+      "promptHtml": "Un job Spark déverse beaucoup sur le disque et s’exécute lentement parce que quelques partitions contiennent la majorité des données (décalage des données). Quelle technique atténue le plus directement ce décalage ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Repartitionner ou sal la clé déséquilibrée afin que les données soient réparties plus uniformément entre les tâches et les exécuteurs"
+        },
+        {
+          "key": "B",
+          "label": "Réduisez la mémoire des exécuteurs pour que Spark soit obligé de traiter les partitions biaisées en morceaux plus petits et plus sûrs"
+        },
+        {
+          "key": "C",
+          "label": "Collectez le DataFrame vers le pilote et traitez les partitions décalées à cet endroit pour éviter le déséquilibre du cluster"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Repartitionner ou sal la clé déséquilibrée afin que les données soient réparties plus uniformément entre les tâches et les exécuteurs",
+      "rationaleHtml": "Le salage ou le repartitionnement répartit une touche de raccourci sur plusieurs partitions, équilibrant le travail et réduisant le déversement dû au décalage.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-job-definition\">Optimiser les performances de Spark - Microsoft Fabric</a>",
+      "extraHtml": "Réduire la mémoire aggrave le débordement. Collecter vers le pilote supprime le parallélisme et met en danger l’OOM. Le repartitionnement/le sel traite directement une répartition inégale des clés."
+    },
+    {
+      "id": "dp700-0cb979d7311a",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveDataflowErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveDataflowErrors"
+      ],
+      "promptHtml": "Un rafraîchissement Dataflow Gen2 échoue avec une erreur indiquant qu’une colonne source a été renommée en amont. Quelle est la bonne première étape de dépannage ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Supprimez le Dataflow et reconstruisez-le à partir de zéro pour que la référence de colonne supprimée disparaisse complètement"
+        },
+        {
+          "key": "B",
+          "label": "Augmentez le SKU de capacité car une capacité plus grande résoudra automatiquement l’erreur de décalage de schéma"
+        },
+        {
+          "key": "C",
+          "label": "Ouvrez les étapes de requête pour trouver l’étape faisant référence à l’ancien nom de colonne et mettez-la à jour avec le nouveau nom"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Ouvrez les étapes de requête pour trouver l’étape faisant référence à l’ancien nom de colonne et mettez-la à jour avec le nouveau nom",
+      "rationaleHtml": "Les erreurs de flux de données provenant des colonnes renommées/supprimées sont corrigées en modifiant l’étape de requête affectée pour référencer le schéma actuel.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-monitor\">Dépannage Dataflow Gen2 - Microsoft Fabric</a>",
+      "extraHtml": "Reconstruire gaspille des efforts et perd de la logique. La taille de capacité ne corrige pas une erreur de référence de schéma. Corriger l’étape spécifique est la solution ciblée."
+    },
+    {
+      "id": "dp700-cf98f9b9b5ce",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveNotebookErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveNotebookErrors"
+      ],
+      "promptHtml": "Une cellule de notebook échoue de façon intermittente avec une erreur de manque de mémoire lors de l’appel collect() sur un énorme DataFrame. Quel changement résout le mieux l’erreur ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Évitez de collecter sur l’ensemble de données et écrivez plutôt les résultats dans une table Delta ou traitez les données de manière distributive"
+        },
+        {
+          "key": "B",
+          "label": "Augmentez le nombre de réessayages des pilotes pour que la même collecte réussisse après suffisamment de tentatives automatiques"
+        },
+        {
+          "key": "C",
+          "label": "Convertir le notebook en pipeline afin que la condition de manque de mémoire soit silencieusement gérée par l’orchestrateur à l’exécution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Évitez de collecter sur l’ensemble de données et écrivez plutôt les résultats dans une table Delta ou traitez les données de manière distributive",
+      "rationaleHtml": "collect attire toutes les lignes vers le pilote, provoquant un OOM sur les données volumineuses ; écrire sur Delta ou utiliser des opérations distribuées évite le goulot d’étranglement du pilote.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-job-definition\">Performance des ordinateurs portables - Microsoft Fabric</a>",
+      "extraHtml": "Les réessais ne fixent pas une limite fondamentale de mémoire. L’enroulement dans un pipeline ne change pas la façon dont Spark exécute le code. Supprimer le collecteur côté conducteur est la véritable solution."
+    },
+    {
+      "id": "dp700-2e67540a03df",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeQuery",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeQuery"
+      ],
+      "promptHtml": "Une requête Eventhouse restitue des résultats partiels et un message indiquant qu’il faut atteindre les limites de requête sur une très longue plage de temps. Quelle optimisation réduit la charge tout en préservant les insights nécessaires ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Supprimez tous les filtres temporels afin que le moteur analyse l’ensemble des données et renvoie ainsi les résultats complets plus rapidement"
+        },
+        {
+          "key": "B",
+          "label": "Ajoutez des filtres par plage de temps et colonnes, puis pré-agrégez avec Summarize pour réduire les données scannées par la requête"
+        },
+        {
+          "key": "C",
+          "label": "Dupliquez Eventhouse pour que la moitié des requêtes s’exécutent sur chaque copie et que la limite par requête ne s’applique plus"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Ajoutez des filtres par plage de temps et colonnes, puis pré-agrégez avec Summarize pour réduire les données scannées par la requête",
+      "rationaleHtml": "Réduire la fenêtre temporelle, projeter uniquement les colonnes nécessaires et résumer réduit les données numérisées et maintient les requêtes dans des limites.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/eventhouse\">Optimiser les requêtes KQL - Microsoft Fabric</a>",
+      "extraHtml": "Supprimer les filtres augmente les données numérisées et aggrave les limites. Dupliquer l’Eventhouse est coûteux et ne répond pas aux requêtes inefficaces. Filtrez et agrégez pour optimiser."
+    },
+    {
+      "id": "dp700-c6f5b3c98670",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveTSQLErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveTSQLErrors"
+      ],
+      "promptHtml": "Une instruction T-SQL dans l’Entrepôt échoue à cause d’une erreur de conversion lors de l’insertion de valeurs de chaîne dans une colonne entière. Quelle est la bonne résolution ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Changez la colonne cible en VARCHAR afin que n’importe quelle valeur puisse être insérée sans qu’aucune conversion ne soit jamais requise"
+        },
+        {
+          "key": "B",
+          "label": "Enroulez l’INSERT dans une transaction et réessayez-la à plusieurs reprises jusqu’à ce que la conversion réussisse finalement"
+        },
+        {
+          "key": "C",
+          "label": "Validez et convoquez les valeurs sources en entiers, en nettoyant les entrées non numériques avant que l’INSERT ne s’exécute"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Validez et convoquez les valeurs sources en entiers, en nettoyant les entrées non numériques avant que l’INSERT ne s’exécute",
+      "rationaleHtml": "Les erreurs de conversion proviennent de données incompatibles ; valider et diffuser (et gérer les valeurs incorrectes) avant l’insertion résout correctement le décalage de type.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/troubleshoot-t-sql\">Dépannage T-SQL - Microsoft Fabric</a>",
+      "extraHtml": "Changer la colonne en VARCHAR abandonne le type de données entier et ses contraintes. Refaire une erreur de conversion déterministe ne réussit jamais. Nettoyez et envoyez les données."
+    },
+    {
+      "id": "dp700-6e233a39f3f6",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveShortcutErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveShortcutErrors"
+      ],
+      "promptHtml": "Les requêtes via un raccourci OneLake échouent soudainement avec des erreurs d’autorisation après que le compte de stockage source a tourné les identifiants. Quelle est la solution la plus probable ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Recréez le Lakehouse à partir de zéro car l’autorisation des raccourcis est définitivement liée à l’identifiant d’origine de l’objet"
+        },
+        {
+          "key": "B",
+          "label": "Augmenter la capacité de l’espace de travail afin que le raccourci ait suffisamment de calcul pour contourner l’échec d’autorisation"
+        },
+        {
+          "key": "C",
+          "label": "Mettez à jour la connexion/identifiants du raccourci pour qu’il puisse s’authentifier à la source avec le secret tourné"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Mettez à jour la connexion/identifiants du raccourci pour qu’il puisse s’authentifier à la source avec le secret tourné",
+      "rationaleHtml": "L’accès à raccourcis repose sur des identifiants/connexions stockés ; la rotation des secrets source nécessite de mettre à jour la connexion du raccourci pour restaurer l’accès.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/onelake-shortcuts\">Gérer les connexions raccourcis - Microsoft Fabric</a>",
+      "extraHtml": "Recréer la Lakehouse est inutile et perturbateur. La capacité n’a rien à voir avec l’autorisation. Rafraîchez les identifiants raccourcis pour qu’ils correspondent au secret tourné."
+    },
+    {
+      "id": "dp700-5147f0c2ebe2",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizePipeline",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizePipeline"
+      ],
+      "promptHtml": "Un pipeline quotidien qui charge un Warehouse fonctionne bien plus longtemps que nécessaire car il traite toutes les partitions historiques à chaque exécution. Quelle optimisation réduit le plus le temps d’exécution ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Changez de pipeline pour qu’il tourne toutes les heures afin que chaque exécution individuelle ait moins de lignes à parcourir par fenêtre d’exécution"
+        },
+        {
+          "key": "B",
+          "label": "Convertir la charge en incrémentale pour que seules les partitions nouvelles ou modifiées soient traitées au lieu de l’historique complet"
+        },
+        {
+          "key": "C",
+          "label": "Désactivez la journalisation sur le pipeline afin qu’il passe moins de temps à enregistrer l’activité et se termine beaucoup plus rapidement"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Convertir la charge en incrémentale pour que seules les partitions nouvelles ou modifiées soient traitées au lieu de l’historique complet",
+      "rationaleHtml": "Le traitement des données modifiées uniquement via un chargement incrémental réduit considérablement le temps d’exécution par rapport au retraitement de tout l’historique à chaque exécution.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/tutorial-incremental-copy-data-warehouse\">Chargement incrémental - Microsoft Fabric</a>",
+      "extraHtml": "S’exécuter plus souvent retraite encore l’historique à chaque fois. Désactiver la journalisation apporte des économies négligeables et nuit à l’observabilité. Le traitement incrémental est la véritable optimisation."
+    },
+    {
+      "id": "dp700-71c4b31eed30",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeEventstreams",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeEventstreams"
+      ],
+      "promptHtml": "Un Eventstream montre une latence croissante et une contre-pression lorsque le volume d’événements grimpe pendant les heures de pointe. Quelle optimisation aide le flux à suivre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le débit Eventstream et rationaliser les transformations en flux lourdes pour réduire le coût de traitement par événement"
+        },
+        {
+          "key": "B",
+          "label": "Réduisez le nombre de destinations à exactement une et supprimez définitivement toutes les transformations en flux"
+        },
+        {
+          "key": "C",
+          "label": "Convertir l’Eventstream en un travail batch nocturne afin que les pics aux heures de pointe n’aient plus besoin d’être traités en direct"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Augmenter le débit Eventstream et rationaliser les transformations en flux lourdes pour réduire le coût de traitement par événement",
+      "rationaleHtml": "Ajuster le débit et réduire les opérations coûteuses par événement réduit la contre-pression afin que le flux suive les pics.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/overview\">Optimize Eventstreams - Microsoft Fabric</a>",
+      "extraHtml": "Supprimer aveuglément toutes les transformations peut briser les exigences et ce n’est pas la solution générale. Passer à un batch nocturne abandonne les besoins en temps réel. Augmentez le débit et optimisez le traitement."
+    },
+    {
+      "id": "dp700-6806fcb84bb2",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "MonitorDataIngestion",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "MonitorDataIngestion"
+      ],
+      "promptHtml": "Vous devez surveiller si un pipeline d’ingestion de données nocturne a réussi et, s’il a échoué, voir rapidement quelle activité a échoué et pourquoi. Où obtenir les détails par activité ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’historique sémantique des actualisations du modèle, qui rapporte les résultats des actualisations plutôt que les défaillances d’activité du pipeline"
+        },
+        {
+          "key": "B",
+          "label": "L’explorateur de fichiers OneLake, qui liste les fichiers stockés mais ne met pas en avant les erreurs d’exécution des activités de pipeline"
+        },
+        {
+          "key": "C",
+          "label": "Le pipeline détaille dans le hub de surveillance, qui affiche l’état, la durée et la sortie d’erreur de chaque activité"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Le pipeline détaille dans le hub de surveillance, qui affiche l’état, la durée et la sortie d’erreur de chaque activité",
+      "rationaleHtml": "Les détails de la course du pipeline exposent le statut par activité et les messages d’erreur, vous permettant d’identifier l’activité défaillante et la cause principale.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/monitor-pipeline-runs\">Surveiller les exécutions de pipeline - Microsoft Fabric</a>",
+      "extraHtml": "L’historique des rafraîchissements couvre les modèles sémantiques, pas les pipelines. L’explorateur de fichiers affiche les sorties, pas les erreurs d’exécution. Le détail de l’exécution du pipeline est la vue de dépannage au niveau des activités."
+    },
+    {
+      "id": "dp700-835a2700e054",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeQuery",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeQuery"
+      ],
+      "promptHtml": "Un modèle sémantique Direct Lake revient de manière inattendue à DirectQuery, ralentissant les rapports. Quelle condition sous-jacente force le plus souvent ce repliant ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Les tables Delta ont été écrites avec l’Ordre V activé, que Direct Lake ne peut pas lire et doit contourner"
+        },
+        {
+          "key": "B",
+          "label": "L’espace de travail utilise l’intégration Git, qui désactive Direct Lake et ramène chaque modèle à DirectQuery"
+        },
+        {
+          "key": "C",
+          "label": "Le modèle dépassait les garde-fous de Direct Lake (comme les limites de rangées/taille), ce qui entraînait un retour au mode DirectQuery"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Le modèle dépassait les garde-fous de Direct Lake (comme les limites de rangées/taille), ce qui entraînait un retour au mode DirectQuery",
+      "rationaleHtml": "Direct Lake revient à DirectQuery lorsque les limites de capacité (comme les limites de capacité sur les rangées/taille) sont dépassées ; réduire les données ou augmenter la capacité restaure Direct Lake.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/get-started/direct-lake-overview\">Rampes de sécurité Direct Lake - Microsoft Fabric</a>",
+      "extraHtml": "V-Order optimise en fait les lectures de Direct Lake, pas les bloque. L’intégration git ne désactive pas Direct Lake. Les limites de garde-corps sont le déclencheur courant de secours."
+    },
+    {
+      "id": "dp700-ae320379bdf7",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveEventhouseErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveEventhouseErrors"
+      ],
+      "promptHtml": "Une ingestion KQL/Eventhouse échoue de façon intermittente à cause d’erreurs de mappage de schéma car les événements entrants incluent parfois un champ supplémentaire inattendu. Quelle solution est la plus robuste ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajustez la cartographie d’ingestion pour gérer le champ supplémentaire ou ignorez les colonnes non cartographiées pendant l’ingestion"
+        },
+        {
+          "key": "B",
+          "label": "Rejetez l’ensemble du flux d’événements dès qu’un champ inattendu apparaît, afin que seuls les événements parfaits soient jamais ingérés"
+        },
+        {
+          "key": "C",
+          "label": "Recréez chaque jour la base de données Eventhouse afin que toute dérive accumulée soit complètement effacée"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Ajustez la cartographie d’ingestion pour gérer le champ supplémentaire ou ignorez les colonnes non cartographiées pendant l’ingestion",
+      "rationaleHtml": "Mettre à jour la correspondance d’ingestion pour accommoder ou ignorer des champs supplémentaires résout les erreurs de correspondance sans supprimer les événements valides.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/eventhouse\">Mappages d’ingestion - Microsoft Fabric</a>",
+      "extraHtml": "Rejeter tous les événements fait perdre de bonnes données sur un champ supplémentaire. Recréer la base de données quotidiennement est destructeur et ne prévient pas la dérive. Corrigez la correspondance pour qu’elle tolère le champ."
+    },
+    {
+      "id": "dp700-f1065d890532",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeQuery",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeQuery"
+      ],
+      "promptHtml": "Une requête dans un tableau de bord Warehouse scanne à répétition la même grande table de faits filtrée par date, et les utilisateurs se plaignent de la lenteur des premiers chargements. Au-delà des statistiques, quel changement de conception améliore le plus la performance des requêtes répétées ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Retirez le filtre de date pour que le moteur puisse mettre en cache toute la table une fois et le réutiliser pour chaque requête"
+        },
+        {
+          "key": "B",
+          "label": "Matérialiser un tableau résumé pré-agrégé par date afin que les tableaux de bord lisent beaucoup moins de lignes pré-calculées"
+        },
+        {
+          "key": "C",
+          "label": "Convertissez la table de faits en des milliers de petites tables, une par jour, que le tableau de bord s’assemble à l’exécution"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Matérialiser un tableau résumé pré-agrégé par date afin que les tableaux de bord lisent beaucoup moins de lignes pré-calculées",
+      "rationaleHtml": "L’agrégation préalable dans une table de synthèse réduit le nombre de lignes numérisées par requête de tableau de bord, améliorant ainsi les performances lors des lectures agrégées répétées.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/guidelines-warehouse-performance\">Directives de performance des entrepôts - Microsoft Fabric</a>",
+      "extraHtml": "Supprimer le filtre scanne plus de données, pas moins. Diviser en milliers de tables avec des unions d’exécution ajoute une charge énorme. Les résumés pré-agrégés coupent directement le travail."
+    },
+    {
+      "id": "dp700-941d896aa65f",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ConfigureAlerts",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ConfigureAlerts"
+      ],
+      "promptHtml": "Il faut être alerté lorsqu’un pipeline tombe en panne pour que les ingénieurs d’astreinte soient informés en quelques minutes plutôt que de le découvrir le lendemain matin. Quelle est la configuration la plus appropriée ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Configurez des alertes de défaillance (par exemple via Activator ou des règles d’alerte) qui notifient le canal d’appel en cas de défaillance"
+        },
+        {
+          "key": "B",
+          "label": "Vérifiez manuellement le hub de surveillance chaque matin et contactez l’équipe si la partie d’hier soir a échoué"
+        },
+        {
+          "key": "C",
+          "label": "Augmentez le délai d’attente du pipeline pour qu’il attende plus longtemps, ce qui réduit le risque que quelqu’un doive être alerté pendant la nuit"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Configurez des alertes de défaillance (par exemple via Activator ou des règles d’alerte) qui notifient le canal d’appel en cas de défaillance",
+      "rationaleHtml": "L’alerte automatisée aux pannes informe immédiatement les intervenants, contrairement aux contrôles manuels du matin, permettant une réponse rapide aux incidents.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/monitor-pipeline-runs\">Alertes lors des exécutions de pipeline - Microsoft Fabric</a>",
+      "extraHtml": "Les contrôles manuels du matin annulent l’alerte rapide. Un délai d’attente plus long ne prévient pas les pannes ni ne prévient qui que ce soit. Les alertes automatisées de défaillance répondent à cette exigence."
+    },
+    {
+      "id": "dp700-b80b5e7c4a89",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeLakehouseTable",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeLakehouseTable"
+      ],
+      "promptHtml": "Après de nombreuses opérations de suppression/mise à jour, le stockage d’une table Delta continue de croître et les requêtes de voyage dans le temps conservent des fichiers trop anciens. Quelle opération regagne de l’espace en supprimant les fichiers non référencés au-delà de leur conservation ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "VACUUM, qui supprime les fichiers de données qui ne sont plus référencés par la table au-delà de la période de conservation configurée"
+        },
+        {
+          "key": "B",
+          "label": "OPTIMIZE, qui compacte de petits fichiers mais ne supprime pas physiquement les fichiers de données obsolètes non référencés"
+        },
+        {
+          "key": "C",
+          "label": "REFRESH, qui reconstruit le cache en mémoire de la table mais laisse tous les fichiers obsolètes en stockage intacts"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "VACUUM, qui supprime les fichiers de données qui ne sont plus référencés par la table au-delà de la période de conservation configurée",
+      "rationaleHtml": "VACUUM supprime les fichiers de données obsolètes et non référencés plus anciens que le seuil de rétention, récupérant ainsi le stockage après de nombreuses opérations DML.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-table-maintenance\">VACUUM et maintenance - Microsoft Fabric</a>",
+      "extraHtml": "OPTIMIZE compacte mais ne supprime pas les anciennes versions. REFRESH concerne la mise en cache, pas le nettoyage du stockage. VACUUM est l’opération de récupération de l’espace."
+    },
+    {
+      "id": "dp700-5079333a0a59",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeSpark",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeSpark"
+      ],
+      "promptHtml": "Un notebook Spark relit le même DataFrame coûteux en plusieurs étapes en aval, le recalculant à chaque fois. Quelle optimisation évite le travail répété ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le nombre de partitions de mélange afin que chaque recalcul du DataFrame s’exécute un peu plus vite"
+        },
+        {
+          "key": "B",
+          "label": "Écrivez le DataFrame en CSV et relisez-le avant chaque étape afin que les données soient toujours fraîchement matérialisées"
+        },
+        {
+          "key": "C",
+          "label": "Mettez en cache ou persévérez le DataFrame afin que les actions suivantes réutilisent le résultat calculé au lieu de le recalculer"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Mettez en cache ou persévérez le DataFrame afin que les actions suivantes réutilisent le résultat calculé au lieu de le recalculer",
+      "rationaleHtml": "La mise en cache/persistance matérialise le DataFrame une fois, donc les actions ultérieures le réutilisent, éliminant ainsi le recalcul redondant de transformations coûteuses.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/spark-job-definition\">Mettre en cache et persister - Microsoft Fabric</a>",
+      "extraHtml": "Plus de partitions de mélange n’empêchent pas les recalculs répétés. Le retour-retour via CSV ajoute des E/S et perd des types. Cache/persist réutilise le résultat calculé."
+    },
+    {
+      "id": "dp700-9112001d8ef0",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "MonitorItems",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "MonitorItems"
+      ],
+      "promptHtml": "Une exigence de surveillance consiste à suivre la quantité de calcul de la capacité consommée par Spark et d’autres éléments Fabric au fil du temps afin de planifier la capacité. Quel outil fournit cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’application Microsoft Fabric Capacity Metrics, qui rapporte l’utilisation de la capacité et la limitation de la capacité entre les éléments au fil du temps"
+        },
+        {
+          "key": "B",
+          "label": "La liste des exécutions du hub de monitoring, qui montre les exécutions d’activité individuelles mais pas les tendances agrégées de consommation de capacité"
+        },
+        {
+          "key": "C",
+          "label": "L’historique d’intégration Git, qui enregistre les commits de métadonnées des items plutôt que les données d’utilisation de calcul"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’application Microsoft Fabric Capacity Metrics, qui rapporte l’utilisation de la capacité et la limitation de la capacité entre les éléments au fil du temps",
+      "rationaleHtml": "L’application Capacity Metrics met en lumière la consommation de CU, les surcharges et les tendances de thrubling, soutenant les décisions de planification de capacité.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app\">application Capacity Metrics - Microsoft Fabric</a>",
+      "extraHtml": "Le hub de surveillance se concentre sur l’état des exécutions, pas sur les tendances CU agrégées. L’historique git est un système de versionnement des métadonnées. L’application Capacity Metrics est l’outil d’utilisation de capacité."
+    },
+    {
+      "id": "dp700-a0ec33dca493",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolvePipelineErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolvePipelineErrors"
+      ],
+      "promptHtml": "L’activité de copie d’un pipeline échoue en cours de chargement d’un entrepôt, laissant la table cible partiellement remplie. Quel changement de conception rend les reruns sûrs et évite les doublons ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Il suffit de relancer le pipeline défaillant tel quel, car une seconde exécution écrasera les lignes partielles déjà existantes"
+        },
+        {
+          "key": "B",
+          "label": "Ajouter un suffixe aléatoire à chaque clé de ligne chargée afin que les doublons issus de tirages partiels soient traités comme des enregistrements distincts"
+        },
+        {
+          "key": "C",
+          "label": "Rendez la charge idempotente, par exemple en staging puis MERGE/upsert ou en tronquant la cible avant le rechargement"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Rendez la charge idempotente, par exemple en staging puis MERGE/upsert ou en tronquant la cible avant le rechargement",
+      "rationaleHtml": "Les charges idempotentes (stage plus MERGE, ou truncate-and-reload) garantissent que les reruns produisent des résultats corrects sans dupliquer les lignes partiellement chargées.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/tutorial-incremental-copy-data-warehouse\">Patterns de chargement fiables - Microsoft Fabric</a>",
+      "extraHtml": "Les rediffusions simples d’un chargement non idempotent peuvent dupliquer des lignes. La randomisation des clés corrompt l’identité et masque les doublons. La conception des idempotentes rend les reruns sûrs."
+    },
+    {
+      "id": "dp700-eccc1ebcdce0",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeEventstreams",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeEventstreams"
+      ],
+      "promptHtml": "Un tableau de bord construit sur un Eventhouse doit se mettre à jour dans les secondes suivant les nouveaux événements pour une vue opérationnelle en direct. Quelle combinaison prend le mieux en charge les tableaux de bord à faible latence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un rafraîchissement batch chaque soir alimentant un modèle sémantique d’importation afin que le tableau de bord se charge à partir d’un instantané statique quotidien"
+        },
+        {
+          "key": "B",
+          "label": "Un raccourci OneLake vers le stockage d’archives à froid interrogé à la demande chaque fois qu’un utilisateur ouvre la vue des opérations"
+        },
+        {
+          "key": "C",
+          "label": "Une source KQL/Eventhouse en temps réel avec un tableau de bord en temps réel ou une requête directe pour que de nouveaux événements apparaissent en quelques secondes"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une source KQL/Eventhouse en temps réel avec un tableau de bord en temps réel ou une requête directe pour que de nouveaux événements apparaissent en quelques secondes",
+      "rationaleHtml": "L’association d’Eventhouse avec des tableaux de bord en temps réel maintient la latence en quelques secondes, contrairement aux instantanés d’importation en lot ou aux requêtes à froid.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/dashboard-real-time-create\">Tableaux de bord en temps réel - Microsoft Fabric</a>",
+      "extraHtml": "L’importation nocturne est monotone de plusieurs minutes à plusieurs heures. L’archive à froid est lente et non en temps réel. Un tableau de bord en temps réel soutenu par Eventhouse atteint l’objectif de latence en secondes."
+    },
+    {
+      "id": "dp700-a1f05bce6fae",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "MonitorDataTransformation",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "MonitorDataTransformation"
+      ],
+      "promptHtml": "Vous devez confirmer qu’un Dataflow Gen2 a effectivement écrit le nombre attendu de lignes à sa destination Lakehouse après chaque rafraîchissement. Où consultez-vous ces détails de run ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’historique de rafraîchissement et les détails de la série Dataflow Gen2, qui rapportent l’état, la durée et les lignes écrites par exécution"
+        },
+        {
+          "key": "B",
+          "label": "L’historique de validation Git, qui affiche la définition de requête enregistrée du flux de données mais pas le nombre de lignes ou le statut par exécution"
+        },
+        {
+          "key": "C",
+          "label": "La page des paramètres de l’espace de travail, qui contrôle les permissions et les paramètres par défaut plutôt que les résultats d’exécution"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "L’historique de rafraîchissement et les détails de la série Dataflow Gen2, qui rapportent l’état, la durée et les lignes écrites par exécution",
+      "rationaleHtml": "L’historique des actualisations du flux de données et les détails de l’exécution montrent les résultats, y compris le statut et les lignes traitées, confirmant le résultat de chaque actualisation.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-monitor\">Monitor Dataflow Gen2 - Microsoft Fabric</a>",
+      "extraHtml": "L’historique git stocke les définitions, pas les métriques d’exécution. Les paramètres de l’espace de travail gèrent la configuration, pas les exécutions. Les détails de rafraîchissement/exécution du flux de données fournissent les résultats d’exécution."
+    },
+    {
+      "id": "dp700-4873c3dfc991",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeWarehouse",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeWarehouse"
+      ],
+      "promptHtml": "Un entrepôt connaît des requêtes lentes car une grande table fréquemment filtrée n’est pas physiquement regroupée par la colonne de filtre. Quelle optimisation améliore le mieux la performance des requêtes sélectives ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Commander ou regrouper les données par la clé fréquemment filtrée afin que les scans sautent les données non pertinentes lors des requêtes sélectives"
+        },
+        {
+          "key": "B",
+          "label": "Supprimez tous les filtres des requêtes analytiques afin que le moteur lise séquentiellement et évite complètement les recherches aléatoires"
+        },
+        {
+          "key": "C",
+          "label": "Castez la colonne du filtre en une chaîne de caractères afin que plus de valeurs correspondent et que l’optimiseur puisse réutiliser un résultat en cache plus large"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Commander ou regrouper les données par la clé fréquemment filtrée afin que les scans sautent les données non pertinentes lors des requêtes sélectives",
+      "rationaleHtml": "L’ordre ou le regroupement physique par la clé de filtre commune améliore les sauts de données, donc les requêtes sélectives analysent beaucoup moins de données.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/guidelines-warehouse-performance\">Lignes directrices de performance - Microsoft Fabric</a>",
+      "extraHtml": "La suppression des filtres augmente les données numérisées. Le casting en chaîne élargit les correspondances et annule la sélectivité. Le regroupement par la clé de filtre permet le saut de données."
+    },
+    {
+      "id": "dp700-25298cd006f0",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeEventhouses",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeEventhouses"
+      ],
+      "promptHtml": "Un Eventhouse conserve bien plus de données brutes que ce que les analystes interrogent jamais, ce qui gonfle le coût. Quelle optimisation réduit le coût de stockage tout en maintenant les données récentes interrogables ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Désactivez l’ingestion pendant les heures de travail afin que moins de données s’accumulent pendant que les analystes les interrogent activement"
+        },
+        {
+          "key": "B",
+          "label": "Exportez toute la base de données en CSV chaque semaine et supprimez tout pour que rien ne soit conservé au-delà de l’exportation"
+        },
+        {
+          "key": "C",
+          "label": "Configurez une politique de rétention (mise en cache et conservation) pour que les anciennes données vieillissent ou soient automatiquement transférées vers un stockage moins cher"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Configurez une politique de rétention (mise en cache et conservation) pour que les anciennes données vieillissent ou soient automatiquement transférées vers un stockage moins cher",
+      "rationaleHtml": "Les politiques de rétention et de mise en cache contrôlent combien de temps les données restent sous tension et leur date d’expiration, équilibrant les besoins de requête avec le coût de stockage.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/eventhouse\">Politiques de rétention - Microsoft Fabric</a>",
+      "extraHtml": "Mettre en pause l’ingestion fait perdre des événements et ne traite pas l’historique stocké. L’exportation et suppression en masse détruit la possibilité d’interrogation. Les politiques de rétention automatisent le vieillissement des données sensibles aux coûts."
+    },
+    {
+      "id": "dp700-4dba0ae21c3c",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveNotebookErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveNotebookErrors"
+      ],
+      "promptHtml": "Un travail de notebook dans un pipeline réussit, mais le pipeline rapporte un succès même lorsque le notebook a logiquement échoué à un contrôle de qualité des données. Comment le notebook doit-il signaler l’échec au pipeline ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Imprimez un message d’erreur sur la sortie du carnet et faites confiance au pipeline pour analyser le texte et échouer en conséquence"
+        },
+        {
+          "key": "B",
+          "label": "Ajoutez une longue veille à la fin du carnet pour que le pipeline expire et soit donc considéré comme défaillant"
+        },
+        {
+          "key": "C",
+          "label": "Utilisez notebookutils/mssparkutils pour sortir avec un statut de défaillance (ou relever) afin que l’activité du pipeline soit marquée comme échec"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Utilisez notebookutils/mssparkutils pour sortir avec un statut de défaillance (ou relever) afin que l’activité du pipeline soit marquée comme échec",
+      "rationaleHtml": "Signaler une défaillance via une sortie/erreur explicite (par exemple mssparkutils.notebook.exit ou relevé) fait échouer l’activité du pipeline de manière déterministe.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/notebook-utilities\">Utilitaires pour notebooks - Microsoft Fabric</a>",
+      "extraHtml": "Les pipelines ne analysent pas le texte imprimé pour détecter la défaillance. Forcer un délai via la veille est un problème de paiement et peu fiable. Sortir avec un état de défaillance réelle pour propager l’erreur."
+    },
+    {
+      "id": "dp700-2b02c2697e4b",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OneLakeSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OneLakeSecurity"
+      ],
+      "promptHtml": "Une équipe souhaite que l’accès au niveau de la colonne soit appliqué de manière cohérente, que les utilisateurs interrogent une table Lakehouse via le point de terminaison SQL ou la lisent via OneLake. Quel mécanisme impose l’accès directement à la couche de données OneLake ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Des rôles d’accès aux données de sécurité OneLake qui imposent des restrictions au niveau de la colonne entre les moteurs lisent l’élément dans OneLake"
+        },
+        {
+          "key": "B",
+          "label": "Les instructions GRANT/DENY sur les terminaux SQL analytics, qui s’appliquent uniquement aux sessions T-SQL et non aux lectures OneLake directes"
+        },
+        {
+          "key": "C",
+          "label": "Des filtres de niveau rapport Power BI qui masquent visuellement les colonnes tout en laissant les données OneLake sous-jacentes entièrement lisibles"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Des rôles d’accès aux données de sécurité OneLake qui imposent des restrictions au niveau de la colonne entre les moteurs lisent l’élément dans OneLake",
+      "rationaleHtml": "La sécurité OneLake applique des contrôles d’accès à la couche de données, donc des restrictions s’appliquent sur les moteurs qui lisent l’élément directement depuis OneLake.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/security/get-started-security\">Sécurité OneLake - Microsoft Fabric</a>",
+      "extraHtml": "Les terminaux SQL ne couvrent que l’accès T-SQL, pas les lectures directes OneLake. Les filtres de rapport sont cosmétiques. La sécurité OneLake applique l’accès à la couche de données entre les moteurs."
+    },
+    {
+      "id": "dp700-db9ae5e01e1b",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "SparkWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "SparkWorkspaceSettings"
+      ],
+      "promptHtml": "Vous devez vous assurer qu’une seule version spécifique de l’exécution Spark et des bibliothèques préinstallées sont utilisées sur tous les ordinateurs portables d’un espace de travail pour la reproductibilité. Où est-ce mieux standardisé ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dans chaque notebook, en demandant aux auteurs d’installer par pip les mêmes packages en haut de chaque exécution de notebook"
+        },
+        {
+          "key": "B",
+          "label": "Dans un environnement attaché à l’espace de travail/pool qui épingle le runtime et les bibliothèques pour que toutes les sessions puissent les utiliser"
+        },
+        {
+          "key": "C",
+          "label": "Dans le pipeline de déploiement, seuls les notebooks de production reçoivent l’exécution épinglée tandis que les autres dérivent librement"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Dans un environnement attaché à l’espace de travail/pool qui épingle le runtime et les bibliothèques pour que toutes les sessions puissent les utiliser",
+      "rationaleHtml": "Les environnements Fabric capturent la version d’exécution, les bibliothèques et les paramètres Spark, offrant des sessions standardisées et reproductibles sur les notebooks.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/environment-introduction\">environnements Fabric - Microsoft Fabric</a>",
+      "extraHtml": "Chaque ordinateur portable installe des dérives et est sujet aux erreurs. L’épinglage uniquement en production rend le développement incohérent. Un environnement partagé standardise le temps d’exécution et les bibliothèques partout."
+    },
+    {
+      "id": "dp700-d720550ed760",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationParameters",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationParameters"
+      ],
+      "promptHtml": "Un pipeline doit transmettre le nombre de lignes de sortie d’une activité de recherche vers une variable Set ultérieure, puis vers un paramètre notebook. Quel mécanisme transporte la valeur entre les activités ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Référencez la sortie de l’activité de recherche en utilisant une expression dynamique pour définir la variable et la passer comme paramètre"
+        },
+        {
+          "key": "B",
+          "label": "Codez en dur le nombre de lignes attendu dans le carnet afin que la valeur soit toujours disponible sans aucune expression"
+        },
+        {
+          "key": "C",
+          "label": "Écrivez le nombre de lignes dans un fichier texte et faites en sorte que chaque activité en aval se rouvre et analysez le fichier à chaque fois"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Référencez la sortie de l’activité de recherche en utilisant une expression dynamique pour définir la variable et la passer comme paramètre",
+      "rationaleHtml": "Les expressions dynamiques lisent la sortie d’une activité antérieure (par exemple @activity('Lookup').output) pour transformer les valeurs en variables et paramètres.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/expression-language\">Expressions et fonctions - Microsoft Fabric</a>",
+      "extraHtml": "Le codage dur se casse lorsque les comptes changent. Faire un aller-retour dans un fichier ajoute une E/S fragile. Les expressions dynamiques transmettent nativement les sorties d’activité en aval."
+    },
+    {
+      "id": "dp700-02a8a0c99167",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "WorkspaceAccessControls",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "WorkspaceAccessControls"
+      ],
+      "promptHtml": "Pour limiter le rayon de blast, un ingénieur de données devrait avoir des droits d’édition uniquement dans l’espace de travail Développement et un accès en lecture seule en Production. Comment implémentez-vous le moindre privilège ici ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Assigner le contributeur au développement et le visionneur à la production afin que les montages soient isolés à la phase de non-production"
+        },
+        {
+          "key": "B",
+          "label": "Accordez à l’ingénieur l’administration des deux espaces de travail afin qu’il puisse corriger rapidement tout si un incident de production survient à tout moment"
+        },
+        {
+          "key": "C",
+          "label": "Placez les deux espaces de travail sous un seul rôle assigné à Membre pour garder la gestion des permissions simple dans l’ensemble"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Assigner le contributeur au développement et le visionneur à la production afin que les montages soient isolés à la phase de non-production",
+      "rationaleHtml": "Définir les droits de montage pour Development (Contributeur) et lecture seule pour Production (Viewer) applique le moindre privilège et protège la production.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces\">Rôles dans l’espace de travail - Microsoft Fabric</a>",
+      "extraHtml": "L’administration partout, sur-subventionnant et risque la production. Un rôle de membre unique pour les deux permet des modifications de production indésirables. Les rôles par étape imposent le moins de privilèges."
+    },
+    {
+      "id": "dp700-05ff278b7bf0",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "RowLevelSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "RowLevelSecurity"
+      ],
+      "promptHtml": "Une base de données KQL doit restreindre les lignes que les analystes consultent en fonction de leur équipe, appliquées au moment de la requête dans Eventhouse. Quelle fonctionnalité offre ce filtrage par lignes ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Le masquage dynamique des données, qui masque les valeurs individuelles des champs mais ne supprime pas des lignes entières des résultats"
+        },
+        {
+          "key": "B",
+          "label": "La sécurité au niveau des colonnes, qui bloque des colonnes spécifiques plutôt que de filtrer les lignes qu’un analyste peut voir"
+        },
+        {
+          "key": "C",
+          "label": "Une politique de sécurité au niveau ligne KQL qui filtre les lignes retournées selon l’identité ou le rôle de l’utilisateur interrogé"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une politique de sécurité au niveau ligne KQL qui filtre les lignes retournées selon l’identité ou le rôle de l’utilisateur interrogé",
+      "rationaleHtml": "Les bases de données KQL prennent en charge des politiques de sécurité au niveau des lignes qui filtrent de manière transparente les résultats des requêtes selon l’identité de l’utilisateur, à l’instar du RLS d’entrepôt.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/row-level-security\">Sécurité au niveau des lignes dans KQL - Microsoft Fabric</a>",
+      "extraHtml": "Le masquage masque les valeurs, pas les lignes. La sécurité au niveau des colonnes supprime les colonnes, pas les lignes. Une politique RLS KQL effectue le filtrage par rangées."
+    },
+    {
+      "id": "dp700-078b1a3bd718",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationPatterns",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationPatterns"
+      ],
+      "promptHtml": "Un pipeline doit sauter sa charge principale lorsqu’une activité de validation en amont ne signale aucun nouveau fichier, mais continuer lorsque des fichiers existent. Quelle construction implémente ce branchement conditionnel ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une activité ForEach qui itère la liste de fichiers de sorte que le corps de la boucle ne fait rien quand la liste est vide de toute façon"
+        },
+        {
+          "key": "B",
+          "label": "Une activité If Condition évaluant l’expression de comptage de fichiers pour choisir la branche de charge versus une branche skip"
+        },
+        {
+          "key": "C",
+          "label": "Une activité d’attente qui met en pause assez longtemps pour que les fichiers manquants soient garantis d’arriver avant le chargement"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Une activité If Condition évaluant l’expression de comptage de fichiers pour choisir la branche de charge versus une branche skip",
+      "rationaleHtml": "L’activité If Condition se ramifie sur une expression booléenne, en exécutant le chargement uniquement lorsque la condition (fichiers existent) est vraie.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/control-flow-activities\">Activités de contrôle du flux - Microsoft Fabric</a>",
+      "extraHtml": "ForEach peut itérer mais ne modélise pas proprement une décision de continuer/sauter avec des branches séparées. Attend, juste retarde et ne décide pas. Si Condition est la construction de branchement."
+    },
+    {
+      "id": "dp700-6eec51dba29e",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "SparkWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "SparkWorkspaceSettings"
+      ],
+      "promptHtml": "Un espace de travail utilise un pool Spark personnalisé, mais les jobs commencent toujours lentement pendant la journée. Vous voulez un démarrage de session plus rapide tout en maintenant l’isolement du pool. Quel réglage aide le plus ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmenter le nombre maximal de nœuds du pool afin que les clusters plus grands éliminent intrinsèquement le délai de démarrage à froid"
+        },
+        {
+          "key": "B",
+          "label": "Désactivez complètement l’autoscale pour que le pool ne se redimensionne jamais et ne passe donc jamais de temps à provisionner les nœuds"
+        },
+        {
+          "key": "C",
+          "label": "Activez une forte concurrence et gardez des sessions et des réglages de piscine chauds afin de réduire la capacité de disponibilité par tâche"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Activez une forte concurrence et gardez des sessions et des réglages de piscine chauds afin de réduire la capacité de disponibilité par tâche",
+      "rationaleHtml": "Un partage élevé de sessions en concurrence et le maintien de la capacité au chaud réduisent la latence de démarrage sur les pools personnalisés sans abandonner l’isolement.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/high-concurrency-overview\">Forte concurrence - Microsoft Fabric</a>",
+      "extraHtml": "Un maximum de nœuds plus grands ne supprime pas l’attente initiale de provisionnement. Désactiver l’autoscale corrige la taille, pas la préparation chaude. Une forte concurrence et une capacité chaude réduisent la latence de démarrage."
+    },
+    {
+      "id": "dp700-414e13d46054",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "ColumnLevelSecurity",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "ColumnLevelSecurity"
+      ],
+      "promptHtml": "Un jeu de données réglementé exige que même les administrateurs d’espaces de travail ne puissent pas lire certaines colonnes à moins d’être explicitement autorisés à la couche des données. Quel contrôle impose cela au-delà des rôles d’espace de travail ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Ajustement des rôles d’espace de travail, car rétrograder les administrateurs au rang de membres les empêche automatiquement de lire les colonnes"
+        },
+        {
+          "key": "B",
+          "label": "Restrictions de sécurité OneLake au niveau des colonnes qui s’appliquent à la couche de données, indépendamment du niveau du rôle de l’espace de travail"
+        },
+        {
+          "key": "C",
+          "label": "Étiquettes de sensibilité, qui classifient les données et empêchent donc les administrateurs de lire les colonnes indiquées"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Restrictions de sécurité OneLake au niveau des colonnes qui s’appliquent à la couche de données, indépendamment du niveau du rôle de l’espace de travail",
+      "rationaleHtml": "La sécurité OneLake impose l’accès aux colonnes au niveau de la couche de données, donc l’autorisation est indépendante des rôles d’administrateur d’espace de travail et ne peut pas être supplantée par celui.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/onelake/security/get-started-security\">Sécurité OneLake - Microsoft Fabric</a>",
+      "extraHtml": "L’ajustement des rôles d’espace de travail laisse toujours un accès large et n’est pas limité par colonne. Les étiquettes de sensibilité classifient mais ne bloquent pas les lectures. La sécurité de la couche de données OneLake applique cette restriction."
+    },
+    {
+      "id": "dp700-9134a1516f10",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "ItemLevelAccessControls",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "ItemLevelAccessControls"
+      ],
+      "promptHtml": "Vous devez accorder à une équipe partenaire un seul rapport spécifique dans un espace de travail sans lui donner accès aux autres éléments de l’espace de travail. Quelle est la bonne approche ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Partagez directement l’élément spécifique avec des autorisations par article au lieu d’accorder un rôle d’espace de travail large"
+        },
+        {
+          "key": "B",
+          "label": "Ajoutez l’équipe partenaire en tant que Viewers de l’espace de travail afin qu’ils puissent ouvrir le rapport unique avec tout le reste présent"
+        },
+        {
+          "key": "C",
+          "label": "Transférez le rapport à la capacité du partenaire pour que les limites de capacité le limitent à un seul élément"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Partagez directement l’élément spécifique avec des autorisations par article au lieu d’accorder un rôle d’espace de travail large",
+      "rationaleHtml": "Le partage au niveau des éléments donne accès à un seul élément sans exposer tout l’espace de travail, ce qui satisfait le privilège minimum.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/share-items\">Partager des articles Fabric - Microsoft Fabric</a>",
+      "extraHtml": "Workspace Viewer expose tous les éléments, ce qui fait une sur-subvention. Les limites de capacité régissent le calcul, pas l’accès aux éléments. Le partage au niveau des items permet d’accéder uniquement au rapport."
+    },
+    {
+      "id": "dp700-8bc4e9d50b2d",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "Endorsement",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "Endorsement"
+      ],
+      "promptHtml": "Une équipe souhaite que ses tables Lakehouse dorées sélectionnées soient facilement trouvées et dignes de confiance aux analystes de toute l’entreprise, ce qui signifie qu’elle est prête pour le libre-service mais pas officiellement certifiée. Quelle action convient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Appliquez l’endossement Certifié, qui est le signal en libre-service approprié que tout auteur peut mettre sur ses propres tables"
+        },
+        {
+          "key": "B",
+          "label": "Appliquer l’endossement Promoussement pour mettre en évidence les tableaux comme contenu recommandé, en libre-service, pour une découverte plus large"
+        },
+        {
+          "key": "C",
+          "label": "Attribuez une étiquette de sensibilité Confidentielle, puisque la classification est ce qui rend les tables détectables et fiables"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Appliquer l’endossement Promoussement pour mettre en évidence les tableaux comme contenu recommandé, en libre-service, pour une découverte plus large",
+      "rationaleHtml": "Promou, c’est l’endossement en libre-service que les auteurs peuvent postuler pour signaler le contenu recommandé, améliorant ainsi la découverte au-delà de la certification formelle.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/governance/endorsement-overview\">Promouvoir le contenu - Microsoft Fabric</a>",
+      "extraHtml": "La certification est contrôlée par des certificateurs autorisés, pas par le libre-service. Les étiquettes de sensibilité classent la confidentialité, pas la confiance/la découverte. Promou, c’est le signal de recommandation en libre-service."
+    },
+    {
+      "id": "dp700-53133ba63a16",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "OrchestrationPatterns",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "OrchestrationPatterns"
+      ],
+      "promptHtml": "Un pipeline doit échouer rapidement et arrêter les activités restantes dès qu’une activité critique de validation échoue, plutôt que de poursuivre d’autres branches. Comment modéliser cela ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Connectez les activités critiques ultérieures avec les dépendances Sur le succès afin que l’échec arrête immédiatement ce chemin dépendant"
+        },
+        {
+          "key": "B",
+          "label": "Utilisez des dépendances à complétion partout afin que les activités s’exécutent toujours, quel que soit le succès ou l’échec en amont"
+        },
+        {
+          "key": "C",
+          "label": "Supprimez toutes les dépendances afin que chaque activité s’exécute en parallèle et que les pannes ne bloquent jamais rien en aval"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Connectez les activités critiques ultérieures avec les dépendances Sur le succès afin que l’échec arrête immédiatement ce chemin dépendant",
+      "rationaleHtml": "Sur la préséance de succès, les activités en aval ne s’exécutent que si le prédécesseur a réussi, donc un échec arrête ce chemin dépendant.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-factory/activity-overview\">Dépendances d’activité - Microsoft Fabric</a>",
+      "extraHtml": "À l’achèvement, les exécutions s’exécutent indépendamment de la défaillance, ce qui est l’opposé d’une défaillance rapide. Supprimer les dépendances permet à tout de fonctionner malgré les échecs. Le succès s’arrête les dépendants de l’échec."
+    },
+    {
+      "id": "dp700-23a864af0cbc",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "DynamicDataMasking",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "DynamicDataMasking"
+      ],
+      "promptHtml": "Une table d’entrepôt de données stockant les dossiers clients doit permettre aux agents de support de les interroger tout en masquant les numéros d’identification nationaux complets, tout en permettant au rôle de conformité de les voir démasqués. Quel pairage met cela en œuvre ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Masquage dynamique des données sur la colonne ID plus l’autorisation UNMASK accordée au rôle de conformité"
+        },
+        {
+          "key": "B",
+          "label": "Sécurité au niveau ligne pour les agents plus la sécurité au niveau objet accordant un accès conforme uniquement à l’ensemble de la table"
+        },
+        {
+          "key": "C",
+          "label": "Une sécurité au niveau de la colonne refusant l’ID à tout le monde, puis le réattribuant aux agents mais pas à la conformité"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Masquage dynamique des données sur la colonne ID plus l’autorisation UNMASK accordée au rôle de conformité",
+      "rationaleHtml": "Le DDM masque l’ID pour les utilisateurs généraux, tandis que l’UNMASK pour la conformité permet à ce rôle de voir les véritables valeurs.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/dynamic-data-masking\">Masquage dynamique des données et UNMASK - Microsoft Fabric</a>",
+      "extraHtml": "RLS filtre les lignes, pas les valeurs. L’option CLS inverse l’exigence (les agents doivent être masqués, pas bloqués ; la conformité doit voir les valeurs). DDM plus UNMASK correspondent exactement."
+    },
+    {
+      "id": "dp700-8364fb743b98",
+      "examSlug": "dp700",
+      "domain": "ImplementManage",
+      "topic": "SparkWorkspaceSettings",
+      "tags": [
+        "DP-700",
+        "ImplementManage",
+        "SparkWorkspaceSettings"
+      ],
+      "promptHtml": "Un administrateur d’espace de travail veut que Spark fasse l’auto-scaling pour que les pools grandissent sous charge mais ne dépassent jamais un plafond de coût, puis rétrécissent lorsqu’ils sont inactifs. Quelle configuration répond à cette option ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un pool de taille fixe au maximum de nœuds, toujours en fonction du plafond de nœuds pour garantir que la capacité est prête"
+        },
+        {
+          "key": "B",
+          "label": "Un pool personnalisé avec autoscale activé entre un nombre minimum et un nombre maximal de nœuds borné pour le contrôle des coûts"
+        },
+        {
+          "key": "C",
+          "label": "Le pool de départ uniquement, car les pools de démarrage offrent une échelle élastique illimitée sans maximum configurable"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Un pool personnalisé avec autoscale activé entre un nombre minimum et un nombre maximal de nœuds borné pour le contrôle des coûts",
+      "rationaleHtml": "L’auto-scale entre le minimum et un maximum plafonné permet aux pools de croître sous charge et de se réduire en étant inactifs, tout en imposant un plafond de coût.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/autoscale-billing-for-spark-overview\">Autoscale pour Spark - Microsoft Fabric</a>",
+      "extraHtml": "Un pool de taille maximale fixe gaspille de l’argent lorsqu’il est inactif. Les pools de démarrage sont orientés commodité et ne sont pas le bon levier pour une échelle automatique limitée et contrôlée par le coût. L’autoscale personnalisée des pools avec un plafond."
+    },
+    {
+      "id": "dp700-a27b8cec60ec",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "IngestWithPipelines",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "IngestWithPipelines"
+      ],
+      "promptHtml": "Un pipeline copie les données d’un SQL Server sur site dans un Fabric Lakehouse. Quel composant permet une connectivité sécurisée de Fabric vers la source sur site ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Un raccourci OneLake, qui peut accéder directement à SQL Server sur site via le réseau d’entreprise sans un composant de passerelle"
+        },
+        {
+          "key": "B",
+          "label": "Un point de terminaison public sur SQL Server exposé à Internet afin que le pipeline puisse s’y connecter directement"
+        },
+        {
+          "key": "C",
+          "label": "Une passerelle de données sur site configurée comme passerelle de la connexion afin que Fabric puisse accéder en toute sécurité à la source privée"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Une passerelle de données sur site configurée comme passerelle de la connexion afin que Fabric puisse accéder en toute sécurité à la source privée",
+      "rationaleHtml": "La passerelle de données sur site relie Fabric à des sources de données privées/locales de manière sécurisée sans les exposer publiquement.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/data-integration/gateway/service-gateway-onprem\">Passerelle de données sur site - Microsoft Learn</a>",
+      "extraHtml": "Les raccourcis ciblent le stockage d’objets cloud, pas le SQL local arbitraire sur une passerelle. Exposer un point de terminaison public est peu sécurisé. La passerelle de données est le composant de connectivité sécurisée."
+    },
+    {
+      "id": "dp700-e7d2d747cd02",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "Eventstreams",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "Eventstreams"
+      ],
+      "promptHtml": "Les données de référence se mettent à jour rarement mais doivent être reliées à un flux à fort volume à l’intérieur d’un flux d’événements pour enrichir les événements. Quelle capacité permet d’enrichir les événements en streaming avec des données de référence ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une fenêtre de chute, car la fenêtrage du flux attache automatiquement les dernières valeurs de référence à chaque événement"
+        },
+        {
+          "key": "B",
+          "label": "Une opération VACUUM sur la table de référence afin que ses valeurs les plus récentes soient automatiquement poussées dans le flux"
+        },
+        {
+          "key": "C",
+          "label": "Un opérateur de jointure/recherche Eventstream qui enrichit les événements de streaming avec le jeu de données de référence pendant le traitement"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Un opérateur de jointure/recherche Eventstream qui enrichit les événements de streaming avec le jeu de données de référence pendant le traitement",
+      "rationaleHtml": "Le traitement en flux d’événements permet de joindre ou de consulter des données de référence pour enrichir les événements en vol avant qu’ils n’atteignent les destinations.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/process-events-using-event-processor-editor\">Événements de processus - Microsoft Fabric</a>",
+      "extraHtml": "Le fenêtrage s’agrége dans le temps ; il ne joint pas les données de référence. VACUUM est un entretien Delta, sans lien. Un opérateur de jointure/recherche effectue l’enrichissement."
+    },
+    {
+      "id": "dp700-2d8907435b5a",
+      "examSlug": "dp700",
+      "domain": "IngestTransform",
+      "topic": "IncrementalLoads",
+      "tags": [
+        "DP-700",
+        "IngestTransform",
+        "IncrementalLoads"
+      ],
+      "promptHtml": "Un travail batch doit surserter les changements entrants dans une grande table Delta, mettre à jour les lignes existantes par clé et en insérer de nouvelles dans une seule opération atomique. Quelle fonctionnalité Delta devriez-vous utiliser ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Une opération MERGE IN qui correspond à la touche pour mettre à jour les lignes existantes et en insérer de nouvelles atomiquement"
+        },
+        {
+          "key": "B",
+          "label": "Écraser toute la table à chaque exécution afin que les mises à jour et les insertions soient appliquées en remplaçant simplement toutes les données existantes"
+        },
+        {
+          "key": "C",
+          "label": "Ajouter chaque ligne entrante inconditionnellement et dédupliquer plus tard lors du rapport pour simuler un upsert"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Une opération MERGE IN qui correspond à la touche pour mettre à jour les lignes existantes et en insérer de nouvelles atomiquement",
+      "rationaleHtml": "Delta MERGE effectue une mise à jour/insertion conditionnelle (et suppression optionnelle) par clé dans une transaction atomique, le motif standard de l’upsert.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-explore\">Delta MERGE upsert - Microsoft Fabric</a>",
+      "extraHtml": "Une réécriture complète est gaspilleuse et dangereuse pour les grandes tables. Ajouter puis dédupper rend la table sale. MERGE est l’upsert atomique basé sur des clés."
+    },
+    {
+      "id": "dp700-6fd6ae5f6aa3",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ResolveEventstreamErrors",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ResolveEventstreamErrors"
+      ],
+      "promptHtml": "Un Eventstream qui diffusait des événements ne montre soudainement plus de nouvelles données après la régénération de la clé d’accès partagée du hub d’événements source. Quelle est la cause et la solution les plus probables ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "L’élément Eventstream était corrompu et doit être supprimé puis reconstruit à partir de zéro pour restaurer le flux d’événements"
+        },
+        {
+          "key": "B",
+          "label": "La connexion source stockée a désormais une clé invalide, donc mettez à jour la connexion source Eventstream avec la nouvelle clé"
+        },
+        {
+          "key": "C",
+          "label": "La capacité de l’espace de travail limite le flux, donc mettre en pause tous les autres éléments fera reprendre la livraison des événements"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "La connexion source stockée a désormais une clé invalide, donc mettez à jour la connexion source Eventstream avec la nouvelle clé",
+      "rationaleHtml": "Lorsqu’un secret source est tourné, la connexion sauvegardée de l’Eventstream se rompt ; la mise à jour des identifiants de connexion restaure l’ingestion.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/add-manage-eventstream-sources\">Gérer les sources Eventstream - Microsoft Fabric</a>",
+      "extraHtml": "Reconstruire l’élément est inutile et perturbateur. La limitation de capacité affecterait largement le traitement, pas arrêterait une source unique juste après un changement de clé. Rafraîchissez les identifiants de connexion source."
+    },
+    {
+      "id": "dp700-beffff5ee901",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizePipeline",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizePipeline"
+      ],
+      "promptHtml": "Un pipeline charge lentement une table Warehouse car il insère des lignes une à la fois depuis une source REST. Quel changement améliore le plus le débit de charge ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Encapsulez chaque insertion d’une seule ligne dans sa propre transaction afin que le moteur commit plus fréquemment et reste réactif"
+        },
+        {
+          "key": "B",
+          "label": "Mettez les données en fichiers et chargez en masse dans l’Entrepôt (par exemple COPIER) au lieu d’insertions ligne par ligne"
+        },
+        {
+          "key": "C",
+          "label": "Ajoutez un délai de deux secondes entre les insertions afin que le Warehouse ne soit jamais submergé par la pression d’écriture simultanée"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Mettez les données en fichiers et chargez en masse dans l’Entrepôt (par exemple COPIER) au lieu d’insertions ligne par ligne",
+      "rationaleHtml": "Le chargement en masse/en étapes traite les données en grandes quantités, surpassant largement les INSERTS singleton pour des charges à grand volume.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/ingest-data\">Ingérer les données dans l’entrepôt - Microsoft Fabric</a>",
+      "extraHtml": "Les transactions par ligne ajoutent une surcharge de commit et ralentissent encore les choses. Ajouter des délais réduit volontairement le débit. Le chargement par lots/masse est le schéma standard d’ingestion à haut débit."
+    },
+    {
+      "id": "dp700-4a63cc90c28b",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "ConfigureAlerts",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "ConfigureAlerts"
+      ],
+      "promptHtml": "Vous devez être informé par e-mail chaque fois qu’un rafraîchissement sémantique programmé du modèle échoue, sans vérifier manuellement chaque matin. Quelle configuration y parvient ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Augmentez le délai de rafraîchissement afin que les pannes deviennent suffisamment rares pour que les contrôles manuels du matin soient suffisants à l’avenir"
+        },
+        {
+          "key": "B",
+          "label": "Ajoutez un second calendrier de rafraîchissement identique afin que si un rafraîchissement échoue, l’autre réussisse silencieusement à la place"
+        },
+        {
+          "key": "C",
+          "label": "Activez les notifications d’échec de rafraîchissement dans les paramètres de rafraîchissement programmé du modèle sémantique pour envoyer un e-mail aux destinataires spécifiés"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Activez les notifications d’échec de rafraîchissement dans les paramètres de rafraîchissement programmé du modèle sémantique pour envoyer un e-mail aux destinataires spécifiés",
+      "rationaleHtml": "Le rafraîchissement programmé inclut une option de notification de défaillance qui envoie un email aux propriétaires ou à une liste spécifiée lorsqu’un rafraîchissement échoue.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/power-bi/connect-data/refresh-data\">Notifications d’échec de rafraîchissement - Microsoft Learn</a>",
+      "extraHtml": "Un délai d’attente plus long ne fait pas apparaître les pannes ni ne prévient personne. Un calendrier en double gaspille de la capacité et masque la défaillance sous-jacente. Les notifications de panne intégrées fournissent des alertes en temps opportun."
+    },
+    {
+      "id": "dp700-a6d409fd5b78",
+      "examSlug": "dp700",
+      "domain": "MonitorOptimize",
+      "topic": "OptimizeQuery",
+      "tags": [
+        "DP-700",
+        "MonitorOptimize",
+        "OptimizeQuery"
+      ],
+      "promptHtml": "Une requête récurrente dans un rapport Warehouse sélectionne chaque colonne d’une table très large, mais le rapport n’utilise que cinq colonnes. Quel changement réduit le plus les E/S pour cette requête ?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Gardez SELECT * mais ajoutez un ORDER BY pour que le moteur renvoie le jeu de résultats large dans un ordre plus adapté au cache"
+        },
+        {
+          "key": "B",
+          "label": "Projetez seulement les cinq colonnes nécessaires au lieu de SELECT * afin que le moteur en colonnes scanne beaucoup moins de données"
+        },
+        {
+          "key": "C",
+          "label": "Castez les colonnes inutilisées en NULL dans la requête afin que le moteur puisse sauter la lecture de leur stockage sous-jacent"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Projetez seulement les cinq colonnes nécessaires au lieu de SELECT * afin que le moteur en colonnes scanne beaucoup moins de données",
+      "rationaleHtml": "Sélectionner uniquement les colonnes requises permet au magasin columnaire de sauter les colonnes inutiles, coupant ainsi les entrées/sorties et accélérant la requête.<br><br>Référence : <a href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/guidelines-warehouse-performance\">Directives de performance des entrepôts - Microsoft Fabric</a>",
+      "extraHtml": "Ajouter ORDER BY augmente le travail et lit toujours toutes les colonnes. Lancer des colonnes inutilisées vers NULL les référencent toujours et ajoute le calcul. La projection de colonnes est la réduction directe des E/S."
+    }
+  ]
+}
