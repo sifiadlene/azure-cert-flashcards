@@ -232,6 +232,39 @@ def validate_flashcard_csv(filepath):
 - All required fields have content
 - Every option label matches `A)`, `B)`, or `C)` exactly (no `>`, `.`, `:`, `-` variants)
 
+### Answer Balance Validation (Anti-Tell)
+
+After format validation, verify the deck does not leak the answer through position or length:
+
+```python
+import csv, re
+from collections import Counter
+
+def validate_answer_balance(filepath):
+    with open(filepath, encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    letters, longest = Counter(), 0
+    for row in rows:
+        letters[row['Back'][0]] += 1
+        _, opts = row['Front'].split('<br><br>', 1)
+        texts = [re.match(r'^[A-C]\)\s*(.+)$', o.strip(), re.DOTALL).group(1)
+                 for o in opts.split('<br>') if o.strip()]
+        correct = re.match(r'^[A-C]\)\s*(.+?)<br><br>', row['Back'], re.DOTALL).group(1)
+        lengths = [len(t) for t in texts]
+        if len(correct) == max(lengths) and len(correct) > min(lengths):
+            longest += 1
+    n = len(rows)
+    warnings = []
+    for k in 'ABC':
+        if not (n * 0.25 <= letters[k] <= n * 0.42):
+            warnings.append(f"Letter {k} is {letters[k]}/{n} (target ~1/3 each)")
+    if longest > n * 0.40:
+        warnings.append(f"Correct is longest on {longest}/{n} cards (max 40%)")
+    return warnings
+```
+
+Regenerate or rebalance until both the letter distribution (~1/3 each A/B/C) and the correct-is-longest share (≤40%) pass. Fix by permuting option order and trimming or padding distractors, never by changing which answer is correct.
+
 ## Coverage Validation Checklist (Pre-Delivery)
 
 ✓ Extracted topic map includes all domains from the official exam guide
@@ -250,7 +283,7 @@ After CSV format validation passes with zero errors, generate the English JSON d
    ```
    This reads `flashcards/*.csv`, selects the latest CSV per exam slug, and writes `web/public/data/decks/{slug}.json` plus `web/public/data/exams.json`. Translated `*-fr.json` decks are preserved.
 
-2. **Do NOT run `npm run validate:data` here.** That step enforces English/French deck parity and fails for any English-only deck that has no `{slug}-fr.json` yet. `build:data` already throws on malformed rows (wrong column count, missing question/options separator, non-A/B/C options), so a clean run confirms the CSV is structurally valid.
+2. **Do NOT run `npm run validate:data` here.** That step enforces English/French deck parity and fails for any English-only deck that has no `{slug}-fr.json` yet. `build:data` already throws on malformed rows (wrong column count, missing question/options separator, non-A/B/C options), so a clean run confirms the CSV is structurally valid. Run `validate:data` later, after generating the French deck (see the deploy-prep steps below); it is a required pre-push gate, just not part of this structural check.
 
 3. **Confirm the outputs.** Verify `web/public/data/decks/{slug}.json` was created or updated and that `exams.json` lists the exam, then review the full generated diff:
    ```bash
@@ -261,7 +294,19 @@ After CSV format validation passes with zero errors, generate the English JSON d
 
 4. **Set a friendly exam title for new slugs.** If the exam slug is new, add it to `titleMap` in `web/scripts/buildFlashcardData.mjs` (e.g. `gh900: 'GitHub Foundations'`) so the deck shows a readable title instead of the raw display code, then re-run the build.
 
-5. **Commit the CSV and the generated JSON together.** The GitHub Pages deploy workflow does not run `build:data`; it serves the committed JSON and guards against drift, so the deck files must be committed alongside the CSV.
+5. **Generate the French deck (required for deploy).** The GitHub Pages deploy pipeline runs `npm run validate:data`, which enforces English/French parity and fails the entire deploy if a `{slug}-fr.json` is missing. CI cannot self-heal this: its translate step runs after validation and does not commit results back. Generate it before committing:
+   ```bash
+   node tools/translate-decks.mjs --deck {slug}
+   ```
+   This needs `AZURE_TRANSLATOR_KEY` and `AZURE_TRANSLATOR_REGION` (env vars, or `--key`/`--region` flags) and writes `web/public/data/decks/{slug}-fr.json`.
+
+6. **Update tests and counts when the exam is new to the supported list.** Adding a deck moves that exam from "requestable" to "supported", so hardcoded catalog counts must change. Decrement the expected `requestableExams()` length in `api/test/examCatalog.test.ts` by one per newly supported exam. Then run the same gates CI runs, and confirm all pass before pushing:
+   ```bash
+   cd api && npm run build && npm test            # copyDecks + API/count tests
+   cd ../web && npm run validate:data && npm test  # EN/FR parity + web tests
+   ```
+
+7. **Commit everything together.** Commit the CSV, `{slug}.json`, `{slug}-fr.json`, the regenerated `web/public/data/exams.json` and `supported-exam-codes.json`, and any updated tests in one change. The deploy workflow serves the committed JSON and guards against drift, so partial commits break the build.
 
 ## Final Output
 
