@@ -20,6 +20,7 @@ All source decks live in [flashcards](flashcards):
 - AZ-204: Developing Solutions for Microsoft Azure
 - AZ-305: Designing Microsoft Azure Infrastructure Solutions
 - AZ-500: Microsoft Azure Security Technologies
+- DP-800: Microsoft Certified: SQL AI Developer Associate
 - GH-300: GitHub Copilot
 
 ## Features
@@ -46,9 +47,9 @@ All source decks live in [flashcards](flashcards):
 ## Exam Catalog and Requests
 
 The checked-in Microsoft Learn snapshot contains 49 catalog entries. The
-generated supported-code artifact contains 14 local decks, including two codes
+generated supported-code artifact contains 15 local decks, including two codes
 that are not in the current Learn table. The catalog-minus-supported result is
-therefore 37 requestable exams.
+therefore 35 requestable exams.
 
 Refresh and validate the catalog from the repository root:
 
@@ -260,4 +261,3 @@ This project is provided as-is for educational purposes.
 ## Disclaimer
 
 These flashcards are study aids and should be used alongside official Microsoft certification materials. They are not affiliated with or endorsed by Microsoft Corporation or GitHub.
-

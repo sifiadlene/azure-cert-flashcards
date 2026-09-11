@@ -27,6 +27,7 @@ const titleMap = {
   az305: 'Designing Microsoft Azure Infrastructure Solutions',
   az500: 'Microsoft Azure Security Technologies',
   dp700: 'Implementing Data Engineering Solutions Using Microsoft Fabric',
+  dp800: 'Microsoft Certified: SQL AI Developer Associate',
   gh300: 'GitHub Copilot',
   gh900: 'GitHub Foundations',
 }

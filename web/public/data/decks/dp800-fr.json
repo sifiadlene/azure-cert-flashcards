@@ -1,0 +1,1556 @@
+{
+  "exam": {
+    "slug": "dp800",
+    "code": "DP-800",
+    "title": "Microsoft Certified: SQL AI Developer Associate",
+    "sourceFile": "dp800_flashcards_2026-09-11.csv",
+    "deckVersion": "2026-09-11",
+    "updatedOn": "2026-09-11",
+    "questionCount": 50,
+    "domains": [
+      "AISolutionDesign",
+      "PerformanceOperations",
+      "RetrievalPatterns",
+      "SecurityGovernance"
+    ],
+    "topics": [
+      "AppSecurity",
+      "AuditCompliance",
+      "Authorization",
+      "BackupRecovery",
+      "BusinessContinuity",
+      "CapacityPlanning",
+      "CostOptimization",
+      "DataIngestion",
+      "DataLifecycle",
+      "DataModeling",
+      "DataPreparation",
+      "DataProtection",
+      "DataResidency",
+      "DevOpsPractices",
+      "EmbeddingQuality",
+      "EmbeddingStrategy",
+      "Evaluation",
+      "Freshness",
+      "GroundingQuality",
+      "HybridRetrieval",
+      "IdentityAccess",
+      "IndexStrategy",
+      "KeyManagement",
+      "LeastPrivilege",
+      "Monitoring",
+      "Observability",
+      "PrivacyControls",
+      "QueryDesign",
+      "QueryTuning",
+      "RAGPatterns",
+      "ResponsibleAI",
+      "SecureAccess",
+      "SimilaritySearch",
+      "TenantIsolation",
+      "WriteOptimization"
+    ]
+  },
+  "questions": [
+    {
+      "id": "dp800-a413eff7ac8e",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataModeling",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataModeling"
+      ],
+      "promptHtml": "A team wants to store embedding vectors with transactional order data and query both in one ACID database engine. Which platform choice best fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Azure SQL Database with native vector support"
+        },
+        {
+          "key": "B",
+          "label": "Azure Blob Storage containers with lifecycle rules"
+        },
+        {
+          "key": "C",
+          "label": "Azure Files shares with SMB access"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Azure SQL Database with native vector support",
+      "rationaleHtml": "Azure SQL Database can keep relational rows and vectors together, so transactional writes and vector lookups stay in one engine.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/vector-search-overview\">Vector search in Azure SQL Database</a>",
+      "extraHtml": "Blob and file storage are great for objects, but they do not provide relational joins, ACID OLTP patterns, or native SQL vector querying."
+    },
+    {
+      "id": "dp800-e168005b736a",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "SimilaritySearch",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "SimilaritySearch"
+      ],
+      "promptHtml": "You must find the most semantically similar support article to a user question embedding. Which T-SQL function should you use in the ranking query?",
+      "options": [
+        {
+          "key": "A",
+          "label": "JSON_VALUE to parse the vector payload"
+        },
+        {
+          "key": "B",
+          "label": "VECTOR_DISTANCE to score embedding similarity"
+        },
+        {
+          "key": "C",
+          "label": "STRING_SPLIT to tokenize question text"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "VECTOR_DISTANCE to score embedding similarity",
+      "rationaleHtml": "VECTOR_DISTANCE computes distance between vectors so you can ORDER BY similarity for nearest-neighbor retrieval.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/t-sql/functions/vector-distance-transact-sql\">VECTOR_DISTANCE (Transact-SQL)</a>",
+      "extraHtml": "JSON_VALUE and STRING_SPLIT are useful utilities, but they do not compute numeric distance between embeddings."
+    },
+    {
+      "id": "dp800-6d42a3356721",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "RAGPatterns",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "RAGPatterns"
+      ],
+      "promptHtml": "A chatbot on Azure SQL should reduce hallucinations by grounding answers in approved internal content. Which architecture pattern should you implement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Pure prompting with no retrieval layer"
+        },
+        {
+          "key": "B",
+          "label": "Keyword-only lookup with no semantic ranking"
+        },
+        {
+          "key": "C",
+          "label": "RAG that retrieves approved chunks before generation"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "RAG that retrieves approved chunks before generation",
+      "rationaleHtml": "RAG augments model prompts with trusted retrieved context, improving factual grounding and traceability.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Pure prompting cannot cite enterprise facts reliably. Keyword-only lookup often misses semantically relevant passages."
+    },
+    {
+      "id": "dp800-ca77ae8882ac",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "IdentityAccess",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "IdentityAccess"
+      ],
+      "promptHtml": "Security requires the app to access Azure OpenAI without embedding API keys in code or config files. What should the app use?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A managed identity with Microsoft Entra token auth"
+        },
+        {
+          "key": "B",
+          "label": "A shared SQL login stored in appsettings.json"
+        },
+        {
+          "key": "C",
+          "label": "A hard-coded OpenAI key inside source control"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A managed identity with Microsoft Entra token auth",
+      "rationaleHtml": "Managed identities remove secret handling and allow token-based access controlled by Azure RBAC.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "Secret-based methods increase rotation and leakage risk. Managed identity is the least-secret operational model."
+    },
+    {
+      "id": "dp800-6c47bae3872b",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "DataProtection",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "DataProtection"
+      ],
+      "promptHtml": "You need to protect a national ID column so DBAs cannot view plaintext values, while the application can still query with parameterized predicates. Which feature is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Transparent Data Encryption only"
+        },
+        {
+          "key": "B",
+          "label": "Always Encrypted with secure enclaves"
+        },
+        {
+          "key": "C",
+          "label": "Database-level firewall rules"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Always Encrypted with secure enclaves",
+      "rationaleHtml": "Always Encrypted keeps sensitive data encrypted at rest, in transit, and in use boundaries, with client-side key control.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-key-vault-configure\">Always Encrypted with Azure Key Vault</a>",
+      "extraHtml": "TDE protects files at rest, not DBA visibility in query results. Firewalls control network entry, not column exposure."
+    },
+    {
+      "id": "dp800-412ce3d162ca",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "TenantIsolation",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "TenantIsolation"
+      ],
+      "promptHtml": "A SaaS app stores many tenants in one database and must ensure each tenant only reads its own rows in every query path. Which control should be primary?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Separate schemas with naming conventions only"
+        },
+        {
+          "key": "B",
+          "label": "Nightly export jobs per tenant"
+        },
+        {
+          "key": "C",
+          "label": "Row-level security predicates"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Row-level security predicates",
+      "rationaleHtml": "Row-level security enforces per-row filters in the database engine, independent of app query mistakes.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/security/row-level-security\">Row-level security</a>",
+      "extraHtml": "Naming conventions are advisory, not enforcement. Export jobs do not secure online transactional reads."
+    },
+    {
+      "id": "dp800-75a9e929352e",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "Monitoring",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "Monitoring"
+      ],
+      "promptHtml": "An AI endpoint slowed after a deployment. You need automatic recommendations such as missing indexes and plan regressions from Azure SQL. Which feature should you check first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Intelligent Insights in Azure SQL"
+        },
+        {
+          "key": "B",
+          "label": "Azure DevOps pull request comments"
+        },
+        {
+          "key": "C",
+          "label": "Storage account lifecycle reports"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Intelligent Insights in Azure SQL",
+      "rationaleHtml": "Intelligent Insights analyzes telemetry for regressions and surfaces actionable performance diagnostics.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/intelligent-insights-overview\">Intelligent Insights</a>",
+      "extraHtml": "DevOps comments and storage lifecycle reports are useful elsewhere but do not analyze SQL runtime behavior."
+    },
+    {
+      "id": "dp800-521b24d8b637",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "QueryTuning",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "QueryTuning"
+      ],
+      "promptHtml": "A vector-enabled query became slower because the optimizer picked a bad plan after stats drift. Which built-in capability can force a known good plan safely?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Auto-failover groups"
+        },
+        {
+          "key": "B",
+          "label": "Query Store plan forcing"
+        },
+        {
+          "key": "C",
+          "label": "Elastic job schedules"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Query Store plan forcing",
+      "rationaleHtml": "Query Store tracks plan history and supports forcing a stable plan when regressions occur.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Failover groups provide DR, and elastic jobs orchestrate tasks; neither controls query plan selection."
+    },
+    {
+      "id": "dp800-0f8fedfc0ba1",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "HybridRetrieval",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "HybridRetrieval"
+      ],
+      "promptHtml": "Your retrieval query needs lexical precision for exact product terms plus semantic relevance from embeddings. Which design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use only VECTOR_DISTANCE and remove all text filtering"
+        },
+        {
+          "key": "B",
+          "label": "Use only LIKE with wildcard text scans"
+        },
+        {
+          "key": "C",
+          "label": "Combine full-text filtering with vector similarity ranking"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Combine full-text filtering with vector similarity ranking",
+      "rationaleHtml": "Hybrid retrieval pairs lexical recall/precision with semantic ranking for stronger answer quality.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/search/full-text-search\">Full-text search</a>",
+      "extraHtml": "Vector-only can miss exact constraints; LIKE-only often lacks semantic understanding and scale efficiency."
+    },
+    {
+      "id": "dp800-e69f1763d598",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "CostOptimization",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "CostOptimization"
+      ],
+      "promptHtml": "A product owner asks how to lower token cost in the RAG pipeline without reducing answer quality too much. Which step should you optimize first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Chunk and retrieve only top relevant passages"
+        },
+        {
+          "key": "B",
+          "label": "Send entire source documents each prompt"
+        },
+        {
+          "key": "C",
+          "label": "Duplicate every chunk to increase recall"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Chunk and retrieve only top relevant passages",
+      "rationaleHtml": "Selecting smaller, relevant context lowers token usage while preserving grounding quality.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Sending full documents and duplicates increases cost and may reduce model focus."
+    },
+    {
+      "id": "dp800-f5abdb0701da",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataIngestion",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataIngestion"
+      ],
+      "promptHtml": "You ingest source documents as JSON and must project specific fields into relational columns before embedding. Which SQL capability is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Spatial indexes with geography type"
+        },
+        {
+          "key": "B",
+          "label": "OPENJSON with explicit schema mapping"
+        },
+        {
+          "key": "C",
+          "label": "SQL Server Agent proxy accounts"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "OPENJSON with explicit schema mapping",
+      "rationaleHtml": "OPENJSON can shred JSON payloads into typed columns for downstream joins and embedding workflows.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server\">JSON data in SQL Server and Azure SQL</a>",
+      "extraHtml": "Spatial indexes and Agent proxies do not transform JSON payload structure into relational columns."
+    },
+    {
+      "id": "dp800-c9660011ade8",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "GroundingQuality",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "GroundingQuality"
+      ],
+      "promptHtml": "A team wants the assistant to cite where each generated statement came from. Which metadata practice should you apply during chunk storage?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Store only raw chunk text with no identifiers"
+        },
+        {
+          "key": "B",
+          "label": "Store chunk text plus source URI and offsets"
+        },
+        {
+          "key": "C",
+          "label": "Store only embeddings and discard original text"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Store chunk text plus source URI and offsets",
+      "rationaleHtml": "Keeping source metadata with chunks enables citation and traceability in generated answers.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Text without provenance cannot support citations. Embeddings alone lose human-readable evidence."
+    },
+    {
+      "id": "dp800-6c6b42975224",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "BusinessContinuity",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "BusinessContinuity"
+      ],
+      "promptHtml": "You must provide cross-region continuity for an AI-enabled transactional app using Azure SQL with low manual failover effort. What should you configure?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Auto-failover groups between paired regions"
+        },
+        {
+          "key": "B",
+          "label": "BACPAC export once per month"
+        },
+        {
+          "key": "C",
+          "label": "Client retry loops without secondary database"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Auto-failover groups between paired regions",
+      "rationaleHtml": "Auto-failover groups provide managed geo-replication and endpoint redirection for continuity.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-sql-db\">Auto-failover groups</a>",
+      "extraHtml": "Monthly exports are for backup portability, not near-continuous service. Retries cannot recover from region-wide database loss alone."
+    },
+    {
+      "id": "dp800-f968c5494baf",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "BackupRecovery",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "BackupRecovery"
+      ],
+      "promptHtml": "Legal asks for recovery to any point in the last 14 days after accidental data deletion. Which Azure SQL capability directly supports this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Automatic tuning recommendations"
+        },
+        {
+          "key": "B",
+          "label": "Point-in-time restore from automated backups"
+        },
+        {
+          "key": "C",
+          "label": "Static data masking rules"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Point-in-time restore from automated backups",
+      "rationaleHtml": "Point-in-time restore lets you recover a database to a selected timestamp within retention.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/recovery-using-backups\">Recover Azure SQL Database from backups</a>",
+      "extraHtml": "Automatic tuning is for performance, and masking does not restore deleted data."
+    },
+    {
+      "id": "dp800-88dd4836be33",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "CostOptimization",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "CostOptimization"
+      ],
+      "promptHtml": "A development team keeps regenerating embeddings for unchanged documents, causing needless cost and latency. What is the best fix?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rotate SQL admin passwords weekly"
+        },
+        {
+          "key": "B",
+          "label": "Cache embeddings and re-embed only changed content"
+        },
+        {
+          "key": "C",
+          "label": "Increase DTU/CPU tier permanently"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Cache embeddings and re-embed only changed content",
+      "rationaleHtml": "Change detection with embedding reuse avoids redundant model calls and lowers both latency and spend.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/embeddings\">Embeddings with Azure OpenAI</a>",
+      "extraHtml": "Password rotation is unrelated, and scaling compute does not remove duplicate embedding requests."
+    },
+    {
+      "id": "dp800-a8f063c998e3",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "LeastPrivilege",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "LeastPrivilege"
+      ],
+      "promptHtml": "You need to minimize SQL permissions for the AI app that only reads chunks and writes chat logs. Which approach follows least privilege?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Grant db_owner to simplify onboarding"
+        },
+        {
+          "key": "B",
+          "label": "Grant EXECUTE/SELECT/INSERT only on required objects"
+        },
+        {
+          "key": "C",
+          "label": "Use server admin for all production calls"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Grant EXECUTE/SELECT/INSERT only on required objects",
+      "rationaleHtml": "Object-scoped permissions provide required access without broad administrative rights.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "db_owner and server admin exceed the app’s functional need and increase blast radius."
+    },
+    {
+      "id": "dp800-34451eb85edd",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "EmbeddingStrategy",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "EmbeddingStrategy"
+      ],
+      "promptHtml": "A retrieval query orders by VECTOR_DISTANCE but returns inconsistent relevance because vector dimensions differ between rows. What should you enforce?",
+      "options": [
+        {
+          "key": "A",
+          "label": "A fixed embedding model and consistent vector dimensions"
+        },
+        {
+          "key": "B",
+          "label": "A random model per microservice deployment"
+        },
+        {
+          "key": "C",
+          "label": "A mix of multilingual and monolingual dimensions"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "A fixed embedding model and consistent vector dimensions",
+      "rationaleHtml": "Distance math assumes comparable vectors; consistent dimensions and model family are required for meaningful similarity.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/embeddings\">Embeddings with Azure OpenAI</a>",
+      "extraHtml": "Mixing dimensions breaks comparability and causes invalid or low-quality ranking behavior."
+    },
+    {
+      "id": "dp800-08a3fb76e49d",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "PrivacyControls",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "PrivacyControls"
+      ],
+      "promptHtml": "You need to protect sensitive terms in logs generated from assistant prompts and completions. Which practice is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Disable all monitoring permanently"
+        },
+        {
+          "key": "B",
+          "label": "Apply data classification and mask/redact before log persistence"
+        },
+        {
+          "key": "C",
+          "label": "Store raw prompts indefinitely for easier debugging"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Apply data classification and mask/redact before log persistence",
+      "rationaleHtml": "Redaction and classification reduce exposure while preserving operational insight.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server\">JSON data in SQL Server and Azure SQL</a>",
+      "extraHtml": "No monitoring hurts operations, while raw indefinite storage raises privacy and compliance risk."
+    },
+    {
+      "id": "dp800-bc4b063e7ad9",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "Evaluation",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "Evaluation"
+      ],
+      "promptHtml": "A team wants to test retrieval quality before production by measuring whether relevant chunks appear in top-k results. Which evaluation is most useful?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Only track VM CPU usage"
+        },
+        {
+          "key": "B",
+          "label": "Only track number of SQL logins"
+        },
+        {
+          "key": "C",
+          "label": "Use relevance metrics like precision@k and recall@k"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Use relevance metrics like precision@k and recall@k",
+      "rationaleHtml": "Retrieval metrics directly measure whether the system returns useful context for generation.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Infrastructure metrics help capacity planning but do not prove retrieval relevance quality."
+    },
+    {
+      "id": "dp800-6c1a29d70cd2",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataPreparation",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataPreparation"
+      ],
+      "promptHtml": "You need to improve semantic recall for long policy PDFs. Which preprocessing step is usually most effective?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Split text into coherent chunks before embedding"
+        },
+        {
+          "key": "B",
+          "label": "Embed the full 400-page document as one vector"
+        },
+        {
+          "key": "C",
+          "label": "Remove all headings and section boundaries"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Split text into coherent chunks before embedding",
+      "rationaleHtml": "Chunking preserves local meaning and improves nearest-neighbor retrieval granularity.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Single-vector whole documents lose detail; removing structure can reduce contextual quality."
+    },
+    {
+      "id": "dp800-77c86d8c2f15",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "DataProtection",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "DataProtection"
+      ],
+      "promptHtml": "A database is encrypted with TDE, but auditors still report that privileged users can view sensitive query results. What additional control is needed?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Geo-backups with longer retention"
+        },
+        {
+          "key": "B",
+          "label": "Always Encrypted for sensitive columns"
+        },
+        {
+          "key": "C",
+          "label": "Larger compute tier for the database"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Always Encrypted for sensitive columns",
+      "rationaleHtml": "TDE secures storage media, while Always Encrypted protects sensitive values from plaintext exposure in query results.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-key-vault-configure\">Always Encrypted with Azure Key Vault</a>",
+      "extraHtml": "Backups and compute sizing do not address data visibility at query time."
+    },
+    {
+      "id": "dp800-aa529f05e48e",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "QueryDesign",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "QueryDesign"
+      ],
+      "promptHtml": "A product catalog chatbot needs deterministic filtering by brand and region before semantic ranking. Which query pattern should you prefer?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Apply structured WHERE filters then vector similarity order"
+        },
+        {
+          "key": "B",
+          "label": "Run vector similarity first and filter later in app code"
+        },
+        {
+          "key": "C",
+          "label": "Use random sampling to reduce candidate rows"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Apply structured WHERE filters then vector similarity order",
+      "rationaleHtml": "Database-side structured filters reduce candidate set early and keep retrieval aligned with hard constraints.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/vector-search-overview\">Vector search in Azure SQL Database</a>",
+      "extraHtml": "Late filtering and random sampling can exclude relevant rows or waste compute."
+    },
+    {
+      "id": "dp800-a17a74110425",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "QueryTuning",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "QueryTuning"
+      ],
+      "promptHtml": "Operations wants automatic remediation when index recommendations repeatedly improve AI query latency. Which setting should you enable?",
+      "options": [
+        {
+          "key": "A",
+          "label": "SQL auditing to Log Analytics only"
+        },
+        {
+          "key": "B",
+          "label": "Automatic index tuning in Azure SQL"
+        },
+        {
+          "key": "C",
+          "label": "Geo-replication seeding diagnostics"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Automatic index tuning in Azure SQL",
+      "rationaleHtml": "Automatic tuning can create/drop indexes based on observed workload impact and validation.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview\">Automatic tuning in Azure SQL Database</a>",
+      "extraHtml": "Auditing and replication diagnostics are operationally useful but do not tune indexes automatically."
+    },
+    {
+      "id": "dp800-e1f7d23370c6",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "An assistant must answer only from approved HR policies and refuse unsupported questions. What is the best guardrail?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Allow model answers from general pretraining knowledge"
+        },
+        {
+          "key": "B",
+          "label": "Prompt with policy context and enforce refusal when retrieval is empty"
+        },
+        {
+          "key": "C",
+          "label": "Disable retrieval to reduce latency"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Prompt with policy context and enforce refusal when retrieval is empty",
+      "rationaleHtml": "Grounding plus explicit refusal logic prevents fabricated answers outside approved sources.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "General-pretraining-only responses and disabled retrieval increase hallucination and compliance risk."
+    },
+    {
+      "id": "dp800-613247fba8ce",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "KeyManagement",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "KeyManagement"
+      ],
+      "promptHtml": "You need to rotate encryption keys for client-side protected columns with minimal downtime. Which key architecture helps most?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Store keys only in local config files"
+        },
+        {
+          "key": "B",
+          "label": "Use column master keys in Azure Key Vault"
+        },
+        {
+          "key": "C",
+          "label": "Use SQL login passwords as encryption keys"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use column master keys in Azure Key Vault",
+      "rationaleHtml": "Azure Key Vault-backed CMKs support centralized key governance and operational rotation workflows.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-key-vault-configure\">Always Encrypted with Azure Key Vault</a>",
+      "extraHtml": "Local files and SQL passwords are weaker key-governance patterns for regulated data."
+    },
+    {
+      "id": "dp800-9396f725f897",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataPreparation",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataPreparation"
+      ],
+      "promptHtml": "A retrieval pipeline pulls duplicate chunks from mirrored sources, causing repetitive answers. Which step should you add?",
+      "options": [
+        {
+          "key": "A",
+          "label": "De-duplicate content with stable chunk hashes before embedding"
+        },
+        {
+          "key": "B",
+          "label": "Increase prompt temperature to 1.0"
+        },
+        {
+          "key": "C",
+          "label": "Disable source metadata collection"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "De-duplicate content with stable chunk hashes before embedding",
+      "rationaleHtml": "Hash-based deduplication removes repeated context and improves response clarity and token efficiency.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Temperature tuning and metadata removal do not eliminate duplicated source content."
+    },
+    {
+      "id": "dp800-c2f4ba85197b",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "SecureAccess",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "SecureAccess"
+      ],
+      "promptHtml": "Your team must expose SQL data to a model while preventing direct table access from the app. Which interface pattern is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Grant table SELECT on every schema"
+        },
+        {
+          "key": "B",
+          "label": "Use parameterized stored procedures for approved access paths"
+        },
+        {
+          "key": "C",
+          "label": "Allow ad hoc dynamic SQL from user prompts"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use parameterized stored procedures for approved access paths",
+      "rationaleHtml": "Stored procedures encapsulate business logic and narrow the execution surface for AI-driven requests.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "Broad table access and dynamic SQL increase injection and overexposure risks."
+    },
+    {
+      "id": "dp800-ffbe2db04f42",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "EmbeddingQuality",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "EmbeddingQuality"
+      ],
+      "promptHtml": "A multilingual assistant uses one embedding model for English and another for French in the same search column. Retrieval quality drops. What is the main issue?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Autoscaling is disabled on the SQL server"
+        },
+        {
+          "key": "B",
+          "label": "Different embedding spaces are mixed in one similarity index"
+        },
+        {
+          "key": "C",
+          "label": "Query Store capture mode is set to AUTO"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Different embedding spaces are mixed in one similarity index",
+      "rationaleHtml": "Vectors from different embedding spaces are not directly comparable, so distance rankings become unreliable.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/embeddings\">Embeddings with Azure OpenAI</a>",
+      "extraHtml": "Autoscaling and Query Store settings are unrelated to embedding-space compatibility."
+    },
+    {
+      "id": "dp800-c73832fd6404",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "Observability",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "Observability"
+      ],
+      "promptHtml": "You need observability for AI query latency by stage (retrieval vs generation). What telemetry design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Emit correlated trace IDs with per-stage duration metrics"
+        },
+        {
+          "key": "B",
+          "label": "Log only total request time with no stage detail"
+        },
+        {
+          "key": "C",
+          "label": "Record diagnostics only during major incidents"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Emit correlated trace IDs with per-stage duration metrics",
+      "rationaleHtml": "Correlated stage-level telemetry isolates bottlenecks and supports reliable SLO tuning.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/intelligent-insights-overview\">Intelligent Insights</a>",
+      "extraHtml": "Single totals and ad hoc incident logging hide where latency is introduced."
+    },
+    {
+      "id": "dp800-4d27f01cc6fa",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "AppSecurity",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "AppSecurity"
+      ],
+      "promptHtml": "A team uses direct string concatenation to build SQL from user prompts. Which remediation is most important?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase transaction log file size"
+        },
+        {
+          "key": "B",
+          "label": "Use parameterized queries or stored procedure parameters"
+        },
+        {
+          "key": "C",
+          "label": "Enable weekly full backups"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use parameterized queries or stored procedure parameters",
+      "rationaleHtml": "Parameterized execution prevents SQL injection and improves plan reuse stability.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Log sizing and backup cadence do not prevent injection flaws."
+    },
+    {
+      "id": "dp800-1942ea44950d",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "CostOptimization",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "CostOptimization"
+      ],
+      "promptHtml": "A workload has bursty daytime usage and many small tenants. Cost must stay predictable while isolating noisy neighbors reasonably well. Which compute model is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Separate provisioned database for every tenant always"
+        },
+        {
+          "key": "B",
+          "label": "Single shared database with no workload controls"
+        },
+        {
+          "key": "C",
+          "label": "Elastic pools for grouped databases with shared resources"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Elastic pools for grouped databases with shared resources",
+      "rationaleHtml": "Elastic pools smooth burst patterns across many databases and control cost while preserving database-level isolation.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview\">Automatic tuning in Azure SQL Database</a>",
+      "extraHtml": "Dedicated databases for all tenants can be expensive; one fully shared database may weaken isolation and tuning flexibility."
+    },
+    {
+      "id": "dp800-4f01a8f2b55f",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "QueryTuning",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "QueryTuning"
+      ],
+      "promptHtml": "You must keep generated SQL plans stable during rollout of a new retrieval feature and compare before/after regressions. Which feature should you rely on?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Query Store historical plan/runtime capture"
+        },
+        {
+          "key": "B",
+          "label": "Azure Policy initiative assignments"
+        },
+        {
+          "key": "C",
+          "label": "Database copy export to bacpac"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Query Store historical plan/runtime capture",
+      "rationaleHtml": "Query Store provides per-query history and supports controlled plan analysis during feature rollout.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Policy and export tools do not provide runtime plan history for regression comparison."
+    },
+    {
+      "id": "dp800-5bcde698c655",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataLifecycle",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataLifecycle"
+      ],
+      "promptHtml": "A chat assistant writes conversation history to SQL. You need to avoid unbounded table growth while preserving recent context. Which design is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Keep every message forever in one hot table"
+        },
+        {
+          "key": "B",
+          "label": "Use retention/archival policy with recent-window queries"
+        },
+        {
+          "key": "C",
+          "label": "Delete all history after each response"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use retention/archival policy with recent-window queries",
+      "rationaleHtml": "Retention plus archival controls storage growth while keeping practical conversational context.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server\">JSON data in SQL Server and Azure SQL</a>",
+      "extraHtml": "Keeping everything forever increases cost; deleting everything removes continuity."
+    },
+    {
+      "id": "dp800-783cbee364a6",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "Freshness",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "Freshness"
+      ],
+      "promptHtml": "A model should answer with the newest policy text immediately after publication. Which indexing strategy helps most?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Rebuild embeddings once per quarter"
+        },
+        {
+          "key": "B",
+          "label": "Wait for nightly full reload only"
+        },
+        {
+          "key": "C",
+          "label": "Trigger incremental embedding updates on content change events"
+        }
+      ],
+      "correctOption": "C",
+      "correctLabel": "Trigger incremental embedding updates on content change events",
+      "rationaleHtml": "Event-driven incremental updates reduce staleness and keep retrieval aligned to latest approved content.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/embeddings\">Embeddings with Azure OpenAI</a>",
+      "extraHtml": "Quarterly or nightly-only refresh may leave stale answers for long periods."
+    },
+    {
+      "id": "dp800-70dfef22ee4c",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "Authorization",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "Authorization"
+      ],
+      "promptHtml": "You need to restrict which principals can run high-cost vector search procedures in production. What should you implement?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Dedicated database roles with EXECUTE grants on those procedures"
+        },
+        {
+          "key": "B",
+          "label": "Grant public role execute so every login can test"
+        },
+        {
+          "key": "C",
+          "label": "Rely on naming conventions in procedure names"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Dedicated database roles with EXECUTE grants on those procedures",
+      "rationaleHtml": "Role-based EXECUTE permissions enforce controlled access to expensive or sensitive operations.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "Public grants and naming conventions do not provide least-privilege enforcement."
+    },
+    {
+      "id": "dp800-f3b4a80c04cb",
+      "examSlug": "dp800",
+      "domain": "RetrievalPatterns",
+      "topic": "HybridRetrieval",
+      "tags": [
+        "DP-800",
+        "RetrievalPatterns",
+        "HybridRetrieval"
+      ],
+      "promptHtml": "A question requires exact match on SKU code and semantic match on description text. Which result ordering strategy is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Sort purely by creation date"
+        },
+        {
+          "key": "B",
+          "label": "Filter by SKU first, then rank remaining rows by vector distance"
+        },
+        {
+          "key": "C",
+          "label": "Rank entire table by vector distance and ignore SKU"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Filter by SKU first, then rank remaining rows by vector distance",
+      "rationaleHtml": "Apply hard identifiers first, then semantic ranking for contextual relevance within valid candidates.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/vector-search-overview\">Vector search in Azure SQL Database</a>",
+      "extraHtml": "Date sort and unfiltered vector ranking can return wrong SKUs despite semantic similarity."
+    },
+    {
+      "id": "dp800-075d1e43bda9",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "AuditCompliance",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "AuditCompliance"
+      ],
+      "promptHtml": "Compliance requires proving who changed prompt templates stored in SQL and when. Which capability is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Enable SQL auditing for data and schema change events"
+        },
+        {
+          "key": "B",
+          "label": "Rely on app team memory during incident review"
+        },
+        {
+          "key": "C",
+          "label": "Disable change tracking to reduce overhead"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Enable SQL auditing for data and schema change events",
+      "rationaleHtml": "Auditing provides immutable event trails for accountability and compliance investigations.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/intelligent-insights-overview\">Intelligent Insights</a>",
+      "extraHtml": "Informal memory and disabled tracking cannot satisfy evidentiary requirements."
+    },
+    {
+      "id": "dp800-42f41f0d7ee8",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "WriteOptimization",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "WriteOptimization"
+      ],
+      "promptHtml": "After adding vector columns, update latency increased due to heavier write payloads. Which mitigation is best before scaling hardware?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Move all writes to a read-only replica"
+        },
+        {
+          "key": "B",
+          "label": "Profile write path and optimize indexing strategy"
+        },
+        {
+          "key": "C",
+          "label": "Disable transaction commits during peak hours"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Profile write path and optimize indexing strategy",
+      "rationaleHtml": "Measure write hotspots and adjust index/selectivity strategy before costly scale-up decisions.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview\">Automatic tuning in Azure SQL Database</a>",
+      "extraHtml": "Read-only replicas cannot accept writes, and disabling commits is not a valid production strategy."
+    },
+    {
+      "id": "dp800-9330839cfb27",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DevOpsPractices",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DevOpsPractices"
+      ],
+      "promptHtml": "A deployment pipeline must promote schema changes and retrieval procedures safely across dev/test/prod. Which approach is recommended?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Manual SSMS edits directly in production"
+        },
+        {
+          "key": "B",
+          "label": "Database project and CI/CD release gates"
+        },
+        {
+          "key": "C",
+          "label": "Ad hoc scripts pasted from chat logs"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Database project and CI/CD release gates",
+      "rationaleHtml": "Database projects plus gated CI/CD provide repeatable, reviewable, environment-safe deployments.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Manual or ad hoc script methods create drift and weak change control."
+    },
+    {
+      "id": "dp800-18d62b96ad33",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "ResponsibleAI",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "ResponsibleAI"
+      ],
+      "promptHtml": "You need to reduce hallucinations when retrieval returns low-similarity matches. Which runtime rule is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Set a similarity threshold and return \"insufficient context\" below it"
+        },
+        {
+          "key": "B",
+          "label": "Always force the model to answer anyway"
+        },
+        {
+          "key": "C",
+          "label": "Increase max tokens so the model can improvise"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Set a similarity threshold and return \"insufficient context\" below it",
+      "rationaleHtml": "Threshold-based refusal is a practical guardrail when retrieved evidence is weak.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Forcing answers and improvisation increase unsupported claims."
+    },
+    {
+      "id": "dp800-fa6659f5f84e",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "IdentityAccess",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "IdentityAccess"
+      ],
+      "promptHtml": "A team wants one connection method for SQL and Azure OpenAI using Entra identities from Azure-hosted workloads. Which approach fits?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Shared SQL authentication and OpenAI API key files"
+        },
+        {
+          "key": "B",
+          "label": "Managed identity with token-based auth for both services"
+        },
+        {
+          "key": "C",
+          "label": "Anonymous public access with firewall IP allowlists"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Managed identity with token-based auth for both services",
+      "rationaleHtml": "Managed identity enables secretless, centrally governed identity flows across Azure services.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "Shared passwords/keys and anonymous access weaken security posture and governance."
+    },
+    {
+      "id": "dp800-86de1ced5b9b",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataPreparation",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataPreparation"
+      ],
+      "promptHtml": "Retrieval quality is low because chunks exceed model context and split mid-sentence unpredictably. What preprocessing change helps most?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Use semantically aware chunk sizes with overlap"
+        },
+        {
+          "key": "B",
+          "label": "Disable punctuation before chunking"
+        },
+        {
+          "key": "C",
+          "label": "Store one chunk per entire document"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Use semantically aware chunk sizes with overlap",
+      "rationaleHtml": "Meaningful chunk boundaries and overlap preserve context continuity for better retrieval.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-overview\">Retrieval-augmented generation overview</a>",
+      "extraHtml": "Punctuation stripping and document-wide chunks usually degrade semantic retrieval quality."
+    },
+    {
+      "id": "dp800-5a9e025d8c56",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "Observability",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "Observability"
+      ],
+      "promptHtml": "You must analyze top failing AI queries and quickly identify whether failure came from retrieval or generation. Which schema design best supports this?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Separate event tables for retrieval metrics and generation outcomes keyed by request ID"
+        },
+        {
+          "key": "B",
+          "label": "Single text column storing opaque blobs only"
+        },
+        {
+          "key": "C",
+          "label": "No persistent telemetry, only console output"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Separate event tables for retrieval metrics and generation outcomes keyed by request ID",
+      "rationaleHtml": "Normalized event telemetry with shared request IDs supports root-cause analysis and trend reporting.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/intelligent-insights-overview\">Intelligent Insights</a>",
+      "extraHtml": "Opaque blobs and transient console logs hinder systematic troubleshooting."
+    },
+    {
+      "id": "dp800-0bfc6c90e0b6",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "IndexStrategy",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "IndexStrategy"
+      ],
+      "promptHtml": "A retrieval table has frequent inserts and similarity reads. Which index strategy is generally safer to start with?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Create many overlapping indexes immediately"
+        },
+        {
+          "key": "B",
+          "label": "Start with minimal necessary indexes and measure"
+        },
+        {
+          "key": "C",
+          "label": "Avoid every index including primary keys"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Start with minimal necessary indexes and measure",
+      "rationaleHtml": "A measured minimal-index baseline avoids write amplification and allows evidence-based tuning.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview\">Automatic tuning in Azure SQL Database</a>",
+      "extraHtml": "Too many indexes slow writes; no indexes hurts lookup and integrity performance."
+    },
+    {
+      "id": "dp800-00c8cc39b322",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "DataResidency",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "DataResidency"
+      ],
+      "promptHtml": "You need to isolate customer data per region for legal residency while keeping one application codebase. Which approach is best?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Single global database with region column only"
+        },
+        {
+          "key": "B",
+          "label": "One database per residency boundary with routing logic"
+        },
+        {
+          "key": "C",
+          "label": "Weekly exports to regional storage accounts only"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "One database per residency boundary with routing logic",
+      "rationaleHtml": "Regional database boundaries enforce residency at storage/compute level while app routing preserves shared code.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-sql-db\">Auto-failover groups</a>",
+      "extraHtml": "A single global store may violate residency controls; exports alone do not serve operational workloads."
+    },
+    {
+      "id": "dp800-9852faca1731",
+      "examSlug": "dp800",
+      "domain": "AISolutionDesign",
+      "topic": "DataIngestion",
+      "tags": [
+        "DP-800",
+        "AISolutionDesign",
+        "DataIngestion"
+      ],
+      "promptHtml": "A team must migrate legacy FAQ text into a SQL-backed RAG system quickly while preserving source references. What should they do first?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Define ingestion mapping for text, metadata, and source links"
+        },
+        {
+          "key": "B",
+          "label": "Tune failover group policy before ingestion"
+        },
+        {
+          "key": "C",
+          "label": "Increase backup retention to maximum"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Define ingestion mapping for text, metadata, and source links",
+      "rationaleHtml": "A clear ingestion schema ensures each chunk carries retrievable content plus citation metadata from day one.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server\">JSON data in SQL Server and Azure SQL</a>",
+      "extraHtml": "Failover and backup settings are important but not the first step for content migration quality."
+    },
+    {
+      "id": "dp800-13ff76957689",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "QueryTuning",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "QueryTuning"
+      ],
+      "promptHtml": "During load testing, generation calls are fast but retrieval SQL is slow. Which action is most targeted?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Increase model max output tokens"
+        },
+        {
+          "key": "B",
+          "label": "Analyze execution plans and missing-index signals"
+        },
+        {
+          "key": "C",
+          "label": "Rotate OpenAI deployment names"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Analyze execution plans and missing-index signals",
+      "rationaleHtml": "SQL plan analysis and indexing diagnostics directly target retrieval-stage bottlenecks.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Token limits and deployment naming do not optimize SQL retrieval performance."
+    },
+    {
+      "id": "dp800-d1c3ea980507",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "IdentityAccess",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "IdentityAccess"
+      ],
+      "promptHtml": "You need to limit blast radius if an app identity is compromised. Which architecture helps most?",
+      "options": [
+        {
+          "key": "A",
+          "label": "One shared identity for every environment"
+        },
+        {
+          "key": "B",
+          "label": "Use separate managed identities per environment and role"
+        },
+        {
+          "key": "C",
+          "label": "Grant contributor at subscription scope to app identity"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Use separate managed identities per environment and role",
+      "rationaleHtml": "Scoped identities per environment/role constrain privilege and reduce cross-environment impact.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview\">Microsoft Entra authentication for Azure SQL</a>",
+      "extraHtml": "Shared broad identities increase lateral movement and impact severity."
+    },
+    {
+      "id": "dp800-a1a160f80b10",
+      "examSlug": "dp800",
+      "domain": "SecurityGovernance",
+      "topic": "AppSecurity",
+      "tags": [
+        "DP-800",
+        "SecurityGovernance",
+        "AppSecurity"
+      ],
+      "promptHtml": "A retrieval procedure accepts user-entered filters for category and price range. How should input be handled?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Validate and parameterize all user inputs before SQL execution"
+        },
+        {
+          "key": "B",
+          "label": "Concatenate raw input directly into dynamic SQL"
+        },
+        {
+          "key": "C",
+          "label": "Trust UI validation only and skip server checks"
+        }
+      ],
+      "correctOption": "A",
+      "correctLabel": "Validate and parameterize all user inputs before SQL execution",
+      "rationaleHtml": "Server-side validation plus parameterization defends against injection and malformed query behavior.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/query-store\">Query Store in Azure SQL Database</a>",
+      "extraHtml": "Client-only validation and raw concatenation are insufficient security controls."
+    },
+    {
+      "id": "dp800-ef93efdaf8cd",
+      "examSlug": "dp800",
+      "domain": "PerformanceOperations",
+      "topic": "CapacityPlanning",
+      "tags": [
+        "DP-800",
+        "PerformanceOperations",
+        "CapacityPlanning"
+      ],
+      "promptHtml": "Business users need predictable monthly cost for a moderate AI workload with occasional spikes. Which sizing approach is best initially?",
+      "options": [
+        {
+          "key": "A",
+          "label": "Serverless only with no min/max controls"
+        },
+        {
+          "key": "B",
+          "label": "Provisioned tier with monitored right-sizing and scheduled review"
+        },
+        {
+          "key": "C",
+          "label": "Always choose highest tier to avoid all risk"
+        }
+      ],
+      "correctOption": "B",
+      "correctLabel": "Provisioned tier with monitored right-sizing and scheduled review",
+      "rationaleHtml": "A right-sized provisioned baseline with review cadence balances predictability and performance risk.<br><br>Reference: <a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview\">Automatic tuning in Azure SQL Database</a>",
+      "extraHtml": "Unbounded serverless settings or permanent overprovisioning can create cost surprises."
+    }
+  ]
+}
