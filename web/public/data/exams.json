@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T21:30:44.265Z",
+  "generatedAt": "2026-09-11T17:52:18.749Z",
   "exams": [
     {
       "slug": "ab100",
@@ -1183,6 +1183,58 @@
         "VersionControl",
         "WindowingFunctions",
         "WorkspaceAccessControls"
+      ]
+    },
+    {
+      "slug": "dp800",
+      "code": "DP-800",
+      "title": "Microsoft Certified: SQL AI Developer Associate",
+      "sourceFile": "dp800_flashcards_2026-09-11.csv",
+      "deckVersion": "2026-09-11",
+      "updatedOn": "2026-09-11",
+      "questionCount": 50,
+      "domains": [
+        "AISolutionDesign",
+        "PerformanceOperations",
+        "RetrievalPatterns",
+        "SecurityGovernance"
+      ],
+      "topics": [
+        "AppSecurity",
+        "AuditCompliance",
+        "Authorization",
+        "BackupRecovery",
+        "BusinessContinuity",
+        "CapacityPlanning",
+        "CostOptimization",
+        "DataIngestion",
+        "DataLifecycle",
+        "DataModeling",
+        "DataPreparation",
+        "DataProtection",
+        "DataResidency",
+        "DevOpsPractices",
+        "EmbeddingQuality",
+        "EmbeddingStrategy",
+        "Evaluation",
+        "Freshness",
+        "GroundingQuality",
+        "HybridRetrieval",
+        "IdentityAccess",
+        "IndexStrategy",
+        "KeyManagement",
+        "LeastPrivilege",
+        "Monitoring",
+        "Observability",
+        "PrivacyControls",
+        "QueryDesign",
+        "QueryTuning",
+        "RAGPatterns",
+        "ResponsibleAI",
+        "SecureAccess",
+        "SimilaritySearch",
+        "TenantIsolation",
+        "WriteOptimization"
       ]
     },
     {
