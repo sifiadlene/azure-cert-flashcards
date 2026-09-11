@@ -11,6 +11,8 @@ for (const viewport of [
     await page.setViewportSize({ width: viewport.width, height: viewport.height })
     await page.goto('/')
 
+    await expect(page.locator('.experience-switcher button[aria-current="page"]')).toBeVisible()
+
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
     )
@@ -25,10 +27,15 @@ for (const viewport of [
     await page.getByLabel('Exam').selectOption({ label: examOption })
     await page.getByLabel('Number of questions').selectOption('10')
     await page.getByRole('button', { name: 'Start Session' }).click()
-    await page.locator('.option-card').first().click()
-    await page.getByRole('button', { name: 'Check Answer' }).click()
+    const firstOption = page.locator('.option-card').first()
+    const checkAnswer = page.getByRole('button', { name: 'Check Answer' })
+    await firstOption.click()
+    await expect(firstOption).toHaveClass(/selected/)
+    await expect(checkAnswer).toBeEnabled()
+    await checkAnswer.click()
 
     await expect(page.locator('.answer-reveal')).toBeVisible()
+    await expect(page.locator('.answer-reveal h3')).not.toBeEmpty()
     expect(await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
     )).toBe(false)

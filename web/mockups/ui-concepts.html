@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certification Flashcards UI Concepts</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-width: 320px; min-height: 100%; }
+    body { overflow: hidden; }
+    button { font: inherit; }
+    .concept { display: none; width: 1440px; height: 1000px; overflow: hidden; }
+    body[data-concept="1"] .concept-one,
+    body[data-concept="2"] .concept-two,
+    body[data-concept="3"] .concept-three { display: block; }
+
+    /* Concept 1: Editorial momentum */
+    .concept-one {
+      --ink: #10201b;
+      --paper: #f6f1e7;
+      --coral: #f05a47;
+      --teal: #087e72;
+      position: relative;
+      padding: 30px 72px 58px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    .concept-one::before {
+      position: absolute; inset: 0; opacity: .23; pointer-events: none; content: '';
+      background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(16,32,27,.12) 32px);
+    }
+    .c1-nav, .c1-main { position: relative; z-index: 1; }
+    .c1-nav { display: flex; align-items: center; justify-content: space-between; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+    .c1-brand { display: flex; align-items: center; gap: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+    .c1-mark { display: grid; width: 42px; height: 42px; place-items: center; background: var(--coral); color: #fff; font-family: Georgia, serif; font-size: 23px; }
+    .c1-nav-right { display: flex; align-items: center; gap: 26px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; }
+    .c1-nav-right strong { color: var(--teal); }
+    .c1-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--ink); background: transparent; font-size: 18px; }
+    .c1-main { display: grid; grid-template-columns: 260px 1fr; gap: 64px; padding-top: 50px; }
+    .c1-side { padding-top: 6px; }
+    .c1-code { color: var(--coral); font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; text-transform: uppercase; }
+    .c1-side h1 { margin: 14px 0 18px; font-size: 34px; font-weight: 500; line-height: 1.04; letter-spacing: 0; }
+    .c1-side p { margin: 0 0 38px; color: #47534d; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; line-height: 1.55; }
+    .c1-progress-label { display: flex; justify-content: space-between; margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; }
+    .c1-progress { height: 10px; background: rgba(16,32,27,.13); }
+    .c1-progress span { display: block; width: 42%; height: 100%; background: var(--teal); }
+    .c1-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .c1-stat { padding-top: 12px; border-top: 1px solid rgba(16,32,27,.35); }
+    .c1-stat b { display: block; font-size: 24px; font-weight: 500; }
+    .c1-stat span { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; }
+    .c1-question { padding-right: 56px; }
+    .c1-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--teal); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .c1-eyebrow::before { width: 34px; height: 4px; background: var(--teal); content: ''; }
+    .c1-question h2 { max-width: 900px; margin: 20px 0 34px; font-size: 38px; font-weight: 500; line-height: 1.22; letter-spacing: 0; }
+    .c1-options { display: grid; gap: 12px; }
+    .c1-option { display: grid; min-height: 76px; grid-template-columns: 44px 1fr 26px; align-items: center; gap: 18px; padding: 14px 20px; border: 1px solid rgba(16,32,27,.34); background: rgba(255,255,255,.42); color: var(--ink); text-align: left; }
+    .c1-option.selected { border: 2px solid var(--teal); background: #fffdf8; box-shadow: 8px 8px 0 rgba(8,126,114,.18); }
+    .c1-letter { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid currentColor; font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
+    .c1-option.selected .c1-letter { background: var(--teal); color: white; }
+    .c1-option span:nth-child(2) { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; line-height: 1.4; }
+    .c1-radio { width: 18px; height: 18px; border: 1px solid #7e8983; border-radius: 50%; }
+    .c1-option.selected .c1-radio { border: 5px solid var(--teal); }
+    .c1-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; }
+    .c1-hint { color: #66716b; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; }
+    .c1-primary { min-height: 54px; padding: 0 30px; border: 0; background: var(--coral); color: #fff; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; box-shadow: 6px 6px 0 #cf4433; }
+
+    /* Concept 2: Professional command center */
+    .concept-two { background: #eef1f4; color: #17202a; font-family: 'IBM Plex Sans', sans-serif; }
+    .c2-rail { position: absolute; width: 88px; height: 1000px; padding: 26px 18px; background: #17202a; color: #fff; }
+    .c2-logo { display: grid; width: 52px; height: 52px; place-items: center; background: #27d3b2; color: #17202a; font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 800; }
+    .c2-icons { display: grid; gap: 18px; margin-top: 64px; }
+    .c2-icon { display: grid; width: 52px; height: 52px; place-items: center; border: 0; background: transparent; color: #aab5c0; font-size: 20px; }
+    .c2-icon.active { border-left: 3px solid #27d3b2; background: #243240; color: #fff; }
+    .c2-shell { margin-left: 88px; }
+    .c2-top { display: flex; height: 92px; align-items: center; justify-content: space-between; padding: 0 48px; border-bottom: 1px solid #ccd3da; background: #fff; }
+    .c2-title strong { display: block; font-size: 20px; }
+    .c2-title span { color: #65717c; font-size: 13px; }
+    .c2-top-right { display: flex; align-items: center; gap: 18px; }
+    .c2-chip { padding: 8px 12px; border: 1px solid #ccd3da; color: #43515e; font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+    .c2-avatar { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: #ffd34e; font-weight: 800; }
+    .c2-content { display: grid; grid-template-columns: 1fr 300px; gap: 24px; padding: 32px 42px; }
+    .c2-panel { border: 1px solid #d2d8de; border-radius: 6px; background: #fff; box-shadow: 0 8px 30px rgba(27,42,56,.06); }
+    .c2-question { padding: 32px 38px 28px; }
+    .c2-qtop { display: flex; align-items: center; justify-content: space-between; }
+    .c2-kicker { color: #147e6b; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .c2-counter { color: #65717c; font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+    .c2-question h2 { max-width: 820px; margin: 22px 0 28px; color: #17202a; font-size: 26px; line-height: 1.38; letter-spacing: 0; }
+    .c2-options { display: grid; gap: 11px; }
+    .c2-option { display: grid; min-height: 69px; grid-template-columns: 40px 1fr; align-items: center; gap: 16px; padding: 12px 16px; border: 1px solid #d7dce1; border-radius: 4px; background: #fff; color: #26323d; text-align: left; }
+    .c2-option.selected { border-color: #147e6b; background: #edf9f6; box-shadow: inset 4px 0 #147e6b; }
+    .c2-letter { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 3px; background: #edf0f2; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; }
+    .c2-option.selected .c2-letter { background: #147e6b; color: #fff; }
+    .c2-option span:last-child { font-size: 15px; line-height: 1.4; }
+    .c2-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; }
+    .c2-secondary { min-height: 44px; border: 0; background: none; color: #65717c; font-weight: 600; }
+    .c2-primary { min-height: 48px; padding: 0 24px; border: 0; border-radius: 4px; background: #17202a; color: #fff; font-weight: 700; }
+    .c2-aside { display: grid; align-content: start; gap: 18px; }
+    .c2-sidepanel { padding: 22px; }
+    .c2-sidepanel h3 { margin: 0 0 20px; font-size: 15px; text-transform: uppercase; }
+    .c2-donut { position: relative; display: grid; width: 150px; height: 150px; place-items: center; border-radius: 50%; margin: 2px auto 24px; background: conic-gradient(#147e6b 0 72%, #e5e9ed 72%); }
+    .c2-donut::after { position: absolute; width: 112px; height: 112px; border-radius: 50%; background: #fff; content: ''; }
+    .c2-donut b { z-index: 1; font-family: 'IBM Plex Mono', monospace; font-size: 29px; }
+    .c2-metric { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid #e1e5e8; font-size: 13px; }
+    .c2-metric span { color: #65717c; }
+    .c2-metric b { font-family: 'IBM Plex Mono', monospace; }
+    .c2-session-progress { height: 9px; overflow: hidden; border-radius: 2px; background: #e3e7ea; }
+    .c2-session-progress span { display: block; width: 42%; height: 100%; background: #f2b705; }
+    .c2-next { margin-top: 12px; color: #65717c; font-size: 12px; line-height: 1.5; }
+
+    /* Concept 3: Playful mastery path */
+    .concept-three { position: relative; padding: 28px 50px; background: #fffaf2; color: #22232b; font-family: 'Trebuchet MS', 'IBM Plex Sans', sans-serif; }
+    .concept-three::before { position: absolute; inset: 0; opacity: .5; content: ''; background-image: radial-gradient(#dfd8ca 1px, transparent 1px); background-size: 22px 22px; }
+    .c3-shell { position: relative; z-index: 1; height: 944px; overflow: hidden; border: 2px solid #22232b; border-radius: 8px; background: #fffdf8; box-shadow: 10px 10px 0 #22232b; }
+    .c3-top { display: flex; height: 82px; align-items: center; justify-content: space-between; padding: 0 30px; border-bottom: 2px solid #22232b; background: #ffcf54; }
+    .c3-brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 800; }
+    .c3-spark { display: grid; width: 42px; height: 42px; place-items: center; border: 2px solid #22232b; border-radius: 50%; background: #ff6b62; color: #fff; }
+    .c3-streak { display: flex; align-items: center; gap: 9px; padding: 10px 14px; border: 2px solid #22232b; border-radius: 6px; background: #fffdf8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; }
+    .c3-content { display: grid; height: calc(100% - 82px); grid-template-columns: 240px 1fr; }
+    .c3-map { padding: 28px 24px; border-right: 2px solid #22232b; background: #f4eee3; }
+    .c3-map small { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .c3-map h2 { margin: 8px 0 28px; font-size: 23px; }
+    .c3-step { position: relative; display: flex; min-height: 68px; align-items: center; gap: 12px; }
+    .c3-step::after { position: absolute; bottom: -1px; left: 21px; width: 2px; height: 26px; background: #22232b; content: ''; }
+    .c3-step:last-child::after { display: none; }
+    .c3-node { display: grid; width: 44px; height: 44px; flex: 0 0 auto; place-items: center; border: 2px solid #22232b; border-radius: 50%; background: #fffdf8; font-family: 'IBM Plex Mono', monospace; font-weight: 800; }
+    .c3-step.done .c3-node { background: #69d7be; }
+    .c3-step.active .c3-node { background: #ff6b62; color: #fff; box-shadow: 3px 3px 0 #22232b; }
+    .c3-step span:last-child { font-size: 13px; font-weight: 700; line-height: 1.25; }
+    .c3-stage { padding: 34px 56px; }
+    .c3-status { display: flex; align-items: center; justify-content: space-between; }
+    .c3-pill { padding: 7px 12px; border: 2px solid #22232b; border-radius: 99px; background: #a7d8ff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .c3-hearts { font-size: 20px; letter-spacing: 5px; color: #ff6b62; }
+    .c3-stage h1 { max-width: 880px; margin: 24px 0 26px; font-size: 30px; line-height: 1.28; letter-spacing: 0; }
+    .c3-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .c3-option { display: grid; min-height: 126px; grid-template-columns: 42px 1fr; align-items: start; gap: 14px; padding: 18px; border: 2px solid #22232b; border-radius: 7px; background: #fff; color: #22232b; text-align: left; box-shadow: 4px 4px 0 #d9d1c3; }
+    .c3-option.selected { background: #e7f8f3; box-shadow: 5px 5px 0 #69d7be; transform: translate(-1px, -1px); }
+    .c3-letter { display: grid; width: 38px; height: 38px; place-items: center; border: 2px solid #22232b; border-radius: 5px; background: #ffcf54; font-family: 'IBM Plex Mono', monospace; font-weight: 800; }
+    .c3-option.selected .c3-letter { background: #69d7be; }
+    .c3-option span:last-child { font-size: 14px; line-height: 1.45; }
+    .c3-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 25px; }
+    .c3-xp { display: flex; align-items: center; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; }
+    .c3-xpbar { width: 170px; height: 12px; overflow: hidden; border: 2px solid #22232b; border-radius: 99px; background: #fff; }
+    .c3-xpbar span { display: block; width: 64%; height: 100%; background: #a7d8ff; }
+    .c3-primary { min-height: 54px; padding: 0 28px; border: 2px solid #22232b; border-radius: 6px; background: #ff6b62; color: #fff; font-weight: 800; box-shadow: 5px 5px 0 #22232b; }
+    .c3-tip { display: flex; align-items: center; gap: 12px; padding: 15px 18px; border: 2px dashed #6b665e; border-radius: 6px; margin-top: 24px; color: #5a574f; font-size: 13px; }
+  </style>
+</head>
+<body data-concept="1">
+  <section class="concept concept-one">
+    <nav class="c1-nav">
+      <div class="c1-brand"><span class="c1-mark">C</span> Certification Studio</div>
+      <div class="c1-nav-right"><span>Solo practice</span><span>Live challenge</span><strong>DP-700</strong><button class="c1-icon" aria-label="Settings">☼</button></div>
+    </nav>
+    <main class="c1-main">
+      <aside class="c1-side">
+        <div class="c1-code">Microsoft Fabric · DP-700</div>
+        <h1>Build your data engineering instincts.</h1>
+        <p>A focused practice set on implementing and managing analytics solutions.</p>
+        <div class="c1-progress-label"><span>Session progress</span><b>5 / 12</b></div>
+        <div class="c1-progress"><span></span></div>
+        <div class="c1-stats"><div class="c1-stat"><b>80%</b><span>Accuracy</span></div><div class="c1-stat"><b>06:42</b><span>Elapsed</span></div></div>
+      </aside>
+      <article class="c1-question">
+        <div class="c1-eyebrow">Question 05 · Spark workspace settings</div>
+        <h2>A Fabric workspace runs many small notebook jobs. Which setting lets each session start in seconds without waiting for cluster provisioning?</h2>
+        <div class="c1-options">
+          <button class="c1-option"><span class="c1-letter">A</span><span>Enable high concurrency mode for all notebooks in the workspace.</span><span class="c1-radio"></span></button>
+          <button class="c1-option selected"><span class="c1-letter">B</span><span>Use starter pools with pre-warmed Spark sessions.</span><span class="c1-radio"></span></button>
+          <button class="c1-option"><span class="c1-letter">C</span><span>Assign a custom environment with a fixed Spark runtime.</span><span class="c1-radio"></span></button>
+        </div>
+        <div class="c1-actions"><span class="c1-hint">Press 1–3 to choose · Enter to confirm</span><button class="c1-primary">Check answer →</button></div>
+      </article>
+    </main>
+  </section>
+
+  <section class="concept concept-two">
+    <aside class="c2-rail"><div class="c2-logo">CF</div><div class="c2-icons"><button class="c2-icon active">▣</button><button class="c2-icon">◎</button><button class="c2-icon">↗</button><button class="c2-icon">⚙</button></div></aside>
+    <div class="c2-shell">
+      <header class="c2-top"><div class="c2-title"><strong>DP-700 Practice Session</strong><span>Implementing Data Engineering Solutions Using Microsoft Fabric</span></div><div class="c2-top-right"><span class="c2-chip">Practice mode</span><span class="c2-chip">06:42</span><span class="c2-avatar">JD</span></div></header>
+      <main class="c2-content">
+        <article class="c2-panel c2-question">
+          <div class="c2-qtop"><span class="c2-kicker">Spark workspace settings</span><span class="c2-counter">Question 05 of 12</span></div>
+          <h2>A Fabric workspace runs many small notebook jobs, and the team wants each session to start in seconds without waiting for cluster provisioning. Which Spark workspace setting should you rely on?</h2>
+          <div class="c2-options">
+            <button class="c2-option"><span class="c2-letter">A</span><span>Enable high concurrency mode for all notebooks in the workspace.</span></button>
+            <button class="c2-option selected"><span class="c2-letter">B</span><span>Use starter pools with pre-warmed Spark sessions.</span></button>
+            <button class="c2-option"><span class="c2-letter">C</span><span>Assign a custom environment with a fixed Spark runtime.</span></button>
+          </div>
+          <div class="c2-footer"><button class="c2-secondary">← Exit session</button><button class="c2-primary">Check answer</button></div>
+        </article>
+        <aside class="c2-aside">
+          <section class="c2-panel c2-sidepanel"><h3>Session health</h3><div class="c2-donut"><b>72%</b></div><div class="c2-metric"><span>Correct</span><b>3</b></div><div class="c2-metric"><span>Review later</span><b>1</b></div><div class="c2-metric"><span>Best streak</span><b>3</b></div></section>
+          <section class="c2-panel c2-sidepanel"><h3>Progress</h3><div class="c2-session-progress"><span></span></div><p class="c2-next">7 questions remain<br />Next: Optimize Spark workloads</p></section>
+        </aside>
+      </main>
+    </div>
+  </section>
+
+  <section class="concept concept-three">
+    <div class="c3-shell">
+      <header class="c3-top"><div class="c3-brand"><span class="c3-spark">✦</span> Cert Quest</div><div class="c3-streak"><span>🔥</span> 4 day streak <span>·</span> 640 XP</div></header>
+      <div class="c3-content">
+        <aside class="c3-map"><small>DP-700 journey</small><h2>Implement & manage</h2><div class="c3-step done"><span class="c3-node">✓</span><span>Workspace access</span></div><div class="c3-step done"><span class="c3-node">✓</span><span>Version control</span></div><div class="c3-step active"><span class="c3-node">5</span><span>Spark settings</span></div><div class="c3-step"><span class="c3-node">6</span><span>Data security</span></div><div class="c3-step"><span class="c3-node">7</span><span>Deployment</span></div></aside>
+        <main class="c3-stage">
+          <div class="c3-status"><span class="c3-pill">Level 3 · Spark Navigator</span><span class="c3-hearts">♥ ♥ ♥</span></div>
+          <h1>A Fabric workspace runs many small notebook jobs. Which setting lets each session start in seconds without waiting for cluster provisioning?</h1>
+          <div class="c3-options">
+            <button class="c3-option"><span class="c3-letter">A</span><span>Enable high concurrency mode for all notebooks in the workspace.</span></button>
+            <button class="c3-option selected"><span class="c3-letter">B</span><span>Use starter pools with pre-warmed Spark sessions.</span></button>
+            <button class="c3-option"><span class="c3-letter">C</span><span>Assign a custom environment with a fixed Spark runtime.</span></button>
+            <div class="c3-tip"><strong>Tip</strong><span>Think about which feature removes cold-start provisioning time.</span></div>
+          </div>
+          <div class="c3-bottom"><div class="c3-xp"><span>Session XP</span><div class="c3-xpbar"><span></span></div><b>+40</b></div><button class="c3-primary">Lock it in →</button></div>
+        </main>
+      </div>
+    </div>
+  </section>
+  <script>
+    const concept = new URLSearchParams(window.location.search).get('concept') || '1'
+    document.body.dataset.concept = concept
+  </script>
+</body>
+</html>
