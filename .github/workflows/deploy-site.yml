@@ -7,6 +7,19 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+      deployment_mode:
+        description: Deployment mode
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - endpoint-cutover
+      public_api_base:
+        description: HTTPS API endpoint ending in /api (required for endpoint-cutover)
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -49,34 +62,44 @@ jobs:
         run: npm ci
 
       - name: Install API dependencies for browser tests
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         working-directory: api
         run: npm ci
 
       - name: Lint application
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npm run lint
 
       - name: Test application
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npm test
 
       - name: Test exam catalog parser offline
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npm run test:catalog
 
       - name: Copy canonical data for API validation
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         working-directory: api
         run: node scripts/copyDecks.mjs
 
       - name: Validate flashcard data
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npm run validate:data
 
       - name: Install Playwright browser
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npx playwright install --with-deps chromium
 
       - name: Run end-to-end tests
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full' }}
         run: npm run test:e2e
 
       # Generates any missing {slug}-fr.json; skips decks already translated.
       - name: Translate decks to French
-        if: ${{ vars.AZURE_TRANSLATOR_REGION != '' }}
+        if: >-
+          (github.event_name != 'workflow_dispatch' || inputs.deployment_mode == 'full') &&
+          vars.AZURE_TRANSLATOR_REGION != ''
         working-directory: ${{ github.workspace }}
         env:
           AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
@@ -88,13 +111,24 @@ jobs:
           fi
           node tools/translate-decks.mjs
 
+      - name: Configure runtime API endpoint
+        env:
+          PUBLIC_API_BASE: ${{ inputs.public_api_base || vars.VITE_PUBLIC_API_BASE }}
+        run: |
+          if [ "${{ inputs.deployment_mode }}" = "endpoint-cutover" ]; then
+            case "$PUBLIC_API_BASE" in
+              https://*/api) ;;
+              *) echo "public_api_base must be an HTTPS endpoint ending in /api." >&2; exit 1 ;;
+            esac
+          fi
+          test -n "$PUBLIC_API_BASE"
+          node -e "require('node:fs').writeFileSync('public/config.json', JSON.stringify({ publicApiBase: process.env.PUBLIC_API_BASE }) + '\n')"
+
       - name: Build site
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_PUBLIC_API_BASE: ${{ vars.VITE_PUBLIC_API_BASE }}
           VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
         run: |
-          test -n "$VITE_PUBLIC_API_BASE"
           test -n "$VITE_TURNSTILE_SITE_KEY"
           before="$(sha256sum public/data/exams.json | cut -d ' ' -f 1)"
           npx tsc -b

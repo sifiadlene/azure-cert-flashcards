@@ -8,9 +8,23 @@ import '@fontsource/ibm-plex-mono/500.css'
 import './index.css'
 import './i18n/config'
 import App from './App.tsx'
+import { loadRuntimeConfig } from './runtimeConfig.ts'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+async function start() {
+  try {
+    await loadRuntimeConfig()
+  } catch (error) {
+    console.error(error)
+    const root = document.getElementById('root')!
+    root.setAttribute('role', 'alert')
+    root.textContent = 'The application configuration could not be loaded. Try again later.'
+    return
+  }
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+}
+
+void start()

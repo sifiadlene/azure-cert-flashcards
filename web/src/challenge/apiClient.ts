@@ -6,6 +6,7 @@ import {
   type CommandMetadata,
   type RoomSnapshot,
 } from './contracts'
+import { publicApiBase } from '../runtimeConfig'
 
 export interface ChallengeCapability {
   roomId: string
@@ -73,7 +74,7 @@ export class ChallengeApiClient {
   private readonly now: () => number
 
   constructor(
-    baseUrl = import.meta.env.VITE_PUBLIC_API_BASE ?? '/api',
+    baseUrl = publicApiBase(),
     fetcher: typeof fetch = globalThis.fetch.bind(globalThis),
     now: () => number = Date.now,
   ) {

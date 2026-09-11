@@ -170,7 +170,7 @@ jobs:
           test -n "$EXAM_REQUEST_GITHUB_REPOSITORY"
           test -n "$EXAM_REQUEST_IP_HASH_KEY"
           test -n "$EXAM_REQUEST_TURNSTILE_SECRET"
-          node -e "const ids=JSON.parse(process.env.ALERT_ACTION_GROUP_RESOURCE_IDS_JSON ?? ''); const pattern=/^\/subscriptions\/[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\/resourceGroups\/[^/]+\/providers\/Microsoft\.Insights\/actionGroups\/[^/]+$/i; if (!Array.isArray(ids) || ids.length === 0 || ids.some((id) => typeof id !== 'string' || !pattern.test(id))) process.exit(1)"
+          node -e "const ids=JSON.parse(process.env.ALERT_ACTION_GROUP_RESOURCE_IDS_JSON ?? ''); const pattern=/^\/subscriptions\/[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\/resourceGroups\/[^/]+\/providers\/Microsoft\.Insights\/actionGroups\/[^/]+$/i; if (!Array.isArray(ids) || ids.some((id) => typeof id !== 'string' || !pattern.test(id))) process.exit(1)"
           node -e "const origins=JSON.parse(process.env.ALLOWED_ORIGINS_JSON ?? ''); if (!Array.isArray(origins) || origins.length === 0 || origins.some((origin) => typeof origin !== 'string' || !origin.startsWith('https://') || origin.includes('*'))) process.exit(1)"
           node -e "const value=Buffer.from(process.env.CHALLENGE_TOKEN_PEPPER ?? '', 'base64'); if (value.length < 32) process.exit(1)"
           node -e "for (const name of ['EXAM_REQUEST_GITHUB_APP_ID','EXAM_REQUEST_GITHUB_INSTALLATION_ID']) if (!/^[0-9]+$/.test(process.env[name] ?? '')) process.exit(1)"

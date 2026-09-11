@@ -84,6 +84,42 @@ test('submits a new request and exposes only the safe GitHub issue link', async 
   await expectAccessibleTarget(issueLink)
 })
 
+test('uses the runtime-configured API host for exam requests', async ({ page }) => {
+  await stubTurnstile(page)
+  await page.route('**/config.json', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ publicApiBase: 'https://target-api.example.test/api' }),
+  }))
+  let requestedUrl = ''
+  await page.route('https://target-api.example.test/api/exam-requests', async (route) => {
+    requestedUrl = route.request().url()
+    await route.fulfill({
+      status: 201,
+      contentType: 'application/json',
+      body: JSON.stringify({ number: 73, url: issueUrl, reused: false, traceId: 'trace-runtime-config' }),
+    })
+  })
+
+  await openReadyDialog(page)
+  await selectExamAndSubmit(page)
+
+  await expect(page.getByRole('heading', { name: 'Request created' })).toBeVisible()
+  expect(requestedUrl).toBe('https://target-api.example.test/api/exam-requests')
+})
+
+test('shows a controlled startup error for invalid runtime configuration', async ({ page }) => {
+  await page.route('**/config.json', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ publicApiBase: 'http://insecure.example.test/api' }),
+  }))
+
+  await page.goto('/')
+
+  await expect(page.getByRole('alert')).toHaveText('The application configuration could not be loaded. Try again later.')
+})
+
 test('shows the reused issue outcome', async ({ page }) => {
   await stubTurnstile(page)
   await page.route('**/api/exam-requests', (route) => route.fulfill({

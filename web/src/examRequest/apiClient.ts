@@ -1,3 +1,5 @@
+import { publicApiBase } from '../runtimeConfig'
+
 export type ExamRequestErrorKind =
   | 'validation'
   | 'supported'
@@ -127,7 +129,7 @@ export class ExamRequestApiClient {
   private readonly fetcher: typeof fetch
 
   constructor(
-    baseUrl = import.meta.env.VITE_PUBLIC_API_BASE ?? '/api',
+    baseUrl = publicApiBase(),
     fetcher: typeof fetch = globalThis.fetch.bind(globalThis),
   ) {
     this.baseUrl = normalizeBaseUrl(baseUrl)
