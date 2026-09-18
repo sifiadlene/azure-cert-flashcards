@@ -51,11 +51,11 @@
         },
         {
           "key": "B",
-          "label": "Copilot can only process source code, not natural language, so it cannot draft written legal or financial material"
+          "label": "Generated content needs editorial review, but specialist verification is unnecessary when citations are included"
         },
         {
           "key": "C",
-          "label": "Every Copilot response is automatically validated against authoritative legal and financial reference databases"
+          "label": "Generated content is suitable after checking its tone and internal consistency without external verification"
         }
       ],
       "correctOption": "A",
@@ -77,7 +77,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Disable Copilot entirely for every database-related file so it can never suggest query code"
+          "label": "Review suggestions and escape values before concatenating them into SQL statements"
         },
         {
           "key": "B",
@@ -85,7 +85,7 @@
         },
         {
           "key": "C",
-          "label": "Report the unsafe suggestion to GitHub and wait for the model to be retrained before writing the query"
+          "label": "Run integration tests against generated queries while retaining string concatenation for dynamic values"
         }
       ],
       "correctOption": "B",
@@ -107,11 +107,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Copilot is designed to deliberately discriminate between different groups of developers and users"
+          "label": "Generated output needs bias review only when demographic attributes appear explicitly in the prompt, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Every generated response has already passed an organization-specific fairness and bias certification test"
+          "label": "Generated output is neutral when examples come from the current repository's established conventions"
         },
         {
           "key": "C",
@@ -141,11 +141,11 @@
         },
         {
           "key": "B",
-          "label": "Copilot provides a complete, verifiable training-source trace and citation for every suggestion it makes"
+          "label": "Copilot explanations provide verifiable training-source attribution for suggestions that match public code"
         },
         {
           "key": "C",
-          "label": "Copilot audit logs record the full hidden reasoning behind every individual generated token"
+          "label": "Copilot audit events preserve per-suggestion source attribution but omit only internal model reasoning"
         }
       ],
       "correctOption": "A",
@@ -167,7 +167,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Disabling all AI assistance whenever the code handles protected health information or other regulated data"
+          "label": "Apply standard unit tests without a separate privacy and regulatory review"
         },
         {
           "key": "B",
@@ -175,7 +175,7 @@
         },
         {
           "key": "C",
-          "label": "Upgrading to GitHub Copilot Enterprise, which then makes the application automatically HIPAA compliant"
+          "label": "Use enterprise Copilot policies as the primary evidence that the application's controls are compliant"
         }
       ],
       "correctOption": "B",
@@ -197,11 +197,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Assume every generated suggestion is fully original and free of any license obligations by default"
+          "label": "Review the suggestion only when its structure closely resembles a known external implementation, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Treat all generated code as owned outright by GitHub, with no obligations to any third party"
+          "label": "Accept the suggestion after it compiles because compilation resolves applicable licensing concerns"
         },
         {
           "key": "C",
@@ -231,11 +231,11 @@
         },
         {
           "key": "B",
-          "label": "A single universal GitHub rule that requires Copilot disclosure in every pull request"
+          "label": "The contributor's Copilot plan because disclosure requirements differ between individual and business plans"
         },
         {
           "key": "C",
-          "label": "An automatic disclosure line that Copilot adds to the commit metadata on your behalf"
+          "label": "The percentage of changed lines produced with Copilot, independent of repository contribution rules"
         }
       ],
       "correctOption": "A",
@@ -257,7 +257,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Restrict Copilot access to senior developers only and block it for everyone who is still onboarding"
+          "label": "Allow suggestions after tests pass without requiring the author to explain the generated code"
         },
         {
           "key": "B",
@@ -265,7 +265,7 @@
         },
         {
           "key": "C",
-          "label": "Configure Copilot so that it can only ever suggest simple, single-line code completions"
+          "label": "Limit junior developers to inline suggestions and review only larger Chat-generated changes"
         }
       ],
       "correctOption": "B",
@@ -287,11 +287,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Accepting only suggestions with high confidence scores from the AI model"
+          "label": "Review the diff and confirm the generated code compiles before deployment"
         },
         {
           "key": "B",
-          "label": "Using Copilot's built-in validation feature to automatically verify all suggestions"
+          "label": "Run generated code through unit tests without static analysis or a security-focused review"
         },
         {
           "key": "C",
@@ -321,11 +321,11 @@
         },
         {
           "key": "B",
-          "label": "Disable Copilot for any code that will later be automatically deployed to a production environment"
+          "label": "Add a lighter validation path for generated code before it enters the standard deployment pipeline"
         },
         {
           "key": "C",
-          "label": "Use a Copilot production-ready mode that lets AI-generated code bypass the normal testing gates"
+          "label": "Require manual review for generated code while allowing it to bypass automated quality gates"
         }
       ],
       "correctOption": "A",
@@ -347,7 +347,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Manually check GitHub's list of deprecated APIs by hand after each individual Copilot suggestion"
+          "label": "Review dependency release notes during scheduled upgrades rather than checking suggestions during development"
         },
         {
           "key": "B",
@@ -355,7 +355,7 @@
         },
         {
           "key": "C",
-          "label": "Configure Copilot so that it only ever suggests APIs released within the current calendar year"
+          "label": "Pin current dependencies so deprecated calls remain supported without workflow warnings"
         }
       ],
       "correctOption": "B",
@@ -377,11 +377,11 @@
       "options": [
         {
           "key": "A",
-          "label": "A complete, line-by-line mapping from every committed line back to the exact model that generated it"
+          "label": "Repository statistics that classify committed lines by the Copilot model that produced them"
         },
         {
           "key": "B",
-          "label": "A certified, per-developer productivity score calculated from Copilot activity data"
+          "label": "Individual productivity rankings derived from each developer's acceptance rate"
         },
         {
           "key": "C",
@@ -411,11 +411,11 @@
         },
         {
           "key": "B",
-          "label": "Code provenance tracking that identifies exactly which committed lines were AI-generated versus human-written"
+          "label": "Repository defect rates automatically attributed to accepted suggestions through usage APIs, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Real-time individual developer productivity scores calculated from Copilot acceptance patterns"
+          "label": "Per-developer delivery ratings combining acceptance activity with pull-request throughput"
         }
       ],
       "correctOption": "A",
@@ -437,7 +437,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Only use Copilot for boilerplate code and disable it entirely for any business-logic implementation"
+          "label": "Apply the same lightweight review to every suggestion because rigor should not vary by code risk"
         },
         {
           "key": "B",
@@ -445,7 +445,7 @@
         },
         {
           "key": "C",
-          "label": "Trust Copilot completely for well-documented languages such as Python and JavaScript without review"
+          "label": "Apply extra scrutiny only to suggestions in less common languages because established languages are lower risk"
         }
       ],
       "correctOption": "B",
@@ -467,11 +467,11 @@
       "options": [
         {
           "key": "A",
-          "label": "GitHub Copilot automatically ensures full compliance with all applicable financial regulations by itself"
+          "label": "Use the normal peer-review checklist because it already covers financial compliance requirements"
         },
         {
           "key": "B",
-          "label": "Purchase GitHub Copilot Enterprise, which then enables automatic regulatory compliance scanning"
+          "label": "Enable organization policies and use Copilot audit events as evidence that generated code is compliant"
         },
         {
           "key": "C",
@@ -501,11 +501,11 @@
         },
         {
           "key": "B",
-          "label": "Label every committed line as AI-generated or human-written using Copilot usage metrics alone"
+          "label": "Compare acceptance rates and treat a higher rate as evidence of fewer defects"
         },
         {
           "key": "C",
-          "label": "Use the raw accepted-suggestion count on its own as proof that overall code quality improved"
+          "label": "Compare delivery speed before and after rollout without controlling for staffing or process changes"
         }
       ],
       "correctOption": "A",
@@ -527,7 +527,7 @@
       "options": [
         {
           "key": "A",
-          "label": "AI suggestions are automatically validated by the model itself and therefore require no human review"
+          "label": "Developers can delegate accountability to reviewers after generated code passes unit tests"
         },
         {
           "key": "B",
@@ -535,7 +535,7 @@
         },
         {
           "key": "C",
-          "label": "GitHub Enterprise includes an automated AI validation layer that certifies generated code as correct"
+          "label": "Developers remain accountable only for suggestions flagged as low confidence or potentially unsafe"
         }
       ],
       "correctOption": "B",
@@ -557,11 +557,11 @@
       "options": [
         {
           "key": "A",
-          "label": "A paid Business or Enterprise seat is always strictly required before Copilot can be used in an IDE, even by individuals"
+          "label": "Copilot Pro is required for IDE access, while Copilot Free is limited to GitHub.com Chat"
         },
         {
           "key": "B",
-          "label": "Copilot is included automatically with every GitHub Pro account at no extra cost and without a separate signup"
+          "label": "GitHub Pro includes Copilot's paid request allowance without separate Copilot enrollment"
         },
         {
           "key": "C",
@@ -591,11 +591,11 @@
         },
         {
           "key": "B",
-          "label": "Inline gray-text suggestions that autocomplete code as you type in the editor"
+          "label": "Inline suggestions because accepting a completion opens a conversational explanation"
         },
         {
           "key": "C",
-          "label": "GitHub Copilot CLI, which handles natural-language requests directly from the command line for you"
+          "label": "Copilot CLI because terminal sessions automatically receive the IDE's complete repository context"
         }
       ],
       "correctOption": "A",
@@ -617,7 +617,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Temporarily delete the proprietary files from the repository entirely whenever Copilot happens to be in use"
+          "label": "Add the paths to the repository's ignore file so IDE integrations omit them from context"
         },
         {
           "key": "B",
@@ -625,7 +625,7 @@
         },
         {
           "key": "C",
-          "label": "Set the sensitive files to read-only in the IDE so that Copilot skips over them"
+          "label": "Disable inline suggestions for the repository while leaving Chat access to the same files enabled"
         }
       ],
       "correctOption": "B",
@@ -647,11 +647,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Exclusion makes the affected files read-only for developers working in the repository"
+          "label": "Exclusion applies to IDE Agent mode but not to inline suggestions made from excluded files"
         },
         {
           "key": "B",
-          "label": "Exclusion retrains the underlying model so that any similar public code patterns can never appear again"
+          "label": "Exclusion blocks direct content and guarantees IDE semantic information cannot reveal related details"
         },
         {
           "key": "C",
@@ -681,11 +681,11 @@
         },
         {
           "key": "B",
-          "label": "It only expands a fixed set of predefined shell aliases and never calls a model to interpret the request"
+          "label": "It translates requests into single shell commands but does not perform multi-step tool use, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "It is simply the retired gh-copilot extension re-released unchanged under a new display name"
+          "label": "It provides the retired extension's suggest and explain workflow with standalone authentication"
         }
       ],
       "correctOption": "A",
@@ -707,7 +707,7 @@
       "options": [
         {
           "key": "A",
-          "label": "The retired gh-copilot extension, treated as the only supported option on Linux"
+          "label": "The gh-copilot extension, which remains the supported agentic CLI on Linux"
         },
         {
           "key": "B",
@@ -715,7 +715,7 @@
         },
         {
           "key": "C",
-          "label": "The VS Code extension binary manually copied into a shell directory"
+          "label": "GitHub CLI alone with Copilot enabled through an organization feature policy"
         }
       ],
       "correctOption": "B",
@@ -737,11 +737,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Install the retired gh copilot extension, treating it as the only officially supported method available"
+          "label": "Install the gh copilot extension and enable standalone agent mode in GitHub CLI settings, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Copy an existing IDE extension into the shell path and run it directly"
+          "label": "Install GitHub CLI because it bundles the current Copilot CLI on supported platforms"
         },
         {
           "key": "C",
@@ -771,11 +771,11 @@
         },
         {
           "key": "B",
-          "label": "Assume the generated command is safe simply because it came from Copilot"
+          "label": "Allow execution after checking the command name because Copilot constrains its arguments"
         },
         {
           "key": "C",
-          "label": "Disable shell history and run the command immediately without any inspection"
+          "label": "Approve commands that stay inside the repository without reviewing permissions or side effects"
         }
       ],
       "correctOption": "A",
@@ -797,7 +797,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Only the retired gh copilot suggest and explain subcommands, with nothing else"
+          "label": "Separate suggest and explain subcommands without conversational follow-up"
         },
         {
           "key": "B",
@@ -805,7 +805,7 @@
         },
         {
           "key": "C",
-          "label": "A graphical IDE window that has no access to terminal tools at all"
+          "label": "A non-interactive command generator that prints commands but cannot use development tools"
         }
       ],
       "correctOption": "B",
@@ -827,11 +827,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Run the command first, on the assumption that Copilot's explanations certify that it is safe"
+          "label": "Ask Copilot CLI to explain the command and use that explanation as the execution safety check"
         },
         {
           "key": "B",
-          "label": "Upload the full shell history to a public repository so that it can be analyzed there"
+          "label": "Run the pipeline locally first and ask Copilot to explain any unexpected effects afterward"
         },
         {
           "key": "C",
@@ -861,11 +861,11 @@
         },
         {
           "key": "B",
-          "label": "Automatic approval and merge of every generated change"
+          "label": "Inline suggestions applied separately in each open file without a coordinated task context"
         },
         {
           "key": "C",
-          "label": "A requirement to edit only the active file"
+          "label": "Ask mode, which edits related files after explaining the proposed refactor"
         }
       ],
       "correctOption": "A",
@@ -887,7 +887,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Ask mode"
+          "label": "Ask mode, which explains a solution and then implements it with tools"
         },
         {
           "key": "B",
@@ -895,7 +895,7 @@
         },
         {
           "key": "C",
-          "label": "A repository visibility setting"
+          "label": "Edit mode, which applies a fixed patch without iterating on tool results"
         }
       ],
       "correctOption": "B",
@@ -917,11 +917,11 @@
       "options": [
         {
           "key": "A",
-          "label": "The agent always pushes its changes directly to the production environment"
+          "label": "The agent can use tools only after separate approval for every action regardless of configuration"
         },
         {
           "key": "B",
-          "label": "The agent is limited to returning chat text only and cannot edit files or run tools"
+          "label": "The agent can edit files, but terminal tools remain unavailable in IDE agents"
         },
         {
           "key": "C",
@@ -951,11 +951,11 @@
         },
         {
           "key": "B",
-          "label": "As an automatic pull-request approval that merges the change once it is posted"
+          "label": "As a required-status review that satisfies branch protection after fixes are applied, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "As a complete replacement for all required human reviewers on the pull request"
+          "label": "As a security approval that replaces human review only for files Copilot analyzed"
         }
       ],
       "correctOption": "A",
@@ -977,7 +977,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Copilot bypasses the repository's rules and deploys the change directly to production"
+          "label": "Copilot works directly on the default branch and posts completed commits for later review, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
@@ -985,7 +985,7 @@
         },
         {
           "key": "C",
-          "label": "Copilot only returns an inline completion inside the developer's IDE"
+          "label": "Copilot prepares a local IDE workspace and waits for the developer to open its proposed changes"
         }
       ],
       "correctOption": "B",
@@ -1007,11 +1007,11 @@
       "options": [
         {
           "key": "A",
-          "label": "GitHub Copilot coding agent"
+          "label": "GitHub Copilot coding agent, which stores shared sources with each assigned issue"
         },
         {
           "key": "B",
-          "label": "A repository branch protection rule"
+          "label": "Repository custom instructions, which bundle repositories and free-form reference material"
         },
         {
           "key": "C",
@@ -1041,11 +1041,11 @@
         },
         {
           "key": "B",
-          "label": "An organization policy that automatically rewrites every generated suggestion"
+          "label": "A Copilot Space whose context is automatically applied to every repository request"
         },
         {
           "key": "C",
-          "label": "A branch protection rule that contains the prompt text to apply"
+          "label": "A prompt file whose guidance is automatically included without explicit invocation"
         }
       ],
       "correctOption": "A",
@@ -1067,7 +1067,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Assume a new conversation increases the plan’s usage allowance"
+          "label": "Start a new conversation only after the current thread reaches its context limit"
         },
         {
           "key": "B",
@@ -1075,7 +1075,7 @@
         },
         {
           "key": "C",
-          "label": "Treat model context limits and plan request limits as the same mechanism"
+          "label": "Continue the current thread and restate the new task because prior context cannot affect responses"
         }
       ],
       "correctOption": "B",
@@ -1097,11 +1097,11 @@
       "options": [
         {
           "key": "A",
-          "label": "A formal pull-request approval review from a designated human reviewer"
+          "label": "Open a product feedback issue containing the complete conversation"
         },
         {
           "key": "B",
-          "label": "Changing the repository's visibility setting between public and private"
+          "label": "Use the report-content workflow intended for safety incidents"
         },
         {
           "key": "C",
@@ -1131,11 +1131,11 @@
         },
         {
           "key": "B",
-          "label": "That every slash command behaves identically across all clients and IDEs"
+          "label": "That the command name is supported in one Copilot client because commands are synchronized across clients"
         },
         {
           "key": "C",
-          "label": "That slash commands are actually repository file paths under the hood"
+          "label": "That the repository defines the command in custom instructions before it can be invoked"
         }
       ],
       "correctOption": "A",
@@ -1157,7 +1157,7 @@
       "options": [
         {
           "key": "A",
-          "label": "A branch protection rule that stores the reusable prompt text"
+          "label": "A repository custom-instructions file that users explicitly invoke for each recurring task"
         },
         {
           "key": "B",
@@ -1165,7 +1165,7 @@
         },
         {
           "key": "C",
-          "label": "A Copilot subscription policy that itself contains the full reusable prompt text for the task"
+          "label": "A Copilot Space that automatically executes its stored prompt whenever the repository opens"
         }
       ],
       "correctOption": "B",
@@ -1187,11 +1187,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Automatic legal approval and full licensing clearance for all of the code that is generated"
+          "label": "A GitHub REST API convention for sending Copilot prompts to external services, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Continuous model retraining on every connected external data source"
+          "label": "A provider-specific plug-in format that each Copilot model implements differently"
         },
         {
           "key": "C",
@@ -1221,11 +1221,11 @@
         },
         {
           "key": "B",
-          "label": "Every Copilot policy can be targeted arbitrarily to individual repositories and specific teams"
+          "label": "Supported policies are repository-scoped when an organization owner assigns them to selected teams"
         },
         {
           "key": "C",
-          "label": "The repository's star count determines which Copilot features are available to members"
+          "label": "Feature policies are enterprise-only, while organizations can manage seats but not feature access"
         }
       ],
       "correctOption": "A",
@@ -1247,7 +1247,7 @@
       "options": [
         {
           "key": "A",
-          "label": "The repository's own branch protection settings within the GitHub web user interface"
+          "label": "Enterprise Copilot policies because organization owners cannot manage feature access"
         },
         {
           "key": "B",
@@ -1255,7 +1255,7 @@
         },
         {
           "key": "C",
-          "label": "A local IDE setting that is distributed manually to every developer"
+          "label": "Managed IDE settings because GitHub organization policies control seats but not individual features"
         }
       ],
       "correctOption": "B",
@@ -1277,11 +1277,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Content exclusions disable Copilot entirely for repositories, while feature policies allow per-file control"
+          "label": "Content exclusions control which users receive seats, while feature policies filter file context"
         },
         {
           "key": "B",
-          "label": "Both content exclusions and feature policies ultimately achieve the same outcome, just through two different interfaces"
+          "label": "Content exclusions and feature policies both disable capabilities, but at file and organization scope respectively"
         },
         {
           "key": "C",
@@ -1311,11 +1311,11 @@
         },
         {
           "key": "B",
-          "label": "A dedicated log that contains the full text of every private Copilot suggestion that is made"
+          "label": "Copilot usage metrics because they include the administrator and value for each policy change"
         },
         {
           "key": "C",
-          "label": "The Git commit history of the repository on its own"
+          "label": "Repository event history because organization Copilot policy changes are propagated as repository events"
         }
       ],
       "correctOption": "A",
@@ -1337,7 +1337,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Configure every Copilot feature policy and every content exclusion rule for the whole organization"
+          "label": "Configure feature policies and content exclusions through the same seat-management endpoints"
         },
         {
           "key": "B",
@@ -1345,7 +1345,7 @@
         },
         {
           "key": "C",
-          "label": "Stream every generated Copilot suggestion out through a configured webhook"
+          "label": "Subscribe to seat and suggestion events through Copilot user-management webhooks"
         }
       ],
       "correctOption": "B",
@@ -1367,11 +1367,11 @@
       "options": [
         {
           "key": "A",
-          "label": "A webhook that streams every generated Copilot suggestion to a listener"
+          "label": "SCIM group membership because provisioning a GitHub user also assigns a Copilot seat"
         },
         {
           "key": "B",
-          "label": "Repository-level YAML policy files committed to each repo"
+          "label": "Organization membership endpoints because adding a member includes licensed Copilot access"
         },
         {
           "key": "C",
@@ -1401,11 +1401,11 @@
         },
         {
           "key": "B",
-          "label": "The organization can freely override any enterprise-enforced restriction it disagrees with"
+          "label": "The organization can override an enforced choice after the enterprise delegates any other Copilot policy"
         },
         {
           "key": "C",
-          "label": "Every repository independently replaces both the enterprise and organization policy levels"
+          "label": "Repository administrators can narrow both enterprise and organization policies for individual repositories"
         }
       ],
       "correctOption": "A",
@@ -1427,7 +1427,7 @@
       "options": [
         {
           "key": "A",
-          "label": "All Copilot input is always retained indefinitely and used directly to train the underlying model on every plan"
+          "label": "Business data is excluded from training, while individual-plan input is used for training under one uniform retention rule"
         },
         {
           "key": "B",
@@ -1435,7 +1435,7 @@
         },
         {
           "key": "C",
-          "label": "No Copilot model provider ever retains any data, even briefly, for safety, security, or abuse monitoring"
+          "label": "A training opt-out also prevents operational retention by GitHub and every model provider"
         }
       ],
       "correctOption": "B",
@@ -1457,11 +1457,11 @@
       "options": [
         {
           "key": "A",
-          "label": "The entire repository and its complete Git history are always sent with every single request"
+          "label": "The active file and complete repository history are assembled for every request"
         },
         {
           "key": "B",
-          "label": "Copilot continuously trains a private model on every file you save in the project"
+          "label": "Copilot builds a persistent private index by training on each saved repository file"
         },
         {
           "key": "C",
@@ -1491,11 +1491,11 @@
         },
         {
           "key": "B",
-          "label": "Supported content exclusions can reliably keep configured files out of context on all of the supported surfaces"
+          "label": "Content exclusions remove configured files and any related semantic information from every Copilot surface, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Public-code matching controls can address at least some matching suggestions in the editor"
+          "label": "Public-code matching controls prevent all suggestions that share structure with public code"
         }
       ],
       "correctOption": "A",
@@ -1517,7 +1517,7 @@
       "options": [
         {
           "key": "A",
-          "label": "GitHub Copilot's proxy layer automatically redacts all secrets before processing using pattern-based detection"
+          "label": "Copilot proxy filtering removes recognized credential patterns, while secret scanning handles unrecognized formats"
         },
         {
           "key": "B",
@@ -1525,7 +1525,7 @@
         },
         {
           "key": "C",
-          "label": "All code is scanned by a secrets detection engine that guarantees no secrets are ever sent to AI models"
+          "label": "Secret scanning prevents detected credentials from being included in Copilot context before they are committed"
         }
       ],
       "correctOption": "B",
@@ -1547,11 +1547,11 @@
       "options": [
         {
           "key": "A",
-          "label": "The suggestion is automatically committed to the branch and pushed to the remote repository"
+          "label": "The suggestion is inserted and staged in Git, ready for the developer to commit, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "The suggestion remains available offline as a permanent Copilot cache that persists across sessions"
+          "label": "The suggestion is inserted into a temporary preview that is discarded when the editor closes"
         },
         {
           "key": "C",
@@ -1581,11 +1581,11 @@
         },
         {
           "key": "B",
-          "label": "Rely on an undocumented proxy guarantee that removes every secret before processing"
+          "label": "Use content exclusions as the primary safeguard because they also redact secrets typed directly into prompts"
         },
         {
           "key": "C",
-          "label": "Assume that transport encryption makes it safe to place credentials directly in prompts"
+          "label": "Rely on transport encryption for prompts while using secret scanning only after credentials are committed"
         }
       ],
       "correctOption": "A",
@@ -1607,7 +1607,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Copilot permanently uploads every repository that is accessible to the current user"
+          "label": "The active repository is indexed permanently before each model request"
         },
         {
           "key": "B",
@@ -1615,7 +1615,7 @@
         },
         {
           "key": "C",
-          "label": "Only the natural-language prompt is ever sent, and code context is never included"
+          "label": "Only explicitly attached files can be included; automatic context selection is not used by Copilot surfaces"
         }
       ],
       "correctOption": "B",
@@ -1637,11 +1637,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Assume that one single retention rule applies uniformly across every plan and every model"
+          "label": "Apply the retention rule for the Copilot plan without considering the selected model host"
         },
         {
           "key": "B",
-          "label": "Treat a training opt-out as proof that no operational data can ever be retained"
+          "label": "Treat a training opt-out as equivalent to disabling operational retention"
         },
         {
           "key": "C",
@@ -1671,11 +1671,11 @@
         },
         {
           "key": "B",
-          "label": "All repository files become permanently unavailable to Copilot from that point on"
+          "label": "Older messages remain available but newly attached repository context is rejected first"
         },
         {
           "key": "C",
-          "label": "The service automatically upgrades the subscription plan to fit the context"
+          "label": "Copilot compresses the complete history without losing any instructions or technical details"
         }
       ],
       "correctOption": "A",
@@ -1697,7 +1697,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Assume the suggestion is current because Copilot selected it"
+          "label": "Use the suggestion when it compiles against the project's currently installed dependency version"
         },
         {
           "key": "B",
@@ -1705,7 +1705,7 @@
         },
         {
           "key": "C",
-          "label": "Infer the model’s complete training cutoff from the suggestion"
+          "label": "Check the model's published knowledge cutoff and accept APIs introduced before that date"
         }
       ],
       "correctOption": "B",
@@ -1727,11 +1727,11 @@
       "options": [
         {
           "key": "A",
-          "label": "GitHub intentionally disables its correctness checks for less common languages"
+          "label": "Output quality depends mainly on whether a language has an official Copilot extension, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Every supported language is guaranteed to have identical output quality"
+          "label": "Supported languages receive comparable quality, but complex structures only affect response latency"
         },
         {
           "key": "C",
@@ -1761,11 +1761,11 @@
         },
         {
           "key": "B",
-          "label": "Use only single-word comments so the prompt stays as short and minimal as possible for the model"
+          "label": "Describe the desired implementation but omit constraints so Copilot can select established defaults, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Write the prompt in a completely different programming language from the one you actually want Copilot to generate code in"
+          "label": "Provide the function signature and expected output type while leaving edge cases for Copilot to infer"
         }
       ],
       "correctOption": "A",
@@ -1787,7 +1787,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Type only the function name and wait for Copilot to guess the entire implementation on its own without any other guidance"
+          "label": "Provide the signature and rely on neighboring code to communicate all requirements, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
@@ -1795,7 +1795,7 @@
         },
         {
           "key": "C",
-          "label": "Write the entire function manually first and then ask Copilot to verify that it is correct"
+          "label": "Provide examples of the desired style without stating the function's behavioral requirements"
         }
       ],
       "correctOption": "B",
@@ -1817,11 +1817,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Repeat the exact same prompt over and over multiple times until Copilot finally understands the request"
+          "label": "Keep the task in one prompt but add more domain terminology and implementation detail, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Switch to a completely different programming language in which Copilot is believed to work noticeably better"
+          "label": "Switch to Chat and request the complete transformation without intermediate acceptance criteria"
         },
         {
           "key": "C",
@@ -1851,11 +1851,11 @@
         },
         {
           "key": "B",
-          "label": "Every Copilot surface always sends your imports, your recent edits, and the entire repository with each request"
+          "label": "All IDE surfaces use the same automatic context sources, but explicitly attached sources differ"
         },
         {
           "key": "C",
-          "label": "Only the final sentence that the user typed can ever be used as context for the response"
+          "label": "Only explicitly referenced context is predictable because Copilot never selects context automatically"
         }
       ],
       "correctOption": "A",
@@ -1877,7 +1877,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Assume that Copilot automatically generates fully secure code on its own without any explicit guidance in the prompt"
+          "label": "Rely on repository security tooling rather than adding security requirements to the prompt, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
@@ -1885,7 +1885,7 @@
         },
         {
           "key": "C",
-          "label": "Avoid mentioning security in the prompt at all in order to keep the request simple"
+          "label": "Request secure code generally and let Copilot infer the controls appropriate to the framework"
         }
       ],
       "correctOption": "B",
@@ -1907,11 +1907,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Add several unrelated examples to the prompt purely to increase its overall length and total word count"
+          "label": "Provide several examples from related patterns even when their output formats differ"
         },
         {
           "key": "B",
-          "label": "Deliberately hide or omit the expected output format from the prompt entirely"
+          "label": "Describe the pattern in prose and omit examples so the prompt leaves more context for generated code"
         },
         {
           "key": "C",
@@ -1941,11 +1941,11 @@
         },
         {
           "key": "B",
-          "label": "Using all-capital-letters text throughout the prompt to emphasize the important words"
+          "label": "Providing implementation details without identifying the expected inputs and outputs, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Writing the prompt in a formal, legalistic style using precise and elaborate terminology throughout"
+          "label": "Providing multiple examples while leaving the domain constraints implicit"
         }
       ],
       "correctOption": "A",
@@ -1967,7 +1967,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Insist that every single prompt stays under roughly ten words at all times, on the assumption that shorter prompts never confuse the AI model"
+          "label": "Keep prompts concise and let Copilot infer project constraints from the active file"
         },
         {
           "key": "B",
@@ -1975,7 +1975,7 @@
         },
         {
           "key": "C",
-          "label": "Copy exact questions from Stack Overflow verbatim and paste them directly as your prompts"
+          "label": "Describe the implementation steps in detail but omit the business objective and success criteria"
         }
       ],
       "correctOption": "B",
@@ -1997,11 +1997,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Each chat message is processed completely independently, with no memory whatsoever of any previous messages in the conversation"
+          "label": "Chat history is used only for follow-up questions that explicitly reference an earlier response"
         },
         {
           "key": "B",
-          "label": "Chat history is only preserved at all if it is manually saved to a file first"
+          "label": "Chat history is summarized after each turn and therefore preserves every prior detail"
         },
         {
           "key": "C",
@@ -2031,11 +2031,11 @@
         },
         {
           "key": "B",
-          "label": "Maximum possible brevity in every prompt purely in order to reduce model processing time"
+          "label": "Short prompts that rely on repository context for security requirements and success criteria"
         },
         {
           "key": "C",
-          "label": "Creative and constantly varied prompt styles intended to exercise the full range of the AI model's capabilities"
+          "label": "Flexible prompt styles with mandatory examples but no shared acceptance-criteria format"
         }
       ],
       "correctOption": "A",
@@ -2057,7 +2057,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Implement authentication"
+          "label": "Specify the framework and interface, then infer security controls from project conventions"
         },
         {
           "key": "B",
@@ -2065,7 +2065,7 @@
         },
         {
           "key": "C",
-          "label": "Simply act as an expert and choose any framework, any behavior, and any interface that you like"
+          "label": "Specify required controls and tests but allow Copilot to choose a compatible framework and interface"
         }
       ],
       "correctOption": "B",
@@ -2087,11 +2087,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Always add examples, even in cases where they consume useful context and add no real clarity at all"
+          "label": "Whenever a prompt could include an example, even if it repeats clear requirements and consumes useful context"
         },
         {
           "key": "B",
-          "label": "Never add examples, because Copilot simply ignores any examples that you provide anyway"
+          "label": "Primarily to provide extra background, even when the example does not constrain the expected output"
         },
         {
           "key": "C",
@@ -2117,19 +2117,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Auto-completion of boilerplate code, function implementations, and repetitive patterns based on context"
+          "label": "Complete boilerplate, function implementations, and repetitive patterns by using the surrounding code as context"
         },
         {
           "key": "B",
-          "label": "Automatic compilation, testing, and deployment of all the generated code directly into the target environment"
+          "label": "Explain each intended implementation in Chat before the developer writes the routine manually, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Voice-activated, hands-free coding that removes the need to type any code at all"
+          "label": "Compare a finished implementation with an alternative suggestion after all code has already been written"
         }
       ],
       "correctOption": "A",
-      "correctLabel": "Auto-completion of boilerplate code, function implementations, and repetitive patterns based on context",
+      "correctLabel": "Complete boilerplate, function implementations, and repetitive patterns by using the surrounding code as context",
       "rationaleHtml": "Copilot accelerates development by automatically generating code for common patterns, reducing time spent on boilerplate and routine implementations.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot\">Getting code suggestions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2147,19 +2147,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Automatically refactor absolutely all of the code across the entire repository overnight without any review"
+          "label": "Apply broad repository-wide transformations without defining constraints or reviewing behavioral changes"
         },
         {
           "key": "B",
-          "label": "Suggest improvements to code structure, extract functions, modernize syntax, and apply design patterns"
+          "label": "Suggest structural improvements, function extractions, modern syntax, and suitable design patterns"
         },
         {
           "key": "C",
-          "label": "Refuse to work with or suggest anything for any code that appears to need refactoring"
+          "label": "Explain the current structure so the developer can preserve it unchanged during maintenance"
         }
       ],
       "correctOption": "B",
-      "correctLabel": "Suggest improvements to code structure, extract functions, modernize syntax, and apply design patterns",
+      "correctLabel": "Suggest structural improvements, function extractions, modern syntax, and suitable design patterns",
       "rationaleHtml": "Copilot can assist refactoring by suggesting cleaner implementations, identifying opportunities for extraction, and recommending modern patterns.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2177,19 +2177,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Automatically build and publish the finished documentation directly to a GitHub Pages site for the whole repository"
+          "label": "Generate comments from symbol names alone without considering implementation details or usage context"
         },
         {
           "key": "B",
-          "label": "Translate the generated documentation into essentially all human languages fully automatically"
+          "label": "Explain selected code interactively so the writer can manually transcribe each response into documentation"
         },
         {
           "key": "C",
-          "label": "Generate function documentation, code comments, README files, and API documentation based on code analysis"
+          "label": "Generate function documentation, code comments, README content, and API documentation from code context"
         }
       ],
       "correctOption": "C",
-      "correctLabel": "Generate function documentation, code comments, README files, and API documentation based on code analysis",
+      "correctLabel": "Generate function documentation, code comments, README content, and API documentation from code context",
       "rationaleHtml": "Copilot can analyze code and generate explanatory documentation, docstrings, comments, and usage examples to improve code understanding.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2207,19 +2207,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Explain code functionality, describe algorithms, clarify complex logic, and provide context about unfamiliar patterns"
+          "label": "Explain selected code, describe its algorithms, and clarify how unfamiliar patterns fit the surrounding context"
         },
         {
           "key": "B",
-          "label": "Automatically enroll the developer in a full set of relevant online training courses for the language and framework"
+          "label": "Generate a repository summary from top-level documentation without examining the unfamiliar implementation or tracing its call sites"
         },
         {
           "key": "C",
-          "label": "Generate printable flashcards for memorizing all of the function names in the codebase"
+          "label": "Rewrite unfamiliar functions into a preferred style before establishing what the existing behavior means"
         }
       ],
       "correctOption": "A",
-      "correctLabel": "Explain code functionality, describe algorithms, clarify complex logic, and provide context about unfamiliar patterns",
+      "correctLabel": "Explain selected code, describe its algorithms, and clarify how unfamiliar patterns fit the surrounding context",
       "rationaleHtml": "Copilot Chat can explain code in natural language, helping developers understand unfamiliar codebases, algorithms, and patterns more quickly.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2237,19 +2237,19 @@
       "options": [
         {
           "key": "A",
-          "label": "It completely eliminates any remaining need to ever verify external technical documentation while you are coding"
+          "label": "Summarize external documentation pasted into Chat without using the code currently open in the editor"
         },
         {
           "key": "B",
-          "label": "It can answer contextual questions and explain or suggest code within the development environment"
+          "label": "Answer contextual questions and explain or suggest code within the developer's current environment"
         },
         {
           "key": "C",
-          "label": "It guarantees that developers will never once need to leave the editor during their work"
+          "label": "Use inline completions for conceptual questions that require a conversational explanation of the codebase"
         }
       ],
       "correctOption": "B",
-      "correctLabel": "It can answer contextual questions and explain or suggest code within the development environment",
+      "correctLabel": "Answer contextual questions and explain or suggest code within the developer's current environment",
       "rationaleHtml": "IDE-integrated Chat can assist with code and contextual questions where the developer is working, reducing some tool switching.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide\">Asking GitHub Copilot questions in your IDE - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2267,11 +2267,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Accept all Copilot suggestions to maximize raw speed and simply assume that the resulting quality is guaranteed"
+          "label": "Use suggestion acceptance rate as the main quality signal without checking defects or test results"
         },
         {
           "key": "B",
-          "label": "Disable code review entirely for AI-generated code in order to avoid slowing down the pipeline"
+          "label": "Apply additional review only to code identified as AI-generated while relaxing checks for surrounding code"
         },
         {
           "key": "C",
@@ -2297,19 +2297,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Suggest modern equivalents for outdated syntax, patterns, and libraries when refactoring legacy code"
+          "label": "Suggest current equivalents for outdated syntax, patterns, and libraries while the developer refactors legacy code"
         },
         {
           "key": "B",
-          "label": "Automatically delete all of the existing legacy code and replace the entire thing with brand-new microservices"
+          "label": "Replace deprecated libraries across the repository in one pass without compatibility tests or staged review"
         },
         {
           "key": "C",
-          "label": "Prevent the developer from having any interaction at all with code that is older than five years"
+          "label": "Document the outdated patterns with Copilot but preserve every implementation until a separate migration tool is used"
         }
       ],
       "correctOption": "A",
-      "correctLabel": "Suggest modern equivalents for outdated syntax, patterns, and libraries when refactoring legacy code",
+      "correctLabel": "Suggest current equivalents for outdated syntax, patterns, and libraries while the developer refactors legacy code",
       "rationaleHtml": "Copilot can suggest modernization by recognizing outdated patterns and recommending current alternatives, language features, and libraries.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2327,19 +2327,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Execute all of the generated tests and then automatically fix any and all failures that happen to occur on its own"
+          "label": "Generate tests from the function name alone without considering implementation details or expected behavior"
         },
         {
           "key": "B",
-          "label": "Generate unit test cases based on function signatures, including happy paths, edge cases, and error conditions"
+          "label": "Analyze a function and generate unit tests for happy paths, edge cases, and error conditions"
         },
         {
           "key": "C",
-          "label": "Certify that the generated tests always provide a full 100 percent of code coverage"
+          "label": "Generate snapshot tests for each function and treat unchanged snapshots as sufficient behavioral coverage"
         }
       ],
       "correctOption": "B",
-      "correctLabel": "Generate unit test cases based on function signatures, including happy paths, edge cases, and error conditions",
+      "correctLabel": "Analyze a function and generate unit tests for happy paths, edge cases, and error conditions",
       "rationaleHtml": "Copilot can analyze functions and generate comprehensive unit tests covering various scenarios, accelerating test development.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2357,19 +2357,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Ask Copilot to automatically discover all of the integration points across the whole system and then test every single one of them"
+          "label": "Ask Copilot to infer every integration from one function without describing external services or test data"
         },
         {
           "key": "B",
-          "label": "Copy the existing unit tests and simply rename them so that they look like integration tests"
+          "label": "Extend existing unit tests with real dependencies but omit the expected cross-service outcomes"
         },
         {
           "key": "C",
-          "label": "Describe the integration scenario with services, data flow, and expected outcomes in comments, then request test generation"
+          "label": "Describe the integration scenario, services, data flow, and expected outcomes before requesting tests"
         }
       ],
       "correctOption": "C",
-      "correctLabel": "Describe the integration scenario with services, data flow, and expected outcomes in comments, then request test generation",
+      "correctLabel": "Describe the integration scenario, services, data flow, and expected outcomes before requesting tests",
       "rationaleHtml": "Integration tests require detailed scenario descriptions including service interactions, data setup, and expected results to generate meaningful tests.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot\">Prompt engineering for GitHub Copilot - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2387,19 +2387,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Ask Copilot to analyze code and suggest edge cases, boundary conditions, and potential failure scenarios"
+          "label": "Ask Copilot to analyze the implementation and suggest boundary conditions, failure modes, and unusual inputs"
         },
         {
           "key": "B",
-          "label": "Deploy the code directly into production and then simply wait for real users to report any edge cases they hit"
+          "label": "Ask Copilot to generate happy-path tests from the function signature without analyzing the implementation"
         },
         {
           "key": "C",
-          "label": "Assume that Copilot's generated code has no edge cases that need to be considered at all"
+          "label": "Ask Copilot to refactor the implementation for readability and infer edge cases only from the rewritten version"
         }
       ],
       "correctOption": "A",
-      "correctLabel": "Ask Copilot to analyze code and suggest edge cases, boundary conditions, and potential failure scenarios",
+      "correctLabel": "Ask Copilot to analyze the implementation and suggest boundary conditions, failure modes, and unusual inputs",
       "rationaleHtml": "Copilot can analyze code logic and suggest edge cases that developers might miss, improving test coverage and robustness.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2417,19 +2417,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Ask Copilot only for some vague, unspecified assertions without ever saying which conditions it should actually check"
+          "label": "Ask Copilot to copy the assertion style from neighboring tests without describing the required behavior"
         },
         {
           "key": "B",
-          "label": "Specify exactly what conditions should be verified, including expected values, state changes, and side effects"
+          "label": "Specify the expected values, state changes, exceptions, and side effects that the test should verify"
         },
         {
           "key": "C",
-          "label": "Let Copilot decide entirely on its own what is important to test without providing any guidance at all"
+          "label": "Request as many assertions as possible without distinguishing observable outcomes from implementation details"
         }
       ],
       "correctOption": "B",
-      "correctLabel": "Specify exactly what conditions should be verified, including expected values, state changes, and side effects",
+      "correctLabel": "Specify the expected values, state changes, exceptions, and side effects that the test should verify",
       "rationaleHtml": "Effective test assertions require clear specification of what to verify—return values, state changes, exceptions, side effects—to ensure meaningful test validation.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot\">Prompt engineering for GitHub Copilot - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2447,19 +2447,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Simply assume that Copilot only ever suggests fully secure code, and therefore skip all of the dedicated security reviews entirely"
+          "label": "Ask Copilot to review only the changed lines and treat the absence of warnings as proof that the code is secure"
         },
         {
           "key": "B",
-          "label": "Use Copilot exclusively as a complete replacement for dedicated security scanning tools in the pipeline"
+          "label": "Use a Copilot review in place of dedicated security scanners because both inspect code for risky patterns, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Ask Copilot to review code for common security issues like injection, XSS, insecure deserialization, or weak authentication"
+          "label": "Ask Copilot to identify common issues such as injection, XSS, insecure deserialization, and weak authentication"
         }
       ],
       "correctOption": "C",
-      "correctLabel": "Ask Copilot to review code for common security issues like injection, XSS, insecure deserialization, or weak authentication",
+      "correctLabel": "Ask Copilot to identify common issues such as injection, XSS, insecure deserialization, and weak authentication",
       "rationaleHtml": "Copilot can identify common security anti-patterns and suggest improvements, complementing automated security scanning tools.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2477,19 +2477,19 @@
       "options": [
         {
           "key": "A",
-          "label": "Describe performance bottlenecks, constraints, and optimization goals when requesting improvements"
+          "label": "Describe measured bottlenecks, workload constraints, and optimization goals when requesting improvements"
         },
         {
           "key": "B",
-          "label": "Ask Copilot only to make the code fast, without providing any additional context or constraints at all"
+          "label": "Provide one benchmark result but omit workload characteristics and acceptable performance trade-offs, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Assume that all of the suggestions Copilot returns are already optimized for maximum performance"
+          "label": "Ask Copilot for a shorter implementation and assume fewer lines will produce better runtime performance"
         }
       ],
       "correctOption": "A",
-      "correctLabel": "Describe performance bottlenecks, constraints, and optimization goals when requesting improvements",
+      "correctLabel": "Describe measured bottlenecks, workload constraints, and optimization goals when requesting improvements",
       "rationaleHtml": "Performance optimization requires context about bottlenecks, scale requirements, and acceptable trade-offs to generate relevant improvements.<br><br>Reference: <a href=\"https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide\">Asking GitHub Copilot questions - GitHub Docs</a>",
       "extraHtml": "The linked official documentation supports the selected answer. The alternatives either describe a different feature, omit a required safeguard, or claim behavior that the documentation does not guarantee."
     },
@@ -2507,7 +2507,7 @@
       "options": [
         {
           "key": "A",
-          "label": "In a .copilotignore file placed in the root of each repository that needs exclusions"
+          "label": "In a repository .gitignore file shared with all IDE users"
         },
         {
           "key": "B",
@@ -2515,7 +2515,7 @@
         },
         {
           "key": "C",
-          "label": "In the local IDE settings on each individual developer's machine, applied per user"
+          "label": "In managed local IDE settings distributed centrally to each developer"
         }
       ],
       "correctOption": "B",
@@ -2537,11 +2537,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Only in each developer’s own local editor, where they then apply to every Copilot product automatically"
+          "label": "In local editor settings, with exclusions synchronized to all Copilot products for the signed-in user"
         },
         {
           "key": "B",
-          "label": "In branch protection settings, which are said to guarantee complete semantic isolation of the files"
+          "label": "In organization feature policies, with effects inherited by every repository and Copilot surface"
         },
         {
           "key": "C",
@@ -2571,11 +2571,11 @@
         },
         {
           "key": "B",
-          "label": "Content exclusions make the affected files completely read-only inside the IDE for every single developer on the team"
+          "label": "Content exclusions hide affected files from Copilot and from IDE search while leaving direct editing enabled, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Content exclusions delete the affected files from the developer's local repository entirely"
+          "label": "Content exclusions restrict Copilot-assisted edits to affected files but allow manual edits"
         }
       ],
       "correctOption": "A",
@@ -2597,7 +2597,7 @@
       "options": [
         {
           "key": "A",
-          "label": "To absolutely every GitHub user worldwide and to every single Copilot feature that exists"
+          "label": "To all organization members, including users whose Copilot seats come from another organization"
         },
         {
           "key": "B",
@@ -2605,7 +2605,7 @@
         },
         {
           "key": "C",
-          "label": "Only to those users who manually copy the exclusion patterns into their own local settings"
+          "label": "Only to users who open the repository after the exclusions are configured"
         }
       ],
       "correctOption": "B",
@@ -2627,11 +2627,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Yes, exclusion acts as a complete and absolute semantic-isolation guarantee that applies across every single Copilot feature"
+          "label": "Yes; exclusions block direct content and all IDE-derived semantic references on supported surfaces"
         },
         {
           "key": "B",
-          "label": "Yes, because configuring exclusion actually retrains the underlying model to forget the content"
+          "label": "Yes; exclusions cover every IDE mode but require separate configuration for Copilot CLI"
         },
         {
           "key": "C",
@@ -2661,11 +2661,11 @@
         },
         {
           "key": "B",
-          "label": "Exclusions only ever change file-system permissions and nothing else about Copilot at all"
+          "label": "Exclusions cover Agent mode but semantic information can still expose details in inline suggestions"
         },
         {
           "key": "C",
-          "label": "Excluded files are always respected by every single Copilot feature, without any exception whatsoever"
+          "label": "Excluded files are omitted from supported IDE features and Copilot CLI, but not from repository indexing"
         }
       ],
       "correctOption": "A",
@@ -2687,7 +2687,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Deploy the exclusions immediately to production everywhere without doing any testing at all first"
+          "label": "Apply exclusions to a small production repository and validate only that inline suggestions stop"
         },
         {
           "key": "B",
@@ -2695,7 +2695,7 @@
         },
         {
           "key": "C",
-          "label": "Ask GitHub Support to validate all of the exclusions on the organization's behalf for them"
+          "label": "Review the glob patterns against repository paths and deploy once they match, without behavior testing"
         }
       ],
       "correctOption": "B",
@@ -2717,11 +2717,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Every one of the selectable models shares exactly the same identical hosting and data-handling behavior in all cases"
+          "label": "All selectable models use GitHub hosting, but their retention periods can differ"
         },
         {
           "key": "B",
-          "label": "The selected model always runs locally inside the developer's own IDE"
+          "label": "The selected model runs through the IDE vendor's host when used from an IDE"
         },
         {
           "key": "C",
@@ -2751,11 +2751,11 @@
         },
         {
           "key": "B",
-          "label": "GitHub claims full ownership of all of the input and all of the output produced with AI features"
+          "label": "Users own output only when public-code matching reports no similar code"
         },
         {
           "key": "C",
-          "label": "All generated output is automatically free of any and all third-party license obligations"
+          "label": "GitHub retains ownership of model output while granting users rights to use it"
         }
       ],
       "correctOption": "A",
@@ -2777,7 +2777,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Reinstall the entire operating system and the whole development toolchain before checking any Copilot settings at all"
+          "label": "Verify network access to Copilot endpoints before checking account or IDE configuration"
         },
         {
           "key": "B",
@@ -2785,7 +2785,7 @@
         },
         {
           "key": "C",
-          "label": "Delete all local code files and start the project over from an empty working directory"
+          "label": "Reinstall the Copilot extension first, then check authentication only if suggestions remain unavailable"
         }
       ],
       "correctOption": "B",
@@ -2807,11 +2807,11 @@
       "options": [
         {
           "key": "A",
-          "label": "The developer's typing speed is simply far too fast for Copilot to be able to keep up and process in time"
+          "label": "Large repository context or a long active file is the primary cause of every suggestion timeout, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "The IDE font size and theme settings have been configured incorrectly for the project"
+          "label": "IDE extension version mismatches cause rate limiting even when network connectivity is healthy"
         },
         {
           "key": "C",
@@ -2841,11 +2841,11 @@
         },
         {
           "key": "B",
-          "label": "Disable all of the configured content exclusions permanently across the whole organization"
+          "label": "Narrow every pattern to an individual filename before testing whether directory exclusions are needed, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Contact their manager and ask them to override the content exclusions on their behalf"
+          "label": "Check organization feature policies because disabled features are reported as overbroad content exclusions"
         }
       ],
       "correctOption": "A",
@@ -2867,7 +2867,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Publish the full sensitive prompt and response in a public repository issue so it can be triaged"
+          "label": "Use the response's thumbs-down control and include sensitive prompt details in its feedback text"
         },
         {
           "key": "B",
@@ -2875,7 +2875,7 @@
         },
         {
           "key": "C",
-          "label": "Assume a thumbs-down rating on the response is the only available way to report the problem"
+          "label": "Open a private support ticket because the safety address handles only public-code matches"
         }
       ],
       "correctOption": "B",
@@ -2897,11 +2897,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Simply assume that every Copilot surface honors the exclusion in exactly the same identical way"
+          "label": "Test in Agent mode because it exercises the broadest exclusion support, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Send some real production credentials in a prompt to test whether a proxy layer removes them"
+          "label": "Use real test credentials so any leakage can be detected unambiguously, using non-sensitive values that still exercise the configured file patterns"
         },
         {
           "key": "C",
@@ -2931,11 +2931,11 @@
         },
         {
           "key": "B",
-          "label": "Delete and then completely re-clone every single repository on the developer's local machine from scratch"
+          "label": "Restart only the Copilot extension host and test the excluded file without a control file, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "C",
-          "label": "Assume the exclusions failed permanently, on the false belief that propagation is instantaneous"
+          "label": "Wait for propagation and test again in IDE Agent mode because it honors repository exclusions"
         }
       ],
       "correctOption": "A",
@@ -2957,7 +2957,7 @@
       "options": [
         {
           "key": "A",
-          "label": "Repeat the exact same vague request again, this time typed entirely in uppercase letters for emphasis"
+          "label": "Repeat the request with more implementation detail but without explicit constraints or examples, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
@@ -2965,7 +2965,7 @@
         },
         {
           "key": "C",
-          "label": "Remove the acceptance criteria entirely so that the model has far more freedom to improvise"
+          "label": "Add an expected example but remove acceptance criteria that might constrain the implementation"
         }
       ],
       "correctOption": "B",
@@ -2987,11 +2987,11 @@
       "options": [
         {
           "key": "A",
-          "label": "Reuse real production customer records as the sample data so that the generated values look fully authentic"
+          "label": "Use anonymized production records because they preserve realistic distributions better than synthetic data, including related files and follow-up requests within the same workflow"
         },
         {
           "key": "B",
-          "label": "Treat the generated data as automatically safe simply because it came from Copilot"
+          "label": "Use generated values directly when they pass schema validation, then review only failing cases"
         },
         {
           "key": "C",
@@ -3021,11 +3021,11 @@
         },
         {
           "key": "B",
-          "label": "Every selectable model is hosted only by GitHub on the developer’s device"
+          "label": "Models selected in Copilot share one GitHub host, so the team should compare only model capabilities and availability"
         },
         {
           "key": "C",
-          "label": "Model selection cannot affect which provider processes the request"
+          "label": "The IDE vendor determines the model host, so the team should review each supported IDE's hosting terms"
         }
       ],
       "correctOption": "A",
