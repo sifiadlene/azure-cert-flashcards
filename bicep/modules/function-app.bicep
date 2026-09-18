@@ -14,6 +14,13 @@ param location string
 param tags object
 
 /*
+ * Networking parameters
+ */
+
+@description('Resource ID of the dedicated Flex Consumption integration subnet.')
+param flexSubnetId string
+
+/*
  * Compute parameters
  */
 
@@ -225,6 +232,7 @@ resource functionApp 'Microsoft.Web/sites@2024-11-01' = {
     httpsOnly: true
     publicNetworkAccess: 'Enabled'
     serverFarmId: plan.id
+    virtualNetworkSubnetId: flexSubnetId
     siteConfig: {
       alwaysOn: false
       appSettings: [

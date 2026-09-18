@@ -58,6 +58,19 @@ param functionInstanceMemoryMb int = 2048
 param functionMaximumInstanceCount int = 20
 
 /*
+ * Networking parameters
+ */
+
+@description('Address prefix for the virtual network.')
+param virtualNetworkAddressPrefix string
+
+@description('Address prefix for the dedicated Flex Consumption integration subnet.')
+param flexSubnetAddressPrefix string
+
+@description('Address prefix for the dedicated private endpoint subnet.')
+param privateEndpointSubnetAddressPrefix string
+
+/*
  * Data parameters
  */
 
@@ -146,6 +159,7 @@ var uniqueness = take(uniqueString(subscription().id, resourceGroup().id, nameSt
 var storageAccountName = take('st${compactNameStem}${uniqueness}', 24)
 var functionAppName = take('func-${nameStem}-${uniqueness}', 60)
 var planName = take('asp-${nameStem}', 40)
+var virtualNetworkName = take('vnet-${nameStem}', 64)
 var cosmosAccountName = take('cosmos-${nameStem}-${uniqueness}', 44)
 var databaseName = 'challenge'
 var roomsContainerName = 'rooms'
@@ -163,11 +177,34 @@ var standardTags = union(tags, {
  * Modules
  */
 
+module networking 'modules/networking.bicep' = {
+  params: {
+    flexSubnetAddressPrefix: flexSubnetAddressPrefix
+    location: location
+    privateEndpointSubnetAddressPrefix: privateEndpointSubnetAddressPrefix
+    tags: standardTags
+    virtualNetworkAddressPrefix: virtualNetworkAddressPrefix
+    virtualNetworkName: virtualNetworkName
+  }
+}
+
 module storage 'modules/storage.bicep' = {
   params: {
     deploymentContainerName: deploymentContainerName
     location: location
     storageAccountName: storageAccountName
+    tags: standardTags
+  }
+}
+
+module storagePrivateEndpoints 'modules/storage-private-endpoints.bicep' = {
+  params: {
+    blobPrivateDnsZoneId: networking.outputs.blobPrivateDnsZoneId
+    location: location
+    privateEndpointSubnetId: networking.outputs.privateEndpointSubnetId
+    queuePrivateDnsZoneId: networking.outputs.queuePrivateDnsZoneId
+    storageAccountName: storage.outputs.storageAccountName
+    tablePrivateDnsZoneId: networking.outputs.tablePrivateDnsZoneId
     tags: standardTags
   }
 }
@@ -197,6 +234,9 @@ module cosmos 'modules/cosmos.bicep' = {
 }
 
 module functionApp 'modules/function-app.bicep' = {
+  dependsOn: [
+    storagePrivateEndpoints
+  ]
   params: {
     allowedOrigins: allowedOrigins
     alwaysReadyInstanceCount: alwaysReadyInstanceCount
@@ -221,6 +261,7 @@ module functionApp 'modules/function-app.bicep' = {
     examRequestTurnstileHostnames: examRequestTurnstileHostnames
     examRequestTurnstileSecret: examRequestTurnstileSecret
     examRequestUpstreamTimeoutMs: examRequestUpstreamTimeoutMs
+    flexSubnetId: networking.outputs.flexSubnetId
     functionAppName: functionAppName
     instanceMemoryMb: functionInstanceMemoryMb
     location: location
@@ -259,6 +300,12 @@ output functionAppName string = functionApp.outputs.functionAppName
 
 @description('Function App system-assigned managed identity principal ID.')
 output functionPrincipalId string = functionApp.outputs.functionPrincipalId
+
+@description('Resource ID of the Flex Consumption integration subnet.')
+output flexSubnetId string = networking.outputs.flexSubnetId
+
+@description('Resource IDs of the storage private endpoints.')
+output storagePrivateEndpointIds string[] = storagePrivateEndpoints.outputs.privateEndpointIds
 
 @description('Cosmos DB data-plane role assignment resource ID.')
 output cosmosRoleAssignmentId string = cosmosAccess.outputs.roleAssignmentId

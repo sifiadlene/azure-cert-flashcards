@@ -1,7 +1,7 @@
 ---
 title: Challenge API Azure deployment
 description: Configuration, security, deployment, and recovery requirements for the challenge and exam-request Azure resources.
-ms.date: 2026-08-29
+ms.date: 2026-09-18
 ms.topic: how-to
 ---
 
@@ -11,6 +11,8 @@ The resource-group deployment creates only the challenge API dependencies:
 
 * One Linux Azure Functions Flex Consumption FC1 plan and Node.js 22 Function App
 * One StorageV2 account for Functions host state and Flex deployment packages
+* One virtual network with dedicated Flex Consumption integration and private endpoint subnets
+* Blob, Queue, and Table storage private endpoints with matching private DNS zones and VNet links
 * One serverless Azure Cosmos DB for NoSQL account, database, challenge containers, and an exam-requests container
 * One Log Analytics workspace and workspace-based Application Insights component
 * Storage control-plane role assignments required by the Functions host
@@ -181,6 +183,33 @@ before rollout.
 Pull requests and branch pushes run API tests, web tests, the full Playwright suite, checked-in data validation, application builds, package assembly, and Bicep compilation. Pull requests never deploy.
 
 A push to `main` or a manual workflow dispatch runs the same validation before signing in through GitHub OIDC. It then validates and previews Bicep, deploys the resource-group template, and publishes only the API package. The package contains compiled JavaScript, production dependencies, `host.json`, and copied canonical English deck artifacts.
+
+The Function API and SCM endpoint remain public. The GitHub-hosted runner uploads
+through SCM, while the Flex Consumption platform reaches host and deployment
+storage through outbound VNet integration. The storage account denies public
+network access and exposes private endpoints for Blob, Queue, and Table.
+
+The production network uses `10.20.0.0/24`. The Flex integration subnet uses
+`10.20.0.0/27` and is delegated only to `Microsoft.App/environments`. The
+private endpoint subnet uses `10.20.0.32/27`. Development uses the equivalent
+`10.21.0.0/24` range. Change these prefixes before deployment if they overlap
+with connected networks.
+
+Register the `Microsoft.App`, `Microsoft.Network`, `Microsoft.Storage`, and
+`Microsoft.Web` resource providers before deployment. The deploying OIDC
+principal must be allowed to create virtual networks, private endpoints,
+private DNS zones, links, and role assignments in the target resource group.
+
+The workflow waits up to five minutes for the storage network state, three
+private endpoint approvals, Function subnet attachment, and storage roles. These
+checks establish control-plane readiness only. OneDeploy proves deployment
+storage reachability, and a storage-backed API smoke test proves runtime DNS,
+network, and identity connectivity. The workflow retries OneDeploy once after a
+60-second propagation delay and never enables public storage access.
+
+Private DNS zone names assume the storage account keeps
+`dnsEndpointType: 'Standard'`. A change to Azure DNS zone endpoints requires a
+corresponding review of all private DNS zones and links.
 
 The target resource group must exist before the workflow runs. Resource-group creation and Azure deployment are intentionally not performed during local validation.
 

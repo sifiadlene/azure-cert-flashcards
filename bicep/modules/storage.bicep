@@ -47,7 +47,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
     defaultToOAuthAuthentication: true
     dnsEndpointType: 'Standard'
     minimumTlsVersion: 'TLS1_2'
-    publicNetworkAccess: 'Enabled'
+    networkAcls: {
+      bypass: 'None'
+      defaultAction: 'Deny'
+    }
+    publicNetworkAccess: 'Disabled'
     supportsHttpsTrafficOnly: true
   }
 }

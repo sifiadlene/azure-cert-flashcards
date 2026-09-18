@@ -250,12 +250,119 @@ jobs:
             --query properties.outputs \
             --output json)"
           function_app_name="$(jq -r '.functionAppName.value' <<< "$outputs")"
+          function_principal_id="$(jq -r '.functionPrincipalId.value' <<< "$outputs")"
+          flex_subnet_id="$(jq -r '.flexSubnetId.value' <<< "$outputs")"
+          storage_account_name="$(jq -r '.storageAccountName.value' <<< "$outputs")"
+          storage_private_endpoint_ids="$(jq -c '.storagePrivateEndpointIds.value' <<< "$outputs")"
           test -n "$function_app_name"
           test "$function_app_name" != "null"
+          test -n "$function_principal_id"
+          test "$function_principal_id" != "null"
+          test -n "$flex_subnet_id"
+          test "$flex_subnet_id" != "null"
+          test -n "$storage_account_name"
+          test "$storage_account_name" != "null"
+          test "$(jq 'length' <<< "$storage_private_endpoint_ids")" -eq 3
           echo "function-app-name=$function_app_name" >> "$GITHUB_OUTPUT"
+          echo "function-principal-id=$function_principal_id" >> "$GITHUB_OUTPUT"
+          echo "flex-subnet-id=$flex_subnet_id" >> "$GITHUB_OUTPUT"
+          echo "storage-account-name=$storage_account_name" >> "$GITHUB_OUTPUT"
+          echo "storage-private-endpoint-ids=$storage_private_endpoint_ids" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for private storage readiness
+        env:
+          FLEX_SUBNET_ID: ${{ steps.infrastructure.outputs.flex-subnet-id }}
+          FUNCTION_APP_NAME: ${{ steps.infrastructure.outputs.function-app-name }}
+          FUNCTION_PRINCIPAL_ID: ${{ steps.infrastructure.outputs.function-principal-id }}
+          STORAGE_ACCOUNT_NAME: ${{ steps.infrastructure.outputs.storage-account-name }}
+          STORAGE_PRIVATE_ENDPOINT_IDS: ${{ steps.infrastructure.outputs.storage-private-endpoint-ids }}
+        run: |
+          storage_id="$(az storage account show \
+            --name "$STORAGE_ACCOUNT_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --query id \
+            --output tsv)"
+          expected_role_ids=(
+            "b7e6dc6d-f1e8-4753-8033-0f276bb0955b"
+            "974c5e8b-45b9-4653-ba55-5f855dd0fb88"
+            "0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3"
+          )
+
+          for attempt in {1..20}; do
+            storage_ready="$(az storage account show \
+              --name "$STORAGE_ACCOUNT_NAME" \
+              --resource-group "$AZURE_RESOURCE_GROUP" \
+              --query "publicNetworkAccess == 'Disabled' && networkRuleSet.defaultAction == 'Deny'" \
+              --output tsv)"
+            configured_subnet_id="$(az resource show \
+              --resource-group "$AZURE_RESOURCE_GROUP" \
+              --resource-type Microsoft.Web/sites \
+              --name "$FUNCTION_APP_NAME" \
+              --api-version 2024-11-01 \
+              --query properties.virtualNetworkSubnetId \
+              --output tsv)"
+
+            endpoints_ready=true
+            while IFS= read -r endpoint_id; do
+              endpoint_status="$(az network private-endpoint show \
+                --ids "$endpoint_id" \
+                --query 'privateLinkServiceConnections[0].privateLinkServiceConnectionState.status' \
+                --output tsv)"
+              if [ "$endpoint_status" != "Approved" ]; then
+                endpoints_ready=false
+              fi
+            done < <(jq -r '.[]' <<< "$STORAGE_PRIVATE_ENDPOINT_IDS")
+
+            roles_ready=true
+            role_assignments="$(az role assignment list \
+              --assignee-object-id "$FUNCTION_PRINCIPAL_ID" \
+              --scope "$storage_id" \
+              --query '[].roleDefinitionId' \
+              --output tsv)"
+            for role_id in "${expected_role_ids[@]}"; do
+              if ! grep -qi "/$role_id$" <<< "$role_assignments"; then
+                roles_ready=false
+              fi
+            done
+
+            if [ "$storage_ready" = "true" ] \
+              && [ "${configured_subnet_id,,}" = "${FLEX_SUBNET_ID,,}" ] \
+              && [ "$endpoints_ready" = "true" ] \
+              && [ "$roles_ready" = "true" ]; then
+              echo "Private storage control-plane prerequisites are ready."
+              break
+            fi
+
+            if [ "$attempt" -eq 20 ]; then
+              echo "Private storage prerequisites did not become ready within 5 minutes."
+              echo "storage_ready=$storage_ready"
+              echo "configured_subnet_id=$configured_subnet_id"
+              echo "expected_subnet_id=$FLEX_SUBNET_ID"
+              echo "endpoints_ready=$endpoints_ready"
+              echo "roles_ready=$roles_ready"
+              exit 1
+            fi
+
+            echo "Private storage is not ready yet (attempt $attempt/20)."
+            sleep 15
+          done
 
       - name: Deploy API package
-        uses: Azure/functions-action@v1
+        id: deploy-api
+        continue-on-error: true
+        uses: Azure/functions-action@c5060b3b8bb1ebbcb531abd00c822ecbaa8ea656 # v1
+        with:
+          app-name: ${{ steps.infrastructure.outputs.function-app-name }}
+          package: .artifacts/function-app
+          remote-build: false
+
+      - name: Wait before package deployment retry
+        if: steps.deploy-api.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry API package deployment
+        if: steps.deploy-api.outcome == 'failure'
+        uses: Azure/functions-action@c5060b3b8bb1ebbcb531abd00c822ecbaa8ea656 # v1
         with:
           app-name: ${{ steps.infrastructure.outputs.function-app-name }}
           package: .artifacts/function-app
