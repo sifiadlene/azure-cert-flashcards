@@ -89,6 +89,9 @@ resource privateEndpointSubnet 'Microsoft.Network/virtualNetworks/subnets@2024-0
     privateEndpointNetworkPolicies: 'Disabled'
     privateLinkServiceNetworkPolicies: 'Enabled'
   }
+  dependsOn: [
+    flexSubnet
+  ]
 }
 
 resource privateDnsZones 'Microsoft.Network/privateDnsZones@2024-06-01' = [for zoneName in privateDnsZoneNames: {
