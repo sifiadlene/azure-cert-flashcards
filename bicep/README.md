@@ -199,8 +199,10 @@ Register the `Microsoft.App`, `Microsoft.Network`, `Microsoft.Storage`, and
 `Microsoft.Web` resource providers before deployment. The deploying OIDC
 principal must be allowed to create virtual networks, private endpoints,
 private DNS zones, links, and role assignments in the target resource group.
-The workflow checks all four provider registration states after OIDC sign-in
-and fails before validation when any provider is not registered.
+The workflow checks all four provider registration states after OIDC sign-in,
+registers missing providers, and waits for each provider to reach `Registered`
+before validation. The OIDC principal therefore needs provider registration
+permission at subscription scope.
 
 The workflow waits up to five minutes for the storage network state, three
 private endpoint approvals, Function subnet attachment, and storage roles. These

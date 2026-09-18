@@ -186,24 +186,27 @@ jobs:
           tenant-id: ${{ env.AZURE_TENANT_ID }}
           subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Verify Azure resource providers
+      - name: Ensure Azure resource providers are registered
         run: |
-          missing_providers=()
           for provider in Microsoft.App Microsoft.Network Microsoft.Storage Microsoft.Web; do
             registration_state="$(az provider show \
               --namespace "$provider" \
               --query registrationState \
               --output tsv)"
             if [ "$registration_state" != "Registered" ]; then
-              echo "$provider registration state: $registration_state"
-              missing_providers+=("$provider")
+              echo "Registering $provider (current state: $registration_state)."
+              az provider register --namespace "$provider" --wait
+            fi
+
+            final_state="$(az provider show \
+              --namespace "$provider" \
+              --query registrationState \
+              --output tsv)"
+            if [ "$final_state" != "Registered" ]; then
+              echo "$provider did not reach Registered state: $final_state"
+              exit 1
             fi
           done
-
-          if [ "${#missing_providers[@]}" -gt 0 ]; then
-            echo "Register the missing Azure resource providers before deployment: ${missing_providers[*]}"
-            exit 1
-          fi
 
       - name: Build deployment parameters
         run: |
