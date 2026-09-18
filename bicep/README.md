@@ -199,13 +199,18 @@ Register the `Microsoft.App`, `Microsoft.Network`, `Microsoft.Storage`, and
 `Microsoft.Web` resource providers before deployment. The deploying OIDC
 principal must be allowed to create virtual networks, private endpoints,
 private DNS zones, links, and role assignments in the target resource group.
+The workflow checks all four provider registration states after OIDC sign-in
+and fails before validation when any provider is not registered.
 
 The workflow waits up to five minutes for the storage network state, three
 private endpoint approvals, Function subnet attachment, and storage roles. These
 checks establish control-plane readiness only. OneDeploy proves deployment
 storage reachability, and a storage-backed API smoke test proves runtime DNS,
 network, and identity connectivity. The workflow retries OneDeploy once after a
-60-second propagation delay and never enables public storage access.
+60-second propagation delay and never enables public storage access. After a
+successful package deployment, it creates a challenge room through the public
+API and validates the response. The room is subject to the configured Cosmos DB
+TTL and requires no permanent test credential.
 
 Private DNS zone names assume the storage account keeps
 `dnsEndpointType: 'Standard'`. A change to Azure DNS zone endpoints requires a

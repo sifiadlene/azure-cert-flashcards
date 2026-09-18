@@ -186,6 +186,25 @@ jobs:
           tenant-id: ${{ env.AZURE_TENANT_ID }}
           subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Verify Azure resource providers
+        run: |
+          missing_providers=()
+          for provider in Microsoft.App Microsoft.Network Microsoft.Storage Microsoft.Web; do
+            registration_state="$(az provider show \
+              --namespace "$provider" \
+              --query registrationState \
+              --output tsv)"
+            if [ "$registration_state" != "Registered" ]; then
+              echo "$provider registration state: $registration_state"
+              missing_providers+=("$provider")
+            fi
+          done
+
+          if [ "${#missing_providers[@]}" -gt 0 ]; then
+            echo "Register the missing Azure resource providers before deployment: ${missing_providers[*]}"
+            exit 1
+          fi
+
       - name: Build deployment parameters
         run: |
           parameters_file="$RUNNER_TEMP/prod.parameters.json"
@@ -250,12 +269,15 @@ jobs:
             --query properties.outputs \
             --output json)"
           function_app_name="$(jq -r '.functionAppName.value' <<< "$outputs")"
+          function_api_base_url="$(jq -r '.functionApiBaseUrl.value' <<< "$outputs")"
           function_principal_id="$(jq -r '.functionPrincipalId.value' <<< "$outputs")"
           flex_subnet_id="$(jq -r '.flexSubnetId.value' <<< "$outputs")"
           storage_account_name="$(jq -r '.storageAccountName.value' <<< "$outputs")"
           storage_private_endpoint_ids="$(jq -c '.storagePrivateEndpointIds.value' <<< "$outputs")"
           test -n "$function_app_name"
           test "$function_app_name" != "null"
+          test -n "$function_api_base_url"
+          test "$function_api_base_url" != "null"
           test -n "$function_principal_id"
           test "$function_principal_id" != "null"
           test -n "$flex_subnet_id"
@@ -264,6 +286,7 @@ jobs:
           test "$storage_account_name" != "null"
           test "$(jq 'length' <<< "$storage_private_endpoint_ids")" -eq 3
           echo "function-app-name=$function_app_name" >> "$GITHUB_OUTPUT"
+          echo "function-api-base-url=$function_api_base_url" >> "$GITHUB_OUTPUT"
           echo "function-principal-id=$function_principal_id" >> "$GITHUB_OUTPUT"
           echo "flex-subnet-id=$flex_subnet_id" >> "$GITHUB_OUTPUT"
           echo "storage-account-name=$storage_account_name" >> "$GITHUB_OUTPUT"
@@ -361,12 +384,84 @@ jobs:
         run: sleep 60
 
       - name: Retry API package deployment
+        id: retry-deploy-api
         if: steps.deploy-api.outcome == 'failure'
         uses: Azure/functions-action@c5060b3b8bb1ebbcb531abd00c822ecbaa8ea656 # v1
         with:
           app-name: ${{ steps.infrastructure.outputs.function-app-name }}
           package: .artifacts/function-app
           remote-build: false
+
+      - name: Smoke test deployed challenge API
+        if: steps.deploy-api.outcome == 'success' || steps.retry-deploy-api.outcome == 'success'
+        env:
+          FUNCTION_API_BASE_URL: ${{ steps.infrastructure.outputs.function-api-base-url }}
+        run: |
+          command_id="$(cat /proc/sys/kernel/random/uuid)"
+          idempotency_key="$(cat /proc/sys/kernel/random/uuid)"
+          request_body="$(jq -n \
+            --arg commandId "$command_id" \
+            --arg idempotencyKey "$idempotency_key" \
+            '{
+              metadata: {
+                protocolVersion: 1,
+                commandId: $commandId,
+                idempotencyKey: $idempotencyKey,
+                expectedRoomVersion: null
+              },
+              hostNickname: "Deployment smoke test",
+              settings: {
+                examSlug: "gh300",
+                deckVersion: "2026-08-28",
+                scope: { kind: "all" },
+                questionCount: 5,
+                timerSeconds: 15
+              }
+            }')"
+          response_file="$RUNNER_TEMP/challenge-smoke-response.json"
+
+          for attempt in {1..12}; do
+            http_status="$(curl \
+              --silent \
+              --show-error \
+              --max-time 30 \
+              --output "$response_file" \
+              --write-out '%{http_code}' \
+              --header 'content-type: application/json' \
+              --request POST \
+              --data "$request_body" \
+              "$FUNCTION_API_BASE_URL/rooms" || true)"
+            http_status="${http_status:-000}"
+
+            if [ "$http_status" = "201" ] || [ "$http_status" = "200" ]; then
+              break
+            fi
+
+            if [ "$http_status" = "400" ] \
+              || [ "$http_status" = "401" ] \
+              || [ "$http_status" = "403" ]; then
+              echo "Challenge API smoke test returned non-retryable HTTP $http_status."
+              jq '{error: .error}' "$response_file" 2>/dev/null || true
+              exit 1
+            fi
+
+            if [ "$attempt" -eq 12 ]; then
+              echo "Challenge API smoke test did not become ready within 2 minutes (HTTP $http_status)."
+              jq '{error: .error}' "$response_file" 2>/dev/null || true
+              exit 1
+            fi
+
+            echo "Challenge API is not ready yet (HTTP $http_status, attempt $attempt/12)."
+            sleep 10
+          done
+
+          jq -e '
+            (.token | type == "string" and length > 0)
+            and (.snapshot.roomId | type == "string" and length > 0)
+            and (.snapshot.settings.examSlug == "gh300")
+          ' "$response_file" >/dev/null
+          echo "Challenge API smoke test created a TTL-bound room successfully."
+          rm -f "$response_file"
 
       - name: Remove generated secret parameters
         if: always()
