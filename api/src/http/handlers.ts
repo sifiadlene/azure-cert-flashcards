@@ -89,6 +89,18 @@ function success(body: unknown, etag: string, status = 200): HttpResponseInit {
   }
 }
 
+function unexpectedErrorDetails(error: unknown): Record<string, unknown> {
+  if (!(error instanceof Error)) return { valueType: typeof error }
+  const candidate = error as Error & { code?: unknown; statusCode?: unknown; substatus?: unknown }
+  return {
+    name: error.name,
+    message: error.message,
+    code: candidate.code,
+    statusCode: candidate.statusCode,
+    substatus: candidate.substatus,
+  }
+}
+
 function wrap(operation: (request: HttpRequest) => Promise<HttpResponseInit>): Handler {
   return async (request, context) => {
     try {
@@ -102,7 +114,7 @@ function wrap(operation: (request: HttpRequest) => Promise<HttpResponseInit>): H
           jsonBody: { error: error.detail },
         }
       }
-      context.error('Challenge request failed.', { traceId })
+      context.error('Challenge request failed.', { traceId, error: unexpectedErrorDetails(error) })
       return {
         status: 500,
         headers: { 'cache-control': 'no-store', 'content-type': 'application/json; charset=utf-8' },

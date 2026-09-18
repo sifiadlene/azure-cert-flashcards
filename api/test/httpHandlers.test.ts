@@ -1,5 +1,5 @@
 import type { HttpRequest, InvocationContext } from '@azure/functions'
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { InMemoryRoomRepository } from '../src/adapters/inMemoryRoomRepository'
 import { PepperedCapabilityTokenService } from '../src/adapters/system'
 import { ChallengeService } from '../src/application/challengeService'
@@ -54,8 +54,9 @@ function request(options: {
   } as unknown as HttpRequest
 }
 
+const logError = vi.fn()
 const context = {
-  error: () => undefined,
+  error: logError,
 } as unknown as InvocationContext
 
 const createBody = {
@@ -76,6 +77,10 @@ const createBody = {
 }
 
 describe('HTTP challenge handlers', () => {
+  beforeEach(() => {
+    logError.mockClear()
+  })
+
   it('strictly rejects malformed and over-specified request bodies', async () => {
     const handlers = setup()
     const response = await handlers.createRoom(request({ body: { ...createBody, unexpected: true } }), context)
@@ -92,6 +97,29 @@ describe('HTTP challenge handlers', () => {
     expect(body.snapshot.roomId).toBe('room-http')
     expect(response.headers).toMatchObject({ etag: '"room-1"' })
     expect(response.headers).not.toHaveProperty('access-control-allow-origin')
+  })
+
+  it('logs bounded diagnostics for unexpected errors without changing the generic response', async () => {
+    const handlers = createChallengeHandlers({
+      createRoom: async () => {
+        throw Object.assign(new Error('Forbidden by Cosmos DB.'), { code: 403, substatus: 5300 })
+      },
+    } as never)
+
+    const response = await handlers.createRoom(request({ body: createBody }), context)
+
+    expect(response.status).toBe(500)
+    expect(response.jsonBody).toMatchObject({ error: { kind: 'internal', retryable: true } })
+    expect(logError).toHaveBeenCalledWith('Challenge request failed.', {
+      traceId: expect.any(String),
+      error: {
+        name: 'Error',
+        message: 'Forbidden by Cosmos DB.',
+        code: 403,
+        statusCode: undefined,
+        substatus: 5300,
+      },
+    })
   })
 
   it('requires a bearer capability and always returns current snapshot metadata', async () => {
