@@ -210,7 +210,9 @@ permission at subscription scope.
 The workflow waits up to five minutes for the storage network state, three
 storage private endpoint approvals, the Cosmos DB private endpoint approval,
 Function subnet attachment, and storage roles. These checks establish
-control-plane readiness only. OneDeploy proves deployment storage reachability,
+control-plane readiness only. The workflow refreshes its GitHub OIDC Azure
+sign-in after the ARM deployment so long private endpoint operations cannot
+expire the credential used by readiness checks. OneDeploy proves deployment storage reachability,
 and the API smoke test proves runtime DNS, network, identity, and Cosmos DB
 connectivity. The workflow retries OneDeploy once after a 60-second propagation
 delay and never enables public storage or Cosmos DB access. After a successful
