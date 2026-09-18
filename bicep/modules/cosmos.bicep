@@ -78,7 +78,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
       }
     ]
     minimalTlsVersion: 'Tls12'
-    publicNetworkAccess: 'Enabled'
+    publicNetworkAccess: 'Disabled'
   }
 }
 

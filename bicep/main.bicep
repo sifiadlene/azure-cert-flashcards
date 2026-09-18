@@ -233,8 +233,19 @@ module cosmos 'modules/cosmos.bicep' = {
   }
 }
 
+module cosmosPrivateEndpoint 'modules/cosmos-private-endpoint.bicep' = {
+  params: {
+    cosmosAccountName: cosmos.outputs.accountName
+    cosmosPrivateDnsZoneId: networking.outputs.cosmosPrivateDnsZoneId
+    location: location
+    privateEndpointSubnetId: networking.outputs.privateEndpointSubnetId
+    tags: standardTags
+  }
+}
+
 module functionApp 'modules/function-app.bicep' = {
   dependsOn: [
+    cosmosPrivateEndpoint
     storagePrivateEndpoints
   ]
   params: {
@@ -309,6 +320,9 @@ output storagePrivateEndpointIds string[] = storagePrivateEndpoints.outputs.priv
 
 @description('Cosmos DB data-plane role assignment resource ID.')
 output cosmosRoleAssignmentId string = cosmosAccess.outputs.roleAssignmentId
+
+@description('Resource ID of the Cosmos DB private endpoint.')
+output cosmosPrivateEndpointId string = cosmosPrivateEndpoint.outputs.privateEndpointId
 
 @description('Runtime and deployment storage account name.')
 output storageAccountName string = storage.outputs.storageAccountName

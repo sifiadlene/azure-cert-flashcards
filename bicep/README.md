@@ -14,6 +14,7 @@ The resource-group deployment creates only the challenge API dependencies:
 * One virtual network with dedicated Flex Consumption integration and private endpoint subnets
 * Blob, Queue, and Table storage private endpoints with matching private DNS zones and VNet links
 * One serverless Azure Cosmos DB for NoSQL account, database, challenge containers, and an exam-requests container
+* One Cosmos DB SQL private endpoint with a matching private DNS zone and VNet link
 * One Log Analytics workspace and workspace-based Application Insights component
 * Storage control-plane role assignments required by the Functions host
 * A database-scoped custom Cosmos DB data-plane role and assignment for the Function system-assigned identity
@@ -186,8 +187,10 @@ A push to `main` or a manual workflow dispatch runs the same validation before s
 
 The Function API and SCM endpoint remain public. The GitHub-hosted runner uploads
 through SCM, while the Flex Consumption platform reaches host and deployment
-storage through outbound VNet integration. The storage account denies public
-network access and exposes private endpoints for Blob, Queue, and Table.
+storage through outbound VNet integration. The storage and Cosmos DB accounts
+deny public network access. Storage exposes private endpoints for Blob, Queue,
+and Table, while Cosmos DB exposes a SQL private endpoint through
+`privatelink.documents.azure.com`.
 
 The production network uses `10.20.0.0/24`. The Flex integration subnet uses
 `10.20.0.0/27` and is delegated only to `Microsoft.App/environments`. The
@@ -205,16 +208,17 @@ before validation. The OIDC principal therefore needs provider registration
 permission at subscription scope.
 
 The workflow waits up to five minutes for the storage network state, three
-private endpoint approvals, Function subnet attachment, and storage roles. These
-checks establish control-plane readiness only. OneDeploy proves deployment
-storage reachability, and a storage-backed API smoke test proves runtime DNS,
-network, and identity connectivity. The workflow retries OneDeploy once after a
-60-second propagation delay and never enables public storage access. After a
-successful package deployment, it creates a challenge room through the public
-API and validates the response. The room is subject to the configured Cosmos DB
-TTL and requires no permanent test credential.
+storage private endpoint approvals, the Cosmos DB private endpoint approval,
+Function subnet attachment, and storage roles. These checks establish
+control-plane readiness only. OneDeploy proves deployment storage reachability,
+and the API smoke test proves runtime DNS, network, identity, and Cosmos DB
+connectivity. The workflow retries OneDeploy once after a 60-second propagation
+delay and never enables public storage or Cosmos DB access. After a successful
+package deployment, it creates a challenge room through the public API and
+validates the response. The room is subject to the configured Cosmos DB TTL and
+requires no permanent test credential.
 
-Private DNS zone names assume the storage account keeps
+Storage private DNS zone names assume the storage account keeps
 `dnsEndpointType: 'Standard'`. A change to Azure DNS zone endpoints requires a
 corresponding review of all private DNS zones and links.
 

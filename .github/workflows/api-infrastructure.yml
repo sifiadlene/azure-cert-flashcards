@@ -275,6 +275,7 @@ jobs:
           function_api_base_url="$(jq -r '.functionApiBaseUrl.value' <<< "$outputs")"
           function_principal_id="$(jq -r '.functionPrincipalId.value' <<< "$outputs")"
           flex_subnet_id="$(jq -r '.flexSubnetId.value' <<< "$outputs")"
+          cosmos_private_endpoint_id="$(jq -r '.cosmosPrivateEndpointId.value' <<< "$outputs")"
           storage_account_name="$(jq -r '.storageAccountName.value' <<< "$outputs")"
           storage_private_endpoint_ids="$(jq -c '.storagePrivateEndpointIds.value' <<< "$outputs")"
           test -n "$function_app_name"
@@ -285,6 +286,8 @@ jobs:
           test "$function_principal_id" != "null"
           test -n "$flex_subnet_id"
           test "$flex_subnet_id" != "null"
+          test -n "$cosmos_private_endpoint_id"
+          test "$cosmos_private_endpoint_id" != "null"
           test -n "$storage_account_name"
           test "$storage_account_name" != "null"
           test "$(jq 'length' <<< "$storage_private_endpoint_ids")" -eq 3
@@ -292,11 +295,13 @@ jobs:
           echo "function-api-base-url=$function_api_base_url" >> "$GITHUB_OUTPUT"
           echo "function-principal-id=$function_principal_id" >> "$GITHUB_OUTPUT"
           echo "flex-subnet-id=$flex_subnet_id" >> "$GITHUB_OUTPUT"
+          echo "cosmos-private-endpoint-id=$cosmos_private_endpoint_id" >> "$GITHUB_OUTPUT"
           echo "storage-account-name=$storage_account_name" >> "$GITHUB_OUTPUT"
           echo "storage-private-endpoint-ids=$storage_private_endpoint_ids" >> "$GITHUB_OUTPUT"
 
-      - name: Wait for private storage readiness
+      - name: Wait for private dependency readiness
         env:
+          COSMOS_PRIVATE_ENDPOINT_ID: ${{ steps.infrastructure.outputs.cosmos-private-endpoint-id }}
           FLEX_SUBNET_ID: ${{ steps.infrastructure.outputs.flex-subnet-id }}
           FUNCTION_APP_NAME: ${{ steps.infrastructure.outputs.function-app-name }}
           FUNCTION_PRINCIPAL_ID: ${{ steps.infrastructure.outputs.function-principal-id }}
@@ -327,6 +332,10 @@ jobs:
               --api-version 2024-11-01 \
               --query properties.virtualNetworkSubnetId \
               --output tsv)"
+            cosmos_endpoint_status="$(az network private-endpoint show \
+              --ids "$COSMOS_PRIVATE_ENDPOINT_ID" \
+              --query 'privateLinkServiceConnections[0].privateLinkServiceConnectionState.status' \
+              --output tsv)"
 
             endpoints_ready=true
             while IFS= read -r endpoint_id; do
@@ -353,23 +362,25 @@ jobs:
 
             if [ "$storage_ready" = "true" ] \
               && [ "${configured_subnet_id,,}" = "${FLEX_SUBNET_ID,,}" ] \
+              && [ "$cosmos_endpoint_status" = "Approved" ] \
               && [ "$endpoints_ready" = "true" ] \
               && [ "$roles_ready" = "true" ]; then
-              echo "Private storage control-plane prerequisites are ready."
+              echo "Private storage and Cosmos control-plane prerequisites are ready."
               break
             fi
 
             if [ "$attempt" -eq 20 ]; then
-              echo "Private storage prerequisites did not become ready within 5 minutes."
+              echo "Private dependency prerequisites did not become ready within 5 minutes."
               echo "storage_ready=$storage_ready"
               echo "configured_subnet_id=$configured_subnet_id"
               echo "expected_subnet_id=$FLEX_SUBNET_ID"
+              echo "cosmos_endpoint_status=$cosmos_endpoint_status"
               echo "endpoints_ready=$endpoints_ready"
               echo "roles_ready=$roles_ready"
               exit 1
             fi
 
-            echo "Private storage is not ready yet (attempt $attempt/20)."
+            echo "Private dependencies are not ready yet (attempt $attempt/20)."
             sleep 15
           done
 

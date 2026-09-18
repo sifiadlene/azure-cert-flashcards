@@ -39,6 +39,7 @@ var privateDnsZoneNames = [
   'privatelink.blob.${environment().suffixes.storage}'
   'privatelink.queue.${environment().suffixes.storage}'
   'privatelink.table.${environment().suffixes.storage}'
+  'privatelink.documents.azure.com'
 ]
 var storageServiceNames = [
   'blob'
@@ -113,6 +114,19 @@ resource privateDnsZoneLinks 'Microsoft.Network/privateDnsZones/virtualNetworkLi
   }
 }]
 
+resource cosmosPrivateDnsZoneLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2024-06-01' = {
+  parent: privateDnsZones[3]
+  name: '${virtualNetworkName}-cosmos-link'
+  location: 'global'
+  tags: tags
+  properties: {
+    registrationEnabled: false
+    virtualNetwork: {
+      id: virtualNetwork.id
+    }
+  }
+}
+
 /*
  * Outputs
  */
@@ -131,3 +145,6 @@ output queuePrivateDnsZoneId string = privateDnsZones[1].id
 
 @description('Resource ID of the Table private DNS zone.')
 output tablePrivateDnsZoneId string = privateDnsZones[2].id
+
+@description('Resource ID of the Azure Cosmos DB private DNS zone.')
+output cosmosPrivateDnsZoneId string = privateDnsZones[3].id
