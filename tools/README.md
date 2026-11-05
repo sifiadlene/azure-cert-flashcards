@@ -60,6 +60,65 @@ decks are not present in the current Learn table, so the requestable count is
 49 minus 12, not 49 minus 14. A lower live result is rejected to protect the
 snapshot from accidental source-page changes.
 
+## Exam date report
+
+[EXAM-DATE-REPORT.md](../EXAM-DATE-REPORT.md) covers every exam with a local
+source deck. It lists the latest repository-declared generation date, the
+official English study guide's displayed update date, and published
+objective-effective dates.
+
+The generation date comes from the selected CSV filename, not a JSON build
+timestamp or filesystem modification time. The report and website share deck
+selection rules: newest filename date, then largest optional filename count,
+then greatest filename as a tie-breaker. Report commands reject drift between
+the selected CSVs and `web/public/data/exams.json`. If needed, regenerate the
+manifest with `cd web && npm run build:data` and review its changes first.
+
+Run the offline tests, then deliberately refresh official guide metadata and
+regenerate the report from the repository root (Node.js 22+):
+
+```bash
+node --test tools/exam-date-report.test.mjs
+node tools/refresh-study-guide-dates.mjs
+node tools/generate-exam-date-report.mjs
+node tools/generate-exam-date-report.mjs --check
+```
+
+The refresh requests only the official Microsoft Learn English study-guide
+URLs. HTTP errors, redirects, missing update markup, unexpected skills
+headings, or an incorrect exam title fail explicitly. All guides must parse
+and validate before `catalog/study-guide-dates.json` is atomically replaced;
+a failed refresh preserves the existing snapshot.
+
+The snapshot records the displayed "Last updated on" date and timestamp,
+`updated_at` metadata, objective date precision, source text, guide titles and
+URLs, and retrieval time. The displayed date is authoritative for the report:
+`ms.date` is not substituted, and metadata timestamps may differ from the
+displayed date. Objective dates come from "Skills measured as of" or "Skills
+at a glance as of" headings. Prior-version headings are excluded. Undated
+skills headings yield "Not stated"; month-only dates remain `YYYY-MM`.
+Upcoming objectives are labeled relative to snapshot retrieval time. Multiple
+published objective versions are retained, not treated as simultaneously
+current. A guide-page update does not establish whether a deck's content is
+outdated or aligned.
+
+For reproducible offline refresh, supply a directory containing one saved
+official HTML page per supported exam (`az-104.html`, `gh-300.html`, etc.) and
+the original retrieval timestamp:
+
+```bash
+node tools/refresh-study-guide-dates.mjs \
+   --input /path/to/saved-guides \
+   --retrieved-at 2026-11-05T19:24:06.472Z
+```
+
+`tools/fixtures/study-guide.html` is a minimal parser fixture, not a complete
+15-exam refresh input. Normal report generation and `--check` use only local
+files and never fetch pages. They do not update retrieval time. Review and
+commit the snapshot and report together after refresh. Link and date changes
+should be reviewed; there is no scheduled refresh or network dependency in
+normal application builds.
+
 ## Translation tools
 
 This directory contains scripts for translating flashcard decks into other languages.

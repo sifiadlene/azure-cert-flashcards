@@ -24,6 +24,10 @@ All source decks live in [flashcards](flashcards):
 
 ## Features
 
+See the [exam date report](EXAM-DATE-REPORT.md) for each available deck's latest
+generation date, official study-guide update date, and published exam-objective
+effective dates.
+
 - Browser practice website with exam selection
 - Practice mode with immediate answer reveal
 - Timed quiz mode with end-of-session scoring
@@ -260,4 +264,3 @@ This project is provided as-is for educational purposes.
 ## Disclaimer
 
 These flashcards are study aids and should be used alongside official Microsoft certification materials. They are not affiliated with or endorsed by Microsoft Corporation or GitHub.
-
