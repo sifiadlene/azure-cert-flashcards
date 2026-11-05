@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-05T19:50:00.601Z",
+  "exams": [
+    {
+      "code": "AB-100",
+      "title": "Agentic AI Business Solutions Architect",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100",
+      "pageUpdatedOn": "2026-10-21",
+      "pageUpdatedAt": "2026-10-21T22:54:00.000Z",
+      "metadataUpdatedAt": "2026-10-21T22:54:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-21",
+      "objectives": [
+        {
+          "date": "2026-11-16",
+          "precision": "day",
+          "evidence": "Skills measured as of November 16, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of November 16, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AI-102",
+      "title": "Designing and Implementing a Microsoft Azure AI Solution",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102",
+      "pageUpdatedOn": "2025-12-23",
+      "pageUpdatedAt": "2025-12-23T19:52:00.000Z",
+      "metadataUpdatedAt": "2026-06-30T23:44:00Z",
+      "pageUpdateEvidence": "Last updated on 2025-12-23",
+      "objectives": [
+        {
+          "date": "2025-12-23",
+          "precision": "day",
+          "evidence": "Skills measured as of December 23, 2025"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of December 23, 2025",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AI-103",
+      "title": "Developing AI Apps and Agents on Azure",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
+      "pageUpdatedOn": "2026-10-31",
+      "pageUpdatedAt": "2026-10-31T01:16:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-31",
+      "objectives": [
+        {
+          "date": "2026-04-16",
+          "precision": "day",
+          "evidence": "Skills measured as of April 16, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of April 16, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AI-300",
+      "title": "Operationalizing Machine Learning and Generative AI Solutions",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-300",
+      "pageUpdatedOn": "2026-10-15",
+      "pageUpdatedAt": "2026-10-15T23:49:00.000Z",
+      "metadataUpdatedAt": "2026-10-15T23:49:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-15",
+      "objectives": [],
+      "objectiveEvidence": [
+        "Skills measured",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AI-900",
+      "title": "Microsoft Azure AI Fundamentals",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-900",
+      "pageUpdatedOn": "2025-05-05",
+      "pageUpdatedAt": "2025-05-05T08:00:00.000Z",
+      "metadataUpdatedAt": "2026-06-30T23:44:00Z",
+      "pageUpdateEvidence": "Last updated on 2025-05-05",
+      "objectives": [
+        {
+          "date": "2025-05-02",
+          "precision": "day",
+          "evidence": "Skills measured as of May 2, 2025"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of May 2, 2025",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-104",
+      "title": "Microsoft Azure Administrator",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
+      "pageUpdatedOn": "2026-10-30",
+      "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-30",
+      "objectives": [
+        {
+          "date": "2023-10-26",
+          "precision": "day",
+          "evidence": "Skills measured as of October 26, 2023"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of October 26, 2023",
+        "Skills at a glance",
+        "Skills measured prior to October 26, 2023"
+      ]
+    },
+    {
+      "code": "AZ-204",
+      "title": "Developing Solutions for Microsoft Azure",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204",
+      "pageUpdatedOn": "2025-12-16",
+      "pageUpdatedAt": "2025-12-16T17:07:00.000Z",
+      "metadataUpdatedAt": "2026-07-31T18:27:00Z",
+      "pageUpdateEvidence": "Last updated on 2025-12-16",
+      "objectives": [
+        {
+          "date": "2026-01-14",
+          "precision": "day",
+          "evidence": "Skills measured as of January 14, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of January 14, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-305",
+      "title": "Designing Microsoft Azure Infrastructure Solutions",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305",
+      "pageUpdatedOn": "2026-10-30",
+      "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-30",
+      "objectives": [
+        {
+          "date": "2026-04-17",
+          "precision": "day",
+          "evidence": "Skills measured as of April 17, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of April 17, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-400",
+      "title": "Designing and Implementing Microsoft DevOps Solutions",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-400",
+      "pageUpdatedOn": "2026-10-30",
+      "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-30",
+      "objectives": [
+        {
+          "date": "2026-07-27",
+          "precision": "day",
+          "evidence": "Skills measured as of July 27, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of July 27, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-500",
+      "title": "Microsoft Azure Security Technologies",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-500",
+      "pageUpdatedOn": "2025-11-23",
+      "pageUpdatedAt": "2025-11-23T08:00:00.000Z",
+      "metadataUpdatedAt": "2026-08-31T19:51:00Z",
+      "pageUpdateEvidence": "Last updated on 2025-11-23",
+      "objectives": [
+        {
+          "date": "2026-01-22",
+          "precision": "day",
+          "evidence": "Skills measured as of January 22, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of January 22, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-700",
+      "title": "Designing and Implementing Microsoft Azure Networking Solutions",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-700",
+      "pageUpdatedOn": "2026-06-29",
+      "pageUpdatedAt": "2026-06-29T23:01:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-06-29",
+      "objectives": [
+        {
+          "date": "2026-07-27",
+          "precision": "day",
+          "evidence": "Skills measured as of July 27, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of July 27, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "AZ-900",
+      "title": "Microsoft Azure Fundamentals",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900",
+      "pageUpdatedOn": "2026-06-22",
+      "pageUpdatedAt": "2026-06-22T23:35:00.000Z",
+      "metadataUpdatedAt": "2026-06-22T23:35:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-06-22",
+      "objectives": [
+        {
+          "date": "2026-07-20",
+          "precision": "day",
+          "evidence": "Skills measured as of July 20, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of July 20, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "DP-700",
+      "title": "Implementing Data Engineering Solutions Using Microsoft Fabric",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-700",
+      "pageUpdatedOn": "2026-10-30",
+      "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
+      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-10-30",
+      "objectives": [],
+      "objectiveEvidence": [
+        "Skills measured",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "GH-300",
+      "title": "GitHub Copilot",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300",
+      "pageUpdatedOn": "2026-07-09",
+      "pageUpdatedAt": "2026-07-09T20:10:00.000Z",
+      "metadataUpdatedAt": "2026-07-09T20:10:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-07-09",
+      "objectives": [
+        {
+          "date": "2026-08-07",
+          "precision": "day",
+          "evidence": "Skills measured as of August 7, 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills measured as of August 7, 2026",
+        "Skills at a glance"
+      ]
+    },
+    {
+      "code": "GH-900",
+      "title": "GitHub Foundations",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-900",
+      "pageUpdatedOn": "2026-02-19",
+      "pageUpdatedAt": "2026-02-19T18:28:00.000Z",
+      "metadataUpdatedAt": "2026-02-19T18:28:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-02-19",
+      "objectives": [
+        {
+          "date": "2026-01",
+          "precision": "month",
+          "evidence": "Skills at a glance as of January 2026"
+        }
+      ],
+      "objectiveEvidence": [
+        "Skills at a glance as of January 2026"
+      ]
+    }
+  ]
+}

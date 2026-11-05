@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto'
 import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { selectLatestDecks, toDisplayCode } from '../../tools/deck-files.mjs'
 import {
   buildSupportedExamCodes,
   readJson,
@@ -29,18 +30,6 @@ const titleMap = {
   dp700: 'Implementing Data Engineering Solutions Using Microsoft Fabric',
   gh300: 'GitHub Copilot',
   gh900: 'GitHub Foundations',
-}
-
-const filenamePattern = /^(?<slug>[a-z0-9]+)_flashcards(?:_(?<count>\d+))?_(?<date>\d{4}-\d{2}-\d{2})\.csv$/i
-
-function toDisplayCode(slug) {
-  const match = slug.match(/^([a-z]+)(\d+)$/i)
-
-  if (!match) {
-    return slug.toUpperCase()
-  }
-
-  return `${match[1].toUpperCase()}-${match[2]}`
 }
 
 function normalizeLineBreaks(value) {
@@ -177,50 +166,8 @@ function buildQuestionId(slug, front, back) {
   return `${slug}-${hash}`
 }
 
-function pickPreferredFile(currentFile, nextFile) {
-  if (!currentFile) {
-    return nextFile
-  }
-
-  if (nextFile.date > currentFile.date) {
-    return nextFile
-  }
-
-  if (nextFile.date < currentFile.date) {
-    return currentFile
-  }
-
-  if (nextFile.count > currentFile.count) {
-    return nextFile
-  }
-
-  if (nextFile.count < currentFile.count) {
-    return currentFile
-  }
-
-  return nextFile.filename > currentFile.filename ? nextFile : currentFile
-}
-
 async function buildFlashcardData() {
-  const filenames = await readdir(flashcardsDirectory)
-  const latestDecks = new Map()
-
-  for (const filename of filenames) {
-    const match = filename.match(filenamePattern)
-
-    if (!match?.groups) {
-      continue
-    }
-
-    const candidate = {
-      filename,
-      slug: match.groups.slug.toLowerCase(),
-      count: Number(match.groups.count ?? '0'),
-      date: match.groups.date,
-    }
-
-    latestDecks.set(candidate.slug, pickPreferredFile(latestDecks.get(candidate.slug), candidate))
-  }
+  const latestDecks = selectLatestDecks(await readdir(flashcardsDirectory))
 
   await mkdir(deckOutputDirectory, { recursive: true })
 
@@ -237,7 +184,7 @@ async function buildFlashcardData() {
     exams: [],
   }
 
-  for (const selectedDeck of [...latestDecks.values()].sort((left, right) => left.slug.localeCompare(right.slug))) {
+  for (const selectedDeck of latestDecks) {
     const sourcePath = path.join(flashcardsDirectory, selectedDeck.filename)
     const source = await readFile(sourcePath, 'utf8')
     const lines = source
