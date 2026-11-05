@@ -17,7 +17,8 @@ import {
 
 const toolsDirectory = path.dirname(fileURLToPath(import.meta.url))
 const repositoryDirectory = path.resolve(toolsDirectory, '..')
-const fixture = await readFile(path.join(toolsDirectory, 'fixtures/study-guide.html'), 'utf8')
+const prepareFixture = (html) => html.replace(/\r\n/g, '\n')
+const fixture = prepareFixture(await readFile(path.join(toolsDirectory, 'fixtures/study-guide.html'), 'utf8'))
 const retrievedAt = '2026-11-05T19:24:06.472Z'
 const decks = [{
   code: 'AZ-104', slug: 'az104', date: '2026-03-24', count: 0,
@@ -108,6 +109,20 @@ describe('official study-guide date parsing', () => {
       '<h1>Study guide for Exam GH-900: Duplicate title</h1></main>'), 'GH-900'), /expected exam/)
   })
 
+  for (const [name, newline] of [['LF', '\n'], ['CRLF', '\r\n']]) {
+    it(`rejects conflicting and impossible displayed dates with ${name} fixture input`, () => {
+      const prepared = prepareFixture(fixture.replace(/\r?\n/g, newline))
+      for (const [date, pattern] of [
+        ['2026-10-29', /Conflicting displayed/],
+        ['2026-02-30', /Invalid guide update/],
+      ]) {
+        const html = prepared.replace('2026-10-30\n', `${date}\n`)
+        assert.notEqual(html, prepared, 'Negative fixture mutation must change the input')
+        assert.throws(() => parseStudyGuide(html, 'AZ-104'), pattern)
+      }
+    })
+  }
+
   it('fails explicitly on changed layouts, wrong identities, missing or conflicting dates', () => {
     for (const [html, pattern] of [
       [fixture.replace('Exam AZ-104:', 'Exam AZ-305:'), /expected exam/],
@@ -122,6 +137,7 @@ describe('official study-guide date parsing', () => {
       [objectiveHtml(['Skills measured as of February 30, 2026']), /Invalid objective date/],
       [objectiveHtml(['Skills measured as of Smarch 1, 2026']), /Invalid objective month/],
     ]) {
+      assert.notEqual(html, fixture, 'Negative fixture mutation must change the input')
       assert.throws(() => parseStudyGuide(html, 'AZ-104'), pattern)
     }
     assert.throws(() => studyGuideUrl('az-104'), /Noncanonical/)
