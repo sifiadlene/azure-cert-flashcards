@@ -1,7 +1,7 @@
 ---
 title: Repository Tools
 description: Commands for refreshing exam metadata and translating flashcard decks
-ms.date: 2026-08-29
+ms.date: 2026-11-06
 ---
 
 ## Weekly README updates
@@ -38,6 +38,67 @@ Run the offline safeguards with:
 ```bash
 node --test tools/readme-update.test.mjs
 ```
+
+## Weekly exam report issues
+
+[Exam report update issues](../.github/workflows/exam-report-update-issues.yml)
+runs every Tuesday at **09:00 UTC**, matching the original local automation,
+and supports manual runs from Actions. It must be merged to the default branch
+before its schedule can run. Scheduled runs can be delayed, and GitHub disables
+scheduled workflows in public repositories after 60 days without activity.
+
+Reuse the `COPILOT_PAT` Actions secret described above: a fine-grained PAT with
+**Copilot Requests** permission and Copilot access. No issue-write permission
+is needed on that PAT. Inference consumes the token owner's Copilot quota.
+Issue creation uses the separate, repository-scoped `GITHUB_TOKEN` with
+`issues: write`; this workflow needs no content-write or PR permission.
+
+The read-only job reads the latest committed `main` report, generator
+reference, deck catalog and relevant source CSVs through GitHub, pinned to one revision.
+It compares the report's named date columns as real calendar dates, selecting
+only exams whose guide-update date is strictly newer than their generation
+date. Equal/earlier dates are skipped. It fetches the complete main content of
+each unmatched exam's official English Microsoft Learn guide, including any
+on-page change log and previous/current objectives. Copilot receives that
+evidence, the generator reference and a bounded CSV excerpt with no tool
+access; it cannot execute the generator, search the web, or publish.
+
+Unlike the interactive local job, this workflow does not perform external
+search or retrieve off-page historical revisions. Missing exact historical
+comparisons must be disclosed, not guessed. A qualifying timestamp alone
+does not establish an outdated deck. Such an issue requires evidence
+verification before generation; confirmed timestamp-only changes do not
+justify regeneration. Full guide evidence that exceeds the inference budget,
+failed requests and malformed output are explicit errors, not speculative
+issues. Every generated determination needs human review for factual accuracy.
+
+The publishing job validates all outcomes against the committed report and
+refuses stale proposals if `main` has changed. Before each issue write, it
+paginates both open and closed issues and checks exact titles, deterministic
+markers and legacy `[Study guide update]` issues for the same exam/date.
+Matching issues are reported without comments, reopening or reassignment.
+Uncertain writes are reconciled once without automatically retrying creation.
+Workflow concurrency serializes runs; pause the original local **Exam report
+update issues** automation once this replacement is merged and configured to
+avoid two independent publishers. Leave the other local automations unchanged.
+
+New issues contain comparison dates, pinned report/source/generator links,
+official evidence, verified changes or evidence gaps, effective-date status,
+acceptance criteria and an implementation handoff to `flashcards_generator`.
+The workflow never generates decks, edits tracked files, commits, pushes,
+opens PRs, assigns agents or merges. Independent exams continue after
+row-specific failures, but any error makes the final run fail with an explicit
+Actions summary. Proposals are retained as an Actions artifact for seven days;
+issues are the durable reconciliation record.
+
+Run the offline safeguards with:
+
+```bash
+node --test tools/exam-report-issues.test.mjs
+```
+
+Disable the Actions workflow to pause it. Do not disable the original local
+automation before the replacement is published and its prerequisites are ready.
 
 ## Microsoft Learn exam catalog
 
