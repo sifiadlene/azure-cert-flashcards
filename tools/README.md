@@ -4,6 +4,41 @@ description: Commands for refreshing exam metadata and translating flashcard dec
 ms.date: 2026-08-29
 ---
 
+## Weekly README updates
+
+[Update README](../.github/workflows/update-readme.yml) runs every Friday at
+8am in `America/New_York`, automatically following daylight saving time.
+It can also be started manually from Actions. Scheduled runs require the
+workflow to be on the default branch and may start late under GitHub load.
+GitHub disables scheduled workflows in public repositories after 60 days
+without repository activity; re-enable the workflow from Actions if needed.
+
+Before enabling it, add a repository Actions secret named `COPILOT_PAT`
+containing a fine-grained personal access token with the **Copilot Requests**
+permission and an account with Copilot access. Classic PATs are not supported.
+Under **Settings > Actions > General > Workflow permissions**, allow GitHub
+Actions to create pull requests. Inference uses the token owner's Copilot
+quota and may incur usage charges according to their plan.
+
+The read-only inference job supplies tracked file paths and bounded excerpts
+from documentation, manifests, catalog metadata, workflows, and source code.
+It does not send local settings, environment files, or deck contents.
+Copilot has no tool access and returns a complete README proposal. Safeguards
+reject incomplete output, missing sections, and invalid relative links.
+
+A separate write-enabled job opens or updates the draft PR on
+`automation/weekly-readme`, committing only `README.md`. Unchanged output
+produces no PR; errors fail the run rather than publishing a fallback.
+Concurrent README edits invalidate the proposal. Review factual claims,
+counts, commands, and links before merging; the workflow never auto-merges.
+Disable the workflow from Actions to pause it.
+
+Run the offline safeguards with:
+
+```bash
+node --test tools/readme-update.test.mjs
+```
+
 ## Microsoft Learn exam catalog
 
 The canonical snapshot is stored in

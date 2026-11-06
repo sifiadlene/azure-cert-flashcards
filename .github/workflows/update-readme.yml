@@ -1,0 +1,117 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: '0 8 * * 5'
+      timezone: America/New_York
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-readme-update
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.candidate.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Check Copilot authentication
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
+            echo "::error::Set COPILOT_PAT to a fine-grained PAT with Copilot Requests permission."
+            exit 1
+          fi
+
+      - name: Test README update safeguards
+        run: node --test tools/readme-update.test.mjs
+
+      - name: Prepare repository evidence
+        run: node tools/readme-update.mjs prepare "$RUNNER_TEMP/readme-proposal"
+
+      - name: Install Copilot CLI
+        run: npm install --global @github/copilot
+
+      - name: Generate README proposal without tool access
+        working-directory: ${{ runner.temp }}
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          copilot --silent --no-ask-user --no-custom-instructions \
+            --disable-builtin-mcps --deny-tool '*' \
+            --prompt "$(cat readme-proposal/prompt.txt)" \
+            > readme-proposal/response.txt
+
+      - name: Validate proposal
+        id: candidate
+        run: node tools/readme-update.mjs candidate "$RUNNER_TEMP/readme-proposal"
+
+      - name: Save changed README proposal
+        if: steps.candidate.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme-proposal
+          path: |
+            ${{ runner.temp }}/readme-proposal/README.md
+            ${{ runner.temp }}/readme-proposal/README.original.md
+          retention-days: 7
+          if-no-files-found: error
+
+  publish:
+    needs: propose
+    if: needs.propose.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: readme-proposal
+          path: ${{ runner.temp }}/readme-proposal
+
+      - name: Apply proposal only if README has not changed
+        run: node tools/readme-update.mjs apply "$RUNNER_TEMP/readme-proposal"
+
+      - name: Open or update draft PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/weekly-readme
+          add-paths: README.md
+          draft: always-true
+          title: 'docs: update README from repository content'
+          commit-message: |
+            docs: update README from repository content
+
+            Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+          body: |
+            Copilot proposes README-only changes based on tracked repository
+            documentation, manifests, source excerpts, and the file inventory.
+
+            Review claims, counts, commands, and links before approving and
+            merging. Evidence excerpts are bounded; this is not a code audit.
+            This workflow never merges automatically.

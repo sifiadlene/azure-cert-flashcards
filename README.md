@@ -250,6 +250,10 @@ The workflow installs frontend dependencies, runs the CSV-to-JSON generation ste
 
 ## Contributing
 
+README updates are proposed every Friday at 8am America/New_York by
+[a review-only workflow](.github/workflows/update-readme.yml). See
+[setup and safeguards](tools/README.md#weekly-readme-updates) before enabling it.
+
 Contributions are welcome for:
 
 - new certification decks
