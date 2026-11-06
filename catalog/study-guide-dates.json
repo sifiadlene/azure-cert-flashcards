@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-11-05T19:50:00.601Z",
+  "retrievedAt": "2026-11-06T03:37:24.980Z",
   "exams": [
     {
       "code": "AB-100",
@@ -48,7 +48,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
       "pageUpdatedOn": "2026-10-31",
       "pageUpdatedAt": "2026-10-31T01:16:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-31",
       "objectives": [
         {
@@ -102,7 +102,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
       "pageUpdatedOn": "2026-10-30",
       "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-30",
       "objectives": [
         {
@@ -143,7 +143,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305",
       "pageUpdatedOn": "2026-10-30",
       "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-30",
       "objectives": [
         {
@@ -163,7 +163,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-400",
       "pageUpdatedOn": "2026-10-30",
       "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-30",
       "objectives": [
         {
@@ -203,7 +203,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-700",
       "pageUpdatedOn": "2026-06-29",
       "pageUpdatedAt": "2026-06-29T23:01:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-06-29",
       "objectives": [
         {
@@ -243,7 +243,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-700",
       "pageUpdatedOn": "2026-10-30",
       "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-10-31T01:16:00Z",
+      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-30",
       "objectives": [],
       "objectiveEvidence": [
