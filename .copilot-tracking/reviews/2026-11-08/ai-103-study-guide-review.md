@@ -78,8 +78,8 @@ not proof that every listed nuance is fully tested.
   watermarking, prohibited-symbol/brand checks, and inappropriate-content
   detection) have no direct card. Card 74 addresses only prompt injection
   carried in image text.
-- Image editing is represented by a background-replacement scenario, but
-  inpainting, masks, and platform-specific controls are not explicit. Image
+- Image editing is represented by a mask-based inpainting/background-replacement
+  scenario (card 63), but platform-specific controls are not explicit. Image
   generation does not explicitly test reference-media conditioning, and
   captioning does not test multiple-image input.
 - Plan/manage coverage does not explicitly test AI infrastructure architecture,
