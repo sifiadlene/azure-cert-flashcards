@@ -366,8 +366,13 @@ async function publish(directory) {
       const result = entry.status === 'existing'
         ? { status: 'existing', url: matchingIssue(listIssues(), entry.row)?.html_url }
         : await reconcileIssue(entry.row, renderIssue(entry.row, entry.proposal, sha), listIssues,
-          (title, body) => JSON.parse(gh(['api', '--method', 'POST', `repos/${repository}/issues`,
-            '--input', '-'], { title, body })));
+          (title, body) => {
+            if (mainSha() !== sha) {
+              throw new Error('Main changed since research; rerun rather than publish stale proposals.');
+            }
+            return JSON.parse(gh(['api', '--method', 'POST', `repos/${repository}/issues`,
+              '--input', '-'], { title, body }));
+          });
       if (!result.url) throw new Error('Previously matching issue is no longer available; rerun.');
       outcomes.push(`${entry.row.code}: ${result.status} ${result.url}`);
       if (entry.proposal) outcomes.push(`Evidence limitations: ${entry.proposal.limitations}`);
