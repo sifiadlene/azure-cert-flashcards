@@ -71,6 +71,19 @@ test('reconciles markers, exact titles and legacy open/closed issues but not PRs
   ]) assert.equal(matchingIssue([issue], row), undefined);
 });
 
+test('requires legacy exam identity and labeled guide date, and honors conflicting markers', () => {
+  const { title, marker } = issueIdentity(row);
+  const otherExamMarker = '<!-- exam-report-update:AZ-305:2026-10-30 -->';
+  for (const issue of [
+    { title: '[Study guide update] AZ-305: update', body: `AZ-104 guide updated ${row.guideDate}` },
+    { title: '[Study guide update] AZ-104: update', body: `Effective date ${row.guideDate}` },
+    { title: '[Study guide update] AZ-104: update', body: `Guide updated ${row.guideDate}; guide last updated 2026-10-29` },
+    { title, body: otherExamMarker },
+    { title, body: '<!-- exam-report-update:AZ-305:2026-10-30' },
+    { title: '[Study guide update] AZ-104: update', body: `${marker}\n${otherExamMarker}` },
+  ]) assert.equal(matchingIssue([issue], row), undefined);
+});
+
 test('validates proposal determination, required sections, bounds and reserved markers', () => {
   assert.deepEqual(validateProposal(proposal()), proposal());
   const changed = { ...proposal(), status: 'changes', changes: ['Verified weighting change with source excerpt.'] };

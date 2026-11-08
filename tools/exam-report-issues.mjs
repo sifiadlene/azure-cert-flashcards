@@ -75,12 +75,24 @@ export function issueIdentity(row) {
 
 export function matchingIssue(issues, row) {
   const { title, marker } = issueIdentity(row);
-  return issues.find((issue) => !issue.pull_request && (
-    issue.title === title || issue.body?.includes(marker)
-    || (/^\[(Study guide update|Exam report update)\]/.test(issue.title)
-      && new RegExp(`\\b${row.code}\\b`).test(`${issue.title}\n${issue.body ?? ''}`)
-      && new RegExp(`\\b${row.guideDate}\\b`).test(`${issue.title}\n${issue.body ?? ''}`))
-  ));
+  return issues.find((issue) => {
+    if (issue.pull_request) return false;
+    const body = issue.body ?? '';
+    const markers = [...body.matchAll(/<!--\s*exam-report-update:[^>]*-->/gi)]
+      .map(([value]) => value);
+    const markerPrefixes = [...body.matchAll(/<!--\s*exam-report-update:/gi)];
+    if (markerPrefixes.length) {
+      return markerPrefixes.length === 1 && markers.length === 1 && markers[0] === marker;
+    }
+    if (issue.title === title) return true;
+
+    const legacyTitle = issue.title.match(/^\[(?:Study guide update|Exam report update)\]\s+([A-Z]{2}-\d{3})(?=$|[\s:—-])/);
+    if (legacyTitle?.[1] !== row.code) return false;
+    const guideDates = [...`${issue.title}\n${body}`.matchAll(
+      /\bguide(?:\s+last)?\s+updated(?:\s+on)?\s*[:—-]?\s*(\d{4}-\d{2}-\d{2})\b/gi,
+    )].map(([, date]) => date);
+    return guideDates.length === 1 && guideDates[0] === row.guideDate;
+  });
 }
 
 export function validateProposal(value) {
