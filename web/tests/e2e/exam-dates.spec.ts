@@ -99,10 +99,30 @@ test('does not show current review status when the study-guide revision has chan
       : exam),
   }
   await page.route('**/data/study-guide-dates.json', (route) => route.fulfill({ json: changedGuide }))
-  await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ json: studyGuideReviews }))
+  const matchingGuide = changedGuide.exams.find((exam) => exam.code === 'GH-300')
+  if (!matchingGuide?.pageUpdatedOn) throw new Error('Matching guide fixture is missing')
+  const reviews = {
+    ...studyGuideReviews,
+    reviews: [
+      ...studyGuideReviews.reviews,
+      {
+        code: matchingGuide.code,
+        guideUrl: matchingGuide.guideUrl,
+        guideUpdatedOn: matchingGuide.pageUpdatedOn,
+        deckVersion: '2026-08-28',
+        reviewedOn: '2026-11-08',
+        status: 'gaps',
+      },
+    ],
+  }
+  await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ json: reviews }))
   await page.goto('/')
+  await page.getByLabel('Exam').selectOption('gh300')
+  const dates = page.locator('.exam-dates')
+  await expect(dates.getByText('Review complete; coverage gaps remain')).toBeVisible()
   await page.getByLabel('Exam').selectOption('ai103')
-  await expect(page.locator('.exam-dates').getByText('Review complete; coverage gaps remain')).toHaveCount(0)
+  await expect(dates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-11-05')
+  await expect(dates.getByText('Review complete; coverage gaps remain')).toHaveCount(0)
 })
 
 test('reports review metadata errors without blocking solo practice', async ({ page }) => {
