@@ -90,6 +90,8 @@
 .setup-card .exam-field label { font-size: 1rem; }
 .setup-card .exam-field select { min-height: 52px; border-color: var(--color-border-hover); background-color: var(--color-surface); font-size: 1rem; }
 .setup-options { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); align-items: start; gap: 4px 28px; }
+.setup-mode .mode-toggle { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.setup-mode .mode-btn { min-width: 0; overflow-wrap: anywhere; }
 .setup-options .setup-section { padding-top: 0; border-top: 0; margin-top: 0; }
 .setup-mode .setup-section { margin-bottom: 0; }
 .setup-mode .mode-hint { max-width: 36ch; margin: 8px 0 0; line-height: 1.5; }
