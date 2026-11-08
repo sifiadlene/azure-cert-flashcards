@@ -1,0 +1,88 @@
+name: Exam report update issues
+
+on:
+  schedule:
+    - cron: '0 9 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+
+concurrency:
+  group: exam-report-update-issues
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Check Copilot authentication
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
+            echo "::error::Set COPILOT_PAT to a fine-grained PAT with Copilot Requests permission."
+            exit 1
+          fi
+
+      - name: Test issue safeguards
+        run: node --test tools/exam-report-issues.test.mjs
+
+      - name: Read committed main report and official guide evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/exam-report-issues.mjs prepare "$RUNNER_TEMP/exam-report-issues"
+
+      - name: Install Copilot CLI
+        run: npm install --global @github/copilot
+
+      - name: Research proposals without tool access
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: node tools/exam-report-issues.mjs research "$RUNNER_TEMP/exam-report-issues"
+
+      - name: Save proposals and explicit errors
+        uses: actions/upload-artifact@v4
+        with:
+          name: exam-report-issues
+          path: ${{ runner.temp }}/exam-report-issues/proposals.json
+          retention-days: 7
+          if-no-files-found: error
+
+  publish:
+    needs: research
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: exam-report-issues
+          path: ${{ runner.temp }}/exam-report-issues
+
+      - name: Reconcile issues and publish validated proposals
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/exam-report-issues.mjs publish "$RUNNER_TEMP/exam-report-issues"
