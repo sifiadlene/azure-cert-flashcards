@@ -32,11 +32,20 @@ jobs:
       - name: Refresh official study-guide dates
         run: node tools/refresh-study-guide-dates.mjs
 
+      - name: Synchronize public study-guide snapshot
+        run: node tools/sync-study-guide-public.mjs
+
       - name: Generate exam date report
         run: node tools/generate-exam-date-report.mjs
 
+      - name: Check public study-guide snapshot
+        run: node tools/sync-study-guide-public.mjs --check
+
       - name: Test exam date report
         run: node --test tools/exam-date-report.test.mjs
+
+      - name: Test committed exam date report
+        run: node --test tools/exam-date-report.committed.test.mjs
 
       - name: Check exam date report
         run: node tools/generate-exam-date-report.mjs --check
@@ -50,7 +59,7 @@ jobs:
           git ls-files --others --exclude-standard -z >> "$changes"
           while IFS= read -r -d '' file; do
             case "$file" in
-              catalog/study-guide-dates.json|EXAM-DATE-REPORT.md) ;;
+              catalog/study-guide-dates.json|EXAM-DATE-REPORT.md|web/public/data/study-guide-dates.json) ;;
               *)
                 printf '::error::Unexpected changed file: %s\n' "$file"
                 exit 1
@@ -58,7 +67,8 @@ jobs:
             esac
           done < "$changes"
 
-          if git diff --quiet HEAD -- catalog/study-guide-dates.json EXAM-DATE-REPORT.md; then
+          if git diff --quiet HEAD -- catalog/study-guide-dates.json EXAM-DATE-REPORT.md web/public/data/study-guide-dates.json &&
+             [ -z "$(git ls-files --others --exclude-standard -- web/public/data/study-guide-dates.json)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No exam date report updates." >> "$GITHUB_STEP_SUMMARY"
           else
@@ -82,7 +92,7 @@ jobs:
           git switch -c "$branch"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- catalog/study-guide-dates.json EXAM-DATE-REPORT.md
+          git add -- catalog/study-guide-dates.json EXAM-DATE-REPORT.md web/public/data/study-guide-dates.json
           git commit -m "docs: refresh exam date report" \
             -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 
@@ -98,10 +108,12 @@ jobs:
           cat > "$body" <<EOF
           Refreshes official Microsoft Learn study-guide metadata and regenerates the exam date report.
 
-          Only \`catalog/study-guide-dates.json\` and \`EXAM-DATE-REPORT.md\` are changed.
+          Only \`catalog/study-guide-dates.json\`, \`EXAM-DATE-REPORT.md\`, and \`web/public/data/study-guide-dates.json\` are changed.
 
           Validation passed:
           - \`node tools/refresh-study-guide-dates.mjs\`
+          - \`node tools/sync-study-guide-public.mjs\`
+          - \`node tools/sync-study-guide-public.mjs --check\`
           - \`node tools/generate-exam-date-report.mjs\`
           - \`node --test tools/exam-date-report.test.mjs\`
           - \`node tools/generate-exam-date-report.mjs --check\`

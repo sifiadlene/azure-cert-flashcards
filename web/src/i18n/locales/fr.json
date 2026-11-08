@@ -132,6 +132,12 @@
     "examLabel": "Examen",
     "examPlaceholder": "Choisissez un examen...",
     "questions": "questions",
+    "deckGenerated": "Jeu de cartes généré le",
+    "guideUpdated": "Page du guide d’étude mise à jour le",
+    "guideLoading": "Chargement de la date du guide d’étude...",
+    "guideError": "Impossible de charger la date du guide d’étude.",
+    "dateUnavailable": "Non disponible",
+    "viewStudyGuide": "Voir le guide d’étude",
     "progress": {
       "lastAttempt": "Dernière tentative",
       "lastScore": "Dernier score",

@@ -2,6 +2,7 @@ import { startTransition, useEffect, useRef, useState } from 'react'
 import DOMPurify from 'dompurify'
 import { useTranslation } from 'react-i18next'
 import './App.css'
+import { ExamDates } from './ExamDates'
 import { ChallengeFeature } from './challenge/ChallengeFeature'
 import { RequestExamDialog } from './examRequest/RequestExamDialog'
 import { RequestExamTrigger } from './examRequest/RequestExamTrigger'
@@ -805,6 +806,7 @@ function App() {
                 </option>
               ))}
             </select>
+            {selectedExam && <ExamDates exam={selectedExam} />}
             <RequestExamTrigger onOpen={openRequestDialog} />
           </div>}
 

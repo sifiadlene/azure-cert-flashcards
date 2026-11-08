@@ -132,6 +132,12 @@
     "examLabel": "Exam",
     "examPlaceholder": "Choose an exam...",
     "questions": "questions",
+    "deckGenerated": "Flashcard deck generated",
+    "guideUpdated": "Study guide page last updated",
+    "guideLoading": "Loading study-guide date...",
+    "guideError": "Unable to load the study-guide date.",
+    "dateUnavailable": "Not available",
+    "viewStudyGuide": "View study guide",
     "progress": {
       "lastAttempt": "Last attempt",
       "lastScore": "Last score",

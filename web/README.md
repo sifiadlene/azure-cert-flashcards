@@ -79,6 +79,10 @@ its script, frame, or network requests makes exam submission unavailable.
 - the script selects the latest file for each exam and writes normalized JSON into [public/data](public/data)
 - the script copies the 49-entry catalog and 14-code supported set; the UI computes the 37 requestable exams
 - the React app loads that manifest and renders exam selection, practice mode, timed quizzes, and missed-question review
+- after an exam is selected, solo and challenge setup show the deck generation date from the selected CSV filename and the last-updated date of its Microsoft Learn study-guide page
+- the guide date is not an exam-objective change date and does not establish that the flashcards are aligned or outdated; missing or failed guide data does not prevent practice
+- the checked-in [study-guide snapshot](../catalog/study-guide-dates.json) is copied to [public/data/study-guide-dates.json](public/data/study-guide-dates.json) with `node tools/sync-study-guide-public.mjs` from the repository root; `--check` verifies the copy without changing it
+- the weekly refresh opens a pull request containing both snapshots; updated dates reach the live site only after that pull request is merged and deployment succeeds
 
 ## Notes
 

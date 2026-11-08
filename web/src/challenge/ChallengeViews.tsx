@@ -9,6 +9,7 @@ import {
   type RoomSnapshot,
 } from './contracts'
 import type { ExamDeck, DeckManifest, QuestionRecord } from '../types'
+import { ExamDates } from '../ExamDates'
 import { RequestExamTrigger } from '../examRequest/RequestExamTrigger'
 import { sanitizeChallengeHtml } from './sanitize'
 
@@ -40,6 +41,7 @@ interface StartProps {
 
 export function ChallengeStartView(props: StartProps) {
   const { t, manifest, host, deck } = props
+  const selectedExam = manifest.exams.find((exam) => exam.slug === host.examSlug)
   const scopedCount = deck
     ? deck.questions.filter((question) => host.domain === 'all' || question.domain === host.domain).length
     : 0
@@ -60,6 +62,7 @@ export function ChallengeStartView(props: StartProps) {
             <option value="">{t('setup.examPlaceholder')}</option>
             {manifest.exams.map((exam) => <option key={exam.slug} value={exam.slug}>{exam.code} — {exam.title}</option>)}
           </select>
+          {selectedExam && <ExamDates exam={selectedExam} />}
         </div>
         {deck && <>
           <div className="field">
@@ -253,4 +256,3 @@ export function ChallengeResultsView(props: SharedRoomProps & { onReplay: () => 
     <aside><PlayerRoster {...props} /></aside>
   </div>
 }
-
