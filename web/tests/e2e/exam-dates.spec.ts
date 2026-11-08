@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import studyGuideSnapshot from '../../public/data/study-guide-dates.json' with { type: 'json' }
+import studyGuideReviews from '../../public/data/study-guide-reviews.json' with { type: 'json' }
 
 const fixtureDates: Record<string, string> = {
   'GH-300': '2026-02-01',
@@ -65,6 +66,52 @@ test('shows localized dates in challenge setup and changes them with the exam', 
   await page.getByLabel('Examen').selectOption('az104')
   await expect(dates.locator('time').nth(0)).toHaveAttribute('datetime', '2026-03-24')
   await expect(dates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-03-02')
+})
+
+test('shows current AI-103 review status in solo and challenge setup in English and French', async ({ page }) => {
+  await page.route('**/data/study-guide-dates.json', (route) => route.fulfill({ json: studyGuideSnapshot }))
+  await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ json: studyGuideReviews }))
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('ai103')
+
+  const dates = page.locator('.exam-dates')
+  await expect(dates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  await expect(dates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
+  await expect(dates.getByText('Guide revision: Oct 31, 2026. Deck version: Aug 29, 2026.')).toBeVisible()
+
+  await page.getByRole('button', { name: 'Switch to French' }).click()
+  await expect(dates.getByText('Examen terminé ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(dates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
+  await expect(dates.getByText(/Révision du guide : 31.*oct.*2026\. Version du jeu : 29.*août.*2026\./)).toBeVisible()
+
+  await page.getByRole('button', { name: /Défi en direct/ }).click()
+  await page.getByLabel('Examen').selectOption('ai103')
+  const challengeDates = page.locator('.exam-dates')
+  await expect(challengeDates.getByText('Examen terminé ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
+})
+
+test('does not show current review status when the study-guide revision has changed', async ({ page }) => {
+  const changedGuide = {
+    ...studyGuideSnapshot,
+    exams: studyGuideSnapshot.exams.map((exam) => exam.code === 'AI-103'
+      ? { ...exam, pageUpdatedOn: '2026-11-05' }
+      : exam),
+  }
+  await page.route('**/data/study-guide-dates.json', (route) => route.fulfill({ json: changedGuide }))
+  await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ json: studyGuideReviews }))
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('ai103')
+  await expect(page.locator('.exam-dates').getByText('Review complete; coverage gaps remain')).toHaveCount(0)
+})
+
+test('reports review metadata errors without blocking solo practice', async ({ page }) => {
+  await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ status: 503, body: 'Unavailable' }))
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('ai103')
+  await expect(page.locator('.exam-dates').getByText('Unable to load the review status.', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Start Session' }).click()
+  await expect(page.getByRole('heading', { name: /Question 1 of/ })).toBeVisible()
 })
 
 for (const scenario of [
@@ -139,4 +186,8 @@ test('keeps the dates visible and the guide link keyboard accessible on mobile i
     expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false)
     if (theme === 'light') await page.getByRole('button', { name: 'Switch to dark mode' }).click()
   }
+
+  await select.selectOption('ai103')
+  await expect(dates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false)
 })

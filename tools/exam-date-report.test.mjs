@@ -271,6 +271,9 @@ describe('offline CLI integration', () => {
         code: 'AZ-104', slug: 'az104', sourceFile: decks[0].filename,
         updatedOn: decks[0].date, deckVersion: decks[0].date,
       }] }
+      const reviews = JSON.stringify({ schemaVersion: 1, reviews: [] })
+      await writeFile(path.join(directory, 'catalog/study-guide-reviews.json'), reviews)
+      await writeFile(path.join(directory, 'web/public/data/study-guide-reviews.json'), reviews)
       const manifestPath = path.join(directory, 'web/public/data/exams.json')
       await writeFile(manifestPath, JSON.stringify(manifest))
       await writeFile(path.join(directory, 'flashcards', decks[0].filename), '')
@@ -291,6 +294,11 @@ describe('offline CLI integration', () => {
       assert.throws(() => run('sync-study-guide-public.mjs', ['--check']), /differs/)
       assert.equal(await readFile(publicPath, 'utf8'), 'stale')
       run('sync-study-guide-public.mjs')
+      const publicReviewsPath = path.join(directory, 'web/public/data/study-guide-reviews.json')
+      await writeFile(publicReviewsPath, 'stale')
+      assert.throws(() => run('sync-study-guide-public.mjs', ['--check']), /review public snapshot differs/)
+      assert.equal(await readFile(publicReviewsPath, 'utf8'), 'stale')
+      await writeFile(publicReviewsPath, reviews)
       const malformed = JSON.parse(original)
       malformed.exams[0].pageUpdatedOn = '2026-02-30'
       await writeFile(snapshotPath, JSON.stringify(malformed))

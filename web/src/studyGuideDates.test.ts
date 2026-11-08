@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { formatCalendarDate, isCalendarDate, loadStudyGuideDates, parseStudyGuideDates } from './studyGuideDates'
+import { getCurrentStudyGuideReview, loadStudyGuideReviews, parseStudyGuideReviews } from './studyGuideReviews'
 
 function snapshot() {
   return {
@@ -65,5 +66,71 @@ describe('study-guide date data', () => {
     expect(formatCalendarDate('2026-07-09', 'fr')).toMatch(/9.*juil.*2026/)
     expect(isCalendarDate('2026-02-29')).toBe(false)
     expect(() => formatCalendarDate('2026-02-29', 'en')).toThrow('Invalid calendar date')
+  })
+})
+
+describe('study-guide review data', () => {
+  const snapshot = {
+    schemaVersion: 1,
+    reviews: [{
+      code: 'AI-103',
+      guideUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103',
+      guideUpdatedOn: '2026-10-31',
+      deckVersion: '2026-08-29',
+      reviewedOn: '2026-11-08',
+      status: 'gaps',
+    }],
+  }
+  const guide = {
+    code: 'AI-103',
+    guideUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103',
+    pageUpdatedOn: '2026-10-31',
+  }
+
+  it('parses review records by exam code and permits no current reviews', () => {
+    expect(parseStudyGuideReviews(snapshot).get('AI-103')).toMatchObject({
+      guideUpdatedOn: '2026-10-31',
+      deckVersion: '2026-08-29',
+      reviewedOn: '2026-11-08',
+      status: 'gaps',
+    })
+    expect(parseStudyGuideReviews({ schemaVersion: 1, reviews: [] }).size).toBe(0)
+  })
+
+  it('rejects invalid dates, guide links, statuses, and duplicate exams', () => {
+    const mutations = [
+      (value: typeof snapshot) => { value.reviews[0].guideUpdatedOn = '2026-02-30' },
+      (value: typeof snapshot) => { value.reviews[0].deckVersion = 'not-a-date' },
+      (value: typeof snapshot) => { value.reviews[0].reviewedOn = '2026-02-30' },
+      (value: typeof snapshot) => { value.reviews[0].guideUrl = 'https://example.com' },
+      (value: typeof snapshot) => { value.reviews[0].status = 'incomplete' },
+      (value: typeof snapshot) => { value.reviews.push(value.reviews[0]) },
+    ]
+    for (const mutate of mutations) {
+      const value = structuredClone(snapshot)
+      mutate(value)
+      expect(() => parseStudyGuideReviews(value)).toThrow()
+    }
+    expect(() => parseStudyGuideReviews(null)).toThrow()
+  })
+
+  it('only treats a review as current for its exact guide revision and deck version', () => {
+    const reviews = parseStudyGuideReviews(snapshot)
+    const review = reviews.get('AI-103')
+    if (!review) throw new Error('Review fixture is missing')
+    expect(getCurrentStudyGuideReview(reviews, 'AI-103', guide, '2026-08-29')).toBe(review)
+    expect(getCurrentStudyGuideReview(reviews, 'AI-103', { ...guide, pageUpdatedOn: '2026-11-05' }, '2026-08-29')).toBeUndefined()
+    expect(getCurrentStudyGuideReview(reviews, 'AI-103', guide, '2026-11-09')).toBeUndefined()
+    expect(getCurrentStudyGuideReview(reviews, 'AI-103', undefined, '2026-08-29')).toBeUndefined()
+  })
+
+  it('loads the checked-in review snapshot and surfaces failures', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(snapshot)))
+    const reviews = await loadStudyGuideReviews('/site/data/study-guide-reviews.json', fetcher)
+    expect(fetcher).toHaveBeenCalledWith('/site/data/study-guide-reviews.json', { cache: 'no-store' })
+    expect(reviews.has('AI-103')).toBe(true)
+
+    await expect(loadStudyGuideReviews('/reviews', vi.fn<typeof fetch>()
+      .mockResolvedValue(new Response('unavailable', { status: 503 })))).rejects.toThrow('503')
   })
 })

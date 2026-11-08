@@ -6,6 +6,33 @@ import { validateGuideSnapshot } from './exam-date-report.mjs'
 const repositoryDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const sourcePath = path.join(repositoryDirectory, 'catalog', 'study-guide-dates.json')
 const publicPath = path.join(repositoryDirectory, 'web', 'public', 'data', 'study-guide-dates.json')
+const reviewsSourcePath = path.join(repositoryDirectory, 'catalog', 'study-guide-reviews.json')
+const reviewsPublicPath = path.join(repositoryDirectory, 'web', 'public', 'data', 'study-guide-reviews.json')
+
+function isCalendarDate(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
+  const date = new Date(`${value}T00:00:00.000Z`)
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value
+}
+
+function validateStudyGuideReviews(reviews) {
+  if (reviews?.schemaVersion !== 1 || !Array.isArray(reviews.reviews)) {
+    throw new Error('Study-guide reviews must use schemaVersion 1 and contain reviews')
+  }
+  const codes = new Set()
+  for (const review of reviews.reviews) {
+    if (!review || typeof review.code !== 'string' || !/^[A-Z]{2}-\d{3}$/.test(review.code)
+      || review.guideUrl !== `https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/${review.code.toLowerCase()}`
+      || !isCalendarDate(review.guideUpdatedOn)
+      || !isCalendarDate(review.deckVersion)
+      || !isCalendarDate(review.reviewedOn)
+      || (review.status !== 'aligned' && review.status !== 'gaps')
+      || codes.has(review.code)) {
+      throw new Error('Study-guide reviews contain an invalid or duplicate entry')
+    }
+    codes.add(review.code)
+  }
+}
 
 async function main() {
   const args = process.argv.slice(2)
@@ -26,6 +53,12 @@ async function main() {
     throw new Error('Study guide snapshot codes must be unique and sorted')
   }
   validateGuideSnapshot(snapshot, decks)
+  const reviewsSource = await readFile(reviewsSourcePath)
+  validateStudyGuideReviews(JSON.parse(reviewsSource.toString('utf8')))
+  const reviewsPublic = await readFile(reviewsPublicPath)
+  if (!reviewsSource.equals(reviewsPublic)) {
+    throw new Error('Study-guide review public snapshot differs from the canonical snapshot; update the public copy alongside the canonical file')
+  }
 
   if (args[0] === '--check') {
     const publicCopy = await readFile(publicPath)
