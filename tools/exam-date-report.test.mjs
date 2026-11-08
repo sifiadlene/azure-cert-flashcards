@@ -190,14 +190,6 @@ describe('snapshot validation and refresh', () => {
 })
 
 describe('Markdown report', () => {
-  it('keeps the committed report reproducible with exactly one row for every local deck', async () => {
-    const localDecks = await readReportDecks(repositoryDirectory)
-    const localSnapshot = JSON.parse(await readFile(path.join(repositoryDirectory, 'catalog/study-guide-dates.json'), 'utf8'))
-    const report = prepareFixture(await readFile(path.join(repositoryDirectory, 'EXAM-DATE-REPORT.md'), 'utf8'))
-    assert.equal(report, renderExamDateReport(localDecks, localSnapshot))
-    assert.equal(report.split('\n').filter((line) => line.startsWith('| [')).length, localDecks.length)
-  })
-
   it('renders deterministic date meanings, source links, and one row per exam', () => {
     const report = renderExamDateReport(decks, snapshot())
     assert.equal(report, renderExamDateReport(decks, snapshot()))
@@ -346,7 +338,10 @@ describe('offline CLI integration', () => {
     assert.ok(check > sync && scope > check && stage > scope)
     assert.match(refresh, /catalog\/study-guide-dates\.json\|EXAM-DATE-REPORT\.md\|web\/public\/data\/study-guide-dates\.json/)
     assert.match(refresh, /git diff --quiet HEAD -- catalog\/study-guide-dates\.json EXAM-DATE-REPORT\.md web\/public\/data\/study-guide-dates\.json/)
+    assert.ok(refresh.indexOf('run: node --test tools/exam-date-report.committed.test.mjs')
+      > refresh.indexOf('run: node --test tools/exam-date-report.test.mjs'))
     assert.match(api, /run: node --test tools\/exam-date-report\.test\.mjs/)
+    assert.doesNotMatch(api, /exam-date-report\.committed\.test\.mjs/)
     assert.match(api, /run: node tools\/sync-study-guide-public\.mjs --check/)
     assert.match(site, /working-directory: \$\{\{ github\.workspace \}\}\s+run: node tools\/sync-study-guide-public\.mjs --check/)
   })

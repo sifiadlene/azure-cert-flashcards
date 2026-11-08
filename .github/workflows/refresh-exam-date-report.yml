@@ -44,6 +44,9 @@ jobs:
       - name: Test exam date report
         run: node --test tools/exam-date-report.test.mjs
 
+      - name: Test committed exam date report
+        run: node --test tools/exam-date-report.committed.test.mjs
+
       - name: Check exam date report
         run: node tools/generate-exam-date-report.mjs --check
 
