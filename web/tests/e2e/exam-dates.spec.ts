@@ -1,9 +1,29 @@
 import { expect, test } from '@playwright/test'
 import studyGuideSnapshot from '../../public/data/study-guide-dates.json' with { type: 'json' }
 
+const fixtureDates: Record<string, string> = {
+  'GH-300': '2026-02-01',
+  'AZ-104': '2026-03-02',
+}
+const dateFixture = {
+  ...studyGuideSnapshot,
+  exams: studyGuideSnapshot.exams.map((exam) => {
+    const pageUpdatedOn = fixtureDates[exam.code]
+    return pageUpdatedOn
+      ? {
+          ...exam,
+          pageUpdatedOn,
+          pageUpdatedAt: `${pageUpdatedOn}T00:00:00.000Z`,
+          pageUpdateEvidence: `Last updated on ${pageUpdatedOn}`,
+        }
+      : exam
+  }),
+}
+
 test.use({ timezoneId: 'America/Los_Angeles' })
 
 test('shows both dates for the selected solo exam and updates them by code', async ({ page }) => {
+  await page.route('**/data/study-guide-dates.json', (route) => route.fulfill({ json: dateFixture }))
   await page.goto('/')
   await expect(page.locator('.exam-dates')).toHaveCount(0)
 
@@ -12,13 +32,13 @@ test('shows both dates for the selected solo exam and updates them by code', asy
   await expect(dates.getByText('Flashcard deck generated')).toBeVisible()
   await expect(dates.getByText('Study guide page last updated')).toBeVisible()
   await expect(dates.locator('time').nth(0)).toHaveText('Aug 28, 2026')
-  await expect(dates.locator('time').nth(1)).toHaveText('Jul 9, 2026')
+  await expect(dates.locator('time').nth(1)).toHaveText('Feb 1, 2026')
   await expect(dates.getByRole('link', { name: 'View study guide' }))
     .toHaveAttribute('href', 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300')
 
   await page.getByLabel('Exam').selectOption('az104')
   await expect(dates.locator('time').nth(0)).toHaveText('Mar 24, 2026')
-  await expect(dates.locator('time').nth(1)).toHaveText('Oct 30, 2026')
+  await expect(dates.locator('time').nth(1)).toHaveText('Mar 2, 2026')
   await expect(dates.getByRole('link', { name: 'View study guide' }))
     .toHaveAttribute('href', 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104')
 
@@ -27,6 +47,7 @@ test('shows both dates for the selected solo exam and updates them by code', asy
 })
 
 test('shows localized dates in challenge setup and changes them with the exam', async ({ page }) => {
+  await page.route('**/data/study-guide-dates.json', (route) => route.fulfill({ json: dateFixture }))
   await page.goto('/')
   await page.getByRole('button', { name: /Live Challenge/ }).click()
   await page.getByRole('button', { name: 'Switch to French' }).click()
@@ -37,13 +58,13 @@ test('shows localized dates in challenge setup and changes them with the exam', 
   await expect(dates.getByText('Jeu de cartes généré le')).toBeVisible()
   await expect(dates.getByText('Page du guide d’étude mise à jour le')).toBeVisible()
   await expect(dates.locator('time').nth(0)).toHaveText(/28.*août.*2026/)
-  await expect(dates.locator('time').nth(1)).toHaveText(/9.*juil.*2026/)
+  await expect(dates.locator('time').nth(1)).toHaveText(/1.*févr.*2026/)
   await expect(dates.getByRole('link', { name: 'Voir le guide d’étude' }))
     .toHaveAttribute('href', 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300')
 
   await page.getByLabel('Examen').selectOption('az104')
   await expect(dates.locator('time').nth(0)).toHaveAttribute('datetime', '2026-03-24')
-  await expect(dates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-10-30')
+  await expect(dates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-03-02')
 })
 
 for (const scenario of [
@@ -102,7 +123,10 @@ test('keeps the dates visible and the guide link keyboard accessible on mobile i
   await select.selectOption('gh300')
   const dates = page.locator('.exam-dates')
   const link = dates.getByRole('link', { name: 'View study guide' })
+  const gh300Guide = studyGuideSnapshot.exams.find((exam) => exam.code === 'GH-300')
+  if (!gh300Guide) throw new Error('GH-300 is missing from the study-guide snapshot')
   await expect(link).toBeVisible()
+  await expect(dates.locator('time').nth(1)).toHaveAttribute('datetime', gh300Guide.pageUpdatedOn)
   await select.focus()
   await page.keyboard.press('Tab')
   await expect(link).toBeFocused()
