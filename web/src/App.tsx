@@ -786,12 +786,12 @@ function App() {
         ) : experience === 'challenge' ? (
           !manifestError && <div className="loading-state card" role="status">{t('setup.loadingExams')}</div>
         ) : (
-        <div className="card">
+        <div className="card setup-card">
           <h2 className="card-title">{t('setup.cardTitle')}</h2>
 
           {!manifest && !manifestError ? (
             <div className="loading-state" role="status">{t('setup.loadingExams')}</div>
-          ) : <div className="field">
+          ) : <div className="field exam-field">
             <label htmlFor="exam-select">{t('setup.examLabel')}</label>
             <select
               id="exam-select"
@@ -827,94 +827,100 @@ function App() {
                 </dl>
               )}
 
-              <div className="setup-section field">
-                <label>{t('setup.modeLabel')}</label>
-                <div className="mode-toggle" role="radiogroup" aria-label={t('setup.modeLabel')}>
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={setup.mode === 'practice'}
-                    className={`mode-btn ${setup.mode === 'practice' ? 'active' : ''}`}
-                    onClick={() => updateSetup('mode', 'practice')}
-                  >
-                    {t('setup.modePractice')}
-                  </button>
-                  <button
-                    type="button"
-                    role="radio"
-                    aria-checked={setup.mode === 'timed'}
-                    className={`mode-btn ${setup.mode === 'timed' ? 'active' : ''}`}
-                    onClick={() => updateSetup('mode', 'timed')}
-                  >
-                    {t('setup.modeTimed')}
-                  </button>
+              <div className="setup-options">
+                <div className="setup-mode">
+                  <div className="setup-section field">
+                    <label>{t('setup.modeLabel')}</label>
+                    <div className="mode-toggle" role="radiogroup" aria-label={t('setup.modeLabel')}>
+                      <button
+                        type="button"
+                        role="radio"
+                        aria-checked={setup.mode === 'practice'}
+                        className={`mode-btn ${setup.mode === 'practice' ? 'active' : ''}`}
+                        onClick={() => updateSetup('mode', 'practice')}
+                      >
+                        {t('setup.modePractice')}
+                      </button>
+                      <button
+                        type="button"
+                        role="radio"
+                        aria-checked={setup.mode === 'timed'}
+                        className={`mode-btn ${setup.mode === 'timed' ? 'active' : ''}`}
+                        onClick={() => updateSetup('mode', 'timed')}
+                      >
+                        {t('setup.modeTimed')}
+                      </button>
+                    </div>
+                  </div>
+
+                  <p className="mode-hint">
+                    {setup.mode === 'practice'
+                      ? t('setup.modeHintPractice')
+                      : t('setup.modeHintTimed')}
+                  </p>
                 </div>
-              </div>
 
-              <p className="mode-hint">
-                {setup.mode === 'practice'
-                  ? t('setup.modeHintPractice')
-                  : t('setup.modeHintTimed')}
-              </p>
-
-              <div className="setup-section filter-row">
-                <div className="field">
-                  <label htmlFor="domain-select">{t('setup.domainLabel')}</label>
-                  <select
-                    id="domain-select"
-                    value={setup.domain}
-                    onChange={(event) => updateSetup('domain', event.target.value)}
-                  >
-                    <option value="all">{t('setup.domainAll')}</option>
-                    {availableDomains.map((domain) => (
-                      <option key={domain} value={domain}>
-                        {taxonomyLabel(t, 'domains', domain)}
-                      </option>
-                    ))}
-                  </select>
+                <div className="setup-section filter-row">
+                  <div className="field">
+                    <label htmlFor="domain-select">{t('setup.domainLabel')}</label>
+                    <select
+                      id="domain-select"
+                      value={setup.domain}
+                      onChange={(event) => updateSetup('domain', event.target.value)}
+                    >
+                      <option value="all">{t('setup.domainAll')}</option>
+                      {availableDomains.map((domain) => (
+                        <option key={domain} value={domain}>
+                          {taxonomyLabel(t, 'domains', domain)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="topic-select">{t('setup.topicLabel')}</label>
+                    <select
+                      id="topic-select"
+                      value={setup.topic}
+                      onChange={(event) => updateSetup('topic', event.target.value)}
+                    >
+                      <option value="all">{t('setup.topicAll')}</option>
+                      {availableTopics.map((topic) => (
+                        <option key={topic} value={topic}>
+                          {taxonomyLabel(t, 'topics', topic)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <div className="field">
-                  <label htmlFor="topic-select">{t('setup.topicLabel')}</label>
-                  <select
-                    id="topic-select"
-                    value={setup.topic}
-                    onChange={(event) => updateSetup('topic', event.target.value)}
-                  >
-                    <option value="all">{t('setup.topicAll')}</option>
-                    {availableTopics.map((topic) => (
-                      <option key={topic} value={topic}>
-                        {taxonomyLabel(t, 'topics', topic)}
-                      </option>
-                    ))}
-                  </select>
+
+                <div className="setup-review-settings">
+                  <label className={`checkbox-row ${!selectedProgress?.missedIds.length ? 'disabled' : ''}`}>
+                    <input
+                      type="checkbox"
+                      checked={setup.reviewMissed}
+                      disabled={!selectedProgress?.missedIds.length}
+                      onChange={(event) => updateSetup('reviewMissed', event.target.checked)}
+                    />
+                    <span>
+                      {t('setup.reviewMissedLabel')}
+                      {!selectedProgress?.missedIds.length && ` — ${t('setup.noMissedQuestions')}`}
+                    </span>
+                  </label>
+
+                  <div className="field">
+                    <label htmlFor="question-limit-select">{t('setup.questionLimitLabel')}</label>
+                    <select
+                      id="question-limit-select"
+                      value={setup.questionLimit ?? 'all'}
+                      onChange={(event) => updateSetup('questionLimit', event.target.value === 'all' ? null : Number(event.target.value))}
+                    >
+                      <option value="10">{t('setup.questionLimit', { count: 10 })}</option>
+                      <option value="20">{t('setup.questionLimit', { count: 20 })}</option>
+                      <option value="50">{t('setup.questionLimit', { count: 50 })}</option>
+                      <option value="all">{t('setup.questionLimitAll')}</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-
-              <label className={`checkbox-row ${!selectedProgress?.missedIds.length ? 'disabled' : ''}`}>
-                <input
-                  type="checkbox"
-                  checked={setup.reviewMissed}
-                  disabled={!selectedProgress?.missedIds.length}
-                  onChange={(event) => updateSetup('reviewMissed', event.target.checked)}
-                />
-                <span>
-                  {t('setup.reviewMissedLabel')}
-                  {!selectedProgress?.missedIds.length && ` — ${t('setup.noMissedQuestions')}`}
-                </span>
-              </label>
-
-              <div className="field">
-                <label htmlFor="question-limit-select">{t('setup.questionLimitLabel')}</label>
-                <select
-                  id="question-limit-select"
-                  value={setup.questionLimit ?? 'all'}
-                  onChange={(event) => updateSetup('questionLimit', event.target.value === 'all' ? null : Number(event.target.value))}
-                >
-                  <option value="10">{t('setup.questionLimit', { count: 10 })}</option>
-                  <option value="20">{t('setup.questionLimit', { count: 20 })}</option>
-                  <option value="50">{t('setup.questionLimit', { count: 50 })}</option>
-                  <option value="all">{t('setup.questionLimitAll')}</option>
-                </select>
               </div>
 
               <div className="setup-footer">
@@ -958,7 +964,7 @@ function App() {
             &larr; {t('session.backToSetup')}
           </button>
 
-        <div className="card">
+        <div className="card session-card">
           <div className="session-header">
             <h2 ref={questionHeadingRef} tabIndex={-1}>
               {t('session.questionOf', { current: session.questionIndex + 1, total: session.questionIds.length })}
@@ -981,7 +987,7 @@ function App() {
           >
             <span
               style={{
-                width: `${((session.questionIndex + 1) / session.questionIds.length) * 100}%`,
+                transform: `scaleX(${(session.questionIndex + 1) / session.questionIds.length})`,
               }}
             />
           </div>

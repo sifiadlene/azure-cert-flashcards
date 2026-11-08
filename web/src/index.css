@@ -58,17 +58,6 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -82,8 +71,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--color-bg);
-  background-image: linear-gradient(rgba(101, 113, 124, 0.05) 1px, transparent 1px);
-  background-size: 100% 32px;
 }
 
 a {
