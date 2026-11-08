@@ -1,9 +1,10 @@
 .app-shell {
-  width: min(1180px, calc(100% - 48px));
+  width: min(920px, calc(100% - 48px));
   margin: 0 auto;
   padding: 24px 0 72px;
-  animation: slideUp 220ms ease-out;
 }
+
+.app-shell.challenge-shell { width: min(1160px, calc(100% - 32px)); }
 
 .app-header {
   display: flex;
@@ -54,9 +55,9 @@
   box-shadow: 0 8px 30px rgba(27, 42, 56, 0.07);
 }
 
-.card-title { margin-bottom: 24px; font-size: 1.15rem; text-transform: uppercase; }
+.card-title { margin-bottom: 24px; font-size: 1.2rem; }
 .setup-section + .setup-section { padding-top: 24px; border-top: 1px solid var(--color-border); margin-top: 24px; }
-.section-label { margin: 0 0 12px; color: var(--color-primary); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+.section-label { margin: 0 0 12px; color: var(--color-primary); font-size: 0.82rem; font-weight: 600; }
 
 .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
 .field label { color: var(--color-text); font-size: 0.875rem; font-weight: 600; }
@@ -83,6 +84,24 @@
 .mode-btn.active { background: var(--color-primary); color: var(--color-primary-text); box-shadow: var(--shadow-sm); }
 .mode-hint { margin: 8px 0 20px; color: var(--color-text-muted); font-size: 0.875rem; }
 
+.setup-card { padding: 32px 36px; }
+.setup-card .card-title { margin-bottom: 22px; }
+.setup-card .exam-field { padding: 18px; border: 1px solid var(--color-border); border-radius: var(--radius-md); margin-bottom: 22px; background: var(--color-surface-elevated); }
+.setup-card .exam-field label { font-size: 1rem; }
+.setup-card .exam-field select { min-height: 52px; border-color: var(--color-border-hover); background-color: var(--color-surface); font-size: 1rem; }
+.setup-options { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); align-items: start; gap: 4px 28px; }
+.setup-mode .mode-toggle { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.setup-mode .mode-btn { min-width: 0; overflow-wrap: anywhere; }
+.setup-options .setup-section { padding-top: 0; border-top: 0; margin-top: 0; }
+.setup-mode .setup-section { margin-bottom: 0; }
+.setup-mode .mode-hint { max-width: 36ch; margin: 8px 0 0; line-height: 1.5; }
+.setup-options .filter-row { gap: 12px; }
+.setup-options .filter-row .field { min-width: 0; }
+.setup-review-settings { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(180px, 0.7fr); align-items: center; gap: 20px; padding-top: 18px; border-top: 1px solid var(--color-border); margin-top: 8px; }
+.setup-review-settings .checkbox-row { margin: 0; }
+.setup-review-settings .field { margin: 0; }
+.setup-card .setup-footer { padding: 18px 0 0; border-top: 1px solid var(--color-border); border-left: 0; border-radius: 0; margin-top: 20px; background: transparent; }
+
 .checkbox-row { display: flex; min-height: 44px; align-items: center; gap: 10px; margin-bottom: 16px; cursor: pointer; }
 .checkbox-row input[type='checkbox'] { width: 19px; min-height: 19px; height: 19px; accent-color: var(--color-primary); }
 .checkbox-row.disabled { color: var(--color-text-muted); cursor: not-allowed; }
@@ -95,7 +114,7 @@
 .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); }
 .btn-secondary:hover:not(:disabled) { border-color: var(--color-border-hover); background: var(--color-surface-elevated); }
 
-.setup-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px; border-left: 4px solid var(--color-accent); border-radius: var(--radius-md); margin-top: 8px; background: var(--color-surface-elevated); }
+.setup-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px; border-radius: var(--radius-md); margin-top: 8px; background: var(--color-surface-elevated); }
 .setup-footer .match-count { color: var(--color-text-muted); font-size: 0.875rem; }
 
 .progress-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-lg); margin: 0 0 24px; background: var(--color-border); }
@@ -111,9 +130,12 @@
 .badge.primary { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-primary-text); }
 
 .progress-bar { width: 100%; height: 8px; overflow: hidden; border-radius: 2px; margin-bottom: 28px; background: var(--color-border); }
-.progress-bar span { display: block; height: 100%; border-radius: inherit; background: var(--color-accent); transition: width 180ms ease-out; }
+.progress-bar span { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--color-accent); transform-origin: left center; transition: transform 180ms ease-out; }
 .question-meta { margin-bottom: 14px; }
-.question-prompt { max-width: 920px; margin-bottom: 28px; color: var(--color-text); font-size: 1.25rem; font-weight: 600; line-height: 1.55; }
+.question-prompt { max-width: 68ch; margin-bottom: 30px; color: var(--color-text); font-size: 1.45rem; font-weight: 600; line-height: 1.5; }
+.session-card .session-header h2 { font-size: 1.15rem; }
+.session-card .option-list { gap: 12px; }
+.session-card .option-card { min-height: 68px; }
 
 .option-list { display: grid; gap: 10px; padding: 0; margin: 0 0 22px; list-style: none; }
 .option-card { display: grid; width: 100%; min-height: 64px; grid-template-columns: 36px 1fr auto; align-items: center; gap: 16px; padding: 13px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text); cursor: pointer; text-align: left; transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast); }
@@ -129,7 +151,7 @@
 .option-card.correct .option-state { color: var(--color-success); }
 .option-card.incorrect .option-state { color: var(--color-error); }
 
-.answer-reveal { padding: 20px; border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: 20px; background: var(--color-surface-elevated); }
+.answer-reveal { padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius-md); margin-bottom: 20px; background: var(--color-surface-elevated); }
 .answer-reveal h3 { margin-bottom: 16px; }
 .answer-reveal .rationale-label { margin: 16px 0 6px; color: var(--color-text); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; }
 .answer-reveal .rationale-text { max-width: 66ch; color: var(--color-text-muted); line-height: 1.65; }
@@ -157,10 +179,10 @@
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0; border: 0; margin: -1px; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 .challenge-shell { width: min(1160px, calc(100% - 32px)); }
 .experience-switcher { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; border: 1px solid var(--color-border); border-top: 0; border-radius: 0 0 var(--radius-lg) var(--radius-lg); margin-bottom: 24px; background: var(--color-surface); box-shadow: var(--shadow-sm); }
-.experience-switcher button { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; padding: 14px 20px; border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: transparent; color: var(--color-text-muted); cursor: pointer; text-align: left; }
+.experience-switcher button { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; padding: 14px 20px; border: 0; border-radius: 0; background: transparent; color: var(--color-text-muted); cursor: pointer; text-align: left; }
 .experience-switcher button span { color: inherit; font-weight: 700; }
 .experience-switcher button small { overflow: hidden; max-width: 100%; margin-top: 2px; text-overflow: ellipsis; white-space: nowrap; }
-.experience-switcher button.active { border-bottom-color: var(--color-primary); background: var(--color-primary-soft); color: var(--color-primary); box-shadow: none; }
+.experience-switcher button.active { background: var(--color-primary-soft); color: var(--color-primary); box-shadow: none; }
 .challenge-feature-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 30px 0 18px; }
 .challenge-feature-header .section-label { margin-bottom: 5px; }
 .challenge-feature-header .back-link { margin: 0; }
@@ -178,7 +200,7 @@
 .choice-chip { min-width: 44px; padding: 9px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
 .choice-chip.active { border-color: var(--color-primary); background: var(--color-primary-soft); color: var(--color-primary); font-weight: 700; }
 .challenge-wide-action { width: 100%; }
-.prefill-note, .waiting-note { padding: 12px 14px; border-left: 3px solid var(--color-primary); margin: 14px 0; background: var(--color-primary-soft); color: var(--color-text); }
+.prefill-note, .waiting-note { padding: 12px 14px; border-radius: var(--radius-sm); margin: 14px 0; background: var(--color-primary-soft); color: var(--color-text); }
 .challenge-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; align-items: start; gap: 18px; }
 .challenge-main-card { min-width: 0; margin: 0; }
 .challenge-layout aside { display: grid; min-width: 0; gap: 18px; }
@@ -277,11 +299,15 @@
 .request-success .btn-primary { grid-column: 1 / -1; justify-self: end; margin-top: 8px; }
 
 @media (max-width: 640px) {
-  .app-shell { width: min(100% - 20px, 760px); padding: 10px 0 40px; }
+  .app-shell, .app-shell.challenge-shell { width: min(100% - 20px, 760px); padding: 10px 0 40px; }
   .app-header { gap: 14px; padding: 14px; }
   .site-header h1 { font-size: 1.35rem; }
   .site-header p { font-size: 0.9rem; }
   .card { padding: 20px 16px; }
+  .setup-card .exam-field { padding: 14px; }
+  .setup-options { grid-template-columns: 1fr; gap: 20px; }
+  .setup-review-settings { grid-column: auto; grid-template-columns: 1fr; gap: 12px; }
+  .setup-card .setup-footer { align-items: stretch; flex-direction: column; }
   .filter-row, .progress-summary, .results-grid { grid-template-columns: 1fr; }
   .setup-footer, .session-header { align-items: stretch; flex-direction: column; }
   .setup-footer .btn-primary, .session-actions .btn-primary, .results-actions .btn-primary, .results-actions .btn-secondary { width: 100%; }
@@ -294,6 +320,7 @@
   .room-code { font-size: 1.7rem; }
   .challenge-settings-summary { grid-template-columns: repeat(2, 1fr); }
   .lobby-hero { padding: 32px 0 24px; }
+  .question-prompt { font-size: 1.2rem; }
   .presence-label { display: none; }
   .roster-list li { grid-template-columns: 10px minmax(0, 1fr) auto auto; }
   .request-dialog-backdrop { padding: 12px; }
