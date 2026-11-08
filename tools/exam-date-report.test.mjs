@@ -193,7 +193,7 @@ describe('Markdown report', () => {
   it('keeps the committed report reproducible with exactly one row for every local deck', async () => {
     const localDecks = await readReportDecks(repositoryDirectory)
     const localSnapshot = JSON.parse(await readFile(path.join(repositoryDirectory, 'catalog/study-guide-dates.json'), 'utf8'))
-    const report = await readFile(path.join(repositoryDirectory, 'EXAM-DATE-REPORT.md'), 'utf8')
+    const report = prepareFixture(await readFile(path.join(repositoryDirectory, 'EXAM-DATE-REPORT.md'), 'utf8'))
     assert.equal(report, renderExamDateReport(localDecks, localSnapshot))
     assert.equal(report.split('\n').filter((line) => line.startsWith('| [')).length, localDecks.length)
   })
@@ -271,7 +271,7 @@ describe('offline CLI integration', () => {
       }
       for (const name of [
         'deck-files.mjs', 'exam-catalog.mjs', 'exam-date-report.mjs',
-        'refresh-study-guide-dates.mjs', 'generate-exam-date-report.mjs',
+        'refresh-study-guide-dates.mjs', 'generate-exam-date-report.mjs', 'sync-study-guide-public.mjs',
       ]) {
         await cp(path.join(toolsDirectory, name), path.join(directory, 'tools', name))
       }
@@ -290,6 +290,31 @@ describe('offline CLI integration', () => {
       assert.match(run('refresh-study-guide-dates.mjs', refreshArgs), /1 exams/)
       const snapshotPath = path.join(directory, 'catalog/study-guide-dates.json')
       const original = await readFile(snapshotPath, 'utf8')
+      const publicPath = path.join(directory, 'web/public/data/study-guide-dates.json')
+      assert.throws(() => run('sync-study-guide-public.mjs', ['--check']), /ENOENT/)
+      assert.match(run('sync-study-guide-public.mjs'), /Synchronized/)
+      assert.equal(await readFile(publicPath, 'utf8'), original)
+      assert.match(run('sync-study-guide-public.mjs', ['--check']), /current/)
+      await writeFile(publicPath, 'stale')
+      assert.throws(() => run('sync-study-guide-public.mjs', ['--check']), /differs/)
+      assert.equal(await readFile(publicPath, 'utf8'), 'stale')
+      run('sync-study-guide-public.mjs')
+      const malformed = JSON.parse(original)
+      malformed.exams[0].pageUpdatedOn = '2026-02-30'
+      await writeFile(snapshotPath, JSON.stringify(malformed))
+      assert.throws(() => run('sync-study-guide-public.mjs'), /Invalid guide update date/)
+      assert.throws(() => run('sync-study-guide-public.mjs', ['--check']), /Invalid guide update date/)
+      assert.equal(await readFile(publicPath, 'utf8'), original)
+      malformed.exams[0].pageUpdatedOn = '2026-10-30'
+      malformed.exams[0].guideUrl = 'https://example.com'
+      await writeFile(snapshotPath, JSON.stringify(malformed))
+      assert.throws(() => run('sync-study-guide-public.mjs'), /snapshot codes/)
+      malformed.exams[0].guideUrl = studyGuideUrl('AZ-104')
+      malformed.exams.push(malformed.exams[0])
+      await writeFile(snapshotPath, JSON.stringify(malformed))
+      assert.throws(() => run('sync-study-guide-public.mjs'), /unique and sorted/)
+      await writeFile(snapshotPath, original)
+      assert.throws(() => run('sync-study-guide-public.mjs', ['--unknown']), /Usage:/)
       run('refresh-study-guide-dates.mjs', refreshArgs)
       assert.equal(await readFile(snapshotPath, 'utf8'), original)
       assert.match(run('generate-exam-date-report.mjs'), /1 exams/)
@@ -307,5 +332,22 @@ describe('offline CLI integration', () => {
     } finally {
       await rm(directory, { recursive: true, force: true })
     }
+  })
+
+  it('wires the public snapshot into refresh, scope checks, and both build paths', async () => {
+    const refresh = await readFile(path.join(repositoryDirectory, '.github/workflows/refresh-exam-date-report.yml'), 'utf8')
+    const api = await readFile(path.join(repositoryDirectory, '.github/workflows/api-infrastructure.yml'), 'utf8')
+    const site = await readFile(path.join(repositoryDirectory, '.github/workflows/deploy-site.yml'), 'utf8')
+    const sync = refresh.indexOf('name: Synchronize public study-guide snapshot')
+    const check = refresh.indexOf('run: node tools/sync-study-guide-public.mjs --check')
+    const scope = refresh.indexOf('name: Verify complete change scope')
+    const stage = refresh.indexOf('git add -- catalog/study-guide-dates.json EXAM-DATE-REPORT.md web/public/data/study-guide-dates.json')
+    assert.ok(sync > refresh.indexOf('run: node tools/refresh-study-guide-dates.mjs'))
+    assert.ok(check > sync && scope > check && stage > scope)
+    assert.match(refresh, /catalog\/study-guide-dates\.json\|EXAM-DATE-REPORT\.md\|web\/public\/data\/study-guide-dates\.json/)
+    assert.match(refresh, /git diff --quiet HEAD -- catalog\/study-guide-dates\.json EXAM-DATE-REPORT\.md web\/public\/data\/study-guide-dates\.json/)
+    assert.match(api, /run: node --test tools\/exam-date-report\.test\.mjs/)
+    assert.match(api, /run: node tools\/sync-study-guide-public\.mjs --check/)
+    assert.match(site, /working-directory: \$\{\{ github\.workspace \}\}\s+run: node tools\/sync-study-guide-public\.mjs --check/)
   })
 })

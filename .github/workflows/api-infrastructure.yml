@@ -33,6 +33,12 @@ jobs:
       - name: Test exam catalog parser offline
         run: node --test tools/exam-catalog.test.mjs
 
+      - name: Test exam date report offline
+        run: node --test tools/exam-date-report.test.mjs
+
+      - name: Check public study-guide snapshot
+        run: node tools/sync-study-guide-public.mjs --check
+
       - name: Install API dependencies
         working-directory: api
         run: npm ci

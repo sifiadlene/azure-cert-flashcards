@@ -77,6 +77,12 @@
 .field select:hover { border-color: var(--color-border-hover); }
 .field select:focus-visible { border-color: var(--color-focus); }
 
+.exam-dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px 20px; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-md); margin: 4px 0; background: var(--color-surface-elevated); }
+.exam-dates > div { min-width: 0; }
+.exam-dates dt { margin-bottom: 4px; color: var(--color-text-muted); font-size: 0.75rem; font-weight: 600; }
+.exam-dates dd { margin: 0; color: var(--color-text); font-size: 0.875rem; overflow-wrap: anywhere; }
+.exam-dates a { color: var(--color-primary); }
+
 .mode-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-elevated); }
 .mode-btn { border: 0; border-radius: var(--radius-md); padding: 10px 16px; background: transparent; color: var(--color-text-muted); cursor: pointer; font-weight: 600; transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast); }
 .mode-btn:hover:not(.active) { color: var(--color-text); }

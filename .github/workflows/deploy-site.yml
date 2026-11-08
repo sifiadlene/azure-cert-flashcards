@@ -58,6 +58,10 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
+      - name: Check public study-guide snapshot
+        working-directory: ${{ github.workspace }}
+        run: node tools/sync-study-guide-public.mjs --check
+
       - name: Install dependencies
         run: npm ci
 
