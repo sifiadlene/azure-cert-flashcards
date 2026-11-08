@@ -151,8 +151,35 @@ node tools/refresh-study-guide-dates.mjs \
 15-exam refresh input. Normal report generation and `--check` use only local
 files and never fetch pages. They do not update retrieval time. Review and
 commit the snapshot and report together after refresh. Link and date changes
-should be reviewed; there is no scheduled refresh or network dependency in
-normal application builds.
+should be reviewed; normal application builds have no network dependency.
+
+### Scheduled report refresh
+
+[Exam date report refresh](../.github/workflows/refresh-exam-date-report.yml)
+ports the local automation to GitHub Actions. It runs every Monday at 09:00 UTC
+and supports manual runs from Actions. This matches the local automation's
+Monday 09:00 schedule on the UTC host; Actions cron schedules use UTC.
+The workflow must be merged into the default branch before scheduled runs
+can start. Scheduled runs may be delayed, and GitHub disables schedules in
+public repositories after 60 days without repository activity.
+
+The workflow checks out the current default branch, uses Node.js 22, and runs
+the refresh, generation, tests, and drift check in that order without installing
+project dependencies. It rejects changes outside
+`catalog/study-guide-dates.json` and `EXAM-DATE-REPORT.md`. Unchanged output
+creates no branch or PR; failed refreshes or validation publish nothing.
+Successful changes are committed to a unique branch per run/attempt and opened
+as a new PR against the default branch. Publication failures inspect remote
+state without retrying. It never modifies existing PRs, force-pushes, enables
+auto-merge, or merges.
+
+No personal token or Copilot subscription is required. The job uses
+`GITHUB_TOKEN` with contents and pull-request write permissions. Under
+**Settings > Actions > General > Workflow permissions**, allow GitHub Actions
+to create pull requests; organization policy may restrict this setting.
+The existing local automation is not disabled by this workflow. Disable one
+of the two schedules when activating this replacement to avoid duplicate
+refresh PRs. Disable the Actions workflow from Actions to pause it.
 
 ## Translation tools
 
