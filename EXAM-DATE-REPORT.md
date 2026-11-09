@@ -1,6 +1,6 @@
 # Exam date report
 
-Official English study guides checked at **2026-11-06T03:37:24.980Z**. Covers **15 exams** with local flashcard decks.
+Official English study guides checked at **2026-11-09T19:36:54.034Z**. Covers **15 exams** with local flashcard decks.
 
 | Exam / official study guide | Latest generation date / source CSV | Guide last updated | Published objective-effective date(s) | Notes |
 | --- | --- | --- | --- | --- |
