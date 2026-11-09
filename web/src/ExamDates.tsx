@@ -14,7 +14,7 @@ type ReviewState =
   | { status: 'ready'; reviews: Map<string, StudyGuideReview> }
   | { status: 'error' }
 
-export function ExamDates({ exam }: { exam: ExamSummary }) {
+export function ExamDates({ exam, deckVersion }: { exam: ExamSummary; deckVersion?: string }) {
   const { t, i18n } = useTranslation()
   const [guideState, setGuideState] = useState<GuideState>({ status: 'loading' })
   const [reviewState, setReviewState] = useState<ReviewState>({ status: 'loading' })
@@ -46,8 +46,8 @@ export function ExamDates({ exam }: { exam: ExamSummary }) {
   }, [])
 
   const guide = guideState.status === 'ready' ? guideState.dates.get(exam.code) : undefined
-  const currentReview = reviewState.status === 'ready'
-      ? getCurrentStudyGuideReview(reviewState.reviews, exam.code, guide, exam.deckVersion)
+  const currentReview = reviewState.status === 'ready' && deckVersion
+      ? getCurrentStudyGuideReview(reviewState.reviews, exam.code, guide, deckVersion)
       : undefined
 
   return (
@@ -85,7 +85,7 @@ export function ExamDates({ exam }: { exam: ExamSummary }) {
           </dd>
         </div>
       )}
-      {reviewState.status === 'error' && (
+      {reviewState.status === 'error' && deckVersion && (
         <div>
           <dt>{t('setup.deckReviewStatus')}</dt>
           <dd role="status">{t('setup.reviewStatusError')}</dd>

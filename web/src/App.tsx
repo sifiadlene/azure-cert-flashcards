@@ -806,7 +806,7 @@ function App() {
                 </option>
               ))}
             </select>
-            {selectedExam && <ExamDates exam={selectedExam} />}
+            {selectedExam && <ExamDates exam={selectedExam} deckVersion={selectedDeck?.exam.deckVersion} />}
             <RequestExamTrigger onOpen={openRequestDialog} />
           </div>}
 

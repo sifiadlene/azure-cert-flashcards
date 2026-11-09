@@ -80,14 +80,14 @@ test('shows current AI-103 review status in solo and challenge setup in English 
   await expect(dates.getByText('Guide revision: Oct 31, 2026. Deck version: Aug 29, 2026.')).toBeVisible()
 
   await page.getByRole('button', { name: 'Switch to French' }).click()
-  await expect(dates.getByText('Examen terminé ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(dates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
   await expect(dates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
   await expect(dates.getByText(/Révision du guide : 31.*oct.*2026\. Version du jeu : 29.*août.*2026\./)).toBeVisible()
 
   await page.getByRole('button', { name: /Défi en direct/ }).click()
   await page.getByLabel('Examen').selectOption('ai103')
   const challengeDates = page.locator('.exam-dates')
-  await expect(challengeDates.getByText('Examen terminé ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(challengeDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
   await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
 })
 
@@ -125,11 +125,32 @@ test('does not show current review status when the study-guide revision has chan
   await expect(dates.getByText('Review complete; coverage gaps remain')).toHaveCount(0)
 })
 
+test('matches review status against the loaded deck version', async ({ page }) => {
+  await page.route('**/data/decks/ai103.json', async (route) => {
+    const response = await route.fetch()
+    const deck = await response.json() as { exam: { deckVersion: string } }
+    await route.fulfill({
+      response,
+      json: {
+        ...deck,
+        exam: { ...deck.exam, deckVersion: '2026-11-09' },
+      },
+    })
+  })
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('ai103')
+  await expect(page.getByRole('button', { name: 'Start Session' })).toBeEnabled()
+  await expect(page.locator('.exam-dates').getByText('Review complete; coverage gaps remain')).toHaveCount(0)
+})
+
 test('reports review metadata errors without blocking solo practice', async ({ page }) => {
   await page.route('**/data/study-guide-reviews.json', (route) => route.fulfill({ status: 503, body: 'Unavailable' }))
   await page.goto('/')
   await page.getByLabel('Exam').selectOption('ai103')
   await expect(page.locator('.exam-dates').getByText('Unable to load the review status.', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Switch to French' }).click()
+  await expect(page.locator('.exam-dates').getByText('Impossible de charger l’état de la revue du jeu de cartes.', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Passer en anglais' }).click()
   await page.getByRole('button', { name: 'Start Session' }).click()
   await expect(page.getByRole('heading', { name: /Question 1 of/ })).toBeVisible()
 })
