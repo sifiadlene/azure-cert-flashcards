@@ -62,7 +62,7 @@ export function ChallengeStartView(props: StartProps) {
             <option value="">{t('setup.examPlaceholder')}</option>
             {manifest.exams.map((exam) => <option key={exam.slug} value={exam.slug}>{exam.code} — {exam.title}</option>)}
           </select>
-          {selectedExam && <ExamDates exam={selectedExam} deckVersion={deck?.exam.deckVersion} />}
+          {selectedExam && <ExamDates exam={selectedExam} deckVersion={deck && deck.exam.slug === selectedExam.slug ? deck.exam.deckVersion : undefined} />}
         </div>
         {deck && <>
           <div className="field">
