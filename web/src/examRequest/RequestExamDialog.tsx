@@ -46,6 +46,7 @@ export function RequestExamDialog({ onClose, language, theme }: RequestExamDialo
   const dialogRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const successHeadingRef = useRef<HTMLHeadingElement>(null)
+  const submissionErrorRef = useRef<HTMLDivElement>(null)
   const submissionRef = useRef<ExamRequestDraft | null>(null)
   const apiRef = useRef(new ExamRequestApiClient())
   const [catalogState, setCatalogState] = useState<CatalogState>({ kind: 'loading' })
@@ -61,7 +62,7 @@ export function RequestExamDialog({ onClose, language, theme }: RequestExamDialo
     try {
       const loaded = await loadExamCatalog()
       setCatalogState({ kind: 'ready', exams: loaded.requestableExams })
-      return loaded.requestableExams
+      return loaded
     } catch {
       setCatalogState({ kind: 'error' })
       return null
@@ -95,6 +96,13 @@ export function RequestExamDialog({ onClose, language, theme }: RequestExamDialo
   useEffect(() => {
     if (submission.kind === 'success') successHeadingRef.current?.focus()
   }, [submission.kind])
+
+  useEffect(() => {
+    if (submission.kind === 'error' && !selectedCode
+      && (submission.error.kind === 'validation' || submission.error.kind === 'supported')) {
+      submissionErrorRef.current?.focus()
+    }
+  }, [selectedCode, submission])
 
   const handleVerified = useCallback((token: string) => {
     setTurnstileToken(token)
@@ -168,15 +176,16 @@ export function RequestExamDialog({ onClose, language, theme }: RequestExamDialo
     submissionRef.current = draft
     setSubmission({ kind: 'pending' })
 
-    const refreshedExams = await loadCatalog(false)
-    if (!refreshedExams) {
+    const refreshed = await loadCatalog(false)
+    if (!refreshed) {
       setSubmission({ kind: 'error', error: fallbackError() })
       return
     }
-    const refreshedExam = refreshedExams.find((exam) => exam.code === selectedCode)
+    const refreshedExam = refreshed.requestableExams.find((exam) => exam.code === selectedCode)
     if (!refreshedExam) {
+      const kind = refreshed.supported.codes.includes(selectedCode) ? 'supported' : 'validation'
       setSelectedCode('')
-      setSubmission({ kind: 'error', error: new ExamRequestApiError('supported', false, 409) })
+      setSubmission({ kind: 'error', error: new ExamRequestApiError(kind, false, kind === 'supported' ? 409 : 400) })
       return
     }
 
@@ -309,7 +318,7 @@ export function RequestExamDialog({ onClose, language, theme }: RequestExamDialo
               />
             </section>
             {turnstileError && <div className="alert error" role="alert">{t('examRequest.errors.turnstileUnavailable')}</div>}
-            {submissionError && <div className="alert error" role="alert">
+            {submissionError && <div ref={submissionErrorRef} className="alert error" role="alert" tabIndex={-1}>
               {t(errorTranslationKey(submissionError.kind), { seconds: submissionError.retryAfterSeconds ?? 60 })}
             </div>}
             {isPending && <div className="sr-only" role="status">{t('examRequest.submitting')}</div>}

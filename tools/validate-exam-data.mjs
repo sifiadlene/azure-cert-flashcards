@@ -2,7 +2,6 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
-  CURRENT_CATALOG_SIZE,
   buildSupportedExamCodes,
   computeRequestableExams,
   readJson,
@@ -34,7 +33,7 @@ async function main() {
     readJson(supportedPath),
     readJson(manifestPath),
   ])
-  validateCatalog(catalog, CURRENT_CATALOG_SIZE)
+  validateCatalog(catalog)
 
   const expectedSupported = buildSupportedExamCodes(manifest)
   if (serializeJson(supported) !== serializeJson(expectedSupported)) {

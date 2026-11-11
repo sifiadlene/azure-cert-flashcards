@@ -1,7 +1,7 @@
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 
 export const SOURCE_PAGE_URL = 'https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications'
-export const CURRENT_CATALOG_SIZE = 49
 
 const CODE_PATTERN = /^([A-Z]{2})\s*-\s*(\d{3})$/
 const APPROVED_HOSTS = new Set(['learn.microsoft.com', 'aiskillsnavigator.microsoft.com'])
@@ -35,7 +35,7 @@ export function validateSourceUrl(value) {
     throw new Error(`Malformed practice assessment URL: ${value}`)
   }
 
-  if (url.protocol !== 'https:' || !APPROVED_HOSTS.has(url.hostname)) {
+  if (url.protocol !== 'https:' || !APPROVED_HOSTS.has(url.hostname) || url.username || url.password || url.port) {
     throw new Error(`Unapproved practice assessment URL: ${url.href}`)
   }
 
@@ -46,7 +46,7 @@ export function validateSourceUrl(value) {
     if (url.searchParams.get('assessment-type') !== 'practice') {
       throw new Error(`Microsoft Learn URL is not a practice assessment: ${url.href}`)
     }
-  } else if (!/^\/credentials\/cert-[a-f0-9]+$/.test(url.pathname) || url.search) {
+  } else if (!/^\/(?:en-us\/)?credentials\/cert-[a-f0-9]+$/.test(url.pathname) || url.search) {
     throw new Error(`Unapproved AI Skills Navigator credential URL: ${url.href}`)
   }
 
@@ -83,15 +83,24 @@ export function parseAvailabilityCatalog(html, retrievedAt) {
 
   const table = extractAvailabilityTable(html)
   const rows = [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)]
+  if (rows.length !== [...table.matchAll(/<tr\b[^>]*>/gi)].length
+    || rows.length !== [...table.matchAll(/<\/tr\s*>/gi)].length) {
+    throw new Error('Malformed Availability table rows')
+  }
   const exams = []
   const seenCodes = new Set()
 
   for (const row of rows) {
     const cells = [...row[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)]
-    if (cells.length === 0) {
+    if (cells.length === 0 && /<th\b/i.test(row[1]) && !/<td\b/i.test(row[1])) {
+      if ([...row[1].matchAll(/<th\b[^>]*>/gi)].length !== [...row[1].matchAll(/<\/th\s*>/gi)].length) {
+        throw new Error('Malformed Availability table header')
+      }
       continue
     }
-    if (cells.length !== 2) {
+    if (cells.length !== 2
+      || cells.length !== [...row[1].matchAll(/<td\b[^>]*>/gi)].length
+      || cells.length !== [...row[1].matchAll(/<\/td\s*>/gi)].length) {
       throw new Error(`Expected two cells in Availability row, found ${cells.length}`)
     }
 
@@ -128,12 +137,12 @@ export function parseAvailabilityCatalog(html, retrievedAt) {
   return exams.sort((left, right) => left.code.localeCompare(right.code))
 }
 
-export function validateCatalog(catalog, minimumSize = CURRENT_CATALOG_SIZE) {
+export function validateCatalog(catalog) {
   if (catalog?.schemaVersion !== 1 || !Array.isArray(catalog.exams)) {
     throw new Error('Exam catalog must use schemaVersion 1 and contain an exams array')
   }
-  if (catalog.exams.length < minimumSize) {
-    throw new Error(`Catalog unexpectedly shrank to ${catalog.exams.length} entries; minimum is ${minimumSize}`)
+  if (catalog.exams.length === 0) {
+    throw new Error('Exam catalog must contain at least one entry')
   }
 
   const codes = new Set()
@@ -166,6 +175,88 @@ export function validateCatalog(catalog, minimumSize = CURRENT_CATALOG_SIZE) {
 
 export function serializeJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`
+}
+
+function reviewEntry(exam) {
+  return {
+    code: normalizeExamCode(exam.code),
+    title: exam.title.trim(),
+    sourceUrl: validateSourceUrl(exam.sourceUrl),
+    sourcePageUrl: exam.sourcePageUrl,
+  }
+}
+
+function sameEntry(left, right) {
+  return JSON.stringify(reviewEntry(left)) === JSON.stringify(reviewEntry(right))
+}
+
+export function buildCatalogCandidate(existingCatalog, parsedCatalog) {
+  validateCatalog(existingCatalog)
+  validateCatalog(parsedCatalog)
+  const existingByCode = new Map(existingCatalog.exams.map((exam) => [exam.code, exam]))
+
+  return {
+    schemaVersion: 1,
+    exams: parsedCatalog.exams.map((exam) => {
+      const existing = existingByCode.get(exam.code)
+      return existing && sameEntry(existing, exam) ? existing : exam
+    }),
+  }
+}
+
+export function semanticCatalogSha256(catalog) {
+  validateCatalog(catalog)
+  const semanticCatalog = { schemaVersion: 1, exams: catalog.exams.map(reviewEntry) }
+  return createHash('sha256').update(serializeJson(semanticCatalog)).digest('hex')
+}
+
+export function describeCatalogChanges(existingCatalog, candidate) {
+  validateCatalog(existingCatalog)
+  validateCatalog(candidate)
+  const existingByCode = new Map(existingCatalog.exams.map((exam) => [exam.code, exam]))
+  const candidateByCode = new Map(candidate.exams.map((exam) => [exam.code, exam]))
+  const added = []
+  const removed = []
+  const changed = []
+  for (const exam of candidate.exams) {
+    const previous = existingByCode.get(exam.code)
+    if (!previous) {
+      added.push(reviewEntry(exam))
+    } else if (!sameEntry(previous, exam)) {
+      changed.push({ code: exam.code, before: reviewEntry(previous), after: reviewEntry(exam) })
+    }
+  }
+  for (const exam of existingCatalog.exams) {
+    if (!candidateByCode.has(exam.code)) removed.push(reviewEntry(exam))
+  }
+
+  return { added, removed, changed }
+}
+
+export function createReviewReport(existingCatalog, candidate, checkedAt, baseSha, candidateBytes) {
+  const changes = describeCatalogChanges(existingCatalog, candidate)
+  const timestamp = new Date(checkedAt)
+  if (Number.isNaN(timestamp.valueOf()) || timestamp.toISOString() !== checkedAt) {
+    throw new Error('checkedAt must be an ISO-8601 UTC timestamp')
+  }
+  if (typeof baseSha !== 'string' || !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(baseSha)) {
+    throw new Error('baseSha must be a full lowercase Git SHA')
+  }
+  if (typeof candidateBytes !== 'string' && !Buffer.isBuffer(candidateBytes)) {
+    throw new Error('Candidate bytes are required for the review report')
+  }
+  if (JSON.stringify(JSON.parse(candidateBytes.toString())) !== JSON.stringify(candidate)) {
+    throw new Error('Candidate bytes do not match the catalog being reviewed')
+  }
+
+  return {
+    schemaVersion: 1,
+    checkedAt,
+    baseSha,
+    candidateSha256: createHash('sha256').update(candidateBytes).digest('hex'),
+    semanticSha256: semanticCatalogSha256(candidate),
+    ...changes,
+  }
 }
 
 export async function readJson(filePath) {
