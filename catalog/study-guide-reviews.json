@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "code": "AI-103",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
+      "guideUpdatedOn": "2026-10-31",
+      "deckVersion": "2026-08-29",
+      "reviewedOn": "2026-11-08",
+      "status": "gaps"
+    }
+  ]
+}

@@ -82,6 +82,7 @@
 .exam-dates > div { min-width: 0; }
 .exam-dates dt { margin-bottom: 4px; color: var(--color-text-muted); font-size: 0.75rem; font-weight: 600; }
 .exam-dates dd { margin: 0; color: var(--color-text); font-size: 0.875rem; overflow-wrap: anywhere; }
+.exam-dates dd small { display: block; margin-top: 3px; color: var(--color-text-muted); font-size: 0.75rem; }
 .exam-dates a { color: var(--color-primary); }
 
 .mode-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-elevated); }

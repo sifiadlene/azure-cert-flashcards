@@ -136,6 +136,11 @@
     "guideUpdated": "Page du guide d’étude mise à jour le",
     "guideLoading": "Chargement de la date du guide d’étude...",
     "guideError": "Impossible de charger la date du guide d’étude.",
+    "deckAlignmentVerified": "Alignement du jeu de cartes vérifié",
+    "deckReviewGaps": "Revue du jeu de cartes terminée ; des lacunes de couverture subsistent",
+    "deckReviewStatus": "Revue du jeu de cartes",
+    "reviewStatusError": "Impossible de charger l’état de la revue du jeu de cartes.",
+    "deckAlignmentBasis": "Révision du guide : {{guideDate}}. Version du jeu : {{deckDate}}.",
     "dateUnavailable": "Non disponible",
     "viewStudyGuide": "Voir le guide d’étude",
     "progress": {

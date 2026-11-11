@@ -136,6 +136,11 @@
     "guideUpdated": "Study guide page last updated",
     "guideLoading": "Loading study-guide date...",
     "guideError": "Unable to load the study-guide date.",
+    "deckAlignmentVerified": "Deck alignment verified",
+    "deckReviewGaps": "Review complete; coverage gaps remain",
+    "deckReviewStatus": "Deck review",
+    "reviewStatusError": "Unable to load the review status.",
+    "deckAlignmentBasis": "Guide revision: {{guideDate}}. Deck version: {{deckDate}}.",
     "dateUnavailable": "Not available",
     "viewStudyGuide": "View study guide",
     "progress": {

@@ -82,7 +82,10 @@ its script, frame, or network requests makes exam submission unavailable.
 - after an exam is selected, solo and challenge setup show the deck generation date from the selected CSV filename and the last-updated date of its Microsoft Learn study-guide page
 - the guide date is not an exam-objective change date and does not establish that the flashcards are aligned or outdated; missing or failed guide data does not prevent practice
 - the checked-in [study-guide snapshot](../catalog/study-guide-dates.json) is copied to [public/data/study-guide-dates.json](public/data/study-guide-dates.json) with `node tools/sync-study-guide-public.mjs` from the repository root; `--check` verifies the copy without changing it
-- the weekly refresh opens a pull request containing both snapshots; updated dates reach the live site only after that pull request is merged and deployment succeeds
+- review status appears only when a record in [study-guide-reviews.json](../catalog/study-guide-reviews.json) matches both the current guide-page revision and deck version; add a record only after documenting a complete objective-to-card review, and update its public copy alongside the canonical file
+- the displayed alignment date is the actual review date, not the guide update date; a changed guide revision or deck version hides the old alignment status
+- a review with unresolved coverage gaps is labelled as such and is not presented as aligned; a changed guide revision or deck version hides the old review status
+- the guide-date sync check also verifies that the review catalog and public copy match; the weekly refresh opens a pull request for guide-date snapshots, and updates reach the live site only after merge and successful deployment
 
 ## Notes
 
