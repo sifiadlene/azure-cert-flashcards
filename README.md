@@ -1,7 +1,7 @@
 ---
 title: Azure and GitHub Certification Flashcards
 description: Anki-compatible and browser-based practice decks for Azure and GitHub certification exams
-ms.date: 2026-08-29
+ms.date: 2026-11-11
 ---
 
 ## Overview
@@ -33,7 +33,7 @@ effective dates.
 - Timed quiz mode with end-of-session scoring
 - Domain and topic filtering
 - Missed-question review stored locally in the browser
-- Requests for Microsoft Learn exams that do not yet have a deck
+- Requests for Microsoft Learn practice-assessment exams that do not yet have a deck
 - Anki-compatible CSV source files for offline study
 
 ## Project Structure
@@ -49,26 +49,25 @@ effective dates.
 
 ## Exam Catalog and Requests
 
-The checked-in Microsoft Learn snapshot contains 49 catalog entries. The
-generated supported-code artifact contains 14 local decks, including two codes
-that are not in the current Learn table. The catalog-minus-supported result is
-therefore 37 requestable exams.
+The request list is the checked-in Microsoft Learn practice-assessment catalog
+minus exams with supported decks. It does not cover every Microsoft exam.
+Neither the browser nor the API scrapes Microsoft Learn at runtime.
 
-Refresh and validate the catalog from the repository root:
+After the catalog workflow is published and configured, it checks the source
+weekly and proposes changes only after the maintainer approves that candidate.
+Check the source and validate the current copies locally from the repository
+root:
 
 ```bash
-node tools/refresh-exam-catalog.mjs
-node --test tools/exam-catalog.test.mjs
-cd web
-npm run build:data
-cd ..
+node tools/refresh-exam-catalog.mjs --check
+node --test tools/exam-catalog.test.mjs tools/exam-catalog-workflow.test.mjs
+node api/scripts/copyDecks.mjs
 node tools/validate-exam-data.mjs
 ```
 
-The refresh is deliberate and versioned. Neither the browser nor the API
-scrapes Microsoft Learn at runtime. Review and commit the canonical catalog and
-its generated web and API copies together. See [tools/README.md](tools/README.md)
-for deterministic offline refresh instructions.
+The check never overwrites an accepted snapshot. See the
+[catalog operations guide](tools/README.md#microsoft-learn-exam-catalog) for
+approval, monitoring, recovery, offline checks, and deployment verification.
 
 ## Running the Website Locally
 

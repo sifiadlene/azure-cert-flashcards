@@ -3,6 +3,29 @@ import { expect, test, type Locator, type Page } from '@playwright/test'
 const officialAlwaysPassSiteKey = '1x00000000000000000000AA'
 const officialAlwaysBlockSiteKey = '2x00000000000000000000AB'
 const issueUrl = 'https://github.com/sifiadlene/azure-cert-flashcards/issues/73'
+const sourcePageUrl = 'https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications'
+const fixtureExam = (code: string, title: string) => ({
+  code,
+  title,
+  sourceUrl: `https://learn.microsoft.com/en-us/credentials/certifications/exams/${code.toLowerCase()}/practice/assessment?assessment-type=practice`,
+  sourcePageUrl,
+  retrievedAt: '2026-08-29T00:00:00.000Z',
+})
+const catalogFixture = {
+  schemaVersion: 1,
+  exams: [
+    fixtureExam('AB-730', 'AI Business Professional'),
+    fixtureExam('AI-102', 'Supported AI exam'),
+    fixtureExam('AZ-204', 'Supported Azure exam'),
+    fixtureExam('DP-100', 'Data science exam'),
+  ],
+}
+const supportedFixture = { schemaVersion: 1, codes: ['AI-102', 'AZ-204'] }
+
+test.beforeEach(async ({ page }) => {
+  await page.route('**/data/microsoft-learn-practice-assessments.json', (route) => route.fulfill({ json: catalogFixture }))
+  await page.route('**/data/supported-exam-codes.json', (route) => route.fulfill({ json: supportedFixture }))
+})
 
 async function stubTurnstile(page: Page) {
   await page.route('https://challenges.cloudflare.com/**', async (route) => {
@@ -48,6 +71,22 @@ async function expectAccessibleTarget(link: Locator) {
   const box = await link.boundingBox()
   expect(box?.height).toBeGreaterThanOrEqual(44)
   expect(box?.width).toBeGreaterThanOrEqual(44)
+}
+
+async function expectReadableAlert(alert: Locator) {
+  const contrast = await alert.evaluate((element) => {
+    const style = window.getComputedStyle(element)
+    const luminance = (color: string) => {
+      const channels = color.match(/\d+/g)?.slice(0, 3).map((value) => Number(value) / 255)
+      if (!channels || channels.length !== 3) throw new Error(`Unexpected alert color: ${color}`)
+      const linear = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4)
+      return linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722
+    }
+    const foreground = luminance(style.color)
+    const background = luminance(style.backgroundColor)
+    return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05)
+  })
+  expect(contrast).toBeGreaterThanOrEqual(4.5)
 }
 
 async function selectExamAndSubmit(page: Page, code = 'AB-730') {
@@ -252,6 +291,78 @@ test('clears a selection as soon as filtering makes it invisible', async ({ page
 
   await expect(dialog.getByRole('radio', { name: /AB-730/ })).toHaveCount(0)
   await expect(dialog.getByRole('button', { name: 'Submit request' })).toBeDisabled()
+})
+
+test('reports a removed selection in French without submitting at narrow width', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await stubTurnstile(page)
+  let catalogReads = 0
+  await page.route('**/data/microsoft-learn-practice-assessments.json', (route) => {
+    catalogReads += 1
+    return route.fulfill({ json: {
+      ...catalogFixture,
+      exams: catalogReads === 1 ? catalogFixture.exams : catalogFixture.exams.filter(({ code }) => code !== 'AB-730'),
+    } })
+  })
+  let submissions = 0
+  await page.route('**/api/exam-requests', (route) => {
+    submissions += 1
+    return route.abort()
+  })
+
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Switch to dark mode' }).click()
+  await page.getByRole('button', { name: 'Switch to French' }).click()
+  await page.getByRole('button', { name: 'Examen introuvable ? Demandez-le' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Demander un examen' })
+  const search = dialog.getByLabel('Rechercher parmi les examens disponibles')
+  await expect(search).toBeFocused()
+  await search.press('Tab')
+  const exam = dialog.getByRole('radio', { name: /AB-730/ })
+  await expect(exam).toBeFocused()
+  await page.keyboard.press('Space')
+  const submit = dialog.getByRole('button', { name: 'Envoyer la demande' })
+  await expect(submit).toBeEnabled()
+  await submit.focus()
+  await page.keyboard.press('Enter')
+
+  const alert = dialog.getByRole('alert')
+  await expect(alert).toHaveText('La demande n’est plus valide. Actualisez la liste des examens et réessayez.')
+  await expect(submit).toBeDisabled()
+  await expect(alert).toBeFocused()
+  await expect(alert).toBeInViewport()
+  await expectReadableAlert(alert)
+  expect(await alert.evaluate((element) => Number.parseFloat(window.getComputedStyle(element).outlineWidth))).toBeGreaterThan(0)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false)
+  expect(submissions).toBe(0)
+})
+
+test('reports a newly supported selection without submitting', async ({ page }) => {
+  await stubTurnstile(page)
+  let supportedReads = 0
+  await page.route('**/data/supported-exam-codes.json', (route) => {
+    supportedReads += 1
+    return route.fulfill({ json: {
+      ...supportedFixture,
+      codes: supportedReads === 1 ? supportedFixture.codes : [...supportedFixture.codes, 'AB-730'],
+    } })
+  })
+  let submissions = 0
+  await page.route('**/api/exam-requests', (route) => {
+    submissions += 1
+    return route.abort()
+  })
+
+  const dialog = await openReadyDialog(page)
+  await selectExamAndSubmit(page)
+  const alert = dialog.getByRole('alert')
+  await expect(alert).toHaveText('This exam now has a flashcard deck and can no longer be requested.')
+  await expect(dialog.getByRole('button', { name: 'Submit request' })).toBeDisabled()
+  await expect(alert).toBeFocused()
+  await expect(alert).toBeInViewport()
+  await expectReadableAlert(alert)
+  expect(submissions).toBe(0)
 })
 
 test('makes the background inert and prevents edits or dismissal while submission is pending', async ({ page }) => {

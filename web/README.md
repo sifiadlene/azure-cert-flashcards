@@ -1,7 +1,7 @@
 ---
 title: Certification Practice Website
 description: Local setup, security policy, and deployment configuration for the React practice application
-ms.date: 2026-08-29
+ms.date: 2026-11-11
 ms.topic: how-to
 ---
 
@@ -77,7 +77,7 @@ its script, frame, or network requests makes exam submission unavailable.
 
 - [scripts/buildFlashcardData.mjs](scripts/buildFlashcardData.mjs) reads the CSV decks from [../flashcards](../flashcards)
 - the script selects the latest file for each exam and writes normalized JSON into [public/data](public/data)
-- the script copies the 49-entry catalog and 14-code supported set; the UI computes the 37 requestable exams
+- the script copies the catalog and supported-code set; the UI computes requestable exams as the catalog minus supported decks
 - the React app loads that manifest and renders exam selection, practice mode, timed quizzes, and missed-question review
 - after an exam is selected, solo and challenge setup show the deck generation date from the selected CSV filename and the last-updated date of its Microsoft Learn study-guide page
 - the guide date is not an exam-objective change date and does not establish that the flashcards are aligned or outdated; missing or failed guide data does not prevent practice

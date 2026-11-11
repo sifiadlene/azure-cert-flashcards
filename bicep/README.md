@@ -1,7 +1,7 @@
 ---
 title: Challenge API Azure deployment
 description: Configuration, security, deployment, and recovery requirements for the challenge and exam-request Azure resources.
-ms.date: 2026-09-18
+ms.date: 2026-11-11
 ms.topic: how-to
 ---
 
@@ -135,8 +135,9 @@ Bicep configures these exam-request settings:
 and is rejected outside development or test mode. The deployed Function uses
 managed identity for Cosmos DB.
 
-The package includes the 49-entry canonical catalog and the generated
-supported-code artifact. The current overlap produces 37 requestable exams.
+The package includes the canonical practice-assessment catalog and the
+generated supported-code artifact. Requestable exams are catalog entries
+without supported decks.
 
 ## Trusted Proxy and Rate Policy
 

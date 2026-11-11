@@ -1,7 +1,7 @@
 ---
 title: Repository Tools
 description: Commands for refreshing exam metadata and translating flashcard decks
-ms.date: 2026-11-06
+ms.date: 2026-11-11
 ---
 
 ## Weekly README updates
@@ -102,59 +102,129 @@ automation before the replacement is published and its prerequisites are ready.
 
 ## Microsoft Learn exam catalog
 
-The canonical snapshot is stored in
-`catalog/microsoft-learn-practice-assessments.json`. It contains the approved
-49-entry Microsoft Learn Availability catalog retrieved on 2026-08-29.
+The request list covers Microsoft's
+[practice-assessment availability table](https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications),
+not every Microsoft exam. Requestable exams are catalog entries without a deck
+in the supported set derived from `web/public/data/exams.json`. The canonical
+snapshot is `catalog/microsoft-learn-practice-assessments.json`; the tracked
+web copy must be identical. The API build copies the canonical snapshot into
+ignored `api/data`, rather than committing a third copy.
 
-Refresh the snapshot from the live Availability table:
+### Weekly checks and approval
+
+After it is published to the default branch and configured,
+[Exam catalog freshness](../.github/workflows/exam-catalog-freshness.yml)
+checks the official source every Wednesday at **09:17 UTC** and can also be
+started manually from Actions. Detection uses read-only permissions. An
+unchanged check records its time in the run summary and creates no PR; a failed
+fetch, parse or validation leaves the accepted snapshot untouched.
+
+For changes, the summary lists additions, removals, changed titles and links,
+the base revision, and the candidate's exact and semantic SHA-256 hashes. The
+candidate and report are retained as an Actions artifact for **seven days**.
+Review the artifact, source links and every removal before approving. An entry
+missing from the practice-assessment table is not necessarily a retired exam;
+corroborate it against Microsoft's
+[exam retirement list](https://learn.microsoft.com/en-us/credentials/support/retired-certification-exams).
+
+The protected job waits for the designated user's approval of that run before
+creating a review PR. GitHub labels this action **Approve and deploy**, but the
+job only proposes the two catalog files: it does not deploy, merge or create
+issues. A matching open PR suppresses another proposal. Checks on a PR created
+with `GITHUB_TOKEN` may require separate approval; inspect their results before
+merging.
+
+### Prerequisites and non-publishing canary
+
+Publishing the workflow and changing repository settings require separate owner
+approval. Before relying on it:
+
+1. In **Settings > Environments**, create `exam-catalog-review`. Set
+   `@sifiadlene` as the sole required reviewer, leave **Prevent self-review**
+   disabled, and disable administrator bypass. Under **Deployment branches and
+   tags**, allow only the exact default branch; add no wildcard or tag rules.
+2. In **Settings > Actions > General > Workflow permissions**, allow Actions
+   to create pull requests and ensure repository or organization policy permits
+   the proposal job's contents and pull-request writes. The gate also needs
+   Actions read access. If the required protection rules or permissions are
+   unavailable, do not enable an unprotected alternative.
+3. Configure and verify GitHub notifications for failed Actions runs and
+   pending environment reviews. Delivery depends on account settings and the
+   scheduled workflow actor; a run summary alone is not a notification.
+4. After the approved implementation is published, start a manual run on the
+   default branch with `canary` selected. Reject one canary and confirm it
+   publishes no branch or PR. Start a **new** canary, approve it as the
+   designated reviewer, and confirm the read-only verification succeeds without
+   a branch or PR. Even an unchanged canary retains its candidate artifact.
+   The documented environment API does not expose the administrator-bypass
+   setting, so verify that setting in **Settings > Environments**. Preflight
+   checks the available reviewer and branch-policy fields; the gated job also
+   requires approval history for the designated reviewer. If that approval
+   cannot be verified, the job must stop.
+
+The preflight verifies the environment before a gated job can start, because
+GitHub can otherwise create a referenced missing environment without
+protection. The proposal job also checks approval history, exact detection
+hashes, the current default-branch revision and a fresh upstream fingerprint.
+Changed or unverifiable inputs require a new review, not a bypass.
+
+### Monitoring and recovery
+
+At least every **14 days**, check Actions for the latest successful detection
+job and its verification timestamp. A schedule can be delayed, dropped or
+disabled; GitHub also disables scheduled workflows in public repositories after
+60 days without repository activity. Re-enable or start a new manual check when
+needed. Distinguish the **last verified** source check, the **last accepted**
+merged snapshot, and the **last deployed** revision; they may differ.
+
+If a check, preflight or approval fails, leave the last good data in place,
+inspect the run and configuration, and start a new default-branch workflow run
+after resolving the problem. Do not use **Re-run jobs**: approval history does
+not identify the attempt. An expired artifact, changed base or changed upstream
+likewise requires a fresh run and approval. If a push or PR creation has an
+uncertain outcome, inspect the remote branch and open and closed PRs for the
+run ID and fingerprint before taking manual action; do not blindly retry or
+force-push.
+
+### Local validation and offline input
+
+From the repository root, run:
 
 ```bash
-node tools/refresh-exam-catalog.mjs
-```
-
-For a deterministic offline refresh, supply the checked-in fixture and the
-snapshot timestamp:
-
-```bash
-node tools/refresh-exam-catalog.mjs \
-   --input tools/fixtures/microsoft-learn-practice-assessments.html \
-   --retrieved-at 2026-08-29T00:00:00.000Z
-```
-
-The parser accepts only HTTPS links on Microsoft Learn and Microsoft AI Skills
-Navigator. It fails when the Availability heading or table shape changes,
-codes repeat, links are malformed, or a refresh produces fewer entries than
-the checked-in catalog.
-
-Generate the shared supported-code set and runtime copies:
-
-```bash
-cd web
-npm run build:data
-```
-
-Validate parser behavior and detect drift across the canonical, web, and API
-copies without making a network request:
-
-```bash
-node --test tools/exam-catalog.test.mjs
+node --test tools/exam-catalog.test.mjs tools/exam-catalog-workflow.test.mjs
+node tools/refresh-exam-catalog.mjs --check
+node api/scripts/copyDecks.mjs
 node tools/validate-exam-data.mjs
 ```
 
-Run the offline parser test before a live refresh. After a live refresh, review
-the diff for source URL, title, retrieval timestamp, and unexpected removals.
-Then run `npm run build:data` from `web` and the drift validator. Commit the
-canonical file, `web/public/data` copies, and `api/data` copies in the same
-change.
+The check exits `0` for no semantic change, `2` for changes requiring review,
+and `1` for an operational error. It never overwrites an existing snapshot.
+The parser rejects empty catalogs, malformed tables, duplicate codes and
+unapproved links; a smaller valid table is reported for human review.
 
-The supported set is derived only from `web/public/data/exams.json`. Requestable
-exams are the catalog entries whose codes are absent from that set. The current
-baseline contains 14 supported codes and 37 requestable catalog entries.
+For a deterministic offline example, supply the checked-in fixture and a
+**new** output path outside the repository:
 
-The 49 catalog entries and 14 supported codes overlap on 12 codes. Two local
-decks are not present in the current Learn table, so the requestable count is
-49 minus 12, not 49 minus 14. A lower live result is rejected to protect the
-snapshot from accidental source-page changes.
+```bash
+node tools/refresh-exam-catalog.mjs \
+  --input tools/fixtures/microsoft-learn-practice-assessments.html \
+  --retrieved-at 2026-08-29T00:00:00.000Z \
+  --output /tmp/offline-exam-catalog.json
+```
+
+### Verify deployment after merge
+
+For the approved merge revision, inspect the **Validate and Deploy Challenge
+API** run: its validation package must contain the same canonical catalog, and
+its API deployment must succeed. Then inspect the **Deploy Practice Site** run
+triggered by that successful API run; its checkout revision must match the
+approved merge and its Pages deployment must succeed. The API package artifact
+is named `challenge-function-package` and is retained for seven days.
+
+These are separate deployments and can fail or overlap. Their run and artifact
+evidence does not directly prove the live API's catalog contents: there is no
+verified read-only runtime signal for that. Report uncertainty rather than
+submitting a real exam request to test production.
 
 ## Exam date report
 

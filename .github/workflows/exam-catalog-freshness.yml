@@ -1,0 +1,393 @@
+name: Exam catalog freshness
+
+on:
+  schedule:
+    - cron: '17 9 * * 3'
+  workflow_dispatch:
+    inputs:
+      canary:
+        description: Verify the approval gate without publishing a branch or pull request
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+      base_sha: ${{ steps.check.outputs.base_sha }}
+      candidate_sha256: ${{ steps.check.outputs.candidate_sha256 }}
+      semantic_sha256: ${{ steps.check.outputs.semantic_sha256 }}
+    steps:
+      - name: Require the default branch and a new run
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/$DEFAULT_BRANCH" ] || [ "$GITHUB_RUN_ATTEMPT" != "1" ]; then
+            echo "::error::Use a new run on the default branch; reruns and other branches are not eligible."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Test catalog safeguards
+        run: node --test tools/exam-catalog.test.mjs tools/exam-catalog-workflow.test.mjs
+
+      - name: Check the official source
+        id: check
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p "$RUNNER_TEMP/exam-catalog"
+          status=0
+          node tools/refresh-exam-catalog.mjs --check \
+            --candidate "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            --report "$RUNNER_TEMP/exam-catalog/report.json" \
+            --base-sha "$GITHUB_SHA" || status=$?
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            echo "::error::The catalog check failed. The last accepted snapshot is unchanged."
+            exit 1
+          fi
+          node tools/exam-catalog-review.mjs summary \
+            "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog/report.json" \
+            "$GITHUB_SHA" "$GITHUB_STEP_SUMMARY" "$GITHUB_OUTPUT"
+          if [ "$status" -eq 2 ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "base_sha=$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Save the review candidate
+        if: ${{ steps.check.outputs.changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.canary) }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: exam-catalog-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/exam-catalog/candidate.json
+            ${{ runner.temp }}/exam-catalog/report.json
+          if-no-files-found: error
+          retention-days: 7
+
+  preflight:
+    needs: detect
+    if: ${{ needs.detect.outputs.changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.canary) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      environment_id: ${{ steps.gate.outputs.environment_id }}
+      reviewer_id: ${{ steps.gate.outputs.reviewer_id }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.detect.outputs.base_sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Verify the protected environment before referencing it
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$DETECTION_BASE_SHA"
+          node tools/exam-catalog-review.mjs preflight "$GITHUB_OUTPUT"
+
+  canary:
+    needs: [detect, preflight]
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.canary }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: exam-catalog-review
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.detect.outputs.base_sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: exam-catalog-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/exam-catalog
+
+      - name: Recheck the upstream catalog
+        shell: bash
+        run: |
+          cp catalog/microsoft-learn-practice-assessments.json "$RUNNER_TEMP/exam-catalog/base.json"
+          mkdir -p "$RUNNER_TEMP/exam-catalog-recheck"
+          status=0
+          node tools/refresh-exam-catalog.mjs --check \
+            --output "$RUNNER_TEMP/exam-catalog/base.json" \
+            --candidate "$RUNNER_TEMP/exam-catalog-recheck/candidate.json" \
+            --report "$RUNNER_TEMP/exam-catalog-recheck/report.json" \
+            --base-sha "$GITHUB_SHA" || status=$?
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            echo "::error::The upstream catalog could not be rechecked."
+            exit 1
+          fi
+
+      - name: Verify the canary approval and reviewed candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+          DETECTION_CANDIDATE_SHA256: ${{ needs.detect.outputs.candidate_sha256 }}
+          DETECTION_SEMANTIC_SHA256: ${{ needs.detect.outputs.semantic_sha256 }}
+          ENVIRONMENT_ID: ${{ needs.preflight.outputs.environment_id }}
+          REVIEWER_ID: ${{ needs.preflight.outputs.reviewer_id }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$DETECTION_BASE_SHA"
+          node tools/exam-catalog-review.mjs authorize \
+            "$RUNNER_TEMP/exam-catalog/base.json" \
+            "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog/report.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/report.json" \
+            "$ENVIRONMENT_ID" "$REVIEWER_ID" canary "$GITHUB_OUTPUT" "$RUNNER_TEMP/unused.md"
+          echo "Canary verified the approval and candidate; no branch or pull request was published." >> "$GITHUB_STEP_SUMMARY"
+
+  propose:
+    needs: [detect, preflight]
+    if: ${{ needs.detect.outputs.changed == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.canary) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: exam-catalog-review
+    concurrency:
+      group: exam-catalog-proposal
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.detect.outputs.base_sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: exam-catalog-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/exam-catalog
+
+      - name: Recheck the upstream catalog
+        shell: bash
+        run: |
+          cp catalog/microsoft-learn-practice-assessments.json "$RUNNER_TEMP/exam-catalog/base.json"
+          mkdir -p "$RUNNER_TEMP/exam-catalog-recheck"
+          status=0
+          node tools/refresh-exam-catalog.mjs --check \
+            --output "$RUNNER_TEMP/exam-catalog/base.json" \
+            --candidate "$RUNNER_TEMP/exam-catalog-recheck/candidate.json" \
+            --report "$RUNNER_TEMP/exam-catalog-recheck/report.json" \
+            --base-sha "$GITHUB_SHA" || status=$?
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            echo "::error::The upstream catalog could not be rechecked."
+            exit 1
+          fi
+
+      - name: Verify approval, provenance and existing proposals
+        id: approved
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+          DETECTION_CANDIDATE_SHA256: ${{ needs.detect.outputs.candidate_sha256 }}
+          DETECTION_SEMANTIC_SHA256: ${{ needs.detect.outputs.semantic_sha256 }}
+          ENVIRONMENT_ID: ${{ needs.preflight.outputs.environment_id }}
+          REVIEWER_ID: ${{ needs.preflight.outputs.reviewer_id }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$DETECTION_BASE_SHA"
+          node tools/exam-catalog-review.mjs authorize \
+            "$RUNNER_TEMP/exam-catalog/base.json" \
+            "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog/report.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/report.json" \
+            "$ENVIRONMENT_ID" "$REVIEWER_ID" proposal "$GITHUB_OUTPUT" "$RUNNER_TEMP/exam-catalog-pr.md"
+
+      - name: Report an existing proposal
+        if: steps.approved.outputs.duplicate == 'true'
+        env:
+          EXISTING_PR: ${{ steps.approved.outputs.duplicate_url }}
+        run: |
+          printf 'A matching proposal is already open: %s\n' "$EXISTING_PR" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Prepare the catalog-only commit
+        if: steps.approved.outputs.duplicate == 'false'
+        env:
+          SEMANTIC_SHA: ${{ steps.approved.outputs.semantic_sha256 }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+          DETECTION_CANDIDATE_SHA256: ${{ needs.detect.outputs.candidate_sha256 }}
+        shell: bash
+        run: |
+          cp "$RUNNER_TEMP/exam-catalog/candidate.json" catalog/microsoft-learn-practice-assessments.json
+          cp "$RUNNER_TEMP/exam-catalog/candidate.json" web/public/data/microsoft-learn-practice-assessments.json
+          cmp catalog/microsoft-learn-practice-assessments.json web/public/data/microsoft-learn-practice-assessments.json
+          node api/scripts/copyDecks.mjs
+          node tools/validate-exam-data.mjs
+          node --test tools/exam-catalog.test.mjs tools/exam-catalog-workflow.test.mjs
+          expected="$(printf '%s\n' catalog/microsoft-learn-practice-assessments.json web/public/data/microsoft-learn-practice-assessments.json)"
+          actual="$(git diff --name-only)"
+          if [ "$actual" != "$expected" ] || [ -n "$(git ls-files --others --exclude-standard)" ] || ! git diff --cached --quiet; then
+            echo "::error::The proposal contains unexpected changes."
+            exit 1
+          fi
+          branch="automation/exam-catalog-${SEMANTIC_SHA}-${GITHUB_RUN_ID}"
+          git switch -c "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- catalog/microsoft-learn-practice-assessments.json web/public/data/microsoft-learn-practice-assessments.json
+          git commit -m "chore: refresh practice-assessment catalog" \
+            -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+          test "$(git rev-parse HEAD^)" = "$DETECTION_BASE_SHA"
+          test "$(git diff-tree --no-commit-id --name-only -r HEAD)" = "$expected"
+          for file in catalog/microsoft-learn-practice-assessments.json web/public/data/microsoft-learn-practice-assessments.json; do
+            test "$(git show "HEAD:$file" | sha256sum | cut -d ' ' -f 1)" = "$DETECTION_CANDIDATE_SHA256"
+          done
+
+      - name: Revalidate immediately before branch publication
+        if: steps.approved.outputs.duplicate == 'false'
+        id: final
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+          DETECTION_CANDIDATE_SHA256: ${{ needs.detect.outputs.candidate_sha256 }}
+          DETECTION_SEMANTIC_SHA256: ${{ needs.detect.outputs.semantic_sha256 }}
+          ENVIRONMENT_ID: ${{ needs.preflight.outputs.environment_id }}
+          REVIEWER_ID: ${{ needs.preflight.outputs.reviewer_id }}
+        run: |
+          node tools/exam-catalog-review.mjs authorize \
+            "$RUNNER_TEMP/exam-catalog/base.json" \
+            "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog/report.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog-recheck/report.json" \
+            "$ENVIRONMENT_ID" "$REVIEWER_ID" proposal "$GITHUB_OUTPUT" "$RUNNER_TEMP/exam-catalog-pr.md"
+
+      - name: Report a proposal found before pushing
+        if: steps.final.outputs.duplicate == 'true'
+        env:
+          EXISTING_PR: ${{ steps.final.outputs.duplicate_url }}
+        run: |
+          printf 'A matching proposal is already open; no branch was pushed: %s\n' "$EXISTING_PR" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Push the new branch without overwriting an existing branch
+        if: steps.final.outputs.duplicate == 'false'
+        id: push
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SEMANTIC_SHA: ${{ steps.final.outputs.semantic_sha256 }}
+        shell: bash
+        run: |
+          branch="automation/exam-catalog-${SEMANTIC_SHA}-${GITHUB_RUN_ID}"
+          gh auth setup-git
+          if ! remote="$(git ls-remote --heads origin "refs/heads/$branch")"; then
+            echo "::error::Could not verify whether the proposal branch already exists."
+            exit 1
+          fi
+          if [ -n "$remote" ]; then
+            echo "::error::The proposal branch already exists; inspect it manually."
+            exit 1
+          fi
+          if ! git push origin "HEAD:refs/heads/$branch"; then
+            echo "::error::Branch push failed or is uncertain; inspect remote state without retrying."
+            if ! git ls-remote --heads origin "refs/heads/$branch"; then echo "::warning::Could not inspect the remote branch."; fi
+            if ! gh pr list --state all --head "$branch" --json url,state; then echo "::warning::Could not inspect pull requests."; fi
+            exit 1
+          fi
+
+      - name: Recheck the source after the push
+        if: steps.push.outcome == 'success'
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/exam-catalog-postpush"
+          status=0
+          node tools/refresh-exam-catalog.mjs --check \
+            --output "$RUNNER_TEMP/exam-catalog/base.json" \
+            --candidate "$RUNNER_TEMP/exam-catalog-postpush/candidate.json" \
+            --report "$RUNNER_TEMP/exam-catalog-postpush/report.json" \
+            --base-sha "$GITHUB_SHA" || status=$?
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            echo "::error::Source recheck failed after push; inspect the branch manually. No pull request was created."
+            exit 1
+          fi
+
+      - name: Revalidate immediately before pull request creation
+        if: steps.push.outcome == 'success'
+        id: postpush
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          DETECTION_BASE_SHA: ${{ needs.detect.outputs.base_sha }}
+          DETECTION_CANDIDATE_SHA256: ${{ needs.detect.outputs.candidate_sha256 }}
+          DETECTION_SEMANTIC_SHA256: ${{ needs.detect.outputs.semantic_sha256 }}
+          ENVIRONMENT_ID: ${{ needs.preflight.outputs.environment_id }}
+          REVIEWER_ID: ${{ needs.preflight.outputs.reviewer_id }}
+        run: |
+          if ! node tools/exam-catalog-review.mjs authorize \
+            "$RUNNER_TEMP/exam-catalog/base.json" \
+            "$RUNNER_TEMP/exam-catalog/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog/report.json" \
+            "$RUNNER_TEMP/exam-catalog-postpush/candidate.json" \
+            "$RUNNER_TEMP/exam-catalog-postpush/report.json" \
+            "$ENVIRONMENT_ID" "$REVIEWER_ID" proposal "$GITHUB_OUTPUT" "$RUNNER_TEMP/exam-catalog-pr.md"; then
+            echo "::error::Revalidation failed after push; inspect the branch manually. No pull request was created."
+            exit 1
+          fi
+
+      - name: Report a proposal found after pushing
+        if: steps.postpush.outputs.duplicate == 'true'
+        env:
+          EXISTING_PR: ${{ steps.postpush.outputs.duplicate_url }}
+        run: |
+          printf 'A matching proposal is already open: %s. Inspect the newly pushed branch manually.\n' "$EXISTING_PR" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create the review pull request
+        if: steps.postpush.outputs.duplicate == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          SEMANTIC_SHA: ${{ steps.postpush.outputs.semantic_sha256 }}
+        shell: bash
+        run: |
+          branch="automation/exam-catalog-${SEMANTIC_SHA}-${GITHUB_RUN_ID}"
+          if ! url="$(gh pr create --base "$DEFAULT_BRANCH" --head "$branch" \
+            --title "chore: refresh practice-assessment catalog" --body-file "$RUNNER_TEMP/exam-catalog-pr.md")"; then
+            echo "::error::Pull request creation failed or is uncertain; inspect existing PRs without retrying."
+            if ! gh pr list --state all --head "$branch" --json url,state; then echo "::warning::Could not inspect pull requests."; fi
+            exit 1
+          fi
+          printf 'Review pull request: %s\nPR checks may require approval; no merge or deployment was performed.\n' "$url" >> "$GITHUB_STEP_SUMMARY"
