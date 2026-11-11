@@ -41,7 +41,6 @@ const approvalPath = `${repoPath}/actions/runs/12345/approvals`
 const environment = {
   id: 123,
   name: 'exam-catalog-review',
-  can_admins_bypass: false,
   deployment_branch_policy: { protected_branches: false, custom_branch_policies: true },
   protection_rules: [{
     type: 'required_reviewers',
@@ -148,11 +147,9 @@ describe('exam catalog workflow safeguards', () => {
     assert.throws(() => verifyReviewReport(existing, bytes, report, 'b'.repeat(40)), /does not match/)
   })
 
-  it('fails closed on missing or unsafe protection, reviewers, branches and reruns', async () => {
+  it('accepts the documented environment response and fails closed on unsafe protection, reviewers, branches and reruns', async () => {
     assert.deepEqual(await preflight(context, reader()), { environmentId: 123, reviewerId: 456 })
     const unsafeEnvironments = [
-      { ...environment, can_admins_bypass: true },
-      { ...environment, can_admins_bypass: undefined },
       { ...environment, deployment_branch_policy: null },
       { ...environment, protection_rules: [{ ...environment.protection_rules[0], prevent_self_review: true }] },
       { ...environment, protection_rules: [{ ...environment.protection_rules[0], reviewers: [

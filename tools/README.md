@@ -156,8 +156,11 @@ approval. Before relying on it:
    publishes no branch or PR. Start a **new** canary, approve it as the
    designated reviewer, and confirm the read-only verification succeeds without
    a branch or PR. Even an unchanged canary retains its candidate artifact.
-   The preflight must be able to read the environment's reviewer, self-review,
-   bypass and branch-policy fields; if it cannot, stop and investigate.
+   The documented environment API does not expose the administrator-bypass
+   setting, so verify that setting in **Settings > Environments**. Preflight
+   checks the available reviewer and branch-policy fields; the gated job also
+   requires approval history for the designated reviewer. If that approval
+   cannot be verified, the job must stop.
 
 The preflight verifies the environment before a gated job can start, because
 GitHub can otherwise create a referenced missing environment without

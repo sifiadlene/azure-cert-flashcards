@@ -149,7 +149,6 @@ export async function preflight(context, githubGet) {
     throw new Error('The default branch changed; start a new review run')
   }
   if (protection?.name !== environmentName || !Number.isSafeInteger(protection.id) || protection.id <= 0
-    || protection.can_admins_bypass !== false
     || protection.deployment_branch_policy?.protected_branches !== false
     || protection.deployment_branch_policy?.custom_branch_policies !== true
     || policies?.total_count !== 1 || !Array.isArray(policies.branch_policies)
