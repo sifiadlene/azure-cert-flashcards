@@ -90,8 +90,8 @@ async function main() {
   }
 
   const html = await loadHtml(options.input)
-  const checkedAt = new Date().toISOString()
-  const retrievedAt = options.retrievedAt ?? checkedAt
+  const checkedAt = options.retrievedAt ?? new Date().toISOString()
+  const retrievedAt = checkedAt
   const parsedCatalog = validateCatalog({
     schemaVersion: 1,
     exams: parseAvailabilityCatalog(html, retrievedAt),
