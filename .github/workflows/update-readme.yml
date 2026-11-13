@@ -52,8 +52,9 @@ jobs:
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
         run: |
+          # A nonmatching allowlist disables all tools; an empty list does not.
           copilot --silent --no-ask-user --no-custom-instructions \
-            --disable-builtin-mcps --deny-tool '*' \
+            --disable-builtin-mcps --available-tools '__none__' \
             --prompt "$(cat readme-proposal/prompt.txt)" \
             > readme-proposal/response.txt
 
