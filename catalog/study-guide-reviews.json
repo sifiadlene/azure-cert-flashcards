@@ -2,6 +2,130 @@
   "schemaVersion": 1,
   "reviews": [
     {
+      "code": "AB-100",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100",
+      "guideUpdatedOn": "2026-10-21",
+      "deckVersion": "2026-04-02",
+      "reviewedOn": "2026-11-16",
+      "status": "gaps",
+      "reviewEvidence": {
+        "objectivesEffectiveOn": "2026-11-16",
+        "objectiveState": "current",
+        "publishedDomainWeights": {
+          "Planning": "35–40%",
+          "Design": "30–35%",
+          "Deploy": "20–25%"
+        },
+        "verifiedChangeLog": [
+          "Planning weighting increased; the overall AI strategy skill group is marked Minor.",
+          "Design weighting increased; the AI and agents skill group is marked Minor.",
+          "Deploy weighting decreased; the ALM skill group is marked Minor."
+        ],
+        "deckCoverage": [
+          {
+            "domain": "Planning",
+            "cardCount": 22,
+            "topicTags": [
+              "AgentStrategy",
+              "DataPreparation",
+              "ROIAnalysis",
+              "BuildVsBuy",
+              "CloudAdoptionFramework",
+              "ModelRouter",
+              "DataIntegration",
+              "PromptLibrary",
+              "SmallLanguageModels",
+              "AICoE",
+              "DataResidency",
+              "MultiDynamics365",
+              "PromptEngineering",
+              "AIHumanCollaboration",
+              "DataAccessibility",
+              "CopilotStudioVsExtension",
+              "TransferLearning",
+              "ScalableDeployment",
+              "MultiSourceGrounding",
+              "ModelIsolation",
+              "PrebuiltVsCustom",
+              "FoundryTools"
+            ]
+          },
+          {
+            "domain": "Design",
+            "cardCount": 21,
+            "topicTags": [
+              "NLU",
+              "HybridNLU",
+              "CopilotCustomization",
+              "OmnichannelAgents",
+              "TaskAgents",
+              "AutonomousAgents",
+              "EmbeddedAgents",
+              "KnowledgeGrounding",
+              "DataProcessing",
+              "FallbackTopics",
+              "WellArchitected",
+              "Connectors",
+              "CustomModelIntegration",
+              "M365CopilotExtension",
+              "MCP",
+              "VoiceMode",
+              "ComputerUse",
+              "AgentReasoning",
+              "CrossPlatform",
+              "FinanceAIOrchestration",
+              "CopilotForService"
+            ]
+          },
+          {
+            "domain": "Deploy",
+            "cardCount": 34,
+            "topicTags": [
+              "Monitoring",
+              "FeedbackAnalysis",
+              "ModelMonitoring",
+              "TelemetryAnalysis",
+              "PerformanceMetrics",
+              "ModelValidation",
+              "PromptValidation",
+              "EndToEndTesting",
+              "CopilotTesting",
+              "CopilotALM",
+              "ModelALM",
+              "DataModelALM",
+              "Dynamics365ALM",
+              "ResponsibleAI",
+              "AgentSecurity",
+              "AgentGovernance",
+              "PromptSecurity",
+              "DataResidency",
+              "ModelSecurity",
+              "AuditTrails",
+              "AccuracyValidation",
+              "FairnessValidation",
+              "PrivacyCompliance",
+              "AdvancedAnalysis",
+              "UnifiedGovernance",
+              "RootCauseAnalysis",
+              "ChangeManagement",
+              "A2ATesting",
+              "UXAnalysis",
+              "ValueRealization",
+              "GlobalScale",
+              "ThirdPartyALM",
+              "SecurityTesting",
+              "OptimizationStrategy"
+            ]
+          }
+        ],
+        "evidenceGaps": [
+          "The retrieved official English source does not establish the previous numeric domain ranges or provide the complete pre-change objective text, so numeric deltas and exact task-level edits are unverified.",
+          "The official change log marks three skill groups Minor but does not expose their full before-and-after wording. Deck topic tags document candidate coverage, not confirmed card-level alignment to those edits.",
+          "The existing deck is retained; no regeneration or replacement was authorized."
+        ]
+      }
+    },
+    {
       "code": "AI-103",
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
       "guideUpdatedOn": "2026-10-31",
