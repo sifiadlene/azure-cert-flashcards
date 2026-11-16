@@ -80,6 +80,15 @@ test('prompt bounds large evidence and explicitly reports truncation', (t) => {
   assert.throws(() => buildPrompt(root, ['x'.repeat(120_000)]), /prompt budget/);
 });
 
+test('workflow disables Copilot tools when generating a proposal', () => {
+  const workflow = readFileSync(new URL('../.github/workflows/update-readme.yml', import.meta.url), 'utf8');
+  const command = workflow.match(/copilot --silent[\s\S]*?> readme-proposal\/response\.txt/);
+  assert.ok(command);
+  assert.match(command[0], /--disable-builtin-mcps\b/);
+  assert.match(command[0], /--available-tools '__none__'/);
+  assert.doesNotMatch(command[0], /--deny-tool/);
+});
+
 test('applies a validated proposal but refuses to overwrite concurrent edits', (t) => {
   const root = fixture(t);
   const proposal = fixture(t);
