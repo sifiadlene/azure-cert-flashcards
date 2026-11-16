@@ -1,10 +1,10 @@
 # Exam date report
 
-Official English study guides checked at **2026-11-09T19:36:54.034Z**. Covers **15 exams** with local flashcard decks.
+Official English study guides checked at **2026-11-16T19:23:33.333Z**. Covers **15 exams** with local flashcard decks.
 
 | Exam / official study guide | Latest generation date / source CSV | Guide last updated | Published objective-effective date(s) | Notes |
 | --- | --- | --- | --- | --- |
-| [AB-100](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100) - Agentic AI Business Solutions Architect | [2026-04-02](flashcards/ab100_flashcards_2026-04-02.csv) | 2026-10-21 | 2026-11-16 (upcoming) | Upcoming objectives; current effective date may not be stated |
+| [AB-100](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100) - Agentic AI Business Solutions Architect | [2026-04-02](flashcards/ab100_flashcards_2026-04-02.csv) | 2026-10-21 | 2026-11-16 | - |
 | [AI-102](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102) - Designing and Implementing a Microsoft Azure AI Solution | [2026-03-24](flashcards/ai102_flashcards_2026-03-24.csv) | 2025-12-23 | 2025-12-23 | - |
 | [AI-103](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103) - Developing AI Apps and Agents on Azure | [2026-08-29](flashcards/ai103_flashcards_2026-08-29.csv) | 2026-10-31 | 2026-04-16 | - |
 | [AI-300](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-300) - Operationalizing Machine Learning and Generative AI Solutions | [2026-08-29](flashcards/ai300_flashcards_2026-08-29.csv) | 2026-10-15 | Not stated | Objective-effective date not stated |
