@@ -102,12 +102,17 @@ test('shows the current AZ-305 review with gaps in English and French solo and c
   await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
   await expect(soloDates.getByText('Guide revision: Oct 30, 2026. Deck version: Mar 23, 2026.')).toBeVisible()
 
+  const frenchSoloDeckLoaded = page.waitForResponse((response) =>
+    response.url().endsWith('/data/decks/az305-fr.json') && response.ok())
   await page.getByRole('button', { name: 'Switch to French' }).click()
+  await frenchSoloDeckLoaded
+  await expect(page.getByRole('button', { name: 'Démarrer la session' })).toBeEnabled()
   await expect(soloDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
   await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
 
   await page.getByRole('button', { name: /Défi en direct/ }).click()
   await page.getByLabel('Examen').selectOption('az305')
+  await expect(page.getByLabel('Domaine')).toBeVisible()
   const challengeDates = page.locator('.exam-dates')
   await expect(challengeDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
   await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
