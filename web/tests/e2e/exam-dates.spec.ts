@@ -91,6 +91,33 @@ test('shows current AI-103 review status in solo and challenge setup in English 
   await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
 })
 
+test('shows the current AZ-305 review with gaps in English and French solo and challenge setup', async ({ page }) => {
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('az305')
+
+  const soloDates = page.locator('.exam-dates')
+  await expect(soloDates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  await expect(soloDates.locator('time').nth(0)).toHaveAttribute('datetime', '2026-03-23')
+  await expect(soloDates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-10-30')
+  await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+  await expect(soloDates.getByText('Guide revision: Oct 30, 2026. Deck version: Mar 23, 2026.')).toBeVisible()
+
+  await page.getByRole('button', { name: 'Switch to French' }).click()
+  await expect(soloDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+
+  await page.getByRole('button', { name: /Défi en direct/ }).click()
+  await page.getByLabel('Examen').selectOption('az305')
+  const challengeDates = page.locator('.exam-dates')
+  await expect(challengeDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+
+  await page.getByRole('button', { name: 'Passer en anglais' }).click()
+  await expect(challengeDates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  await expect(challengeDates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-10-30')
+  await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+})
+
 test('shows the current AB-100 review with gaps in English and French solo and challenge setup', async ({ page }) => {
   await page.goto('/')
   await page.getByLabel('Exam').selectOption('ab100')

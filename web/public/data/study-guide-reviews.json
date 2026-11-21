@@ -132,6 +132,72 @@
       "deckVersion": "2026-08-29",
       "reviewedOn": "2026-11-08",
       "status": "gaps"
+    },
+    {
+      "code": "AZ-305",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305",
+      "guideUpdatedOn": "2026-10-30",
+      "deckVersion": "2026-03-23",
+      "reviewedOn": "2026-11-21",
+      "status": "gaps",
+      "reviewEvidence": {
+        "objectivesEffectiveOn": "2026-04-17",
+        "objectiveState": "current",
+        "publishedDomainWeights": {
+          "Identity governance, privacy, and monitoring": "25–30%",
+          "Design data storage solutions": "20–25%",
+          "Design business continuity solutions": "15–20%",
+          "Design infrastructure solutions": "30–35%"
+        },
+        "verifiedChangeLog": [
+          "The available official change log records only a minor audience-profile change for the 2026-04-17 transition.",
+          "The 2026-10-30 page date is displayed as the guide update date; it is not verified as an objective or weighting change.",
+          "No official historical diff or complete predecessor objective text was available."
+        ],
+        "deckCoverage": [
+          {
+            "domain": "Identity governance, privacy, and monitoring",
+            "cardCount": 21,
+            "topicTags": [
+              "IdentityGovernance",
+              "IdentityManagement",
+              "Identity"
+            ]
+          },
+          {
+            "domain": "Design data storage solutions",
+            "cardCount": 20,
+            "topicTags": [
+              "DataStorage",
+              "DataIntegration",
+              "DataProtection",
+              "DatabaseScalability",
+              "DataImmutability"
+            ]
+          },
+          {
+            "domain": "Design business continuity solutions",
+            "cardCount": 9,
+            "topicTags": [
+              "BusinessContinuity"
+            ]
+          },
+          {
+            "domain": "Design infrastructure solutions",
+            "cardCount": 18,
+            "topicTags": [
+              "Infrastructure",
+              "InfrastructureAsCode"
+            ]
+          }
+        ],
+        "evidenceGaps": [
+          "The 2026-10-30 official revision and its predecessor do not provide a verified objective-level diff in the available evidence.",
+          "The existing CSV has 31 cards without a primary domain tag in the first four domain groups, so card counts do not establish complete objective alignment.",
+          "No deck cards were added, corrected, removed, or regenerated because there is no verified objective change to implement.",
+          "Historical sentence-level objectives remain unavailable, and exact card-level alignment to the April 17 audience-profile transition is unverified."
+        ]
+      }
     }
   ]
 }
