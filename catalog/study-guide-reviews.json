@@ -154,11 +154,13 @@
           "The 2026-10-30 page date is displayed as the guide update date; it is not verified as an objective or weighting change.",
           "No official historical diff or complete predecessor objective text was available."
         ],
-        "deckCoverageNote": "Primary-domain counts total 68 of 99 cards (21, 20, 9, and 18 by domain); the remaining 31 cards have other primary-domain tags. Counts are based on each card's primary domain tag, not matches against every listed topic tag.",
+        "objectiveAssessmentDocument": ".copilot-tracking/reviews/2026-11-21/az-305-study-guide-review.md",
+        "objectiveAssessmentCount": 47,
+        "deckCoverageNote": "Primary-domain counts total 69 of 99 cards (22, 20, 9, and 18 by domain); the remaining 30 cards have other primary-domain tags. Counts are based on each card's primary domain tag, not matches against every listed topic tag.",
         "deckCoverage": [
           {
             "domain": "Identity governance, privacy, and monitoring",
-            "cardCount": 21,
+            "cardCount": 22,
             "topicTags": [
               "IdentityGovernance",
               "IdentityManagement",
@@ -193,10 +195,11 @@
           }
         ],
         "evidenceGaps": [
-          "The 2026-10-30 official revision and its predecessor do not provide a verified objective-level diff in the available evidence.",
-          "The 31 cards outside the four primary-domain counts have other primary-domain tags; counts are not counts of every card matching the listed topic tags and do not establish complete objective alignment.",
+          "The current objective-to-card assessment records partial coverage or explicit gaps for every published skill; the cards are practice evidence, not proof that every task nuance is tested.",
+          "No direct card was identified for authorizing access to on-premises resources or API integration architecture.",
+          "The 30 cards outside the four primary-domain counts have other primary-domain tags; counts do not represent every matching topic tag.",
           "No deck cards were added, corrected, removed, or regenerated because there is no verified objective change to implement.",
-          "Historical sentence-level objectives remain unavailable, and exact card-level alignment to the April 17 audience-profile transition is unverified."
+          "The 2026-10-30 official revision and its predecessor do not provide a verified objective-level diff; historical sentence-level objectives remain unavailable."
         ]
       }
     }
