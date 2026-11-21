@@ -132,6 +132,76 @@
       "deckVersion": "2026-08-29",
       "reviewedOn": "2026-11-08",
       "status": "gaps"
+    },
+    {
+      "code": "AZ-305",
+      "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305",
+      "guideUpdatedOn": "2026-10-30",
+      "deckVersion": "2026-03-23",
+      "reviewedOn": "2026-11-21",
+      "status": "gaps",
+      "reviewEvidence": {
+        "objectivesEffectiveOn": "2026-04-17",
+        "objectiveState": "current",
+        "publishedDomainWeights": {
+          "Identity governance, privacy, and monitoring": "25–30%",
+          "Design data storage solutions": "20–25%",
+          "Design business continuity solutions": "15–20%",
+          "Design infrastructure solutions": "30–35%"
+        },
+        "verifiedChangeLog": [
+          "The available official change log records only a minor audience-profile change for the 2026-04-17 transition.",
+          "The 2026-10-30 page date is displayed as the guide update date; it is not verified as an objective or weighting change.",
+          "No official historical diff or complete predecessor objective text was available."
+        ],
+        "objectiveAssessmentDocument": ".copilot-tracking/reviews/2026-11-21/az-305-study-guide-review.md",
+        "objectiveAssessmentCount": 47,
+        "deckCoverageNote": "Primary-domain counts total 69 of 99 cards (22, 20, 9, and 18 by domain); the remaining 30 cards have other primary-domain tags. Counts are based on each card's primary domain tag, not matches against every listed topic tag.",
+        "deckCoverage": [
+          {
+            "domain": "Identity governance, privacy, and monitoring",
+            "cardCount": 22,
+            "topicTags": [
+              "IdentityGovernance",
+              "IdentityManagement",
+              "Identity"
+            ]
+          },
+          {
+            "domain": "Design data storage solutions",
+            "cardCount": 20,
+            "topicTags": [
+              "DataStorage",
+              "DataIntegration",
+              "DataProtection",
+              "DatabaseScalability",
+              "DataImmutability"
+            ]
+          },
+          {
+            "domain": "Design business continuity solutions",
+            "cardCount": 9,
+            "topicTags": [
+              "BusinessContinuity"
+            ]
+          },
+          {
+            "domain": "Design infrastructure solutions",
+            "cardCount": 18,
+            "topicTags": [
+              "Infrastructure",
+              "InfrastructureAsCode"
+            ]
+          }
+        ],
+        "evidenceGaps": [
+          "The current objective-to-card assessment records partial coverage or explicit gaps for every published skill; the cards are practice evidence, not proof that every task nuance is tested.",
+          "No direct card was identified for authorizing access to on-premises resources or API integration architecture.",
+          "The 30 cards outside the four primary-domain counts have other primary-domain tags; counts do not represent every matching topic tag.",
+          "No deck cards were added, corrected, removed, or regenerated because there is no verified objective change to implement.",
+          "The 2026-10-30 official revision and its predecessor do not provide a verified objective-level diff; historical sentence-level objectives remain unavailable."
+        ]
+      }
     }
   ]
 }
