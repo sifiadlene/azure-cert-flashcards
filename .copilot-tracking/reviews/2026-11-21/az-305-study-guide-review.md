@@ -22,10 +22,12 @@ regeneration and no verified objective-level target change is available.
 | Design business continuity solutions | 15–20% |
 | Design infrastructure solutions | 30–35% |
 
-These are reference ranges. The 99-card deck has 21 cards tagged for identity
-governance, 20 for data storage, 9 for business continuity, and 18 for
-infrastructure. The tag counts include 31 cards that do not map to one of those
-four primary domain tags and are not evidence of complete objective coverage.
+These are reference ranges. The four primary-domain counts total 68 of the 99
+cards: 21 for identity governance, 20 for data storage, 9 for business
+continuity, and 18 for infrastructure. The remaining 31 cards have other
+primary-domain tags. These counts are based on each card's primary domain tag,
+not on matches against every listed topic tag, and do not establish complete
+objective coverage.
 
 ## Evidence and unresolved gaps
 
