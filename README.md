@@ -1,7 +1,7 @@
 ---
 title: Azure and GitHub Certification Flashcards
 description: Anki-compatible and browser-based practice decks for Azure and GitHub certification exams
-ms.date: 2026-11-11
+ms.date: 2026-11-20
 ---
 
 ## Overview
@@ -14,13 +14,21 @@ High-quality, exam-realistic flashcards for Azure and GitHub certifications, des
 
 All source decks live in [flashcards](flashcards):
 
+- AB-100: Agentic AI Business Solutions Architect
 - AI-102: Microsoft Azure AI Engineer Associate
+- AI-103: Developing AI Apps and Agents on Azure
+- AI-300: Operationalizing Machine Learning and Generative AI Solutions
 - AI-900: Microsoft Azure AI Fundamentals
 - AZ-104: Microsoft Azure Administrator
 - AZ-204: Developing Solutions for Microsoft Azure
 - AZ-305: Designing Microsoft Azure Infrastructure Solutions
+- AZ-400: Designing and Implementing Microsoft DevOps Solutions
 - AZ-500: Microsoft Azure Security Technologies
+- AZ-700: Designing and Implementing Microsoft Azure Networking Solutions
+- AZ-900: Microsoft Azure Fundamentals
+- DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric
 - GH-300: GitHub Copilot
+- GH-900: GitHub Foundations
 
 ## Features
 
@@ -173,14 +181,14 @@ Saved progress is device-local and does not sync across browsers or machines.
 
 The website ships with an EN/FR language toggle. To generate French card content:
 
-1. Create an [Azure AI Translator](https://portal.azure.com) resource (free tier covers all 7 decks)
+1. Create an [Azure AI Translator](https://portal.azure.com) resource
 2. Run the translation script from the repository root:
 
 ```bash
 AZURE_TRANSLATOR_KEY=<key> AZURE_TRANSLATOR_REGION=<region> node tools/translate-decks.mjs
 ```
 
-This generates `{slug}-fr.json` files in [web/public/data/decks/](web/public/data/decks/). See [tools/README.md](tools/README.md) for full instructions and cost estimates (~$6-7 one-time for S1 pricing, free on F0 tier).
+This generates `{slug}-fr.json` files in [web/public/data/decks/](web/public/data/decks/). See [tools/README.md](tools/README.md) for full instructions and cost estimates.
 
 ## Importing Flashcards into Anki
 
@@ -245,7 +253,7 @@ The agent will:
 
 GitHub Pages deployment is defined in [.github/workflows/deploy-site.yml](.github/workflows/deploy-site.yml).
 
-The workflow installs frontend dependencies, runs the CSV-to-JSON generation step, builds the site with the repository base path, and publishes the static output.
+The workflow runs after a successful Validate and Deploy Challenge API workflow on `main`, or manually. It installs frontend dependencies, checks the public study-guide snapshot, configures the runtime API endpoint, builds the site with the repository base path using checked-in flashcard JSON without regenerating it, and publishes the static output. Full deployments also run linting, tests, and data validation, with optional French translation when configured; manual `endpoint-cutover` deployments skip those steps.
 
 ## Contributing
 
@@ -267,3 +275,5 @@ This project is provided as-is for educational purposes.
 ## Disclaimer
 
 These flashcards are study aids and should be used alongside official Microsoft certification materials. They are not affiliated with or endorsed by Microsoft Corporation or GitHub.
+
+
