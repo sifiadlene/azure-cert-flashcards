@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-11-16T19:23:33.333Z",
+  "retrievedAt": "2026-11-23T20:57:44.329Z",
   "exams": [
     {
       "code": "AB-100",
@@ -8,7 +8,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100",
       "pageUpdatedOn": "2026-10-21",
       "pageUpdatedAt": "2026-10-21T22:54:00.000Z",
-      "metadataUpdatedAt": "2026-10-21T22:54:00Z",
+      "metadataUpdatedAt": "2026-11-23T19:58:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-21",
       "objectives": [
         {
@@ -66,10 +66,10 @@
       "code": "AI-300",
       "title": "Operationalizing Machine Learning and Generative AI Solutions",
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-300",
-      "pageUpdatedOn": "2026-10-15",
-      "pageUpdatedAt": "2026-10-15T23:49:00.000Z",
-      "metadataUpdatedAt": "2026-10-15T23:49:00Z",
-      "pageUpdateEvidence": "Last updated on 2026-10-15",
+      "pageUpdatedOn": "2026-11-23",
+      "pageUpdatedAt": "2026-11-23T19:58:00.000Z",
+      "metadataUpdatedAt": "2026-11-23T19:58:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-11-23",
       "objectives": [],
       "objectiveEvidence": [
         "Skills measured",
@@ -100,21 +100,20 @@
       "code": "AZ-104",
       "title": "Microsoft Azure Administrator",
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
-      "pageUpdatedOn": "2026-10-30",
-      "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
-      "pageUpdateEvidence": "Last updated on 2026-10-30",
+      "pageUpdatedOn": "2026-11-23",
+      "pageUpdatedAt": "2026-11-23T19:58:00.000Z",
+      "metadataUpdatedAt": "2026-11-23T19:58:00Z",
+      "pageUpdateEvidence": "Last updated on 2026-11-23",
       "objectives": [
         {
-          "date": "2023-10-26",
+          "date": "2026-04-17",
           "precision": "day",
-          "evidence": "Skills measured as of October 26, 2023"
+          "evidence": "Skills measured as of April 17, 2026"
         }
       ],
       "objectiveEvidence": [
-        "Skills measured as of October 26, 2023",
-        "Skills at a glance",
-        "Skills measured prior to October 26, 2023"
+        "Skills measured as of April 17, 2026",
+        "Skills at a glance"
       ]
     },
     {
@@ -163,7 +162,7 @@
       "guideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-400",
       "pageUpdatedOn": "2026-10-30",
       "pageUpdatedAt": "2026-10-30T21:22:00.000Z",
-      "metadataUpdatedAt": "2026-11-05T22:08:00Z",
+      "metadataUpdatedAt": "2026-11-16T23:28:00Z",
       "pageUpdateEvidence": "Last updated on 2026-10-30",
       "objectives": [
         {
