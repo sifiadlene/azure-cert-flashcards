@@ -91,6 +91,44 @@ test('shows current AI-103 review status in solo and challenge setup in English 
   await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-08')
 })
 
+test('shows the current AZ-305 review with gaps in English and French solo and challenge setup', async ({ page }) => {
+  await page.goto('/')
+  await page.getByLabel('Exam').selectOption('az305')
+
+  const soloDates = page.locator('.exam-dates')
+  await expect(soloDates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  await expect(soloDates.locator('time').nth(0)).toHaveAttribute('datetime', '2026-03-23')
+  await expect(soloDates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-10-30')
+  await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+  await expect(soloDates.getByText('Guide revision: Oct 30, 2026. Deck version: Mar 23, 2026.')).toBeVisible()
+
+  const frenchSoloDeckLoaded = page.waitForResponse((response) =>
+    response.url().endsWith('/data/decks/az305-fr.json')).then(async (response) => {
+    expect(response.ok()).toBeTruthy()
+    const deck = await response.json() as { exam: { deckVersion: string } }
+    expect(deck.exam.deckVersion).toBe('2026-03-23')
+  })
+  await page.getByRole('button', { name: 'Switch to French' }).click()
+  await frenchSoloDeckLoaded
+  await expect(page.getByRole('button', { name: 'Démarrer la session' })).toBeEnabled()
+  await expect(soloDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(soloDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+  await expect(soloDates.getByText(/Révision du guide : 30.*oct.*2026\. Version du jeu : 23.*mars.*2026\./)).toBeVisible()
+
+  await page.getByRole('button', { name: /Défi en direct/ }).click()
+  await page.getByLabel('Examen').selectOption('az305')
+  await expect(page.getByLabel('Domaine')).toBeVisible()
+  const challengeDates = page.locator('.exam-dates')
+  await expect(challengeDates.getByText('Revue du jeu de cartes terminée ; des lacunes de couverture subsistent')).toBeVisible()
+  await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+  await expect(challengeDates.getByText(/Révision du guide : 30.*oct.*2026\. Version du jeu : 23.*mars.*2026\./)).toBeVisible()
+
+  await page.getByRole('button', { name: 'Passer en anglais' }).click()
+  await expect(challengeDates.getByText('Review complete; coverage gaps remain')).toBeVisible()
+  await expect(challengeDates.locator('time').nth(1)).toHaveAttribute('datetime', '2026-10-30')
+  await expect(challengeDates.locator('time').nth(2)).toHaveAttribute('datetime', '2026-11-21')
+})
+
 test('shows the current AB-100 review with gaps in English and French solo and challenge setup', async ({ page }) => {
   await page.goto('/')
   await page.getByLabel('Exam').selectOption('ab100')
