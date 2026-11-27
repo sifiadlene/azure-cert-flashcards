@@ -1,7 +1,7 @@
 ---
 title: Azure and GitHub Certification Flashcards
 description: Anki-compatible and browser-based practice decks for Azure and GitHub certification exams
-ms.date: 2026-11-20
+ms.date: 2026-11-27
 ---
 
 ## Overview
@@ -36,9 +36,14 @@ See the [exam date report](EXAM-DATE-REPORT.md) for each available deck's latest
 generation date, official study-guide update date, and published exam-objective
 effective dates.
 
+Guide-page update dates alone do not establish deck alignment. The checked-in
+[study-guide reviews](catalog/study-guide-reviews.json) record unresolved
+coverage gaps for AB-100, AI-103, and AZ-305.
+
 - Browser practice website with exam selection
 - Practice mode with immediate answer reveal
 - Timed quiz mode with end-of-session scoring
+- Multiplayer challenges backed by the Azure Functions API
 - Domain and topic filtering
 - Missed-question review stored locally in the browser
 - Requests for Microsoft Learn practice-assessment exams that do not yet have a deck
@@ -170,6 +175,7 @@ The current website supports:
 - exam selection
 - practice mode
 - timed quiz mode
+- multiplayer challenges (requires the API)
 - domain and topic filters
 - review of missed questions
 - local browser progress persistence with `localStorage`
